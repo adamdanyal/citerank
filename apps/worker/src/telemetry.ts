@@ -1,6 +1,7 @@
 import { PostHog } from "posthog-node";
 
-const POSTHOG_PUBLIC_KEY = "phc_Jhx9LnI9cTDFHpQmpOzJSDTW127qD9pFU65KRnYym6z";
+// Empty so the worker never reports to Elmo's PostHog project.
+const POSTHOG_PUBLIC_KEY: string = "";
 const POSTHOG_HOST = "https://us.i.posthog.com";
 
 let client: PostHog | null = null;
@@ -10,7 +11,7 @@ function isTelemetryDisabled(): boolean {
 }
 
 function getClient(): PostHog | null {
-	if (isTelemetryDisabled()) return null;
+	if (isTelemetryDisabled() || !POSTHOG_PUBLIC_KEY) return null;
 	if (!process.env.DEPLOYMENT_ID) return null;
 	if (client) return client;
 	client = new PostHog(POSTHOG_PUBLIC_KEY, {

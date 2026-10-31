@@ -17,7 +17,12 @@ git fetch upstream --tags
 git merge vX.Y.Z
 ```
 
-Resolve any conflicts in the files listed below, test, deploy, then add a line to the log.
+A merge keeps every change below: where Elmo changed the same lines, git stops for you to choose, and nothing is overwritten silently. Then:
+
+1. Resolve conflicts in the files listed below. If `pnpm-lock.yaml` conflicts, take Elmo's version and run `pnpm install`; it adds our font packages back from the `package.json` files.
+2. We renamed Elmo's `elmo-icon*` files to `citerank-icon*`. If git says Elmo changed a file we deleted, keep it deleted (`git rm <file>`).
+3. Run `node scripts/citerank-brand-check.mjs`. It lists any customer-facing Elmo text the release added; rebrand each one and add the file to the table below.
+4. Test, deploy, then add a line to the log.
 
 ## Running locally
 
@@ -32,9 +37,43 @@ Everything runs in cloud mode (plans and billing) with no real keys.
 
 ## Files we have changed
 
+Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app/org/$org/settings/`.
+
 | File | Why |
 | --- | --- |
 | `apps/web/vite.config.ts` | Excludes linkedom from the dev pre-bundle; without it a fresh `pnpm dev` crashes. |
+| `packages/config/src/constants.ts` | Product name, icon path, brand colour and font, docs URLs. Crisp ID emptied. |
+| `packages/config/src/referrals.ts` | Links go to citerank.com and app.citerank.com. |
+| `packages/config/src/legal.ts` | Legal links go to citerank.com. No cookie consent prompt while nothing sets cookies. |
+| `packages/config/src/referrals.test.ts`, `packages/config/src/legal.test.ts` | Expect the citerank.com URLs. |
+| `apps/web/src/styles.css` | One appended block: Schibsted Grotesk, Inter, JetBrains Mono, and the colour tokens. |
+| `apps/web/src/components/logo.tsx` | CiteRank.com mark and wordmark. |
+| `apps/web/src/routes/__root.tsx` | Preloads the wordmark font; page title, description and icon paths. |
+| `apps/web/src/routes/api/manifest/index.ts`, `apps/web/src/stories/brand-kit.stories.tsx` | Icon paths. |
+| `apps/web/public/icons/*`, `apps/www/public/icons/*`, `apps/www/public/favicon.ico`, `apps/www/public/apple-touch-icon.png`, `apps/www/public/brand/icons/citerank-icon-512.png` | CiteRank.com mark from the old site, renamed from `elmo-icon*`. |
+| `apps/www/public/site.webmanifest`, `apps/www/src/lib/seo.ts`, `apps/www/src/lib/ai-catalog.ts`, `apps/www/src/routes/__root.tsx` | Name, colours and logo paths. |
+| `apps/web/src/components/auth/sales-panel.tsx` | Sign-up pitch rewritten from the brand text. Elmo's customer quote, G2 badge, demo and GitHub links removed; a Book a Call link to /agency added. |
+| `apps/web/src/components/nav-app-info.tsx` | Website link goes to citerank.com; Elmo's GitHub and release links removed. |
+| `apps/web/src/components/legal-consent-notice.tsx`, `apps/web/src/components/chart-export-preview.tsx`, `apps/web/src/lib/route-head.ts`, `apps/web/src/routes/auth/login.tsx`, `apps/web/src/routes/auth/authorize.tsx`, `apps/web/src/routes/_authed/choose-plan.tsx`, `settings/billing.tsx`, `apps/web/src/routes/_authed/reports/render/$reportId.tsx` | Elmo's name, email address and domain replaced. |
+| `apps/web/src/components/app-sidebar.tsx`, `settings/api.tsx` | Elmo's AEO skill and SDK snippets appear in local mode only. |
+| `apps/web/src/lib/mcp/server.ts`, `apps/web/src/lib/mcp/tools/analytics.ts` | MCP server name and instructions. |
+| `apps/web/src/server/api-keys.ts`, `packages/lib/src/auth/server.ts` | New API keys start with `citerank_`. |
+| `packages/deployment/src/email-templates.ts` | Email subjects, text and button colour. |
+| `packages/og/src/render.tsx`, `packages/og/src/fonts.ts`, `packages/og/src/vite-plugin.ts`, `packages/og/src/virtual.d.ts` | Share images: mark, wordmark, fonts, colours, tagline. |
+| `apps/web/src/server/config.ts`, `apps/web/src/lib/posthog.ts`, `apps/web/src/server.ts`, `apps/www/src/lib/posthog.ts`, `apps/www/src/lib/crisp.ts`, `apps/worker/src/telemetry.ts`, `packages/ui/src/lib/ad-tags.ts` | Elmo's analytics, chat and ad accounts switched off (see below). |
+| `packages/ui/src/consent/cookie-consent-banner.tsx` | Banner text. |
+| `apps/web/src/server/__tests__/config.test.ts`, `apps/web/src/lib/__tests__/crisp.test.ts` | Expect the new Crisp ID and URLs. |
+| `apps/web/package.json`, `apps/www/package.json`, `pnpm-lock.yaml` | Font packages. |
+| `scripts/citerank-brand-check.mjs` | New. Lists customer-facing Elmo text left after a merge. |
+
+## Elmo services switched off
+
+Elmo's code reported to Elmo's own accounts, so CiteRank.com visitors and customers would have shown up there. All of these are blank or off:
+
+- Crisp support chat: `CRISP_WEBSITE_ID` in `packages/config/src/constants.ts`.
+- PostHog analytics: the dashboard reads `VITE_POSTHOG_KEY`; the marketing site has `POSTHOG_KEY` in `apps/www/src/lib/posthog.ts`; the worker has `POSTHOG_PUBLIC_KEY` in `apps/worker/src/telemetry.ts`.
+- Google Ads and Meta pixels: `GOOGLE_ADS_ID` and `META_PIXEL_ID` in `packages/ui/src/lib/ad-tags.ts`.
+- Cookie consent: `isElmoHosted` in `packages/config/src/legal.ts` returns false. Restore it when CiteRank.com turns any of the above on.
 
 ## Log
 

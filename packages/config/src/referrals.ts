@@ -7,8 +7,8 @@
  * things and convert at very different rates.
  */
 
-export const MARKETING_SITE_URL = "https://www.elmohq.com";
-export const CLOUD_APP_URL = "https://app.elmohq.com";
+export const MARKETING_SITE_URL = "https://citerank.com";
+export const CLOUD_APP_URL = "https://app.citerank.com";
 /** The read-only instance anyone can poke at without an account. */
 const DEMO_SITE_URL = "https://demo.elmohq.com";
 

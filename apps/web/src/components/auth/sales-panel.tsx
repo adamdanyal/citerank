@@ -10,17 +10,9 @@
  * decided to look, and a whitelabel tenant is not ours to sell to.
  */
 
-import { IconCheck, IconCloud, IconEye } from "@tabler/icons-react";
-import { PLANS, platformTierMembers } from "@workspace/config/plans";
-import {
-	cloudPricingUrl,
-	cloudSignupUrl,
-	demoSiteUrl,
-	marketingUrl,
-	type ReferralSource,
-} from "@workspace/config/referrals";
-import { CUSTOMER_QUOTES } from "@workspace/ui/brand/customers";
-import { G2Stars } from "@workspace/ui/brand/g2-rating";
+import { IconCalendar, IconCheck, IconCloud } from "@tabler/icons-react";
+import { platformTierMembers } from "@workspace/config/plans";
+import { cloudPricingUrl, cloudSignupUrl, marketingUrl, type ReferralSource } from "@workspace/config/referrals";
 import { ModelIcon } from "@workspace/ui/brand/model-icon";
 import { buttonVariants } from "@workspace/ui/components/button";
 import { cn } from "@workspace/ui/lib/utils";
@@ -28,11 +20,6 @@ import type { ReactNode } from "react";
 
 /** Everything Elmo reaches, named — the coverage claim is the product. */
 const ENGINES = [...platformTierMembers("scraped"), ...platformTierMembers("api")];
-
-const GITHUB_URL = "https://github.com/elmohq/elmo";
-
-/** The comparison the pricing rests on, kept in step with what a plan actually samples. */
-const RUNS_PER_DAY = PLANS.basic.standardRunsPerDay;
 
 interface Bullet {
 	/** Doubles as the list key. */
@@ -47,12 +34,12 @@ interface Pitch {
 }
 
 const CLOUD_PITCH: Pitch = {
-	headline: "Be the brand AI recommends.",
+	headline: "See what AI says about your business.",
 	bullets: [
-		{ text: "Track your AI visibility on any model" },
-		{ text: "Benchmark against your competitors" },
-		{ text: "Analyze citations to find opportunities" },
-		{ text: `${RUNS_PER_DAY}× Profound's daily runs, same price` },
+		{ text: "Your buyers' questions, asked in the AI apps you choose" },
+		{ text: "How often you are named against each competitor" },
+		{ text: "Every answer in full, with the pages it cites" },
+		{ text: "A ranked list of what to do next, about once a week" },
 	],
 };
 
@@ -62,7 +49,6 @@ const SELF_HOSTED_PITCH: Pitch = {
 		{ text: "Track your AI visibility on any model" },
 		{ text: "Unlimited prompts, brands, and seats" },
 		{ text: "Bring your own model and scraper keys" },
-		{ text: "Please star us on GitHub!", href: GITHUB_URL },
 	],
 };
 
@@ -95,15 +81,11 @@ export function SalesPanel({ variant, source }: { variant: SalesPanelVariant; so
 				))}
 			</ul>
 
-			{/* After our own claims, not before: a customer backing them up reads as
-			    corroboration, where opening with it reads as decoration. */}
-			<Quote />
-
 			<EngineStrip />
 
 			<OfferCard
-				question={variant === "self-hosted" ? "Don't want to self-host?" : "Try before you buy?"}
-				offer={variant === "self-hosted" ? cloudOffer(source) : demoOffer(source)}
+				question={variant === "self-hosted" ? "Don't want to self-host?" : "Want it done for you?"}
+				offer={variant === "self-hosted" ? cloudOffer(source) : agencyOffer(source)}
 			/>
 		</div>
 	);
@@ -132,20 +114,20 @@ function EngineStrip() {
 interface Offer {
 	label: string;
 	href: string;
-	icon: typeof IconEye;
+	icon: typeof IconCalendar;
 	/** Somewhere to look around rather than a conversion — worth keeping this page open for. */
 	newTab?: boolean;
 }
 
-const demoOffer = (source: ReferralSource): Offer => ({
-	label: "View Live Demo",
-	href: demoSiteUrl(source),
-	icon: IconEye,
+const agencyOffer = (source: ReferralSource): Offer => ({
+	label: "Book a Call",
+	href: marketingUrl("/agency", source),
+	icon: IconCalendar,
 	newTab: true,
 });
 
 const cloudOffer = (source: ReferralSource): Offer => ({
-	label: "Try Elmo Cloud",
+	label: "Try CiteRank.com",
 	href: cloudSignupUrl(source),
 	icon: IconCloud,
 });
@@ -179,33 +161,7 @@ function OfferCard({ question, offer, className = "" }: { question: string; offe
 	);
 }
 
-function Quote() {
-	const quote = CUSTOMER_QUOTES.speakeasy;
-	return (
-		<figure className="rounded-lg border bg-card p-5">
-			<blockquote className="text-pretty text-sm font-medium leading-relaxed">“{quote.quote}”</blockquote>
-			<figcaption className="mt-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-				<span className="font-semibold text-foreground">{quote.author}</span>
-				<span>at</span>
-				<a
-					href={quote.companyUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					aria-label={quote.company}
-					className="inline-flex items-center text-foreground transition-opacity hover:opacity-80"
-				>
-					{quote.mark}
-				</a>
-			</figcaption>
-		</figure>
-	);
-}
-
-/**
- * The bottom of the form column: where to read more on the left, and the G2
- * rating in the corner. The rating doesn't link out — this is the one page
- * where sending someone away costs a signup.
- */
+/** The bottom of the form column: where to read more. */
 export function SalesFooterLinks({ source }: { source: ReferralSource }): ReactNode {
 	const linkClass = "hover:text-foreground";
 	return (
@@ -217,11 +173,7 @@ export function SalesFooterLinks({ source }: { source: ReferralSource }): ReactN
 				<a href={cloudPricingUrl(source)} className={linkClass}>
 					Pricing
 				</a>
-				<a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className={linkClass}>
-					GitHub
-				</a>
 			</p>
-			<G2Stars />
 		</div>
 	);
 }

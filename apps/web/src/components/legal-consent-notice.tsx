@@ -1,4 +1,5 @@
 import { useRouteContext } from "@tanstack/react-router";
+import { DEFAULT_APP_NAME } from "@workspace/config/constants";
 import { legalUrl } from "@workspace/config/legal";
 import type { ClientConfig } from "@workspace/config/types";
 import { cn } from "@workspace/ui/lib/utils";
@@ -17,7 +18,7 @@ export function LegalConsentNotice({ action, className }: { action: string; clas
 
 	return (
 		<p className={cn("text-center text-xs text-muted-foreground", className)}>
-			By {action} you agree to Elmo's{" "}
+			By {action} you agree to {DEFAULT_APP_NAME}'s{" "}
 			<a href={legalUrl("terms")} target="_blank" rel="noreferrer" className={linkClass}>
 				Terms of Service
 			</a>{" "}

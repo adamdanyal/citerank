@@ -7,6 +7,10 @@ const EMBEDDED_BINARIES: Record<string, string> = {
 	"virtual:font/geist-sans-400": "@fontsource/geist-sans/files/geist-sans-latin-400-normal.woff2",
 	"virtual:font/geist-sans-500": "@fontsource/geist-sans/files/geist-sans-latin-500-normal.woff2",
 	"virtual:font/geist-mono-400": "@fontsource/geist-mono/files/geist-mono-latin-400-normal.woff2",
+	"virtual:font/schibsted-grotesk-600": "@fontsource/schibsted-grotesk/files/schibsted-grotesk-latin-600-normal.woff2",
+	"virtual:font/inter-400": "@fontsource/inter/files/inter-latin-400-normal.woff2",
+	"virtual:font/inter-500": "@fontsource/inter/files/inter-latin-500-normal.woff2",
+	"virtual:font/jetbrains-mono-400": "@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2",
 };
 
 export function embedBinaries(): Plugin {

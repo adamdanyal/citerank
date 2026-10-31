@@ -8,7 +8,7 @@ export const SITE_NAME = "Elmo";
 // carries no pricing so it stays true wherever it is reused.
 export const SITE_DESCRIPTION =
 	"Open-source answer engine optimization (AEO) platform: track how AI answers mention and cite your brand.";
-const SITE_LOGO_URL = `${SITE_URL}/brand/icons/elmo-icon-512.png`;
+const SITE_LOGO_URL = `${SITE_URL}/brand/icons/citerank-icon-512.png`;
 
 export function canonicalUrl(path: string): string {
 	return `${SITE_URL}${path}`;

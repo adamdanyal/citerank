@@ -24,7 +24,10 @@ export function Logo({ className, iconClassName, textClassName, ...props }: Logo
 	if (usesWordmarkFont(branding)) {
 		return (
 			<div {...props} className={cn("flex items-center gap-2", className)}>
-				<span className={cn("font-titan-one text-3xl font-normal lowercase text-blue-600", textClassName)}>elmo</span>
+				<img src={DEFAULT_APP_ICON} alt="" aria-hidden className={cn("size-6", iconClassName)} />
+				<span className={cn("font-heading text-lg font-semibold tracking-tight text-ink", textClassName)}>
+					{DEFAULT_APP_NAME}
+				</span>
 			</div>
 		);
 	}

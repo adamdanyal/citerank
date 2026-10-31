@@ -1,12 +1,13 @@
 import { onMarketingConsent } from "./cookie-consent";
 import { afterPageIdle } from "./idle";
 
-const GOOGLE_ADS_ID = "AW-18500607241";
-const META_PIXEL_ID = "2332896134120550";
+// Empty until CiteRank.com has its own ad accounts; the IDs this shipped with were Elmo's.
+const GOOGLE_ADS_ID: string = "";
+const META_PIXEL_ID: string = "";
 
 // Everywhere else — local dev, CI, preview deploys, a self-hosted instance
 // running in demo mode — must never count toward our ad accounts.
-const PRODUCTION_HOSTS = new Set(["elmohq.com", "www.elmohq.com", "app.elmohq.com", "demo.elmohq.com"]);
+const PRODUCTION_HOSTS = new Set(["citerank.com", "www.citerank.com", "app.citerank.com"]);
 
 export type AdConversion = "sign_up" | "purchase" | "demo_booked";
 

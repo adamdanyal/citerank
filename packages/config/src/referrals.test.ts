@@ -21,11 +21,11 @@ describe("referral links", () => {
 	});
 
 	it("points each destination at its own page", () => {
-		expect(marketingUrl("/docs", "cloud-signin")).toBe("https://www.elmohq.com/docs?ref=cloud-signin");
-		expect(cloudAppUrl("marketing-cta")).toBe("https://app.elmohq.com/?ref=marketing-cta");
-		expect(cloudSignupUrl("cloud-signin")).toBe("https://app.elmohq.com/auth/register?ref=cloud-signin");
-		expect(cloudPricingUrl("cloud-signin")).toBe("https://www.elmohq.com/pricing?ref=cloud-signin");
-		expect(bookDemoUrl("cloud-signin")).toBe("https://www.elmohq.com/demo?ref=cloud-signin");
+		expect(marketingUrl("/docs", "cloud-signin")).toBe("https://citerank.com/docs?ref=cloud-signin");
+		expect(cloudAppUrl("marketing-cta")).toBe("https://app.citerank.com/?ref=marketing-cta");
+		expect(cloudSignupUrl("cloud-signin")).toBe("https://app.citerank.com/auth/register?ref=cloud-signin");
+		expect(cloudPricingUrl("cloud-signin")).toBe("https://citerank.com/pricing?ref=cloud-signin");
+		expect(bookDemoUrl("cloud-signin")).toBe("https://citerank.com/demo?ref=cloud-signin");
 		expect(demoSiteUrl("cloud-signin")).toBe("https://demo.elmohq.com/?ref=cloud-signin");
 		expect(demoSiteUrl("marketing-demo-frame", "/app/org/acme/brand/acme/citations")).toBe(
 			"https://demo.elmohq.com/app/org/acme/brand/acme/citations?ref=marketing-demo-frame",

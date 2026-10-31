@@ -19,6 +19,6 @@ describe("showsLegalLinks", () => {
 
 describe("legalUrl", () => {
 	it("resolves to the published document on the marketing site", () => {
-		expect(legalUrl("terms")).toBe("https://www.elmohq.com/legal/terms");
+		expect(legalUrl("terms")).toBe("https://citerank.com/legal/terms");
 	});
 });

@@ -1,13 +1,14 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { CRISP_WEBSITE_ID } from "@workspace/config/constants";
 import { resolveCrispWebsiteId } from "../config";
 
 afterEach(() => vi.unstubAllEnvs());
 
 describe("resolveCrispWebsiteId", () => {
-	it.each(["cloud", "demo"])("returns a website ID in %s mode", (mode) => {
+	it.each(["cloud", "demo"])("returns the configured website ID in %s mode", (mode) => {
 		vi.stubEnv("DEPLOYMENT_MODE", mode);
 
-		expect(resolveCrispWebsiteId()).toBeTruthy();
+		expect(resolveCrispWebsiteId()).toBe(CRISP_WEBSITE_ID);
 	});
 
 	it.each(["local", "whitelabel"])("returns nothing in %s mode", (mode) => {

@@ -45,7 +45,9 @@ export function ChartExportPreview({
 }: ChartExportPreviewProps) {
 	const name = branding.name || DEFAULT_APP_NAME;
 	const isWhitelabel = branding.isWhitelabel && branding.name !== DEFAULT_APP_NAME;
-	const domain = isWhitelabel ? branding.parentUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "") || "" : "elmohq.com";
+	const domain = isWhitelabel
+		? branding.parentUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "") || ""
+		: "citerank.com";
 	const hasCustomIcon = branding.icon && branding.icon !== DEFAULT_APP_ICON;
 
 	return (
@@ -108,8 +110,9 @@ export function ChartExportPreview({
 							{name}
 						</span>
 					) : (
-						<span className="font-titan-one font-normal lowercase text-blue-600" style={{ fontSize: 24 }}>
-							elmo
+						<span className="flex items-center gap-2 font-heading font-semibold text-ink" style={{ fontSize: 20 }}>
+							<img src={DEFAULT_APP_ICON} alt="" style={{ width: 24, height: 24 }} />
+							{DEFAULT_APP_NAME}
 						</span>
 					)}
 				</div>

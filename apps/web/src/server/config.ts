@@ -23,11 +23,12 @@ export type PublicClientConfig = Omit<ClientConfig, "branding"> & {
  * BrandingConfig.onboardingRedirectUrl is a function, so we strip it and send the
  * raw template string instead. The client can reconstruct the function if needed.
  */
-const POSTHOG_PUBLIC_KEY = "phc_Jhx9LnI9cTDFHpQmpOzJSDTW127qD9pFU65KRnYym6z";
+// Empty so nothing reaches Elmo's PostHog project; VITE_POSTHOG_KEY sets CiteRank.com's own.
+const POSTHOG_PUBLIC_KEY = "";
 
 function resolvePosthogKey(): string | undefined {
 	if (process.env.DISABLE_TELEMETRY) return undefined;
-	return process.env.VITE_POSTHOG_KEY ?? POSTHOG_PUBLIC_KEY;
+	return process.env.VITE_POSTHOG_KEY || POSTHOG_PUBLIC_KEY || undefined;
 }
 
 export function resolveCrispWebsiteId(): string | undefined {

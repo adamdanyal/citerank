@@ -2,11 +2,11 @@
 
 // Preloaded so the wordmark font downloads in parallel with the CSS rather than
 // after it. Must resolve to the same emitted asset as the @font-face src.
-import titanOneFont from "@fontsource/titan-one/files/titan-one-latin-400-normal.woff2?url";
+import titanOneFont from "@fontsource/schibsted-grotesk/files/schibsted-grotesk-latin-600-normal.woff2?url";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import type { QueryClient } from "@tanstack/react-query";
 import { createRootRouteWithContext, HeadContent, Outlet, Scripts, useLocation } from "@tanstack/react-router";
-import { DEFAULT_APP_ICON, ELMO_THEME_COLOR } from "@workspace/config/constants";
+import { DEFAULT_APP_ICON, DEFAULT_APP_NAME, ELMO_THEME_COLOR } from "@workspace/config/constants";
 import type { MissingEnvVar } from "@workspace/config/env";
 import { isElmoHosted, legalUrl } from "@workspace/config/legal";
 import type { DeploymentMode } from "@workspace/config/types";
@@ -60,12 +60,13 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 		}
 
 		const hasCustomIcon = Boolean(branding?.icon && branding.icon !== DEFAULT_APP_ICON);
-		const appName = branding?.name || "Elmo";
+		const appName = branding?.name || DEFAULT_APP_NAME;
 		const themeColor = hasCustomIcon ? "#000000" : ELMO_THEME_COLOR;
 		const appUrl = branding?.url ? branding.url.replace(/\/$/, "") : undefined;
 
-		const title = `${appName} - AI Search Optimization`;
-		const description = "Track and optimize your brand's visibility across AI models.";
+		const title = `${appName} - AI Visibility Tracker`;
+		const description =
+			"See what ChatGPT, Gemini, Perplexity and Google AI say about your business, and what to change.";
 		// Don't pass `title` to /api/og — the renderer already shows the brand
 		// (Elmo logo or whitelabel icon + name), so a "Brand - AI Search Optimization"
 		// title would render redundantly. Pages that override og:image can supply
@@ -133,8 +134,8 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 							// Icons live under /icons/ (not the root) so browsers' default
 							// probes for /favicon.ico and /apple-touch-icon.png 404 on
 							// whitelabel deployments instead of picking up Elmo assets.
-							{ rel: "icon", type: "image/svg+xml", href: "/icons/elmo-icon.svg" },
-							{ rel: "icon", type: "image/png", sizes: "96x96", href: "/icons/elmo-icon-96.png" },
+							{ rel: "icon", type: "image/svg+xml", href: "/icons/citerank-icon.svg" },
+							{ rel: "icon", type: "image/png", sizes: "96x96", href: "/icons/citerank-icon-96.png" },
 							{ rel: "icon", type: "image/x-icon", href: "/icons/favicon.ico" },
 							{ rel: "apple-touch-icon", href: "/icons/apple-touch-icon.png" },
 						]),

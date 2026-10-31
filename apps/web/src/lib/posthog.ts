@@ -1,7 +1,8 @@
 import { onAnalyticsConsent } from "@workspace/ui/lib/cookie-consent";
 import type { PostHog } from "posthog-js";
 
-const POSTHOG_HOST = "https://var.elmohq.com";
+// PostHog's US cloud, for a CiteRank.com project set through VITE_POSTHOG_KEY.
+const POSTHOG_HOST = "https://us.i.posthog.com";
 
 // posthog-js is ~60KB gzipped and sets cookies, so it is imported dynamically
 // and only once analytics consent is in effect. Anyone who declines never

@@ -4,9 +4,10 @@
 import { DEFAULT_APP_NAME, ELMO_BRAND_COLOR } from "@workspace/config/constants";
 import type { ReactNode } from "react";
 
-export const ACCENT_COLORS = ["#2563eb", "#f4d35e", "#ee964b", "#f95738"];
-export const DEFAULT_TAGLINE = "AI Search Optimization";
-export const DEFAULT_DESCRIPTION = "Track and optimize your brand's visibility across AI models.";
+export const ACCENT_COLORS = [ELMO_BRAND_COLOR];
+export const DEFAULT_TAGLINE = "AI Visibility Tracker";
+export const DEFAULT_DESCRIPTION =
+	"See what ChatGPT, Gemini, Perplexity and Google AI say about your business, and what to change.";
 
 export const OG_WIDTH = 1200;
 export const OG_HEIGHT = 630;
@@ -15,7 +16,7 @@ const PADDING = 64;
 const GRID_CELL = 48;
 
 const ZINC = {
-	950: "#09090b",
+	950: "#1a1917",
 	700: "#3f3f46",
 	600: "#52525b",
 	500: "#71717a",
@@ -23,9 +24,13 @@ const ZINC = {
 } as const;
 
 // Only the faces in OG_FONTS exist.
-const SANS = "Geist Sans";
-const MONO = "Geist Mono";
-const WORDMARK = "Titan One";
+const SANS = "Inter";
+const MONO = "JetBrains Mono";
+const WORDMARK = "Schibsted Grotesk";
+
+const MARK_DATA_URI = `data:image/svg+xml;base64,${btoa(
+	'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="500" cy="500" r="390" fill="none" stroke="#C6552A" stroke-width="78"/><path d="M 742.2 569.5 A 252 252 0 1 1 742.2 430.5" fill="none" stroke="#C6552A" stroke-width="78"/><circle cx="500" cy="500" r="92" fill="#C6552A"/></svg>',
+)}`;
 
 function parseHex(color: string): number | undefined {
 	const hex = color.trim().replace(/^#/, "");
@@ -72,7 +77,7 @@ export function OgFrame({ accentColors, footer, children }: OgFrameOptions) {
 				height: "100%",
 				position: "relative",
 				overflow: "hidden",
-				backgroundColor: "#ffffff",
+				backgroundColor: "#fbfaf9",
 				fontFamily: SANS,
 				color: ZINC[950],
 			}}
@@ -112,7 +117,7 @@ export function OgFrame({ accentColors, footer, children }: OgFrameOptions) {
 					left: 0,
 					width: "100%",
 					height: "100%",
-					backgroundImage: "linear-gradient(to bottom, rgba(255,255,255,0) 30%, rgba(255,255,255,1) 92%)",
+					backgroundImage: "linear-gradient(to bottom, rgba(251,250,249,0) 30%, rgba(251,250,249,1) 92%)",
 				}}
 			/>
 			{glow ? (
@@ -194,7 +199,12 @@ export function OgHeader({ appName, iconDataUri, label }: OgHeaderOptions) {
 	return (
 		<div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 60 }}>
 			{isElmo ? (
-				<div style={{ fontFamily: WORDMARK, fontSize: 60, lineHeight: 1, color: ELMO_BRAND_COLOR }}>elmo</div>
+				<div style={{ display: "flex", alignItems: "center" }}>
+					<img src={MARK_DATA_URI} alt="" width={60} height={60} style={{ marginRight: 18 }} />
+					<div style={{ fontFamily: WORDMARK, fontSize: 48, fontWeight: 600, letterSpacing: -1, color: ZINC[950] }}>
+						{appName}
+					</div>
+				</div>
 			) : (
 				<div style={{ display: "flex", alignItems: "center" }}>
 					{iconDataUri ? (

@@ -251,6 +251,15 @@ importers:
       '@fontsource/geist-sans':
         specifier: ^5.3.0
         version: 5.3.0
+      '@fontsource/inter':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource/jetbrains-mono':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource/schibsted-grotesk':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@fontsource/titan-one':
         specifier: ^5.3.0
         version: 5.3.0
@@ -488,6 +497,15 @@ importers:
         specifier: ^5.3.0
         version: 5.3.0
       '@fontsource/geist-sans':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource/inter':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource/jetbrains-mono':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource/schibsted-grotesk':
         specifier: ^5.3.0
         version: 5.3.0
       '@fontsource/titan-one':
@@ -2015,6 +2033,15 @@ packages:
 
   '@fontsource/geist-sans@5.3.0':
     resolution: {integrity: sha512-AmG7cE1AvE4NHROPaOl1sN+a02cB5xy6pA/ZV76HXqWTCsJTV2SCBc9DTFHfJqnVOODm7HhXIYtUIb75NP5QXQ==}
+
+  '@fontsource/inter@5.3.0':
+    resolution: {integrity: sha512-RofMylZmjlJEfELXeNHFWBRcSs75rGU/6bV2S2jfnvv/3rPXPGe0LgUJTklcHZ9lM4OZmAVFhcJPnACfb91A3g==}
+
+  '@fontsource/jetbrains-mono@5.3.0':
+    resolution: {integrity: sha512-fqDfB5I9f1p1TV486aUgB9t8zP84P0O1FtQR5Ol9vjwPy+S+EIGlVYm1cvj2W5shcZMTg2nZFdVMoH5wFu8a1A==}
+
+  '@fontsource/schibsted-grotesk@5.3.0':
+    resolution: {integrity: sha512-9k+Fd2eg7umKxI2JV2HtDcOkXEM0iJx0u4Iu1b+QHikVU8Sl/MtozJ/mtZfsltR6xnVGSQjpcxXQeJPW0KGpIA==}
 
   '@fontsource/titan-one@5.3.0':
     resolution: {integrity: sha512-PpYfmhzzC3OVK+tQ2T5n5gx/+L6u+B0u//hu0/wqs0XBx45o8nPhFySl1/+NGYt92WE0MUuUVl0P2mF0/8xykw==}
@@ -11347,6 +11374,12 @@ snapshots:
   '@fontsource/geist-mono@5.3.0': {}
 
   '@fontsource/geist-sans@5.3.0': {}
+
+  '@fontsource/inter@5.3.0': {}
+
+  '@fontsource/jetbrains-mono@5.3.0': {}
+
+  '@fontsource/schibsted-grotesk@5.3.0': {}
 
   '@fontsource/titan-one@5.3.0': {}
 

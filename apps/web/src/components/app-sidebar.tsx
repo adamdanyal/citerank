@@ -73,8 +73,8 @@ function organizationGroups(
 		{ title: "MCP", link: { to: "/app/org/$org/settings/mcp", params }, icon: IconPlugConnected },
 	];
 
-	// The skill is Elmo's, and whitelabel deployments never point users at Elmo.
-	if (mode !== "whitelabel") {
+	// The skill is Elmo's, so only a self-hosted instance points users at it.
+	if (mode === "local") {
 		docs.push({ title: "Skill", link: { to: "/app/org/$org/settings/skill", params }, icon: IconSchool });
 	}
 

@@ -7,7 +7,7 @@
  */
 import type { DeploymentMode } from "./types";
 
-const LEGAL_SITE_URL = "https://www.elmohq.com";
+const LEGAL_SITE_URL = "https://citerank.com";
 
 interface LegalDocument {
 	slug: string;
@@ -35,7 +35,10 @@ export function showsLegalLinks(mode: DeploymentMode | undefined): boolean {
 	return mode === "cloud" || mode === "demo" || mode === "local";
 }
 
-/** Self-hosted deployments are governed by whoever runs them, so only ours ask for cookie consent. */
-export function isElmoHosted(mode: DeploymentMode | undefined): boolean {
-	return mode === "cloud" || mode === "demo";
+/**
+ * Self-hosted deployments are governed by whoever runs them, so only ours ask for cookie consent.
+ * CiteRank.com sets no analytics or advertising cookies yet, so it asks nothing until it does.
+ */
+export function isElmoHosted(_mode: DeploymentMode | undefined): boolean {
+	return false;
 }

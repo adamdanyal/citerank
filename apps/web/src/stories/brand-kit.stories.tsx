@@ -119,7 +119,7 @@ export const ElmoBrandKit = () => {
 										style={{ minWidth: Math.max(size + 16, 48), minHeight: Math.max(size + 16, 48) }}
 									>
 										<img
-											src="/icons/elmo-icon.svg"
+											src="/icons/citerank-icon.svg"
 											alt={`Elmo icon ${size}px`}
 											width={size}
 											height={size}
@@ -143,7 +143,7 @@ export const ElmoBrandKit = () => {
 										style={{ minWidth: Math.max(size + 16, 48), minHeight: Math.max(size + 16, 48) }}
 									>
 										<img
-											src="/icons/elmo-icon.svg"
+											src="/icons/citerank-icon.svg"
 											alt={`Elmo icon ${size}px on dark`}
 											width={size}
 											height={size}
@@ -167,7 +167,7 @@ export const ElmoBrandKit = () => {
 						<div key={size} className="flex flex-col items-center gap-2">
 							<div className="border rounded-lg overflow-hidden flex items-center justify-center">
 								<img
-									src="/icons/elmo-icon-maskable.svg"
+									src="/icons/citerank-icon-maskable.svg"
 									alt={`Elmo maskable icon ${size}px`}
 									width={size}
 									height={size}
@@ -185,7 +185,7 @@ export const ElmoBrandKit = () => {
 							style={{ width: 128, height: 128 }}
 						>
 							<img
-								src="/icons/elmo-icon-maskable.svg"
+								src="/icons/citerank-icon-maskable.svg"
 								alt="Elmo maskable icon circular crop"
 								width={128}
 								height={128}

@@ -26,7 +26,7 @@ export const aiCatalog = {
 		displayName: SITE_NAME,
 		identifier: "elmohq.com",
 		documentationUrl: canonicalUrl("/docs"),
-		logoUrl: canonicalUrl("/brand/icons/elmo-icon-512.png"),
+		logoUrl: canonicalUrl("/brand/icons/citerank-icon-512.png"),
 	},
 	entries: [
 		{

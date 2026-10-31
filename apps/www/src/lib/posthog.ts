@@ -2,7 +2,8 @@ import { onAnalyticsConsent } from "@workspace/ui/lib/cookie-consent";
 import { afterPageIdle } from "@workspace/ui/lib/idle";
 import type { PostHog } from "posthog-js";
 
-const POSTHOG_KEY = "phc_Jhx9LnI9cTDFHpQmpOzJSDTW127qD9pFU65KRnYym6z";
+// Empty until CiteRank.com has its own PostHog project; the key this shipped with was Elmo's.
+const POSTHOG_KEY: string = "";
 const POSTHOG_HOST = "https://var.elmohq.com";
 
 // posthog-js is ~60KB gzipped and sets cookies, so it is imported dynamically
@@ -76,6 +77,7 @@ function sync(): void {
  * answer for the rest of the session. Returns an unsubscribe.
  */
 export function initAnalytics(consentRequired: boolean): () => void {
+	if (!POSTHOG_KEY) return () => {};
 	return onAnalyticsConsent(consentRequired, (answer) => {
 		allowed = answer;
 		if (answer) {

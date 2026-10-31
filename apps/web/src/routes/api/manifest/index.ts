@@ -38,35 +38,35 @@ function buildManifest(): object {
 		// Elmo-only assets — never reference these from the whitelabel branch.
 		icons = [
 			{
-				src: "/icons/elmo-icon.svg",
+				src: "/icons/citerank-icon.svg",
 				sizes: "any",
 				type: "image/svg+xml",
 			},
 			{
-				src: "/icons/elmo-icon-maskable.svg",
+				src: "/icons/citerank-icon-maskable.svg",
 				sizes: "any",
 				type: "image/svg+xml",
 				purpose: "maskable",
 			},
 			// PWA installers on Android/Chrome require concrete PNG sizes.
 			{
-				src: "/icons/elmo-icon-192.png",
+				src: "/icons/citerank-icon-192.png",
 				sizes: "192x192",
 				type: "image/png",
 			},
 			{
-				src: "/icons/elmo-icon-512.png",
+				src: "/icons/citerank-icon-512.png",
 				sizes: "512x512",
 				type: "image/png",
 			},
 			{
-				src: "/icons/elmo-icon-maskable-192.png",
+				src: "/icons/citerank-icon-maskable-192.png",
 				sizes: "192x192",
 				type: "image/png",
 				purpose: "maskable",
 			},
 			{
-				src: "/icons/elmo-icon-maskable-512.png",
+				src: "/icons/citerank-icon-maskable-512.png",
 				sizes: "512x512",
 				type: "image/png",
 				purpose: "maskable",

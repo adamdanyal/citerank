@@ -46,8 +46,8 @@ function ApiSettingsPage() {
 				<CopyButton value={baseUrl} />
 			</div>
 
-			{/* The SDKs are published under Elmo's name, so a whitelabel deployment doesn't advertise them. */}
-			{mode && mode !== "whitelabel" && <SdkSection baseUrl={baseUrl} />}
+			{/* The SDKs are published under Elmo's name, so only a self-hosted instance advertises them. */}
+			{mode === "local" && <SdkSection baseUrl={baseUrl} />}
 
 			<Card className="overflow-hidden p-0">
 				<ApiReferenceEmbed />
