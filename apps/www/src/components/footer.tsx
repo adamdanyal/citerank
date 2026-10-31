@@ -55,7 +55,6 @@ const cols: { heading: string; links: FooterLink[] }[] = [
 		heading: "Company",
 		links: [
 			{ label: "About", href: "/about" },
-			{ label: "Contact", href: "mailto:team@citerank.com" },
 			{ label: "llms.txt", href: "/llms.txt" },
 		],
 	},

@@ -15,11 +15,11 @@ export function CTA() {
 				<div className="grid items-center gap-10 lg:grid-cols-12">
 					<div className="lg:col-span-7">
 						<h2 className="max-w-[18ch] text-4xl font-semibold leading-[1.05] tracking-tight text-balance text-zinc-950 md:text-5xl">
-							Start Tracking AI Answers Today
+							Start tracking AI answers today.
 						</h2>
 						<p className="mt-5 max-w-[52ch] text-pretty text-zinc-600 md:text-lg">
-							See what ChatGPT, Gemini, Perplexity and Google AI say about your business, from ${CLOUD_ENTRY_PRICE_USD}
-							/mo. Our AI search agency can do the work.
+							Sign up for the cloud and we run everything for you from ${CLOUD_ENTRY_PRICE_USD}/mo, with unlimited seats
+							and API/MCP access on every plan.
 						</p>
 						<div className="mt-7 flex flex-wrap items-center gap-2">
 							<CloudSignupCTA />

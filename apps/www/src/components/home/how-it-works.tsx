@@ -9,22 +9,22 @@ interface Step {
 
 const STEPS: Step[] = [
 	{
-		title: "Add Your Questions",
-		body: "Add your website. CiteRank.com suggests the questions your buyers ask AI and the competitors to track against.",
+		title: "Add Your Brand",
+		body: "Point CiteRank.com at your site. It suggests the prompts your buyers ask and the competitors to track against.",
 		src: "/screenshots/prompt-settings.png",
-		alt: "CiteRank.com prompt settings listing the buyer questions tracked for a brand, each tagged by topic",
+		alt: "CiteRank.com prompts settings listing the buyer prompts tracked for a demo brand, each tagged by topic",
 	},
 	{
-		title: "See Every Answer",
-		body: "CiteRank.com asks those questions in the AI apps you choose, up to 4× a day, and keeps every answer.",
+		title: "See Where You Stand",
+		body: "Visibility, share of voice, and the sources AI cites, sampled up to 4× daily from the real apps.",
 		src: "/screenshots/visibility.png",
-		alt: "CiteRank.com visibility page showing how often each question names the brand against competitors",
+		alt: "CiteRank.com visibility page showing per-prompt visibility over time against competitors",
 	},
 	{
-		title: "Act on a Ranked List",
-		body: "About once a week, CiteRank.com ranks what to do next. Do it yourself, or have our AI search agency do it.",
+		title: "Know What to Fix",
+		body: "Opportunities ranked by impact. CiteRank.com keeps you updated, so you always know what to do next.",
 		src: "/screenshots/opportunities.png",
-		alt: "CiteRank.com opportunities page with ranked recommendations for content and sources",
+		alt: "CiteRank.com opportunities page with prioritized recommendations for content and sources",
 	},
 ];
 
@@ -56,8 +56,8 @@ export function HowItWorks() {
 		<section className="border-t border-zinc-200/80 bg-white">
 			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
 				<SectionHeading
-					title="How CiteRank.com Works in Three Steps"
-					lede="After each change, the tracker measures the new AI answers, and the cycle repeats."
+					title="From zero to a plan in one afternoon."
+					lede="No sales call, no bloat. CiteRank.com sets up your tracking and tells you what to change."
 				/>
 				<ol className="mt-12 grid gap-5 md:grid-cols-3">
 					{STEPS.map((step, i) => (

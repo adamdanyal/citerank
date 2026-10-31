@@ -27,7 +27,7 @@ function titleWords(title: string) {
 }
 
 const DEFAULT_LEDE =
-	"CiteRank.com puts your buyers' questions to ChatGPT, Gemini, Perplexity and nine more AI apps, up to four times a day. See how often you're named against competitors and what to change, or let our AI search agency do it.";
+	"CiteRank.com is the AI visibility tracker and AI search agency for AEO and GEO. See how ChatGPT, Claude, Gemini and nine other AI apps talk about your brand, which sources they trust, and what to do to get recommended.";
 
 /** Landing pages for a single audience reuse the homepage hero with their own pitch. */
 export function Hero({

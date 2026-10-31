@@ -19,7 +19,7 @@ export const heroVariants: Record<string, HeroVariant> = {
 	},
 	chatgpt: {
 		title: "Is ChatGPT Mentioning You?",
-		lede: "CiteRank.com asks ChatGPT and 11 other AI apps the questions your buyers ask, then shows whether you're in the answer, who's there instead, and what to change.",
+		lede: "CiteRank.com asks ChatGPT and 11 other AI apps the questions your buyers ask, then shows whether you're in the answer, who's there instead, and what to fix.",
 	},
 	"see-what-ai-says": {
 		title: "See What AI Says About Your Brand",
@@ -27,7 +27,7 @@ export const heroVariants: Record<string, HeroVariant> = {
 	},
 	"stop-checking": {
 		title: "Stop Checking ChatGPT by Hand",
-		lede: "CiteRank.com asks your buyers' questions in 12 AI apps, up to four times a day, and keeps every answer, so you see trends instead of one-off screenshots.",
+		lede: "CiteRank.com runs your buyers' prompts across AI models on a schedule and tracks every answer, so you see trends instead of one-off screenshots.",
 	},
 	"aeo-tool": {
 		title: "The AEO Tool That Tells You What to Fix",
@@ -35,7 +35,7 @@ export const heroVariants: Record<string, HeroVariant> = {
 	},
 	geo: {
 		title: "Generative Engine Optimization, Measured",
-		lede: "Track how generative AI engines mention and cite your brand, benchmark against competitors, and see which changes actually move your visibility.",
+		lede: "Track how generative AI engines mention and cite your brand, benchmark against competitors, and see which changes move your visibility.",
 	},
 	"share-of-voice": {
 		title: "Own Your AI Share of Voice",

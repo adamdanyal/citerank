@@ -3,7 +3,7 @@ import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import { cloudSignupUrl, type ReferralSource } from "@workspace/config/referrals";
 import { ArrowRight, Check } from "lucide-react";
 
-const INCLUDED = ["Cancel anytime", "Unlimited seats", "API and MCP access"];
+const INCLUDED = ["Self-serve", "Unlimited seats", "API and MCP access"];
 
 const BUTTON =
 	"inline-flex h-12 items-center justify-center gap-2 rounded-lg px-6 text-base font-medium leading-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600";

@@ -86,7 +86,7 @@ export function OtherPlans({ className = "" }: { className?: string }) {
 			/>
 			<OtherOption
 				name="Custom"
-				body="More brands, more prompts or more frequent checks than the plans above."
+				body="More brands, custom prompt limits, higher sampling rates, and more models."
 				action={
 					<a href="mailto:team@citerank.com?subject=Custom%20plan" className={LINK}>
 						Email Us
@@ -100,7 +100,7 @@ export function OtherPlans({ className = "" }: { className?: string }) {
 
 /** `recommended` marks the tier that fits a landing page's audience, so the table doesn't leave them to guess. */
 export function Pricing({
-	lede = "Unlimited seats, API and MCP access on every plan.",
+	lede = "Unlimited seats and API/MCP access on every plan.",
 	recommended,
 }: {
 	lede?: string;
@@ -109,7 +109,7 @@ export function Pricing({
 	return (
 		<section id="pricing" className="border-t border-zinc-200/80 bg-white">
 			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
-				<SectionHeading align="center" title="AI Visibility Tracker Pricing" lede={lede} />
+				<SectionHeading align="center" title="Simple, self-serve pricing." lede={lede} />
 
 				<div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 					{PLAN_KEYS.map((key) => (

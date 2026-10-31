@@ -33,12 +33,12 @@ export function ModelCoverage() {
 			<div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:px-6 lg:grid-cols-12 lg:items-center lg:gap-12 lg:py-20">
 				<div className="lg:col-span-5">
 					<SectionHeading
-						title="The AI Apps Your Buyers Already Ask"
-						lede="CiteRank.com reads the answers real users see in ChatGPT, Perplexity, Copilot, Gemini and Google's AI search, and asks the other models directly."
+						title="12 answer engines your buyers use."
+						lede="CiteRank.com both scrapes what real users see in popular AI search tools and captures the other six models with direct API calls."
 					/>
 				</div>
 				<div className="lg:col-span-7">
-					<ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-3" aria-label="AI apps CiteRank.com tracks">
+					<ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-3" aria-label="AI engines CiteRank.com tracks">
 						{ENGINES.map((m) => (
 							<Tile key={m.name} {...m} />
 						))}

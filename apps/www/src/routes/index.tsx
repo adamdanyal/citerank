@@ -23,7 +23,7 @@ const title = `${SITE_NAME} · AI Visibility Tracker and AI Search Agency`;
 // copy. The homepage takes the largest share of search clicks and is the page
 // answer engines cite most, so it gets a full-width description of its own.
 const description =
-	"See what ChatGPT, Gemini, Perplexity and Google AI say about your business and what to change. Tracker plans from $29/mo. Our AI search agency can do the work.";
+	"CiteRank.com is answer engine optimization (AEO): track your brand's AI visibility in ChatGPT, Perplexity, and Gemini. Plans from $29/mo, or hire our AI search agency.";
 
 export const Route = createFileRoute("/")({
 	// Passes every other param through untouched: ad clicks carry gclid and UTM
@@ -48,7 +48,7 @@ export const Route = createFileRoute("/")({
 function aiReferralHero(assistant: string): ComponentProps<typeof Hero> {
 	return {
 		title: `Get Customers from ${assistant}`,
-		lede: `You found us through ${assistant}. CiteRank.com shows how ${assistant} and other AI apps describe your business, which sources they cite, and what to change so they name you.`,
+		lede: `You found us through ${assistant}. CiteRank.com shows how AI search engines talk about your brand, which sources they trust, and what to change so they recommend you too.`,
 		from: "marketing-ai-referral",
 	};
 }

@@ -13,7 +13,7 @@ export function Pricing({ as: Heading = "h2" }: { as?: "h1" | "h2" } = {}) {
 					AI Visibility Tracker Pricing
 				</Heading>
 				<p className="mt-4 text-pretty text-zinc-600 md:text-lg">
-					Unlimited seats, API and MCP access on every plan. Yearly billing saves two months.
+					Unlimited seats and API/MCP access on every plan. Annual billing saves two months.
 				</p>
 
 				<CloudPlans />

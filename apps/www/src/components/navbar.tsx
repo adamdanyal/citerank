@@ -15,10 +15,8 @@ const SIGN_IN_URL = cloudAppUrl("marketing-nav");
 const SIGN_UP_URL = cloudSignupUrl("marketing-nav");
 
 const navigationLinks = [
+	{ href: "/features", label: "Features" },
 	{ href: "/pricing", label: "Pricing" },
-	{ href: "/agency", label: "AI Search Agency" },
-	{ href: "/blog", label: "Blog" },
-	{ href: "/docs", label: "Docs" },
 ];
 
 export function Navbar() {

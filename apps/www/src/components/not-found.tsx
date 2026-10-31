@@ -5,7 +5,7 @@ import { Navbar } from "./navbar";
 
 const suggestedLinks = [
 	{ label: "Documentation", href: "/docs", description: "Get started and learn the API" },
-	{ label: "Features", href: "/features", description: "What the CiteRank.com tracker shows you" },
+	{ label: "Features", href: "/features", description: "What CiteRank.com can do for your brand" },
 	{ label: "Pricing", href: "/pricing", description: "Four tracker plans, starting at $29/mo" },
 	{ label: "Agency", href: "/agency", description: "Have us do the work for you" },
 ];
@@ -23,7 +23,7 @@ export function NotFound() {
 					<div className="relative mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
 						<div className="mx-auto max-w-2xl text-center">
 							<h1 className="font-heading text-balance text-5xl leading-[1.05] tracking-tight text-zinc-950 sm:text-6xl lg:text-[4.25rem] lg:leading-[1.0]">
-								This page doesn't exist
+								This Page Doesn't Exist
 							</h1>
 							<p className="mx-auto mt-6 max-w-[58ch] text-pretty text-base text-zinc-600 md:text-lg">
 								The page you're looking for may have moved, or it may never have existed.
@@ -34,13 +34,13 @@ export function NotFound() {
 									className="inline-flex h-8 items-center gap-1.5 rounded-md bg-blue-600 px-3 text-sm font-medium leading-none text-white ring-1 ring-blue-600 hover:bg-blue-700"
 								>
 									<Home className="size-3.5" />
-									Back to home
+									Back to Home
 								</Link>
 								<Link
 									to="/docs"
 									className="inline-flex h-8 items-center gap-1.5 rounded-md bg-white px-3 text-sm font-medium leading-none text-zinc-900 ring-1 ring-zinc-200 hover:bg-zinc-50 hover:ring-zinc-300"
 								>
-									Read the docs
+									Read the Docs
 									<ArrowRight className="size-3.5" />
 								</Link>
 							</div>
@@ -50,7 +50,7 @@ export function NotFound() {
 
 				<section className="border-b border-zinc-200 bg-zinc-50 py-12 lg:py-16">
 					<div className="mx-auto max-w-6xl px-4 md:px-6">
-						<h2 className="font-heading text-2xl text-zinc-950 md:text-3xl">Popular destinations</h2>
+						<h2 className="font-heading text-2xl text-zinc-950 md:text-3xl">Popular Destinations</h2>
 						<ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
 							{suggestedLinks.map((link) => (
 								<li key={link.href}>
