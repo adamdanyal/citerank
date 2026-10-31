@@ -165,8 +165,8 @@ const AEO: Pillar = {
 				"A visibility score is a number somebody chose how to calculate. When two tools disagree about your brand (and they routinely do), the only way to know which is right is to see how each one counts. CiteRank.com documents how it counts and keeps every answer in full, so each number traces back to the words an AI wrote.",
 			],
 			callout: {
-				heading: "Compare the Tools",
-				text: "CiteRank.com's directory of AI visibility tools compares the options in this category. It is the same comparison an answer engine would assemble, written by people who build in the category.",
+				heading: "Compare the AI Visibility Tools",
+				text: "CiteRank.com's directory of AI visibility tools compares the options in this category, from dedicated trackers to SEO suites and APIs. It is the same comparison an answer engine would assemble, written by people who build in the category.",
 			},
 		},
 		{
@@ -227,7 +227,7 @@ const AEO: Pillar = {
 			description: "Every AEO and AI visibility tracker on the market, compared feature by feature.",
 		},
 		{
-			label: "AI search agency",
+			label: "The AI search agency",
 			href: "/agency",
 			description: "CiteRank.com does this work every month and reports the AI answers before and after.",
 		},
@@ -365,11 +365,11 @@ const GEO: Pillar = {
 			body: [
 				"The category is crowded and young. Most tools do the same core job (schedule prompts, run them across engines, log what came back) and differ in engine coverage, sampling depth, and how much of the raw data they let you see.",
 				"Two questions cut through the marketing. How many times is each prompt actually run, and can you read the answer behind the score? A tool that samples thinly will report movement that is not there, and a tool that hides the raw output cannot be checked when it does.",
-				"CiteRank.com checks each prompt up to four times a day and keeps every answer in full, so each number traces back to the words an AI wrote.",
+				"CiteRank.com answers both: it checks each prompt up to four times a day and keeps every answer in full, so each number traces back to the words an AI wrote.",
 			],
 			callout: {
 				heading: "Compare the options",
-				text: "CiteRank.com maintains a public directory of every GEO and AI visibility tool in the category, with an honest account of what each does.",
+				text: "CiteRank.com maintains a public directory of every GEO and AI visibility tool in the category, from trackers to full SEO suites, with an honest account of what each does.",
 			},
 		},
 	],
@@ -424,7 +424,7 @@ const GEO: Pillar = {
 		{
 			label: "What CiteRank.com tracks",
 			href: "/features",
-			description: "Visibility, share of voice, sentiment, citations, and the searches AI runs, for each AI app.",
+			description: "Visibility, share of voice, sentiment, and citations, for each AI app.",
 		},
 		{
 			label: "AEO glossary",

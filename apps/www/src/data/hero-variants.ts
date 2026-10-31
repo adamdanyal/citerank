@@ -19,7 +19,7 @@ export const heroVariants: Record<string, HeroVariant> = {
 	},
 	chatgpt: {
 		title: "Is ChatGPT Mentioning You?",
-		lede: "CiteRank.com asks ChatGPT and nine other AI apps the questions your buyers ask, then shows whether you're in the answer, who's there instead, and what to change.",
+		lede: "CiteRank.com asks ChatGPT and 11 other AI apps the questions your buyers ask, then shows whether you're in the answer, who's there instead, and what to change.",
 	},
 	"see-what-ai-says": {
 		title: "See What AI Says About Your Brand",
@@ -31,7 +31,7 @@ export const heroVariants: Record<string, HeroVariant> = {
 	},
 	"aeo-tool": {
 		title: "The AEO Tool That Tells You What to Fix",
-		lede: "CiteRank.com tracks your visibility across AI answer engines and ranks what to do next, from the pages to update to the sources AI cites.",
+		lede: "CiteRank.com tracks your visibility across AI answer engines and turns it into a ranked list of fixes, from the pages to update to the sources AI trusts.",
 	},
 	geo: {
 		title: "Generative Engine Optimization, Measured",
@@ -57,7 +57,7 @@ export const heroVariants: Record<string, HeroVariant> = {
 		title: "Win AI Search",
 	},
 	agency: {
-		title: "Get Named in ChatGPT Answers",
+		title: "Get Your Business Named in ChatGPT",
 		lede: "CiteRank.com's AI search agency writes the pages, gets you onto the lists and publishes the guest articles AI reads when buyers ask it who to choose.",
 	},
 };

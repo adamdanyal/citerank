@@ -119,8 +119,8 @@ export const productFeatures: ProductFeature[] = [
 				text: "ChatGPT, Google AI Overviews, AI Mode, Gemini, Perplexity, and Copilot are scraped from the interfaces your customers use, with direct APIs for everything else.",
 			},
 			{
-				name: "Documented Methodology",
-				text: "How a mention is counted is documented, so you can check every number yourself.",
+				name: "Public Methodology",
+				text: "How a mention is counted is spelled out in docs anyone can read, so every number can be checked rather than taken on trust.",
 			},
 			{
 				name: "Every Answer Behind the Number",
@@ -158,7 +158,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				question: "How often does CiteRank.com check my prompts?",
-				answer: `Prompts run ${PLANS.starter.standardRunsPerDay}× a day on the ${PLANS.starter.name} plan and up to ${PLANS.basic.standardRunsPerDay}× a day on the others.`,
+				answer: `Prompts run ${PLANS.starter.standardRunsPerDay}× a day on the ${PLANS.starter.name} plan and up to ${PLANS.basic.standardRunsPerDay}× a day on the others. Each run covers every AI app the brand tracks and keeps the full answer.`,
 			},
 		],
 	},
@@ -330,7 +330,7 @@ export const productFeatures: ProductFeature[] = [
 				text: "Click a company's badge on any response to highlight the passage its sentiment was read from.",
 			},
 			{
-				name: "Every Mention Checked",
+				name: "Mentions Judged, Not Keyword-Matched",
 				text: "A language model built for judging text confirms each mention, so 'an apple a day' doesn't count for a brand called Apple.",
 			},
 		],
@@ -668,7 +668,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				question: "How many prompts can I track?",
-				answer: `CiteRank.com plans include ${PLANS.starter.maxPrompts} to ${PLANS.business.maxPrompts} prompts, depending on the plan.`,
+				answer: `CiteRank.com plans include ${PLANS.starter.maxPrompts} to ${PLANS.business.maxPrompts} prompts, depending on the plan. The limit covers every brand in your organization, and only enabled prompts count toward it.`,
 			},
 			{
 				question: "What's the difference between branded and unbranded prompts?",
@@ -747,7 +747,7 @@ export const productFeatures: ProductFeature[] = [
 		],
 		docs: { title: "Using citation data", href: "/docs/user-guide/citations" },
 		guides: [
-			{ kind: "Guide", title: "What the AI search agency does", href: "/agency" },
+			{ kind: "Guide", title: "AI search agency", href: "/agency" },
 			{ kind: "Blog", title: "How long does it take to get cited by AI?", href: "/blog/how-long-to-get-cited-by-ai" },
 			{
 				kind: "Blog",
@@ -790,9 +790,10 @@ export const productFeatures: ProductFeature[] = [
 		title: "AI Visibility Reporting and Dashboards",
 		metaTitle: "AI Visibility Reporting & Dashboards for AI Search · CiteRank.com",
 		metaDescription:
-			"Report AI search performance with CiteRank.com's overview dashboard, PNG chart exports, and an API for your own BI tools.",
-		lede: "CiteRank.com's overview puts visibility, share of voice, sentiment, and position on one screen, with every competitor ranked beside you. Export any prompt chart as a PNG for a deck, or pull the numbers into your own dashboards through the API.",
-		summary: "An overview dashboard, PNG chart exports, and an API for your own BI tools.",
+			"Report AI search performance with CiteRank.com's overview dashboard, PNG exports of any prompt chart, and a REST API for your own BI tools and spreadsheets.",
+		lede: "CiteRank.com's overview puts visibility, share of voice, sentiment, and position on one screen, with every competitor ranked beside you. Export any prompt chart as a PNG for a deck, pull the numbers into your own dashboards through the API, or ask an AI assistant for them over MCP.",
+		summary:
+			"An overview dashboard, PNG chart exports, an API for your own BI tools, and an MCP server for AI assistants.",
 		graphic: "overview",
 		steps: [
 			{
@@ -801,11 +802,11 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				name: "Export for Your Deck",
-				text: "Download prompt charts as PNGs, sized for slides and reports.",
+				text: "Download any prompt's chart as a PNG from the Visibility page, sized for slides and reports.",
 			},
 			{
 				name: "Send It Where You Report",
-				text: "Pull analytics into a spreadsheet or BI tool through the REST API.",
+				text: "Pull analytics into a spreadsheet or BI tool through the REST API, or ask an AI assistant about them over MCP.",
 			},
 		],
 		metrics: [
@@ -816,27 +817,28 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{ term: "Prompts Tracked and Evaluations", definition: "How much tracking is behind the numbers." },
 			{
-				term: "Chart Exports",
-				definition: "Any prompt's visibility chart as a PNG, ready for a slide or a report.",
+				term: "Prompt Chart Exports",
+				definition:
+					"Any prompt's visibility chart as a PNG, with your brand and competitors over the chosen time range, ready for a slide or a report.",
 			},
 		],
 		useCases: [
 			"Answer 'why is organic traffic down?' with numbers on how AI answers mention you instead.",
-			"Drop charts into a monthly client or leadership report.",
+			"Drop prompt charts into a monthly client or leadership report.",
 			"Combine AI visibility with your other marketing data in your own BI tool.",
 		],
 		why: [
 			{
 				name: "Numbers You Can Defend",
-				text: "Every figure traces back to stored answers, and the methodology is documented.",
+				text: "Every figure traces back to stored answers, and the methodology is documented publicly.",
 			},
 			{
 				name: "Your Data, Your Tools",
-				text: "Everything on the dashboard is available through the REST API and the MCP server.",
+				text: "Everything on the dashboard is available through the REST API and the MCP server, both included on every plan.",
 			},
 			{
-				name: "A Monthly Report From the Agency",
-				text: "Businesses that hire CiteRank.com's AI search agency get a report each month listing every piece of work, the question it targets, and the AI answers before and after.",
+				name: "Reports From the Agency",
+				text: "Businesses that hire CiteRank.com's AI search agency get a monthly report on the work and the AI answers before and after.",
 			},
 		],
 		docs: { title: "Dashboard docs", href: "/docs/user-guide/dashboard" },
@@ -863,28 +865,29 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "Can I export CiteRank.com data into my own dashboards?",
 				answer:
-					"Yes. The REST API returns visibility, share of voice, citations, per-model, prompt, and query fan-out metrics.",
+					"Yes. The REST API returns visibility, share of voice, citations, per-model, prompt, and query fan-out metrics, with an OpenAPI spec describing every endpoint.",
 			},
 			{
 				question: "Can I export charts?",
-				answer: "Yes. Prompt charts download as PNGs, sized for slides and reports.",
+				answer: "Yes. Every prompt chart downloads as a PNG, sized for slides and reports.",
 			},
 			{
 				question: "Does the AI search agency report on its work?",
 				answer:
-					"Yes. Each month a report lists every piece of work, the question it targets, and the AI answers before and after.",
+					"Yes. Each month's report lists every piece of work the agency did, from new pages and page updates to review sites, best-of lists, forum answers, guest articles, and crawler fixes, with the question each one targets and the AI answers before and after, so you can see what changed.",
 			},
 		],
 	},
 	{
 		slug: "api-and-mcp",
 		name: "API and MCP",
-		title: "AI Visibility API and MCP Server",
-		metaTitle: "AI Visibility API & MCP Server · CiteRank.com",
+		title: "AI Visibility REST API and MCP Server",
+		metaTitle: "AI Visibility REST API & MCP Server · CiteRank.com",
 		metaDescription:
-			"CiteRank.com's REST API and MCP server give your code and AI assistants the same AI visibility data as the dashboard.",
-		lede: "Everything in CiteRank.com is available outside the dashboard. A REST API covers brands, prompts, competitors, analytics, citations, query fan-out, runs, and opportunities, and an MCP server lets Claude Code, Codex, Cursor, VS Code, or OpenCode read your data and manage prompts directly.",
-		summary: "A REST API and an MCP server, so your code and AI assistants get the same data as the dashboard.",
+			"CiteRank.com's REST API and MCP server give your code and AI assistants the same AI visibility data as the dashboard, on every plan, with read-only or read-write keys.",
+		lede: "Everything in CiteRank.com is available outside the dashboard. A REST API covers brands, prompts, competitors, analytics, citations, query fan-out, runs, and opportunities. An OpenAPI spec describes it, and an MCP server lets Claude Code, Codex, Cursor, VS Code, or OpenCode read your data and manage prompts directly.",
+		summary:
+			"A REST API and an MCP server, so your scripts, BI tools, and AI assistants get the same data as the dashboard.",
 		graphic: "api",
 		steps: [
 			{
@@ -893,11 +896,11 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				name: "Call It From Code",
-				text: "Send your key as a bearer token to list brands, pull analytics, or create prompts.",
+				text: "Send your key as a bearer token to list brands, pull analytics, or create prompts from any language.",
 			},
 			{
 				name: "Ask Your Assistant",
-				text: "Connect over MCP and ask 'What are some AEO opportunities for my brand?'",
+				text: "Connect over MCP and ask 'What are some AEO opportunities for my brand?' The assistant can also pull analytics and create or update prompts.",
 			},
 		],
 		metrics: [
@@ -926,15 +929,15 @@ export const productFeatures: ProductFeature[] = [
 		why: [
 			{
 				name: "Included on Every Plan",
-				text: "API and MCP access come with every CiteRank.com plan.",
+				text: "API and MCP access come with every CiteRank.com plan, so there's no separate API tier to buy.",
 			},
 			{
 				name: "Scoped Access",
 				text: "An MCP client is only offered the tools its key allows, and no MCP tool deletes data or changes billing.",
 			},
 			{
-				name: "Described by an OpenAPI Spec",
-				text: "The API serves its own OpenAPI spec, so you can generate a client in the language you work in.",
+				name: "OpenAPI Spec Included",
+				text: "The API serves its own OpenAPI spec, so you can generate a client in the language you work in and regenerate it as endpoints are added.",
 			},
 		],
 		docs: { title: "API reference", href: "/docs/api" },
@@ -957,18 +960,18 @@ export const productFeatures: ProductFeature[] = [
 	{
 		slug: "multi-engine-tracking",
 		name: "AI Engines",
-		title: "Track Your Brand Across 12 AI Apps",
+		title: "Track Your Brand Across 12 AI Engines",
 		metaTitle: "Multi-Engine AI Visibility Tracking: ChatGPT, AI Overviews, Gemini & More · CiteRank.com",
 		metaDescription:
-			"Track your brand in ChatGPT, Google AI Overviews, AI Mode, Gemini, Perplexity, and Copilot from the real apps, plus Claude, Grok, DeepSeek, and Mistral.",
-		lede: "Most AI search happens in ChatGPT and Google, and neither offers a public API for its consumer answers. CiteRank.com scrapes ChatGPT, Google AI Overviews, AI Mode, Gemini, Perplexity, and Copilot from the interfaces your customers use, and calls Claude, Grok, DeepSeek, and Mistral directly.",
+			"Track your brand in ChatGPT, Google AI Overviews, AI Mode, Gemini, Perplexity, and Copilot from the real apps, plus Claude, Grok, DeepSeek, Mistral, Qwen, and Kimi.",
+		lede: "Most AI search happens in ChatGPT and Google, and neither offers a public API for its consumer answers. CiteRank.com scrapes ChatGPT, Google AI Overviews, AI Mode, Gemini, Perplexity, and Copilot from the interfaces your customers use, and calls Claude, Grok, DeepSeek, Mistral, Qwen, and Kimi directly.",
 		summary:
-			"ChatGPT, Google AI Overviews, AI Mode, Gemini, Perplexity, and Copilot from the real apps, plus Claude, Grok, DeepSeek, and Mistral by API.",
+			"ChatGPT, Google AI Overviews, AI Mode, Gemini, Perplexity, and Copilot from the real apps, plus six more by API.",
 		graphic: "engines",
 		steps: [
 			{
 				name: "Pick Your Engines",
-				text: "Choose the engines that matter for your buyers. Your plan sets how many each brand can track at once.",
+				text: "Choose the engines that matter for your buyers. Your plan sets how many each brand can track at once, and changes apply from the next check.",
 			},
 			{
 				name: "Run the Same Prompts Everywhere",
@@ -986,13 +989,14 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				term: "Direct Model APIs",
-				definition: "Claude, Grok, DeepSeek, and Mistral, called through their APIs.",
+				definition:
+					"Claude, DeepSeek, Mistral, Qwen, and Kimi, called through their APIs without web search, and Claude and Grok with web search on Pro and Business.",
 			},
 		],
 		useCases: [
 			"Compare how ChatGPT and Google AI Overviews treat your brand, since they often disagree.",
 			"Add an engine your audience uses, like Copilot for enterprise buyers, without switching tools.",
-			"Check whether a gain in one AI app holds in the others.",
+			"Track a specific model version alongside the consumer app to see how much they differ.",
 		],
 		why: [
 			{
@@ -1001,7 +1005,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				name: "12 AI Apps in One Place",
-				text: "ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews, and Google AI Mode, from one account and one set of prompts.",
+				text: "Six AI apps scraped from their real interfaces and six more by API, from one account and one set of prompts.",
 			},
 			{
 				name: "Every Answer Kept",
@@ -1024,7 +1028,7 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "Which AI engines does CiteRank.com track?",
 				answer:
-					"ChatGPT, Google AI Overviews, Google AI Mode, Gemini, Perplexity, and Copilot are scraped from their real interfaces. Claude, Grok, DeepSeek, and Mistral are called through their APIs.",
+					"ChatGPT, Google AI Overviews, Google AI Mode, Gemini, Perplexity, and Copilot are scraped from their real interfaces. Claude, DeepSeek, Mistral, Qwen, and Kimi are called through their APIs, and Claude and Grok can be tracked with web search on the Pro and Business plans.",
 			},
 			{
 				question: "Why scrape instead of using the API?",
