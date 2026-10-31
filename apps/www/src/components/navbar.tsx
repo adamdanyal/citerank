@@ -70,7 +70,7 @@ export function Navbar() {
 						</Popover>
 					</NavigationMenu>
 					<Link to="/" className="flex items-center">
-						<Logo className="text-2xl" />
+						<Logo className="text-2xl max-[375px]:text-xl" />
 					</Link>
 					<NavigationMenu className="mx-auto max-md:hidden">
 						<NavigationMenuList className="gap-1">
@@ -96,7 +96,7 @@ export function Navbar() {
 						className="inline-flex h-8 items-center gap-1.5 whitespace-nowrap rounded-md bg-blue-600 px-3 text-sm font-medium leading-none text-white ring-1 ring-blue-600 hover:bg-blue-700"
 					>
 						Sign Up
-						<ArrowRight className="size-3.5" />
+						<ArrowRight className="size-3.5 max-[360px]:hidden" />
 					</a>
 				</div>
 			</div>

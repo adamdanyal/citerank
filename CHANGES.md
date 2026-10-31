@@ -142,3 +142,4 @@ Crisp support chat runs on CiteRank.com's own workspace (`CRISP_WEBSITE_ID` in `
 | 2026-10-31 | Put Elmo's wording back inside the app (only the name changed) and resized the rewritten marketing copy to the length of the Elmo text it replaced. Not deployed. |
 | 2026-10-31 | Put the marketing site, docs and data back on Elmo's wording, with only untrue claims changed and the owner's writing rules applied, and kept every blog post within 5% of Elmo's length. The header shows only Features and Pricing, and the support page has six cards. Not deployed. |
 | 2026-10-31 | Turned on Crisp chat with CiteRank.com's own website ID on the marketing site, the support page and the dashboard. Not deployed. |
+| 2026-10-31 | Fitted the navbar logo and Sign Up button, and the hero's "See Pricing" link, on 320px phones. Not deployed. |

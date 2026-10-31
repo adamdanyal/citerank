@@ -82,7 +82,7 @@ export function Hero({
 					</div>
 					<p className="mt-5 text-sm text-zinc-500">
 						Tracker plans from ${CLOUD_ENTRY_PRICE_USD} a month.{" "}
-						<Link to="/pricing" className={QUIET}>
+						<Link to="/pricing" className={`${QUIET} whitespace-nowrap`}>
 							See Pricing
 						</Link>
 					</p>
