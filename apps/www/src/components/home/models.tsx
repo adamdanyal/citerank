@@ -12,6 +12,8 @@ const ENGINES = [
 	{ name: "Grok", iconId: "x" },
 	{ name: "DeepSeek", iconId: "deepseek" },
 	{ name: "Mistral", iconId: "mistral" },
+	{ name: "Qwen", iconId: "qwen" },
+	{ name: "Kimi", iconId: "moonshotai" },
 ];
 
 function Tile({ name, iconId }: { name: string; iconId: string }) {

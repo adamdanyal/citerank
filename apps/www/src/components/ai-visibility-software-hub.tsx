@@ -121,9 +121,9 @@ export function AiVisibilitySoftwareHub() {
 						<div className="mt-8 space-y-6 text-[1.0625rem] leading-relaxed text-zinc-600">
 							<p>
 								CiteRank.com is an AI visibility tracker and AI search agency. The tracker puts your buyer questions to
-								ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Google AI Overviews, and Google
-								AI Mode up to four times a day, and keeps every answer in full, so each number traces back to the words
-								an AI wrote.
+								ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews,
+								and Google AI Mode up to four times a day, and keeps every answer in full, so each number traces back to
+								the words an AI wrote.
 							</p>
 							<p>
 								That matters in a market full of opaque scoring. About once a week, CiteRank.com ranks what to do next,

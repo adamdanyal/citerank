@@ -12,12 +12,12 @@ export const HOME_FAQS: FaqItem[] = [
 	{
 		question: "What is CiteRank.com?",
 		answer:
-			"CiteRank.com is an AI visibility tracker and AI search agency. The AI Visibility Tracker puts your buyers' questions to ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Google AI Overviews and Google AI Mode, up to four times a day, and shows how often each one names you against your competitors. About once a week it ranks what to do next. The AI search agency does that work for businesses that would rather hand it over.",
+			"CiteRank.com is an AI visibility tracker and AI search agency. The AI Visibility Tracker puts your buyers' questions to ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews and Google AI Mode, up to four times a day, and shows how often each one names you against your competitors. About once a week it ranks what to do next. The AI search agency does that work for businesses that would rather hand it over.",
 	},
 	{
 		question: "What is answer engine optimization (AEO)?",
 		answer:
-			"Answer engine optimization (AEO), also called generative engine optimization (GEO) or AI SEO, is the practice of measuring and improving how often AI apps name and cite your business. The goal is to be one of the businesses an AI names in its answer, with your pages among the sources it cites.",
+			"Answer engine optimization (AEO), also called generative engine optimization (GEO) or AI SEO, is the practice of measuring and improving how of12 AI apps name and cite your business. The goal is to be one of the businesses an AI names in its answer, with your pages among the sources it cites.",
 	},
 	{
 		question: "What is the difference between AEO, GEO and SEO?",
@@ -27,7 +27,7 @@ export const HOME_FAQS: FaqItem[] = [
 	{
 		question: "Which AI apps does CiteRank.com track?",
 		answer:
-			"ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Google AI Overviews and Google AI Mode. ChatGPT, Gemini, Perplexity, Copilot, Google AI Overviews and Google AI Mode are read from the same interface your buyers use. For each answer, CiteRank.com records whether you are named, which competitors appear with you, and which sources the AI cites.",
+			"ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews and Google AI Mode. ChatGPT, Gemini, Perplexity, Copilot, Google AI Overviews and Google AI Mode are read from the same interface your buyers use. For each answer, CiteRank.com records whether you are named, which competitors appear with you, and which sources the AI cites.",
 	},
 	{
 		question: "How is AI visibility measured?",
@@ -164,7 +164,7 @@ export const DIRECTORY_FAQS: FaqItem[] = [
 	{
 		question: "How do I choose the best AI visibility tool?",
 		answer:
-			"The right tool depends on which AI engines you need to track, how often you need answers checked, your budget, and whether you want someone to do the work for you. This directory compares 100+ tools feature by feature. CiteRank.com tracks ten AI apps up to four times a day from $29/mo, and its AI search agency can do the work the tracker ranks.",
+			"The right tool depends on which AI engines you need to track, how often you need answers checked, your budget, and whether you want someone to do the work for you. This directory compares 100+ tools feature by feature. CiteRank.com tracks 12 AI apps up to four times a day from $29/mo, and its AI search agency can do the work the tracker ranks.",
 	},
 	{
 		question: "How does AI visibility tracking work?",

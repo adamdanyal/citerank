@@ -44,7 +44,7 @@ const SOCIAL_LINKS = [
 const offerings = [
 	{
 		title: "AI Visibility Tracker",
-		body: "Puts your buyers' questions to ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Google AI Overviews and Google AI Mode, up to four times a day, and keeps every answer in full.",
+		body: "Puts your buyers' questions to ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews and Google AI Mode, up to four times a day, and keeps every answer in full.",
 	},
 	{
 		title: "What the Answers Show",
@@ -171,7 +171,7 @@ function AboutPage() {
 		{
 			term: "AI Visibility Tracker",
 			detail:
-				"Shows how often AI apps name a business, how they describe it, which pages they cite, and what to do next",
+				"Shows how of12 AI apps name a business, how they describe it, which pages they cite, and what to do next",
 		},
 		{
 			term: "AI Search Agency",
@@ -186,7 +186,7 @@ function AboutPage() {
 		{
 			term: "AI Apps Tracked",
 			detail:
-				"ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Google AI Overviews and Google AI Mode",
+				"ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews and Google AI Mode",
 		},
 		{
 			term: "Contact",

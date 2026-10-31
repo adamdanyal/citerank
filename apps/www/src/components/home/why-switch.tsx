@@ -1,7 +1,7 @@
 const FACTS = [
 	{
-		lead: "Ten AI Apps",
-		rest: "ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral and Google's two.",
+		lead: "12 AI Apps",
+		rest: "ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi and Google's two.",
 	},
 	{ lead: "Up to 4× a Day", rest: "Each question is asked up to four times a day in every AI app you pick." },
 	{ lead: "Every Answer Kept", rest: "Read the full answer behind every number." },

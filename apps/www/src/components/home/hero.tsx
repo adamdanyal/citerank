@@ -27,7 +27,7 @@ function titleWords(title: string) {
 }
 
 const DEFAULT_LEDE =
-	"CiteRank.com puts your buyers' questions to ChatGPT, Gemini, Perplexity, Google AI Overviews and six more AI apps, up to four times a day. You see how often each one names you against your competitors, and a ranked list of what to change. Our AI search agency can make those changes for you.";
+	"CiteRank.com puts your buyers' questions to ChatGPT, Gemini, Perplexity, Google AI Overviews and eight more AI apps, up to four times a day. You see how often each one names you against your competitors, and a ranked list of what to change. Our AI search agency can make those changes for you.";
 
 /** Landing pages for a single audience reuse the homepage hero with their own pitch. */
 export function Hero({

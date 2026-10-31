@@ -27,7 +27,7 @@ export const heroVariants: Record<string, HeroVariant> = {
 	},
 	"stop-checking": {
 		title: "Stop Checking ChatGPT by Hand",
-		lede: "CiteRank.com asks your buyers' questions in ten AI apps, up to four times a day, and keeps every answer, so you see trends instead of one-off screenshots.",
+		lede: "CiteRank.com asks your buyers' questions in 12 AI apps, up to four times a day, and keeps every answer, so you see trends instead of one-off screenshots.",
 	},
 	"aeo-tool": {
 		title: "The AEO Tool That Tells You What to Fix",

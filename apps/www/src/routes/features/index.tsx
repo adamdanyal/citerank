@@ -9,7 +9,7 @@ import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/se
 
 const title = "Features: AI Visibility, Citation & Competitor Tracking · CiteRank.com";
 const description =
-	"Everything CiteRank.com's tracker does: AI visibility tracking across ten AI apps, share of voice, sentiment, citations, query fan-out, prompt tracking, recommendations, reporting, and an API and MCP server.";
+	"Everything CiteRank.com's tracker does: AI visibility tracking across 12 AI apps, share of voice, sentiment, citations, query fan-out, prompt tracking, recommendations, reporting, and an API and MCP server.";
 
 export const Route = createFileRoute("/features/")({
 	head: () => ({

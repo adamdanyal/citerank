@@ -95,7 +95,7 @@ function fateSoundbite(competitor: Competitor): string | undefined {
 		return `${name} has shut down. ${TRACKER_POINT}`;
 	}
 	if (competitor.status === "pivoted") {
-		return `${name} has pivoted away from AI visibility. CiteRank.com is built for AI visibility alone: a tracker that checks ten AI apps up to four times a day, plus an AI search agency that does the work.`;
+		return `${name} has pivoted away from AI visibility. CiteRank.com is built for AI visibility alone: a tracker that checks 12 AI apps up to four times a day, plus an AI search agency that does the work.`;
 	}
 	if (competitor.status === "acquired") {
 		if (competitor.fate) {
@@ -122,7 +122,7 @@ export function getSoundbite(competitor: Competitor): string {
 
 	const license = competitor.license ? RESTRICTIVE_LICENSES[competitor.license] : undefined;
 	if (license) {
-		return `${name} is ${license}. CiteRank.com is a hosted tracker with nothing to deploy, and it checks ten AI apps up to four times a day, with plans from ${ENTRY_PRICE}.`;
+		return `${name} is ${license}. CiteRank.com is a hosted tracker with nothing to deploy, and it checks 12 AI apps up to four times a day, with plans from ${ENTRY_PRICE}.`;
 	}
 
 	const tracksAnyEngine = SOUNDBITE_ENGINES.some((key) => competitor.features[key]);
@@ -159,11 +159,11 @@ export function getComparisonVerdict(competitor: Competitor): string {
 	const name = competitor.name;
 
 	if (isOpenSource(competitor)) {
-		return `${name} is an open-source AI visibility tool. CiteRank.com is a hosted AI visibility tracker and AI search agency. It puts your buyer questions to ten AI apps up to four times a day, keeps every answer in full, and ranks what to do next about once a week. Its agency does that work every month for businesses that want it done.`;
+		return `${name} is an open-source AI visibility tool. CiteRank.com is a hosted AI visibility tracker and AI search agency. It puts your buyer questions to 12 AI apps up to four times a day, keeps every answer in full, and ranks what to do next about once a week. Its agency does that work every month for businesses that want it done.`;
 	}
 
 	const noun = CATEGORY_NOUN[competitor.category];
-	return `CiteRank.com is an alternative to ${name}, ${indefiniteArticle(noun)} ${noun} tool. Both measure how AI answer engines describe your brand. CiteRank.com puts your buyer questions to ten AI apps up to four times a day and keeps every answer in full, so each number traces back to the words an AI wrote. Its AI search agency does the work that follows.`;
+	return `CiteRank.com is an alternative to ${name}, ${indefiniteArticle(noun)} ${noun} tool. Both measure how AI answer engines describe your brand. CiteRank.com puts your buyer questions to 12 AI apps up to four times a day and keeps every answer in full, so each number traces back to the words an AI wrote. Its AI search agency does the work that follows.`;
 }
 
 /**
@@ -182,7 +182,7 @@ export function getComparisonFaqs(competitor: Competitor): FaqItem[] {
 	faqs.push({
 		question: `What is the difference between CiteRank.com and ${name}?`,
 		answer: openSource
-			? `${name} is open source. CiteRank.com is a hosted AI visibility tracker plus an AI search agency. The tracker checks ten AI apps up to four times a day, keeps every answer in full, and ranks what to do next about once a week. The agency does that work every month for businesses that want it done.`
+			? `${name} is open source. CiteRank.com is a hosted AI visibility tracker plus an AI search agency. The tracker checks 12 AI apps up to four times a day, keeps every answer in full, and ranks what to do next about once a week. The agency does that work every month for businesses that want it done.`
 			: `${name} is ${indefiniteArticle(noun)} ${noun} tool, and CiteRank.com is an AI visibility tracker plus an AI search agency. Both track how AI answer engines describe your brand. CiteRank.com keeps every answer in full, so each number traces back to the words an AI wrote, and its agency does the work the tracker recommends.`,
 	});
 

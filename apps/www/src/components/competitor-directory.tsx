@@ -92,7 +92,7 @@ export function CompetitorDirectory() {
 				<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
 					<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Why Choose CiteRank.com</h2>
 					<p className="mx-auto mt-4 max-w-xl text-lg text-balance text-zinc-600">
-						A tracker that checks ten AI apps up to four times a day and keeps every answer in full, plus an AI search
+						A tracker that checks 12 AI apps up to four times a day and keeps every answer in full, plus an AI search
 						agency that does the work. Plans start at {ENTRY_PRICE}.
 					</p>
 					<div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">

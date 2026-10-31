@@ -116,7 +116,7 @@ function GlossaryTermPage() {
 					<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
 						<h2 className="font-heading text-2xl text-zinc-950">See It in Your Own Data</h2>
 						<p className="mx-auto mt-3 max-w-xl text-zinc-600">
-							CiteRank.com tracks how ChatGPT, Claude, Gemini, Perplexity and six more AI apps mention and cite your
+							CiteRank.com tracks how ChatGPT, Claude, Gemini, Perplexity and eight more AI apps mention and cite your
 							brand, up to four times a day, and keeps every answer in full.
 						</p>
 						<div className="mt-6 flex flex-wrap justify-center gap-3">

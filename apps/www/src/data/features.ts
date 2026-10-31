@@ -957,7 +957,7 @@ export const productFeatures: ProductFeature[] = [
 	{
 		slug: "multi-engine-tracking",
 		name: "AI Engines",
-		title: "Track Your Brand Across Ten AI Apps",
+		title: "Track Your Brand Across 12 AI Apps",
 		metaTitle: "Multi-Engine AI Visibility Tracking: ChatGPT, AI Overviews, Gemini & More · CiteRank.com",
 		metaDescription:
 			"Track your brand in ChatGPT, Google AI Overviews, AI Mode, Gemini, Perplexity, and Copilot from the real apps, plus Claude, Grok, DeepSeek, and Mistral.",
@@ -1000,8 +1000,8 @@ export const productFeatures: ProductFeature[] = [
 				text: "A model's API isn't the consumer product. Scraping the real ChatGPT and Google surfaces is closer to the answers your buyers get.",
 			},
 			{
-				name: "Ten AI Apps in One Place",
-				text: "ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Google AI Overviews, and Google AI Mode, from one account and one set of prompts.",
+				name: "12 AI Apps in One Place",
+				text: "ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews, and Google AI Mode, from one account and one set of prompts.",
 			},
 			{
 				name: "Every Answer Kept",
