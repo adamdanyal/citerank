@@ -28,8 +28,6 @@ A merge keeps every change below: where Elmo changed the same lines, git stops f
 
 The home page logo strip ("Used by 200+ brands to optimize their AI visibility"), the "Loved by marketers. Recommended by AI." reviews, and the sign-up page quote and G2 stars are Elmo's customers, Elmo's reviews and AI answers about Elmo, shown with our name for the local demo. Swap in CiteRank.com's own logos, count, quotes and AI answers before deploying: `apps/www/src/components/home/logos.tsx`, `apps/www/src/components/home/reviews.tsx`, `packages/ui/src/brand/customers.tsx`, `packages/ui/src/brand/g2-rating.tsx`, `apps/www/public/testimonials/` and the three customer logo files in `apps/www/public/`.
 
-Set `CRISP_WEBSITE_ID` in `packages/config/src/constants.ts` to CiteRank.com's own Crisp website ID. Until then, chat stays off and the support page's chat button opens an email instead.
-
 ## Running locally
 
 Everything runs in cloud mode (plans and billing) with no real keys.
@@ -60,10 +58,10 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | File | Why |
 | --- | --- |
 | `apps/web/vite.config.ts` | Excludes linkedom from the dev pre-bundle; without it a fresh `pnpm dev` crashes. |
-| `packages/config/src/constants.ts` | Product name, icon path, brand colour and font, docs URLs. Crisp ID emptied. |
+| `packages/config/src/constants.ts` | Product name, icon path, brand colour and font, docs URLs. CiteRank.com's own Crisp ID. |
 | `packages/config/src/referrals.ts` | Links go to citerank.com and app.citerank.com. Demo-booking links go to /agency, and the demo-instance URL to the app, since CiteRank.com has no public demo. Vite builds can point both hosts elsewhere with `VITE_MARKETING_SITE_URL` and `VITE_CLOUD_APP_URL`. |
 | `packages/config/src/fanout-support.test.ts` | Drops the check that the providers docs page carries the per-scraper fan-out table; the customer page no longer has it. |
-| `packages/config/src/legal.ts` | Legal links go to the marketing site (`MARKETING_SITE_URL`). No cookie consent prompt while nothing sets cookies. |
+| `packages/config/src/legal.ts` | Legal links go to the marketing site (`MARKETING_SITE_URL`). No cookie consent prompt while nothing sets analytics or ad cookies. |
 | `packages/config/src/referrals.test.ts`, `packages/config/src/legal.test.ts` | Expect the citerank.com URLs. |
 | `apps/web/src/styles.css` | One appended block: Schibsted Grotesk, Inter, JetBrains Mono, and the colour tokens. |
 | `apps/web/src/components/logo.tsx` | CiteRank.com mark and wordmark. |
@@ -128,10 +126,11 @@ Keep these deleted when an Elmo merge reports changes to them.
 
 Elmo's code reported to Elmo's own accounts, so CiteRank.com visitors and customers would have shown up there. All of these are blank or off:
 
-- Crisp support chat: `CRISP_WEBSITE_ID` in `packages/config/src/constants.ts`.
 - PostHog analytics: the dashboard reads `VITE_POSTHOG_KEY`; the marketing site has `POSTHOG_KEY` in `apps/www/src/lib/posthog.ts`; the worker has `POSTHOG_PUBLIC_KEY` in `apps/worker/src/telemetry.ts`.
 - Google Ads and Meta pixels: `GOOGLE_ADS_ID` and `META_PIXEL_ID` in `packages/ui/src/lib/ad-tags.ts`.
 - Cookie consent: `isElmoHosted` in `packages/config/src/legal.ts` returns false. Restore it when CiteRank.com turns any of the above on.
+
+Crisp support chat runs on CiteRank.com's own workspace (`CRISP_WEBSITE_ID` in `packages/config/src/constants.ts`). As in Elmo, it loads without the consent prompt.
 
 ## Log
 
@@ -142,3 +141,4 @@ Elmo's code reported to Elmo's own accounts, so CiteRank.com visitors and custom
 | 2026-10-31 | Replaced the marketing site's 11 dashboard screenshots with captures of the CiteRank.com dashboard showing a fictional brand. Not deployed. |
 | 2026-10-31 | Put Elmo's wording back inside the app (only the name changed) and resized the rewritten marketing copy to the length of the Elmo text it replaced. Not deployed. |
 | 2026-10-31 | Put the marketing site, docs and data back on Elmo's wording, with only untrue claims changed and the owner's writing rules applied, and kept every blog post within 5% of Elmo's length. The header shows only Features and Pricing, and the support page has six cards. Not deployed. |
+| 2026-10-31 | Turned on Crisp chat with CiteRank.com's own website ID on the marketing site, the support page and the dashboard. Not deployed. |

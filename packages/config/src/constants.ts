@@ -24,8 +24,8 @@ export const PROVIDERS_DOCS_URL = "https://citerank.com/docs/user-guide/provider
  * pages document the deployment the viewer is signed in to. */
 export const API_DOCS_URL = "https://citerank.com/docs/api";
 
-/** Public identifier for the support chat, shared by the app and the marketing site. Empty turns the chat off; set it once CiteRank.com has its own Crisp workspace. */
-export const CRISP_WEBSITE_ID = "";
+/** Public identifier for the support chat, shared by the app and the marketing site. */
+export const CRISP_WEBSITE_ID = "21fbdf4e-65d9-4180-99f8-7365fecffda1";
 
 /**
  * Elmo brand constants — used for icon generation, manifest, and the brand kit.
