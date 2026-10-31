@@ -11,7 +11,7 @@
  */
 
 import { IconCalendar, IconCheck, IconCloud } from "@tabler/icons-react";
-import { platformTierMembers } from "@workspace/config/plans";
+import { PLANS, platformTierMembers } from "@workspace/config/plans";
 import { cloudPricingUrl, cloudSignupUrl, marketingUrl, type ReferralSource } from "@workspace/config/referrals";
 import { ModelIcon } from "@workspace/ui/brand/model-icon";
 import { buttonVariants } from "@workspace/ui/components/button";
@@ -20,6 +20,9 @@ import type { ReactNode } from "react";
 
 /** Everything Elmo reaches, named — the coverage claim is the product. */
 const ENGINES = [...platformTierMembers("scraped"), ...platformTierMembers("api")];
+
+/** The comparison the pricing rests on, kept in step with what a plan actually samples. */
+const RUNS_PER_DAY = PLANS.basic.standardRunsPerDay;
 
 interface Bullet {
 	/** Doubles as the list key. */
@@ -34,12 +37,12 @@ interface Pitch {
 }
 
 const CLOUD_PITCH: Pitch = {
-	headline: "See what AI says about your business.",
+	headline: "Be the brand AI recommends.",
 	bullets: [
-		{ text: "Your buyers' questions, asked in the AI apps you choose" },
-		{ text: "How often you are named against each competitor" },
-		{ text: "Every answer in full, with the pages it cites" },
-		{ text: "A ranked list of what to do next, about once a week" },
+		{ text: "Track your AI visibility on any model" },
+		{ text: "Benchmark against your competitors" },
+		{ text: "Analyze citations to find opportunities" },
+		{ text: `${RUNS_PER_DAY}× Profound's daily runs, same price` },
 	],
 };
 

@@ -15,7 +15,7 @@ export const MCP_SERVER_INFO = {
 } as const;
 
 const INSTRUCTIONS = [
-	"CiteRank.com tracks how AI models (ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews) mention and cite brands.",
+	"CiteRank.com tracks how AI models — ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews — mention and cite brands.",
 	"",
 	"Start with list_brands to find a brand id; every other brand tool takes one.",
 	"get_analytics answers 'how is this brand doing'; get_citations and get_query_fanout answer 'why', and are where an",

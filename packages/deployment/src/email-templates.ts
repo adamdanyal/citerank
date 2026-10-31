@@ -84,7 +84,7 @@ export function paymentFailedEmail(input: { orgName: string; graceDays: number; 
 		subject: `Payment failed for ${orgName} on ${DEFAULT_APP_NAME}`,
 		html: wrapHtml(
 			"Payment failed",
-			`We couldn't renew the subscription for the ${safeOrgName} organization. Tracking continues while Stripe retries, but it pauses after ${graceDays} days unless a payment succeeds. Update your card in the billing portal to avoid an interruption.`,
+			`We couldn't renew the subscription for the ${safeOrgName} organization. Tracking continues while Stripe retries, but it pauses after ${graceDays} days unless a payment succeeds — update your card in the billing portal to avoid an interruption.`,
 			url,
 			"Update payment method",
 		),

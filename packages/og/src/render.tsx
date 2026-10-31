@@ -5,9 +5,8 @@ import { DEFAULT_APP_NAME, ELMO_BRAND_COLOR } from "@workspace/config/constants"
 import type { ReactNode } from "react";
 
 export const ACCENT_COLORS = [ELMO_BRAND_COLOR];
-export const DEFAULT_TAGLINE = "AI Visibility Tracker";
-export const DEFAULT_DESCRIPTION =
-	"See what ChatGPT, Gemini, Perplexity and Google AI say about your business, and what to change.";
+export const DEFAULT_TAGLINE = "AI Search Optimization";
+export const DEFAULT_DESCRIPTION = "Track and optimize your brand's visibility across AI models.";
 
 export const OG_WIDTH = 1200;
 export const OG_HEIGHT = 630;

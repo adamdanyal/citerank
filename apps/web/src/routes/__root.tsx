@@ -64,9 +64,8 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 		const themeColor = hasCustomIcon ? "#000000" : ELMO_THEME_COLOR;
 		const appUrl = branding?.url ? branding.url.replace(/\/$/, "") : undefined;
 
-		const title = `${appName} - AI Visibility Tracker`;
-		const description =
-			"See what ChatGPT, Gemini, Perplexity and Google AI say about your business, and what to change.";
+		const title = `${appName} - AI Search Optimization`;
+		const description = "Track and optimize your brand's visibility across AI models.";
 		// Don't pass `title` to /api/og — the renderer already shows the brand
 		// (Elmo logo or whitelabel icon + name), so a "Brand - AI Search Optimization"
 		// title would render redundantly. Pages that override og:image can supply
