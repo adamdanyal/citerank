@@ -82,7 +82,7 @@ export function CompetitorDirectory() {
 			{/* Feature Matrix */}
 			<section className="border-b border-zinc-200 bg-white py-12 lg:py-16">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
-					<h2 className="mb-8 text-lg font-semibold text-zinc-950">{filteredCompetitors.length} tools</h2>
+					<h2 className="mb-8 text-lg font-semibold text-zinc-950">{filteredCompetitors.length} Tools</h2>
 					<FeatureMatrix competitors={filteredCompetitors} />
 				</div>
 			</section>
@@ -92,7 +92,8 @@ export function CompetitorDirectory() {
 				<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
 					<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Why Consider CiteRank.com</h2>
 					<p className="mx-auto mt-4 max-w-xl text-lg text-balance text-zinc-600">
-						A tracker that checks 12 AI apps, plus an AI search agency that does the work. Plans start at {ENTRY_PRICE}.
+						Hosted, self-serve, and transparent. Track AI visibility without a sales call or inflated pricing, from{" "}
+						{ENTRY_PRICE}.
 					</p>
 					<div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
 						<a href={SIGN_UP_URL} className={buttonVariants({ size: "sm" })}>

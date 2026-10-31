@@ -8,28 +8,28 @@ const LINK = "font-medium text-blue-700 underline underline-offset-2 hover:text-
 
 const FEATURES = [
 	{
-		title: "Cross-platform tracking",
-		body: "Monitors your brand across several engines at once: ChatGPT, Perplexity, Gemini, Copilot, Google AI Overviews, and more.",
+		title: "Cross-Platform Tracking",
+		body: "Monitors your brand across the engines that matter: ChatGPT, Perplexity, Gemini, Copilot, and Google AI Overviews, all at once.",
 	},
 	{
-		title: "Mention & citation analysis",
-		body: "Separates being named in an answer from being cited with a link, so you can see which content actually earns traffic.",
+		title: "Mention & Citation Analysis",
+		body: "Separates being named in an answer from being cited with a link, so you can see which content earns traffic.",
 	},
 	{
-		title: "Prompt monitoring",
+		title: "Prompt Monitoring",
 		body: "Runs a defined set of prompts on a schedule, because a single check is a snapshot and AI answers shift over time.",
 	},
 	{
-		title: "Competitor benchmarking",
+		title: "Competitor Benchmarking",
 		body: "Shows your share of voice against named rivals on the same prompts, the most actionable metric in AI visibility.",
 	},
 	{
-		title: "Sentiment & accuracy",
+		title: "Sentiment & Accuracy",
 		body: "Flags when an engine describes your brand incorrectly, so you can correct the record before buyers see it.",
 	},
 	{
 		title: "Recommendations",
-		body: "Surfaces the prompts and topics where you're missing, turning a vague worry into a concrete content to-do list.",
+		body: "Shows the prompts and topics where you're missing, so a vague worry becomes a concrete content to-do list.",
 	},
 ];
 
@@ -42,7 +42,7 @@ export function AiVisibilitySoftwareHub() {
 			<section className="border-b border-zinc-200 bg-white py-12 lg:py-20">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
 					<div className="max-w-3xl">
-						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">What AI visibility software does</h2>
+						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">What AI Visibility Software Does</h2>
 						<div className="mt-8 space-y-6 text-[1.0625rem] leading-relaxed text-zinc-600">
 							<p>
 								AI visibility software tracks how your brand appears in AI search: how often it's mentioned, cited, and
@@ -57,8 +57,8 @@ export function AiVisibilitySoftwareHub() {
 								<a className={LINK} href="/blog/ai-citations">
 									cited with a link
 								</a>
-								, how it's described, and how often competitors appear instead. Good tools roll those signals into a
-								share-of-voice metric and point you to the gaps worth closing.
+								, how it's described, and how often competitors appear instead. Good tools roll those results into a
+								share-of-voice metric and point you to where you're missing.
 							</p>
 						</div>
 					</div>
@@ -69,7 +69,7 @@ export function AiVisibilitySoftwareHub() {
 			<section className="border-b border-zinc-200 bg-zinc-50 py-12 lg:py-20">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
 					<div className="max-w-3xl">
-						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Why AI visibility matters now</h2>
+						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Why AI Visibility Matters Now</h2>
 						<div className="mt-8 space-y-6 text-[1.0625rem] leading-relaxed text-zinc-600">
 							<p>
 								Search is shifting from a list of blue links to a synthesized answer. Google now shows{" "}
@@ -96,7 +96,7 @@ export function AiVisibilitySoftwareHub() {
 			<section className="border-b border-zinc-200 bg-white py-12 lg:py-20">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
 					<div className="max-w-3xl">
-						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Key features to look for</h2>
+						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Key Features to Look For</h2>
 						<p className="mt-6 text-[1.0625rem] leading-relaxed text-zinc-600">
 							The category is young and tools vary widely. These are the capabilities that separate a genuine AI
 							visibility platform from a basic prompt checker.
@@ -120,15 +120,16 @@ export function AiVisibilitySoftwareHub() {
 						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">CiteRank.com's Approach</h2>
 						<div className="mt-8 space-y-6 text-[1.0625rem] leading-relaxed text-zinc-600">
 							<p>
-								CiteRank.com is an AI visibility tracker and AI search agency. The tracker puts your buyer questions to
-								ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews,
-								and Google AI Mode up to four times a day, and keeps every answer in full, so each number traces back to
-								the words an AI wrote.
+								CiteRank.com is an AI visibility tracker and AI search agency. It tracks mentions, citations, and
+								competitor share across ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, and Google AI Mode and AI
+								Overviews, and because it keeps every answer in full, you can read exactly what every metric is based
+								on.
 							</p>
 							<p>
-								That matters in a market full of opaque scoring. About once a week, CiteRank.com ranks what to do next,
-								and its agency does that work every month for businesses that want it done. Plans start at $
-								{CLOUD_ENTRY_PRICE_USD}/mo. To see how it compares with the rest of the field, read the roundup of the{" "}
+								The market is full of opaque scoring and inflated pricing. With CiteRank.com you keep every answer and
+								can export your data through the API: plans start at ${CLOUD_ENTRY_PRICE_USD}/mo, and the AI search
+								agency is there if you would rather not do the work. To see how it compares with the rest of the field,
+								read the roundup of the{" "}
 								<a className={LINK} href="/blog/best-ai-visibility-tools">
 									best AI visibility tools
 								</a>{" "}

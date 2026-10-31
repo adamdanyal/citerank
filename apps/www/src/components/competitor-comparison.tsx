@@ -111,7 +111,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 					</h1>
 					<p className="mt-4 max-w-3xl text-lg text-balance text-zinc-600">{getComparisonVerdict(competitor)}</p>
 					<div className="mt-6 max-w-3xl border-l-2 border-blue-600 pl-4">
-						<p className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">The short version</p>
+						<p className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">The Short Version</p>
 						<p className="mt-1 text-lg font-medium text-balance text-zinc-950">{getSoundbite(competitor)}</p>
 					</div>
 					<FateNotice competitor={competitor} />
@@ -135,8 +135,8 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 							<Badge variant="secondary">From {ENTRY_PRICE}</Badge>
 						</div>
 						<p className="mt-3 text-sm text-zinc-600">
-							AI visibility tracker and AI search agency. Track AI visibility across ChatGPT, Claude, and Google AI
-							Overviews, with every answer kept in full.
+							AI visibility tracker and AI search agency for AEO. Track AI visibility across ChatGPT, Claude, and Google
+							AI Overviews, with every answer kept in full.
 						</p>
 					</div>
 					<div>
@@ -157,7 +157,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 			{!competitor.noScreenshot && (
 				<section className="border-b border-zinc-200 bg-white py-12">
 					<div className="mx-auto max-w-6xl px-4 md:px-6">
-						<h2 className="font-heading mb-6 text-2xl text-zinc-950">{competitor.name} at a glance</h2>
+						<h2 className="font-heading mb-6 text-2xl text-zinc-950">{competitor.name} at a Glance</h2>
 						<div className="overflow-hidden rounded-md border border-zinc-200 shadow-sm">
 							<img
 								src={getScreenshotUrl(competitor.slug)}
@@ -189,7 +189,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 					<h2 className="font-heading mb-4 text-2xl text-zinc-950">About {competitor.name}</h2>
 					<p className="leading-relaxed text-zinc-600">{competitor.description}</p>
 					<p className="mt-4 text-sm text-zinc-500">
-						Popularity grade: <span className="font-semibold text-zinc-950">{getPopularityGrade(competitor)}</span>
+						Popularity Grade: <span className="font-semibold text-zinc-950">{getPopularityGrade(competitor)}</span>
 					</p>
 					{competitor.highlights && competitor.highlights.length > 0 && (
 						<ul className="mt-4 space-y-2">
@@ -207,7 +207,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 			{/* Feature comparison table */}
 			<section className="border-b border-zinc-200 bg-white py-12">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
-					<h2 className="font-heading mb-8 text-2xl text-zinc-950">Feature comparison</h2>
+					<h2 className="font-heading mb-8 text-2xl text-zinc-950">Feature Comparison</h2>
 					<div className="overflow-x-auto">
 						<table className="w-full text-sm">
 							<thead>
@@ -245,7 +245,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 			{/* Key Differences */}
 			<section className="border-b border-zinc-200 bg-white py-12">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
-					<h2 className="font-heading mb-8 text-2xl text-zinc-950">Key differences</h2>
+					<h2 className="font-heading mb-8 text-2xl text-zinc-950">Key Differences</h2>
 					<div className="grid gap-6 md:grid-cols-3">
 						{citeRankOnlyFeatures.length > 0 && (
 							<div className="rounded-md border border-zinc-200 bg-zinc-50 p-5">
@@ -265,7 +265,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 						{sharedFeatures.length > 0 && (
 							<div className="rounded-md border border-zinc-200 bg-zinc-50 p-5">
 								<h3 className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
-									Both offer
+									Both Offer
 								</h3>
 								<ul className="space-y-2">
 									{sharedFeatures.map((f) => (
@@ -304,29 +304,29 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
 							<h3 className="font-semibold text-zinc-950">Every Answer Kept in Full</h3>
 							<p className="mt-2 text-sm text-zinc-600">
-								Every AI answer is kept in full, so each number traces back to the words an AI wrote. Sentiment scores
-								come with the passage behind them.
+								Every AI answer is kept in full. You can verify exactly how your visibility data is collected,
+								calculated, and presented.
 							</p>
 						</div>
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
-							<h3 className="font-semibold text-zinc-950">12 AI Apps, up to 4× a Day</h3>
+							<h3 className="font-semibold text-zinc-950">Hosted for You, Month to Month</h3>
 							<p className="mt-2 text-sm text-zinc-600">
-								Put your buyer questions to ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews, and seven more AI
-								apps. Plans run from {PLAN_RANGE}.
+								Run CiteRank.com without your own infrastructure or a sales call. Plans run from {PLAN_RANGE}, billed
+								month to month, and you can cancel any time from your billing settings.
 							</p>
 						</div>
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
 							<h3 className="font-semibold text-zinc-950">Your Data, in Your Stack</h3>
 							<p className="mt-2 text-sm text-zinc-600">
 								Pull every metric, sentiment included, into your own code with the REST API, or ask Claude Code and
-								Cursor about it over MCP. Both are included on every plan, from Starter to Business.
+								Cursor about it over MCP. Both come with every plan, and you can export or migrate at any time.
 							</p>
 						</div>
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
 							<h3 className="font-semibold text-zinc-950">We Do the Work</h3>
 							<p className="mt-2 text-sm text-zinc-600">
-								The tracker ranks what to do next. CiteRank.com's AI search agency does that work each month and reports
-								the AI answers before and after.
+								The tracker ranks what to do next. Our AI search agency does that work each month and reports the AI
+								answers before and after.
 							</p>
 						</div>
 					</div>

@@ -236,13 +236,13 @@ export const CATEGORY_SLUGS: Partial<Record<CompetitorCategory, string>> = {
 
 /** Reader-friendly H1/title phrasing per category (better than the bare label). */
 export const CATEGORY_HEADINGS: Record<CompetitorCategory, string> = {
-	tracking: "AI visibility tracking tools",
-	content: "AI content optimization tools",
-	"api-developer": "AI visibility APIs for developers",
-	ecommerce: "AI visibility tools for e-commerce",
-	"seo-traditional": "SEO platforms with AI search tracking",
-	"open-source": "Open-source AI visibility tools",
-	other: "AI visibility tools",
+	tracking: "AI Visibility Tracking Tools",
+	content: "AI Content Optimization Tools",
+	"api-developer": "AI Visibility APIs for Developers",
+	ecommerce: "AI Visibility Tools for E-Commerce",
+	"seo-traditional": "SEO Platforms With AI Search Tracking",
+	"open-source": "Open-Source AI Visibility Tools",
+	other: "AI Visibility Tools",
 };
 
 const categoryBySlug = new Map<string, CompetitorCategory>(
@@ -304,12 +304,12 @@ function featureGap(a: Competitor, b: Competitor): string[] {
 
 const CATEGORY_BLURB: Record<CompetitorCategory, string> = {
 	tracking:
-		"Tracking how AI engines mention and cite your brand is the whole product here, not a feature bolted onto something larger.",
+		"These tools exist to track how AI engines mention and cite your brand, and that one job is the whole product here.",
 	content:
-		"These lead with content. They generate or rewrite pages for AI consumption, and most layer visibility tracking on top.",
+		"These lead with content. They generate or rewrite pages for AI consumption, and most add visibility tracking on top.",
 	"api-developer":
 		"These are API-first. You pull AI search and citation data into your own product or dashboards instead of logging into theirs.",
-	ecommerce: "These focus on products: whether AI shopping answers and buying-guide queries surface your catalog.",
+	ecommerce: "These focus on products: whether AI shopping answers and buying-guide queries show your catalog.",
 	"seo-traditional":
 		"These are established SEO platforms that added AI search tracking to an existing rank-tracking suite.",
 	"open-source": "These are open source. You can read the code, self-host, and check how each number is produced.",
@@ -324,12 +324,12 @@ export function getAlternativesVerdict(c: Competitor): string {
 	if (fate && c.fate) {
 		const gone =
 			fate === "acquired" ? "is no longer sold on its own" : "is no longer available as an AI visibility tool";
-		return `${c.name} ${gone}. ${c.fate.summary} If you are moving off it, CiteRank.com is an AI visibility tracker that checks 12 AI apps up to four times a day and keeps every answer in full, with an AI search agency that does the work. Plans start at ${ENTRY_PRICE}.`;
+		return `${c.name} ${gone}. ${c.fate.summary} If you are moving off it, CiteRank.com is a hosted alternative: an AI visibility tracker and AI search agency whose API lets you keep a copy of every answer, so your history can't be shut down or sold out from under you.`;
 	}
 	if (isOpenSource(c)) {
-		return `${c.name} is open source. CiteRank.com is a hosted alternative with nothing to deploy: it tracks how ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews, and seven more AI apps mention and cite your brand, up to four times a day, and keeps every answer in full. Its AI search agency does the work that follows. Plans start at ${ENTRY_PRICE}, with unlimited seats.`;
+		return `A hosted alternative to ${c.name} is CiteRank.com: an AI visibility tracker and AI search agency with nothing to deploy, from ${ENTRY_PRICE}. Unlike ${c.name} it is closed source, and it focuses on transparent, verifiable tracking of how ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews mention and cite your brand, with every answer kept in full.`;
 	}
-	return `CiteRank.com is an alternative to ${c.name}, ${indefiniteArticle(noun)} ${noun} tool. It puts your buyer questions to 12 AI apps up to four times a day, keeps every answer in full, and ranks what to do next about once a week. Its AI search agency does that work for businesses that want it done. Plans start at ${ENTRY_PRICE}, with unlimited seats and API and MCP access.`;
+	return `An alternative to ${c.name} is CiteRank.com, an AI visibility tracker and AI search agency. ${c.name} is ${indefiniteArticle(noun)} ${noun} tool, and like most of the field, including CiteRank.com, it is closed-source and hosted. CiteRank.com starts at ${ENTRY_PRICE} with no sales call and no per-seat pricing, and you can check every visibility metric against the full answers behind it.`;
 }
 
 export function getAlternativesFaqs(c: Competitor, alts: Competitor[]): FaqItem[] {
@@ -337,15 +337,20 @@ export function getAlternativesFaqs(c: Competitor, alts: Competitor[]): FaqItem[
 	return [
 		{
 			question: `What are the best alternatives to ${c.name}?`,
-			answer: `The closest alternatives to ${c.name} are other ${CATEGORY_NOUN[c.category]} tools such as ${formatList(names)}. CiteRank.com tracks how 12 AI apps mention and cite your brand, up to four times a day, and its AI search agency does the work that follows.`,
+			answer: `The closest alternatives to ${c.name} are other ${CATEGORY_NOUN[c.category]} tools such as ${formatList(names)}. CiteRank.com also has an AI search agency: sign up for the tracker from ${ENTRY_PRICE} and track how 12 AI apps mention and cite your brand.`,
 		},
 		{
 			question: `What does it cost to switch from ${c.name}?`,
-			answer: `CiteRank.com plans run from ${PLAN_RANGE}, and yearly billing saves two months. Moving over is quick: paste your prompts in one go and the first runs land within minutes.`,
+			answer: `CiteRank.com plans run from ${PLAN_RANGE}. There is no per-seat pricing, so you only pay for the plan you choose, month to month, and you can paste all your prompts in one go to move over.`,
+		},
+		{
+			question: `Is there an alternative to ${c.name} with an agency?`,
+			answer:
+				"Yes. CiteRank.com is an AI visibility tracker with an AI search agency. You can track 12 AI apps, read every answer in full, and have the agency do the work every month, with a report on the AI answers before and after.",
 		},
 		{
 			question: `Why switch from ${c.name} to CiteRank.com?`,
-			answer: `CiteRank.com keeps every answer in full, so each number traces back to the words an AI wrote. It checks 12 AI apps up to four times a day, ranks what to do next about once a week, and its AI search agency does that work for businesses that want it done. Plans start at ${ENTRY_PRICE}.`,
+			answer: `The main reasons are transparency and the agency. With CiteRank.com you keep every answer in full, can export your prompts and visibility history through the API, and can see exactly what each score is based on. Plans start at ${ENTRY_PRICE}, and the AI search agency can do the work.`,
 		},
 	];
 }
@@ -355,7 +360,7 @@ export function getAlternativesFaqs(c: Competitor, alts: Competitor[]): FaqItem[
 function getPairVerdict(a: Competitor, b: Competitor): string {
 	const sameCat = a.category === b.category;
 	const clause = sameCat ? `${CATEGORY_NOUN[a.category]} tools` : "AI visibility tools";
-	return `${a.name} and ${b.name} are both ${clause} that measure how AI answer engines describe your brand. ${a.name} is pitched as "${a.tagline}". ${b.name} leans on "${b.tagline}". CiteRank.com is a third option worth weighing: it checks 12 AI apps up to four times a day, keeps every answer in full, and pairs the tracker with an AI search agency that does the work.`;
+	return `${a.name} and ${b.name} are both ${clause} that measure how AI answer engines describe your brand. ${a.name} is pitched as "${a.tagline}". ${b.name} leans on "${b.tagline}". Both are closed and hosted, like CiteRank.com. CiteRank.com tracks the same engines, keeps every answer in full, and offers an AI search agency that does the work, which makes it the third option worth weighing here.`;
 }
 
 function getPairFaqs(a: Competitor, b: Competitor): FaqItem[] {
@@ -381,12 +386,12 @@ function getPairFaqs(a: Competitor, b: Competitor): FaqItem[] {
 		},
 		{
 			question: `Is ${a.name} or ${b.name} better for AI visibility tracking?`,
-			answer: `Neither is simply better; it depends on your priorities. Both track how AI engines mention and cite your brand across the major models, so the decision comes down to which feature set and workflow suit your team. It is also worth comparing CiteRank.com, which checks 12 AI apps up to four times a day, keeps every answer in full, and starts at ${ENTRY_PRICE}.`,
+			answer: `Neither is better outright; it depends on your priorities. Both track how AI engines mention and cite your brand across the major models, so the decision comes down to which feature set and workflow suit your team. It is also worth trying CiteRank.com, which keeps every answer in full and bills month to month from ${ENTRY_PRICE}, so you can test it before committing.`,
 		},
 		{
 			question: `Is there an alternative to ${a.name} and ${b.name} with an agency?`,
 			answer:
-				"Yes. CiteRank.com pairs an AI visibility tracker with an AI search agency. The tracker checks 12 AI apps up to four times a day and ranks what to do next, and the agency does that work every month and reports the AI answers before and after.",
+				"Yes. CiteRank.com is an AI visibility tracker with an AI search agency that does the work. It tracks mentions, citations, and competitor share across ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews, and every metric traces back to a full answer.",
 		},
 	];
 }
@@ -429,7 +434,7 @@ function getSetVerdict(tools: Competitor[]): string {
 		cats.has("seo-traditional") && cats.has("tracking")
 			? " They come at it from different angles: some are dedicated AI visibility trackers, others are established SEO suites that added AI search monitoring."
 			: "";
-	return `${list} all measure how AI answer engines mention and cite your brand.${angle} Every one of them is closed-source and hosted. CiteRank.com is included as a reference point: it checks 12 AI apps up to four times a day, keeps every answer in full, and pairs the tracker with an AI search agency that does the work.`;
+	return `${list} all measure how AI answer engines mention and cite your brand.${angle} Every one of them is closed-source and hosted, as is CiteRank.com. CiteRank.com tracks the same engines and keeps every answer in full, so it belongs in this comparison as a reference point, with an AI search agency that does the work.`;
 }
 
 function getSetFaqs(tools: Competitor[]): FaqItem[] {
@@ -443,17 +448,17 @@ function getSetFaqs(tools: Competitor[]): FaqItem[] {
 	return [
 		{
 			question: `Which is the best tool for AI visibility among ${list}?`,
-			answer: `There is no single best pick; it depends on the answer engines you track, your budget, and whether you want a dedicated tracker or an add-on to an SEO suite. CiteRank.com is worth a look too: it checks 12 AI apps up to four times a day, keeps every answer in full, and starts at ${ENTRY_PRICE} with unlimited seats.`,
+			answer: `There is no single best pick; it depends on the answer engines you track, your budget, and whether you want a dedicated tracker or an add-on to an SEO suite. It is worth also trying CiteRank.com before you commit: an AI visibility tracker billed month to month from ${ENTRY_PRICE}, with an AI search agency that can do the work.`,
 		},
 		{
 			question: `Which of these AI visibility tools is free or open source?`,
 			answer: free.length
-				? `Among ${list}, ${formatList(free, free.length, false)} ${free.length === 1 ? "offers" : "offer"} a free option, though free tiers are usually limited in the engines or history they cover. ${openSentence} CiteRank.com is hosted and closed source, with plans from ${PLAN_RANGE}.`
-				: `Most of these (${list}) are paid, hosted products. ${openSentence} CiteRank.com is a paid, hosted tracker too, with unlimited seats and plans from ${PLAN_RANGE}.`,
+				? `Among ${list}, ${formatList(free, free.length, false)} ${free.length === 1 ? "offers" : "offer"} a free option, though free tiers are usually limited in the engines or history they cover. ${openSentence} CiteRank.com is neither free nor open source: it is a hosted tracker with no per-seat pricing and every answer kept in full, from ${PLAN_RANGE}.`
+				: `Most of these (${list}) are paid, hosted products. ${openSentence} CiteRank.com is a paid, hosted option too, with no per-seat pricing and plans from ${PLAN_RANGE}, and it keeps every answer so you can check how each metric is built.`,
 		},
 		{
 			question: `How do ${list} differ?`,
-			answer: `They differ mainly in focus and delivery: dedicated AI visibility trackers versus SEO suites that bolted on AI search monitoring, plus which answer engines, languages, and analytics each one covers. The feature table on this page compares them side by side, with CiteRank.com included as a reference point.`,
+			answer: `They differ mainly in focus and delivery: dedicated AI visibility trackers versus SEO suites that bolted on AI search monitoring, plus which answer engines, languages, and analytics each one covers. The feature table on this page compares them side by side, with CiteRank.com, a tracker plus an AI search agency, included as a reference point.`,
 		},
 	];
 }
@@ -491,9 +496,9 @@ export function getFeatureVerdict(key: FeatureKey, tools: Competitor[]): string 
 	const names = tools.map((t) => t.name);
 	const citeRankLine =
 		ELMO_FEATURES[key] === true
-			? "CiteRank.com includes it too, and keeps every AI answer it collects in full."
-			: "CiteRank.com concentrates on core tracking across 12 AI apps and does not include this, so if it is essential, the tools below are the better fit.";
-	return `${tools.length} of the AI visibility tools in this directory offer ${label}, including ${formatList(names)}. ${desc}. ${citeRankLine}`;
+			? "CiteRank.com includes it too, as a hosted tool that keeps every answer in full."
+			: "CiteRank.com concentrates on core, verifiable tracking and does not include this, so if it is essential the tools below are the better fit.";
+	return `${tools.length} of the AI visibility tools we list offer ${label}, including ${formatList(names)}. ${desc}. ${citeRankLine}`;
 }
 
 export function getFeatureFaqs(key: FeatureKey, tools: Competitor[]): FaqItem[] {
@@ -512,8 +517,8 @@ export function getFeatureFaqs(key: FeatureKey, tools: Competitor[]): FaqItem[] 
 		{
 			question: `Does CiteRank.com support ${label}?`,
 			answer: citeRankHas
-				? `Yes. CiteRank.com supports ${label}, and each tool below links to a side-by-side comparison of its features with CiteRank.com.`
-				: `No. CiteRank.com focuses on tracking mentions, citations, sentiment, and competitor share across 12 AI apps, and its AI search agency does the work. If ${label} is a hard requirement, the tools listed here cover it.`,
+				? `Yes. CiteRank.com supports ${label}, and because it keeps every answer in full you can verify exactly what each result is based on.`
+				: `Not currently. CiteRank.com focuses on transparent tracking of mentions, citations, and competitor share, with every answer kept in full. If ${label} is a hard requirement, the tools listed here cover it.`,
 		},
 	];
 }
@@ -522,7 +527,7 @@ export function getFeatureFaqs(key: FeatureKey, tools: Competitor[]): FaqItem[] 
 
 export function getCategoryVerdict(category: CompetitorCategory, tools: Competitor[]): string {
 	const names = tools.map((t) => t.name);
-	return `The ${CATEGORY_NOUN[category]} category covers ${tools.length} of the tools in this directory, including ${formatList(names)}. ${CATEGORY_BLURB[category]} CiteRank.com pairs a tracker with an AI search agency that does the work, with plans from ${ENTRY_PRICE}.`;
+	return `The ${CATEGORY_NOUN[category]} category covers ${tools.length} of the tools we list, including ${formatList(names)}. ${CATEGORY_BLURB[category]} CiteRank.com is an option in this space with an AI search agency: start from ${ENTRY_PRICE} and check every number against a full answer.`;
 }
 
 export function getCategoryFaqs(category: CompetitorCategory, tools: Competitor[]): FaqItem[] {
@@ -536,7 +541,7 @@ export function getCategoryFaqs(category: CompetitorCategory, tools: Competitor[
 		{
 			question: `Where does CiteRank.com fit in ${label}?`,
 			answer:
-				"CiteRank.com is an AI visibility tracker plus an AI search agency. The tracker checks 12 AI apps up to four times a day and keeps every answer in full, and the agency does the work it recommends every month for businesses that want it done.",
+				"CiteRank.com is an AI visibility tracker with an AI search agency that does the work. It tracks how ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews mention and cite your brand, with every answer kept in full.",
 		},
 	];
 }
@@ -548,18 +553,18 @@ export function getCategoryFaqs(category: CompetitorCategory, tools: Competitor[
  */
 const CATEGORY_CITERANK_PITCH: Record<CompetitorCategory, string> = {
 	tracking:
-		"CiteRank.com does the same core job as the tools on this page: it measures how AI engines mention and cite your brand. It puts your buyer questions to 12 AI apps up to four times a day and keeps every answer in full, so each number traces back to the words an AI wrote. Its AI search agency does the work for businesses that want it done.",
+		"CiteRank.com does the same core job as the tools on this page: it measures how AI engines mention and cite your brand. The difference is that it keeps every answer in full, and its AI search agency can do the work. You can export your prompts and history through the API, and check exactly how each score is built instead of trusting a bare number.",
 	content:
-		"Most tools in this category lead with content generation. CiteRank.com starts with tracking, so you can measure how AI engines mention and cite your brand before you decide what to publish. When you want pages written, its AI search agency writes the comparison, alternatives, and guide pages a site is missing.",
+		"Most tools in this category lead with content generation. CiteRank.com takes a narrower path and focuses on transparent tracking, so you can measure how AI engines mention and cite your brand before you decide what to publish. It is hosted, with no per-seat fees and no scores you cannot check, and its AI search agency can write the pages.",
 	"api-developer":
-		"The tools here are API-first. CiteRank.com is a full tracker with a REST API and an MCP server on every plan, so you can pull mentions, citations, sentiment, and share of voice into your own dashboards, with every answer kept in full behind each number.",
+		"The tools here are API-first. CiteRank.com gives you the data and the answers: a REST API and an MCP server on every plan, every answer kept in full, and mentions and citations pulled into your own dashboards without paying per call or per seat.",
 	ecommerce:
-		"CiteRank.com tracks how ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews, and seven more AI apps describe your brand, up to four times a day. It keeps every answer in full, so each number traces back to the words an AI wrote, and its AI search agency does the work.",
+		"CiteRank.com tracks how ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews describe your brand across the major engines. It keeps every answer in full, so you can verify every number against the words an AI wrote, and its AI search agency does the work.",
 	"seo-traditional":
-		"The platforms in this category bolted AI search tracking onto an existing SEO suite. CiteRank.com was built for AI search from the start: it checks 12 AI apps up to four times a day, keeps every answer in full, and pairs the tracker with an AI search agency that does the work.",
+		"The platforms in this category bolted AI search tracking onto an existing SEO suite. CiteRank.com was built for AI search from the start, and it keeps every answer in full, so you can check what each visibility metric is based on instead of taking a bundled feature on faith.",
 	"open-source":
-		"The projects here are open source, so you can read the code and run it yourself. CiteRank.com is a hosted alternative with nothing to deploy: it checks 12 AI apps up to four times a day, keeps every answer in full, and pairs the tracker with an AI search agency that does the work for you.",
-	other: `CiteRank.com is the reference listing in this directory: an AI visibility tracker and AI search agency. It checks 12 AI apps up to four times a day, keeps every answer in full, and starts at ${ENTRY_PRICE}.`,
+		"Unlike the projects here, CiteRank.com is hosted, so there is no code to read or run yourself. It is built specifically for verifiable AI visibility tracking across ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews, with no per-seat pricing and an AI search agency that can do the work.",
+	other: `CiteRank.com is the AI visibility tracker and AI search agency behind this directory. Sign up from ${ENTRY_PRICE}, keep every answer in full, and verify how it tracks the way AI engines mention and cite your brand.`,
 };
 
 export function getCategoryCiteRankPitch(category: CompetitorCategory): string {

@@ -37,7 +37,7 @@ export const Route = createFileRoute("/ai-visibility-tools/features/$slug")({
 		if (!loaderData) return {};
 		const { tools, label, phrase, term, faqs } = loaderData;
 		const title = !term
-			? `AI Visibility Tools with ${label} · CiteRank.com`
+			? `AI Visibility Tools With ${label} · CiteRank.com`
 			: tools.length <= 25
 				? `${tools.length} Best ${term} (2026) · CiteRank.com`
 				: `${term} Compared: ${tools.length} Tools (2026) · CiteRank.com`;
@@ -73,7 +73,7 @@ function FeaturePage() {
 					title={`AI visibility tools with ${featurePhrase(featureKey)}`}
 					lead={getFeatureVerdict(featureKey, tools)}
 				/>
-				<DirectorySection title="Tools that offer this feature">
+				<DirectorySection title="Tools That Offer This Feature">
 					<ToolGrid competitors={tools} />
 				</DirectorySection>
 				<Faq items={getFeatureFaqs(featureKey, tools)} />

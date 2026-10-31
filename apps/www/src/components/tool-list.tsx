@@ -15,7 +15,7 @@ function ToolCard({ competitor }: { competitor: Competitor }) {
 			</div>
 			<div className="mt-2 flex flex-wrap gap-1.5">
 				<Badge variant="secondary">{CATEGORY_LABELS[competitor.category]}</Badge>
-				{competitor.pricing?.hasFree && <Badge variant="secondary">Free tier</Badge>}
+				{competitor.pricing?.hasFree && <Badge variant="secondary">Free Tier</Badge>}
 				{competitor.pricing?.startingPrice && (
 					<Badge variant="secondary">From {competitor.pricing.startingPrice}</Badge>
 				)}

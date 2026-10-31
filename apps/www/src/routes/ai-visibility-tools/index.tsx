@@ -48,22 +48,22 @@ export const Route = createFileRoute("/ai-visibility-tools/")({
 
 const browseLinks = [
 	{
-		title: "Compare head-to-head",
+		title: "Compare Head-to-Head",
 		description: "Side-by-side comparisons, with CiteRank.com included.",
 		href: "/ai-visibility-tools/compare",
 	},
 	{
-		title: "Find alternatives",
+		title: "Find Alternatives",
 		description: "The closest options to any tool you're evaluating.",
 		href: "/ai-visibility-tools/alternatives",
 	},
 	{
-		title: "Browse by feature",
+		title: "Browse by Feature",
 		description: "Which tools offer citation analytics, white-label, sentiment, and more.",
 		href: "/ai-visibility-tools/features",
 	},
 	{
-		title: "Browse by category",
+		title: "Browse by Category",
 		description: "Trackers, content platforms, APIs, SEO suites, and e-commerce.",
 		href: "/ai-visibility-tools/category",
 	},
@@ -83,7 +83,7 @@ function AiVisibilitySoftwarePage() {
 				<AiVisibilitySoftwareHub />
 				<section className="border-b border-zinc-200 bg-zinc-50 py-12 lg:py-20">
 					<div className="mx-auto max-w-6xl px-4 md:px-6">
-						<h2 className="font-heading text-2xl text-zinc-950 md:text-3xl">Browse the directory</h2>
+						<h2 className="font-heading text-2xl text-zinc-950 md:text-3xl">Browse the Directory</h2>
 						<p className="mt-3 max-w-3xl text-zinc-600">
 							Compare tools head-to-head, find alternatives to one you're evaluating, or filter the field by feature and
 							category. Tools that didn't make it are in the AEO Graveyard.

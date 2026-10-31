@@ -31,7 +31,7 @@ export const Route = createFileRoute("/ai-visibility-tools/alternatives/$slug")(
 	head: ({ params, loaderData }) => {
 		if (!loaderData) return {};
 		const { competitor: c, faqs } = loaderData;
-		const title = `${c.name} Alternatives | AI Visibility Tools · CiteRank.com`;
+		const title = `${c.name} Alternatives | AI Visibility Tracking · CiteRank.com`;
 		const description = `The best ${c.name} alternatives for AI visibility tracking, compared feature by feature, including CiteRank.com, a tracker plus an AI search agency.`;
 		const path = `/ai-visibility-tools/alternatives/${params.slug}`;
 		return {
@@ -41,7 +41,7 @@ export const Route = createFileRoute("/ai-visibility-tools/alternatives/$slug")(
 				breadcrumbJsonLd([
 					{ name: "Home", path: "/" },
 					{ name: "AI Visibility Tool Directory", path: "/ai-visibility-tools" },
-					{ name: `${c.name} alternatives`, path },
+					{ name: `${c.name} Alternatives`, path },
 				]),
 				faqJsonLd(faqs),
 			],
@@ -60,10 +60,10 @@ function AlternativesPage() {
 			<Navbar />
 			<main>
 				<DirectoryBackLink />
-				<DirectoryHero title={`${competitor.name} alternatives`} lead={getAlternativesVerdict(competitor)} />
+				<DirectoryHero title={`${competitor.name} Alternatives`} lead={getAlternativesVerdict(competitor)} />
 
 				<DirectoryCiteRankBanner
-					pitch="CiteRank.com tracks how ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews mention and cite your brand. It keeps every answer in full, so each number traces back to the words an AI wrote, and its AI search agency can do the work that follows. No per-seat pricing, and you can cancel any time."
+					pitch="CiteRank.com tracks how ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews mention and cite your brand. It keeps every answer in full, so you can verify exactly how each metric is calculated, and its AI search agency can do the work. Every plan has unlimited seats, and you can cancel any time."
 					comparison={{
 						slug: getComparisonSlug(competitor),
 						name: competitor.name,
@@ -71,7 +71,7 @@ function AlternativesPage() {
 				/>
 
 				{competitor.switching ? (
-					<DirectorySection title={`Why teams leave ${competitor.name}`}>
+					<DirectorySection title={`Why Teams Leave ${competitor.name}`}>
 						<p className="mb-8 max-w-3xl leading-relaxed text-zinc-600">
 							What people say when they leave {competitor.name}, and what CiteRank.com does differently.{" "}
 							{competitor.name} is a capable product with real customers, so take this as the case for a different set
@@ -91,7 +91,7 @@ function AlternativesPage() {
 					</DirectorySection>
 				) : null}
 
-				<DirectorySection title={`Other ${competitor.name} alternatives`}>
+				<DirectorySection title={`Other ${competitor.name} Alternatives`}>
 					<ToolGrid competitors={alternatives} />
 				</DirectorySection>
 

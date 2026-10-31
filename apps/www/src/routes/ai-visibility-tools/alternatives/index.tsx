@@ -10,7 +10,7 @@ const description =
 	"Find alternatives to the AI visibility tools you're evaluating. Each guide compares the closest options feature by feature, with CiteRank.com included for reference.";
 
 const items = indexedCompetitors.map((c) => ({
-	name: `${c.name} alternatives`,
+	name: `${c.name} Alternatives`,
 	path: `/ai-visibility-tools/alternatives/${c.slug}`,
 }));
 
@@ -51,8 +51,8 @@ function AlternativesHub() {
 			<main>
 				<DirectoryBackLink />
 				<DirectoryHero
-					title="Alternatives to every AI visibility tool"
-					lead="Shopping for a replacement, or just want to know your options? Pick a tool to see its closest alternatives, including CiteRank.com, a tracker plus an AI search agency."
+					title="Alternatives to Every AI Visibility Tool"
+					lead="Shopping for a replacement, or want to know your options? Pick a tool to see its closest alternatives, including CiteRank.com, a tracker plus an AI search agency."
 				/>
 				{indexableCategories.map((category) => (
 					<DirectorySection key={category} title={CATEGORY_LABELS[category]}>
@@ -63,7 +63,7 @@ function AlternativesHub() {
 										href={`/ai-visibility-tools/alternatives/${c.slug}`}
 										className="block rounded-md border border-zinc-200 bg-white px-4 py-3 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-300 hover:text-zinc-950"
 									>
-										{c.name} alternatives
+										{c.name} Alternatives
 									</a>
 								</li>
 							))}

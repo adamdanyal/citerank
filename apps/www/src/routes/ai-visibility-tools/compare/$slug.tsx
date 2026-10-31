@@ -30,7 +30,7 @@ export const Route = createFileRoute("/ai-visibility-tools/compare/$slug")({
 		const title = isPair ? `${names} | AI Visibility Tool Comparison · CiteRank.com` : `${names} · CiteRank.com`;
 		const description = isPair
 			? `Compare ${names} for AI visibility tracking, feature by feature, with CiteRank.com included as a third option.`
-			: `Compare ${names} for AI visibility and answer engine monitoring, feature by feature, with CiteRank.com included for reference.`;
+			: `Compare ${names} for AI visibility and answer engine monitoring, feature by feature, with CiteRank.com included as a reference point.`;
 		const path = `/ai-visibility-tools/compare/${params.slug}`;
 		return {
 			meta: [{ title }, { name: "description", content: description }, ...ogMeta({ title, description, path })],

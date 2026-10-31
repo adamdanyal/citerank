@@ -25,7 +25,7 @@ function ToolSummary({ tool }: { tool: Competitor }) {
 			<h3 className="mb-1 text-lg font-semibold text-zinc-950">{tool.name}</h3>
 			<div className="mt-2 flex flex-wrap gap-2">
 				<Badge variant="secondary">{CATEGORY_LABELS[tool.category]}</Badge>
-				{tool.pricing?.hasFree && <Badge variant="secondary">Free tier</Badge>}
+				{tool.pricing?.hasFree && <Badge variant="secondary">Free Tier</Badge>}
 				{tool.pricing?.startingPrice && <Badge variant="secondary">From {tool.pricing.startingPrice}</Badge>}
 			</div>
 			<p className="mt-3 text-sm text-zinc-600">{tool.tagline}</p>
@@ -64,7 +64,8 @@ export function MultiComparison({ tools }: { tools: Competitor[] }) {
 							<Badge variant="secondary">{ENTRY_PRICE}</Badge>
 						</div>
 						<p className="mt-3 text-sm text-zinc-600">
-							AI visibility tracker for 12 AI apps, plus an AI search agency. Plans run from {PLAN_RANGE}.
+							AI visibility tracker and AI search agency for AEO, covering 12 AI apps with every answer kept in full.
+							Plans run from {PLAN_RANGE}.
 						</p>
 					</div>
 				</div>

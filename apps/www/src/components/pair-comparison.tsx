@@ -39,7 +39,7 @@ function ToolSummary({
 			<h3 className="mb-1 text-lg font-semibold text-zinc-950">{name}</h3>
 			<div className="mt-2 flex flex-wrap gap-2">
 				<Badge variant="secondary">{category}</Badge>
-				{pricing?.hasFree && <Badge variant="secondary">Free tier</Badge>}
+				{pricing?.hasFree && <Badge variant="secondary">Free Tier</Badge>}
 				{pricing?.startingPrice && <Badge variant="secondary">From {pricing.startingPrice}</Badge>}
 			</div>
 			<p className="mt-3 text-sm text-zinc-600">{tagline}</p>
@@ -88,7 +88,8 @@ export function PairComparison({ a, b }: { a: Competitor; b: Competitor }) {
 							<Badge variant="secondary">{ENTRY_PRICE}</Badge>
 						</div>
 						<p className="mt-3 text-sm text-zinc-600">
-							AI visibility tracker for 12 AI apps, plus an AI search agency. Plans run from {PLAN_RANGE}.
+							AI visibility tracker and AI search agency for AEO, covering 12 AI apps with every answer kept in full.
+							Plans run from {PLAN_RANGE}.
 						</p>
 					</div>
 				</div>

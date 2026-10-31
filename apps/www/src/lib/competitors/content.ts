@@ -5,8 +5,6 @@ import { type Competitor, type CompetitorCategory, ELMO_FEATURES, type FeatureKe
 export const ENTRY_PRICE = `$${CLOUD_ENTRY_PRICE_USD}/mo`;
 export const PLAN_RANGE = `$${PLANS.starter.monthlyPriceUsd}/mo (Starter) to $${PLANS.business.monthlyPriceUsd}/mo (Business)`;
 
-const TRACKER_POINT = `CiteRank.com is a tracker plus an AI search agency that does the work, with plans from ${ENTRY_PRICE}.`;
-
 // Prose-friendly category nouns (acronyms kept uppercase, descriptive words
 // lowercased) so they read naturally mid-sentence — e.g. "an AI visibility
 // tracking tool", "a traditional SEO tool".
@@ -92,17 +90,17 @@ function joinOr(items: string[]): string {
 function fateSoundbite(competitor: Competitor): string | undefined {
 	const name = competitor.name;
 	if (competitor.status === "defunct" || competitor.status === "shutting-down") {
-		return `${name} has shut down. ${TRACKER_POINT}`;
+		return `${name} has shut down. CiteRank.com's API lets you keep a copy of every answer, so your reporting can't disappear the same way.`;
 	}
 	if (competitor.status === "pivoted") {
-		return `${name} has pivoted away from AI visibility. CiteRank.com is built for AI visibility alone: a tracker plus an AI search agency that does the work.`;
+		return `${name} has pivoted away from AI visibility. CiteRank.com is built for this one job, and its API lets you keep a copy of every answer.`;
 	}
 	if (competitor.status === "acquired") {
 		if (competitor.fate) {
-			return `${name} is gone as a standalone product. ${competitor.fate.summary} CiteRank.com is a tracker plus an AI search agency, with plans from ${ENTRY_PRICE}.`;
+			return `${name} is gone as a standalone product. ${competitor.fate.summary} CiteRank.com's API lets you keep every answer, so no acquisition can take that away.`;
 		}
 		const absorbed = ABSORBED_EXAMPLES.filter((example) => example !== name);
-		return `${name} has been acquired, and acquired AI visibility tools rarely stay put: ${joinAnd(absorbed)} were all folded into their buyers' products. CiteRank.com is a tracker plus an AI search agency, with plans from ${ENTRY_PRICE}.`;
+		return `${name} has been acquired, and acquired AI visibility tools rarely stay put: ${joinAnd(absorbed)} were all folded into their buyers' products. CiteRank.com's API lets you keep every answer, so no acquisition can take that away.`;
 	}
 	return undefined;
 }
@@ -122,7 +120,7 @@ export function getSoundbite(competitor: Competitor): string {
 
 	const license = competitor.license ? RESTRICTIVE_LICENSES[competitor.license] : undefined;
 	if (license) {
-		return `${name} is ${license}. CiteRank.com is a hosted tracker with nothing to deploy, unlimited seats, and plans from ${ENTRY_PRICE}.`;
+		return `${name} is ${license}. CiteRank.com is a hosted tracker, so there is nothing to deploy, and plans start at ${ENTRY_PRICE}.`;
 	}
 
 	const tracksAnyEngine = SOUNDBITE_ENGINES.some((key) => competitor.features[key]);
@@ -137,17 +135,17 @@ export function getSoundbite(competitor: Competitor): string {
 	if (missingEngines.length > 0) gaps.push(`doesn't list ${joinOr(missingEngines.slice(0, 3))} among its engines`);
 	if (missingFeatures.length > 0) gaps.push(`has no ${joinOr(missingFeatures.slice(0, 2))}`);
 	if (gaps.length > 0) {
-		return `${name} ${gaps.join(" and ")}. CiteRank.com has all of that, with plans from ${ENTRY_PRICE}.`;
+		return `${name} ${gaps.join(" and ")}. CiteRank.com has all of that, and its plans start at ${ENTRY_PRICE}.`;
 	}
 
 	const price = competitor.pricing?.startingPrice;
 	if (price && !isOpenSource(competitor)) {
-		return `${name} starts at ${price}. CiteRank.com covers the same engines from ${ENTRY_PRICE}, and its agency can do the work too.`;
+		return `${name} starts at ${price}. CiteRank.com covers the same engines, and its plans start at ${ENTRY_PRICE}, month to month.`;
 	}
 	if (isOpenSource(competitor)) {
-		return `${name} is open source. CiteRank.com is a hosted tracker plus an AI search agency that does the work, from ${ENTRY_PRICE}.`;
+		return `${name} is open source and CiteRank.com is hosted, so it comes down to fit: compare the engines and features below.`;
 	}
-	return `${name} covers the same engines and features as CiteRank.com. CiteRank.com adds an AI search agency that does the work.`;
+	return `${name} is closed source, so you can't check how its numbers are made. CiteRank.com keeps the full answer behind every number.`;
 }
 
 /**
@@ -159,11 +157,11 @@ export function getComparisonVerdict(competitor: Competitor): string {
 	const name = competitor.name;
 
 	if (isOpenSource(competitor)) {
-		return `${name} is an open-source AI visibility tool. CiteRank.com is a hosted AI visibility tracker and AI search agency. It puts your buyer questions to 12 AI apps up to four times a day, keeps every answer in full, and ranks what to do next about once a week. Its agency does that work every month for businesses that want it done.`;
+		return `${name} is an open-source AI visibility tool you can self-host and audit, and CiteRank.com is a hosted AI visibility tracker. CiteRank.com's focus is transparent, verifiable tracking across ChatGPT, Claude, Perplexity, and Google AI Overviews, with a documented methodology behind every number and an AI search agency that does the work.`;
 	}
 
 	const noun = CATEGORY_NOUN[competitor.category];
-	return `CiteRank.com is an alternative to ${name}, ${indefiniteArticle(noun)} ${noun} tool. Both measure how AI answer engines describe your brand. CiteRank.com puts your buyer questions to 12 AI apps up to four times a day and keeps every answer in full, so each number traces back to the words an AI wrote. Its AI search agency does the work that follows.`;
+	return `CiteRank.com, an AI visibility tracker and AI search agency, is an alternative to ${name}, ${indefiniteArticle(noun)} ${noun} tool. Both measure how AI answer engines describe your brand, but CiteRank.com keeps every answer in full, covers 12 AI apps, and checks each prompt up to four times a day, so each metric traces back to the words an AI wrote.`;
 }
 
 /**
@@ -182,31 +180,31 @@ export function getComparisonFaqs(competitor: Competitor): FaqItem[] {
 	faqs.push({
 		question: `What is the difference between CiteRank.com and ${name}?`,
 		answer: openSource
-			? `${name} is open source. CiteRank.com is a hosted AI visibility tracker plus an AI search agency. The tracker checks 12 AI apps up to four times a day, keeps every answer in full, and ranks what to do next about once a week. The agency does that work every month for businesses that want it done.`
-			: `${name} is ${indefiniteArticle(noun)} ${noun} tool, and CiteRank.com is an AI visibility tracker plus an AI search agency. Both track how AI answer engines describe your brand. CiteRank.com keeps every answer in full, so each number traces back to the words an AI wrote, and its agency does the work the tracker recommends.`,
+			? `${name} is open source, so you can self-host it and inspect the code, while CiteRank.com is hosted. CiteRank.com focuses specifically on transparent AI visibility tracking across 12 AI apps, with every answer kept in full, an AI search agency that does the work, and a fully documented methodology behind each number.`
+			: `CiteRank.com is an AI visibility tracker and AI search agency, while ${name} is ${indefiniteArticle(noun)} ${noun} tool. Both track how AI answer engines describe your brand, but CiteRank.com keeps every answer in full, so you can verify every metric against the words an AI wrote, and its agency can do the work.`,
 	});
 
 	faqs.push({
 		question: `How much does CiteRank.com cost compared with ${name}?`,
-		answer: `CiteRank.com plans run from ${PLAN_RANGE}, and yearly billing saves two months. Every plan includes unlimited seats plus API and MCP access, and you can sign up and start tracking without a sales call. ${price ? `The starting price listed for ${name} is ${price}.` : `No public starting price is listed for ${name}.`}`,
+		answer: `CiteRank.com plans run from ${PLAN_RANGE}, and annual billing saves two months. Every plan includes unlimited seats plus API and MCP access, and you can sign up and start tracking without a sales call, then cancel any time. ${price ? `The starting price listed for ${name} is ${price}.` : `No public starting price is listed for ${name}.`}`,
 	});
 
 	faqs.push({
 		question: `Is ${name} open source?`,
 		answer: openSource
-			? `Yes, ${name} is open source. CiteRank.com is a closed-source, hosted tracker with nothing to deploy, and it keeps every answer it collects in full, so each number traces back to the words an AI wrote.`
-			: `No, ${name} is a closed-source, hosted product, and so is CiteRank.com. CiteRank.com keeps every answer it collects in full, so you can read the words behind each number, and sentiment scores come with the passage behind them.`,
+			? `Yes, ${name} is open source. CiteRank.com is closed source and hosted, built specifically for verifiable AI visibility tracking, so you can check each metric against the full answer behind it.`
+			: `No, ${name} is a closed-source, hosted product, and so is CiteRank.com. CiteRank.com keeps every answer in full, so you can check how each metric is calculated, read the passage behind each sentiment score, and export it all through the API.`,
 	});
 
 	faqs.push({
 		question: `How do CiteRank.com and ${name} compare on sentiment analysis, API access, and MCP?`,
-		answer: `CiteRank.com includes all three: a 0 to 100 sentiment score for every AI answer that mentions you (with the passage behind the score), a REST API, and an MCP server so assistants like Claude Code and Cursor can query your data. ${integrationSummary(competitor)}`,
+		answer: `CiteRank.com includes all three: a 0 to 100 sentiment score for every AI answer that mentions you, a REST API on every plan, and an MCP server so assistants like Claude Code and Cursor can query your data. ${integrationSummary(competitor)}`,
 	});
 
 	faqs.push({
-		question: "Can CiteRank.com do the work as well as track it?",
+		question: `Can my team use CiteRank.com instead of ${name}?`,
 		answer:
-			"Yes. CiteRank.com's AI search agency does the work every month. It writes the pages a site is missing, updates pages AI has stopped citing, gets the business onto the review sites and best-of lists AI cites, and reports the AI answers before and after.",
+			"Yes. CiteRank.com is designed to be self-serve: sign up and start tracking in minutes, with no sales call. You keep full access to your data and prompts through the API, with no per-seat pricing, so your whole team can log in.",
 	});
 
 	return faqs;
