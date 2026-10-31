@@ -16,7 +16,7 @@ const CONTACT_EMAIL = "team@citerank.com";
 
 const title = "About CiteRank.com · AI Visibility Tracker and Agency";
 const description =
-	"CiteRank.com is an AI visibility tracker and AI search agency for AEO and GEO, founded by Adam Danyal and Julia Danyal. Company facts, what we do, who it is for, pricing and how to reach us.";
+	"CiteRank.com is an AEO and GEO platform for tracking brand visibility in AI search, plus an AI search agency, founded by Adam Danyal and Julia Danyal. Company facts, team, pricing, and how to reach us.";
 
 export const Route = createFileRoute("/about")({
 	head: () => ({
@@ -43,28 +43,28 @@ const SOCIAL_LINKS = [
 
 const offerings = [
 	{
-		title: "The AI Visibility Tracker",
-		body: "Puts your buyers' questions to ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews and Google AI Mode, up to four times a day, and keeps every answer in full. CiteRank.com suggests the questions from your website, and you can add or edit them at any time.",
+		title: "AI Search Visibility Tracking",
+		body: "CiteRank.com runs the prompts your buyers ask across ChatGPT, Google AI Overviews, Google AI Mode, Perplexity, Gemini, Copilot, Claude, and more on a schedule. Each prompt gets a visibility score for how often your brand appears, so you can see where you show up and where you don't.",
 	},
 	{
-		title: "What the Answers Show",
-		body: "How often you are named for each question and each AI, your share of voice against each competitor, how each answer describes you, your position among the brands named, the pages each answer cites, and the web searches an AI ran first.",
+		title: "Citation Analysis",
+		body: "Every answer is broken down into the domains and URLs the model cited and the web searches it ran to find them. That shows which pages answer engines trust in your category and where a mention would move your visibility.",
 	},
 	{
-		title: "What to Do Next, Ranked",
-		body: "About once a week: a missing comparison page, a page AI no longer cites, a review site or best-of list that names competitors but not you, or a forum thread where buyers ask about your field.",
+		title: "Competitor Benchmarking",
+		body: "CiteRank.com records which competitors appear alongside you and calculates share of voice across every engine you track. You see who AI recommends instead of you, and on which questions.",
+	},
+	{
+		title: "Self-Serve Plans",
+		body: `Monthly tracker plans for teams that would rather skip the sales call, from $${CLOUD_ENTRY_PRICE_USD}/mo. Every plan includes unlimited seats plus REST API and MCP server access.`,
+	},
+	{
+		title: "Ranked Next Steps",
+		body: "About once a week, CiteRank.com ranks what to do next: a missing comparison page, a page AI no longer cites, a review site or best-of list that names competitors but not you, or a forum thread where buyers ask about your field.",
 	},
 	{
 		title: "AI Search Agency",
-		body: "Does that work every month: new comparison and guide pages, updates to pages AI stopped citing, review sites, best-of lists, forum answers, guest articles and crawler fixes.",
-	},
-	{
-		title: "A Monthly Report",
-		body: "Agency clients get a report each month. It lists every piece of work we did that month, the buyer question each piece targets, and what the AI answers to that question said before the work and after it went live.",
-	},
-	{
-		title: "API and MCP",
-		body: "A REST API and an MCP server on every tracker plan, so your own reports and AI assistants such as Claude Code and Cursor can read the data. Pull visibility, share of voice, citations and opportunities, or edit prompts, from your own tools.",
+		body: "A done-for-you service that does the work the tracker ranks, from new pages to articles on sites AI answer engines already cite. It runs monthly, with a report listing each piece of work and the prompt it targets.",
 	},
 ];
 
@@ -75,31 +75,33 @@ const principles = [
 	},
 	{
 		title: `Public, Self-Serve Pricing From $${CLOUD_ENTRY_PRICE_USD}/mo`,
-		body: "Tracker prices are published on the pricing page, so you know the cost before you talk to anyone. Sign up, pick a plan and start tracking the same day, with no sales call, demo or quote to wait for.",
+		body: `CiteRank.com plans are listed publicly at $${starter.monthlyPriceUsd}, $${basic.monthlyPriceUsd}, $${pro.monthlyPriceUsd}, and $${business.monthlyPriceUsd} a month, and you can sign up without a sales call. Profound has no public entry tier and quotes its Enterprise plan through sales.`,
 	},
 	{
 		title: "Month-to-Month Billing",
-		body: "The tracker bills month to month with no minimum term, and you can cancel any time. Yearly billing is optional and saves two months, so you can see your data first and commit for longer later.",
+		body: "CiteRank.com bills month to month with no minimum term, and annual billing is optional and saves two months. Many enterprise AEO platforms push you into an annual contract before you can see your data.",
 	},
 	{
-		title: `Questions Asked ${basic.standardRunsPerDay}× a Day`,
-		body: `From the Basic plan up, every question runs ${basic.standardRunsPerDay} times a day in each AI app you choose. AI answers change from one run to the next, so more runs give you trends you can rely on instead of one-off snapshots.`,
+		title: `Prompts Checked ${basic.standardRunsPerDay}× a Day`,
+		body: `From the $${basic.monthlyPriceUsd}/mo Basic plan, every prompt runs ${basic.standardRunsPerDay} times a day on each platform you track, and Starter checks ChatGPT once a day. AI answers vary from run to run, so more samples means trends you can trust instead of one-off snapshots.`,
 	},
 	{
-		title: "Answers From the Apps Your Buyers Use",
-		body: "ChatGPT, Gemini, Perplexity, Copilot, Google AI Overviews and Google AI Mode are read from the same interface people use, so you see the answers your buyers see. The other AI apps are asked directly.",
+		title: "The Same Interfaces Your Buyers Use",
+		body: "Consumer products like ChatGPT, Google AI Mode, and Perplexity are scraped from the same interface your buyers use. API-only tools measure a different model configuration than the one people see.",
 	},
 	{
-		title: "Unlimited Seats, API and MCP on Every Plan",
-		body: "Every tracker plan includes unlimited team members, the REST API and an MCP server for Claude Code, Cursor and other AI assistants. Your whole team and your own tools get the data, with no per-seat fees and no upgrade needed.",
+		title: "Unlimited Seats, API, and MCP on Every Plan",
+		body: "Every CiteRank.com plan includes unlimited team members, the REST API, and an MCP server for Claude Code, Cursor, and other AI assistants. Your whole team and your own tools get the data without per-seat fees or an enterprise upgrade.",
 	},
 ];
 
 const audiences = [
-	"In-house marketing and SEO teams at software companies whose buyers ask ChatGPT which tool to choose",
-	"Professional services firms, such as law and accounting firms, whose clients ask AI who to hire",
-	"Marketing and SEO agencies tracking AI answers for their own brand and for each of their clients' brands",
+	"In-house SEO and content marketing teams at B2B SaaS companies extending their SEO strategy to AI search",
+	"E-commerce and DTC brands monitoring product recommendations in ChatGPT and Google AI Overviews",
+	"SEO, AEO, and GEO agencies managing AI visibility for multiple client brands, including shareable reports",
 	"Founders and marketing leads who want the AI search agency to do the work",
+	"Professional services firms, such as law and accounting firms, whose clients ask ChatGPT and Gemini who to hire",
+	"Local and hospitality businesses checking how AI assistants describe and recommend them",
 ];
 
 function Section({ heading, tinted, children }: { heading: string; tinted?: boolean; children: ReactNode }) {
@@ -158,7 +160,7 @@ function AboutPage() {
 		{
 			term: "Type",
 			detail:
-				"AI visibility tracker and AI search agency for answer engine optimization (AEO), generative engine optimization (GEO) and AI SEO",
+				"AI visibility tracker and AI search agency for answer engine optimization (AEO), generative engine optimization (GEO), and AI SEO",
 		},
 		{ term: "Founders", detail: "Adam Danyal and Julia Danyal" },
 		{
@@ -169,14 +171,9 @@ function AboutPage() {
 		{ term: "Trade Mark", detail: "CiteRank.com, UK registered trade mark UK00004399266" },
 		{ term: "Website", detail: <ExternalLink href="https://citerank.com">citerank.com</ExternalLink> },
 		{
-			term: "AI Visibility Tracker",
+			term: "Core Offering",
 			detail:
-				"Shows how often 12 AI apps name a business, how they describe it, which pages they cite, and what to do next",
-		},
-		{
-			term: "AI Search Agency",
-			detail:
-				"Does the work the tracker ranks, every month, with a monthly report of every piece of work and the AI answers before and after",
+				"Tracking how AI answer engines mention, cite, and describe brands, with citation analysis and competitor share of voice",
 		},
 		{
 			term: "Pricing",
@@ -184,17 +181,23 @@ function AboutPage() {
 		},
 		{
 			term: "Contract Terms",
-			detail: "Month to month, cancel any time; yearly billing is optional and saves two months",
+			detail: "Month to month, cancel any time; optional annual billing that saves two months",
 		},
 		{
-			term: "AI Apps Tracked",
+			term: "Services",
 			detail:
-				"ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews and Google AI Mode",
+				"AI visibility tracking, citation analysis, competitor benchmarking, ranked next steps, AI search agency work with a monthly report, REST API and MCP server",
 		},
 		{
 			term: "Contact Email",
 			detail: <ExternalLink href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</ExternalLink>,
 		},
+		{
+			term: "Platforms Tracked",
+			detail:
+				"ChatGPT, Google AI Overviews, Google AI Mode, Gemini, Perplexity, Microsoft Copilot, Claude, Grok, Mistral, DeepSeek, Qwen, Kimi",
+		},
+		{ term: "Competitors", detail: "Profound, Peec AI, Otterly.AI, Scrunch, Semrush AI Toolkit" },
 		{ term: "Social", detail: <LinkList links={SOCIAL_LINKS} /> },
 	];
 
@@ -213,9 +216,26 @@ function AboutPage() {
 								About CiteRank.com
 							</h1>
 							<p className="mt-6 max-w-2xl text-lg text-pretty text-zinc-600 md:text-xl">
-								CiteRank.com shows businesses what AI says about them, and gets them named in the answer. Its AI
-								Visibility Tracker shows how often ChatGPT, Gemini and other AI apps name a business and what to change.
-								Its AI search agency makes the changes for those who would rather hand the work over.
+								CiteRank.com is an AI visibility tracker and AI search agency for answer engine optimization (AEO). It
+								tracks how ChatGPT, Google AI Overviews, Perplexity, Gemini, Claude, and other AI answer engines
+								mention, cite, and describe brands, for marketing teams, agencies, and software companies.
+							</p>
+							<p className="mt-4 max-w-2xl text-lg text-pretty text-zinc-600">
+								Teams use CiteRank.com for{" "}
+								<Link
+									to="/answer-engine-optimization"
+									className="font-medium text-blue-600 underline-offset-4 hover:underline"
+								>
+									answer engine optimization (AEO)
+								</Link>
+								, also called{" "}
+								<Link
+									to="/generative-engine-optimization"
+									className="font-medium text-blue-600 underline-offset-4 hover:underline"
+								>
+									generative engine optimization (GEO)
+								</Link>{" "}
+								or AI SEO: measuring and improving how their brand shows up in AI search.
 							</p>
 							<p className="mt-4 max-w-2xl text-lg text-pretty text-zinc-600">
 								The name CiteRank.com joins two words: cite, what an AI does when it names a source in an answer, and
@@ -255,7 +275,7 @@ function AboutPage() {
 
 				<Section heading="Who CiteRank.com Is For">
 					<p className="max-w-3xl text-pretty text-zinc-600">
-						Founders and marketing leads at B2B companies whose buyers ask AI who to choose.
+						Founders and marketing leads at companies whose buyers ask AI who to choose.
 					</p>
 					<ul className="mt-6 grid gap-3 md:grid-cols-2">
 						{audiences.map((audience) => (
@@ -280,7 +300,72 @@ function AboutPage() {
 					</div>
 				</Section>
 
+				<Section heading="How CiteRank.com Works">
+					<div className="grid gap-px overflow-hidden rounded-lg border border-zinc-200 bg-zinc-200 md:grid-cols-2">
+						<div className="bg-white p-6">
+							<h3 className="text-lg font-semibold tracking-tight text-zinc-950">Who You Work With</h3>
+							<p className="mt-2 text-sm leading-relaxed text-zinc-600">
+								You work directly with the team behind CiteRank.com, by email or a booked call. Questions about your
+								setup, data, or results are answered by people who know the product inside out.
+							</p>
+						</div>
+						<div className="bg-white p-6">
+							<h3 className="text-lg font-semibold tracking-tight text-zinc-950">Communication Channels</h3>
+							<p className="mt-2 text-sm leading-relaxed text-zinc-600">
+								Email at{" "}
+								<a
+									href={`mailto:${CONTACT_EMAIL}`}
+									className="font-medium text-blue-600 underline-offset-4 hover:underline"
+								>
+									{CONTACT_EMAIL}
+								</a>
+								,{" "}
+								<Link to="/agency" className="font-medium text-blue-600 underline-offset-4 hover:underline">
+									a booked call
+								</Link>
+								, and the{" "}
+								<ExternalLink href="https://www.linkedin.com/company/citerank">LinkedIn community</ExternalLink>. Agency
+								clients also get a monthly report of every piece of work, the prompt it targets, and the AI answers
+								before and after.
+							</p>
+						</div>
+						<div className="bg-white p-6">
+							<h3 className="text-lg font-semibold tracking-tight text-zinc-950">Onboarding</h3>
+							<p className="mt-2 text-sm leading-relaxed text-zinc-600">
+								Sign up for CiteRank.com and add your website. The Prompt Wizard suggests the questions your buyers ask
+								based on your products and competitors, and tracking starts right away. No demo or sales call required.
+							</p>
+						</div>
+						<div className="bg-white p-6">
+							<h3 className="text-lg font-semibold tracking-tight text-zinc-950">Turnaround</h3>
+							<p className="mt-2 text-sm leading-relaxed text-zinc-600">
+								The first check starts right away, and results usually appear within a few minutes. The ranked list of
+								what to do next needs a few days of data, then refreshes weekly, and agency work runs every month.
+							</p>
+						</div>
+					</div>
+				</Section>
+
 				<Faq items={ABOUT_FAQS} />
+
+				<section className="border-y border-zinc-200 bg-white py-16 lg:py-24">
+					<div className="mx-auto max-w-6xl px-4 text-center md:px-6">
+						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">See How AI Talks About Your Brand</h2>
+						<p className="mx-auto mt-4 max-w-xl text-lg text-balance text-zinc-600">
+							Start on CiteRank.com from ${CLOUD_ENTRY_PRICE_USD}/mo, month to month, or have our AI search agency do
+							the work.
+						</p>
+						<div className="mt-8 flex flex-wrap justify-center gap-3">
+							<a href={SIGN_UP_URL} className={buttonVariants({ size: "sm" })}>
+								Start Tracking
+								<ArrowRight className="size-3.5" />
+							</a>
+							<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
+								Book a Call
+							</Link>
+						</div>
+					</div>
+				</section>
 			</main>
 			<Footer />
 		</div>

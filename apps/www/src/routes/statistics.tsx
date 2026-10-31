@@ -81,7 +81,7 @@ function StatisticsPage() {
 								and links to the piece that works through how it was measured and where it disagrees with the next
 								study.
 							</p>
-							<p>You may cite any figure here, with attribution to its original source rather than to this page.</p>
+							<p>Free to cite, with attribution to the original source rather than to us where the two differ.</p>
 						</div>
 
 						{STAT_GROUPS.map((group) => {

@@ -7,7 +7,7 @@ export const SITE_NAME = "CiteRank.com";
 // optimization" because answer engines expand the acronym when they search, and
 // carries no pricing so it stays true wherever it is reused.
 export const SITE_DESCRIPTION =
-	"AI visibility tracker and AI search agency for answer engine optimization (AEO): see what AI says and act on it.";
+	"Answer engine optimization (AEO) platform and AI search agency: track how AI answers mention and cite your brand.";
 const SITE_LOGO_URL = `${SITE_URL}/brand/icons/citerank-icon-512.png`;
 
 export function canonicalUrl(path: string): string {

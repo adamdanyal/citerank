@@ -1,17 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { CRISP_WEBSITE_ID } from "@workspace/config/constants";
 import { buttonVariants } from "@workspace/ui/components/button";
+import { Spinner } from "@workspace/ui/components/spinner";
 import { ArrowUpRight } from "lucide-react";
-import type { ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
+import { openCrispChat } from "@/lib/crisp";
 import { externalRel } from "@/lib/external-link";
 import { breadcrumbJsonLd, canonicalUrl, ogMeta } from "@/lib/seo";
 
 const title = "Support · CiteRank.com";
 const description =
-	"Get help with CiteRank.com: email the team about your account, billing or data, or book an agency call.";
+	"Get help with CiteRank.com: chat with the team, email support, book a call, or join the community.";
 
 const SUPPORT_EMAIL = "team@citerank.com";
+const LINKEDIN_URL = "https://www.linkedin.com/company/citerank";
 
 export const Route = createFileRoute("/support")({
 	head: () => ({
@@ -41,6 +45,57 @@ function ContactCard({ heading, body, action }: { heading: string; body: string;
 	);
 }
 
+// Stops a click that's still waiting on Crisp from spinning forever if the event never comes.
+const CHAT_OPEN_TIMEOUT_MS = 15_000;
+
+function StartChatButton() {
+	const [opening, setOpening] = useState(false);
+
+	function start() {
+		setOpening(true);
+		const timeout = window.setTimeout(() => setOpening(false), CHAT_OPEN_TIMEOUT_MS);
+		openCrispChat(() => {
+			window.clearTimeout(timeout);
+			setOpening(false);
+		});
+	}
+
+	// Crisp never loads without a website ID, so until one is set the button emails the team instead.
+	if (!CRISP_WEBSITE_ID) {
+		return (
+			<a href={`mailto:${SUPPORT_EMAIL}`} className={buttonVariants({ variant: "default", size: "sm" })}>
+				Start a Chat
+			</a>
+		);
+	}
+
+	return (
+		<button
+			type="button"
+			onClick={start}
+			disabled={opening}
+			className={buttonVariants({ variant: "default", size: "sm" })}
+		>
+			{opening && <Spinner />}
+			{opening ? "Opening Chat…" : "Start a Chat"}
+		</button>
+	);
+}
+
+function ExternalButton({ href, children }: { href: string; children: ReactNode }) {
+	return (
+		<a
+			href={href}
+			target="_blank"
+			rel={externalRel(href)}
+			className={buttonVariants({ variant: "outline", size: "sm" })}
+		>
+			{children}
+			<ArrowUpRight className="size-3.5" />
+		</a>
+	);
+}
+
 function ResourceLink({ href, label, detail }: { href: string; label: string; detail: string }) {
 	const external = href.startsWith("http");
 	return (
@@ -66,14 +121,19 @@ function SupportPage() {
 				<header className="mb-16 space-y-4">
 					<h1 className="font-heading text-4xl text-zinc-950 lg:text-5xl">Support</h1>
 					<p className="max-w-2xl text-lg text-balance text-zinc-600">
-						Questions about your account, billing, your data or the MCP server? Email the team and a person answers.
+						Questions about your account, billing, the MCP server, or the AI search agency? Here is how to reach us.
 					</p>
 				</header>
 
 				<section className="mb-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					<ContactCard
+						heading="Chat With Us"
+						body="The fastest way to reach the team, for anything from sign-in trouble to questions about your data."
+						action={<StartChatButton />}
+					/>
+					<ContactCard
 						heading="Email"
-						body="For account, billing, data and anything that needs a longer answer. Include your organization name so we can find your account."
+						body="For account, billing, data and anything that needs a longer answer. Include your organization name."
 						action={
 							<a href={`mailto:${SUPPORT_EMAIL}`} className={buttonVariants({ variant: "outline", size: "sm" })}>
 								{SUPPORT_EMAIL}
@@ -82,7 +142,7 @@ function SupportPage() {
 					/>
 					<ContactCard
 						heading="Book a Call"
-						body="Want our AI search agency to do the work the tracker ranks? Book a call to talk it through."
+						body="Walk through your results, or the work our AI search agency would do, with someone from the team."
 						action={
 							<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
 								Book a Time
@@ -90,8 +150,25 @@ function SupportPage() {
 						}
 					/>
 					<ContactCard
+						heading="Community"
+						body="Join CiteRank.com on LinkedIn for product releases, AEO and GEO guides, and AI search news from the team."
+						action={<ExternalButton href={LINKEDIN_URL}>Join on LinkedIn</ExternalButton>}
+					/>
+					<ContactCard
+						heading="Bugs and Feature Requests"
+						body="Report bugs and request features by email, and we'll follow up with you after a fix or release."
+						action={
+							<a
+								href={`mailto:${SUPPORT_EMAIL}?subject=Bug%20report%20or%20feature%20request`}
+								className={buttonVariants({ variant: "outline", size: "sm" })}
+							>
+								Report an Issue
+							</a>
+						}
+					/>
+					<ContactCard
 						heading="Security"
-						body="Report vulnerabilities privately by email, with the steps to reproduce them."
+						body="Report vulnerabilities privately by email rather than in a public post."
 						action={
 							<a
 								href={`mailto:${SUPPORT_EMAIL}?subject=Security%20report`}
@@ -106,11 +183,11 @@ function SupportPage() {
 				<section>
 					<h2 className="mb-6 text-xl font-semibold text-zinc-950">Before You Write</h2>
 					<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-						<ResourceLink href="/docs" label="Documentation" detail="Brand and prompt setup, and reading results." />
+						<ResourceLink href="/docs" label="Documentation" detail="Setup, features, and integration guides." />
 						<ResourceLink
 							href="/docs/api/mcp"
 							label="MCP Server"
-							detail="Connecting CiteRank.com to Claude, Cursor and other AI assistants."
+							detail="Connecting CiteRank.com to ChatGPT, Claude, Cursor, and other clients."
 						/>
 						<ResourceLink href="/docs/api" label="API Reference" detail="Every endpoint, with examples." />
 					</div>

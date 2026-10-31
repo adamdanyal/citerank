@@ -57,7 +57,7 @@ function GlossaryTermPage() {
 						className="inline-flex items-center gap-1 text-sm text-zinc-500 transition-colors hover:text-zinc-950"
 					>
 						<ArrowLeft className="h-3 w-3" />
-						AI search glossary
+						AI Search Glossary
 					</a>
 				</div>
 
@@ -116,8 +116,8 @@ function GlossaryTermPage() {
 					<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
 						<h2 className="font-heading text-2xl text-zinc-950">See It in Your Own Data</h2>
 						<p className="mx-auto mt-3 max-w-xl text-zinc-600">
-							CiteRank.com tracks how ChatGPT, Claude, Gemini, Perplexity and eight more AI apps mention and cite your
-							brand, up to four times a day.
+							CiteRank.com is an AI visibility tracker and AI search agency. Sign up and track how AI answer engines
+							mention and cite your brand.
 						</p>
 						<div className="mt-6 flex flex-wrap justify-center gap-3">
 							<a
@@ -127,10 +127,10 @@ function GlossaryTermPage() {
 								Start Tracking
 							</a>
 							<Link
-								to="/agency"
+								to="/ai-visibility-tools"
 								className="inline-flex h-9 items-center rounded-md border border-zinc-200 bg-white px-4 text-sm font-medium text-zinc-700 hover:text-zinc-950"
 							>
-								Hire Our Agency
+								Compare Tools
 							</Link>
 						</div>
 					</div>

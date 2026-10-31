@@ -46,9 +46,9 @@ function FeaturesPage() {
 							All You Need to Grow AI Visibility
 						</h1>
 						<p className="mt-6 max-w-[60ch] text-pretty text-[17px]/7 text-zinc-600 md:text-xl/8">
-							CiteRank.com tracks how ChatGPT, Google AI Overviews, Perplexity, Gemini and other AI apps talk about your
-							brand: whether they mention you, how they describe you, which competitors they name instead, and which
-							sources they cite. Then it ranks what to do next, and our{" "}
+							CiteRank.com tracks how ChatGPT, Google AI Overviews, Perplexity, Gemini, and other AI engines talk about
+							your brand: whether they mention you, how they describe you, which competitors they name instead, and
+							which sources they cite. Then it tells you what to do, and our{" "}
 							<Link to="/agency" className="font-medium text-zinc-950 underline decoration-zinc-300 underline-offset-4">
 								AI search agency
 							</Link>{" "}

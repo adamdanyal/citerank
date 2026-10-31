@@ -97,7 +97,7 @@ function ResourcesPage() {
 									</h2>
 									{post.description && <p className="mt-2 text-pretty text-zinc-600">{post.description}</p>}
 									<span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
-										Read more
+										Read More
 										<ArrowUpRight className="size-3.5" />
 									</span>
 								</a>

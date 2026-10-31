@@ -13,7 +13,7 @@ function engineFaqs(e: AiSearchEngine): FaqItem[] {
 	return [
 		{
 			question: `How do I get my brand mentioned in ${e.name}?`,
-			answer: `${e.short} In short: ${e.steps[0].text} ${e.steps[1].text}`,
+			answer: `${e.short} ${e.steps[0].text} ${e.steps[1].text}`,
 		},
 		{
 			question: `Does CiteRank.com track ${e.name}?`,
@@ -73,7 +73,7 @@ function EnginePage() {
 						className="inline-flex items-center gap-1 text-sm text-zinc-500 transition-colors hover:text-zinc-950"
 					>
 						<ArrowLeft className="h-3 w-3" />
-						AI search guides
+						AI Search Guides
 					</a>
 				</div>
 
