@@ -17,7 +17,7 @@ const cols: { heading: string; links: FooterLink[] }[] = [
 	{
 		heading: "Product",
 		links: [
-			{ label: "AI Visibility Tracker", href: "/features" },
+			{ label: "Features", href: "/features" },
 			{ label: "Pricing", href: "/pricing" },
 			{ label: "AI Search Agency", href: "/agency" },
 		],
