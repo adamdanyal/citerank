@@ -167,12 +167,6 @@ export const DIRECTORY_FAQS: FaqItem[] = [
 			"The right tool depends on which AI engines you need to track, how often you need answers checked, your budget, and whether you want someone to do the work for you. This directory compares 100+ tools feature by feature. CiteRank.com tracks ten AI apps up to four times a day from $29/mo, and its AI search agency can do the work the tracker ranks.",
 	},
 	{
-		question: "Is there an open-source AI visibility tool?",
-		answer:
-			"Yes. The directory's open-source category lists the AI visibility tools whose code is public, so you can run them yourself and audit how each metric is calculated.",
-		links: [{ text: "open-source category", href: "/ai-visibility-tools/category/open-source" }],
-	},
-	{
 		question: "How does AI visibility tracking work?",
 		answer:
 			"AI visibility tracking works by running a defined set of prompts across AI engines on a schedule, then recording whether each answer mentions your brand, cites your site, and how it describes you. Sampling over time reveals trends a one-off check would miss.",

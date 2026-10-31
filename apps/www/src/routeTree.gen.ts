@@ -50,7 +50,6 @@ import { Route as AiVisibilityToolsAlternativesIndexRouteImport } from './routes
 import { Route as AiVisibilityToolsAlternativesSlugRouteImport } from './routes/ai-visibility-tools/alternatives/$slug'
 import { Route as AiVisibilityToolsCategoryIndexRouteImport } from './routes/ai-visibility-tools/category/index'
 import { Route as AiVisibilityToolsCategorySlugRouteImport } from './routes/ai-visibility-tools/category/$slug'
-import { Route as AiVisibilityToolsCategoryOpenSourceRouteImport } from './routes/ai-visibility-tools/category/open-source'
 import { Route as AiVisibilityToolsCompareIndexRouteImport } from './routes/ai-visibility-tools/compare/index'
 import { Route as AiVisibilityToolsCompareSlugRouteImport } from './routes/ai-visibility-tools/compare/$slug'
 import { Route as AiVisibilityToolsFeaturesIndexRouteImport } from './routes/ai-visibility-tools/features/index'
@@ -274,12 +273,6 @@ const AiVisibilityToolsCategorySlugRoute =
     path: '/ai-visibility-tools/category/$slug',
     getParentRoute: () => rootRouteImport,
   } as any)
-const AiVisibilityToolsCategoryOpenSourceRoute =
-  AiVisibilityToolsCategoryOpenSourceRouteImport.update({
-    id: '/ai-visibility-tools/category/open-source',
-    path: '/ai-visibility-tools/category/open-source',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const AiVisibilityToolsCompareIndexRoute =
   AiVisibilityToolsCompareIndexRouteImport.update({
     id: '/ai-visibility-tools/compare/',
@@ -371,7 +364,6 @@ export interface FileRoutesByFullPath {
   '/legal/': typeof LegalIndexRoute
   '/ai-visibility-tools/alternatives/$slug': typeof AiVisibilityToolsAlternativesSlugRoute
   '/ai-visibility-tools/category/$slug': typeof AiVisibilityToolsCategorySlugRoute
-  '/ai-visibility-tools/category/open-source': typeof AiVisibilityToolsCategoryOpenSourceRoute
   '/ai-visibility-tools/compare/$slug': typeof AiVisibilityToolsCompareSlugRoute
   '/ai-visibility-tools/features/$slug': typeof AiVisibilityToolsFeaturesSlugRoute
   '/llms.mdx/blog/$': typeof LlmsDotmdxBlogSplatRoute
@@ -424,7 +416,6 @@ export interface FileRoutesByTo {
   '/legal': typeof LegalIndexRoute
   '/ai-visibility-tools/alternatives/$slug': typeof AiVisibilityToolsAlternativesSlugRoute
   '/ai-visibility-tools/category/$slug': typeof AiVisibilityToolsCategorySlugRoute
-  '/ai-visibility-tools/category/open-source': typeof AiVisibilityToolsCategoryOpenSourceRoute
   '/ai-visibility-tools/compare/$slug': typeof AiVisibilityToolsCompareSlugRoute
   '/ai-visibility-tools/features/$slug': typeof AiVisibilityToolsFeaturesSlugRoute
   '/llms.mdx/blog/$': typeof LlmsDotmdxBlogSplatRoute
@@ -478,7 +469,6 @@ export interface FileRoutesById {
   '/legal/': typeof LegalIndexRoute
   '/ai-visibility-tools/alternatives/$slug': typeof AiVisibilityToolsAlternativesSlugRoute
   '/ai-visibility-tools/category/$slug': typeof AiVisibilityToolsCategorySlugRoute
-  '/ai-visibility-tools/category/open-source': typeof AiVisibilityToolsCategoryOpenSourceRoute
   '/ai-visibility-tools/compare/$slug': typeof AiVisibilityToolsCompareSlugRoute
   '/ai-visibility-tools/features/$slug': typeof AiVisibilityToolsFeaturesSlugRoute
   '/llms.mdx/blog/$': typeof LlmsDotmdxBlogSplatRoute
@@ -533,7 +523,6 @@ export interface FileRouteTypes {
     | '/legal/'
     | '/ai-visibility-tools/alternatives/$slug'
     | '/ai-visibility-tools/category/$slug'
-    | '/ai-visibility-tools/category/open-source'
     | '/ai-visibility-tools/compare/$slug'
     | '/ai-visibility-tools/features/$slug'
     | '/llms.mdx/blog/$'
@@ -586,7 +575,6 @@ export interface FileRouteTypes {
     | '/legal'
     | '/ai-visibility-tools/alternatives/$slug'
     | '/ai-visibility-tools/category/$slug'
-    | '/ai-visibility-tools/category/open-source'
     | '/ai-visibility-tools/compare/$slug'
     | '/ai-visibility-tools/features/$slug'
     | '/llms.mdx/blog/$'
@@ -639,7 +627,6 @@ export interface FileRouteTypes {
     | '/legal/'
     | '/ai-visibility-tools/alternatives/$slug'
     | '/ai-visibility-tools/category/$slug'
-    | '/ai-visibility-tools/category/open-source'
     | '/ai-visibility-tools/compare/$slug'
     | '/ai-visibility-tools/features/$slug'
     | '/llms.mdx/blog/$'
@@ -693,7 +680,6 @@ export interface RootRouteChildren {
   LegalIndexRoute: typeof LegalIndexRoute
   AiVisibilityToolsAlternativesSlugRoute: typeof AiVisibilityToolsAlternativesSlugRoute
   AiVisibilityToolsCategorySlugRoute: typeof AiVisibilityToolsCategorySlugRoute
-  AiVisibilityToolsCategoryOpenSourceRoute: typeof AiVisibilityToolsCategoryOpenSourceRoute
   AiVisibilityToolsCompareSlugRoute: typeof AiVisibilityToolsCompareSlugRoute
   AiVisibilityToolsFeaturesSlugRoute: typeof AiVisibilityToolsFeaturesSlugRoute
   LlmsDotmdxBlogSplatRoute: typeof LlmsDotmdxBlogSplatRoute
@@ -996,13 +982,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AiVisibilityToolsCategorySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/ai-visibility-tools/category/open-source': {
-      id: '/ai-visibility-tools/category/open-source'
-      path: '/ai-visibility-tools/category/open-source'
-      fullPath: '/ai-visibility-tools/category/open-source'
-      preLoaderRoute: typeof AiVisibilityToolsCategoryOpenSourceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/ai-visibility-tools/compare/': {
       id: '/ai-visibility-tools/compare/'
       path: '/ai-visibility-tools/compare'
@@ -1110,8 +1089,6 @@ const rootRouteChildren: RootRouteChildren = {
   AiVisibilityToolsAlternativesSlugRoute:
     AiVisibilityToolsAlternativesSlugRoute,
   AiVisibilityToolsCategorySlugRoute: AiVisibilityToolsCategorySlugRoute,
-  AiVisibilityToolsCategoryOpenSourceRoute:
-    AiVisibilityToolsCategoryOpenSourceRoute,
   AiVisibilityToolsCompareSlugRoute: AiVisibilityToolsCompareSlugRoute,
   AiVisibilityToolsFeaturesSlugRoute: AiVisibilityToolsFeaturesSlugRoute,
   LlmsDotmdxBlogSplatRoute: LlmsDotmdxBlogSplatRoute,

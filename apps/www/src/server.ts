@@ -95,7 +95,7 @@ const PERMANENT_REDIRECTS: Record<string, string> = {
 	"/blog/ai-search-engines": "/blog/best-ai-search-engine",
 	"/blog/ai-search-glossary": "/glossary",
 	"/blog/answer-engine-optimization": "/answer-engine-optimization",
-	"/blog/best-open-source-aeo-tools": "/ai-visibility-tools/category/open-source",
+	"/blog/best-open-source-aeo-tools": "/ai-visibility-tools",
 	"/blog/generative-ai-for-marketing": "/blog/ai-for-seo",
 	"/blog/generative-ai-seo": "/generative-engine-optimization",
 	"/blog/generative-engine-optimization": "/generative-engine-optimization",

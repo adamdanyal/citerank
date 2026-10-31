@@ -232,7 +232,6 @@ export const CATEGORY_SLUGS: Partial<Record<CompetitorCategory, string>> = {
 	"api-developer": "api",
 	ecommerce: "ecommerce",
 	"seo-traditional": "seo",
-	"open-source": "open-source",
 };
 
 /** Reader-friendly H1/title phrasing per category (better than the bare label). */

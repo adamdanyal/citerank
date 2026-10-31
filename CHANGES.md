@@ -102,6 +102,7 @@ Keep these deleted when an Elmo merge reports changes to them.
 - Icons renamed: `apps/web/public/icons/elmo-icon*` and `apps/www/public/icons/elmo-icon*` became `citerank-icon*`.
 - Docs: `packages/docs/content/docs/developer-guide/`, `api/sdks.mdx`, `api/skill.mdx`.
 - Blog: `packages/docs/content/blog/getcito-vs-elmo.mdx` (renamed), `apps/www/public/authors/jared.png`.
+- Open-source tools page: `apps/www/src/routes/ai-visibility-tools/category/open-source.tsx`, with its `open-source` entry in `CATEGORY_SLUGS` (`apps/www/src/lib/competitors/directory.ts`). CiteRank.com is not sold as open source.
 
 ## Elmo services switched off
 

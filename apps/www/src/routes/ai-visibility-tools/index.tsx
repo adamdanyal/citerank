@@ -64,7 +64,7 @@ const browseLinks = [
 	},
 	{
 		title: "Browse by category",
-		description: "Trackers, content platforms, APIs, SEO suites, and open source.",
+		description: "Trackers, content platforms, APIs, SEO suites, and e-commerce.",
 		href: "/ai-visibility-tools/category",
 	},
 	{
