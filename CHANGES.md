@@ -36,6 +36,16 @@ Everything runs in cloud mode (plans and billing) with no real keys.
 - With `SCRAPE_TARGETS=stub:stub` the dashboard stays empty: the stub provider only answers for the model "stub", which no plan picks. Real scraper keys bring real answers.
 - Resend is stubbed, so a new signup never gets its verification email. Set `email_verified = true` on the user row, then add an active `subscription` row for the org to skip the plan picker. The test login is in `~/citerank-localdb/TEST-ACCOUNT.md`.
 
+## Marketing screenshots
+
+`apps/www/public/screenshots/*.png` are captures of our dashboard showing a fictional help desk brand, Quaildesk, against eight invented rivals. They come from a separate local database, `citerank_demo`, which `scripts/demo-data/seed.ts` wipes and refills (it refuses any database whose name doesn't end in `_demo`). Retake them after an Elmo release changes the dashboard:
+
+1. Once: create `citerank_demo` on port 5437 and run the migrations against it (`DATABASE_URL=postgres://postgres:postgres@127.0.0.1:5437/citerank_demo pnpm exec drizzle-kit migrate` from `packages/lib`).
+2. Seed it: `DATABASE_URL=<that URL> pnpm exec tsx scripts/demo-data/seed.ts`. Dates are relative to now, so seed just before capturing.
+3. Build the dashboard and start it on a spare port with `.env` pointing at `citerank_demo`, `DEPLOYMENT_MODE=local`, placeholder provider keys and the five AI apps the captures show: `SCRAPE_TARGETS=chatgpt:olostep:online,gemini:dataforseo:gemini-2.5-flash:online,perplexity:olostep:online,google-ai-overview:olostep:online,claude:anthropic-api:claude-haiku-5-5:online`. In `apps/web`: `pnpm exec vite build`, then `PORT=3100 node --env-file=.env .output/server/index.mjs`. A production build keeps the dev tools button out of the frame.
+4. Capture: `DATABASE_URL=<that URL> DASHBOARD_URL=http://localhost:3100 pnpm exec tsx scripts/demo-data/capture.ts` (or name the shots to retake). If Playwright's own browser isn't installed, set `CHROMIUM_PATH` to a cached one in `~/Library/Caches/ms-playwright`. It signs in as the demo user from `scripts/demo-data/content.ts` and draws the fictional companies' logos itself.
+5. If the dashboard sidebar moved, update the `y` fractions in `apps/www/src/components/home/product-demo.tsx`; `how-it-works.tsx` crops the left 17.5% of each capture.
+
 ## Files we have changed
 
 Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app/org/$org/settings/`.
@@ -89,6 +99,8 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | `packages/docs/content/docs/**` | Product docs reworded as CiteRank.com; getting-started is a hosted quickstart; providers.mdx describes the AI apps tracked. |
 | `packages/api-spec/src/openapi.json` | Title, contact, key prefix and descriptions. The `x-elmo-*` keys stay because code reads them. |
 | `packages/docs/content/legal/*.mdx` | Elmo's policies with CiteRank.com as the company and the open-source passages removed. A placeholder until proper policies exist: governing law and arbitration still name California. |
+| `apps/www/public/screenshots/*.png` | Retaken from our dashboard with the fictional Quaildesk data instead of Elmo's logo, demo org and Nike data (see "Marketing screenshots"). `feature-graphics.tsx` names the tags the prompt filter capture now shows. |
+| `scripts/demo-data/` | New. Seeds the demo database and captures the screenshots. |
 
 ## Files we have removed
 
@@ -118,3 +130,4 @@ Elmo's code reported to Elmo's own accounts, so CiteRank.com visitors and custom
 | --- | --- |
 | 2026-10-31 | Started from Elmo v0.7.7 (commit 5e76f422, released 28 October 2026). |
 | 2026-10-31 | Local build: rebranded the dashboard, emails, share images, marketing site, docs, blog and legal pages as CiteRank.com; switched off Elmo's chat, analytics and ad accounts. Not deployed. |
+| 2026-10-31 | Replaced the marketing site's 11 dashboard screenshots with captures of the CiteRank.com dashboard showing a fictional brand. Not deployed. |
