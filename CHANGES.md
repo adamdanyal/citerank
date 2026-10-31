@@ -28,6 +28,8 @@ A merge keeps every change below: where Elmo changed the same lines, git stops f
 
 The home page logo strip ("Used by 200+ brands to optimize their AI visibility"), the "Loved by marketers. Recommended by AI." reviews, and the sign-up page quote and G2 stars are Elmo's customers, Elmo's reviews and AI answers about Elmo, shown with our name for the local demo. Swap in CiteRank.com's own logos, count, quotes and AI answers before deploying: `apps/www/src/components/home/logos.tsx`, `apps/www/src/components/home/reviews.tsx`, `packages/ui/src/brand/customers.tsx`, `packages/ui/src/brand/g2-rating.tsx`, `apps/www/public/testimonials/` and the three customer logo files in `apps/www/public/`.
 
+Set `CRISP_WEBSITE_ID` in `packages/config/src/constants.ts` to CiteRank.com's own Crisp website ID. Until then, chat stays off and the support page's chat button opens an email instead.
+
 ## Running locally
 
 Everything runs in cloud mode (plans and billing) with no real keys.
@@ -139,3 +141,4 @@ Elmo's code reported to Elmo's own accounts, so CiteRank.com visitors and custom
 | 2026-10-31 | Local build: rebranded the dashboard, emails, share images, marketing site, docs, blog and legal pages as CiteRank.com; switched off Elmo's chat, analytics and ad accounts. Not deployed. |
 | 2026-10-31 | Replaced the marketing site's 11 dashboard screenshots with captures of the CiteRank.com dashboard showing a fictional brand. Not deployed. |
 | 2026-10-31 | Put Elmo's wording back inside the app (only the name changed) and resized the rewritten marketing copy to the length of the Elmo text it replaced. Not deployed. |
+| 2026-10-31 | Put the marketing site, docs and data back on Elmo's wording, with only untrue claims changed and the owner's writing rules applied, and kept every blog post within 5% of Elmo's length. The header shows only Features and Pricing, and the support page has six cards. Not deployed. |
