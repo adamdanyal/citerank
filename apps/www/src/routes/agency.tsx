@@ -142,14 +142,14 @@ function AgencyPage() {
 						</p>
 						<div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
 							<a href="#book" className={`${BUTTON} bg-blue-600 text-white hover:bg-blue-700`}>
-								Book a Call
+								Book a call
 								<ArrowRight className="size-4" aria-hidden="true" />
 							</a>
 							<Link
 								to="/pricing"
 								className={`${BUTTON} bg-white text-zinc-950 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50 hover:ring-zinc-300`}
 							>
-								See Tracker Plans
+								See tracker plans
 							</Link>
 						</div>
 					</div>

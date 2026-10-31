@@ -36,8 +36,8 @@ const cols: { heading: string; links: FooterLink[] }[] = [
 	{
 		heading: "Learn",
 		links: [
-			{ label: "What Is AEO?", href: "/answer-engine-optimization" },
-			{ label: "What Is GEO?", href: "/generative-engine-optimization" },
+			{ label: "What is AEO?", href: "/answer-engine-optimization" },
+			{ label: "What is GEO?", href: "/generative-engine-optimization" },
 			{ label: "AEO Glossary", href: "/glossary" },
 			{ label: "AI Search Guides", href: "/ai-search" },
 			{ label: "AI Search Statistics", href: "/statistics" },

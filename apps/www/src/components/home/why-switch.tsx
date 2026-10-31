@@ -1,5 +1,5 @@
 const FACTS = [
-	{ lead: "More Data", rest: "CiteRank.com runs each prompt against models up to 4× daily." },
+	{ lead: "More Data", rest: "We run each prompt against models up to 4× daily." },
 	{ lead: "No Bloat", rest: "We only do AEO / GEO, but we do it very well." },
 	{ lead: "Unlimited Seats", rest: "For your whole team on every plan." },
 	{ lead: "API + MCP", rest: "Fit CiteRank.com into your stack and agents." },

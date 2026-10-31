@@ -97,10 +97,10 @@ export function CompetitorDirectory() {
 					</p>
 					<div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
 						<a href={SIGN_UP_URL} className={buttonVariants({ size: "sm" })}>
-							Start Tracking
+							Start tracking
 						</a>
 						<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
-							Let Us Do the Work
+							Let us do the work
 						</Link>
 					</div>
 				</div>

@@ -57,7 +57,7 @@ function GlossaryTermPage() {
 						className="inline-flex items-center gap-1 text-sm text-zinc-500 transition-colors hover:text-zinc-950"
 					>
 						<ArrowLeft className="h-3 w-3" />
-						AI Search Glossary
+						AI search glossary
 					</a>
 				</div>
 
@@ -124,13 +124,13 @@ function GlossaryTermPage() {
 								href={cloudSignupUrl("marketing-page-cta")}
 								className="inline-flex h-9 items-center rounded-md bg-blue-600 px-4 text-sm font-medium text-white hover:bg-blue-700"
 							>
-								Start Tracking
+								Start tracking
 							</a>
 							<Link
 								to="/ai-visibility-tools"
 								className="inline-flex h-9 items-center rounded-md border border-zinc-200 bg-white px-4 text-sm font-medium text-zinc-700 hover:text-zinc-950"
 							>
-								Compare Tools
+								Compare tools
 							</Link>
 						</div>
 					</div>

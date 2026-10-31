@@ -243,11 +243,11 @@ function AboutPage() {
 							</p>
 							<div className="mt-8 flex flex-wrap gap-3">
 								<a href={SIGN_UP_URL} className={buttonVariants({ size: "lg" })}>
-									Start Tracking
+									Start tracking
 									<ArrowRight className="size-4" />
 								</a>
 								<Link to="/agency" className={buttonVariants({ size: "lg", variant: "outline" })}>
-									Book an Agency Call
+									Book an agency call
 								</Link>
 							</div>
 						</div>
@@ -357,11 +357,11 @@ function AboutPage() {
 						</p>
 						<div className="mt-8 flex flex-wrap justify-center gap-3">
 							<a href={SIGN_UP_URL} className={buttonVariants({ size: "sm" })}>
-								Start Tracking
+								Start tracking
 								<ArrowRight className="size-3.5" />
 							</a>
 							<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
-								Book a Call
+								Book a call
 							</Link>
 						</div>
 					</div>

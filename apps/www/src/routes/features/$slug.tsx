@@ -73,7 +73,7 @@ function FeatureHero({ feature }: { feature: ProductFeature }) {
 					className="inline-flex items-center gap-1 text-sm text-zinc-500 transition-colors hover:text-zinc-950"
 				>
 					<ArrowLeft className="size-3" aria-hidden="true" />
-					All Features
+					All features
 				</a>
 				<div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
 					<div className="lg:col-span-5">
@@ -83,14 +83,14 @@ function FeatureHero({ feature }: { feature: ProductFeature }) {
 						<p className="mt-6 text-pretty text-[17px]/7 text-zinc-600">{feature.lede}</p>
 						<div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
 							<a href={signupUrl} className={`${BUTTON} bg-blue-600 text-white hover:bg-blue-700`}>
-								Start Tracking
+								Start tracking
 								<ArrowRight className="size-4" aria-hidden="true" />
 							</a>
 							<Link
 								to="/agency"
 								className={`${BUTTON} bg-white text-zinc-950 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50 hover:ring-zinc-300`}
 							>
-								Have Us Do the Work
+								Have us do the work
 							</Link>
 						</div>
 						<p className="mt-5 text-sm text-zinc-500">
@@ -223,7 +223,7 @@ function RelatedFeatures({ related }: { related: ProductFeature[] }) {
 				<div className="flex flex-wrap items-baseline justify-between gap-4">
 					<h2 className="text-2xl font-semibold tracking-[-0.02em] text-zinc-950">Related Features</h2>
 					<a href="/features" className="text-sm font-medium text-blue-600 hover:text-blue-700">
-						All Features
+						All features
 					</a>
 				</div>
 				<ul className="mt-6 grid gap-3 md:grid-cols-3">

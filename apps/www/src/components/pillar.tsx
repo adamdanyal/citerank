@@ -16,10 +16,10 @@ export function CiteRankCta() {
 				</p>
 				<div className="mt-8 flex flex-wrap justify-center gap-3">
 					<a href={cloudSignupUrl("marketing-page-cta")} className={buttonVariants({ size: "sm" })}>
-						Start Tracking Today
+						Start tracking today
 					</a>
 					<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
-						Hire Our Agency
+						Hire our agency
 					</Link>
 				</div>
 			</div>

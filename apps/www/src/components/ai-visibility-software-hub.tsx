@@ -142,11 +142,11 @@ export function AiVisibilitySoftwareHub() {
 						</div>
 						<div className="mt-8 flex flex-wrap gap-3">
 							<a href={cloudSignupUrl("marketing-page-cta")} className={buttonVariants({ size: "sm" })}>
-								Start Tracking
+								Start tracking
 								<ArrowRight className="size-3.5" />
 							</a>
 							<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
-								Let Us Do the Work
+								Let us do the work
 							</Link>
 						</div>
 					</div>

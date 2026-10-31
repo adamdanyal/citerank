@@ -85,7 +85,7 @@ function GhostCTA({
  */
 /** `from` names the button in the cloud app's analytics, so each placement can be told apart. */
 export function CloudSignupCTA({
-	label = "Start Tracking",
+	label = "Start tracking",
 	from = "marketing-page-cta",
 }: {
 	label?: string;

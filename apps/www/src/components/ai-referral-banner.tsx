@@ -20,7 +20,7 @@ export function AiReferralBanner() {
 						href={CLOUD_URL}
 						className="inline-flex items-center gap-1 whitespace-nowrap font-medium underline underline-offset-4"
 					>
-						Start Tracking
+						Start tracking
 						<ArrowRight className="size-3.5" aria-hidden="true" />
 					</a>
 				</p>

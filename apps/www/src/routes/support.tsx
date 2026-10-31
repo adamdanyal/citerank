@@ -64,7 +64,7 @@ function StartChatButton() {
 	if (!CRISP_WEBSITE_ID) {
 		return (
 			<a href={`mailto:${SUPPORT_EMAIL}`} className={buttonVariants({ variant: "default", size: "sm" })}>
-				Start a Chat
+				Start a chat
 			</a>
 		);
 	}
@@ -77,7 +77,7 @@ function StartChatButton() {
 			className={buttonVariants({ variant: "default", size: "sm" })}
 		>
 			{opening && <Spinner />}
-			{opening ? "Opening Chat…" : "Start a Chat"}
+			{opening ? "Opening chat…" : "Start a chat"}
 		</button>
 	);
 }
@@ -145,7 +145,7 @@ function SupportPage() {
 						body="Walk through your results, or the work our AI search agency would do, with someone from the team."
 						action={
 							<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
-								Book a Time
+								Book a time
 							</Link>
 						}
 					/>
@@ -162,7 +162,7 @@ function SupportPage() {
 								href={`mailto:${SUPPORT_EMAIL}?subject=Bug%20report%20or%20feature%20request`}
 								className={buttonVariants({ variant: "outline", size: "sm" })}
 							>
-								Report an Issue
+								Report an issue
 							</a>
 						}
 					/>
@@ -174,7 +174,7 @@ function SupportPage() {
 								href={`mailto:${SUPPORT_EMAIL}?subject=Security%20report`}
 								className={buttonVariants({ variant: "outline", size: "sm" })}
 							>
-								Email Your Report
+								Email your report
 							</a>
 						}
 					/>

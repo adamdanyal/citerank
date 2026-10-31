@@ -24,7 +24,7 @@ export function AgencyTeaser() {
 						to="/agency"
 						className="mt-8 inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 text-base font-medium leading-none text-white transition-colors hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
 					>
-						Book a Call
+						Book a call
 						<ArrowRight className="size-4" aria-hidden="true" />
 					</Link>
 				</div>

@@ -197,11 +197,11 @@ function Playbook({ vertical }: { vertical: AeoVertical }) {
 					</div>
 					<div className="flex shrink-0 flex-col gap-2.5 sm:flex-row md:flex-col lg:flex-row">
 						<a href={signupUrl} className={`${BUTTON} bg-white text-blue-700 hover:bg-blue-50`}>
-							Start Tracking
+							Start tracking
 							<ArrowRight className="size-4" aria-hidden="true" />
 						</a>
 						<Link to="/agency" className={`${BUTTON} text-white ring-1 ring-inset ring-white/40 hover:bg-white/10`}>
-							Have Us Do the Work
+							Have us do the work
 						</Link>
 					</div>
 				</div>

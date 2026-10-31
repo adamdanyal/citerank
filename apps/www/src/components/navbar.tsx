@@ -89,13 +89,13 @@ export function Navbar() {
 						href={SIGN_IN_URL}
 						className="hidden h-8 items-center rounded-md px-3 text-sm font-medium leading-none text-zinc-700 hover:text-zinc-950 sm:inline-flex"
 					>
-						Sign In
+						Sign in
 					</a>
 					<a
 						href={SIGN_UP_URL}
 						className="inline-flex h-8 items-center gap-1.5 whitespace-nowrap rounded-md bg-blue-600 px-3 text-sm font-medium leading-none text-white ring-1 ring-blue-600 hover:bg-blue-700"
 					>
-						Sign Up
+						Sign up
 						<ArrowRight className="size-3.5 max-[360px]:hidden" />
 					</a>
 				</div>

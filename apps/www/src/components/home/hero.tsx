@@ -70,20 +70,20 @@ export function Hero({
 					<p className="mt-6 max-w-[60ch] text-balance text-[17px]/7 text-zinc-600 md:text-xl/8">{lede}</p>
 					<div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
 						<a href={signupUrl} className={`${BUTTON} bg-blue-600 text-white hover:bg-blue-700`}>
-							Start Tracking
+							Start tracking
 							<ArrowRight className="size-4" aria-hidden="true" />
 						</a>
 						<Link
 							to="/agency"
 							className={`${BUTTON} bg-white text-zinc-950 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50 hover:ring-zinc-300`}
 						>
-							Have Us Do the Work
+							Have us do the work
 						</Link>
 					</div>
 					<p className="mt-5 text-sm text-zinc-500">
 						Tracker plans from ${CLOUD_ENTRY_PRICE_USD} a month.{" "}
 						<Link to="/pricing" className={`${QUIET} whitespace-nowrap`}>
-							See Pricing
+							See pricing
 						</Link>
 					</p>
 				</div>

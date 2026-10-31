@@ -34,13 +34,13 @@ export function NotFound() {
 									className="inline-flex h-8 items-center gap-1.5 rounded-md bg-blue-600 px-3 text-sm font-medium leading-none text-white ring-1 ring-blue-600 hover:bg-blue-700"
 								>
 									<Home className="size-3.5" />
-									Back to Home
+									Back to home
 								</Link>
 								<Link
 									to="/docs"
 									className="inline-flex h-8 items-center gap-1.5 rounded-md bg-white px-3 text-sm font-medium leading-none text-zinc-900 ring-1 ring-zinc-200 hover:bg-zinc-50 hover:ring-zinc-300"
 								>
-									Read the Docs
+									Read the docs
 									<ArrowRight className="size-3.5" />
 								</Link>
 							</div>

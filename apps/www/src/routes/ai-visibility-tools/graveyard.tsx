@@ -205,7 +205,7 @@ function GraveyardPage() {
 								to="/"
 								className="text-zinc-950 underline decoration-zinc-400 underline-offset-4 hover:decoration-zinc-950"
 							>
-								Learn More About CiteRank.com →
+								Learn more about CiteRank.com →
 							</Link>
 						</p>
 					</div>

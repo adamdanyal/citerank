@@ -172,7 +172,7 @@ function Reasons() {
 							href={signupUrl}
 							className={`${BUTTON} shrink-0 self-start bg-white text-blue-700 hover:bg-blue-50 md:self-center`}
 						>
-							Start Tracking
+							Start tracking
 							<ArrowRight className="size-4" aria-hidden="true" />
 						</a>
 					</li>
@@ -264,7 +264,7 @@ function Switching() {
 				</ol>
 				<div className="mt-8 flex flex-col gap-3 sm:flex-row">
 					<a href={signupUrl} className={`${BUTTON} bg-blue-600 text-white hover:bg-blue-700`}>
-						Start Tracking
+						Start tracking
 						<ArrowRight className="size-4" aria-hidden="true" />
 					</a>
 				</div>

@@ -79,7 +79,7 @@ export function OtherPlans({ className = "" }: { className?: string }) {
 				body="We do the work the tracker ranks: new pages, page updates, review sites and forums."
 				action={
 					<Link to="/agency" className={LINK}>
-						Book an Agency Call
+						Book an agency call
 						<ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
 					</Link>
 				}
@@ -89,7 +89,7 @@ export function OtherPlans({ className = "" }: { className?: string }) {
 				body="More brands, custom prompt limits, higher sampling rates, and more models."
 				action={
 					<a href="mailto:team@citerank.com?subject=Custom%20plan" className={LINK}>
-						Email Us
+						Email us
 						<ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
 					</a>
 				}
@@ -121,7 +121,7 @@ export function Pricing({
 
 				<div className="mt-10 flex justify-center">
 					<Link to="/pricing" className={LINK}>
-						Compare Every Plan
+						Compare every plan
 						<ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
 					</Link>
 				</div>

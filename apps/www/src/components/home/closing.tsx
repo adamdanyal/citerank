@@ -26,14 +26,14 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 				</p>
 				<div className="mt-9 flex w-full flex-col items-stretch justify-center gap-3 sm:w-auto sm:flex-row sm:items-center">
 					<a href={signupUrl} className={`${BUTTON} bg-blue-600 text-white hover:bg-blue-700`}>
-						Start Tracking
+						Start tracking
 						<ArrowRight className="size-4" aria-hidden="true" />
 					</a>
 					<Link
 						to="/agency"
 						className={`${BUTTON} bg-white text-zinc-950 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50 hover:ring-zinc-300`}
 					>
-						Have Us Do the Work
+						Have us do the work
 					</Link>
 				</div>
 				<ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-zinc-600">

@@ -57,7 +57,7 @@ export function DirectoryCiteRankBanner({
 					<p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-600">{pitch}</p>
 					<div className="mt-4 flex flex-wrap gap-3">
 						<a href={SIGN_UP_URL} className={buttonVariants({ size: "sm" })}>
-							Start Tracking Now
+							Start tracking now
 						</a>
 						<Link
 							to="/ai-visibility-tools/$slug"
@@ -85,10 +85,10 @@ export function CiteRankCta() {
 				</p>
 				<div className="mt-8 flex flex-wrap justify-center gap-3">
 					<a href={SIGN_UP_URL} className={buttonVariants({ size: "sm" })}>
-						Start Tracking Now
+						Start tracking now
 					</a>
 					<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
-						Let Us Do the Work
+						Let us do the work
 					</Link>
 				</div>
 			</div>
