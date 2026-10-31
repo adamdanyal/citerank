@@ -33,6 +33,7 @@ Everything runs in cloud mode (plans and billing) with no real keys.
 - `.env` and `apps/web/.env` set `DEPLOYMENT_MODE=cloud`, `SCRAPE_TARGETS=stub:stub`, `ONBOARDING_LLM_TARGET=stub:stub`, `TYPESAFE_API_KEY=stub`, `CLOUD_SIGNUP_ALLOWLIST=*`, and placeholder Stripe, Resend and Google values. Nothing real is called.
 - Migrations: from `packages/lib`, `pnpm exec drizzle-kit migrate` against the local database only.
 - Start `pnpm dev` in `apps/web` (port 3000), `apps/worker` and `apps/www` (port 3001).
+- `apps/web/.env.development.local` and `apps/www/.env.development.local` set `VITE_MARKETING_SITE_URL=http://localhost:3001` and `VITE_CLOUD_APP_URL=http://localhost:3000`, so sign-in, sign-up, legal and footer links stay local. Vite reads these files only in dev, so production builds keep citerank.com and app.citerank.com.
 - With `SCRAPE_TARGETS=stub:stub` the dashboard stays empty: the stub provider only answers for the model "stub", which no plan picks. Real scraper keys bring real answers.
 - Resend is stubbed, so a new signup never gets its verification email. Set `email_verified = true` on the user row, then add an active `subscription` row for the org to skip the plan picker. The test login is in `~/citerank-localdb/TEST-ACCOUNT.md`.
 
@@ -54,9 +55,9 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | --- | --- |
 | `apps/web/vite.config.ts` | Excludes linkedom from the dev pre-bundle; without it a fresh `pnpm dev` crashes. |
 | `packages/config/src/constants.ts` | Product name, icon path, brand colour and font, docs URLs. Crisp ID emptied. |
-| `packages/config/src/referrals.ts` | Links go to citerank.com and app.citerank.com. Demo-booking links go to /agency, and the demo-instance URL to the app, since CiteRank.com has no public demo. |
+| `packages/config/src/referrals.ts` | Links go to citerank.com and app.citerank.com. Demo-booking links go to /agency, and the demo-instance URL to the app, since CiteRank.com has no public demo. Vite builds can point both hosts elsewhere with `VITE_MARKETING_SITE_URL` and `VITE_CLOUD_APP_URL`. |
 | `packages/config/src/fanout-support.test.ts` | Drops the check that the providers docs page carries the per-scraper fan-out table; the customer page no longer has it. |
-| `packages/config/src/legal.ts` | Legal links go to citerank.com. No cookie consent prompt while nothing sets cookies. |
+| `packages/config/src/legal.ts` | Legal links go to the marketing site (`MARKETING_SITE_URL`). No cookie consent prompt while nothing sets cookies. |
 | `packages/config/src/referrals.test.ts`, `packages/config/src/legal.test.ts` | Expect the citerank.com URLs. |
 | `apps/web/src/styles.css` | One appended block: Schibsted Grotesk, Inter, JetBrains Mono, and the colour tokens. |
 | `apps/web/src/components/logo.tsx` | CiteRank.com mark and wordmark. |

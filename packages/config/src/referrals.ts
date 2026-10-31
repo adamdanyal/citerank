@@ -7,8 +7,11 @@
  * things and convert at very different rates.
  */
 
-export const MARKETING_SITE_URL = "https://citerank.com";
-export const CLOUD_APP_URL = "https://app.citerank.com";
+// Local and staging builds of the Vite apps point these elsewhere; the CLI runs outside Vite, where import.meta.env is undefined.
+const env = (import.meta as ImportMeta & { env?: Record<string, string | undefined> }).env;
+
+export const MARKETING_SITE_URL = env?.VITE_MARKETING_SITE_URL || "https://citerank.com";
+export const CLOUD_APP_URL = env?.VITE_CLOUD_APP_URL || "https://app.citerank.com";
 /** CiteRank.com has no public demo instance, so anything still linking to one lands on the app. */
 const DEMO_SITE_URL = CLOUD_APP_URL;
 

@@ -5,9 +5,10 @@
  * (packages/docs/content/legal); this is the shared address book so the product
  * app and the marketing site can't drift apart on a URL.
  */
+import { MARKETING_SITE_URL } from "./referrals";
 import type { DeploymentMode } from "./types";
 
-const LEGAL_SITE_URL = "https://citerank.com";
+const LEGAL_SITE_URL = MARKETING_SITE_URL;
 
 interface LegalDocument {
 	slug: string;
