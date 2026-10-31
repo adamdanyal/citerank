@@ -18,6 +18,11 @@ export default defineConfig({
 	define: {
 		__APP_VERSION__: JSON.stringify(pkg.version),
 	},
+	// The dev dependency scan reaches linkedom through server-only onboarding
+	// code, and its browser build of @acemir/cssom lacks the export it imports.
+	optimizeDeps: {
+		exclude: ["linkedom"],
+	},
 	resolve: {
 		tsconfigPaths: true,
 		alias: {
