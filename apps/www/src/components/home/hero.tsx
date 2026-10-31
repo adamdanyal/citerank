@@ -13,7 +13,7 @@ const QUIET =
 
 const BADGE = (
 	<span className="inline-flex h-7 items-center rounded-full bg-white/80 px-3 text-xs font-medium text-zinc-600 shadow-sm ring-1 ring-zinc-200">
-		AI Visibility + AI Search Agency
+		AI Visibility Tracker + AI Search Agency
 	</span>
 );
 
