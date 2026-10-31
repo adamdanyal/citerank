@@ -5,7 +5,7 @@ description: Configure your brand, competitors, prompts, AI apps, team, and bill
 
 ## Settings Overview
 
-The **Settings** section is accessible from the sidebar. Each brand has four sub-pages for managing what CiteRank.com tracks: Brand, Competitors, Prompts, and LLMs. Your organization's settings hold the team, billing, and API keys, which apply to every brand.
+The **Settings** section is accessible from the sidebar. Each brand has four sub-pages for managing what CiteRank.com tracks: Brand, Competitors, Prompts, and LLMs.
 
 ## Brand Settings
 
@@ -33,30 +33,26 @@ Manage the competitors you're tracking:
 
 Manage your tracking prompts:
 
-- **Add prompts**: create new prompts with **Add Prompt**, paste several at once with **Add Multiple**, or click **Suggest Prompts** for AI suggestions that skip what you already track
+- **Add prompts**: click **Add Prompt**, paste several with **Add Multiple**, or click **Suggest Prompts** for AI suggestions that skip what you already track
 - **Edit prompts**: modify prompt text and tags
-- **Enable/Disable**: toggle tracking for individual prompts without deleting them, or select several and enable or disable them together
+- **Enable/Disable**: toggle tracking for one prompt or several at once without deleting them
 - **Remove**: stop tracking prompts you no longer need; their history is kept
-- **Premium**: on Pro and Business, also track a prompt on premium models, each of which uses one of your organization's premium pairings ([details](/docs/user-guide/providers#premium-llm-apis))
+- **Premium**: on Pro and Business, also track a prompt on premium models ([details](/docs/user-guide/providers#premium-llm-apis))
 
-Click **Save Changes** in the bar at the bottom of the page to apply your edits. Your plan sets how many prompts your organization can track across all its brands.
+Click **Save Changes** at the bottom of the page to apply your edits.
 
 {/* TODO: Screenshot of prompt settings */}
 
 ## LLM Settings
 
-Choose which AI apps CiteRank.com checks this brand's prompts on, within your plan's limits. See [AI Apps](/docs/user-guide/providers#choosing-ai-apps-for-a-brand) for what each one tells you and how many you can pick.
+Choose which AI apps CiteRank.com checks this brand's prompts on, within your plan's limits ([details](/docs/user-guide/providers#choosing-ai-apps-for-a-brand)).
 
 {/* TODO: Screenshot of LLM settings */}
 
-## Team
+## Organization Settings
 
-Organization admins invite teammates from **Settings → Team**. Enter an email address, choose **Member** or **Admin**, and click **Invite**. Only admins can choose the plan and issue API keys.
+Organization admins manage these settings, which apply to every brand:
 
-## Billing
-
-**Settings → Billing** shows your plan, what it costs, and how much of it you're using. Organization admins can change the plan there, buy extra premium pairings on Pro and Business, and click **Manage Billing** to manage payment methods and invoices in the Stripe customer portal.
-
-## API Keys
-
-Organization admins issue and revoke keys for the [REST API](/docs/api) and the [MCP server](/docs/api/mcp) from **Settings → API Keys**.
+- **Team**: invite teammates by email as a **Member** or **Admin**
+- **Billing**: change the plan, buy extra premium pairings on Pro and Business, and manage payment methods and invoices
+- **API Keys**: issue and revoke keys for the [REST API](/docs/api) and [MCP](/docs/api/mcp)
