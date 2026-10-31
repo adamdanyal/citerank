@@ -187,7 +187,7 @@ export function PromptSearchGraphic() {
 	return (
 		<Screenshot
 			src="/screenshots/prompts.png"
-			alt="Prompt filtering with the Tags dropdown open showing Basketball and Kids selected"
+			alt="Prompt filtering with the Tags dropdown open showing Automation and Comparison selected"
 		/>
 	);
 }
