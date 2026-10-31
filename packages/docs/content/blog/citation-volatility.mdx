@@ -1,6 +1,6 @@
 ---
 title: "Citation Volatility: How Much Do the Sources AI Cites Change Over Time?"
-description: "We tracked a set of prompts to answer this question. Domains AI cites churn more than you'd think, and how much depends on what you ask."
+description: "A set of prompts tracked daily for 42 days answers this question. Domains AI cites churn more than you'd think, and how much depends on what you ask."
 date: "2026-06-03"
 author: ai
 metaTitle: "Citation Volatility in AI Search: A 42-Day Study"
@@ -38,14 +38,14 @@ faq:
   - question: Why do the sources AI cites change from day to day?
     answer: "Most AI answers are generated from a fresh web search on every run. For broad questions there is a large pool of near-equivalent sources (review roundups, retailer pages, forum threads), and small shifts in search ranking change which subset surfaces that day. New content is also published constantly in popular categories, so the candidate pool itself keeps turning over."
   - question: Does ChatGPT cite sources for every question?
-    answer: "No. ChatGPT mainly grounds (runs a live web search and cites sources) for shopping and recommendation questions, and answers conceptual or opinion questions from its training data with few or no citations. In our 42-day study it cited sources on only 6 of 42 days for 'the most iconic sneakers of all time', while Google AI Mode cited sources every single day."
+    answer: "No. ChatGPT mainly grounds (runs a live web search and cites sources) for shopping and recommendation questions, and answers conceptual or opinion questions from its training data with few or no citations. In a 42-day study it cited sources on only 6 of 42 days for 'the most iconic sneakers of all time', while Google AI Mode cited sources every single day."
   - question: Is Google AI Mode more stable than ChatGPT?
     answer: "It depends how you measure it. Google AI Mode's raw set of cited domains actually churns slightly more than ChatGPT's, because it cites more domains per day. But it concentrates the majority of its citations on a small, stable core of sources, so its volume-weighted volatility is lower. ChatGPT cites a smaller set of domains but rotates even its most-cited sources more often."
   - question: How do I measure citation volatility for my brand?
-    answer: "Track your key prompts daily across the AI engines you care about, record which domains each engine cites, and measure how much that set changes from one day to the next using Jaccard distance. Average over several weeks and weight by citation volume. Open-source AI visibility tools like Elmo compute this automatically."
+    answer: "Track your key prompts daily across the AI engines you care about, record which domains each engine cites, and measure how much that set changes from one day to the next using Jaccard distance. Average over several weeks and weight by citation volume. An AI visibility tracker such as CiteRank.com records the cited domains on every run, which is the raw data this needs."
 ---
 
-**Get cited in an AI answer once and it is tempting to call it a win. Run the same prompt tomorrow and the sources can change completely.** We tracked 28 shopping prompts about athletic shoes across ChatGPT and Google AI Mode, every day for six weeks, and recorded every domain each engine cited. The pattern was consistent: the list of cited sources is far less stable than a single check would suggest. On most prompts, the set of cited domains turned over by more than half from one day to the next. We call this **citation volatility**, and how much of it you see depends almost entirely on what the user asked.
+**Get cited in an AI answer once and it is tempting to call it a win. Run the same prompt tomorrow and the sources can change completely.** This study tracked 28 shopping prompts about athletic shoes across ChatGPT and Google AI Mode, every day for six weeks, and recorded every domain each engine cited. The pattern was consistent: the list of cited sources is far less stable than a single check would suggest. On most prompts, the set of cited domains turned over by more than half from one day to the next. We call this **citation volatility**, and how much of it you see depends almost entirely on what the user asked.
 
 **Key takeaways**
 
@@ -106,7 +106,7 @@ Picture the same question asked of the same AI engine on five days in a row. Eac
 
 Citation volatility puts a number on that turnover. Each day, take the set of domains cited for a prompt and compare it to the previous day's set. If they are identical, the distance is 0. If they share nothing, it is 1. Average that across every pair of consecutive days and you have the prompt's volatility score. (Mathematically it is the [Jaccard](https://en.wikipedia.org/wiki/Jaccard_index) distance, 1 minus the shared domains over the combined domains.)
 
-Run this across our 28 prompts and the scores landed mostly between 0.55 and 0.83 on Google AI Mode. A score of 0.69, the Google average, means barely a third of the domains in play on any two consecutive days were common to both. The sources behind a given AI answer are in near-constant motion.
+Run this across the 28 prompts and the scores landed mostly between 0.55 and 0.83 on Google AI Mode. A score of 0.69, the Google average, means barely a third of the domains in play on any two consecutive days were common to both. The sources behind a given AI answer are in near-constant motion.
 
 ## It depends on what you ask
 
@@ -317,7 +317,7 @@ Pulling the threads together:
 
 ## How to measure citation volatility yourself
 
-You do not need our dataset to run this. The method is simple and repeatable:
+You do not need the study's dataset to run this. The method is simple and repeatable:
 
 1. **Choose prompts to track** that your customers actually ask, mixing broad recommendations with narrow, branded comparisons.
 2. **Run them daily on each engine** you care about, with web search enabled, and capture the full answer.
@@ -326,8 +326,6 @@ You do not need our dataset to run this. The method is simple and repeatable:
 5. **Weight by citation volume and average** over at least three to four weeks, so a churning tail does not hide a stable core.
 6. **Gate on enough data**, around 20 day-to-day comparisons, before trusting any score.
 
-This is exactly what [Elmo](https://www.elmohq.com/) does automatically. It is an open-source, self-hosted AI visibility platform that runs your prompts across ChatGPT, Claude, Gemini, Perplexity, Google AI Mode, and more, records every cited domain, and computes the metrics in this post so you can watch how your sources, mentions, and [share of voice](/blog/ai-share-of-voice) move over time. Because it is MIT-licensed and you run it yourself, the underlying citation data is yours to query however you like, which is exactly how this study was made.
-
-> **See it on real brands.** We ran this analysis on live brands you can explore for yourself. Browse the tracked prompts, the domains each engine cited, the volatility scores, and the share of voice for every brand we tested at **[demo.elmohq.com](https://demo.elmohq.com)**.
+[CiteRank.com](/) handles the collection for you. It runs your prompts across ChatGPT, Claude, Gemini, Perplexity, Google AI Mode, and more up to four times a day, keeps every answer in full, and records which websites and pages each answer cites, so you can watch how your sources, mentions, and [share of voice](/blog/ai-share-of-voice) move over time.
 
 To go deeper on the fundamentals, start with our guide to [answer engine optimization](/answer-engine-optimization), then see [how to track your brand in AI search](/answer-engine-optimization).

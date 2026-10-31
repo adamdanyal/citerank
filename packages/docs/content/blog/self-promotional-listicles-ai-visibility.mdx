@@ -66,10 +66,10 @@ Two independent groups have measured what happens when an AI answer cites a vend
 | Prompts | 100 "best [category] software" queries, one per B2B category | Same framing, 100 queries | All prompts whose answers cited a sampled page |
 | Sample | 3 snapshots (Apr 15, May 15, Jun 8); 80 queries triggered an Overview; 184 listicle pages from 146 brands | Not published in detail | 818 self-ranking listicles vs 1,033 neutral comparisons; 5,434 page–answer pairs |
 | "Recommended" means | Brand appears as a pick in the Overview's answer text | Same | Engine actively suggests the brand as the best choice (separate from merely naming it) |
-| Publisher left out | 69% of 323 citations | 83% | — |
+| Publisher left out | 69% of 323 citations | 83% | n/a |
 | Publisher recommended | 31% (implied) | 17% (implied) | ~7% overall; 8.9% on AI Overviews |
-| Publisher named at all | — | — | ~39% (vs ~19% when the page isn't cited) |
-| Competitor recommended, publisher left out | — | 70% | 24.3% |
+| Publisher named at all | n/a | n/a | ~39% (vs ~19% when the page isn't cited) |
+| Competitor recommended, publisher left out | n/a | 70% | 24.3% |
 
 Sources: [Ray, June](https://lilyraynyc.substack.com/p/why-calling-yourself-the-best-could); [Ray, October](https://lilyraynyc.substack.com/p/prediction-the-next-massive-google); [Scrunch](https://scrunch.com/blog/what-happens-when-you-crown-yourself-number-1-listicles-impact-on-ai-answers/).
 
@@ -118,12 +118,12 @@ The question to ask about a self-promotional listicle is not "does it get cited?
 2. **Log four fields, not one.** Listicle cited, brand named, brand recommended, competitors recommended. This is the same split our piece on [ghost citations](/blog/ghost-citations) argues for, with one more column.
 3. **Compute the delta per engine.** Among answers citing the page, take the share recommending you and subtract the share recommending a competitor without you. Scrunch's per-engine author rates ranged from 15.6% on Claude to 4.8% on Copilot. A blended number would hide that.
 4. **Check the counterfactual.** Compare your recommendation rate on the same prompts when the listicle is *not* cited. If the two are close, the page is not what earns you a place.
-5. **Act on two cycles, not one run.** Citations for the same prompt turn over [60–70% from day to day](/blog/citation-volatility) in our own tracking. One snapshot can't separate a trend from noise.
+5. **Act on two cycles, not one run.** Tracking data shows citations for the same prompt turning over [60–70% from day to day](/blog/citation-volatility). One snapshot can't separate a trend from noise.
 
 If the delta stays negative, the page is giving your competitors evidence. Rewrite it into a comparison a neutral reader would trust, with stated criteria and honest trade-offs, or stop producing more of them. If it is positive, keep it and keep measuring, because Ray's two waves show the effect shrinking.
 
 The broader point is the one our review of [where AI citations come from](/blog/where-ai-citations-come-from) flagged as an open question: most citations point to domains the brand does not own, and the major format studies don't check whose domain a cited listicle sits on. This is the first evidence on that question. It suggests the recommendation is shaped mostly by what other sources say about you, and very little by what you say about yourself.
 
-[Elmo](https://www.elmohq.com/) is an open-source, self-hosted AI visibility platform that runs your prompt sets across ChatGPT, Claude, Gemini, Perplexity, and Google's AI surfaces. It records the cited URLs, the brands named, and the competitors recommended next to you on every run. Because you run it yourself and the data is yours to query, the net recommendation delta for any page is a query over your own results.
+[CiteRank.com](/) is an AI visibility tracker that runs your prompt sets across ChatGPT, Claude, Gemini, Perplexity, and Google's AI surfaces. It records the cited URLs, the brands named, and the competitors recommended next to you on every run, so you can work out the net recommendation delta for any page from your own results. CiteRank.com's [AI search agency](/agency) can also get you onto the review sites and best-of lists AI cites.
 
 For the fundamentals, start with [AI citations](/blog/ai-citations) and [AI share of voice](/blog/ai-share-of-voice), then [how to track your brand in AI search](/answer-engine-optimization). For the vocabulary, see the [AI search glossary](/glossary).

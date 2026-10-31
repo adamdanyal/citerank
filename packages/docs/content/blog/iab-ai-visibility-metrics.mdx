@@ -1,6 +1,6 @@
 ---
 title: "What Metrics Matter for AI Search Visibility?"
-description: "Which AI search visibility metrics actually matter, and when a number is solid enough to spend budget against — built on the IAB's 4 P's and its decision-grade criteria."
+description: "Which AI search visibility metrics actually matter, and when a number is solid enough to spend budget against. Built on the IAB's 4 P's and its decision-grade criteria."
 date: "2026-08-05"
 updated: "2026-08-18"
 author: ai
@@ -51,14 +51,14 @@ faq:
 
 **Four metrics matter for AI search visibility: Presence (do you appear at all), Prominence (where and how substantively), Portrayal (in what context and how accurately), and Persuasion (does any of it drive action). That hierarchy comes from [Measuring Visibility in the AI Era](https://www.iab.com/guidelines/measuring-visibility-in-the-ai-era/), which the IAB published on 3 August 2026. Most teams report only the first.**
 
-More than 20 companies sell tools that claim to measure how brands appear inside AI answers, using different query sets, different engine coverage, and different definitions of the events they count. The IAB guidance is the first attempt by a neutral body to make those numbers comparable — and it also sets a bar for when a number is good enough to spend money against.
+More than 20 companies sell tools that claim to measure how brands appear inside AI answers, using different query sets, different engine coverage, and different definitions of the events they count. The IAB guidance is the first attempt by a neutral body to make those numbers comparable, and it also sets a bar for when a number is good enough to spend money against.
 
 **Key takeaways**
 
 - The metrics are organized as the **4 P's**: Presence, Prominence, Portrayal, Persuasion. It is a causal hierarchy, not a menu, and most teams currently report only the first one.
 - Data splits into two tiers. **Directional** measurement spots patterns; **decision-grade** measurement clears six criteria and is what you take into a budget conversation.
 - Per AdExchanger's reading, under 50 queries is "exploratory", a step below directional, because it "cannot meaningfully characterize a category".
-- Reproducibility is one of the six criteria, and it is the hardest to clear. Our own [citation volatility study](/blog/citation-volatility) found the set of domains AI cited turned over 60–70% day to day.
+- Reproducibility is one of the six criteria, and it is the hardest to clear. A [citation volatility study](/blog/citation-volatility) found the set of domains AI cited turned over 60–70% day to day.
 - The IAB is explicit that this is *not* a standard. Headlines calling it one are ahead of the document.
 - Providers are asked to disclose platform coverage, query construction, data collection method, and how they detect factual inaccuracy. That list is a buying checklist.
 
@@ -117,13 +117,13 @@ On volume, AdExchanger reports the guidance puts a floor under the bottom tier: 
 
 Five of the six criteria are answered by doing more work. Reproducibility is different, because it is a property of the surface you are measuring, not of your effort.
 
-We ran the experiment. Across 28 prompts tracked daily on ChatGPT and Google AI Mode for 42 days, the set of domains cited for a given prompt turned over by roughly **60–70% from one day to the next**. Underneath that churn there was a stable core — on Google AI Mode a small set of domains earned about 56% of citations every day — but the surface layer moves constantly, and how much depends on the question. Broad recommendation prompts churned hardest; narrow branded comparisons were the most stable.
+A 42-day tracking study tested it. Across 28 prompts tracked daily on ChatGPT and Google AI Mode for 42 days, the set of domains cited for a given prompt turned over by roughly **60–70% from one day to the next**. Underneath that churn there was a stable core (on Google AI Mode a small set of domains earned about 56% of citations every day), but the surface layer moves constantly, and how much depends on the question. Broad recommendation prompts churned hardest; narrow branded comparisons were the most stable.
 
 Two consequences for anyone applying the IAB's tiers.
 
 A single run is not directional, it is anecdotal. If day-to-day turnover is 60%, a week-over-week change of 15% in your citation count is well inside the noise floor. In that study we required around 20 day-to-day comparisons before trusting a volatility figure, and the same logic applies to mention and citation rates.
 
-And reproducibility has to be measured, not asserted. The cheapest test is to run your prompt set twice and compare the results — a check any team can run, and one worth asking a vendor to run in front of you. If the two runs disagree by more than the movement you plan to report on, you are reporting noise with a decimal point.
+And reproducibility has to be measured, not asserted. The cheapest test is to run your prompt set twice and compare the results (a check any team can run, and one worth asking a vendor to run in front of you). If the two runs disagree by more than the movement you plan to report on, you are reporting noise with a decimal point.
 
 This is also why methodology disclosure is doing real work in the guidance. Providers are asked to disclose platform coverage, query construction, data collection method, and how they detect factual inaccuracy. When methods differ, results diverge wildly: published estimates of the overlap between [top-10 rankings and AI citations](/blog/rankings-and-ai-citations) range from 12% to 76%, mostly because different parsers count different things. Two vendors can both be honest and still hand you numbers that disagree by a factor of six.
 
@@ -131,11 +131,11 @@ This is also why methodology disclosure is doing real work in the guidance. Prov
 
 Its blind spots are worth naming, partly because the document names some of them itself.
 
-**It scores single responses.** Real buying research is a conversation, and a brand confidently named in turn one can vanish in turn three once the user adds a budget, a compliance requirement, or an integration they need — a limitation [AIVO Journal](https://www.aivojournal.org/measuring-the-wrong-era-why-the-iabs-new-visibility-framework-cant-see-past-the-query/) argues sits at the centre of the framework. Because the metrics score isolated answers, that disappearance can still register as presence. It is the same gap we covered in [multi-turn AI search](/blog/multi-turn-ai-search): the last prompt in a conversation carries only about a third of what the user actually said, so prompt sets built from single questions measure the best case.
+**It scores single responses.** Real buying research is a conversation, and a brand confidently named in turn one can vanish in turn three once the user adds a budget, a compliance requirement, or an integration they need (a limitation [AIVO Journal](https://www.aivojournal.org/measuring-the-wrong-era-why-the-iabs-new-visibility-framework-cant-see-past-the-query/) argues sits at the centre of the framework). Because the metrics score isolated answers, that disappearance can still register as presence. It is the same gap we covered in [multi-turn AI search](/blog/multi-turn-ai-search): the last prompt in a conversation carries only about a third of what the user actually said, so prompt sets built from single questions measure the best case.
 
 **The denominator is unresolved.** When a competitor does not appear, was it pushed out or was the query irrelevant to it? The guidance acknowledges it cannot yet tell those apart, and files the problem as not ready for standardization. Share-of-voice figures inherit that ambiguity, which is a good reason to read them as comparative trends rather than absolute market position.
 
-**Observed and sampled data are still different things.** Prompt-based measurement is sampling, however rigorous. First-party citation logs like [Microsoft Clarity's Citation dashboard](/blog/microsoft-clarity-ai-citations) — Microsoft contributed to the guidance — report what one platform's retrieval actually did, with no sample and no prompt set to argue about, and cannot tell you what the answer said or who was named beside you. Decision-grade practice uses both.
+**Observed and sampled data are still different things.** Prompt-based measurement is sampling, however rigorous. First-party citation logs like [Microsoft Clarity's Citation dashboard](/blog/microsoft-clarity-ai-citations) (Microsoft contributed to the guidance) report what one platform's retrieval actually did, with no sample and no prompt set to argue about, and cannot tell you what the answer said or who was named beside you. Decision-grade practice uses both.
 
 ## What to do with it
 
@@ -147,6 +147,6 @@ If you are buying, make the disclosure list your RFP. Which engines, how the que
 
 If you are not measuring at all, you are in the 84%, and the 4 P's are a reasonable order of operations: get presence right, then prominence, then portrayal, then worry about persuasion.
 
-One structural note. Reproducibility is much easier to demonstrate when the method is inspectable, which is the case for auditing an open method against a black box. [Elmo](https://www.elmohq.com/) is open source and self-hosted, so the prompt set, the engines queried, and the way every mention and citation is counted are all visible in code and re-runnable on demand — the disclosure the guidance asks for, by construction.
+One structural note. Reproducibility is much easier to demonstrate when every number can be checked against the evidence behind it. [CiteRank.com](/) keeps every answer in full, so each mention and citation count traces back to the words an AI wrote, for the buyer questions and AI apps you chose.
 
 The document will not settle what a good number looks like; the landscape is moving too fast for that, which is why the IAB declined to call it a standard. What it does is make the vagueness visible. A "visibility score" with no stated prompt count, cadence, or engine list is now conspicuously missing something, and that is a real improvement on where the category was last week.

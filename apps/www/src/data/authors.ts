@@ -17,10 +17,9 @@ export interface TeamAuthor {
  * apps/www/public/authors/<key>.png and set `avatar`.
  */
 const teamAuthors = {
-	jared: {
-		name: "Jared Rhizor",
-		role: "Founder",
-		avatar: "/authors/jared.png",
+	citerank: {
+		name: "CiteRank.com Team",
+		role: "AI Search Research",
 	},
 } satisfies Record<string, TeamAuthor>;
 
@@ -59,5 +58,5 @@ export function authorDisplayName(value: string): string {
 	const resolved = resolveAuthor(value);
 	if (resolved.kind === "team") return resolved.author.name;
 	if (resolved.kind === "unknown") return resolved.name;
-	return "Elmo";
+	return "CiteRank.com";
 }

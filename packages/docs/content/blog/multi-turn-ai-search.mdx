@@ -43,7 +43,7 @@ faq:
     answer: "About a third, by one measure. Across 670 commercial multi-turn conversations and 7,463 conversations from the public PRISM dataset, the final prompt contained a median of 35.6% and 36.4% of the session's unique user-side content vocabulary. In 68.4% and 74.3% of conversations respectively, it held at most half."
 ---
 
-**Almost every AI visibility tool works the same way: take a prompt, send it to an engine with no history, record what comes back.** A [preprint posted on 24 July 2026](https://arxiv.org/abs/2607.22392) argues that the prompt is not the query. Across 670 commercial AI conversations and 7,463 public ones, the last prompt in a session carried a median of roughly 36% of the unique wording the user had contributed. In about half of them, a constraint the user had already stated — a budget, a location, an option they had ruled out — appeared nowhere in the prompt the model was answering.
+**Almost every AI visibility tool works the same way: take a prompt, send it to an engine with no history, record what comes back.** A [preprint posted on 24 July 2026](https://arxiv.org/abs/2607.22392) argues that the prompt is not the query. Across 670 commercial AI conversations and 7,463 public ones, the last prompt in a session carried a median of roughly 36% of the unique wording the user had contributed. In about half of them, a constraint the user had already stated (a budget, a location, an option they had ruled out) appeared nowhere in the prompt the model was answering.
 
 **Key takeaways**
 
@@ -94,7 +94,7 @@ Tannenbaum states the central caveat himself: the study is observational. It sho
 
 The provenance deserves flagging too. This is a single-author preprint, not peer-reviewed work. The commercial corpus is proprietary and its collection method is not fully disclosed, and PRISM conversations were elicited for research rather than captured from people actually shopping. The replication across two independent corpora is the reason to take the numbers seriously; the sourcing is the reason not to treat them as settled.
 
-None of it makes flat [prompt tracking](/blog/ai-prompt-tracking) wrong. A trend needs a fixed instrument, and an instrument that ignores conversation history is still fixed. Our own study of [citation volatility](/blog/citation-volatility) found the set of domains cited for a prompt turning over 60–70% from one day to the next, which is a reminder that run-to-run noise already demands a stable, repeated method. Adding history to every run would make the series less comparable, not more truthful.
+None of it makes flat [prompt tracking](/blog/ai-prompt-tracking) wrong. A trend needs a fixed instrument, and an instrument that ignores conversation history is still fixed. A study of [citation volatility](/blog/citation-volatility) found the set of domains cited for a prompt turning over 60–70% from one day to the next, which is a reminder that run-to-run noise already demands a stable, repeated method. Adding history to every run would make the series less comparable, not more truthful.
 
 The claim to retire is narrower: that your dashboard number is what buyers see. It is what buyers see on the opening question.
 
@@ -113,6 +113,6 @@ Then leave the flat set alone. It is your trend line, and its value is precisely
 
 AI visibility measurement is roughly where keyword rank tracking was when personalization arrived: the instrument is still useful, and the thing it reports is narrower than the thing people believe it reports. Single-turn prompt replay gives you a comparable, engine-agnostic signal about how you fare on well-formed opening questions. That is real, and it is most of what you can act on. It is not a transcript of how buyers actually arrive at a shortlist.
 
-[Elmo](https://www.elmohq.com/) is an open-source, self-hosted AI visibility platform that runs your prompt sets across ChatGPT, Claude, Gemini, Perplexity, and Google's AI surfaces, recording every mention, citation, and competitor named alongside you. Because you run it yourself and the data is yours to query, the constraint-loaded and rejection prompts described above are just more prompts, and the raw answers are there when you want to check whether a conversation-shaped question gets a conversation-shaped result.
+[CiteRank.com](/) is an AI visibility tracker that runs your prompt sets across ChatGPT, Claude, Gemini, Perplexity, and Google's AI surfaces, recording every mention, citation, and competitor named alongside you. The constraint-loaded and rejection prompts described above are just more prompts to track, and every answer is kept in full for when you want to check whether a conversation-shaped question gets a conversation-shaped result.
 
 For the fundamentals, start with [how to track your brand in AI search](/answer-engine-optimization) and our guide to [AI share of voice](/blog/ai-share-of-voice). For the vocabulary, see the [AI search glossary](/glossary).

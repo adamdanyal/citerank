@@ -19,7 +19,7 @@ function isElmoHref(href: string): boolean {
 	if (href.startsWith("/") || href.startsWith("#")) return true;
 	try {
 		const { hostname } = new URL(href);
-		return hostname === "elmohq.com" || hostname.endsWith(".elmohq.com");
+		return hostname === "citerank.com" || hostname.endsWith(".citerank.com");
 	} catch {
 		// mailto:, tel:, or other non-http(s) hrefs — not an outbound web link.
 		return true;
@@ -28,7 +28,8 @@ function isElmoHref(href: string): boolean {
 
 // Outbound hosts we intentionally pass SEO equity to (dofollow), e.g. partners
 // we've agreed to link to. An explicit allowlist keeps the default nofollow.
-const DOFOLLOW_HOSTS = ["semrush.com", "seranking.com", "xseek.io", "evatype.com"];
+// Empty until CiteRank.com has partners of its own; the hosts this shipped with were Elmo's.
+const DOFOLLOW_HOSTS: string[] = [];
 
 function isDofollowHref(href: string): boolean {
 	try {

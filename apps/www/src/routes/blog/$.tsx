@@ -49,7 +49,7 @@ export const Route = createFileRoute("/blog/$")({
 
 		const { title, description, date, updated, author, slugs, metaTitle, faq, itemList, definedTerms, howTo } = data;
 		const pageTitle = metaTitle ?? `${title} · ${SITE_NAME}`;
-		const pageDescription = description || `${title} — from the ${SITE_NAME} blog.`;
+		const pageDescription = description || `${title}, from the ${SITE_NAME} blog.`;
 		const path = `/blog/${slugs.join("/")}`;
 		const resolved = resolveAuthor(author);
 		const authorName =

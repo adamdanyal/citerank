@@ -37,7 +37,7 @@ AI engines have to do three things with your page: find the relevant passage, un
 
 It helps with extraction. Models assemble answers from quotable passages, and a clear heading followed by a direct, self-contained answer (or a table, or a list) is far easier to lift accurately than a dense paragraph. Structure is what turns your content into something extractable.
 
-It helps with entities. Search and AI systems think in entities, the distinct, identifiable things like your brand, your product, and the concepts you cover. Schema and consistent on-page signals help an engine resolve "Elmo" as your specific product rather than a different entity with the same name, which is the difference between being cited correctly and being confused with something else.
+It helps with entities. Search and AI systems think in entities, the distinct, identifiable things like your brand, your product, and the concepts you cover. Schema and consistent on-page signals help an engine tie your brand name to your specific product, even when another entity shares the name, which is the difference between being cited correctly and being confused with something else.
 
 And it helps with disambiguation. When the same term means different things, or facts about you are scattered, engines have to guess. Explicit structure narrows the guesswork: it states what a page is, who published it, and how its parts relate, so the model doesn't have to infer it.
 
@@ -53,7 +53,7 @@ Schema.org markup, usually delivered as JSON-LD, is a vocabulary for labeling co
   "@type": "Article",
   "headline": "What Is Answer Engine Optimization (AEO)?",
   "datePublished": "2026-05-31",
-  "author": { "@type": "Organization", "name": "Elmo" }
+  "author": { "@type": "Organization", "name": "CiteRank.com" }
 }
 ```
 
@@ -77,9 +77,9 @@ Schema.org markup, usually delivered as JSON-LD, is a vocabulary for labeling co
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Elmo",
-  "url": "https://www.elmohq.com",
-  "sameAs": ["https://github.com/elmohq/elmo"]
+  "name": "CiteRank.com",
+  "url": "https://citerank.com",
+  "sameAs": ["https://www.linkedin.com/company/citerank"]
 }
 ```
 
@@ -110,4 +110,4 @@ If a page does these, the schema is the finishing layer that makes the structure
 
 Structured data is an input, so the way to know it helps is to watch the output: are AI engines citing and describing your content more accurately over time? You can't see an engine's parser, but you can sample the answers, tracking whether your pages get mentioned and [cited](/blog/ai-citations), and whether the facts come through correctly.
 
-[Elmo](https://www.elmohq.com/) is an open-source tool that tracks your mentions and citations across the major AI engines, so you can correlate structural improvements with changes in your visibility. Pair this guide with the [AI Overviews](/ai-search/google-ai-overviews) pillar for Google's surfaces, and the [AI search glossary](/glossary) for the underlying terms.
+[CiteRank.com](/) tracks your mentions and citations across ten AI apps up to four times a day, so you can correlate structural improvements with changes in your visibility. Pair this guide with the [AI Overviews](/ai-search/google-ai-overviews) pillar for Google's surfaces, and the [AI search glossary](/glossary) for the underlying terms.

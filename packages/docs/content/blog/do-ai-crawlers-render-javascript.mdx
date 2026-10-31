@@ -67,11 +67,11 @@ The cleanest dataset on rendering is still server-side: what bots actually reque
 
 | Crawler | Executes JavaScript? | Fetches JS files | 404 rate |
 |---|---|---|---|
-| Googlebot / Gemini | Yes | — | 8.22% (Googlebot) |
-| AppleBot | Yes | — | — |
+| Googlebot / Gemini | Yes | n/a | 8.22% (Googlebot) |
+| AppleBot | Yes | n/a | n/a |
 | OpenAI (ChatGPT) | No | 11.50% of fetches | 34.82% |
 | Anthropic (Claude) | No | 23.84% of fetches | 34.16% |
-| Perplexity, Meta, ByteDance | No | — | — |
+| Perplexity, Meta, ByteDance | No | n/a | n/a |
 
 The JS-file column is the detail that trips people up. Claude's crawler downloads JavaScript in nearly a quarter of its fetches but doesn't run it, so seeing AI bots request your bundles in the logs isn't evidence they see what those bundles render. The 404 rates, roughly four times Googlebot's, are a reminder that these crawlers are also far less precise about what they request.
 
@@ -97,7 +97,7 @@ Three findings matter for a marketing team.
 
 **The gap gets filled by other people, not by the model's memory.** Training knowledge contributed the same 7–10% whether or not the site was readable. When the agent couldn't read the site it searched more. Average web searches rose steadily from 1.8 to 4.5 across the readiness range, and the answer was built from whatever the search returned. That might be your review profiles. It might be a competitor's comparison page. It might be a forum thread from two pricing changes ago. Which of those carries the answer is exactly what a [citation source audit](/blog/where-ai-citations-come-from) shows you.
 
-**Agents hedge on brands they couldn't verify.** Answers about not-agent-ready businesses carried 4.4× more disclaimers about not being able to access the site and 3.0× more secondhand vouching, where the agent leans on what others say about the business instead of what the business says. That's the mechanism behind the recommendation gap: an agent that has to say it couldn't check your pricing is not going to tell the buyer to pick you. It fits what we found on [how agents weigh evidence](/blog/ai-search-fact-checking). They look for corroboration, and your own page is the cheapest corroboration available.
+**Agents hedge on brands they couldn't verify.** Answers about not-agent-ready businesses carried 4.4× more disclaimers about not being able to access the site and 3.0× more secondhand vouching, where the agent leans on what others say about the business instead of what the business says. That's the mechanism behind the recommendation gap: an agent that has to say it couldn't check your pricing is not going to tell the buyer to pick you. It fits the research on [how agents weigh evidence](/blog/ai-search-fact-checking). They look for corroboration, and your own page is the cheapest corroboration available.
 
 **The failure is silence, not hallucination.** On a 131-business subset with hand-extracted ground truth, answers built from the site got 48.3% of the asked-for facts right, against 34.3% for answers built from the web. Most of the gap is omission: facts never mentioned rose from 29% to 45%, while facts stated wrongly rose only from 4% to 6%. Answers containing none of the requested facts were 3.7× more common when built from the web. So when someone asks why ChatGPT gets their pricing wrong, the more common problem is usually that it didn't state the pricing at all.
 
@@ -135,6 +135,6 @@ A simple decision rule follows from the data. If your buyers use Google's AI sur
 
 Then confirm the fix in the answers rather than the config. Run branded pricing, features, and setup prompts on each engine before and after, and check whether the citations shift to your own pages and the facts start appearing. That's also the intervention study the preprint says it lacks, run on your own site.
 
-[Elmo](https://www.elmohq.com/) is an open-source, self-hosted AI visibility platform that runs your prompt sets across ChatGPT, Claude, Gemini, Perplexity, and Google's AI surfaces on a schedule, recording every mention and cited URL. Add the branded pricing, features, and setup prompts to your [tracked set](/blog/ai-prompt-tracking), and the citation record shows whether answers about you are built from your pages or someone else's, before and after a rendering fix.
+[CiteRank.com](/) is an AI visibility tracker that runs your prompt sets across ChatGPT, Claude, Gemini, Perplexity, and Google's AI surfaces up to four times a day, recording every mention and cited URL. Add the branded pricing, features, and setup prompts to your [tracked set](/blog/ai-prompt-tracking), and the citation record shows whether answers about you are built from your pages or someone else's, before and after a rendering fix. If you want the fix done for you, CiteRank.com's [AI search agency](/agency) fixes anything that stops AI crawlers reading your site.
 
 For the configuration side, see [robots.txt and AI crawlers](/blog/robots-txt-ai-crawlers) and [structured data for AI search](/blog/structured-data-for-ai-search). For whose pages engines cite on category prompts, see [where AI citations come from](/blog/where-ai-citations-come-from). For the fundamentals, start with [AI citations](/blog/ai-citations) and [how to track your brand in AI search](/answer-engine-optimization), and for the vocabulary, the [AI search glossary](/glossary).

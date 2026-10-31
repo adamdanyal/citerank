@@ -2,13 +2,11 @@
 title: Do llms.txt files matter for AEO?
 description: The llms.txt convention is often misunderstood due to minor nuances in how it's used by AI search. Learn how agentic search actually uses Markdown text.
 date: "2026-05-30"
-author: jared
+author: citerank
 tags:
   - aeo
   - llms-txt
 ---
-
-<YouTube id="4-9kJG6CL6U" title="Do llms.txt files matter for AEO?" />
 
 The intention of [llms.txt](https://llmstxt.org/) files is to provide a guide to the site's contents in LLM-friendly plain text (typically markdown).
 
@@ -20,7 +18,7 @@ Even if you look at the websites for AEO platforms, llms.txt adoption is inconsi
 - [AirOps](https://www.airops.com/) → ❌
 - [Peec](https://peec.ai/) → ❌
 - [Athena](https://athenahq.ai/) → [llms.txt](https://athenahq.ai/llms.txt) (short description, many links)
-- [Elmo](https://www.elmohq.com/) → [llms.txt](https://www.elmohq.com/llms.txt) (short description, many links, asks for [GitHub stars](https://github.com/elmohq/elmo))
+- [CiteRank.com](/) → [llms.txt](/llms.txt) (short description, many links)
 
 So what's with the inconsistency?
 
@@ -48,8 +46,8 @@ The most likely case that leads to an AI agent loading your llms.txt file is loa
 
 ---
 
-Should you add llms.txt files? I'd generally say yes, since the downside is very low. However, the more important thing is to make sure your website is easy for LLMs to consume. Offering a plaintext version to agents browsing your site is possible via some CMSes and frameworks like [Fumadocs](https://www.fumadocs.dev/docs/integrations/llms). And if you do add an llms.txt file, make sure to link to it!
+Should you add llms.txt files? We'd generally say yes, since the downside is very low. However, the more important thing is to make sure your website is easy for LLMs to consume. Offering a plaintext version to agents browsing your site is possible via some CMSes and frameworks like [Fumadocs](https://www.fumadocs.dev/docs/integrations/llms). And if you do add an llms.txt file, make sure to link to it!
 
 So it turns out that this space is pretty nuanced. Google Search can reasonably say that it doesn't use llms.txt, and Chrome can reasonably say it's recommended for agentic browsing. And an AEO like Peec can reasonably serve pages like [docs.peec.ai/intro-to-peec-ai.md](https://docs.peec.ai/intro-to-peec-ai.md) to agents without an llms.txt.
 
-For Elmo, we do both: [elmohq.com/llms.txt](https://www.elmohq.com/llms.txt) and [a markdown version of every docs page](https://www.elmohq.com/docs/getting-started.md) (with links on every docs page to the markdown version).
+For CiteRank.com, we do both: [citerank.com/llms.txt](/llms.txt) and [a markdown version of every docs page](/docs.md) (with links on every docs page to the markdown version).
