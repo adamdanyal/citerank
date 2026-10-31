@@ -32,12 +32,6 @@ by hand, or one `add-mcp` doesn't cover, follow its section below.
 Give the client the URL and it opens a browser for you to sign in. There is no application to
 register first.
 
-Sign in to CiteRank.com if you aren't already. A **Connect to CiteRank.com** screen then shows the
-client's name, the domain that published it (or that it is unverified, when the client named itself),
-and the address it sends you back to. Allow the connection with the button that names the client, or
-choose **Deny**. When the client runs on your own computer, CiteRank.com can't tell which program is
-asking, so allow it only if you just started the connection from a client you trust.
-
 ### Claude Code
 
 ```bash
@@ -198,7 +192,7 @@ reach CiteRank.com through [`mcp-remote`](https://www.npmjs.com/package/mcp-remo
 
 Issue one from **Settings → API Keys** in the organization's settings sidebar. Keys belong to the
 organization, so they are not found under a brand. Issue it read-only and optionally narrow it to
-selected brands. Copy the key when CiteRank.com shows it, because it is shown only once.
+selected brands.
 
 Send it as a bearer token. ChatGPT only connects by signing in; Claude.ai and Claude Desktop take the
 key when you add the connector: choose **No sign in** under **Authentication** and add an
@@ -312,7 +306,7 @@ brand's visibility, share of voice, per-model breakdown, and citation totals for
 `list_runs` and `get_run` return the answers behind the numbers.
 
 Analytics tools take the window as `start` and `end` ISO 8601 timestamps, such as
-`2026-01-01T00:00:00Z`, and report rates as fractions of 1, not percentages.
+`2026-01-01T00:00:00Z`, and report rates as fractions of 1, so 0.42 means 42%.
 
 `create_prompts` adds up to 100 prompts to a brand in one call, and adds none of them if the batch
 would go over your plan's prompt limit. `update_prompt` changes a prompt's text, its tags, or whether

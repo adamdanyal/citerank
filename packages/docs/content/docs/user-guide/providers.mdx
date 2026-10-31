@@ -3,60 +3,68 @@ title: AI Apps
 description: Which AI apps CiteRank.com tracks, and how to choose them for each brand.
 ---
 
-CiteRank.com puts your prompts to 12 AI apps: ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews, and Google AI Mode. You choose which ones to track for each brand, within your plan's limits. You don't set up any provider accounts or API keys, because CiteRank.com runs every check for you.
+CiteRank.com tracks which AI answer engines mention your brand, across 12 AI apps: ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews, and Google AI Mode. **ChatGPT** and **Google AI Mode** have no public API. You can approximate their responses by calling the underlying model APIs with web search enabled, but that's not the real consumer UI. Reading the actual app is usually closer to what your customers see, so CiteRank.com reads both from their own interfaces.
 
-Each check sends one of your prompts to one AI app and keeps the answer in full, along with any sources it cites. CiteRank.com then reads the answer for mentions of your brand and your competitors, as described in [Visibility Tracking](/docs/user-guide/visibility).
+You choose which AI apps to track for each brand, within [your plan's limits](#what-each-plan-includes). You don't set up any provider accounts or API keys, because CiteRank.com runs every check for you.
 
-The **LLMs** settings page groups the AI apps by how CiteRank.com reaches them, since each group tells you something different about your brand.
+Each check sends one of your prompts to one AI app and keeps the answer in full, along with any sources it cites. CiteRank.com then reads the answer for mentions of your brand and your competitors, as described in [How Mentions Are Decided](/docs/user-guide/visibility#how-mentions-are-decided).
+
+The **LLMs** settings page ([details](/docs/user-guide/settings#llm-settings)) groups the AI apps by how CiteRank.com reaches them, since each group tells you something different about your brand.
 
 ## How CiteRank.com Reaches Each AI App
 
 | Group | How CiteRank.com Asks | What It Tells You | How You Choose |
 |-------|-----------------------|-------------------|----------------|
-| **Scraped Engines** | Inside the app's own interface | What a real visitor sees, including cited sources | Picks, per brand |
-| **LLM APIs** | Calls the model through an API, without web search | What the model learned in training | Picks, per brand |
-| **Premium LLM APIs** | Calls the model through an API, with its own web search on | What the model finds and cites on the web today | Pairings, per prompt |
+| **[Scraped Engines](#scraped-engines)** | Inside the app's own interface | What a real visitor sees, including cited sources | Picks, per brand |
+| **[LLM APIs](#direct-model-apis)** | Calls the model through an API, without web search | What the model learned in training | Picks, per brand |
+| **[Premium LLM APIs](#premium-llm-apis)** | Calls the model through an API, with its own web search on | What the model finds and cites on the web today | Pairings, per prompt |
 
 ## Scraped Engines
 
 CiteRank.com captures each answer inside the AI app's own interface, so you track what a real visitor sees, including the sources the answer cites:
 
-- ChatGPT
+- [ChatGPT](https://chatgpt.com)
 - Google AI Mode
 - Google AI Overviews, the AI summary at the top of a Google results page
-- Copilot
-- Perplexity
-- Gemini
+- [Copilot](https://copilot.microsoft.com)
+- [Perplexity](https://www.perplexity.ai)
+- [Gemini](https://gemini.google.com)
 
 These apps have no model version to name. CiteRank.com records whatever the live app serves its users that day, so when an app changes the model behind it, your results show the change.
 
 ### ChatGPT
 
-OpenAI's assistant at chatgpt.com. CiteRank.com asks your prompt in the ChatGPT app itself, not through OpenAI's API, so the answer matches what a ChatGPT user sees. ChatGPT answers from what it learned in training and, when it searches the web, from the pages it finds, which it cites. It is the AI app on Starter and one of the picks on every other plan.
+ChatGPT is OpenAI's assistant at chatgpt.com. CiteRank.com reads each answer from the ChatGPT app itself, so it matches what a ChatGPT user sees. ChatGPT answers from what it learned in training and, when it searches the web, from the pages it finds, which it cites. It is the AI app on Starter and one of the picks on every other plan.
 
 ### Google AI Mode
 
-Google's conversational search mode, which handles follow-up questions and longer answers. CiteRank.com reads each answer from Google's own interface, along with the sources it cites.
+Google AI Mode is Google's conversational search mode, which handles follow-up questions and longer answers. CiteRank.com reads each answer from Google's own interface, along with the sources it cites.
 
 ### Google AI Overviews
 
-The AI summary Google shows above the results for many searches, with links to a few sources. CiteRank.com runs your prompt as a Google search and records the overview and its sources. The dashboard labels it **Google AI Overview**.
+An AI Overview is the summary Google shows above the results for many searches, with links to a few sources. CiteRank.com runs your prompt as a Google search and records the overview and its sources. The dashboard labels it **Google AI Overview**.
 
 ### Copilot
 
-Microsoft's assistant, built on OpenAI models and grounded in Bing's search index. CiteRank.com asks in Copilot's own interface and records the sources it cites, so how Bing indexes your pages feeds into these results.
+Copilot is Microsoft's assistant, built on OpenAI models and grounded in [Bing](https://www.bing.com)'s search index. CiteRank.com asks in Copilot's own interface and records the sources it cites, so how Bing indexes your pages feeds into these results.
 
 ### Perplexity
 
-An AI answer engine that searches the web for each question, then writes an answer from what it found and links the sources. Because every answer shows its sources, Perplexity makes it easy to see which pages get cited for your prompts.
+Perplexity is an AI answer engine that searches the web for each question, then writes an answer from what it found and links the sources.
 
 ### Gemini
 
-Google's assistant at gemini.google.com. CiteRank.com asks in the Gemini app itself. Gemini, AI Mode and AI Overviews all run on Google's Gemini models but behave differently, so your brand can do well in one Google app and poorly in another.
+Gemini is Google's assistant at gemini.google.com. CiteRank.com asks in the Gemini app itself. Gemini, [AI Mode](#google-ai-mode) and [AI Overviews](#google-ai-overviews) all run on Google's Gemini models but behave differently, so your brand can do well in one Google app and poorly in another.
+
+### Query Fan-Out
+
+The **Query Fan-Out** page shows the web searches an AI app ran while answering a prompt, but only some AI apps return them. Those searches are often worded differently from your prompt, which shows the phrasings to write for.
+
+The **Query Availability** card on that page shows, for each AI app you track, whether its searches are available, not exposed, unknown, or stopped on a given date. When an app stops revealing them, earlier periods still show theirs. LLM APIs run no searches, so they never appear there.
 
 ## LLM APIs [#direct-model-apis]
 
-CiteRank.com calls these models directly through an API, without web search, so their answers show what each model learned in training. Use them to see what a model already believes about your brand. Each runs a fixed model version:
+These hit the model's API directly, so they don't represent the actual ChatGPT or Google AI Mode experience. Use them alongside the scraped engines when you want extra coverage of Claude, Mistral, Qwen, DeepSeek, or Kimi. CiteRank.com calls them without web search, so their answers show what each model learned in training. Each runs a fixed model version:
 
 | AI App | Model Version |
 |--------|---------------|
@@ -68,9 +76,9 @@ CiteRank.com calls these models directly through an API, without web search, so 
 
 A model's training stops at a cutoff date, so these answers can describe your brand as it was rather than as it is, and recent changes don't reach them.
 
-Answers without web search cite no sources and run no searches, so these models don't add to the [Citations](/docs/user-guide/citations) page or the **Query Fan-Out** page. They count toward visibility, share of voice, sentiment and position like any other answer.
+Answers without web search cite no sources and run no searches, so these models don't add to the [Citations](/docs/user-guide/citations) page or the [Query Fan-Out](#query-fan-out) page. They count toward [visibility](/docs/user-guide/visibility), share of voice, [sentiment](/docs/user-guide/sentiment) and position like any other answer.
 
-Claude is listed here and, as **Claude (web)**, under premium models. Picking Claude here never uses a premium pairing, and a premium pairing never takes one of your picks.
+Claude is listed here and, as **Claude (web)**, under [premium models](#premium-llm-apis).
 
 ## Premium LLM APIs
 
@@ -82,9 +90,9 @@ CiteRank.com calls these models directly with their own web search turned on, so
 | **GPT Search** | GPT-6 Luna with its native web search |
 | **Grok (web)** | Grok 4.5 with its native web search |
 
-GPT Search is OpenAI's model called through its API with web search on. The ChatGPT app itself is tracked as a scraped engine. Grok is offered only here, with its web search on, and isn't one of the AI apps you can pick.
+GPT Search is OpenAI's model called through its API with web search on. The ChatGPT app itself is tracked as a [scraped engine](#chatgpt). Grok is offered only here, with its web search on, and isn't one of the AI apps you can pick.
 
-Premium tracking comes with the Pro and Business plans, and you turn it on prompt by prompt. Each prompt you track on a premium model uses one premium pairing from your organization's allowance, and each pairing is checked once a day. Pro includes 20 pairings and Business includes 30. Extra pairings cost $5/mo each ($50 a year on annual billing), from **Settings → Billing**.
+Premium tracking comes with the [Pro and Business plans](/pricing), and you turn it on prompt by prompt. Each prompt you track on a premium model uses one premium pairing from your organization's allowance, and each pairing is checked once a day. Pro includes 20 pairings and Business includes 30. Extra pairings cost $5/mo each ($50 a year on annual billing), from [Settings → Billing](/docs/user-guide/settings#organization-settings).
 
 ### How Pairings Add Up
 
@@ -98,7 +106,7 @@ You first choose AI apps when you [create a brand](/docs/user-guide/brand-setup)
 
 To change them later:
 
-1. Open the brand and go to **Settings → LLMs**.
+1. Open the brand and go to [Settings → LLMs](/docs/user-guide/settings#llm-settings).
 2. Tick the AI apps you want under **Scraped Engines** and **LLM APIs**. A counter shows how many of your plan's picks you're using, for example **3 / 4 picks**. Once you reach the limit, the other boxes are disabled until you untick one.
 3. Click **Save Changes** in the bar at the bottom of the page.
 
@@ -106,7 +114,7 @@ Your picks can be any mix of the two groups: four scraped engines, four LLM APIs
 
 CiteRank.com checks a newly added AI app right away instead of waiting for each prompt's next scheduled check. A removed app stops being checked, and the answers it already gave stay in your history. A brand needs at least one AI app, because a brand with none isn't tracked.
 
-The **Premium LLM APIs** card on the same page shows how many of your organization's premium pairings are in use. Its buttons take you to **Settings → Prompts** to choose which prompts use them, and to **Settings → Billing** to change how many you have.
+The **Premium LLM APIs** card on the same page shows how many of your organization's premium pairings are in use. Its buttons take you to [Settings → Prompts](/docs/user-guide/settings#prompt-settings) to choose which prompts use them, and to [Settings → Billing](/docs/user-guide/settings#organization-settings) to change how many you have.
 
 ## What Each Plan Includes
 
@@ -117,37 +125,54 @@ The **Premium LLM APIs** card on the same page shows how many of your organizati
 | **Pro** | $299/mo | Any 4 from Scraped Engines and LLM APIs | 4 | 20 included |
 | **Business** | $649/mo | Any 4 from Scraped Engines and LLM APIs | 4 | 30 included |
 
-Checks per day count for each AI app on each prompt, so four a day means one about every six hours. A Basic brand with 50 prompts and four picks collects up to 800 answers a day. Premium pairings are checked once a day.
+Checks per day count for each AI app on each prompt, so four a day means one about every six hours. A Basic brand with 50 prompts and four picks collects up to 800 answers a day. [Premium pairings](#premium-llm-apis) are checked once a day.
 
-Plans also differ in brands and prompts: 1 brand and 50 prompts on Starter and Basic, 2 brands and 150 prompts on Pro, and 5 brands and 350 prompts on Business. Prompts are shared across the organization's brands.
+Plans also differ in brands and prompts: 1 brand and 50 prompts on Starter and Basic, 2 brands and 150 prompts on Pro, and 5 brands and 350 prompts on Business. [Prompts](/docs/user-guide/settings#prompt-settings) are shared across the organization's brands.
 
-On Starter there is nothing to choose, so the LLMs page lists ChatGPT without checkboxes, along with the AI apps the other plans add. Click **Compare Plans** there to see the plans. See [Pricing](/pricing) for the full comparison.
+On Starter there is nothing to choose, so the [LLMs page](/docs/user-guide/settings#llm-settings) lists ChatGPT without checkboxes, along with the AI apps the other plans add. Click **Compare Plans** there, or see [Pricing](/pricing) for the full comparison.
 
 ## How Answers Vary Between Runs
 
-An AI app can answer the same prompt differently each time it's asked. One run names your brand, the next leaves it out, and a third names a competitor first. A single answer is a sample, not a verdict, so CiteRank.com asks each prompt on each AI app every day, up to four times a day, and reports the share of answers that mention you rather than one yes or no.
+An AI app can answer the same prompt differently each time it's asked. One run names your brand, the next leaves it out, and a third names a competitor first. A single answer is a sample, so CiteRank.com asks each prompt on each AI app every day, [up to four times a day](#what-each-plan-includes), and reports the share of answers that mention you.
 
-Scraped engines also change on their own schedule: an app can switch models or change how it searches, and CiteRank.com records whatever it serves that day. The **Responses** page keeps every answer in full, so you can read the exact runs behind a change in your numbers.
+Scraped engines also change on their own schedule: an app can switch models or change how it searches, and CiteRank.com records whatever it serves that day. The [Responses](/docs/user-guide/sentiment#filtering-responses-by-sentiment) page keeps every answer in full, so you can read the exact runs behind a change in your numbers.
 
 ## Why Track Several AI Apps
 
 Each AI app draws on different sources, so your brand can come up often in one and rarely in another. Copilot leans on Bing's index, Perplexity searches the web for every answer, and the LLM APIs answer from training alone. Tracking several shows where you're strong and where you're missing:
 
-- The **Competitive Landscape** card on the overview shows each company's figure on every AI app you track.
-- The filters above the overview narrow every figure to a single AI app.
+- The **Competitive Landscape** card on the [overview](/docs/user-guide/dashboard) shows each company's figure on every AI app you track.
+- The [filters above the overview](/docs/user-guide/dashboard) narrow every figure to a single AI app.
 - **Sentiment by Model** on the [Sentiment](/docs/user-guide/sentiment) page scores you and each competitor per AI app.
-
-Tracking a scraped engine and an LLM API side by side helps you tell a gap in what a model knows from a gap in what it finds when it searches.
-
-## Query Fan-Out
-
-Before answering, some AI apps search the web. CiteRank.com records the searches each answer ran and shows them on the **Query Fan-Out** page. Those searches are often worded differently from your prompt, which shows the phrasings to write for.
-
-Not every AI app reveals its searches, so the **Query Availability** card on that page shows, for each AI app you track, whether its searches are available, not exposed, unknown, or stopped on a given date. When an app stops revealing them, earlier periods still show theirs. LLM APIs run no searches, so they never appear there.
 
 ## AI App IDs
 
-The [REST API](/docs/api) and the [MCP server](/docs/api/mcp) name each AI app by an ID, such as `chatgpt` or `google-ai-overview`, rather than by its display name. `GET /models` lists them all.
+The [REST API](/docs/api) and the [MCP server](/docs/api/mcp) name each AI app by an ID rather than by its display name: `chatgpt`, `google-ai-mode`, `google-ai-overview`, `copilot`, `perplexity`, `gemini`, `qwen`, `deepseek`, `mistral`, `claude`, `kimi`, and `grok`. `GET /models` lists them all:
+
+```bash
+curl https://app.citerank.com/api/v1/models \
+  -H "Authorization: Bearer citerank_..."
+```
+
+Six endpoints take an ID as `model` to narrow their figures to one AI app, alongside the `start` and `end` they require:
+
+```http
+GET /api/v1/brands/BRAND_ID/analytics?model=copilot&start=2026-10-01T00:00:00Z&end=2026-11-01T00:00:00Z
+GET /api/v1/brands/BRAND_ID/prompt-performance?model=google-ai-mode&start=2026-10-01T00:00:00Z&end=2026-11-01T00:00:00Z
+GET /api/v1/brands/BRAND_ID/citations/domains?model=perplexity&start=2026-10-01T00:00:00Z&end=2026-11-01T00:00:00Z
+GET /api/v1/brands/BRAND_ID/citations/urls?model=gemini&start=2026-10-01T00:00:00Z&end=2026-11-01T00:00:00Z
+GET /api/v1/brands/BRAND_ID/query-fanout?model=chatgpt&start=2026-10-01T00:00:00Z&end=2026-11-01T00:00:00Z
+GET /api/v1/prompts/PROMPT_ID/runs?model=google-ai-overview&start=2026-10-01T00:00:00Z&end=2026-11-01T00:00:00Z
+```
+
+A prompt's `premiumModels` field takes `claude` for Claude (web), `chatgpt` for GPT Search, and `grok` for Grok (web). A read-write key can set it:
+
+```bash
+curl -X PATCH https://app.citerank.com/api/v1/prompts/PROMPT_ID \
+  -H "Authorization: Bearer citerank_..." \
+  -H "Content-Type: application/json" \
+  -d '{"premiumModels": ["chatgpt", "claude"]}'
+```
 
 ## FAQ
 
@@ -157,20 +182,20 @@ No. CiteRank.com runs every check itself, so you don't need an account, subscrip
 
 ### Can I Track More Than Four AI Apps on a Brand?
 
-Not on the listed plans, which allow four picks per brand, plus premium pairings on Pro and Business. For more, email [team@citerank.com](mailto:team@citerank.com).
+Not on the listed plans, which allow four picks per brand, plus [premium pairings](#premium-llm-apis) on Pro and Business. For more, email [team@citerank.com](mailto:team@citerank.com).
 
 ### Does Picking Claude Use a Premium Pairing?
 
-No. Claude under **LLM APIs** is a pick: it runs without web search on every prompt, at your plan's rate. **Claude (web)** is a premium model you choose prompt by prompt, and each prompt on it uses one pairing. You can track either, both, or neither.
+No. Claude under [LLM APIs](#direct-model-apis) is a pick: it runs without web search on every prompt, at your plan's rate. **Claude (web)** is a premium model you choose prompt by prompt, and each prompt on it uses one pairing. You can track either, both, or neither.
 
 ### Is GPT Search the Same as ChatGPT?
 
-No. ChatGPT is read from the ChatGPT app, as a visitor sees it. GPT Search is OpenAI's GPT-6 Luna model called through its API with web search on. The two can answer the same prompt differently, so the dashboard's filters list them separately.
+No. ChatGPT is read from the [ChatGPT app](#chatgpt), as a visitor sees it. [GPT Search](#premium-llm-apis) is OpenAI's GPT-6 Luna model called through its API with web search on. The two can answer the same prompt differently, so the dashboard's filters list them separately.
 
 ### Why Do Some AI Apps Show No Citations?
 
-LLM APIs answer without web search, so they have no sources to cite. Scraped engines cite sources when the app shows them with its answer.
+[LLM APIs](#direct-model-apis) answer without web search, so they have no sources to cite. [Scraped engines](#scraped-engines) cite sources when the app shows them with its answer.
 
 ### What Happens to My Data When I Change Plans?
 
-Nothing is deleted. If you move to a plan with lower limits, anything beyond them stops running, and the answers already collected stay in your dashboard.
+Nothing is deleted. If you move to a [plan](/pricing) with lower limits, anything beyond them stops running, and the answers already collected stay in your dashboard.

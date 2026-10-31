@@ -1,21 +1,20 @@
 ---
 title: Settings
-description: Configure your brand, competitors, prompts, AI apps, team, and billing.
+description: Configure your brand, competitors, prompts, and AI model settings.
 ---
 
 ## Settings Overview
 
-The **Settings** section is accessible from the sidebar. Each brand has four sub-pages for managing what CiteRank.com tracks: Brand, Competitors, Prompts, and LLMs.
+The **Settings** section is accessible from the sidebar. It has four sub-pages for managing your CiteRank.com configuration.
 
 ## Brand Settings
 
 Configure your brand identity:
 
-- **Brand Name**: your brand name as tracked in AI responses
-- **Brand Slug**: the part of the dashboard address that names this brand
-- **Website**: primary website URL
-- **Additional Domains**: other domains your brand owns (e.g. blog subdomain, product domains)
-- **Brand Aliases**: alternative names or spellings that AI models might use
+- **Name**: Your brand name as tracked in AI responses
+- **Website**: Primary website URL
+- **Domains**: Additional domains associated with your brand (e.g. blog subdomain, product domains)
+- **Aliases**: Alternative names or spellings that AI models might use
 
 {/* TODO: Screenshot of brand settings */}
 
@@ -33,19 +32,22 @@ Manage the competitors you're tracking:
 
 Manage your tracking prompts:
 
-- **Add prompts**: click **Add Prompt**, paste several with **Add Multiple**, or click **Suggest Prompts** for AI suggestions that skip what you already track
-- **Edit prompts**: modify prompt text and tags
-- **Enable/Disable**: toggle tracking for one prompt or several at once without deleting them
-- **Remove**: stop tracking prompts you no longer need; their history is kept
-- **Premium**: on Pro and Business, also track a prompt on premium models ([details](/docs/user-guide/providers#premium-llm-apis))
-
-Click **Save Changes** at the bottom of the page to apply your edits.
+- **Add prompts**: Create new prompts manually, paste several at once, or click **Suggest Prompts** for AI suggestions that skip what you already track
+- **Edit prompts**: Modify prompt text and tags
+- **Enable/Disable**: Toggle tracking for individual prompts without deleting them
+- **Remove**: Stop tracking prompts you no longer need
+- **Premium**: On Pro and Business, also track a prompt on premium models ([details](/docs/user-guide/providers#premium-llm-apis))
 
 {/* TODO: Screenshot of prompt settings */}
 
 ## LLM Settings
 
-Choose which AI apps CiteRank.com checks this brand's prompts on, within your plan's limits ([details](/docs/user-guide/providers#choosing-ai-apps-for-a-brand)).
+Configure which AI models CiteRank.com queries, within your plan's limits ([details](/docs/user-guide/providers#choosing-ai-apps-for-a-brand)):
+
+- **Scraped Engines**: ChatGPT, Google AI Mode, Google AI Overviews, Copilot, Perplexity, and Gemini
+- **LLM APIs**: Qwen, DeepSeek, Mistral, Claude, and Kimi
+
+You can enable or disable individual models.
 
 {/* TODO: Screenshot of LLM settings */}
 
@@ -53,6 +55,6 @@ Choose which AI apps CiteRank.com checks this brand's prompts on, within your pl
 
 Organization admins manage these settings, which apply to every brand:
 
-- **Team**: invite teammates by email as a **Member** or **Admin**
-- **Billing**: change the plan, buy extra premium pairings on Pro and Business, and manage payment methods and invoices
-- **API Keys**: issue and revoke keys for the [REST API](/docs/api) and [MCP](/docs/api/mcp)
+- **Team**: Invite teammates as a **Member** or **Admin**
+- **Billing**: Change plans, buy extra premium pairings on Pro and Business, and manage invoices
+- **API Keys**: Issue and revoke keys for the [REST API](/docs/api) and [MCP](/docs/api/mcp)
