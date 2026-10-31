@@ -17,17 +17,17 @@ export const HOME_FAQS: FaqItem[] = [
 	{
 		question: "What is answer engine optimization (AEO)?",
 		answer:
-			"Answer engine optimization (AEO), also called generative engine optimization (GEO) or AI SEO, is the practice of measuring and improving how of12 AI apps name and cite your business. The goal is to be one of the businesses an AI names in its answer, with your pages among the sources it cites.",
+			"Answer engine optimization (AEO), also called generative engine optimization (GEO) or LLM optimization (LLMO), is the practice of measuring and improving how often AI answer engines mention and cite your brand. Instead of ranking in a list of blue links, the goal is to be the source an AI quotes in its answer. (Cite and rank are also where CiteRank.com gets its name.)",
 	},
 	{
 		question: "What is the difference between AEO, GEO and SEO?",
 		answer:
-			"SEO ranks pages in traditional search results. AEO and GEO are two names for one newer discipline: getting named and cited inside answers from ChatGPT, Perplexity, Google AI Overviews and other AI apps. The two overlap, because AI apps run web searches and cite the pages they find, but AEO is measured by how often and how favorably an AI names your business. CiteRank.com measures the AEO side, including the web searches an AI runs before answering and the sources it cites.",
+			"SEO is about ranking pages in traditional search results, while AEO and GEO are two names for the same newer discipline: getting mentioned and cited inside AI-generated answers from tools like ChatGPT, Perplexity, and Google AI Overviews. The two overlap, because AI engines run web searches and cite the pages they find, but success is measured differently: by how often and how favorably an AI names your brand, not by your position on a results page. CiteRank.com measures the AEO side, including the web searches AI engines fan a prompt out into and the sources they cite.",
 	},
 	{
 		question: "Which AI apps does CiteRank.com track?",
 		answer:
-			"ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews and Google AI Mode. ChatGPT, Gemini, Perplexity, Copilot, Google AI Overviews and Google AI Mode are read from the same interface your buyers use. For each answer, CiteRank.com records whether you are named, which competitors appear with you, and which sources the AI cites.",
+			"CiteRank.com tracks ChatGPT, Google AI Mode, Google AI Overviews, Gemini, Perplexity, Copilot, and Claude, plus models like Grok, Mistral, DeepSeek, Qwen, and Kimi. Consumer products like ChatGPT and Google AI Mode are scraped from the real interface your customers see, not approximated through an API. For each answer, CiteRank.com records whether your brand appears, which competitors show up alongside it, and which sources the model cites.",
 	},
 	{
 		question: "How is AI visibility measured?",
@@ -35,39 +35,39 @@ export const HOME_FAQS: FaqItem[] = [
 			"CiteRank.com asks a fixed set of questions in each AI app on a schedule and scores each question by how often your business appears in the answers, from 0 to 100%. It also calculates share of voice (your share of brand mentions against your competitors), sentiment (whether the answers that name you praise or criticize you, scored 0 to 100) and position (where you rank among the businesses an answer names), and shows which websites and pages the answers cite. AI answers vary from run to run, so CiteRank.com asks each question repeatedly and reports trends.",
 	},
 	{
-		question: "What does the AI search agency do?",
+		question: "How do I track my brand in ChatGPT?",
 		answer:
-			"It does the work the tracker ranks, every month. The agency writes the comparison, alternatives and guide pages your site is missing, updates pages AI has stopped citing, gets you onto the review sites and best-of lists AI cites, answers buyers' questions in forums and communities, publishes guest articles on high-authority sites AI already cites, and fixes anything that stops AI crawlers reading your site. Each month a report lists every piece of work, the question it targets, and the AI answers before and after.",
+			"Add your website to CiteRank.com and its Prompt Wizard generates the questions your buyers are likely to ask ChatGPT, based on your products, competitors, and personas. CiteRank.com then runs those prompts in ChatGPT on a schedule and records every answer: whether your brand was mentioned, which competitors were named, and which sources were cited. Every CiteRank.com plan includes ChatGPT, starting with the $29/mo Starter plan.",
 	},
 	{
-		question: "How much does CiteRank.com cost?",
+		question: "How much does CiteRank.com cost compared to Profound?",
 		answer:
-			"The AI Visibility Tracker costs $29/mo on Starter, $99/mo on Basic, $299/mo on Pro and $649/mo on Business. Yearly billing saves two months. Every plan includes unlimited seats and API and MCP access. The AI search agency is a separate service: book a call to talk it through.",
+			"CiteRank.com is cheaper and simpler to buy. Profound's pricing page lists a free trial and an Enterprise plan quoted by sales, while CiteRank.com is self-serve with public prices, starting at $29/mo for the Starter plan. From the $99/mo Basic plan, every prompt is checked 4× a day, where Profound checks daily. Pro ($299/mo) and Business ($649/mo) add more brands, more prompts, and premium grounded models. The AI search agency is a separate service: book a call to talk it through.",
 		links: [{ text: "book a call", href: "/agency" }],
 	},
 	{
-		question: "Do I need to talk to sales?",
+		question: "Do I need a sales call?",
 		answer:
-			"No. The tracker is self-serve: sign up, pick a plan and start tracking. Billing is month to month, and you can cancel any time.",
+			"No. The tracker is fully self-serve: you sign up, pick a plan, and start tracking without a demo or sales call. Billing is month to month, you can cancel any time, and yearly billing saves two months. Only custom plans (more brands, more prompts, or more frequent checks) go through a conversation.",
 	},
 ];
 
 // Pricing page FAQ.
 export const PRICING_FAQS: FaqItem[] = [
 	{
-		question: "Do I need to talk to sales to use the tracker?",
+		question: "Do I need to talk to sales to sign up for the tracker?",
 		answer:
-			"No. Sign up, pick a plan and start tracking without a demo or sales call. Every plan includes unlimited seats plus API and MCP access, and yearly billing saves two months. Only custom plans go through a conversation.",
+			"No. The tracker is fully self-serve: you sign up, pick a plan, and start tracking without a demo or sales call. Every plan includes unlimited seats plus API and MCP access, and yearly billing saves two months. Only custom contracts (higher sampling rates, more brands, or custom limits) go through a conversation.",
 	},
 	{
-		question: "How often does CiteRank.com ask my questions?",
+		question: "How often does CiteRank.com run my prompts?",
 		answer:
-			"The Starter plan asks each question once a day. Basic, Pro and Business ask each question up to four times a day in every AI app you choose. Premium models (GPT Search, and Claude and Grok on the web) run once a day.",
+			"On CiteRank.com, the Starter plan runs each prompt once a day, and the Basic, Pro, and Business plans run each prompt up to 4 times a day on every platform you choose. Premium grounded models (GPT Search, and Claude and Grok on the web) run once a day, and custom plans can sample more often.",
 	},
 	{
 		question: "Does CiteRank.com have an API or MCP server?",
 		answer:
-			"Yes. A REST API covers brands, prompts, competitors, analytics, sentiment, citations, runs and opportunities, and an MCP server lets AI assistants such as Claude Code, Codex, Cursor and VS Code read your visibility data and manage prompts. Both come with every plan. API keys can be read-only or read-write and limited to specific brands.",
+			"Yes. CiteRank.com has a REST API for brands, prompts, competitors, analytics, sentiment, citations, runs, and opportunities, and an MCP server so AI assistants like Claude Code, Codex, Cursor, and VS Code can query your visibility data and manage prompts directly. Both are included on every CiteRank.com plan, from Starter to Business. API keys are issued from Settings, can be read-only or read-write, and can be limited to specific brands.",
 	},
 	{
 		question: "Is the AI search agency included in a plan?",
@@ -94,22 +94,22 @@ export const ABOUT_FAQS: FaqItem[] = [
 	{
 		question: "Who founded CiteRank.com?",
 		answer:
-			"Adam Danyal, who has more than 2 million LinkedIn followers, and Julia Danyal, who has more than 360,000. They also run Chief AI Leader, an exam-based AI certification for leaders, and AI For Leaders, a daily AI newsletter read by more than 50,000 leaders.",
+			"Adam Danyal (more than 2 million LinkedIn followers) and Julia Danyal (more than 360,000), who run Chief AI Leader, an exam-based AI certification for leaders, and AI For Leaders, a daily AI newsletter read by more than 50,000 leaders.",
 	},
 	{
 		question: "Who owns CiteRank.com?",
 		answer:
-			"CiteRank.com is a trading name of Danx Digital Limited, a company registered in the United Kingdom (company number 13275434).",
+			"CiteRank.com is a trading name of Danx Digital Limited, a company registered in the United Kingdom (company number 13275434). It provides the AI Visibility Tracker and the AI search agency.",
 	},
 	{
 		question: "Where is CiteRank.com based?",
 		answer:
-			"In London. Danx Digital Limited, the company behind CiteRank.com, is registered at 86-90 Paul Street, London EC2A 4NE.",
+			"In London. Danx Digital Limited, the company behind CiteRank.com, is registered at 86-90 Paul Street, London EC2A 4NE. The tracker is a hosted web app, so you can use it from anywhere.",
 	},
 	{
 		question: "Does CiteRank.com require an annual contract?",
 		answer:
-			"No. The tracker is billed month to month and you can cancel any time. Yearly billing is optional and saves two months.",
+			"No. The tracker is billed month to month and you can cancel any time. Yearly billing is optional and saves two months. Only custom plans go through a conversation.",
 	},
 	{
 		question: "Is CiteRank.com an AEO, GEO or AI SEO tool?",
@@ -119,7 +119,7 @@ export const ABOUT_FAQS: FaqItem[] = [
 	{
 		question: "Where does the name CiteRank.com come from?",
 		answer:
-			"It joins cite, what an AI does when it names a source, with rank, where a business stands against its competitors in those answers.",
+			"It joins cite, what an AI does when it names a source, with rank, where a business stands against its competitors in those answers. CiteRank.com tracks both: which sources each AI cites, and where you rank among the brands it names.",
 	},
 ];
 

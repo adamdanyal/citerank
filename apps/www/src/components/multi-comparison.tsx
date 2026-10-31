@@ -59,13 +59,12 @@ export function MultiComparison({ tools }: { tools: Competitor[] }) {
 					<div>
 						<h3 className="mb-1 text-lg font-semibold text-zinc-950">CiteRank.com</h3>
 						<div className="mt-2 flex flex-wrap gap-2">
-							<Badge variant="secondary">AI Search Agency</Badge>
+							<Badge variant="secondary">Search Agency</Badge>
 							<Badge variant="secondary">12 AI Apps</Badge>
-							<Badge variant="secondary">From {ENTRY_PRICE}</Badge>
+							<Badge variant="secondary">{ENTRY_PRICE}</Badge>
 						</div>
 						<p className="mt-3 text-sm text-zinc-600">
-							AI visibility tracker and AI search agency. Checks 12 AI apps up to four times a day and keeps every
-							answer in full. Plans run from {PLAN_RANGE}.
+							AI visibility tracker for 12 AI apps, plus an AI search agency. Plans run from {PLAN_RANGE}.
 						</p>
 					</div>
 				</div>

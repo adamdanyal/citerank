@@ -95,14 +95,14 @@ function fateSoundbite(competitor: Competitor): string | undefined {
 		return `${name} has shut down. ${TRACKER_POINT}`;
 	}
 	if (competitor.status === "pivoted") {
-		return `${name} has pivoted away from AI visibility. CiteRank.com is built for AI visibility alone: a tracker that checks 12 AI apps up to four times a day, plus an AI search agency that does the work.`;
+		return `${name} has pivoted away from AI visibility. CiteRank.com is built for AI visibility alone: a tracker plus an AI search agency that does the work.`;
 	}
 	if (competitor.status === "acquired") {
 		if (competitor.fate) {
-			return `${name} is gone as a standalone product. ${competitor.fate.summary} ${TRACKER_POINT}`;
+			return `${name} is gone as a standalone product. ${competitor.fate.summary} CiteRank.com is a tracker plus an AI search agency, with plans from ${ENTRY_PRICE}.`;
 		}
 		const absorbed = ABSORBED_EXAMPLES.filter((example) => example !== name);
-		return `${name} has been acquired, and acquired AI visibility tools rarely stay put: ${joinAnd(absorbed)} were all folded into their buyers' products. ${TRACKER_POINT}`;
+		return `${name} has been acquired, and acquired AI visibility tools rarely stay put: ${joinAnd(absorbed)} were all folded into their buyers' products. CiteRank.com is a tracker plus an AI search agency, with plans from ${ENTRY_PRICE}.`;
 	}
 	return undefined;
 }
@@ -122,7 +122,7 @@ export function getSoundbite(competitor: Competitor): string {
 
 	const license = competitor.license ? RESTRICTIVE_LICENSES[competitor.license] : undefined;
 	if (license) {
-		return `${name} is ${license}. CiteRank.com is a hosted tracker with nothing to deploy, and it checks 12 AI apps up to four times a day, with plans from ${ENTRY_PRICE}.`;
+		return `${name} is ${license}. CiteRank.com is a hosted tracker with nothing to deploy, unlimited seats, and plans from ${ENTRY_PRICE}.`;
 	}
 
 	const tracksAnyEngine = SOUNDBITE_ENGINES.some((key) => competitor.features[key]);
@@ -142,12 +142,12 @@ export function getSoundbite(competitor: Competitor): string {
 
 	const price = competitor.pricing?.startingPrice;
 	if (price && !isOpenSource(competitor)) {
-		return `${name} starts at ${price}. CiteRank.com covers the same engines from ${ENTRY_PRICE}, and its AI search agency can do the work too.`;
+		return `${name} starts at ${price}. CiteRank.com covers the same engines from ${ENTRY_PRICE}, and its agency can do the work too.`;
 	}
 	if (isOpenSource(competitor)) {
-		return `${name} is open source. CiteRank.com is a hosted tracker plus an AI search agency that does the work, with plans from ${ENTRY_PRICE}.`;
+		return `${name} is open source. CiteRank.com is a hosted tracker plus an AI search agency that does the work, from ${ENTRY_PRICE}.`;
 	}
-	return `${name} matches CiteRank.com on the main engines and on API, MCP, sentiment, and citation tracking. CiteRank.com adds an AI search agency that does the work, and keeps every answer in full, so each number traces back to the words an AI wrote.`;
+	return `${name} covers the same engines and features as CiteRank.com. CiteRank.com adds an AI search agency that does the work.`;
 }
 
 /**
@@ -188,14 +188,14 @@ export function getComparisonFaqs(competitor: Competitor): FaqItem[] {
 
 	faqs.push({
 		question: `How much does CiteRank.com cost compared with ${name}?`,
-		answer: `CiteRank.com plans run from ${PLAN_RANGE}, and yearly billing saves two months. ${price ? `The starting price listed for ${name} is ${price}.` : `No public starting price is listed for ${name}.`}`,
+		answer: `CiteRank.com plans run from ${PLAN_RANGE}, and yearly billing saves two months. Every plan includes unlimited seats plus API and MCP access, and you can sign up and start tracking without a sales call. ${price ? `The starting price listed for ${name} is ${price}.` : `No public starting price is listed for ${name}.`}`,
 	});
 
 	faqs.push({
 		question: `Is ${name} open source?`,
 		answer: openSource
-			? `Yes, ${name} is open source. CiteRank.com is a hosted tracker with nothing to deploy, and it keeps every answer it collects in full, so each number traces back to the words an AI wrote.`
-			: `No, ${name} is a closed-source, hosted product, and so is CiteRank.com. CiteRank.com keeps every answer it collects in full, so you can read the words behind each number.`,
+			? `Yes, ${name} is open source. CiteRank.com is a closed-source, hosted tracker with nothing to deploy, and it keeps every answer it collects in full, so each number traces back to the words an AI wrote.`
+			: `No, ${name} is a closed-source, hosted product, and so is CiteRank.com. CiteRank.com keeps every answer it collects in full, so you can read the words behind each number, and sentiment scores come with the passage behind them.`,
 	});
 
 	faqs.push({
@@ -206,7 +206,7 @@ export function getComparisonFaqs(competitor: Competitor): FaqItem[] {
 	faqs.push({
 		question: "Can CiteRank.com do the work as well as track it?",
 		answer:
-			"Yes. CiteRank.com's AI search agency does the work every month for businesses that want it done. It writes the comparison, alternatives, and guide pages a site is missing, updates pages AI has stopped citing, gets the business onto the review sites and best-of lists AI cites, and answers buyers' questions in forums and communities. Each month a report lists every piece of work, the question it targets, and the AI answers before and after.",
+			"Yes. CiteRank.com's AI search agency does the work every month. It writes the pages a site is missing, updates pages AI has stopped citing, gets the business onto the review sites and best-of lists AI cites, and reports the AI answers before and after.",
 	});
 
 	return faqs;

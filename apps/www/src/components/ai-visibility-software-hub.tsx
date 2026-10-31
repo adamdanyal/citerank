@@ -9,7 +9,7 @@ const LINK = "font-medium text-blue-700 underline underline-offset-2 hover:text-
 const FEATURES = [
 	{
 		title: "Cross-platform tracking",
-		body: "Monitors your brand across several engines: ChatGPT, Perplexity, Gemini, Copilot, and Google AI Overviews.",
+		body: "Monitors your brand across several engines at once: ChatGPT, Perplexity, Gemini, Copilot, Google AI Overviews, and more.",
 	},
 	{
 		title: "Mention & citation analysis",
@@ -145,7 +145,7 @@ export function AiVisibilitySoftwareHub() {
 								<ArrowRight className="size-3.5" />
 							</a>
 							<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
-								Have Us Do the Work
+								Let Us Do the Work
 							</Link>
 						</div>
 					</div>

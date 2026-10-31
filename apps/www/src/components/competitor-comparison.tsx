@@ -130,13 +130,13 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 					<div>
 						<h3 className="mb-1 text-lg font-semibold text-zinc-950">CiteRank.com</h3>
 						<div className="mt-2 flex flex-wrap gap-2">
-							<Badge variant="secondary">AI Search Agency</Badge>
+							<Badge variant="secondary">Search Agency</Badge>
 							<Badge variant="secondary">12 AI Apps</Badge>
 							<Badge variant="secondary">From {ENTRY_PRICE}</Badge>
 						</div>
 						<p className="mt-3 text-sm text-zinc-600">
-							AI visibility tracker and AI search agency. Checks 12 AI apps, including ChatGPT, Claude, and Google AI
-							Overviews, up to four times a day and keeps every answer in full. Plans run from {PLAN_RANGE}.
+							AI visibility tracker and AI search agency. Track AI visibility across ChatGPT, Claude, and Google AI
+							Overviews, with every answer kept in full.
 						</p>
 					</div>
 					<div>
@@ -304,30 +304,29 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
 							<h3 className="font-semibold text-zinc-950">Every Answer Kept in Full</h3>
 							<p className="mt-2 text-sm text-zinc-600">
-								CiteRank.com keeps every AI answer it collects, word for word, so each number traces back to the words
-								an AI wrote. Sentiment scores come with the passage behind them.
+								Every AI answer is kept in full, so each number traces back to the words an AI wrote. Sentiment scores
+								come with the passage behind them.
 							</p>
 						</div>
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
-							<h3 className="font-semibold text-zinc-950">12 AI Apps, Checked up to Four Times a Day</h3>
+							<h3 className="font-semibold text-zinc-950">12 AI Apps, up to 4× a Day</h3>
 							<p className="mt-2 text-sm text-zinc-600">
-								Put your buyer questions to ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen,
-								Kimi, Google AI Overviews, and Google AI Mode. Plans run from {PLAN_RANGE}, and yearly billing saves two
-								months.
+								Put your buyer questions to ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews, and seven more AI
+								apps. Plans run from {PLAN_RANGE}.
 							</p>
 						</div>
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
 							<h3 className="font-semibold text-zinc-950">Your Data, in Your Stack</h3>
 							<p className="mt-2 text-sm text-zinc-600">
 								Pull every metric, sentiment included, into your own code with the REST API, or ask Claude Code and
-								Cursor about it over MCP.
+								Cursor about it over MCP. Both are included on every plan, from Starter to Business.
 							</p>
 						</div>
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
-							<h3 className="font-semibold text-zinc-950">An Agency That Does the Work</h3>
+							<h3 className="font-semibold text-zinc-950">We Do the Work</h3>
 							<p className="mt-2 text-sm text-zinc-600">
-								About once a week, the tracker ranks what to do next. CiteRank.com's AI search agency does that work
-								every month for businesses that want it done, and reports the AI answers before and after.
+								The tracker ranks what to do next. CiteRank.com's AI search agency does that work each month and reports
+								the AI answers before and after.
 							</p>
 						</div>
 					</div>

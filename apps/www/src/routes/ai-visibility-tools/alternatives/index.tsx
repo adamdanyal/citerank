@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/se
 
 const title = "AI Visibility Tool Alternatives · CiteRank.com";
 const description =
-	"Find alternatives to the AI visibility tools you're evaluating. Each guide compares the closest options, with CiteRank.com included for reference.";
+	"Find alternatives to the AI visibility tools you're evaluating. Each guide compares the closest options feature by feature, with CiteRank.com included for reference.";
 
 const items = indexedCompetitors.map((c) => ({
 	name: `${c.name} alternatives`,
@@ -52,7 +52,7 @@ function AlternativesHub() {
 				<DirectoryBackLink />
 				<DirectoryHero
 					title="Alternatives to every AI visibility tool"
-					lead="Shopping for a replacement, or just want to know your options? Pick a tool to see its closest alternatives, compared side by side with CiteRank.com."
+					lead="Shopping for a replacement, or just want to know your options? Pick a tool to see its closest alternatives, including CiteRank.com, a tracker plus an AI search agency."
 				/>
 				{indexableCategories.map((category) => (
 					<DirectorySection key={category} title={CATEGORY_LABELS[category]}>

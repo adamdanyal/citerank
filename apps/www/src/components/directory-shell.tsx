@@ -53,11 +53,11 @@ export function DirectoryCiteRankBanner({
 		<section className="border-b border-zinc-200 bg-zinc-50 py-10">
 			<div className="mx-auto max-w-6xl px-4 md:px-6">
 				<div className="rounded-md border border-blue-200 bg-blue-50/40 p-6">
-					<h2 className="font-heading text-xl text-zinc-950">CiteRank.com: A Tracker and an AI Search Agency</h2>
+					<h2 className="font-heading text-xl text-zinc-950">CiteRank.com: Tracker and AI Search Agency</h2>
 					<p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-600">{pitch}</p>
 					<div className="mt-4 flex flex-wrap gap-3">
 						<a href={SIGN_UP_URL} className={buttonVariants({ size: "sm" })}>
-							Start Tracking
+							Start Tracking Now
 						</a>
 						<Link
 							to="/ai-visibility-tools/$slug"
@@ -80,15 +80,15 @@ export function CiteRankCta() {
 			<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
 				<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Ready to Track Your AI Visibility?</h2>
 				<p className="mx-auto mt-4 max-w-xl text-lg text-balance text-zinc-600">
-					Start monitoring how ChatGPT, Claude, Google AI Overviews, and seven more AI apps talk about your brand. Plans
-					start at ${CLOUD_ENTRY_PRICE_USD}/mo, or have our AI search agency do the work.
+					Start monitoring how ChatGPT, Claude, Google AI Overviews, and nine more AI apps talk about your brand. Plans
+					start at ${CLOUD_ENTRY_PRICE_USD}/mo, or have our agency do the work.
 				</p>
 				<div className="mt-8 flex flex-wrap justify-center gap-3">
 					<a href={SIGN_UP_URL} className={buttonVariants({ size: "sm" })}>
-						Start Tracking
+						Start Tracking Now
 					</a>
 					<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
-						Have Us Do the Work
+						Let Us Do the Work
 					</Link>
 				</div>
 			</div>

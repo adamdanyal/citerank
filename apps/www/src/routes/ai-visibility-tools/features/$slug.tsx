@@ -41,7 +41,7 @@ export const Route = createFileRoute("/ai-visibility-tools/features/$slug")({
 			: tools.length <= 25
 				? `${tools.length} Best ${term} (2026) · CiteRank.com`
 				: `${term} Compared: ${tools.length} Tools (2026) · CiteRank.com`;
-		const description = `${tools.length} AI visibility tools with ${phrase}, compared on engine coverage, pricing, and export.`;
+		const description = `${tools.length} AI visibility tools with ${phrase}, compared on engine coverage, pricing, and export, including CiteRank.com, a tracker plus an AI search agency.`;
 		const path = `/ai-visibility-tools/features/${params.slug}`;
 		return {
 			meta: [{ title }, { name: "description", content: description }, ...ogMeta({ title, description, path })],

@@ -386,12 +386,12 @@ export const competitors: Competitor[] = [
 					detail:
 						"Profound has expanded well past visibility tracking, and people who leave it describe the result as heavy: a lot of surface area to move through to reach the handful of numbers they check each week.",
 					citeRank:
-						"The CiteRank.com tracker sticks to visibility, share of voice, sentiment, citations, query fan-out, and a weekly list of what to do next. There is no content generator, no shopping tracker, and no crawler suite to navigate around. When you want the work done, the agency does it.",
+						"The CiteRank.com tracker does one job. Visibility, share of voice, citations, query fan-out, and the opportunities that follow from them. There is no content generation, no shopping tracker, and no crawler suite to navigate around.",
 				},
 				{
 					headline: "The day-to-day use gets tiring",
 					detail:
-						"A common complaint is that the tool stopped being pleasant to open, and checking a weekly number turned into a chore.",
+						"A common complaint is not about a missing feature at all. It is that the tool stopped being pleasant to open, and checking a weekly number turned into a chore.",
 					citeRank:
 						"CiteRank.com is built to answer a question in a few seconds: are we showing up, who is beating us, and what changed. Every view is a direct answer, and the whole thing is fast enough that checking it daily is not a decision.",
 				},
@@ -404,9 +404,9 @@ export const competitors: Competitor[] = [
 				{
 					headline: "You cannot check the numbers",
 					detail:
-						"Profound's scoring is a black box. When a visibility number moves, you cannot see what moved it, and when it lands in a board deck, you are vouching for a figure you cannot audit.",
+						"People who leave Profound describe its scoring as a black box. When a visibility number moves, you cannot see what moved it, and when it lands in a board deck, you are vouching for a figure you cannot audit.",
 					citeRank:
-						"CiteRank.com keeps every answer in full, so each number traces back to the words an AI wrote, and sentiment scores come with the passage behind them. The API and MCP server let you pull all of it into your own reports.",
+						"CiteRank.com keeps every answer in full, so each number traces back to the words an AI wrote. Sentiment scores come with the passage behind them, and the API lets you export all of it.",
 				},
 			],
 		},
@@ -424,7 +424,7 @@ export const competitors: Competitor[] = [
 		ahrefsTraffic: 39908,
 		status: "active",
 		soundbite:
-			"DataForSEO is a raw data API you build on. CiteRank.com is a finished tracker that turns AI answers into visibility, citation, and sentiment reporting and a weekly list of what to do next.",
+			"DataForSEO is a raw data API you build on, not a tracker. CiteRank.com is a finished tracker that turns AI answers into reporting and a weekly list of what to do next.",
 		features: {
 			multiLlmTracking: true,
 			chatgpt: true,
@@ -549,7 +549,7 @@ export const competitors: Competitor[] = [
 		ahrefsDR: 74,
 		ahrefsTraffic: 1055,
 		status: "active",
-		soundbite: `Peec AI is a capable hosted tracker. CiteRank.com pairs its tracker with an AI search agency that does the work, with plans from ${ENTRY_PRICE}.`,
+		soundbite: `Peec AI is a capable hosted tracker. CiteRank.com keeps every answer in full, so each number traces back to the words an AI wrote, and pairs its tracker with an AI search agency that does the work, from ${ENTRY_PRICE}.`,
 		features: {
 			multiLlmTracking: true,
 			chatgpt: true,
@@ -1438,7 +1438,7 @@ export const competitors: Competitor[] = [
 		url: "https://aiclicks.io/",
 		tagline: "Done-for-you action plans with AI agents",
 		description:
-			"AIclicks provides done-for-you action plans powered by AI agents that identify visibility gaps and competitor opportunities. Their full-service approach adds specific action plans for improving AI search presence on top of the data.",
+			"AIclicks provides done-for-you action plans powered by AI agents that identify visibility gaps and competitor opportunities. Their full-service approach adds specific action plans for improving AI search presence on top of the data they show you.",
 		category: "tracking",
 		ahrefsDR: 49,
 		ahrefsTraffic: 5718,
@@ -1844,9 +1844,9 @@ export const competitors: Competitor[] = [
 		name: "GetCito",
 		domain: "getcito.com",
 		url: "https://getcito.com/",
-		tagline: "A fork of another open-source AI visibility tracker",
+		tagline: "A fork of another open-source AI visibility tracker, taken on July 10, 2026",
 		description:
-			"GetCito is a fork of another open-source AI visibility tracker. It launched in November 2025 as its own Next.js and Firebase application, then on July 10, 2026 replaced that codebase with the other project's (847 files, +131,716/-50,931 lines) in a single pull request. Its feature set was that project's as of the fork date, and it has shipped less since (17 commits to the original's 98 in the following month), so it is falling further behind.",
+			"GetCito is a fork of another open-source AI visibility tracker. It launched in November 2025 as its own Next.js and Firebase application, then on July 10, 2026 replaced that codebase with the other project's (847 files, +131,716/-50,931 lines) in a single pull request. Its feature set was that project's as of the fork date, and it has shipped less since (17 commits to the original's 98 in the following month), so it is falling further behind rather than diverging into something competitive.",
 		category: "open-source",
 		ahrefsDR: 34,
 		ahrefsTraffic: 34,
@@ -1877,11 +1877,11 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: true, startingPrice: "$599/mo", hasEnterprise: true },
 		highlights: [
-			"A fork of another open-source AI visibility tracker",
+			"An MIT-licensed fork of another open-source AI visibility tracker's codebase",
 			"Codebase replaced with the other project's on July 10, 2026",
 			"Ships less than the project it forked: 17 commits to the original's 98 in the first month after",
 		],
-		notes: "Fork of another open-source tracker's codebase since July 2026.",
+		notes: "Fork of another tracker's codebase since July 2026.",
 	},
 	{
 		slug: "meridian",
@@ -6233,7 +6233,7 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: false, startingPrice: "$149/mo", hasEnterprise: true },
 		highlights: [
-			"Explicitly bootstrapped, and states it is backed by customers instead of venture capital",
+			"Explicitly bootstrapped: states it is backed by customers rather than venture capital",
 			"Named customers give attributed traffic figures rather than generic praise",
 			"Runs a 10,000+ reader AEO newsletter as its top-of-funnel",
 		],
@@ -7044,7 +7044,7 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: false, startingPrice: "$99/mo", hasEnterprise: true },
 		highlights: [
-			"Still early access, with new signups joining a waitlist",
+			"Still early access: new signups join a waitlist",
 			"Curated prompt suggestions rather than user-supplied lists",
 			"Direct founder access offered as part of onboarding",
 		],

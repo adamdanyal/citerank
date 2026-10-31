@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/se
 
 const title = "AI Visibility Tools by Category · CiteRank.com";
 const description =
-	"Browse AI visibility tools by category: dedicated trackers, content platforms, developer APIs, SEO suites, and e-commerce.";
+	"Browse AI visibility tools by category: dedicated trackers, content platforms, developer APIs, SEO suites, and e-commerce tools.";
 
 const items = indexableCategories.map((category) => ({
 	name: CATEGORY_HEADINGS[category],

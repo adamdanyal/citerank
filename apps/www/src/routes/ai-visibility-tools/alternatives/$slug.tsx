@@ -63,7 +63,7 @@ function AlternativesPage() {
 				<DirectoryHero title={`${competitor.name} alternatives`} lead={getAlternativesVerdict(competitor)} />
 
 				<DirectoryCiteRankBanner
-					pitch="From the answers it collects, CiteRank.com shows how often you are named for each question and each AI app, your share of voice against each competitor, how each answer describes you, and which websites and pages each answer cites. It checks ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews, and five more AI apps."
+					pitch="CiteRank.com tracks how ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews mention and cite your brand. It keeps every answer in full, so each number traces back to the words an AI wrote, and its AI search agency can do the work that follows. No per-seat pricing, and you can cancel any time."
 					comparison={{
 						slug: getComparisonSlug(competitor),
 						name: competitor.name,

@@ -85,7 +85,7 @@ const FAQS: FaqItem[] = [
 	{
 		question: "Can I get my data out of CiteRank.com?",
 		answer:
-			"Yes. CiteRank.com keeps every answer in full, and its REST API returns each answer with its citations, along with your prompts, competitors, and visibility, citation, and share-of-voice data. The MCP server lets AI assistants such as Claude Code and Cursor read the same data.",
+			"Yes. CiteRank.com keeps every answer in full, and its REST API returns each answer with its citations, plus your prompts, competitors, and visibility data. The MCP server lets Claude Code and Cursor read the same data.",
 	},
 ];
 
@@ -199,8 +199,8 @@ function GraveyardPage() {
 					<div className="max-w-3xl border-l-2 border-blue-600 pl-4 text-sm text-zinc-600">
 						<p className="font-medium text-zinc-950">Keep a Copy of Your History</p>
 						<p className="mt-1">
-							When a hosted tracker goes under, your history goes with it. CiteRank.com keeps every answer in full, and
-							its API and MCP server let you pull your prompts, answers, and scores into your own systems.{" "}
+							When a hosted tracker goes under, your history goes with it. CiteRank.com's API lets you keep your own
+							copy of every answer and score.{" "}
 							<Link
 								to="/"
 								className="text-zinc-950 underline decoration-zinc-400 underline-offset-4 hover:decoration-zinc-950"

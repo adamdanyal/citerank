@@ -29,7 +29,7 @@ export const Route = createFileRoute("/ai-visibility-tools/compare/$slug")({
 		const isPair = tools.length === 2;
 		const title = isPair ? `${names} | AI Visibility Tool Comparison · CiteRank.com` : `${names} · CiteRank.com`;
 		const description = isPair
-			? `Compare ${names} for AI visibility tracking, feature by feature, with CiteRank.com as a third option.`
+			? `Compare ${names} for AI visibility tracking, feature by feature, with CiteRank.com included as a third option.`
 			: `Compare ${names} for AI visibility and answer engine monitoring, feature by feature, with CiteRank.com included for reference.`;
 		const path = `/ai-visibility-tools/compare/${params.slug}`;
 		return {

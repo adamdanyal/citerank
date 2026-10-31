@@ -90,17 +90,16 @@ export function CompetitorDirectory() {
 			{/* Elmo CTA */}
 			<section className="border-b border-zinc-200 bg-white py-16 lg:py-24">
 				<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-					<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Why Choose CiteRank.com</h2>
+					<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Why Consider CiteRank.com</h2>
 					<p className="mx-auto mt-4 max-w-xl text-lg text-balance text-zinc-600">
-						A tracker that checks 12 AI apps up to four times a day and keeps every answer in full, plus an AI search
-						agency that does the work. Plans start at {ENTRY_PRICE}.
+						A tracker that checks 12 AI apps, plus an AI search agency that does the work. Plans start at {ENTRY_PRICE}.
 					</p>
 					<div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
 						<a href={SIGN_UP_URL} className={buttonVariants({ size: "sm" })}>
 							Start Tracking
 						</a>
 						<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
-							Have Us Do the Work
+							Let Us Do the Work
 						</Link>
 					</div>
 				</div>
