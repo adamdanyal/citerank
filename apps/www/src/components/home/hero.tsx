@@ -32,7 +32,7 @@ const DEFAULT_LEDE =
 /** Landing pages for a single audience reuse the homepage hero with their own pitch. */
 export function Hero({
 	badge = BADGE,
-	title = "Get Named by AI",
+	title = "Track Your Brand in AI Search",
 	lede = DEFAULT_LEDE,
 	from = "marketing-hero",
 }: {
@@ -42,7 +42,7 @@ export function Hero({
 	from?: ReferralSource;
 } = {}) {
 	const signupUrl = cloudSignupUrl(from);
-	// The display size suits a short slogan; a longer audience headline steps down so it holds to two lines.
+	// The display size suits a short slogan; a longer headline steps down so it holds to two lines.
 	const short = title.length <= 16;
 
 	return (
@@ -57,7 +57,7 @@ export function Hero({
 					{badge}
 
 					<h1
-						className={`mt-8 font-semibold text-balance text-zinc-950 ${short ? "whitespace-nowrap text-[min(11.5vw,3.5rem)] leading-[0.95] tracking-[-0.045em] sm:text-7xl lg:text-[6.25rem]" : "text-[2.75rem] leading-[1] tracking-[-0.04em] sm:text-6xl lg:text-7xl"}`}
+						className={`mt-8 font-semibold text-balance text-zinc-950 ${short ? "whitespace-nowrap text-[min(11.5vw,3.5rem)] leading-[0.95] tracking-[-0.045em] sm:text-7xl lg:text-[6.25rem]" : "text-[min(11.5vw,2.75rem)] leading-[1] tracking-[-0.04em] sm:text-6xl lg:text-7xl"}`}
 					>
 						{titleWords(title).map(({ word, at }) => (
 							<Fragment key={at}>
