@@ -1,5 +1,5 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
 import { CRISP_WEBSITE_ID } from "@workspace/config/constants";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { resolveCrispWebsiteId } from "../config";
 
 afterEach(() => vi.unstubAllEnvs());

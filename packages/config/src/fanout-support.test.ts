@@ -22,4 +22,3 @@ describe("getFanoutSupport", () => {
 		expect(support("perplexity:searchapi:online").status).toBe("unknown");
 	});
 });
-
