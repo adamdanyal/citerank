@@ -144,3 +144,4 @@ Crisp support chat runs on CiteRank.com's own workspace (`CRISP_WEBSITE_ID` in `
 | 2026-10-31 | Turned on Crisp chat with CiteRank.com's own website ID on the marketing site, the support page and the dashboard. Not deployed. |
 | 2026-10-31 | Fitted the navbar logo and Sign Up button, and the hero's "See Pricing" link, on 320px phones. Not deployed. |
 | 2026-10-31 | Changed the home page headline to "Track Your Brand in AI Search", sized to hold to two lines down to 320px phones. Not deployed. |
+| 2026-10-31 | Stopped the industry pages scrolling sideways on phones, where a long example prompt widened the page. Not deployed. |
