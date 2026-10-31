@@ -61,7 +61,7 @@ AEO is a natural fit. The work combines technical checks an agent can run (robot
 
 On 3 October 2026, install counts came from the skills.sh search API for the queries "aeo", "geo", "ai seo", "ai visibility", and "answer engine optimization". The audit took the 12 most-installed skills that are actually about AI search visibility, cloned each repository, and read every `SKILL.md` and reference file. Each factual claim was checked against its primary source: the paper, the platform documentation, or the original study. Where a skill cited a statistic with no source, the audit looked for one.
 
-We build an AI visibility product, so weigh our conclusions accordingly. Every claim below links to something you can check.
+CiteRank.com sells an AI visibility tracker, so weigh these conclusions accordingly. Every claim below links to something you can check.
 
 ## The comparison
 
@@ -149,3 +149,23 @@ Keep in mind that Claude graded Claude.
 ## Where CiteRank.com Fits
 
 Measurement is the step a skill can't do alone, because it needs the same prompts run many times across engines. [CiteRank.com](/) does that part. Its tracker puts a business's buyer questions to the AI apps it chooses (ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews and Google AI Mode) up to four times a day, keeps every answer in full, and records mentions, citations, and the web searches each AI ran before answering. About once a week it ranks what to do next, and its [AI search agency](/agency) does that work every month for businesses that want it done, with a report of the AI answers before and after.
+
+## Measuring the Results With an AI Assistant
+
+An agent can read those measurements itself. CiteRank.com serves an [MCP server](/docs/api/mcp) at `https://app.citerank.com/api/mcp`, so Claude Code, Cursor, Codex, or another MCP client can query a brand's tracked answers alongside whichever skill it uses, or none. In Claude Code:
+
+```bash
+claude mcp add --transport http citerank https://app.citerank.com/api/mcp
+```
+
+Then run `/mcp` and choose **Authenticate**. Each step of the measurement loop maps to a tool call:
+
+1. **Baseline.** `list_brands` returns the brand id the other tools take. `get_analytics` returns visibility and its daily trend, share of voice against tracked competitors, and a per-model breakdown for any window you give it, with rates as fractions of 1.
+2. **Diagnose.** `get_prompt_performance` shows which prompts surface the brand and which don't. `get_citations` lists the pages the models cited, by domain and URL, each marked as the brand's own, a competitor's, or editorial. `get_query_fanout` returns the searches the models ran before answering, for the apps that reveal them.
+3. **Read the answers.** `list_runs` lists the answers recorded for a prompt, and `get_run` returns one in full, with every page it cited, so the agent can see how a model describes the brand, not just whether it names it.
+4. **Plan.** `get_opportunities` returns the latest opportunities report: what to write, what to fix, and the risks found.
+5. **Re-measure.** Tag the prompts a change targets, then call `get_analytics` for equal windows before and after, filtered to that tag. Compare the daily trends, because the headline visibility figure reflects each prompt's latest answers, not the whole window.
+
+Sample size still limits what a comparison can show. On the Basic, Pro, and Business plans, each prompt is checked on each chosen app up to four times a day, so a two-week window holds up to 56 answers per prompt per app. Even then, one prompt's mention rate has a 95% margin of error of up to about 13 points, so judge a change on a tagged group of prompts, not on one.
+
+Signing in gives the agent your own access. To give it less, issue a read-only API key limited to selected brands; tagging prompts with `update_prompt` needs a read-write key. No tool deletes data or changes billing.
