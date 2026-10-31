@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
+import { cloudSignupUrl } from "@workspace/config/referrals";
 import { buttonVariants } from "@workspace/ui/components/button";
 import { ArrowRight } from "lucide-react";
 
@@ -7,7 +9,7 @@ const LINK = "font-medium text-blue-700 underline underline-offset-2 hover:text-
 const FEATURES = [
 	{
 		title: "Cross-platform tracking",
-		body: "Monitors your brand across the engines that matter — ChatGPT, Perplexity, Gemini, Copilot, and Google AI Overviews — not just one.",
+		body: "Monitors your brand across several engines: ChatGPT, Perplexity, Gemini, Copilot, and Google AI Overviews.",
 	},
 	{
 		title: "Mention & citation analysis",
@@ -19,7 +21,7 @@ const FEATURES = [
 	},
 	{
 		title: "Competitor benchmarking",
-		body: "Shows your share of voice against named rivals on the same prompts — the most actionable metric in AI visibility.",
+		body: "Shows your share of voice against named rivals on the same prompts, the most actionable metric in AI visibility.",
 	},
 	{
 		title: "Sentiment & accuracy",
@@ -43,15 +45,15 @@ export function AiVisibilitySoftwareHub() {
 						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">What AI visibility software does</h2>
 						<div className="mt-8 space-y-6 text-[1.0625rem] leading-relaxed text-zinc-600">
 							<p>
-								AI visibility software tracks how your brand appears in AI search — how often it's mentioned, cited, and
+								AI visibility software tracks how your brand appears in AI search: how often it's mentioned, cited, and
 								accurately described across ChatGPT, Perplexity, Gemini, and Google AI Overviews. It answers a question
-								traditional analytics can't: when someone asks an AI engine about your category, does it mention you —
+								traditional analytics can't: when someone asks an AI engine about your category, does it mention you,
 								and is it right?
 							</p>
 							<p>
-								Instead of tracking rankings on a results page, it samples the answers themselves — running a defined
-								set of prompts across multiple AI engines on a schedule and recording what comes back: whether your
-								brand is mentioned, whether it's{" "}
+								Instead of tracking rankings on a results page, it samples the answers themselves. It runs a defined set
+								of prompts across multiple AI engines on a schedule and records what comes back: whether your brand is
+								mentioned, whether it's{" "}
 								<a className={LINK} href="/blog/ai-citations">
 									cited with a link
 								</a>
@@ -78,7 +80,7 @@ export function AiVisibilitySoftwareHub() {
 								without a results page at all. For a growing share of searches, buyers read an answer and never click.
 							</p>
 							<p>
-								That changes the unit of visibility. There's often no ranking to hold — there's one answer, and your
+								That changes the unit of visibility. There's often no ranking to hold. There's one answer, and your
 								brand is either named in it or it isn't. Being cited becomes the win. This is the premise of{" "}
 								<a className={LINK} href="/answer-engine-optimization">
 									answer engine optimization
@@ -111,22 +113,22 @@ export function AiVisibilitySoftwareHub() {
 				</div>
 			</section>
 
-			{/* Elmo's approach */}
+			{/* CiteRank.com's approach */}
 			<section className="border-b border-zinc-200 bg-zinc-50 py-12 lg:py-20">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
 					<div className="max-w-3xl">
-						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Elmo's approach</h2>
+						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">CiteRank.com's Approach</h2>
 						<div className="mt-8 space-y-6 text-[1.0625rem] leading-relaxed text-zinc-600">
 							<p>
-								Elmo is open-source AI visibility software you can self-host. It tracks mentions, citations, and
-								competitor share across ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, and Google AI Mode and AI
-								Overviews — and because it's released under the MIT license, you can read exactly how every metric is
-								collected and computed.
+								CiteRank.com is an AI visibility tracker and AI search agency. The tracker puts your buyer questions to
+								ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Google AI Overviews, and Google
+								AI Mode up to four times a day, and keeps every answer in full, so each number traces back to the words
+								an AI wrote.
 							</p>
 							<p>
-								That matters in a market full of opaque scoring and inflated pricing. With Elmo you own your data and
-								avoid vendor lock-in: the self-hosted core is free, and managed cloud hosting is there if you would
-								rather not run it. To see how it compares with the rest of the field, read our roundup of the{" "}
+								That matters in a market full of opaque scoring. About once a week, CiteRank.com ranks what to do next,
+								and its agency does that work every month for businesses that want it done. Plans start at $
+								{CLOUD_ENTRY_PRICE_USD}/mo. To see how it compares with the rest of the field, read the roundup of the{" "}
 								<a className={LINK} href="/blog/best-ai-visibility-tools">
 									best AI visibility tools
 								</a>{" "}
@@ -138,18 +140,13 @@ export function AiVisibilitySoftwareHub() {
 							</p>
 						</div>
 						<div className="mt-8 flex flex-wrap gap-3">
-							<Link to="/docs" className={buttonVariants({ size: "sm" })}>
-								Read the docs
+							<a href={cloudSignupUrl("marketing-page-cta")} className={buttonVariants({ size: "sm" })}>
+								Start Tracking
 								<ArrowRight className="size-3.5" />
-							</Link>
-							<a
-								href="https://github.com/elmohq/elmo"
-								target="_blank"
-								rel="noopener noreferrer"
-								className={buttonVariants({ variant: "outline", size: "sm" })}
-							>
-								Star on GitHub
 							</a>
+							<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
+								Have Us Do the Work
+							</Link>
 						</div>
 					</div>
 				</div>

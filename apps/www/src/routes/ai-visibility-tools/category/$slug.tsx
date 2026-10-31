@@ -1,10 +1,10 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import {
+	CiteRankCta,
 	DirectoryBackLink,
-	DirectoryElmoBanner,
+	DirectoryCiteRankBanner,
 	DirectoryHero,
 	DirectorySection,
-	ElmoCta,
 } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
@@ -15,7 +15,7 @@ import {
 	type Competitor,
 	type CompetitorCategory,
 	getCategoryBySlug,
-	getCategoryElmoPitch,
+	getCategoryCiteRankPitch,
 	getCategoryFaqs,
 	getCategoryVerdict,
 	getComparisonSlug,
@@ -34,8 +34,8 @@ export const Route = createFileRoute("/ai-visibility-tools/category/$slug")({
 	head: ({ params, loaderData }) => {
 		if (!loaderData) return {};
 		const { heading, faqs } = loaderData;
-		const title = `${heading.charAt(0).toUpperCase()}${heading.slice(1)} · Elmo`;
-		const description = `A comparison of ${heading} for tracking your brand in AI search, including Elmo — the open-source, self-hosted option.`;
+		const title = `${heading.charAt(0).toUpperCase()}${heading.slice(1)} · CiteRank.com`;
+		const description = `A comparison of ${heading} for tracking your brand in AI search, including CiteRank.com, a tracker plus an AI search agency.`;
 		const path = `/ai-visibility-tools/category/${params.slug}`;
 		return {
 			meta: [{ title }, { name: "description", content: description }, ...ogMeta({ title, description, path })],
@@ -64,8 +64,8 @@ function CategoryPage() {
 			<main>
 				<DirectoryBackLink />
 				<DirectoryHero title={CATEGORY_HEADINGS[category]} lead={getCategoryVerdict(category, tools)} />
-				<DirectoryElmoBanner
-					pitch={getCategoryElmoPitch(category)}
+				<DirectoryCiteRankBanner
+					pitch={getCategoryCiteRankPitch(category)}
 					comparison={{
 						slug: getComparisonSlug(tools[0]),
 						name: tools[0].name,
@@ -75,7 +75,7 @@ function CategoryPage() {
 					<ToolGrid competitors={tools} />
 				</DirectorySection>
 				<Faq items={getCategoryFaqs(category, tools)} />
-				<ElmoCta />
+				<CiteRankCta />
 			</main>
 			<Footer />
 		</div>

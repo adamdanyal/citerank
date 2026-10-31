@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { DirectoryBackLink, DirectoryHero, DirectorySection, ElmoCta } from "@/components/directory-shell";
+import { CiteRankCta, DirectoryBackLink, DirectoryHero, DirectorySection } from "@/components/directory-shell";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import {
@@ -12,7 +12,7 @@ import {
 } from "@/lib/competitors";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
-const title = "AI Visibility Tools by Feature · Elmo";
+const title = "AI Visibility Tools by Feature · CiteRank.com";
 const description =
 	"Browse AI visibility tools by capability: multi-LLM tracking, citation analytics, sentiment, white-label, and more. See which tools offer each feature.";
 
@@ -61,7 +61,7 @@ function FeatureHub() {
 				<DirectoryBackLink />
 				<DirectoryHero
 					title="Browse AI visibility tools by feature"
-					lead="Filter the field by capability. Pick a feature to see which AI visibility tools offer it and how they compare, including the open-source option you can self-host."
+					lead="Filter the field by capability. Pick a feature to see which AI visibility tools offer it and how they compare with CiteRank.com."
 				/>
 				{featureGroups.map((group) => (
 					<DirectorySection key={group.label} title={group.label}>
@@ -80,7 +80,7 @@ function FeatureHub() {
 						</ul>
 					</DirectorySection>
 				))}
-				<ElmoCta />
+				<CiteRankCta />
 			</main>
 			<Footer />
 		</div>

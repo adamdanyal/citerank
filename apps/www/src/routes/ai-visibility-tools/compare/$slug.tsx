@@ -1,5 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { DirectoryBackLink, DirectoryHero, ElmoCta } from "@/components/directory-shell";
+import { CiteRankCta, DirectoryBackLink, DirectoryHero } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
 import { MultiComparison } from "@/components/multi-comparison";
@@ -27,10 +27,10 @@ export const Route = createFileRoute("/ai-visibility-tools/compare/$slug")({
 		const { tools, faqs } = loaderData;
 		const names = tools.map((t) => t.name).join(" vs ");
 		const isPair = tools.length === 2;
-		const title = isPair ? `${names} | AI Visibility Tool Comparison · Elmo` : `${names} · Elmo`;
+		const title = isPair ? `${names} | AI Visibility Tool Comparison · CiteRank.com` : `${names} · CiteRank.com`;
 		const description = isPair
-			? `Compare ${names} for AI visibility tracking — feature by feature, with Elmo as the open-source alternative.`
-			: `Compare ${names} for AI visibility and answer engine monitoring, feature by feature, with Elmo as the free, open-source alternative.`;
+			? `Compare ${names} for AI visibility tracking, feature by feature, with CiteRank.com as a third option.`
+			: `Compare ${names} for AI visibility and answer engine monitoring, feature by feature, with CiteRank.com included for reference.`;
 		const path = `/ai-visibility-tools/compare/${params.slug}`;
 		return {
 			meta: [{ title }, { name: "description", content: description }, ...ogMeta({ title, description, path })],
@@ -62,7 +62,7 @@ function ComparePage() {
 				<DirectoryHero title={names} lead={getCompareVerdict(tools)} />
 				{a && b && tools.length === 2 ? <PairComparison a={a} b={b} /> : <MultiComparison tools={tools} />}
 				<Faq items={getCompareFaqs(tools)} />
-				<ElmoCta />
+				<CiteRankCta />
 			</main>
 			<Footer />
 		</div>

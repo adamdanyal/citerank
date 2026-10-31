@@ -1,4 +1,4 @@
-import type { PlanKey } from "@workspace/config/plans";
+import { CLOUD_ENTRY_PRICE_USD, PLANS, type PlanKey } from "@workspace/config/plans";
 
 export interface AeoVertical {
 	slug: string;
@@ -17,7 +17,7 @@ export interface AeoVertical {
 	/** Illustrative prompts buyers in this vertical ask AI engines. */
 	examplePrompts: string[];
 	plays: { name: string; text: string }[];
-	elmoFit: string;
+	fit: string;
 	faqs: { question: string; answer: string }[];
 }
 
@@ -28,46 +28,45 @@ export const aeoVerticals: AeoVertical[] = [
 		plan: "business",
 		technical: true,
 		headline: "AI Visibility Software for Agencies",
-		metaTitle: "AI Visibility & SEO Software for Agencies (White-Label) · Elmo",
+		metaTitle: "AI Visibility & SEO Software for Agencies · CiteRank.com",
 		metaDescription:
-			"White-label AI visibility software for agencies: track every client's presence in ChatGPT, Perplexity and AI Overviews, report under your own brand, and self-host without per-seat fees.",
+			"AI visibility software for agencies: track each client's presence in ChatGPT, Perplexity and AI Overviews, benchmark it against named competitors, and turn every gap into billable work.",
 		short:
-			"Track AI visibility for every client and report it under your own brand, on an open-source platform you can run at agency scale.",
+			"Track AI visibility for your clients, benchmark each one against named competitors, and turn every gap into a content brief.",
 		intro: [
 			"Agencies tend to feel the shift to AI search first, because clients start asking why a competitor shows up in ChatGPT and they do not. AEO turns into a service line: measure each client's presence across the answer engines, find the gaps, and show the work.",
-			"The hard part is doing that across many clients without paying per seat for each one. An open-source, self-hostable tool changes the math, especially one with white-label support, so the dashboards carry your brand instead of a vendor's.",
+			"The hard part is doing that across many clients without paying per seat for each one. Every CiteRank.com plan includes unlimited seats, so adding people to the account never changes the bill.",
 		],
 		examplePrompts: ["best [client category] companies", "[client] vs [competitor]", "is [client] worth it"],
 		plays: [
 			{
-				name: "Run a prompt set per client",
+				name: "Run a Prompt Set per Client",
 				text: "Build a focused list of the questions each client's buyers actually ask, and track it on a schedule so changes stand out.",
 			},
 			{
-				name: "Benchmark against named competitors",
+				name: "Benchmark Against Named Competitors",
 				text: "Share of voice against specific rivals is the metric clients understand. Show who gets cited instead of them, and on which prompts.",
 			},
 			{
-				name: "Turn gaps into a retainer",
+				name: "Turn Gaps Into a Retainer",
 				text: "Every prompt where a client is missing is a concrete content brief, which turns reporting into billable work.",
 			},
 			{
-				name: "White-label the dashboards",
-				text: "Put the reporting under your own brand and domain so the visibility data looks like part of your service, not a third-party tool.",
+				name: "Put the Charts in Client Reports",
+				text: "Download any prompt's visibility chart as an image for the monthly report, with every number traceable to the AI answers behind it.",
 			},
 		],
-		elmoFit:
-			"Elmo is open source with white-label support, so you can run one instance for an entire book of clients, brand the dashboards as your own, and skip the per-seat pricing that does not scale across an agency.",
+		fit: "CiteRank.com tracks each client as its own brand, with its own prompts and competitors, keeps every answer in full, and charges nothing per seat, so the whole team can work in it.",
 		faqs: [
 			{
-				question: "Can agencies white-label AI visibility reports?",
+				question: "Can agencies put AI visibility data in client reports?",
 				answer:
-					"Yes. Elmo offers white-label deployments, so agencies can run multi-client dashboards under their own brand and domain. You self-host the platform and present the data as part of your own service.",
+					"Yes. Any prompt's visibility chart downloads as a PNG for a slide or report, and every number traces back to the AI answers it came from.",
 			},
 			{
 				question: "How do agencies price AEO services?",
 				answer:
-					"Most agencies bill AEO as a monitoring retainer plus content work, since each prompt where a client is missing becomes a brief. Running an open-source tool keeps your tooling cost flat as you add clients.",
+					"Most agencies bill AEO as a monitoring retainer plus content work, since each prompt where a client is missing becomes a brief. With unlimited seats, the tooling cost stays the same as the team grows.",
 			},
 		],
 	},
@@ -77,7 +76,7 @@ export const aeoVerticals: AeoVertical[] = [
 		plan: "pro",
 		technical: true,
 		headline: "AEO for B2B SaaS",
-		metaTitle: "AEO for B2B SaaS: Tools and Tactics for Software Buyers · Elmo",
+		metaTitle: "AEO for B2B SaaS: Tools and Tactics for Software Buyers · CiteRank.com",
 		metaDescription:
 			"How B2B SaaS teams win the 'best [category] software' and 'X vs Y' answers where buyers now build their shortlists, and which AEO tools fit a software company.",
 		short: "Win the 'best [category] software' and 'X vs Y' answers where buyers now build their shortlists.",
@@ -93,29 +92,27 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track comparison and alternatives prompts",
+				name: "Track Comparison and Alternatives Prompts",
 				text: "These are where buyers shortlist. Monitor them across engines and watch which competitors get named alongside or instead of you.",
 			},
 			{
-				name: "Publish honest comparison pages",
+				name: "Publish Honest Comparison Pages",
 				text: "Well-structured, fair comparison and alternatives content gives engines a clean source to cite when buyers ask how you stack up.",
 			},
 			{
-				name: "Earn third-party reviews",
+				name: "Earn Third-Party Reviews",
 				text: "Reviews and mentions on sites the models trust shape how confidently they recommend you.",
 			},
 			{
-				name: "Catch wrong feature and pricing claims",
+				name: "Catch Wrong Feature and Pricing Claims",
 				text: "Models go stale. Monitor for outdated descriptions of your features or pricing and correct the underlying sources.",
 			},
 		],
-		elmoFit:
-			"Elmo tracks exactly these prompts across every major engine, shows which competitors get named with or instead of you, and flags when a model gets your features or pricing wrong.",
+		fit: "CiteRank.com tracks exactly these prompts across every major engine, shows which competitors get named with or instead of you, and keeps every answer in full, so you can see when a model gets your features or pricing wrong.",
 		faqs: [
 			{
 				question: "What is the best AEO tool for B2B SaaS?",
-				answer:
-					"There is no single answer, because SaaS teams buy for two different jobs. If you need broad engine coverage and enterprise reporting, the larger hosted platforms cover it. If you want to own the data, audit how the visibility score is calculated, and avoid per-seat pricing across a growing team, a self-hosted open-source tool fits better — Elmo is the most complete one. Whichever you pick, the requirement specific to SaaS is competitor benchmarking on comparison and alternatives prompts, since that is where buyers build shortlists. Compare the options in the AI visibility tool directory.",
+				answer: `There is no single answer, because SaaS teams buy for two different jobs. If you need enterprise reporting and a sales-led contract, the larger platforms cover it. If you want self-serve plans from $${CLOUD_ENTRY_PRICE_USD}/mo, every answer kept in full, and no per-seat pricing across a growing team, CiteRank.com fits better, and its AI search agency can do the content work. Whichever you pick, the requirement specific to SaaS is competitor benchmarking on comparison and alternatives prompts, since that is where buyers build shortlists. Compare the options in the AI visibility tool directory.`,
 			},
 			{
 				question: "How do I show up when buyers ask AI for software recommendations?",
@@ -125,7 +122,7 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Can I see which competitors AI tools recommend?",
 				answer:
-					"Yes. Elmo records which competitors get mentioned and cited alongside you on each prompt, so you can measure share of voice against your named rivals.",
+					"Yes. CiteRank.com records which competitors get mentioned and cited alongside you on each prompt, so you can measure share of voice against your named rivals.",
 			},
 		],
 	},
@@ -142,24 +139,23 @@ export const aeoVerticals: AeoVertical[] = [
 		examplePrompts: ["best [product] for [need]", "[product] under [price]", "[your brand] vs [competitor] [product]"],
 		plays: [
 			{
-				name: "Track buying-guide prompts",
+				name: "Track Buying-Guide Prompts",
 				text: "Monitor the comparison and recommendation queries for your top categories, and see which competitors the engines name.",
 			},
 			{
-				name: "Add product and review schema",
+				name: "Add Product and Review Schema",
 				text: "Structured data for products and reviews helps engines extract and trust your catalog details.",
 			},
 			{
-				name: "Earn reviews engines cite",
+				name: "Earn Reviews Engines Cite",
 				text: "Recommendations lean on third-party reviews. Presence on the sites engines pull from improves your odds of being named.",
 			},
 			{
-				name: "Keep price and availability accurate",
+				name: "Keep Price and Availability Accurate",
 				text: "Stale prices and stock invite wrong answers. Keep product data current so engines describe you correctly.",
 			},
 		],
-		elmoFit:
-			"Elmo tracks how AI answers describe and recommend your products against competitors, so you can see which categories you win and which you are missing.",
+		fit: "CiteRank.com tracks how AI answers describe and recommend your products against competitors, so you can see which categories you win and which you are missing.",
 		faqs: [
 			{
 				question: "Do AI engines recommend products?",
@@ -189,24 +185,23 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track category, competitor, and branded prompts",
+				name: "Track Category, Competitor, and Branded Prompts",
 				text: "Cover the full research journey, from what a category is to whether you specifically are credible.",
 			},
 			{
-				name: "Build authority content",
+				name: "Build Authority Content",
 				text: "Thorough, well-structured content on your topic gives engines a confident source to cite for considered purchases.",
 			},
 			{
-				name: "Earn analyst and press mentions",
+				name: "Earn Analyst and Press Mentions",
 				text: "Corroboration on respected sources weighs heavily in how engines describe enterprise vendors.",
 			},
 			{
-				name: "Correct inaccuracies quickly",
+				name: "Correct Inaccuracies Quickly",
 				text: "An out-of-date claim about your product can sit in answers for months. Monitor and fix the sources behind it.",
 			},
 		],
-		elmoFit:
-			"Elmo measures your presence across category, competitor, and branded prompts, so you can see where you enter the buyer's research and where you are absent.",
+		fit: "CiteRank.com measures your presence across category, competitor, and branded prompts, so you can see where you enter the buyer's research and where you are absent.",
 		faqs: [
 			{
 				question: "Why does AEO matter for B2B?",
@@ -226,40 +221,38 @@ export const aeoVerticals: AeoVertical[] = [
 		plan: "starter",
 		technical: true,
 		headline: "Startup SEO and AI Search Visibility",
-		metaTitle: "Startup SEO in the AI Search Era: A Practical Guide · Elmo",
+		metaTitle: "Startup SEO in the AI Search Era: A Practical Guide · CiteRank.com",
 		metaDescription:
-			"Startup SEO when a growing share of searches end in an AI answer: which prompts to track first, what to publish, and how to measure visibility on no budget.",
-		short: "Build AI visibility from zero without enterprise pricing, on a tool you can self-host for free.",
+			"Startup SEO when a growing share of searches end in an AI answer: which prompts to track first, what to publish, and how to measure visibility on a small budget.",
+		short: `Build AI visibility from zero without enterprise pricing, on plans from $${CLOUD_ENTRY_PRICE_USD}/mo.`,
 		intro: [
 			"A new brand starts out invisible to AI engines, because there is little for the models to have learned. The job is to build a credible footprint quickly: clear content, early reviews, and mentions on sources the models trust.",
-			"Budgets are tight, and most tools in this space are priced for larger companies. An open-source platform you self-host for free lets you start measuring on day one and only pay for the API calls you actually make.",
+			`Budgets are tight, and most tools in this space are priced for larger companies. CiteRank.com's ${PLANS.starter.name} plan tracks ${PLANS.starter.maxPrompts} prompts in ChatGPT for $${PLANS.starter.monthlyPriceUsd}/mo, so you can start measuring on day one.`,
 		],
 		examplePrompts: ["best [new category] tools", "alternatives to [incumbent]", "what is [your brand]"],
 		plays: [
 			{
-				name: "Define a tight prompt set",
+				name: "Define a Tight Prompt Set",
 				text: "A handful of high-intent prompts beats a broad, expensive list. Track the questions your earliest buyers ask.",
 			},
 			{
-				name: "Tell a clear category story",
+				name: "Tell a Clear Category Story",
 				text: "Help engines place you by explaining your category and product plainly, with consistent naming.",
 			},
 			{
-				name: "Earn your first reviews",
+				name: "Earn Your First Reviews",
 				text: "Early mentions on trusted sources give the models something to ground an answer about you in.",
 			},
 			{
-				name: "Track weekly",
+				name: "Track Weekly",
 				text: "Visibility moves as you publish and get covered. A weekly read shows whether it is working.",
 			},
 		],
-		elmoFit:
-			"Elmo is free to self-host, so an early-stage team can track AI visibility without an enterprise contract and only pay for the provider API keys it uses.",
+		fit: `CiteRank.com's plans start at $${CLOUD_ENTRY_PRICE_USD}/mo with no sales call or contract, so an early-stage team can track AI visibility from day one.`,
 		faqs: [
 			{
-				question: "Is there a free AI visibility tool for startups?",
-				answer:
-					"Yes. Elmo is free and open source to self-host. There is no license fee or per-seat pricing, so you only pay for your own infrastructure and the AI provider keys you use.",
+				question: "How much does AI visibility tracking cost for a startup?",
+				answer: `CiteRank.com's ${PLANS.starter.name} plan costs $${PLANS.starter.monthlyPriceUsd}/mo for ${PLANS.starter.maxPrompts} prompts checked ${PLANS.starter.standardRunsPerDay}× daily in ChatGPT, with unlimited seats. Move up a plan when you need more AI apps or more checks a day.`,
 			},
 			{
 				question: "When should a startup start doing AEO?",
@@ -274,45 +267,44 @@ export const aeoVerticals: AeoVertical[] = [
 		plan: "business",
 		technical: true,
 		headline: "Enterprise AI Visibility Platforms",
-		metaTitle: "Enterprise AI Visibility & AEO Platform Requirements · Elmo",
+		metaTitle: "Enterprise AI Visibility & AEO Platform Requirements · CiteRank.com",
 		metaDescription:
-			"What an enterprise AEO platform has to do: multi-brand tracking, data residency, SSO, export, and a visibility methodology your analysts can audit rather than trust.",
-		short: "Track AI visibility at scale while keeping your prompts and history on your own infrastructure.",
+			"What an enterprise AEO platform has to do: multi-brand tracking, API export, and numbers your analysts can trace back to the AI answers behind them.",
+		short: "Track AI visibility across brands and AI apps, with every number traceable to the answer behind it.",
 		intro: [
-			"Large brands have the most to lose when an AI engine describes them wrongly, and the most scrutiny over where their data goes. Many AI visibility tools are closed and hosted, which means handing your prompt strategy and history to a third party.",
-			"Self-hosting changes that. An open-source platform runs on your own infrastructure, keeps your data in house, and lets your team verify exactly how each metric is computed, which matters when the number ends up in a board report.",
+			"Large brands have the most to lose when an AI engine describes them wrongly, and the most scrutiny over the numbers that reach leadership.",
+			"CiteRank.com keeps every AI answer in full, so each number traces back to the words an AI wrote, and documents how each metric is computed, which matters when the number ends up in a board report.",
 		],
 		examplePrompts: ["is [brand] trustworthy", "[brand] vs [competitor]", "best [category] for enterprise"],
 		plays: [
 			{
-				name: "Self-host for data control",
-				text: "Run the platform on your own infrastructure so prompts and visibility history never leave your environment.",
+				name: "Track Each Brand Separately",
+				text: "Give each brand or product line its own prompts and competitors, so results stay separate and comparable.",
 			},
 			{
-				name: "Standardize a prompt set",
+				name: "Standardize a Prompt Set",
 				text: "Use a consistent set of prompts across product lines and regions so results are comparable across the org.",
 			},
 			{
-				name: "Benchmark named competitors",
+				name: "Benchmark Named Competitors",
 				text: "Track share of voice against the specific rivals leadership cares about, on the prompts that matter.",
 			},
 			{
-				name: "Audit the methodology",
-				text: "Open code means your team can verify how every metric is built, rather than trusting a black-box score.",
+				name: "Check the Answers Behind the Score",
+				text: "Every answer is kept in full, so your team can check any number against the responses it was built from.",
 			},
 		],
-		elmoFit:
-			"Elmo is open source and self-hosted, so enterprise teams keep full ownership of their data, avoid vendor lock-in, and can audit the methodology behind every metric.",
+		fit: "CiteRank.com tracks each brand against the competitors leadership cares about, keeps every answer behind every number, and serves the same data through an API for your own BI tools.",
 		faqs: [
 			{
-				question: "Can we self-host AI visibility tracking?",
+				question: "Can we export AI visibility data to our own tools?",
 				answer:
-					"Yes. Elmo is built to be self-hosted. You deploy it on your own infrastructure, keep prompts and history in house, and read the code to verify exactly how each metric is calculated.",
+					"Yes. Every plan includes API access. The REST API covers brands, prompts, analytics, citations, and query fan-out, and an MCP server lets AI assistants read the same data.",
 			},
 			{
-				question: "How does Elmo handle data ownership?",
+				question: "Can analysts check how the numbers are calculated?",
 				answer:
-					"You own everything. Because Elmo is open source and runs on your infrastructure, your data stays with you, you can export it at any time, and there is no vendor lock-in.",
+					"Yes. How each metric is counted is documented, and every answer is kept in full, so any score can be traced back to the responses behind it.",
 			},
 		],
 	},
@@ -323,29 +315,28 @@ export const aeoVerticals: AeoVertical[] = [
 		short: "Monitor and correct how AI engines describe your healthcare brand, where accuracy is not optional.",
 		intro: [
 			"Health topics are exactly where AI engines are most cautious, and where errors do the most damage. An inaccurate description of a provider, product, or service carries real risk.",
-			"Accuracy and data control both matter here. Authoritative, well-sourced content shapes what the models say, and self-hosting keeps sensitive prompt data on your own infrastructure rather than a vendor's.",
+			"Accuracy and monitoring both matter here. Authoritative, well-sourced content shapes what the models say, and regular tracking shows when an answer about you goes wrong.",
 		],
 		examplePrompts: ["is [treatment] safe", "best [specialty] near me", "what does [brand] treat"],
 		plays: [
 			{
-				name: "Publish authoritative content",
+				name: "Publish Authoritative Content",
 				text: "Well-sourced, expert-backed content is what cautious engines cite on health topics. Make yours the clear reference.",
 			},
 			{
-				name: "Monitor for unsafe or wrong claims",
+				name: "Monitor for Unsafe or Wrong Claims",
 				text: "Track how engines describe your brand and treatments so an inaccurate or unsafe statement does not go unnoticed.",
 			},
 			{
-				name: "Earn trusted health citations",
+				name: "Earn Trusted Health Citations",
 				text: "References from respected health sources carry extra weight in how engines ground their answers.",
 			},
 			{
-				name: "Self-host sensitive data",
-				text: "Keep prompts and history on your own infrastructure rather than a third-party dashboard.",
+				name: "Find the Source of a Wrong Claim",
+				text: "See which sites engines cite for your prompts, so you know where an inaccurate claim comes from and which sources to correct or earn.",
 			},
 		],
-		elmoFit:
-			"Elmo lets healthcare teams track how engines describe their brand and catch inaccuracies, while self-hosting keeps sensitive data in house and the methodology fully auditable.",
+		fit: "CiteRank.com lets healthcare teams track how engines describe their brand and catch inaccuracies, with every answer kept in full and the sources behind it listed.",
 		faqs: [
 			{
 				question: "Why does AEO matter in healthcare?",
@@ -355,7 +346,7 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "How do I catch AI errors about my health brand?",
 				answer:
-					"Track a consistent set of prompts about your brand and services across engines, and watch for inaccurate or stale claims. Elmo records how each engine describes you so errors surface quickly.",
+					"Track a consistent set of prompts about your brand and services across engines, and watch for inaccurate or stale claims. CiteRank.com records how each engine describes you so errors surface quickly.",
 			},
 		],
 	},
@@ -366,29 +357,28 @@ export const aeoVerticals: AeoVertical[] = [
 		short: "Track how AI engines describe your financial brand, with the accuracy and data control the sector demands.",
 		intro: [
 			"Finance is another area where engines tread carefully, and where a wrong answer about rates, products, or eligibility carries compliance weight. Buyers ask AI engines for recommendations and comparisons all the same.",
-			"Authoritative content earns the citation, and self-hosting keeps your prompt data and visibility history on infrastructure you control, which fits a regulated environment better than a closed third-party dashboard.",
+			"Authoritative content earns the citation, and a full record of what each engine said gives compliance teams something concrete to review.",
 		],
 		examplePrompts: ["best [product] for [need]", "is [brand] legit", "[brand] vs [competitor] fees"],
 		plays: [
 			{
-				name: "Publish clear, accurate product content",
+				name: "Publish Clear, Accurate Product Content",
 				text: "Precise content on your products and terms gives engines a reliable, compliant source to quote.",
 			},
 			{
-				name: "Monitor for inaccurate claims",
+				name: "Monitor for Inaccurate Claims",
 				text: "Track how engines state your rates, fees, and eligibility so a wrong claim does not sit in answers unnoticed.",
 			},
 			{
-				name: "Earn trusted citations",
+				name: "Earn Trusted Citations",
 				text: "References from respected financial sources weigh heavily in what engines repeat about you.",
 			},
 			{
-				name: "Self-host for control",
-				text: "Keep prompts and visibility history on your own infrastructure to fit your data and compliance requirements.",
+				name: "Keep a Record of Every Answer",
+				text: "Every answer is stored in full with its date, so you can show what an engine said about your products and when.",
 			},
 		],
-		elmoFit:
-			"Elmo tracks your AI visibility across engines and flags inaccurate descriptions, while open-source self-hosting keeps data in house and every metric auditable for compliance.",
+		fit: "CiteRank.com tracks your AI visibility across engines and keeps every answer in full, so inaccurate descriptions are easy to find and every number can be checked.",
 		faqs: [
 			{
 				question: "Why does AEO matter for financial services?",
@@ -396,9 +386,9 @@ export const aeoVerticals: AeoVertical[] = [
 					"Consumers ask AI engines to compare financial products and judge whether a brand is trustworthy. An inaccurate or absent answer affects both acquisition and compliance, so tracking it is essential.",
 			},
 			{
-				question: "Can I keep AI visibility data on our own infrastructure?",
+				question: "Can we see exactly what an AI engine said about our products?",
 				answer:
-					"Yes. Elmo is open source and self-hosted, so your prompts and visibility history stay on infrastructure you control, which suits regulated financial environments.",
+					"Yes. CiteRank.com keeps every answer in full, with the brands it named and the sources it cited, so you can review the exact wording an engine used about your rates, fees, or eligibility.",
 			},
 		],
 	},
@@ -420,34 +410,33 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track by practice area and jurisdiction, not by firm name",
-				text: "Nobody asks an engine about your firm before they know they need one. Build the prompt set around the situations clients describe — the injury, the dispute, the filing deadline — in each city you actually practise in.",
+				name: "Track by Practice Area and Jurisdiction, Not by Firm Name",
+				text: "Nobody asks an engine about your firm before they know they need one. Build the prompt set around the situations clients describe (the injury, the dispute, the filing deadline) in each city you actually practise in.",
 			},
 			{
-				name: "Publish jurisdiction-specific answers, not national boilerplate",
+				name: "Publish Jurisdiction-Specific Answers, Not National Boilerplate",
 				text: "Statutes of limitation, filing rules, and damage caps differ by state. A page that answers the question for your jurisdiction gives an engine something specific to cite; a national overview gives it nothing it cannot already generate.",
 			},
 			{
-				name: "Attach real attorney credentials to every page",
+				name: "Attach Real Attorney Credentials to Every Page",
 				text: "Bar admissions, practice years, and case types on the page and in Person schema are the evidence engines lean on for legal answers. An unsigned article is the easiest thing in the world for a model to skip.",
 			},
 			{
-				name: "Watch how engines describe your firm, not just whether they name you",
+				name: "Watch How Engines Describe Your Firm",
 				text: "A citation that describes your practice areas wrongly, or attributes another firm's outcome to you, is worse than being absent. Sentiment and description accuracy matter more in legal than in most categories.",
 			},
 		],
-		elmoFit:
-			"Elmo tracks practice-area and city-level prompts across every engine and flags when an answer describes your firm inaccurately. Because it is open source and self-hostable, client-adjacent research data never has to leave infrastructure your firm controls.",
+		fit: "CiteRank.com tracks practice-area and city-level prompts across every engine and keeps every answer in full, so you can see when one describes your firm inaccurately.",
 		faqs: [
 			{
 				question: "Is AEO different for law firms than for other businesses?",
 				answer:
-					"Yes, in two ways. Legal queries are treated as Your Money or Your Life content, so engines weight author credentials and jurisdiction heavily, and the answers are hyper-local — the same question has a different correct answer in Texas than in New York. Effective legal AEO is practice-area and jurisdiction specific.",
+					"Yes, in two ways. Legal queries are treated as Your Money or Your Life content, so engines weight author credentials and jurisdiction heavily, and the answers are hyper-local (the same question has a different correct answer in Texas than in New York). Effective legal AEO is practice-area and jurisdiction specific.",
 			},
 			{
 				question: "Do AI answer engines recommend specific law firms?",
 				answer:
-					"Increasingly, yes. Asked for the best firm for a given matter in a given city, engines will name firms and cite the sources behind them — usually directories, review platforms, and firm pages that answer the question directly. Which firms get named is measurable and it changes over time.",
+					"Increasingly, yes. Asked for the best firm for a given matter in a given city, engines will name firms and cite the sources behind them, usually directories, review platforms, and firm pages that answer the question directly. Which firms get named is measurable and it changes over time.",
 			},
 			{
 				question: "What should a law firm publish to get cited by AI engines?",
@@ -474,24 +463,23 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Run the prompt set per location",
+				name: "Run the Prompt Set per Location",
 				text: "AI answers to local questions are location-conditioned. Track each city or metro separately, because one strong market can mask several where you are invisible.",
 			},
 			{
-				name: "Keep the business profile factually clean",
+				name: "Keep the Business Profile Factually Clean",
 				text: "Hours, service areas, and categories propagate into AI answers through the same feeds that power maps. Contradictions between your site and your profile give an engine a reason to prefer a competitor it can state confidently.",
 			},
 			{
-				name: "Earn mentions in local publications",
+				name: "Earn Mentions in Local Publications",
 				text: "City guides, neighbourhood blogs, and regional press are disproportionately cited in local AI answers because they read as independent. One good local roundup often outperforms a dozen generic directory listings.",
 			},
 			{
-				name: "Answer the operational questions on the site",
+				name: "Answer the Operational Questions on the Site",
 				text: "Pricing ranges, response times, service radius, and what happens on a first visit are exactly what people ask assistants. Publishing them plainly gives the engine something concrete to quote.",
 			},
 		],
-		elmoFit:
-			"Elmo runs the same prompt set across every location you operate and reports visibility per market, so a strong city never hides a weak one. Self-hosting means adding your fiftieth location costs infrastructure, not another per-seat licence.",
+		fit: "CiteRank.com runs the same questions for every location you operate, tagged by city, and reports visibility for each tag, so a strong city never hides a weak one.",
 		faqs: [
 			{
 				question: "Do AI assistants give local recommendations?",
@@ -512,7 +500,7 @@ export const aeoVerticals: AeoVertical[] = [
 		short:
 			"Be the brokerage an AI assistant names when someone asks how to buy, sell, or find an agent in your market.",
 		intro: [
-			"Buyers and sellers now open a research phase with an assistant rather than a portal. What is the market doing in this neighbourhood, what does a listing agent actually charge, how long do homes sit — these are the questions that precede any contact with an agent, and they are answered before you enter the picture.",
+			"Buyers and sellers now open a research phase with an assistant rather than a portal. Questions like what the market is doing in this neighbourhood, what a listing agent actually charges, and how long homes sit precede any contact with an agent, and they are answered before you enter the picture.",
 			"Real estate is unusual in that the big portals dominate transactional search but have little to say about local specifics. That gap is where a brokerage with genuine market knowledge can get cited: neighbourhood-level analysis, real timelines, and honest fee explanations are exactly what a general-purpose portal page cannot provide.",
 		],
 		examplePrompts: [
@@ -523,29 +511,28 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Own the neighbourhood question",
+				name: "Own the Neighbourhood Question",
 				text: "Portals cover cities; almost nobody covers neighbourhoods well. Publishing current, specific analysis at that level makes you the citable source for questions the portals answer vaguely.",
 			},
 			{
-				name: "Answer the commission question directly",
+				name: "Answer the Commission Question Directly",
 				text: "Fee structure is one of the most-asked and least-answered questions in the category. A clear, current explanation of what you charge and what it covers gets cited precisely because so few brokerages state it plainly.",
 			},
 			{
-				name: "Date and refresh your market data",
+				name: "Date and Refresh Your Market Data",
 				text: "Engines discount stale market claims heavily, and real estate data ages in weeks. Visible publication dates and a real refresh cadence are what keep a page in the answer set.",
 			},
 			{
-				name: "Track agent-level and brokerage-level prompts separately",
+				name: "Track Agent-Level and Brokerage-Level Prompts Separately",
 				text: "'Best agent in [city]' and 'best brokerage in [city]' produce different answers from different sources. Both matter, and improving one does not move the other.",
 			},
 		],
-		elmoFit:
-			"Elmo tracks neighbourhood, city, and agent-level prompts side by side so you can see which markets you own and which are still owned by the portals, with the full history kept on infrastructure you control.",
+		fit: "CiteRank.com tracks neighbourhood, city, and agent-level prompts side by side so you can see which markets you own and which are still owned by the portals, with every answer kept in full.",
 		faqs: [
 			{
 				question: "Can real estate brokerages outrank portals in AI answers?",
 				answer:
-					"On broad transactional queries, rarely. On neighbourhood-level and process questions, routinely — portals publish at city scale and engines prefer the source that answers the specific question, which is where local brokerages have a genuine advantage.",
+					"On broad transactional queries, rarely. On neighbourhood-level and process questions, routinely. Portals publish at city scale and engines prefer the source that answers the specific question, which is where local brokerages have a genuine advantage.",
 			},
 			{
 				question: "How often does real estate AI visibility change?",
@@ -562,7 +549,7 @@ export const aeoVerticals: AeoVertical[] = [
 			"Reach prospective students at the point where they now start: asking an AI assistant which programme is worth it.",
 		intro: [
 			"Programme research has moved. Before a prospective student reaches an admissions page they have already asked an assistant which programmes are respected, what they cost, and whether the credential is worth the time. The shortlist is formed in that conversation.",
-			"Education also carries an unusual trust burden. Engines are cautious about outcome claims, so they favour sources that publish verifiable specifics — accreditation, real completion figures, actual cost of attendance — over marketing language. Institutions that publish that data plainly are far more citable than those that do not.",
+			"Education also carries an unusual trust burden. Engines are cautious about outcome claims, so they favour sources that publish verifiable specifics (accreditation, real completion figures, actual cost of attendance) over marketing language. Institutions that publish that data plainly are far more citable than those that do not.",
 		],
 		examplePrompts: [
 			"best [subject] programs",
@@ -572,29 +559,28 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track programme-level prompts, not institutional ones",
+				name: "Track Programme-Level Prompts, Not Institutional Ones",
 				text: "Students ask about programmes and outcomes, not about the institution in the abstract. Build the prompt set around subjects, credentials, and career outcomes.",
 			},
 			{
-				name: "Publish outcomes as data, not adjectives",
+				name: "Publish Outcomes as Data, Not Adjectives",
 				text: "Completion rates, employment outcomes, and total cost of attendance are what engines quote. 'World-class faculty' is unquotable and gets skipped.",
 			},
 			{
-				name: "Make accreditation explicit and machine-readable",
+				name: "Make Accreditation Explicit and Machine-Readable",
 				text: "Accreditation is the trust signal that decides whether an engine will recommend a programme at all. State it on the programme page and mark it up, rather than burying it in a policy PDF.",
 			},
 			{
-				name: "Answer the sceptical question honestly",
+				name: "Answer the Sceptical Question Honestly",
 				text: "'Is this degree worth it' is asked constantly. An institution that addresses it with real numbers, including the cases where the answer is nuanced, earns citations that promotional copy never will.",
 			},
 		],
-		elmoFit:
-			"Elmo tracks how engines describe each programme, not just whether the institution is named, and flags when an answer misstates cost, length, or accreditation. Self-hosting keeps recruitment research inside institutional infrastructure.",
+		fit: "CiteRank.com tracks whether the institution is named and how engines describe each programme, and keeps every answer in full, so you can see when one misstates cost, length, or accreditation.",
 		faqs: [
 			{
 				question: "Do students use AI to choose programmes?",
 				answer:
-					"Widely, for the research and shortlisting phase. Assistants are asked to compare programmes, explain credential value, and estimate cost and duration — the questions that determine which institutions get a closer look.",
+					"Widely, for the research and shortlisting phase. Assistants are asked to compare programmes, explain credential value, and estimate cost and duration. Those are the questions that determine which institutions get a closer look.",
 			},
 			{
 				question: "What content gets an education institution cited by AI engines?",
@@ -621,29 +607,28 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track itinerary prompts, not just brand prompts",
+				name: "Track Itinerary Prompts",
 				text: "The recommendation that matters is 'where should I stay in [city]', not 'tell me about [hotel]'. Build the prompt set around the planning questions travellers actually ask.",
 			},
 			{
-				name: "Compete on traveller segment, not on adjectives",
-				text: "Engines answer segmented questions — for families, for solo travellers, for a first visit. Content organised around who the trip is for is far more citable than a generic property description.",
+				name: "Compete on Traveller Segment, Not on Adjectives",
+				text: "Engines answer segmented questions: for families, for solo travellers, for a first visit. Content organised around who the trip is for is far more citable than a generic property description.",
 			},
 			{
-				name: "Get into the independent guides",
+				name: "Get Into the Independent Guides",
 				text: "Editorial guides and destination publications are cited disproportionately in travel answers. Earning a place in them moves visibility more than any amount of on-site copy.",
 			},
 			{
-				name: "Keep the practical details current",
+				name: "Keep the Practical Details Current",
 				text: "Seasonality, transit times, what is walkable, what is closed in winter. Practical specifics are what assistants quote when building an itinerary, and they are what most brand sites omit.",
 			},
 		],
-		elmoFit:
-			"Elmo tracks destination and segment-level prompts across engines so you can see which itineraries name you and which name a competitor, and which independent sources are driving those citations.",
+		fit: "CiteRank.com tracks destination and segment-level prompts across engines so you can see which itineraries name you and which name a competitor, and which independent sources are driving those citations.",
 		faqs: [
 			{
 				question: "How do AI assistants pick hotels and destinations to recommend?",
 				answer:
-					"Mostly from independent sources — editorial guides, review platforms, and forums — rather than from brand marketing. Properties that appear in credible third-party coverage get named far more often than those relying on their own site alone.",
+					"Mostly from independent sources (editorial guides, review platforms, and forums) rather than from brand marketing. Properties that appear in credible third-party coverage get named far more often than those relying on their own site alone.",
 			},
 			{
 				question: "Does AI trip planning affect direct bookings?",
@@ -658,7 +643,7 @@ export const aeoVerticals: AeoVertical[] = [
 		plan: "basic",
 		short: "Be the supplier an AI assistant names when an engineer or buyer asks who makes the part they need.",
 		intro: [
-			"Industrial buying starts with a specification, not a brand. An engineer describes a requirement — material, tolerance, certification, volume — and asks who can supply it. That question increasingly goes to an assistant, and the answer is a short list of manufacturers assembled from spec sheets and technical documentation.",
+			"Industrial buying starts with a specification, not a brand. An engineer describes a requirement (material, tolerance, certification, volume) and asks who can supply it. That question increasingly goes to an assistant, and the answer is a short list of manufacturers assembled from spec sheets and technical documentation.",
 			"This favours manufacturers who publish real technical detail. Distributors and marketplaces dominate the transactional queries, but they cannot answer a specification question the way a manufacturer's own documentation can. Published, crawlable specs are the asset here, and most manufacturers keep theirs behind a gated PDF.",
 		],
 		examplePrompts: [
@@ -669,29 +654,28 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Publish specifications as HTML, not gated PDFs",
+				name: "Publish Specifications as HTML, Not Gated PDFs",
 				text: "A spec sheet locked behind a form or trapped in a scanned PDF is invisible to the crawlers that feed AI answers. The same data as structured on-page content is directly quotable.",
 			},
 			{
-				name: "Answer the specification question, not the brand question",
+				name: "Answer the Specification Question, Not the Brand Question",
 				text: "Buyers ask who makes a part with given properties. Pages organised by application and specification get cited; pages organised by product family do not.",
 			},
 			{
-				name: "Make certifications and compliance explicit",
+				name: "Make Certifications and Compliance Explicit",
 				text: "ISO, RoHS, REACH, industry-specific approvals. These are frequently the filter that decides whether a supplier is named at all, and they belong on the product page in plain text.",
 			},
 			{
-				name: "Cover cross-reference and substitution queries",
+				name: "Cover Cross-Reference and Substitution Queries",
 				text: "'Alternatives to [competitor part]' is high-intent and poorly served. A clear cross-reference table is one of the most citable assets a manufacturer can publish.",
 			},
 		],
-		elmoFit:
-			"Elmo tracks specification and application-level prompts so you can see whether engines name you for the parts you actually make, and which competitors and distributors are being named instead.",
+		fit: "CiteRank.com tracks specification and application-level prompts so you can see whether engines name you for the parts you actually make, and which competitors and distributors are being named instead.",
 		faqs: [
 			{
 				question: "Do B2B industrial buyers use AI search?",
 				answer:
-					"Engineers and procurement teams use it heavily for supplier discovery and specification research — the early stages where a shortlist forms. The purchase still runs through established channels, but which suppliers reach the shortlist is increasingly decided by an assistant.",
+					"Engineers and procurement teams use it heavily for supplier discovery and specification research, the early stages where a shortlist forms. The purchase still runs through established channels, but which suppliers reach the shortlist is increasingly decided by an assistant.",
 			},
 			{
 				question: "Why do gated PDFs hurt manufacturing AEO?",
@@ -717,24 +701,23 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track coverage questions, not just carrier comparisons",
+				name: "Track Coverage Questions",
 				text: "'Does X cover Y' is the highest-volume question shape in insurance and the one most likely to be answered wrongly. It is also where clear published answers win citations easily.",
 			},
 			{
-				name: "Publish plain-language coverage explanations",
+				name: "Publish Plain-Language Coverage Explanations",
 				text: "Policy documents are precise and unquotable. A plain-language explanation that is still accurate gives engines something to cite without inventing a paraphrase of its own.",
 			},
 			{
-				name: "Monitor accuracy, not only presence",
+				name: "Monitor Accuracy as Well as Presence",
 				text: "A wrong description of your coverage is a compliance and service problem, not just a marketing one. Track how engines characterise your products and correct the sources behind bad answers.",
 			},
 			{
-				name: "Address the price question with real ranges",
+				name: "Address the Price Question With Real Ranges",
 				text: "Cost is the most-asked and most-evaded question in the category. Honest ranges with the factors that move them get cited over pages that route straight to a quote form.",
 			},
 		],
-		elmoFit:
-			"Elmo tracks coverage, comparison, and pricing prompts across engines and flags when an answer describes your policies inaccurately. Self-hosting keeps the whole record on infrastructure your compliance team controls and can audit.",
+		fit: "CiteRank.com tracks coverage, comparison, and pricing prompts across engines and keeps every answer in full, so your compliance team can see when one describes your policies inaccurately.",
 		faqs: [
 			{
 				question: "Why does answer accuracy matter more in insurance?",
@@ -766,29 +749,28 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track use-case prompts, not model-name prompts",
+				name: "Track Use-Case Prompts, Not Model-Name Prompts",
 				text: "Buyers ask for the best vehicle for a commute, a family, or towing. Those questions decide the shortlist; model-name queries happen after the decision is largely made.",
 			},
 			{
-				name: "Publish total cost of ownership honestly",
+				name: "Publish Total Cost of Ownership Honestly",
 				text: "Fuel, insurance, maintenance, and depreciation over five years is what buyers ask about and what brand sites almost never state. It is one of the most citable things an automotive brand can publish.",
 			},
 			{
-				name: "Address reliability directly",
+				name: "Address Reliability Directly",
 				text: "Reliability questions get answered from forums and third-party data whether you participate or not. Publishing real service intervals, common issues, and warranty terms gives engines a first-party source to weigh.",
 			},
 			{
-				name: "Separate brand, model, and dealer visibility",
+				name: "Separate Brand, Model, and Dealer Visibility",
 				text: "These behave differently. A strong model can sit inside a brand that engines describe poorly, and dealer-level answers are local and driven by entirely different sources.",
 			},
 		],
-		elmoFit:
-			"Elmo tracks model, brand, and dealer-level prompts separately so you can see where the shortlist is actually being formed, and which independent reviewers are driving the citations behind it.",
+		fit: "CiteRank.com tracks model, brand, and dealer-level prompts separately so you can see where the shortlist is actually being formed, and which independent reviewers are driving the citations behind it.",
 		faqs: [
 			{
 				question: "Do car buyers use AI assistants for research?",
 				answer:
-					"Heavily, in the comparison phase. Assistants are asked to narrow options by use case, compare trims, and estimate ownership cost — the work that produces the shortlist a buyer eventually acts on.",
+					"Heavily, in the comparison phase. Assistants are asked to narrow options by use case, compare trims, and estimate ownership cost. That is the work that produces the shortlist a buyer eventually acts on.",
 			},
 			{
 				question: "Why do independent reviewers matter so much for automotive AEO?",
@@ -815,34 +797,33 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track cause-area prompts, not organisation names",
+				name: "Track Cause-Area Prompts, Not Organisation Names",
 				text: "Donors ask about causes first. 'Best charities for clean water' decides the shortlist; your organisation name is searched only after it is on the list.",
 			},
 			{
-				name: "Publish financials and impact data as HTML",
+				name: "Publish Financials and Impact Data as HTML",
 				text: "Annual reports as PDF downloads are close to invisible to AI crawlers. The same programme ratios and outcome figures as on-page content are directly quotable and answer the question donors actually ask.",
 			},
 			{
-				name: "Make third-party ratings easy to find",
+				name: "Make Third-Party Ratings Easy to Find",
 				text: "Charity evaluator ratings and regulatory registration numbers are the trust signals engines reach for on legitimacy questions. Stating them on the site makes the answer easy.",
 			},
 			{
-				name: "Answer the efficiency question head on",
+				name: "Answer the Efficiency Question Head On",
 				text: "'How much goes to the programme' is the most common donor question and the most commonly dodged. A clear, current answer earns citations precisely because it is rare.",
 			},
 		],
-		elmoFit:
-			"Elmo tracks cause-area and legitimacy prompts across engines so you can see whether donors researching your cause are being pointed at your organisation. Being open source and self-hostable keeps the cost structure sane for a nonprofit budget.",
+		fit: `CiteRank.com tracks cause-area and legitimacy prompts across engines so you can see whether donors researching your cause are being pointed at your organisation. Plans start at $${CLOUD_ENTRY_PRICE_USD}/mo.`,
 		faqs: [
 			{
 				question: "Do donors use AI to decide where to give?",
 				answer:
-					"For discovery and vetting, increasingly yes. Assistants are asked which organisations work on a cause, whether a given one is legitimate, and how efficiently donations are used — the questions that produce a donor's shortlist.",
+					"For discovery and vetting, increasingly yes. Assistants are asked which organisations work on a cause, whether a given one is legitimate, and how efficiently donations are used. Those are the questions that produce a donor's shortlist.",
 			},
 			{
 				question: "What should a nonprofit publish to be cited by AI engines?",
 				answer:
-					"Programme expense ratios, outcome data, registration and tax status, and third-party evaluator ratings — published as readable web pages rather than PDF downloads. Transparency data is both what donors ask about and what engines can quote.",
+					"Programme expense ratios, outcome data, registration and tax status, and third-party evaluator ratings, published as readable web pages rather than PDF downloads. Transparency data is both what donors ask about and what engines can quote.",
 			},
 		],
 	},
@@ -865,24 +846,23 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track category and control prompts",
+				name: "Track Category and Control Prompts",
 				text: "Buyers ask by category and by control, not by vendor. Track the categories you claim to compete in and see whether engines actually place you in them.",
 			},
 			{
-				name: "Turn security research into citable content",
+				name: "Turn Security Research Into Citable Content",
 				text: "Threat research, detection writeups, and vulnerability analysis are the most citable assets in this category because they are verifiable and specific. Most vendors publish them as PDFs and lose the benefit.",
 			},
 			{
-				name: "Answer compliance mapping questions",
+				name: "Answer Compliance Mapping Questions",
 				text: "'How do I meet SOC 2 / ISO 27001 / NIS2' generates enormous assistant traffic. A control-by-control mapping page is high-intent, well-defined, and rarely done well.",
 			},
 			{
-				name: "Document architecture honestly, including limits",
+				name: "Document Architecture Honestly, Including Limits",
 				text: "Engines reward sources that state constraints. Saying what your product does not cover makes the rest of the description more credible and more quotable.",
 			},
 		],
-		elmoFit:
-			"Elmo tracks category, comparison, and compliance prompts across engines so you can see which categories you are actually placed in. Self-hosting matters here for the obvious reason: a security vendor rarely wants its competitive research sitting in someone else's SaaS.",
+		fit: "CiteRank.com tracks category, comparison, and compliance prompts across engines so you can see which categories you are actually placed in.",
 		faqs: [
 			{
 				question: "Do security buyers really use AI assistants for vendor research?",
@@ -913,29 +893,28 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Specialise the prompt set by role and region",
+				name: "Specialise the Prompt Set by Role and Region",
 				text: "Nobody asks for the best recruiting agency in general. They ask for engineering recruiters in Berlin or healthcare staffing in Texas. Track the specific combinations you actually serve.",
 			},
 			{
-				name: "Publish fee structures and timelines",
+				name: "Publish Fee Structures and Timelines",
 				text: "Placement fees, guarantee periods, and typical time-to-fill are what employers ask about and what almost no agency site states. Publishing them is an unusually cheap way to become the citable source.",
 			},
 			{
-				name: "Cover the platform comparison queries",
+				name: "Cover the Platform Comparison Queries",
 				text: "For HR tech, 'X vs Y' and 'best ATS for [company size]' carry the buying intent. Honest comparison content earns the citation that a feature page will not.",
 			},
 			{
-				name: "Track employer brand prompts separately",
-				text: "How engines describe you to candidates is a different question from how they describe you to employers, driven by different sources — review platforms rather than industry press.",
+				name: "Track Employer Brand Prompts Separately",
+				text: "How engines describe you to candidates is a different question from how they describe you to employers, driven by different sources (review platforms rather than industry press).",
 			},
 		],
-		elmoFit:
-			"Elmo tracks role, region, and platform-comparison prompts separately, and shows the employer-facing and candidate-facing pictures side by side rather than collapsing them into one score.",
+		fit: "CiteRank.com tracks role, region, and platform-comparison prompts separately, and shows the employer-facing and candidate-facing pictures side by side rather than collapsing them into one score.",
 		faqs: [
 			{
 				question: "How do employers use AI to choose a recruiting partner?",
 				answer:
-					"By asking for specialists — agencies that cover a given role, industry, or region — and by asking about fee structures and typical timelines. The assistant returns a short list, and that list is usually where the evaluation starts.",
+					"By asking for specialists (agencies that cover a given role, industry, or region) and by asking about fee structures and typical timelines. The assistant returns a short list, and that list is usually where the evaluation starts.",
 			},
 			{
 				question: "Should recruiting firms track candidate-facing AI visibility too?",
@@ -963,24 +942,23 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Make documentation server-rendered and crawlable",
-				text: "AI crawlers generally do not execute JavaScript. Documentation that renders client-side is invisible to them no matter how good it is — a surprisingly common and entirely fixable failure.",
+				name: "Make Documentation Server-Rendered and Crawlable",
+				text: "AI crawlers generally do not execute JavaScript. Documentation that renders client-side is invisible to them no matter how good it is. It is a surprisingly common and entirely fixable failure.",
 			},
 			{
-				name: "Publish runnable examples for real tasks",
+				name: "Publish Runnable Examples for Real Tasks",
 				text: "Assistants quote code. Complete, copy-pasteable examples organised by task are what get surfaced; API reference tables alone rarely are.",
 			},
 			{
-				name: "Write the migration and comparison pages",
+				name: "Write the Migration and Comparison Pages",
 				text: "'Alternatives to X' and 'migrating from X to Y' are high-intent developer queries and are usually only answered by whoever is being migrated away from.",
 			},
 			{
-				name: "Publish an llms.txt and keep docs available as markdown",
+				name: "Publish an llms.txt and Keep Docs Available as Markdown",
 				text: "Serving plain markdown alongside the rendered docs gives models a clean, unambiguous source and removes any dependence on their HTML parsing.",
 			},
 		],
-		elmoFit:
-			"Elmo tracks the library and framework recommendation prompts developers actually run, across engines, and reports which sources drove each citation. As an open-source tool it also runs inside the environments developer-tools companies already trust.",
+		fit: "CiteRank.com tracks the library and framework recommendation prompts developers actually run, across engines, and reports which sources drove each citation.",
 		faqs: [
 			{
 				question: "How do AI coding assistants decide which libraries to recommend?",
@@ -1004,7 +982,7 @@ export const aeoVerticals: AeoVertical[] = [
 const MINOR_WORDS = new Set(["a", "an", "and", "for", "in", "of", "on", "or", "the", "to", "vs"]);
 
 /** Capitalises each word and each hyphenated part, leaving minor words and existing capitals (SaaS, HR) alone. */
-function titleCase(text: string) {
+export function titleCase(text: string) {
 	return text
 		.split(" ")
 		.map((word, i) => (i > 0 && MINOR_WORDS.has(word) ? word : word.replace(/(^|-)(\w)/g, (m) => m.toUpperCase())))

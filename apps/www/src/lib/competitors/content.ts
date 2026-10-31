@@ -1,5 +1,11 @@
+import { CLOUD_ENTRY_PRICE_USD, PLANS } from "@workspace/config/plans";
 import type { FaqItem } from "@/lib/faqs";
 import { type Competitor, type CompetitorCategory, ELMO_FEATURES, type FeatureKey, getFeatureLabel } from "./types";
+
+export const ENTRY_PRICE = `$${CLOUD_ENTRY_PRICE_USD}/mo`;
+export const PLAN_RANGE = `$${PLANS.starter.monthlyPriceUsd}/mo (Starter) to $${PLANS.business.monthlyPriceUsd}/mo (Business)`;
+
+const TRACKER_POINT = `CiteRank.com is a tracker plus an AI search agency that does the work, with plans from ${ENTRY_PRICE}.`;
 
 // Prose-friendly category nouns (acronyms kept uppercase, descriptive words
 // lowercased) so they read naturally mid-sentence — e.g. "an AI visibility
@@ -36,11 +42,9 @@ function integrationSummary(competitor: Competitor): string {
 			? items.join(` ${conjunction} `)
 			: `${items.slice(0, -1).join(", ")}, ${conjunction} ${items[items.length - 1]}`;
 	if (lacks.length === 0) return `${competitor.name} offers all three as well.`;
-	if (has.length === 0) return `We have not found ${competitor.name} offering ${list(lacks, "or")}.`;
-	return `${competitor.name} offers ${list(has, "and")}, but we have not found it offering ${list(lacks, "or")}.`;
+	if (has.length === 0) return `${competitor.name} is not listed as offering ${list(lacks, "or")}.`;
+	return `${competitor.name} offers ${list(has, "and")}, but is not listed as offering ${list(lacks, "or")}.`;
 }
-
-const GETCITO_FORK_DATE = "July 10, 2026";
 
 // Engines in rough order of how much AI search traffic they carry, so the
 // soundbite names the gaps a buyer is most likely to care about first.
@@ -88,17 +92,17 @@ function joinOr(items: string[]): string {
 function fateSoundbite(competitor: Competitor): string | undefined {
 	const name = competitor.name;
 	if (competitor.status === "defunct" || competitor.status === "shutting-down") {
-		return `${name} has shut down. Elmo is open source, so the tool you build your reporting on can't disappear the same way.`;
+		return `${name} has shut down. ${TRACKER_POINT}`;
 	}
 	if (competitor.status === "pivoted") {
-		return `${name} has pivoted away from AI visibility. Elmo is open source and built for this one job, so it can't be pivoted out from under you.`;
+		return `${name} has pivoted away from AI visibility. CiteRank.com is built for AI visibility alone: a tracker that checks ten AI apps up to four times a day, plus an AI search agency that does the work.`;
 	}
 	if (competitor.status === "acquired") {
 		if (competitor.fate) {
-			return `${name} is gone as a standalone product. ${competitor.fate.summary} Elmo is open source, so no acquisition can take it away from you.`;
+			return `${name} is gone as a standalone product. ${competitor.fate.summary} ${TRACKER_POINT}`;
 		}
 		const absorbed = ABSORBED_EXAMPLES.filter((example) => example !== name);
-		return `${name} has been acquired, and acquired AI visibility tools rarely stay put: ${joinAnd(absorbed)} were all folded into their buyers' products. Elmo is open source, so no acquisition can take it away from you.`;
+		return `${name} has been acquired, and acquired AI visibility tools rarely stay put: ${joinAnd(absorbed)} were all folded into their buyers' products. ${TRACKER_POINT}`;
 	}
 	return undefined;
 }
@@ -118,7 +122,7 @@ export function getSoundbite(competitor: Competitor): string {
 
 	const license = competitor.license ? RESTRICTIVE_LICENSES[competitor.license] : undefined;
 	if (license) {
-		return `${name} is ${license}. Elmo is MIT-licensed, so you can run, modify, and embed it with no strings attached.`;
+		return `${name} is ${license}. CiteRank.com is a hosted tracker with nothing to deploy, and it checks ten AI apps up to four times a day, with plans from ${ENTRY_PRICE}.`;
 	}
 
 	const tracksAnyEngine = SOUNDBITE_ENGINES.some((key) => competitor.features[key]);
@@ -133,17 +137,17 @@ export function getSoundbite(competitor: Competitor): string {
 	if (missingEngines.length > 0) gaps.push(`doesn't list ${joinOr(missingEngines.slice(0, 3))} among its engines`);
 	if (missingFeatures.length > 0) gaps.push(`has no ${joinOr(missingFeatures.slice(0, 2))}`);
 	if (gaps.length > 0) {
-		return `${name} ${gaps.join(" and ")}. Elmo has all of that, and it's free to self-host.`;
+		return `${name} ${gaps.join(" and ")}. CiteRank.com has all of that, with plans from ${ENTRY_PRICE}.`;
 	}
 
 	const price = competitor.pricing?.startingPrice;
 	if (price && !isOpenSource(competitor)) {
-		return `${name} starts at ${price} and is closed source. Elmo covers the same engines, and it's free to self-host.`;
+		return `${name} starts at ${price}. CiteRank.com covers the same engines from ${ENTRY_PRICE}, and its AI search agency can do the work too.`;
 	}
 	if (isOpenSource(competitor)) {
-		return `${name} and Elmo are both open source, so it comes down to fit: compare the engines and features below.`;
+		return `${name} is open source. CiteRank.com is a hosted tracker plus an AI search agency that does the work, with plans from ${ENTRY_PRICE}.`;
 	}
-	return `${name} is closed source, so you can't check how its numbers are made. Elmo is open source and free to self-host.`;
+	return `${name} matches CiteRank.com on the main engines and on API, MCP, sentiment, and citation tracking. CiteRank.com adds an AI search agency that does the work, and keeps every answer in full, so each number traces back to the words an AI wrote.`;
 }
 
 /**
@@ -154,16 +158,12 @@ export function getSoundbite(competitor: Competitor): string {
 export function getComparisonVerdict(competitor: Competitor): string {
 	const name = competitor.name;
 
-	if (competitor.slug === "getcito") {
-		return `If you are considering ${name}, use Elmo instead. ${name} is a fork of Elmo's codebase since ${GETCITO_FORK_DATE}. Everything it offers today it inherited from Elmo, and it has shipped less since — 17 commits to Elmo's 98 in the month after the fork. Elmo is the original, and it is free to self-host.`;
-	}
-
 	if (isOpenSource(competitor)) {
-		return `Elmo and ${name} are both open-source AI visibility tools you can self-host and audit. Elmo's focus is transparent, independently verifiable tracking across ChatGPT, Claude, Perplexity, and Google AI Overviews — with white-label support for agencies and a documented methodology behind every number.`;
+		return `${name} is an open-source AI visibility tool. CiteRank.com is a hosted AI visibility tracker and AI search agency. It puts your buyer questions to ten AI apps up to four times a day, keeps every answer in full, and ranks what to do next about once a week. Its agency does that work every month for businesses that want it done.`;
 	}
 
 	const noun = CATEGORY_NOUN[competitor.category];
-	return `Elmo is an open-source, self-hostable alternative to ${name}, ${indefiniteArticle(noun)} ${noun} tool. Both measure how AI answer engines describe your brand, but Elmo ships every line of code, runs on your own infrastructure, and is free to self-host — so your data stays yours and each metric is independently verifiable.`;
+	return `CiteRank.com is an alternative to ${name}, ${indefiniteArticle(noun)} ${noun} tool. Both measure how AI answer engines describe your brand. CiteRank.com puts your buyer questions to ten AI apps up to four times a day and keeps every answer in full, so each number traces back to the words an AI wrote. Its AI search agency does the work that follows.`;
 }
 
 /**
@@ -176,60 +176,37 @@ export function getComparisonFaqs(competitor: Competitor): FaqItem[] {
 	const name = competitor.name;
 	const openSource = isOpenSource(competitor);
 	const noun = CATEGORY_NOUN[competitor.category];
+	const price = competitor.pricing?.startingPrice;
 	const faqs: FaqItem[] = [];
 
-	if (competitor.slug === "getcito") {
-		return [
-			{
-				question: `Should I use ${name} or Elmo?`,
-				answer: `Use Elmo. If you are considering ${name}, Elmo is the tool you actually want, because ${name} is a fork of it. On ${GETCITO_FORK_DATE}, ${name} replaced its codebase with Elmo's in a single pull request of 847 files. Running ${name} means running an older snapshot of Elmo.`,
-			},
-			{
-				question: `What is the difference between Elmo and ${name}?`,
-				answer: `Elmo is the original codebase and ${name} is a fork of it, taken on ${GETCITO_FORK_DATE}. Everything ${name} offers today it inherited from Elmo. A fork is free to diverge from there, but ${name} has shipped less than the project it forked — 98 commits to its 17 in the month after — so the gap is widening rather than closing.`,
-			},
-			{
-				question: `Is ${name} a fork of Elmo?`,
-				answer: `Yes, ${name} is a fork of Elmo since ${GETCITO_FORK_DATE}. Its codebase is based on Elmo's, which is MIT-licensed and freely available to self-host.`,
-			},
-			{
-				question: `Is ${name} open source?`,
-				answer: `Yes, ${name} is an MIT licensed fork of Elmo.`,
-			},
-			{
-				question: `Is Elmo a free, open-source alternative to ${name}?`,
-				answer: `${name} is actually a fork of Elmo, which is free to self-host and developing faster than ${name}. If you want to self-host under MIT, with unlimited prompts and every model, covering ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews, you should use Elmo instead of a fork.`,
-			},
-		];
-	}
-
 	faqs.push({
-		question: `What is the difference between Elmo and ${name}?`,
+		question: `What is the difference between CiteRank.com and ${name}?`,
 		answer: openSource
-			? `Both Elmo and ${name} are open source, so you can self-host either one and inspect the code. Elmo focuses specifically on transparent, independently verifiable AI visibility tracking across every major answer engine, with white-label support for agencies and a fully documented methodology behind each number.`
-			: `Elmo is an open-source, self-hostable AI visibility platform, while ${name} is a closed-source ${noun} tool. Both track how AI answer engines describe your brand, but Elmo gives you the full source code and runs on your own infrastructure, so you can verify every metric and keep your data in-house.`,
+			? `${name} is open source. CiteRank.com is a hosted AI visibility tracker plus an AI search agency. The tracker checks ten AI apps up to four times a day, keeps every answer in full, and ranks what to do next about once a week. The agency does that work every month for businesses that want it done.`
+			: `${name} is ${indefiniteArticle(noun)} ${noun} tool, and CiteRank.com is an AI visibility tracker plus an AI search agency. Both track how AI answer engines describe your brand. CiteRank.com keeps every answer in full, so each number traces back to the words an AI wrote, and its agency does the work the tracker recommends.`,
 	});
 
 	faqs.push({
-		question: `Is Elmo a free, open-source alternative to ${name}?`,
-		answer: `Yes. Elmo is a free, open-source alternative to ${name}. You can self-host the full platform at no cost, read every line of code, and track your AI visibility across ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews without per-seat or per-prompt fees.`,
+		question: `How much does CiteRank.com cost compared with ${name}?`,
+		answer: `CiteRank.com plans run from ${PLAN_RANGE}, and yearly billing saves two months. ${price ? `The starting price listed for ${name} is ${price}.` : `No public starting price is listed for ${name}.`}`,
 	});
 
 	faqs.push({
 		question: `Is ${name} open source?`,
 		answer: openSource
-			? `Yes, ${name} is open source. Elmo is open source as well and is built specifically for self-hosted, independently verifiable AI visibility tracking, so you can audit exactly how each metric is calculated.`
-			: `No, ${name} is a closed-source, hosted product, so you cannot inspect how its metrics are calculated. Elmo is fully open source — you can audit the code, self-host it on your own infrastructure, and avoid vendor lock-in.`,
+			? `Yes, ${name} is open source. CiteRank.com is a hosted tracker with nothing to deploy, and it keeps every answer it collects in full, so each number traces back to the words an AI wrote.`
+			: `No, ${name} is a closed-source, hosted product, and so is CiteRank.com. CiteRank.com keeps every answer it collects in full, so you can read the words behind each number.`,
 	});
 
 	faqs.push({
-		question: `How do Elmo and ${name} compare on sentiment analysis, API access, and MCP?`,
-		answer: `Elmo includes all three: a 0 to 100 sentiment score for every AI answer that mentions you, a REST API with TypeScript and Python SDKs, and an MCP server so assistants like Claude Code and Cursor can query your data. ${integrationSummary(competitor)}`,
+		question: `How do CiteRank.com and ${name} compare on sentiment analysis, API access, and MCP?`,
+		answer: `CiteRank.com includes all three: a 0 to 100 sentiment score for every AI answer that mentions you (with the passage behind the score), a REST API, and an MCP server so assistants like Claude Code and Cursor can query your data. ${integrationSummary(competitor)}`,
 	});
 
 	faqs.push({
-		question: `Can I self-host Elmo instead of ${name}?`,
-		answer: `Yes. Elmo is designed to be self-hosted — deploy it on your own infrastructure in minutes with the CLI. You keep full ownership of your data and prompts, with no per-seat pricing and no third-party dashboard holding your visibility history.`,
+		question: "Can CiteRank.com do the work as well as track it?",
+		answer:
+			"Yes. CiteRank.com's AI search agency does the work every month for businesses that want it done. It writes the comparison, alternatives, and guide pages a site is missing, updates pages AI has stopped citing, gets the business onto the review sites and best-of lists AI cites, and answers buyers' questions in forums and communities. Each month a report lists every piece of work, the question it targets, and the AI answers before and after.",
 	});
 
 	return faqs;

@@ -1,11 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { Badge } from "@workspace/ui/components/badge";
-import { buttonVariants } from "@workspace/ui/components/button";
 import { AlertTriangle, ArrowLeft, Check, ExternalLink } from "lucide-react";
 import {
 	CATEGORY_LABELS,
 	type Competitor,
 	ELMO_FEATURES,
+	ENTRY_PRICE,
 	FEATURE_CATEGORIES,
 	type FeatureKey,
 	formatFateDate,
@@ -16,19 +16,20 @@ import {
 	getSoundbite,
 	graveyardFate,
 	isLowDR,
+	PLAN_RANGE,
 } from "@/lib/competitors";
-import { SELF_HOST_LINK } from "@/lib/self-host-link";
+import { CiteRankCta } from "./directory-shell";
 import { Faq } from "./faq";
 import { FeatureMark } from "./feature-mark";
 
-function FeatureRow({ label, elmo, competitor }: { label: string; elmo: boolean; competitor: boolean }) {
-	const elmoWins = elmo && !competitor;
-	const competitorWins = !elmo && competitor;
+function FeatureRow({ label, citeRank, competitor }: { label: string; citeRank: boolean; competitor: boolean }) {
+	const citeRankWins = citeRank && !competitor;
+	const competitorWins = !citeRank && competitor;
 	return (
 		<tr className="border-b border-dashed border-zinc-200 last:border-solid">
 			<td className="py-3 pr-4 text-sm text-zinc-600">{label}</td>
-			<td className={`px-4 py-3 text-center ${elmoWins ? "bg-blue-50" : ""}`}>
-				<FeatureMark has={elmo} />
+			<td className={`px-4 py-3 text-center ${citeRankWins ? "bg-blue-50" : ""}`}>
+				<FeatureMark has={citeRank} />
 			</td>
 			<td className={`px-4 py-3 text-center ${competitorWins ? "bg-blue-50" : ""}`}>
 				<FeatureMark has={competitor} />
@@ -63,11 +64,11 @@ function FateNotice({ competitor }: { competitor: Competitor }) {
 }
 
 function diffFeatures(competitor: Competitor): {
-	elmoOnlyFeatures: string[];
+	citeRankOnlyFeatures: string[];
 	competitorOnlyFeatures: string[];
 	sharedFeatures: string[];
 } {
-	const elmoOnlyFeatures: string[] = [];
+	const citeRankOnlyFeatures: string[] = [];
 	const competitorOnlyFeatures: string[] = [];
 	const sharedFeatures: string[] = [];
 
@@ -75,19 +76,19 @@ function diffFeatures(competitor: Competitor): {
 		for (const featureKey of Object.keys(category.features)) {
 			const key = featureKey as FeatureKey;
 			const label = category.features[key].label;
-			const elmoHas = ELMO_FEATURES[key] ?? false;
+			const citeRankHas = ELMO_FEATURES[key] ?? false;
 			const competitorHas = competitor.features[key] ?? false;
-			if (elmoHas && competitorHas) sharedFeatures.push(label);
-			else if (elmoHas) elmoOnlyFeatures.push(label);
+			if (citeRankHas && competitorHas) sharedFeatures.push(label);
+			else if (citeRankHas) citeRankOnlyFeatures.push(label);
 			else if (competitorHas) competitorOnlyFeatures.push(label);
 		}
 	}
 
-	return { elmoOnlyFeatures, competitorOnlyFeatures, sharedFeatures };
+	return { citeRankOnlyFeatures, competitorOnlyFeatures, sharedFeatures };
 }
 
 export function CompetitorComparison({ competitor }: { competitor: Competitor }) {
-	const { elmoOnlyFeatures, competitorOnlyFeatures, sharedFeatures } = diffFeatures(competitor);
+	const { citeRankOnlyFeatures, competitorOnlyFeatures, sharedFeatures } = diffFeatures(competitor);
 
 	return (
 		<>
@@ -105,7 +106,9 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 			{/* Hero */}
 			<section className="border-b border-zinc-200 bg-white py-12 lg:py-20">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
-					<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl">Elmo vs {competitor.name}</h1>
+					<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl">
+						CiteRank.com vs {competitor.name}
+					</h1>
 					<p className="mt-4 max-w-3xl text-lg text-balance text-zinc-600">{getComparisonVerdict(competitor)}</p>
 					<div className="mt-6 max-w-3xl border-l-2 border-blue-600 pl-4">
 						<p className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">The short version</p>
@@ -125,15 +128,15 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 			<section className="border-b border-zinc-200 bg-zinc-50 py-8">
 				<div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 md:px-6">
 					<div>
-						<h3 className="mb-1 text-lg font-semibold text-zinc-950">Elmo</h3>
+						<h3 className="mb-1 text-lg font-semibold text-zinc-950">CiteRank.com</h3>
 						<div className="mt-2 flex flex-wrap gap-2">
-							<Badge variant="secondary">Open Source</Badge>
-							<Badge variant="secondary">Self-Hosted</Badge>
-							<Badge variant="secondary">White-Label</Badge>
+							<Badge variant="secondary">AI Search Agency</Badge>
+							<Badge variant="secondary">10 AI Apps</Badge>
+							<Badge variant="secondary">From {ENTRY_PRICE}</Badge>
 						</div>
 						<p className="mt-3 text-sm text-zinc-600">
-							Open-source AEO platform. Self-host for free, forever. Track AI visibility across ChatGPT, Claude, and
-							Google AI Overviews with full transparency.
+							AI visibility tracker and AI search agency. Checks ten AI apps, including ChatGPT, Claude, and Google AI
+							Overviews, up to four times a day and keeps every answer in full. Plans run from {PLAN_RANGE}.
 						</p>
 					</div>
 					<div>
@@ -210,7 +213,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 							<thead>
 								<tr className="border-b border-zinc-200">
 									<th className="py-3 pr-4 text-left font-semibold text-zinc-950">Feature</th>
-									<th className="w-32 px-4 py-3 text-center font-semibold text-zinc-950">Elmo</th>
+									<th className="w-32 px-4 py-3 text-center font-semibold text-zinc-950">CiteRank.com</th>
 									<th className="w-32 px-4 py-3 text-center font-semibold text-zinc-950">{competitor.name}</th>
 								</tr>
 							</thead>
@@ -228,7 +231,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 										<FeatureRow
 											key={featureKey}
 											label={featureDef.label}
-											elmo={ELMO_FEATURES[featureKey as FeatureKey] ?? false}
+											citeRank={ELMO_FEATURES[featureKey as FeatureKey] ?? false}
 											competitor={competitor.features[featureKey as FeatureKey] ?? false}
 										/>
 									)),
@@ -244,13 +247,13 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
 					<h2 className="font-heading mb-8 text-2xl text-zinc-950">Key differences</h2>
 					<div className="grid gap-6 md:grid-cols-3">
-						{elmoOnlyFeatures.length > 0 && (
+						{citeRankOnlyFeatures.length > 0 && (
 							<div className="rounded-md border border-zinc-200 bg-zinc-50 p-5">
 								<h3 className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
-									Only in Elmo
+									Only in CiteRank.com
 								</h3>
 								<ul className="space-y-2">
-									{elmoOnlyFeatures.map((f) => (
+									{citeRankOnlyFeatures.map((f) => (
 										<li key={f} className="flex items-center gap-2 text-sm text-zinc-600">
 											<Check className="h-3.5 w-3.5 shrink-0 text-blue-600" />
 											{f}
@@ -296,34 +299,35 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 			{/* Why Elmo */}
 			<section className="border-b border-zinc-200 bg-white py-12">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
-					<h2 className="font-heading mb-4 text-2xl text-zinc-950">Why choose Elmo over {competitor.name}?</h2>
+					<h2 className="font-heading mb-4 text-2xl text-zinc-950">Why Choose CiteRank.com Over {competitor.name}?</h2>
 					<div className="grid gap-6 sm:grid-cols-2">
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
-							<h3 className="font-semibold text-zinc-950">Open source and transparent</h3>
+							<h3 className="font-semibold text-zinc-950">Every Answer Kept in Full</h3>
 							<p className="mt-2 text-sm text-zinc-600">
-								Every line of code is open. You can verify exactly how your visibility data is collected, calculated,
-								and presented. No black boxes.
+								CiteRank.com keeps every AI answer it collects, word for word, so each number traces back to the words
+								an AI wrote. Sentiment scores come with the passage behind them.
 							</p>
 						</div>
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
-							<h3 className="font-semibold text-zinc-950">Self-host for free, forever</h3>
+							<h3 className="font-semibold text-zinc-950">Ten AI Apps, Checked up to Four Times a Day</h3>
 							<p className="mt-2 text-sm text-zinc-600">
-								Run Elmo on your own infrastructure. The core platform is free and always will be, and Elmo Cloud is
-								there if you would rather not run it yourself.
+								Put your buyer questions to ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral,
+								Google AI Overviews, and Google AI Mode. Plans run from {PLAN_RANGE}, and yearly billing saves two
+								months.
 							</p>
 						</div>
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
-							<h3 className="font-semibold text-zinc-950">Your data, in your stack</h3>
+							<h3 className="font-semibold text-zinc-950">Your Data, in Your Stack</h3>
 							<p className="mt-2 text-sm text-zinc-600">
-								Pull every metric, sentiment included, into your own code with the REST API and TypeScript and Python
-								SDKs, or ask Claude Code and Cursor about it over MCP. Export, fork, or migrate at any time.
+								Pull every metric, sentiment included, into your own code with the REST API, or ask Claude Code and
+								Cursor about it over MCP.
 							</p>
 						</div>
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
-							<h3 className="font-semibold text-zinc-950">Built to last</h3>
+							<h3 className="font-semibold text-zinc-950">An Agency That Does the Work</h3>
 							<p className="mt-2 text-sm text-zinc-600">
-								Bootstrapped and sustainable. No investors pushing towards dark patterns. We'll outlast the companies
-								taking too much VC money.
+								About once a week, the tracker ranks what to do next. CiteRank.com's AI search agency does that work
+								every month for businesses that want it done, and reports the AI answers before and after.
 							</p>
 						</div>
 					</div>
@@ -334,28 +338,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 			<Faq items={getComparisonFaqs(competitor)} />
 
 			{/* CTA */}
-			<section className="border-b border-zinc-200 bg-white py-16 lg:py-24">
-				<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-					<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Ready to track your AI visibility?</h2>
-					<p className="mx-auto mt-4 max-w-xl text-lg text-balance text-zinc-600">
-						Deploy Elmo in minutes and start monitoring how ChatGPT, Claude, and Google AI Overviews talk about your
-						brand.
-					</p>
-					<div className="mt-8 flex flex-wrap justify-center gap-3">
-						<Link {...SELF_HOST_LINK} className={buttonVariants({ size: "sm" })}>
-							Deploy Elmo
-						</Link>
-						<a
-							href="https://github.com/elmohq/elmo"
-							target="_blank"
-							rel="noopener noreferrer"
-							className={buttonVariants({ variant: "outline", size: "sm" })}
-						>
-							View on GitHub
-						</a>
-					</div>
-				</div>
-			</section>
+			<CiteRankCta />
 		</>
 	);
 }

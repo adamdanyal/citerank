@@ -4,8 +4,10 @@ import {
 	CATEGORY_LABELS,
 	type Competitor,
 	ELMO_FEATURES,
+	ENTRY_PRICE,
 	FEATURE_CATEGORIES,
 	type FeatureKey,
+	PLAN_RANGE,
 } from "@/lib/competitors";
 import { FeatureMark } from "./feature-mark";
 
@@ -43,7 +45,7 @@ function ToolSummary({ tool }: { tool: Competitor }) {
 }
 
 export function MultiComparison({ tools }: { tools: Competitor[] }) {
-	const heading = `${tools.map((t) => t.name).join(" vs ")} vs Elmo`;
+	const heading = `${tools.map((t) => t.name).join(" vs ")} vs CiteRank.com`;
 	const columnCount = tools.length + 2; // feature label + tools + Elmo
 
 	return (
@@ -55,15 +57,15 @@ export function MultiComparison({ tools }: { tools: Competitor[] }) {
 						<ToolSummary key={tool.slug} tool={tool} />
 					))}
 					<div>
-						<h3 className="mb-1 text-lg font-semibold text-zinc-950">Elmo</h3>
+						<h3 className="mb-1 text-lg font-semibold text-zinc-950">CiteRank.com</h3>
 						<div className="mt-2 flex flex-wrap gap-2">
-							<Badge variant="secondary">Open Source</Badge>
-							<Badge variant="secondary">Self-Hosted</Badge>
-							<Badge variant="secondary">Free</Badge>
+							<Badge variant="secondary">AI Search Agency</Badge>
+							<Badge variant="secondary">10 AI Apps</Badge>
+							<Badge variant="secondary">From {ENTRY_PRICE}</Badge>
 						</div>
 						<p className="mt-3 text-sm text-zinc-600">
-							Open-source AEO platform. Self-host for free and track AI visibility across every major answer engine with
-							full transparency.
+							AI visibility tracker and AI search agency. Checks ten AI apps up to four times a day and keeps every
+							answer in full. Plans run from {PLAN_RANGE}.
 						</p>
 					</div>
 				</div>
@@ -83,7 +85,7 @@ export function MultiComparison({ tools }: { tools: Competitor[] }) {
 											{tool.name}
 										</th>
 									))}
-									<th className="w-28 px-3 py-3 text-center font-semibold text-zinc-950">Elmo</th>
+									<th className="w-28 px-3 py-3 text-center font-semibold text-zinc-950">CiteRank.com</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -98,14 +100,14 @@ export function MultiComparison({ tools }: { tools: Competitor[] }) {
 									</tr>,
 									...Object.entries(cat.features).map(([featureKey, featureDef]) => {
 										const k = featureKey as FeatureKey;
-										const elmo = ELMO_FEATURES[k] ?? false;
+										const citeRank = ELMO_FEATURES[k] ?? false;
 										return (
 											<tr key={featureKey} className="border-b border-dashed border-zinc-200 last:border-solid">
 												<td className="py-3 pr-4 text-sm text-zinc-600">{featureDef.label}</td>
 												{tools.map((tool) => (
 													<Cell key={tool.slug} on={tool.features[k] ?? false} />
 												))}
-												<Cell on={elmo} highlight={elmo} />
+												<Cell on={citeRank} highlight={citeRank} />
 											</tr>
 										);
 									}),

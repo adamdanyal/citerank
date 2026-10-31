@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { DirectoryBackLink, DirectoryHero, DirectorySection, ElmoCta } from "@/components/directory-shell";
+import { CiteRankCta, DirectoryBackLink, DirectoryHero, DirectorySection } from "@/components/directory-shell";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { CATEGORY_LABELS, indexableCategories, indexedCompetitors, toolsInCategory } from "@/lib/competitors";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
-const title = "AI Visibility Tool Alternatives · Elmo";
+const title = "AI Visibility Tool Alternatives · CiteRank.com";
 const description =
-	"Find open-source and self-hosted alternatives to the AI visibility tools you're evaluating. Each guide compares the closest options, with Elmo as the free, auditable pick.";
+	"Find alternatives to the AI visibility tools you're evaluating. Each guide compares the closest options, with CiteRank.com included for reference.";
 
 const items = indexedCompetitors.map((c) => ({
 	name: `${c.name} alternatives`,
@@ -52,7 +52,7 @@ function AlternativesHub() {
 				<DirectoryBackLink />
 				<DirectoryHero
 					title="Alternatives to every AI visibility tool"
-					lead="Shopping for a replacement, or just want to know your options? Pick a tool to see its closest alternatives, including the open-source, self-hosted option you can run for free."
+					lead="Shopping for a replacement, or just want to know your options? Pick a tool to see its closest alternatives, compared side by side with CiteRank.com."
 				/>
 				{indexableCategories.map((category) => (
 					<DirectorySection key={category} title={CATEGORY_LABELS[category]}>
@@ -70,7 +70,7 @@ function AlternativesHub() {
 						</ul>
 					</DirectorySection>
 				))}
-				<ElmoCta />
+				<CiteRankCta />
 			</main>
 			<Footer />
 		</div>

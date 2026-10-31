@@ -4,8 +4,10 @@ import {
 	CATEGORY_LABELS,
 	type Competitor,
 	ELMO_FEATURES,
+	ENTRY_PRICE,
 	FEATURE_CATEGORIES,
 	type FeatureKey,
+	PLAN_RANGE,
 } from "@/lib/competitors";
 import { FeatureMark } from "./feature-mark";
 
@@ -79,15 +81,15 @@ export function PairComparison({ a, b }: { a: Competitor; b: Competitor }) {
 						domain={b.domain}
 					/>
 					<div>
-						<h3 className="mb-1 text-lg font-semibold text-zinc-950">Elmo</h3>
+						<h3 className="mb-1 text-lg font-semibold text-zinc-950">CiteRank.com</h3>
 						<div className="mt-2 flex flex-wrap gap-2">
-							<Badge variant="secondary">Open Source</Badge>
-							<Badge variant="secondary">Self-Hosted</Badge>
-							<Badge variant="secondary">Free</Badge>
+							<Badge variant="secondary">AI Search Agency</Badge>
+							<Badge variant="secondary">10 AI Apps</Badge>
+							<Badge variant="secondary">From {ENTRY_PRICE}</Badge>
 						</div>
 						<p className="mt-3 text-sm text-zinc-600">
-							Open-source AEO platform. Self-host for free and track AI visibility across every major answer engine with
-							full transparency.
+							AI visibility tracker and AI search agency. Checks ten AI apps up to four times a day and keeps every
+							answer in full. Plans run from {PLAN_RANGE}.
 						</p>
 					</div>
 				</div>
@@ -97,7 +99,7 @@ export function PairComparison({ a, b }: { a: Competitor; b: Competitor }) {
 			<section className="border-b border-zinc-200 bg-white py-12">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
 					<h2 className="font-heading mb-8 text-2xl text-zinc-950">
-						{a.name} vs {b.name} vs Elmo
+						{a.name} vs {b.name} vs CiteRank.com
 					</h2>
 					<div className="overflow-x-auto">
 						<table className="w-full text-sm">
@@ -106,7 +108,7 @@ export function PairComparison({ a, b }: { a: Competitor; b: Competitor }) {
 									<th className="py-3 pr-4 text-left font-semibold text-zinc-950">Feature</th>
 									<th className="w-28 px-4 py-3 text-center font-semibold text-zinc-950">{a.name}</th>
 									<th className="w-28 px-4 py-3 text-center font-semibold text-zinc-950">{b.name}</th>
-									<th className="w-28 px-4 py-3 text-center font-semibold text-zinc-950">Elmo</th>
+									<th className="w-28 px-4 py-3 text-center font-semibold text-zinc-950">CiteRank.com</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -121,13 +123,13 @@ export function PairComparison({ a, b }: { a: Competitor; b: Competitor }) {
 									</tr>,
 									...Object.entries(cat.features).map(([featureKey, featureDef]) => {
 										const k = featureKey as FeatureKey;
-										const elmo = ELMO_FEATURES[k] ?? false;
+										const citeRank = ELMO_FEATURES[k] ?? false;
 										return (
 											<tr key={featureKey} className="border-b border-dashed border-zinc-200 last:border-solid">
 												<td className="py-3 pr-4 text-sm text-zinc-600">{featureDef.label}</td>
 												<Cell on={a.features[k] ?? false} />
 												<Cell on={b.features[k] ?? false} />
-												<Cell on={elmo} highlight={elmo} />
+												<Cell on={citeRank} highlight={citeRank} />
 											</tr>
 										);
 									}),

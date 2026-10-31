@@ -1,6 +1,6 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
-import { cloudAppUrl, demoSiteUrl } from "@workspace/config/referrals";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { cloudSignupUrl } from "@workspace/config/referrals";
+import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { FeatureGraphic, featurePath } from "@/components/features";
 import { Footer } from "@/components/footer";
 import { Closing } from "@/components/home/closing";
@@ -10,7 +10,6 @@ import { CARD, SectionHeading } from "@/components/home/ui";
 import { Navbar } from "@/components/navbar";
 import { type FeatureLink, getProductFeature, type ProductFeature } from "@/data/features";
 import { FEATURE_SLUGS, getFeatureLabel, indexableFeatureKeys } from "@/lib/competitors";
-import { externalRel } from "@/lib/external-link";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
 const FROM = "marketing-features-hero";
@@ -61,8 +60,7 @@ export const Route = createFileRoute("/features/$slug")({
 });
 
 function FeatureHero({ feature }: { feature: ProductFeature }) {
-	const cloudUrl = cloudAppUrl(FROM);
-	const demoUrl = demoSiteUrl(FROM);
+	const signupUrl = cloudSignupUrl(FROM);
 	return (
 		<section className="relative overflow-hidden bg-white">
 			<div
@@ -75,7 +73,7 @@ function FeatureHero({ feature }: { feature: ProductFeature }) {
 					className="inline-flex items-center gap-1 text-sm text-zinc-500 transition-colors hover:text-zinc-950"
 				>
 					<ArrowLeft className="size-3" aria-hidden="true" />
-					All features
+					All Features
 				</a>
 				<div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
 					<div className="lg:col-span-5">
@@ -84,19 +82,16 @@ function FeatureHero({ feature }: { feature: ProductFeature }) {
 						</h1>
 						<p className="mt-6 text-pretty text-[17px]/7 text-zinc-600">{feature.lede}</p>
 						<div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-							<a href={cloudUrl} className={`${BUTTON} bg-blue-600 text-white hover:bg-blue-700`}>
-								Get started
+							<a href={signupUrl} className={`${BUTTON} bg-blue-600 text-white hover:bg-blue-700`}>
+								Start Tracking
 								<ArrowRight className="size-4" aria-hidden="true" />
 							</a>
-							<a
-								href={demoUrl}
-								target="_blank"
-								rel={externalRel(demoUrl)}
+							<Link
+								to="/agency"
 								className={`${BUTTON} bg-white text-zinc-950 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50 hover:ring-zinc-300`}
 							>
-								Try the live demo
-								<ArrowUpRight className="size-4" aria-hidden="true" />
-							</a>
+								Have Us Do the Work
+							</Link>
 						</div>
 						<p className="mt-5 text-sm text-zinc-500">
 							<a
@@ -121,7 +116,7 @@ function Steps({ feature }: { feature: ProductFeature }) {
 	return (
 		<section className="border-t border-zinc-200/80 bg-zinc-50/70">
 			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-24">
-				<SectionHeading title="What you can do" />
+				<SectionHeading title="What You Can Do" />
 				<div className={`mt-10 grid gap-10 ${secondary ? "lg:grid-cols-12 lg:items-center lg:gap-12" : ""}`}>
 					<ol className={`grid gap-4 ${secondary ? "lg:col-span-5" : "md:grid-cols-3"}`}>
 						{feature.steps.map((step, i) => (
@@ -152,7 +147,7 @@ function Metrics({ feature }: { feature: ProductFeature }) {
 		<section className="border-t border-zinc-200/80 bg-white">
 			<div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 md:px-6 lg:grid-cols-12 lg:gap-12 lg:py-24">
 				<div className="lg:col-span-4">
-					<SectionHeading title="Data you can act on" />
+					<SectionHeading title="Data You Can Act On" />
 				</div>
 				<dl className="grid gap-x-10 sm:grid-cols-2 lg:col-span-8">
 					{feature.metrics.map((m) => (
@@ -172,7 +167,7 @@ function UseCasesAndWhy({ feature }: { feature: ProductFeature }) {
 		<section className="border-t border-zinc-200/80 bg-white">
 			<div className="mx-auto grid max-w-6xl gap-5 px-4 py-20 md:px-6 lg:grid-cols-2 lg:py-24">
 				<div className={`p-6 md:p-8 ${CARD}`}>
-					<h2 className="text-2xl font-semibold tracking-[-0.02em] text-zinc-950">Use cases</h2>
+					<h2 className="text-2xl font-semibold tracking-[-0.02em] text-zinc-950">Use Cases</h2>
 					<ul className="mt-6 space-y-4">
 						{feature.useCases.map((u) => (
 							<li key={u} className="flex gap-3 text-pretty text-[15px]/6 text-zinc-700">
@@ -183,7 +178,7 @@ function UseCasesAndWhy({ feature }: { feature: ProductFeature }) {
 					</ul>
 				</div>
 				<div className={`p-6 md:p-8 ${CARD}`}>
-					<h2 className="text-2xl font-semibold tracking-[-0.02em] text-zinc-950">Why Elmo</h2>
+					<h2 className="text-2xl font-semibold tracking-[-0.02em] text-zinc-950">Why CiteRank.com</h2>
 					<ul className="mt-6 space-y-5">
 						{feature.why.map((w) => (
 							<li key={w.name}>
@@ -202,7 +197,7 @@ function LearnMore({ links }: { links: FeatureLink[] }) {
 	return (
 		<section className="border-t border-zinc-200/80 bg-zinc-50/70">
 			<div className="mx-auto max-w-6xl px-4 py-16 md:px-6 lg:py-20">
-				<h2 className="text-2xl font-semibold tracking-[-0.02em] text-zinc-950">Related guides</h2>
+				<h2 className="text-2xl font-semibold tracking-[-0.02em] text-zinc-950">Related Guides</h2>
 				<ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
 					{links.map((l) => (
 						<li key={l.href} className="flex">
@@ -226,9 +221,9 @@ function RelatedFeatures({ related }: { related: ProductFeature[] }) {
 		<section className="border-t border-zinc-200/80 bg-white">
 			<div className="mx-auto max-w-6xl px-4 py-16 md:px-6 lg:py-20">
 				<div className="flex flex-wrap items-baseline justify-between gap-4">
-					<h2 className="text-2xl font-semibold tracking-[-0.02em] text-zinc-950">Related features</h2>
+					<h2 className="text-2xl font-semibold tracking-[-0.02em] text-zinc-950">Related Features</h2>
 					<a href="/features" className="text-sm font-medium text-blue-600 hover:text-blue-700">
-						All features
+						All Features
 					</a>
 				</div>
 				<ul className="mt-6 grid gap-3 md:grid-cols-3">

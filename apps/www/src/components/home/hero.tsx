@@ -39,8 +39,6 @@ export function Hero({
 	badge?: ReactNode;
 	title?: string;
 	lede?: ReactNode;
-	/** Kept for callers written against the old hero; there is no self-hosted option to offer. */
-	selfHost?: boolean;
 	from?: ReferralSource;
 } = {}) {
 	const signupUrl = cloudSignupUrl(from);

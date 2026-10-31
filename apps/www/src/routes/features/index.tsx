@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { FeatureCard, featurePath } from "@/components/features";
 import { Footer } from "@/components/footer";
 import { Closing } from "@/components/home/closing";
@@ -7,9 +7,9 @@ import { Navbar } from "@/components/navbar";
 import { productFeatures } from "@/data/features";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
-const title = "Features: AI Visibility, Citation & Competitor Tracking · Elmo";
+const title = "Features: AI Visibility, Citation & Competitor Tracking · CiteRank.com";
 const description =
-	"Everything Elmo does: AI visibility tracking across every engine, share of voice, sentiment, citations, query fan-out, prompt tracking, recommendations, reporting, and an API and MCP server.";
+	"Everything CiteRank.com's tracker does: AI visibility tracking across ten AI apps, share of voice, sentiment, citations, query fan-out, prompt tracking, recommendations, reporting, and an API and MCP server.";
 
 export const Route = createFileRoute("/features/")({
 	head: () => ({
@@ -43,12 +43,16 @@ function FeaturesPage() {
 					/>
 					<div className="relative mx-auto max-w-6xl px-4 pb-14 pt-14 md:px-6 md:pt-20 lg:pb-20">
 						<h1 className="max-w-3xl text-[2.75rem] font-semibold leading-[1] tracking-[-0.04em] text-balance text-zinc-950 sm:text-6xl">
-							All you need to grow AI visibility.
+							All You Need to Grow AI Visibility
 						</h1>
 						<p className="mt-6 max-w-[60ch] text-pretty text-[17px]/7 text-zinc-600 md:text-xl/8">
-							Elmo tracks how ChatGPT, Google AI Overviews, Perplexity, Gemini, and other AI engines talk about your
-							brand: whether they mention you, how they describe you, which competitors they name instead, and which
-							sources they cite. Then it tells you what to do about it.
+							CiteRank.com tracks how ChatGPT, Google AI Overviews, Perplexity, Gemini, and other AI engines talk about
+							your brand: whether they mention you, how they describe you, which competitors they name instead, and
+							which sources they cite. Then it ranks what to do next, and our{" "}
+							<Link to="/agency" className="font-medium text-zinc-950 underline decoration-zinc-300 underline-offset-4">
+								AI search agency
+							</Link>{" "}
+							can do the work for you.
 						</p>
 					</div>
 				</section>

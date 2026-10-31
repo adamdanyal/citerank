@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { DirectoryBackLink, DirectoryHero, DirectorySection, ElmoCta } from "@/components/directory-shell";
+import { CiteRankCta, DirectoryBackLink, DirectoryHero, DirectorySection } from "@/components/directory-shell";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { CATEGORY_HEADINGS, CATEGORY_SLUGS, indexableCategories, toolsInCategory } from "@/lib/competitors";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
-const title = "AI Visibility Tools by Category · Elmo";
+const title = "AI Visibility Tools by Category · CiteRank.com";
 const description =
 	"Browse AI visibility tools by category: dedicated trackers, content platforms, developer APIs, SEO suites, e-commerce, and open source.";
 
@@ -60,7 +60,7 @@ function CategoryHub() {
 						))}
 					</ul>
 				</DirectorySection>
-				<ElmoCta />
+				<CiteRankCta />
 			</main>
 			<Footer />
 		</div>

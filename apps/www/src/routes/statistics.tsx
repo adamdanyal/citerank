@@ -1,18 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import { ArrowUpRight } from "lucide-react";
-import { DirectoryHero, ElmoCta } from "@/components/directory-shell";
+import { DirectoryHero } from "@/components/directory-shell";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
+import { CiteRankCta } from "@/components/pillar";
 import { GROUP_BLURBS, STAT_GROUPS, type Stat, type StatGroup, stats, supportingPosts } from "@/data/statistics";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
-const title = "AI Search Statistics: 22 Findings on Citations & Visibility · Elmo";
+const title = "AI Search Statistics: 22 Findings on Citations & Visibility · CiteRank.com";
 const description =
-	"Statistics on AI search, answer engine optimization and AI citations — what share of searches carry an AI Overview, which domains get cited, and which GEO tactics measurably work. Every figure sourced.";
+	"Statistics on AI search, answer engine optimization and AI citations: what share of searches carry an AI Overview, which domains get cited, and which GEO tactics measurably work. Every figure sourced.";
 
 const lead =
-	"Twenty-two figures on how AI answer engines cite, drawn from published studies and our own prompt tracking. Every one links to the working behind it, including the ones that contradict each other.";
+	"Twenty-two figures on how AI answer engines cite, drawn from published studies and AI answer tracking data. Every one links to the working behind it, including the ones that contradict each other.";
 
 interface StatWithPost extends Stat {
 	url: string;
@@ -57,7 +58,7 @@ export const Route = createFileRoute("/statistics")({
 				{ name: "Home", path: "/" },
 				{ name: "AI search statistics", path: "/statistics" },
 			]),
-			itemListJsonLd(stats.map((stat) => ({ name: `${stat.value} — ${stat.claim}`, path: `/blog/${stat.slug}` }))),
+			itemListJsonLd(stats.map((stat) => ({ name: `${stat.value}: ${stat.claim}`, path: `/blog/${stat.slug}` }))),
 		],
 	}),
 	loader: async () => await loadStats(),
@@ -70,7 +71,7 @@ function StatisticsPage() {
 		<div className="min-h-screen">
 			<Navbar />
 			<main>
-				<DirectoryHero title="AI search statistics" lead={lead} />
+				<DirectoryHero title="AI Search Statistics" lead={lead} />
 
 				<section className="border-b border-zinc-200 bg-white py-12">
 					<div className="mx-auto max-w-6xl px-4 md:px-6">
@@ -80,7 +81,7 @@ function StatisticsPage() {
 								and links to the piece that works through how it was measured and where it disagrees with the next
 								study.
 							</p>
-							<p>Free to cite, with attribution to the original source rather than to us where the two differ.</p>
+							<p>Cite any figure here, with attribution to its original source.</p>
 						</div>
 
 						{STAT_GROUPS.map((group) => {
@@ -101,7 +102,7 @@ function StatisticsPage() {
 													<div className="max-w-3xl">
 														<p className="leading-relaxed text-zinc-700">{stat.claim}</p>
 														<p className="mt-1.5 text-sm text-zinc-500">
-															{stat.source} —{" "}
+															{stat.source}.{" "}
 															<a
 																href={stat.url}
 																className="group inline-flex items-center gap-1 underline underline-offset-2 hover:text-zinc-900"
@@ -132,7 +133,7 @@ function StatisticsPage() {
 					</div>
 				</section>
 
-				<ElmoCta />
+				<CiteRankCta />
 			</main>
 			<Footer />
 		</div>

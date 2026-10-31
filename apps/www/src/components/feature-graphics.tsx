@@ -395,8 +395,6 @@ const API_ENGINES = [
 	{ name: "Grok", iconId: "x" },
 	{ name: "Mistral", iconId: "mistral" },
 	{ name: "DeepSeek", iconId: "deepseek" },
-	{ name: "Qwen", iconId: "qwen" },
-	{ name: "Kimi", iconId: "moonshotai" },
 ];
 
 function EngineChip({ name, iconId }: { name: string; iconId: string }) {
@@ -421,14 +419,11 @@ export function EnginesGraphic() {
 					</ul>
 				</div>
 				<div>
-					<Mono>DIRECT APIS AND OPENROUTER</Mono>
+					<Mono>DIRECT APIS</Mono>
 					<ul className="mt-2.5 grid grid-cols-2 gap-2 sm:grid-cols-3">
 						{API_ENGINES.map((e) => (
 							<EngineChip key={e.name} {...e} />
 						))}
-						<li className="flex h-10 items-center rounded-md border border-dashed border-zinc-300 px-3 text-sm font-medium text-zinc-600">
-							+ OpenRouter models
-						</li>
 					</ul>
 				</div>
 			</div>

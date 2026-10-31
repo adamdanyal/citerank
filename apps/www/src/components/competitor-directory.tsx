@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { cloudSignupUrl } from "@workspace/config/referrals";
 import { buttonVariants } from "@workspace/ui/components/button";
 import { useState } from "react";
 import {
@@ -6,6 +7,7 @@ import {
 	type Competitor,
 	type CompetitorCategory,
 	ELMO_FEATURES,
+	ENTRY_PRICE,
 	FEATURE_CATEGORIES,
 	type FeatureKey,
 	getComparisonSlug,
@@ -15,6 +17,8 @@ import {
 	sortedCompetitors,
 } from "@/lib/competitors";
 import { FeatureMark } from "./feature-mark";
+
+const SIGN_UP_URL = cloudSignupUrl("marketing-page-cta");
 
 const visibleCompetitors = sortedCompetitors.filter((c) => !isRetired(c) && c.category !== "other");
 
@@ -86,22 +90,18 @@ export function CompetitorDirectory() {
 			{/* Elmo CTA */}
 			<section className="border-b border-zinc-200 bg-white py-16 lg:py-24">
 				<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-					<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Why teams choose Elmo</h2>
+					<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Why Choose CiteRank.com</h2>
 					<p className="mx-auto mt-4 max-w-xl text-lg text-balance text-zinc-600">
-						Open source, self-hosted, and transparent. Track AI visibility without vendor lock-in or inflated pricing.
+						A tracker that checks ten AI apps up to four times a day and keeps every answer in full, plus an AI search
+						agency that does the work. Plans start at {ENTRY_PRICE}.
 					</p>
 					<div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-						<Link to="/docs" className={buttonVariants({ size: "sm" })}>
-							Read the Docs
-						</Link>
-						<a
-							href="https://github.com/elmohq/elmo"
-							target="_blank"
-							rel="noopener noreferrer"
-							className={buttonVariants({ variant: "outline", size: "sm" })}
-						>
-							View on GitHub
+						<a href={SIGN_UP_URL} className={buttonVariants({ size: "sm" })}>
+							Start Tracking
 						</a>
+						<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
+							Have Us Do the Work
+						</Link>
 					</div>
 				</div>
 			</section>
@@ -133,7 +133,7 @@ function FeatureMatrix({ competitors: items }: { competitors: Competitor[] }) {
 					<tr className="border-b border-zinc-200">
 						<th className={`${stickyCell} py-3 pr-4 text-left font-semibold text-zinc-950`}>Feature</th>
 						<th className="border-x border-zinc-200 bg-blue-50 px-2 py-3 text-center font-semibold text-zinc-950">
-							Elmo
+							CiteRank.com
 						</th>
 						{items.map((c) => (
 							<th key={c.slug} className="px-2 py-3 text-center font-normal">

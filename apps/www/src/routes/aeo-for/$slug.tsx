@@ -1,24 +1,20 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PLANS } from "@workspace/config/plans";
-import { cloudAppUrl, demoSiteUrl } from "@workspace/config/referrals";
-import { ArrowRight, ArrowUpRight, Search } from "lucide-react";
+import { cloudSignupUrl } from "@workspace/config/referrals";
+import { ArrowRight, Search } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { Closing } from "@/components/home/closing";
 import { EngineIcon } from "@/components/home/engines";
 import { Faq } from "@/components/home/faq";
 import { Hero } from "@/components/home/hero";
 import { HowItWorks } from "@/components/home/how-it-works";
-import { LogoStrip } from "@/components/home/logos";
 import { ModelCoverage } from "@/components/home/models";
 import { Pricing } from "@/components/home/pricing";
-import { Reviews } from "@/components/home/reviews";
-import { SelfHost } from "@/components/home/self-host";
 import { HOME_FONT_CLASS, HomeStyles } from "@/components/home/styles";
 import { CARD, SectionHeading } from "@/components/home/ui";
 import { WhySwitch } from "@/components/home/why-switch";
 import { Navbar } from "@/components/navbar";
-import { type AeoVertical, aeoHeadline, aeoVerticals, getAeoVertical } from "@/data/aeo-verticals";
-import { externalRel } from "@/lib/external-link";
+import { type AeoVertical, aeoHeadline, aeoVerticals, getAeoVertical, titleCase } from "@/data/aeo-verticals";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, howToJsonLd, itemListJsonLd, ogMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/aeo-for/$slug")({
@@ -31,7 +27,7 @@ export const Route = createFileRoute("/aeo-for/$slug")({
 	head: ({ loaderData }) => {
 		if (!loaderData) return {};
 		const { vertical: v, others } = loaderData;
-		const title = v.metaTitle ?? `${aeoHeadline(v)}: Track AI Visibility · Elmo`;
+		const title = v.metaTitle ?? `${aeoHeadline(v)}: Track AI Visibility · CiteRank.com`;
 		const description = v.metaDescription ?? v.short;
 		const path = `/aeo-for/${v.slug}`;
 		return {
@@ -114,7 +110,7 @@ function AudienceBadge({ audience }: { audience: string }) {
 	return (
 		<span className="inline-flex h-7 items-center gap-2 rounded-full bg-white/80 px-3 text-xs font-medium text-zinc-600 shadow-sm ring-1 ring-zinc-200">
 			<span className="size-1.5 rounded-full bg-blue-600" />
-			Elmo for {audience}
+			CiteRank.com for {audience}
 		</span>
 	);
 }
@@ -125,7 +121,7 @@ function Prompts({ vertical }: { vertical: AeoVertical }) {
 		<section className="border-t border-zinc-200/80 bg-zinc-50/70">
 			<div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 md:px-6 lg:grid-cols-12 lg:items-center lg:py-28">
 				<div className="lg:col-span-6">
-					<SectionHeading title="Your buyers are asking AI. Is it naming you?" lede={lead} />
+					<SectionHeading title="Your Buyers Are Asking AI Who to Choose" lede={lead} />
 					<div className="mt-5 max-w-[56ch] space-y-4 text-pretty text-[15px]/7 text-zinc-600">
 						{rest.map((p) => (
 							<p key={p.slice(0, 32)}>{p}</p>
@@ -134,7 +130,7 @@ function Prompts({ vertical }: { vertical: AeoVertical }) {
 				</div>
 				<div className="lg:col-span-6">
 					<div className={`p-5 sm:p-6 ${CARD}`}>
-						<p className="text-[13px] font-medium text-zinc-500">Prompts {vertical.audience} should track</p>
+						<p className="text-[13px] font-medium text-zinc-500">Prompts {titleCase(vertical.audience)} Should Track</p>
 						<ul className="mt-4 space-y-2.5">
 							{vertical.examplePrompts.map((p) => (
 								<li
@@ -172,14 +168,13 @@ function Prompts({ vertical }: { vertical: AeoVertical }) {
 }
 
 function Playbook({ vertical }: { vertical: AeoVertical }) {
-	const cloudUrl = cloudAppUrl(FROM);
-	const demoUrl = demoSiteUrl(FROM);
+	const signupUrl = cloudSignupUrl(FROM);
 	return (
 		<section className="border-t border-zinc-200/80 bg-white">
 			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
 				<SectionHeading
-					title={`The AEO playbook for ${vertical.audience}.`}
-					lede="What gets a brand named in AI answers in your category, and where Elmo shows you the gaps."
+					title={`The AEO Playbook for ${titleCase(vertical.audience)}`}
+					lede="What gets a brand named in AI answers in your category, and where CiteRank.com shows you the gaps."
 				/>
 				<ol className="mt-12 grid gap-4 md:grid-cols-2">
 					{vertical.plays.map((play, i) => (
@@ -197,23 +192,17 @@ function Playbook({ vertical }: { vertical: AeoVertical }) {
 
 				<div className="mt-5 flex flex-col gap-6 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 p-6 text-white md:flex-row md:items-center md:justify-between md:p-8">
 					<div className="max-w-[60ch]">
-						<p className="text-lg font-semibold tracking-[-0.015em]">Where Elmo fits</p>
-						<p className="mt-2 text-pretty text-[15px]/7 text-blue-50">{vertical.elmoFit}</p>
+						<p className="text-lg font-semibold tracking-[-0.015em]">Where CiteRank.com Fits</p>
+						<p className="mt-2 text-pretty text-[15px]/7 text-blue-50">{vertical.fit}</p>
 					</div>
 					<div className="flex shrink-0 flex-col gap-2.5 sm:flex-row md:flex-col lg:flex-row">
-						<a href={cloudUrl} className={`${BUTTON} bg-white text-blue-700 hover:bg-blue-50`}>
-							Get started
+						<a href={signupUrl} className={`${BUTTON} bg-white text-blue-700 hover:bg-blue-50`}>
+							Start Tracking
 							<ArrowRight className="size-4" aria-hidden="true" />
 						</a>
-						<a
-							href={demoUrl}
-							target="_blank"
-							rel={externalRel(demoUrl)}
-							className={`${BUTTON} text-white ring-1 ring-inset ring-white/40 hover:bg-white/10`}
-						>
-							Try the live demo
-							<ArrowUpRight className="size-4" aria-hidden="true" />
-						</a>
+						<Link to="/agency" className={`${BUTTON} text-white ring-1 ring-inset ring-white/40 hover:bg-white/10`}>
+							Have Us Do the Work
+						</Link>
 					</div>
 				</div>
 			</div>
@@ -225,7 +214,7 @@ function OtherIndustries({ others }: { others: AeoVertical[] }) {
 	return (
 		<section className="border-t border-zinc-200/80 bg-white">
 			<div className="mx-auto max-w-6xl px-4 py-12 md:px-6">
-				<p className="text-sm font-medium text-zinc-500">Elmo for other industries</p>
+				<p className="text-sm font-medium text-zinc-500">CiteRank.com for Other Industries</p>
 				<ul className="mt-4 flex flex-wrap gap-2">
 					{others.map((o) => (
 						<li key={o.slug}>
@@ -259,12 +248,9 @@ function VerticalPage() {
 					badge={<AudienceBadge audience={vertical.audience} />}
 					title={aeoHeadline(vertical)}
 					lede={<WithPrompts text={vertical.short} />}
-					selfHost={vertical.technical === true}
 					from={FROM}
 				/>
-				<LogoStrip />
 				<Prompts vertical={vertical} />
-				<Reviews />
 				<Playbook vertical={vertical} />
 				<HowItWorks />
 				<ModelCoverage />
@@ -273,7 +259,6 @@ function VerticalPage() {
 					lede={`We recommend ${plan.name} for ${vertical.audience}: ${plan.maxPrompts} prompts across ${platforms}, checked ${plan.standardRunsPerDay}× daily, for $${plan.monthlyPriceUsd}/mo. Unlimited seats on every plan.`}
 					recommended={{ plan: vertical.plan, label: `Best for ${vertical.audience}` }}
 				/>
-				{vertical.technical ? <SelfHost /> : null}
 				<Faq items={vertical.faqs} />
 				<Closing from="marketing-aeo-for-closing" />
 				<OtherIndustries others={others} />

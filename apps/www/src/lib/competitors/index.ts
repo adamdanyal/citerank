@@ -1,4 +1,4 @@
-export { getComparisonFaqs, getComparisonVerdict, getSoundbite } from "./content";
+export { ENTRY_PRICE, getComparisonFaqs, getComparisonVerdict, getSoundbite, PLAN_RANGE } from "./content";
 
 export {
 	competitors,
@@ -23,7 +23,7 @@ export {
 	getAlternativesFaqs,
 	getAlternativesVerdict,
 	getCategoryBySlug,
-	getCategoryElmoPitch,
+	getCategoryCiteRankPitch,
 	getCategoryFaqs,
 	getCategoryVerdict,
 	getCompareEntry,

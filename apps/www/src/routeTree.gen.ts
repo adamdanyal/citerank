@@ -11,24 +11,17 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AgencyRouteImport } from './routes/agency'
 import { Route as AnswerEngineOptimizationRouteImport } from './routes/answer-engine-optimization'
-import { Route as BrandRouteImport } from './routes/brand'
-import { Route as ChangelogRouteImport } from './routes/changelog'
-import { Route as DemoRouteImport } from './routes/demo'
 import { Route as GenerativeEngineOptimizationRouteImport } from './routes/generative-engine-optimization'
 import { Route as LlmsFullDottxtRouteImport } from './routes/llms-full[.]txt'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
-import { Route as OffSiteAeoRouteImport } from './routes/off-site-aeo'
 import { Route as OgDotpngRouteImport } from './routes/og[.]png'
 import { Route as PricingRouteImport } from './routes/pricing'
-import { Route as RepoActivityDotsvgRouteImport } from './routes/repo-activity[.]svg'
-import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StatisticsRouteImport } from './routes/statistics'
-import { Route as StatusRouteImport } from './routes/status'
 import { Route as SupportRouteImport } from './routes/support'
-import { Route as VisionRouteImport } from './routes/vision'
 import { Route as DotwellKnownAiCatalogDotjsonRouteImport } from './routes/[.]well-known/ai-catalog[.]json'
 import { Route as DotwellKnownApiCatalogRouteImport } from './routes/[.]well-known/api-catalog'
 import { Route as DotwellKnownArdDotjsonRouteImport } from './routes/[.]well-known/ard[.]json'
@@ -53,8 +46,6 @@ import { Route as GlossaryIndexRouteImport } from './routes/glossary/index'
 import { Route as GlossarySlugRouteImport } from './routes/glossary/$slug'
 import { Route as LegalIndexRouteImport } from './routes/legal/index'
 import { Route as LegalSplatRouteImport } from './routes/legal/$'
-import { Route as OffSiteAeoBookRouteImport } from './routes/off-site-aeo_.book'
-import { Route as OgStatusDotpngRouteImport } from './routes/og/status[.]png'
 import { Route as AiVisibilityToolsAlternativesIndexRouteImport } from './routes/ai-visibility-tools/alternatives/index'
 import { Route as AiVisibilityToolsAlternativesSlugRouteImport } from './routes/ai-visibility-tools/alternatives/$slug'
 import { Route as AiVisibilityToolsCategoryIndexRouteImport } from './routes/ai-visibility-tools/category/index'
@@ -64,7 +55,6 @@ import { Route as AiVisibilityToolsCompareIndexRouteImport } from './routes/ai-v
 import { Route as AiVisibilityToolsCompareSlugRouteImport } from './routes/ai-visibility-tools/compare/$slug'
 import { Route as AiVisibilityToolsFeaturesIndexRouteImport } from './routes/ai-visibility-tools/features/index'
 import { Route as AiVisibilityToolsFeaturesSlugRouteImport } from './routes/ai-visibility-tools/features/$slug'
-import { Route as ApiRepoActivityRefreshRouteImport } from './routes/api/repo-activity/refresh'
 import { Route as LlmsDotmdxBlogSplatRouteImport } from './routes/llms[.]mdx.blog.$'
 import { Route as LlmsDotmdxDocsSplatRouteImport } from './routes/llms[.]mdx.docs.$'
 import { Route as OgDocsSplatRouteImport } from './routes/og/docs/$'
@@ -81,27 +71,17 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AgencyRoute = AgencyRouteImport.update({
+  id: '/agency',
+  path: '/agency',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AnswerEngineOptimizationRoute =
   AnswerEngineOptimizationRouteImport.update({
     id: '/answer-engine-optimization',
     path: '/answer-engine-optimization',
     getParentRoute: () => rootRouteImport,
   } as any)
-const BrandRoute = BrandRouteImport.update({
-  id: '/brand',
-  path: '/brand',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChangelogRoute = ChangelogRouteImport.update({
-  id: '/changelog',
-  path: '/changelog',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoRoute = DemoRouteImport.update({
-  id: '/demo',
-  path: '/demo',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const GenerativeEngineOptimizationRoute =
   GenerativeEngineOptimizationRouteImport.update({
     id: '/generative-engine-optimization',
@@ -118,11 +98,6 @@ const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
   path: '/llms.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
-const OffSiteAeoRoute = OffSiteAeoRouteImport.update({
-  id: '/off-site-aeo',
-  path: '/off-site-aeo',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const OgDotpngRoute = OgDotpngRouteImport.update({
   id: '/og.png',
   path: '/og.png',
@@ -131,16 +106,6 @@ const OgDotpngRoute = OgDotpngRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RepoActivityDotsvgRoute = RepoActivityDotsvgRouteImport.update({
-  id: '/repo-activity.svg',
-  path: '/repo-activity.svg',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RoadmapRoute = RoadmapRouteImport.update({
-  id: '/roadmap',
-  path: '/roadmap',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
@@ -158,19 +123,9 @@ const StatisticsRoute = StatisticsRouteImport.update({
   path: '/statistics',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StatusRoute = StatusRouteImport.update({
-  id: '/status',
-  path: '/status',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SupportRoute = SupportRouteImport.update({
   id: '/support',
   path: '/support',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VisionRoute = VisionRouteImport.update({
-  id: '/vision',
-  path: '/vision',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DotwellKnownAiCatalogDotjsonRoute =
@@ -295,16 +250,6 @@ const LegalSplatRoute = LegalSplatRouteImport.update({
   path: '/legal/$',
   getParentRoute: () => rootRouteImport,
 } as any)
-const OffSiteAeoBookRoute = OffSiteAeoBookRouteImport.update({
-  id: '/off-site-aeo_/book',
-  path: '/off-site-aeo/book',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OgStatusDotpngRoute = OgStatusDotpngRouteImport.update({
-  id: '/og/status.png',
-  path: '/og/status.png',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AiVisibilityToolsAlternativesIndexRoute =
   AiVisibilityToolsAlternativesIndexRouteImport.update({
     id: '/ai-visibility-tools/alternatives/',
@@ -359,11 +304,6 @@ const AiVisibilityToolsFeaturesSlugRoute =
     path: '/ai-visibility-tools/features/$slug',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ApiRepoActivityRefreshRoute = ApiRepoActivityRefreshRouteImport.update({
-  id: '/api/repo-activity/refresh',
-  path: '/api/repo-activity/refresh',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const LlmsDotmdxBlogSplatRoute = LlmsDotmdxBlogSplatRouteImport.update({
   id: '/llms.mdx/blog/$',
   path: '/llms.mdx/blog/$',
@@ -394,24 +334,17 @@ const ApiPlausibleJsScriptIndexRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/agency': typeof AgencyRoute
   '/answer-engine-optimization': typeof AnswerEngineOptimizationRoute
-  '/brand': typeof BrandRoute
-  '/changelog': typeof ChangelogRoute
-  '/demo': typeof DemoRoute
   '/generative-engine-optimization': typeof GenerativeEngineOptimizationRoute
   '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
-  '/off-site-aeo': typeof OffSiteAeoRoute
   '/og.png': typeof OgDotpngRoute
   '/pricing': typeof PricingRoute
-  '/repo-activity.svg': typeof RepoActivityDotsvgRoute
-  '/roadmap': typeof RoadmapRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/statistics': typeof StatisticsRoute
-  '/status': typeof StatusRoute
   '/support': typeof SupportRoute
-  '/vision': typeof VisionRoute
   '/.well-known/ai-catalog.json': typeof DotwellKnownAiCatalogDotjsonRoute
   '/.well-known/api-catalog': typeof DotwellKnownApiCatalogRoute
   '/.well-known/ard.json': typeof DotwellKnownArdDotjsonRoute
@@ -428,8 +361,6 @@ export interface FileRoutesByFullPath {
   '/features/$slug': typeof FeaturesSlugRoute
   '/glossary/$slug': typeof GlossarySlugRoute
   '/legal/$': typeof LegalSplatRoute
-  '/off-site-aeo/book': typeof OffSiteAeoBookRoute
-  '/og/status.png': typeof OgStatusDotpngRoute
   '/aeo-for/': typeof AeoForIndexRoute
   '/ai-search/': typeof AiSearchIndexRoute
   '/ai-visibility-tools/': typeof AiVisibilityToolsIndexRoute
@@ -443,7 +374,6 @@ export interface FileRoutesByFullPath {
   '/ai-visibility-tools/category/open-source': typeof AiVisibilityToolsCategoryOpenSourceRoute
   '/ai-visibility-tools/compare/$slug': typeof AiVisibilityToolsCompareSlugRoute
   '/ai-visibility-tools/features/$slug': typeof AiVisibilityToolsFeaturesSlugRoute
-  '/api/repo-activity/refresh': typeof ApiRepoActivityRefreshRoute
   '/llms.mdx/blog/$': typeof LlmsDotmdxBlogSplatRoute
   '/llms.mdx/docs/$': typeof LlmsDotmdxDocsSplatRoute
   '/og/docs/$': typeof OgDocsSplatRoute
@@ -457,24 +387,17 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/agency': typeof AgencyRoute
   '/answer-engine-optimization': typeof AnswerEngineOptimizationRoute
-  '/brand': typeof BrandRoute
-  '/changelog': typeof ChangelogRoute
-  '/demo': typeof DemoRoute
   '/generative-engine-optimization': typeof GenerativeEngineOptimizationRoute
   '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
-  '/off-site-aeo': typeof OffSiteAeoRoute
   '/og.png': typeof OgDotpngRoute
   '/pricing': typeof PricingRoute
-  '/repo-activity.svg': typeof RepoActivityDotsvgRoute
-  '/roadmap': typeof RoadmapRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/statistics': typeof StatisticsRoute
-  '/status': typeof StatusRoute
   '/support': typeof SupportRoute
-  '/vision': typeof VisionRoute
   '/.well-known/ai-catalog.json': typeof DotwellKnownAiCatalogDotjsonRoute
   '/.well-known/api-catalog': typeof DotwellKnownApiCatalogRoute
   '/.well-known/ard.json': typeof DotwellKnownArdDotjsonRoute
@@ -491,8 +414,6 @@ export interface FileRoutesByTo {
   '/features/$slug': typeof FeaturesSlugRoute
   '/glossary/$slug': typeof GlossarySlugRoute
   '/legal/$': typeof LegalSplatRoute
-  '/off-site-aeo/book': typeof OffSiteAeoBookRoute
-  '/og/status.png': typeof OgStatusDotpngRoute
   '/aeo-for': typeof AeoForIndexRoute
   '/ai-search': typeof AiSearchIndexRoute
   '/ai-visibility-tools': typeof AiVisibilityToolsIndexRoute
@@ -506,7 +427,6 @@ export interface FileRoutesByTo {
   '/ai-visibility-tools/category/open-source': typeof AiVisibilityToolsCategoryOpenSourceRoute
   '/ai-visibility-tools/compare/$slug': typeof AiVisibilityToolsCompareSlugRoute
   '/ai-visibility-tools/features/$slug': typeof AiVisibilityToolsFeaturesSlugRoute
-  '/api/repo-activity/refresh': typeof ApiRepoActivityRefreshRoute
   '/llms.mdx/blog/$': typeof LlmsDotmdxBlogSplatRoute
   '/llms.mdx/docs/$': typeof LlmsDotmdxDocsSplatRoute
   '/og/docs/$': typeof OgDocsSplatRoute
@@ -521,24 +441,17 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/agency': typeof AgencyRoute
   '/answer-engine-optimization': typeof AnswerEngineOptimizationRoute
-  '/brand': typeof BrandRoute
-  '/changelog': typeof ChangelogRoute
-  '/demo': typeof DemoRoute
   '/generative-engine-optimization': typeof GenerativeEngineOptimizationRoute
   '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
-  '/off-site-aeo': typeof OffSiteAeoRoute
   '/og.png': typeof OgDotpngRoute
   '/pricing': typeof PricingRoute
-  '/repo-activity.svg': typeof RepoActivityDotsvgRoute
-  '/roadmap': typeof RoadmapRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/statistics': typeof StatisticsRoute
-  '/status': typeof StatusRoute
   '/support': typeof SupportRoute
-  '/vision': typeof VisionRoute
   '/.well-known/ai-catalog.json': typeof DotwellKnownAiCatalogDotjsonRoute
   '/.well-known/api-catalog': typeof DotwellKnownApiCatalogRoute
   '/.well-known/ard.json': typeof DotwellKnownArdDotjsonRoute
@@ -555,8 +468,6 @@ export interface FileRoutesById {
   '/features/$slug': typeof FeaturesSlugRoute
   '/glossary/$slug': typeof GlossarySlugRoute
   '/legal/$': typeof LegalSplatRoute
-  '/off-site-aeo_/book': typeof OffSiteAeoBookRoute
-  '/og/status.png': typeof OgStatusDotpngRoute
   '/aeo-for/': typeof AeoForIndexRoute
   '/ai-search/': typeof AiSearchIndexRoute
   '/ai-visibility-tools/': typeof AiVisibilityToolsIndexRoute
@@ -570,7 +481,6 @@ export interface FileRoutesById {
   '/ai-visibility-tools/category/open-source': typeof AiVisibilityToolsCategoryOpenSourceRoute
   '/ai-visibility-tools/compare/$slug': typeof AiVisibilityToolsCompareSlugRoute
   '/ai-visibility-tools/features/$slug': typeof AiVisibilityToolsFeaturesSlugRoute
-  '/api/repo-activity/refresh': typeof ApiRepoActivityRefreshRoute
   '/llms.mdx/blog/$': typeof LlmsDotmdxBlogSplatRoute
   '/llms.mdx/docs/$': typeof LlmsDotmdxDocsSplatRoute
   '/og/docs/$': typeof OgDocsSplatRoute
@@ -586,24 +496,17 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/agency'
     | '/answer-engine-optimization'
-    | '/brand'
-    | '/changelog'
-    | '/demo'
     | '/generative-engine-optimization'
     | '/llms-full.txt'
     | '/llms.txt'
-    | '/off-site-aeo'
     | '/og.png'
     | '/pricing'
-    | '/repo-activity.svg'
-    | '/roadmap'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/statistics'
-    | '/status'
     | '/support'
-    | '/vision'
     | '/.well-known/ai-catalog.json'
     | '/.well-known/api-catalog'
     | '/.well-known/ard.json'
@@ -620,8 +523,6 @@ export interface FileRouteTypes {
     | '/features/$slug'
     | '/glossary/$slug'
     | '/legal/$'
-    | '/off-site-aeo/book'
-    | '/og/status.png'
     | '/aeo-for/'
     | '/ai-search/'
     | '/ai-visibility-tools/'
@@ -635,7 +536,6 @@ export interface FileRouteTypes {
     | '/ai-visibility-tools/category/open-source'
     | '/ai-visibility-tools/compare/$slug'
     | '/ai-visibility-tools/features/$slug'
-    | '/api/repo-activity/refresh'
     | '/llms.mdx/blog/$'
     | '/llms.mdx/docs/$'
     | '/og/docs/$'
@@ -649,24 +549,17 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/agency'
     | '/answer-engine-optimization'
-    | '/brand'
-    | '/changelog'
-    | '/demo'
     | '/generative-engine-optimization'
     | '/llms-full.txt'
     | '/llms.txt'
-    | '/off-site-aeo'
     | '/og.png'
     | '/pricing'
-    | '/repo-activity.svg'
-    | '/roadmap'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/statistics'
-    | '/status'
     | '/support'
-    | '/vision'
     | '/.well-known/ai-catalog.json'
     | '/.well-known/api-catalog'
     | '/.well-known/ard.json'
@@ -683,8 +576,6 @@ export interface FileRouteTypes {
     | '/features/$slug'
     | '/glossary/$slug'
     | '/legal/$'
-    | '/off-site-aeo/book'
-    | '/og/status.png'
     | '/aeo-for'
     | '/ai-search'
     | '/ai-visibility-tools'
@@ -698,7 +589,6 @@ export interface FileRouteTypes {
     | '/ai-visibility-tools/category/open-source'
     | '/ai-visibility-tools/compare/$slug'
     | '/ai-visibility-tools/features/$slug'
-    | '/api/repo-activity/refresh'
     | '/llms.mdx/blog/$'
     | '/llms.mdx/docs/$'
     | '/og/docs/$'
@@ -712,24 +602,17 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/agency'
     | '/answer-engine-optimization'
-    | '/brand'
-    | '/changelog'
-    | '/demo'
     | '/generative-engine-optimization'
     | '/llms-full.txt'
     | '/llms.txt'
-    | '/off-site-aeo'
     | '/og.png'
     | '/pricing'
-    | '/repo-activity.svg'
-    | '/roadmap'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/statistics'
-    | '/status'
     | '/support'
-    | '/vision'
     | '/.well-known/ai-catalog.json'
     | '/.well-known/api-catalog'
     | '/.well-known/ard.json'
@@ -746,8 +629,6 @@ export interface FileRouteTypes {
     | '/features/$slug'
     | '/glossary/$slug'
     | '/legal/$'
-    | '/off-site-aeo_/book'
-    | '/og/status.png'
     | '/aeo-for/'
     | '/ai-search/'
     | '/ai-visibility-tools/'
@@ -761,7 +642,6 @@ export interface FileRouteTypes {
     | '/ai-visibility-tools/category/open-source'
     | '/ai-visibility-tools/compare/$slug'
     | '/ai-visibility-tools/features/$slug'
-    | '/api/repo-activity/refresh'
     | '/llms.mdx/blog/$'
     | '/llms.mdx/docs/$'
     | '/og/docs/$'
@@ -776,24 +656,17 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AgencyRoute: typeof AgencyRoute
   AnswerEngineOptimizationRoute: typeof AnswerEngineOptimizationRoute
-  BrandRoute: typeof BrandRoute
-  ChangelogRoute: typeof ChangelogRoute
-  DemoRoute: typeof DemoRoute
   GenerativeEngineOptimizationRoute: typeof GenerativeEngineOptimizationRoute
   LlmsFullDottxtRoute: typeof LlmsFullDottxtRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
-  OffSiteAeoRoute: typeof OffSiteAeoRoute
   OgDotpngRoute: typeof OgDotpngRoute
   PricingRoute: typeof PricingRoute
-  RepoActivityDotsvgRoute: typeof RepoActivityDotsvgRoute
-  RoadmapRoute: typeof RoadmapRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StatisticsRoute: typeof StatisticsRoute
-  StatusRoute: typeof StatusRoute
   SupportRoute: typeof SupportRoute
-  VisionRoute: typeof VisionRoute
   DotwellKnownAiCatalogDotjsonRoute: typeof DotwellKnownAiCatalogDotjsonRoute
   DotwellKnownApiCatalogRoute: typeof DotwellKnownApiCatalogRoute
   DotwellKnownArdDotjsonRoute: typeof DotwellKnownArdDotjsonRoute
@@ -810,8 +683,6 @@ export interface RootRouteChildren {
   FeaturesSlugRoute: typeof FeaturesSlugRoute
   GlossarySlugRoute: typeof GlossarySlugRoute
   LegalSplatRoute: typeof LegalSplatRoute
-  OffSiteAeoBookRoute: typeof OffSiteAeoBookRoute
-  OgStatusDotpngRoute: typeof OgStatusDotpngRoute
   AeoForIndexRoute: typeof AeoForIndexRoute
   AiSearchIndexRoute: typeof AiSearchIndexRoute
   AiVisibilityToolsIndexRoute: typeof AiVisibilityToolsIndexRoute
@@ -825,7 +696,6 @@ export interface RootRouteChildren {
   AiVisibilityToolsCategoryOpenSourceRoute: typeof AiVisibilityToolsCategoryOpenSourceRoute
   AiVisibilityToolsCompareSlugRoute: typeof AiVisibilityToolsCompareSlugRoute
   AiVisibilityToolsFeaturesSlugRoute: typeof AiVisibilityToolsFeaturesSlugRoute
-  ApiRepoActivityRefreshRoute: typeof ApiRepoActivityRefreshRoute
   LlmsDotmdxBlogSplatRoute: typeof LlmsDotmdxBlogSplatRoute
   LlmsDotmdxDocsSplatRoute: typeof LlmsDotmdxDocsSplatRoute
   OgDocsSplatRoute: typeof OgDocsSplatRoute
@@ -853,32 +723,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/agency': {
+      id: '/agency'
+      path: '/agency'
+      fullPath: '/agency'
+      preLoaderRoute: typeof AgencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/answer-engine-optimization': {
       id: '/answer-engine-optimization'
       path: '/answer-engine-optimization'
       fullPath: '/answer-engine-optimization'
       preLoaderRoute: typeof AnswerEngineOptimizationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/brand': {
-      id: '/brand'
-      path: '/brand'
-      fullPath: '/brand'
-      preLoaderRoute: typeof BrandRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/changelog': {
-      id: '/changelog'
-      path: '/changelog'
-      fullPath: '/changelog'
-      preLoaderRoute: typeof ChangelogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo': {
-      id: '/demo'
-      path: '/demo'
-      fullPath: '/demo'
-      preLoaderRoute: typeof DemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/generative-engine-optimization': {
@@ -902,13 +758,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LlmsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/off-site-aeo': {
-      id: '/off-site-aeo'
-      path: '/off-site-aeo'
-      fullPath: '/off-site-aeo'
-      preLoaderRoute: typeof OffSiteAeoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/og.png': {
       id: '/og.png'
       path: '/og.png'
@@ -921,20 +770,6 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/repo-activity.svg': {
-      id: '/repo-activity.svg'
-      path: '/repo-activity.svg'
-      fullPath: '/repo-activity.svg'
-      preLoaderRoute: typeof RepoActivityDotsvgRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/roadmap': {
-      id: '/roadmap'
-      path: '/roadmap'
-      fullPath: '/roadmap'
-      preLoaderRoute: typeof RoadmapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/robots.txt': {
@@ -958,25 +793,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StatisticsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/status': {
-      id: '/status'
-      path: '/status'
-      fullPath: '/status'
-      preLoaderRoute: typeof StatusRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/support': {
       id: '/support'
       path: '/support'
       fullPath: '/support'
       preLoaderRoute: typeof SupportRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/vision': {
-      id: '/vision'
-      path: '/vision'
-      fullPath: '/vision'
-      preLoaderRoute: typeof VisionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.well-known/ai-catalog.json': {
@@ -1147,20 +968,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/off-site-aeo_/book': {
-      id: '/off-site-aeo_/book'
-      path: '/off-site-aeo/book'
-      fullPath: '/off-site-aeo/book'
-      preLoaderRoute: typeof OffSiteAeoBookRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/og/status.png': {
-      id: '/og/status.png'
-      path: '/og/status.png'
-      fullPath: '/og/status.png'
-      preLoaderRoute: typeof OgStatusDotpngRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/ai-visibility-tools/alternatives/': {
       id: '/ai-visibility-tools/alternatives/'
       path: '/ai-visibility-tools/alternatives'
@@ -1224,13 +1031,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AiVisibilityToolsFeaturesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/repo-activity/refresh': {
-      id: '/api/repo-activity/refresh'
-      path: '/api/repo-activity/refresh'
-      fullPath: '/api/repo-activity/refresh'
-      preLoaderRoute: typeof ApiRepoActivityRefreshRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/llms.mdx/blog/$': {
       id: '/llms.mdx/blog/$'
       path: '/llms.mdx/blog/$'
@@ -1272,24 +1072,17 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AgencyRoute: AgencyRoute,
   AnswerEngineOptimizationRoute: AnswerEngineOptimizationRoute,
-  BrandRoute: BrandRoute,
-  ChangelogRoute: ChangelogRoute,
-  DemoRoute: DemoRoute,
   GenerativeEngineOptimizationRoute: GenerativeEngineOptimizationRoute,
   LlmsFullDottxtRoute: LlmsFullDottxtRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
-  OffSiteAeoRoute: OffSiteAeoRoute,
   OgDotpngRoute: OgDotpngRoute,
   PricingRoute: PricingRoute,
-  RepoActivityDotsvgRoute: RepoActivityDotsvgRoute,
-  RoadmapRoute: RoadmapRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StatisticsRoute: StatisticsRoute,
-  StatusRoute: StatusRoute,
   SupportRoute: SupportRoute,
-  VisionRoute: VisionRoute,
   DotwellKnownAiCatalogDotjsonRoute: DotwellKnownAiCatalogDotjsonRoute,
   DotwellKnownApiCatalogRoute: DotwellKnownApiCatalogRoute,
   DotwellKnownArdDotjsonRoute: DotwellKnownArdDotjsonRoute,
@@ -1306,8 +1099,6 @@ const rootRouteChildren: RootRouteChildren = {
   FeaturesSlugRoute: FeaturesSlugRoute,
   GlossarySlugRoute: GlossarySlugRoute,
   LegalSplatRoute: LegalSplatRoute,
-  OffSiteAeoBookRoute: OffSiteAeoBookRoute,
-  OgStatusDotpngRoute: OgStatusDotpngRoute,
   AeoForIndexRoute: AeoForIndexRoute,
   AiSearchIndexRoute: AiSearchIndexRoute,
   AiVisibilityToolsIndexRoute: AiVisibilityToolsIndexRoute,
@@ -1323,7 +1114,6 @@ const rootRouteChildren: RootRouteChildren = {
     AiVisibilityToolsCategoryOpenSourceRoute,
   AiVisibilityToolsCompareSlugRoute: AiVisibilityToolsCompareSlugRoute,
   AiVisibilityToolsFeaturesSlugRoute: AiVisibilityToolsFeaturesSlugRoute,
-  ApiRepoActivityRefreshRoute: ApiRepoActivityRefreshRoute,
   LlmsDotmdxBlogSplatRoute: LlmsDotmdxBlogSplatRoute,
   LlmsDotmdxDocsSplatRoute: LlmsDotmdxDocsSplatRoute,
   OgDocsSplatRoute: OgDocsSplatRoute,

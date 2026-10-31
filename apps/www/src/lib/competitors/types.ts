@@ -101,7 +101,7 @@ export interface Competitor {
 	 * `reasons` as reported user sentiment, not as claims of fact about a rival.
 	 */
 	switching?: {
-		reasons: { headline: string; detail: string; elmo: string }[];
+		reasons: { headline: string; detail: string; citeRank: string }[];
 	};
 }
 
@@ -369,10 +369,10 @@ export const ELMO_FEATURES: Record<FeatureKey, boolean> = {
 	claude: true,
 	grok: true,
 	deepseek: true,
-	metaAi: true,
-	anyModel: true,
+	metaAi: false,
+	anyModel: false,
 	uiCapture: true,
-	byoKeys: true,
+	byoKeys: false,
 	visibilityScore: true,
 	citationAnalytics: true,
 	competitorBenchmarking: true,
@@ -391,12 +391,12 @@ export const ELMO_FEATURES: Record<FeatureKey, boolean> = {
 	keywordResearch: true,
 	emailAlerts: false,
 	dataExportApi: true,
-	typescriptSdk: true,
-	pythonSdk: true,
+	typescriptSdk: false,
+	pythonSdk: false,
 	mcpServer: true,
 	biConnectors: false,
-	whiteLabelAgency: true,
-	openSource: true,
+	whiteLabelAgency: false,
+	openSource: false,
 	contentGeneration: false,
 };
 

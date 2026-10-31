@@ -1,5 +1,32 @@
+import { Link } from "@tanstack/react-router";
+import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
+import { cloudSignupUrl } from "@workspace/config/referrals";
+import { buttonVariants } from "@workspace/ui/components/button";
 import { ArrowRight } from "lucide-react";
 import type { Pillar } from "@/data/pillars";
+
+export function CiteRankCta() {
+	return (
+		<section className="border-b border-zinc-200 bg-white py-16 lg:py-24">
+			<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
+				<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">See What AI Says About Your Business</h2>
+				<p className="mx-auto mt-4 max-w-xl text-lg text-balance text-zinc-600">
+					CiteRank.com puts your buyers' questions to ChatGPT, Claude, Gemini, Perplexity and the other AI apps you
+					choose, up to four times a day, and ranks what to do next. Plans start at ${CLOUD_ENTRY_PRICE_USD}/mo, and our
+					AI search agency can do the work for you.
+				</p>
+				<div className="mt-8 flex flex-wrap justify-center gap-3">
+					<a href={cloudSignupUrl("marketing-page-cta")} className={buttonVariants({ size: "sm" })}>
+						Start Tracking
+					</a>
+					<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
+						Have Us Do the Work
+					</Link>
+				</div>
+			</div>
+		</section>
+	);
+}
 
 export function PillarBody({ pillar }: { pillar: Pillar }) {
 	return (

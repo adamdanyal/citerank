@@ -4,7 +4,7 @@ import { Navbar } from "@/components/navbar";
 import { GLOSSARY_GROUPS, glossaryTerms } from "@/data/glossary";
 import { breadcrumbJsonLd, canonicalUrl, definedTermSetJsonLd, ogMeta } from "@/lib/seo";
 
-const title = "AI Search & AEO Glossary · Elmo";
+const title = "AI Search & AEO Glossary · CiteRank.com";
 const description =
 	"A plain-English glossary of AI search and answer engine optimization terms: AEO, GEO, LLMO, AI Overviews, citations, share of voice, RAG, and more.";
 
@@ -42,7 +42,7 @@ function GlossaryIndex() {
 			<main>
 				<section className="border-b border-zinc-200 bg-white py-12 lg:py-20">
 					<div className="mx-auto max-w-6xl px-4 md:px-6">
-						<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl">The AI search glossary</h1>
+						<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl">The AI Search Glossary</h1>
 						<p className="mt-4 max-w-3xl text-lg text-balance text-zinc-600">
 							The vocabulary of AI search and answer engine optimization, defined in plain English and cross-linked.
 							Start anywhere.

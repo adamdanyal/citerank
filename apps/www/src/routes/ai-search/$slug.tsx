@@ -1,12 +1,12 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
+import { cloudSignupUrl } from "@workspace/config/referrals";
 import { ArrowLeft } from "lucide-react";
-import { ElmoCta } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
+import { CiteRankCta } from "@/components/pillar";
 import { type AiSearchEngine, aiSearchEngines, getAiSearchEngine } from "@/data/ai-search-engines";
 import type { FaqItem } from "@/lib/faqs";
-import { SELF_HOST_LINK } from "@/lib/self-host-link";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, howToJsonLd, ogMeta } from "@/lib/seo";
 
 function engineFaqs(e: AiSearchEngine): FaqItem[] {
@@ -16,7 +16,7 @@ function engineFaqs(e: AiSearchEngine): FaqItem[] {
 			answer: `${e.short} In short: ${e.steps[0].text} ${e.steps[1].text}`,
 		},
 		{
-			question: `Does Elmo track ${e.name}?`,
+			question: `Does CiteRank.com track ${e.name}?`,
 			answer: e.tracking,
 		},
 	];
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/ai-search/$slug")({
 	head: ({ loaderData }) => {
 		if (!loaderData) return {};
 		const e = loaderData.engine;
-		const title = `How to Appear in ${e.name} · Elmo`;
+		const title = `How to Appear in ${e.name} · CiteRank.com`;
 		const description = e.short;
 		const path = `/ai-search/${e.slug}`;
 		return {
@@ -80,7 +80,7 @@ function EnginePage() {
 				<article className="mx-auto max-w-6xl px-4 py-10 md:px-6">
 					<div className="max-w-3xl">
 						<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl">
-							How to appear in {engine.name}
+							How to Appear in {engine.name}
 						</h1>
 						<p className="mt-4 text-xl leading-snug text-balance text-zinc-600">{engine.short}</p>
 						<div className="mt-8 space-y-5 text-lg leading-relaxed text-zinc-700">
@@ -89,7 +89,7 @@ function EnginePage() {
 							))}
 						</div>
 
-						<h2 className="font-heading mt-12 text-2xl text-zinc-950">How to improve your odds</h2>
+						<h2 className="font-heading mt-12 text-2xl text-zinc-950">How to Improve Your Odds</h2>
 						<ol className="mt-6 space-y-5">
 							{engine.steps.map((step, i) => (
 								<li key={step.name} className="flex gap-4">
@@ -105,21 +105,21 @@ function EnginePage() {
 						</ol>
 
 						<div className="mt-12 rounded-md border border-zinc-200 bg-zinc-50 p-6">
-							<h2 className="font-heading text-xl text-zinc-950">Tracking your visibility in {engine.name}</h2>
+							<h2 className="font-heading text-xl text-zinc-950">Tracking Your Visibility in {engine.name}</h2>
 							<p className="mt-2 leading-relaxed text-zinc-600">{engine.tracking}</p>
 							<div className="mt-4">
-								<Link
-									{...SELF_HOST_LINK}
+								<a
+									href={cloudSignupUrl("marketing-page-cta")}
 									className="inline-flex h-9 items-center rounded-md bg-blue-600 px-4 text-sm font-medium text-white hover:bg-blue-700"
 								>
-									Start tracking with Elmo
-								</Link>
+									Start Tracking
+								</a>
 							</div>
 						</div>
 
 						{related.length > 0 && (
 							<div className="mt-10">
-								<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Other engines</h2>
+								<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Other Engines</h2>
 								<div className="mt-3 flex flex-wrap gap-2">
 									{related.map((r) => (
 										<a
@@ -137,7 +137,7 @@ function EnginePage() {
 				</article>
 
 				<Faq items={engineFaqs(engine)} />
-				<ElmoCta />
+				<CiteRankCta />
 			</main>
 			<Footer />
 		</div>

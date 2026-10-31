@@ -2,16 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { Closing } from "@/components/home/closing";
-import { LogoStrip } from "@/components/home/logos";
 import { HOME_FONT_CLASS, HomeStyles } from "@/components/home/styles";
 import { CARD, SectionHeading } from "@/components/home/ui";
 import { Navbar } from "@/components/navbar";
 import { aeoHeadline, aeoVerticals } from "@/data/aeo-verticals";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
-const title = "Answer Engine Optimization by Industry · Elmo";
+const title = "Answer Engine Optimization by Industry · CiteRank.com";
 const description =
-	"How answer engine optimization applies to your industry — 20 guides covering the prompts that matter, what to publish, and how AI engines pick sources in each one.";
+	"How answer engine optimization applies to your industry, in 20 guides covering the prompts that matter, what to publish, and how AI engines pick sources in each one.";
 
 export const Route = createFileRoute("/aeo-for/")({
 	loader: () => ({
@@ -48,7 +47,7 @@ function AeoForIndex() {
 					/>
 					<div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 pb-16 pt-14 text-center md:px-6 md:pt-20">
 						<h1 className="text-[2.75rem] font-semibold leading-[1] tracking-[-0.04em] text-balance text-zinc-950 sm:text-6xl">
-							Answer engine optimization, by industry
+							Answer Engine Optimization by Industry
 						</h1>
 						<p className="mt-6 max-w-[60ch] text-pretty text-[17px]/7 text-zinc-600 md:text-xl/8">
 							The fundamentals of AEO are the same everywhere, but the prompts that matter and the stakes are not. Pick
@@ -81,11 +80,9 @@ function AeoForIndex() {
 					</div>
 				</section>
 
-				<LogoStrip />
-
 				<section className="border-t border-zinc-200/80 bg-zinc-50/70">
 					<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
-						<SectionHeading title="Why AEO differs by industry" />
+						<SectionHeading title="Why AEO Differs by Industry" />
 						<div className="mt-8 max-w-3xl space-y-5 text-pretty text-[17px]/8 text-zinc-600">
 							<p>
 								Answer engine optimization is the practice of getting a brand named, cited, and described accurately
@@ -97,7 +94,7 @@ function AeoForIndex() {
 							<p>
 								In regulated categories like healthcare, financial services, and insurance, engines lean hard on
 								credentials, accreditation, and verifiable third-party sources, because the cost of a wrong answer is
-								high. In software and developer tools, documentation quality dominates — a tool whose docs are thorough
+								high. In software and developer tools, documentation quality dominates. A tool whose docs are thorough
 								and crawlable gets recommended over an equally capable one whose docs are thin or client-rendered. In
 								local and travel categories, independent guides and review platforms outweigh anything a brand publishes
 								about itself.
@@ -105,9 +102,8 @@ function AeoForIndex() {
 							<p>
 								The shape of the deciding question changes too. SaaS buyers ask for comparisons and alternatives.
 								Industrial buyers ask by specification. Donors ask about efficiency, patients ask about symptoms, and
-								travellers ask for itineraries rather than for hotels. Tracking the prompts that actually precede a
-								decision in your category — rather than a generic set of brand queries — is what makes AI visibility
-								measurable instead of anecdotal.
+								travellers ask for itineraries rather than for hotels. AI visibility becomes measurable when you track
+								the prompts that actually precede a decision in your category.
 							</p>
 							<p>
 								Each guide above covers the prompts worth tracking in that industry, what to publish so engines have

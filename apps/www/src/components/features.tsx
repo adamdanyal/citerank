@@ -39,11 +39,6 @@ export function featurePath(slug: string) {
 	return `/features/${slug}`;
 }
 
-/** "Share of voice" reads as "share of voice" mid-sentence; names led by an acronym ("AI", "API") stay as they are. */
-function midSentence(name: string) {
-	return /^[A-Z][a-z]/.test(name) ? name.charAt(0).toLowerCase() + name.slice(1) : name;
-}
-
 /** A feature as a linked card: its visual on top, name and summary below. */
 export function FeatureCard({ feature }: { feature: ProductFeature }) {
 	return (
@@ -56,7 +51,7 @@ export function FeatureCard({ feature }: { feature: ProductFeature }) {
 				<h2 className="text-xl font-semibold tracking-tight text-zinc-950">{feature.name}</h2>
 				<p className="mt-2 flex-1 text-pretty text-[15px]/6 text-zinc-600">{feature.summary}</p>
 				<span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600 group-hover:text-blue-700">
-					Explore {midSentence(feature.name)}
+					Explore {feature.name}
 					<ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
 				</span>
 			</div>

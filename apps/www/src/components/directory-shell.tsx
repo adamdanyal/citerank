@@ -1,8 +1,11 @@
 import { Link } from "@tanstack/react-router";
+import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
+import { cloudSignupUrl } from "@workspace/config/referrals";
 import { buttonVariants } from "@workspace/ui/components/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
-import { SELF_HOST_LINK } from "@/lib/self-host-link";
+
+const SIGN_UP_URL = cloudSignupUrl("marketing-page-cta");
 
 export function DirectoryBackLink({ label = "AI Visibility Tool Directory" }: { label?: string }) {
 	return (
@@ -39,7 +42,7 @@ export function DirectoryHero({ title, lead, children }: { title: string; lead: 
  * under the hero. `pitch` is the page-specific paragraph; `comparison` points the
  * secondary button at the matching Elmo-vs comparison page.
  */
-export function DirectoryElmoBanner({
+export function DirectoryCiteRankBanner({
 	pitch,
 	comparison,
 }: {
@@ -50,18 +53,18 @@ export function DirectoryElmoBanner({
 		<section className="border-b border-zinc-200 bg-zinc-50 py-10">
 			<div className="mx-auto max-w-6xl px-4 md:px-6">
 				<div className="rounded-md border border-blue-200 bg-blue-50/40 p-6">
-					<h2 className="font-heading text-xl text-zinc-950">Elmo: the open-source alternative</h2>
+					<h2 className="font-heading text-xl text-zinc-950">CiteRank.com: A Tracker and an AI Search Agency</h2>
 					<p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-600">{pitch}</p>
 					<div className="mt-4 flex flex-wrap gap-3">
-						<Link {...SELF_HOST_LINK} className={buttonVariants({ size: "sm" })}>
-							Deploy Elmo
-						</Link>
+						<a href={SIGN_UP_URL} className={buttonVariants({ size: "sm" })}>
+							Start Tracking
+						</a>
 						<Link
 							to="/ai-visibility-tools/$slug"
 							params={{ slug: comparison.slug }}
 							className={buttonVariants({ variant: "outline", size: "sm" })}
 						>
-							Elmo vs {comparison.name}
+							CiteRank.com vs {comparison.name}
 							<ArrowRight className="h-3.5 w-3.5" />
 						</Link>
 					</div>
@@ -71,27 +74,22 @@ export function DirectoryElmoBanner({
 	);
 }
 
-export function ElmoCta() {
+export function CiteRankCta() {
 	return (
 		<section className="border-b border-zinc-200 bg-white py-16 lg:py-24">
 			<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-				<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Ready to track your AI visibility?</h2>
+				<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Ready to Track Your AI Visibility?</h2>
 				<p className="mx-auto mt-4 max-w-xl text-lg text-balance text-zinc-600">
-					Deploy Elmo in minutes and start monitoring how ChatGPT, Claude, and Google AI Overviews talk about your
-					brand. Open source, self-hosted, free.
+					Start monitoring how ChatGPT, Claude, Google AI Overviews, and seven more AI apps talk about your brand. Plans
+					start at ${CLOUD_ENTRY_PRICE_USD}/mo, or have our AI search agency do the work.
 				</p>
 				<div className="mt-8 flex flex-wrap justify-center gap-3">
-					<Link {...SELF_HOST_LINK} className={buttonVariants({ size: "sm" })}>
-						Deploy Elmo
-					</Link>
-					<a
-						href="https://github.com/elmohq/elmo"
-						target="_blank"
-						rel="noopener noreferrer"
-						className={buttonVariants({ variant: "outline", size: "sm" })}
-					>
-						View on GitHub
+					<a href={SIGN_UP_URL} className={buttonVariants({ size: "sm" })}>
+						Start Tracking
 					</a>
+					<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
+						Have Us Do the Work
+					</Link>
 				</div>
 			</div>
 		</section>

@@ -1,3 +1,5 @@
+import { PLANS } from "@workspace/config/plans";
+import { ENTRY_PRICE } from "./content";
 import type { Competitor } from "./types";
 
 // Raw list — use sortedCompetitors for display order
@@ -46,8 +48,7 @@ export const competitors: Competitor[] = [
 		ahrefsDR: 92,
 		ahrefsTraffic: 8834233,
 		status: "active",
-		soundbite:
-			"Semrush's AI tracking is one toolkit inside a large SEO suite. Elmo is built only for AI visibility, and it's free to self-host.",
+		soundbite: `Semrush's AI tracking is one toolkit inside a large SEO suite. CiteRank.com is built only for AI visibility, with plans from ${ENTRY_PRICE}.`,
 		features: {
 			multiLlmTracking: true,
 			chatgpt: true,
@@ -94,8 +95,7 @@ export const competitors: Competitor[] = [
 		ahrefsDR: 91,
 		ahrefsTraffic: 4382530,
 		status: "active",
-		soundbite:
-			"Brand Radar is one tool inside Ahrefs' SEO suite, starting at $129/mo. Elmo is built only for AI visibility, and it's free to self-host.",
+		soundbite: `Brand Radar is one tool inside Ahrefs' SEO suite, starting at $129/mo. CiteRank.com is built only for AI visibility, with plans from ${ENTRY_PRICE}.`,
 		features: {
 			multiLlmTracking: true,
 			chatgpt: true,
@@ -342,8 +342,7 @@ export const competitors: Competitor[] = [
 		ahrefsDR: 79,
 		ahrefsTraffic: 23237,
 		status: "active",
-		soundbite:
-			"Profound has grown into a sprawling enterprise suite — agents, content, shopping, ads — with enterprise pricing to match. If what you need is AI visibility tracking you can trust, Elmo does that one job well and is free to self-host.",
+		soundbite: `Profound has grown into a sprawling enterprise suite (agents, content, shopping, ads) with enterprise pricing to match. If what you need is AI visibility tracking you can trust, CiteRank.com does that from ${ENTRY_PRICE} and keeps every answer in full.`,
 		features: {
 			multiLlmTracking: true,
 			chatgpt: true,
@@ -385,26 +384,29 @@ export const competitors: Competitor[] = [
 				{
 					headline: "It grew into a suite",
 					detail:
-						"Profound has expanded well past visibility tracking, and people switching to us describe the result as heavy: a lot of surface area to move through to reach the handful of numbers they check each week.",
-					elmo: "Elmo does one job. Visibility, share of voice, citations, query fan-out, and the opportunities that follow from them. There is no content generation, no shopping tracker, and no crawler suite to navigate around.",
+						"Profound has expanded well past visibility tracking, and people who leave it describe the result as heavy: a lot of surface area to move through to reach the handful of numbers they check each week.",
+					citeRank:
+						"The CiteRank.com tracker sticks to visibility, share of voice, sentiment, citations, query fan-out, and a weekly list of what to do next. There is no content generator, no shopping tracker, and no crawler suite to navigate around. When you want the work done, the agency does it.",
 				},
 				{
 					headline: "The day-to-day use gets tiring",
 					detail:
-						"The most common thing we hear is not about a missing feature. It is that the tool stopped being pleasant to open, and checking a weekly number turned into a chore.",
-					elmo: "Elmo is built to answer a question in a few seconds: are we showing up, who is beating us, and what changed. Every view is a direct answer, and the whole thing is fast enough that checking it daily is not a decision.",
+						"A common complaint is that the tool stopped being pleasant to open, and checking a weekly number turned into a chore.",
+					citeRank:
+						"CiteRank.com is built to answer a question in a few seconds: are we showing up, who is beating us, and what changed. Every view is a direct answer, and the whole thing is fast enough that checking it daily is not a decision.",
 				},
 				{
 					headline: "Enterprise pricing for a weekly number",
 					detail:
 						"Profound sells to enterprises and prices accordingly, with no public entry tier. That is a real mismatch for teams who want to watch a few dozen prompts and are not running a procurement cycle to do it.",
-					elmo: "Self-host Elmo for free with unlimited prompts and pay only for your own infrastructure and model API keys. Managed cloud starts at $29/mo if you would rather not run it. Same data either way.",
+					citeRank: `CiteRank.com's Starter plan tracks ${PLANS.starter.maxPrompts} prompts for $${PLANS.starter.monthlyPriceUsd}/mo, and you sign up yourself, with no sales call or procurement cycle. Plans run up to $${PLANS.business.monthlyPriceUsd}/mo, and yearly billing saves two months.`,
 				},
 				{
 					headline: "You cannot check the numbers",
 					detail:
-						"Profound is closed and hosted, so the scoring is a black box. When a visibility number moves, you cannot see what moved it, and when it lands in a board deck, you are vouching for a figure you cannot audit.",
-					elmo: "Every Elmo metric is computed by code you can read, under the MIT license. Your prompts and history stay on your infrastructure, and you can export all of it at any time.",
+						"Profound's scoring is a black box. When a visibility number moves, you cannot see what moved it, and when it lands in a board deck, you are vouching for a figure you cannot audit.",
+					citeRank:
+						"CiteRank.com keeps every answer in full, so each number traces back to the words an AI wrote, and sentiment scores come with the passage behind them. The API and MCP server let you pull all of it into your own reports.",
 				},
 			],
 		},
@@ -422,7 +424,7 @@ export const competitors: Competitor[] = [
 		ahrefsTraffic: 39908,
 		status: "active",
 		soundbite:
-			"DataForSEO is a raw data API you build on, not a tracker. Elmo can use DataForSEO as its data source and turns it into tracking, reporting, and recommendations.",
+			"DataForSEO is a raw data API you build on. CiteRank.com is a finished tracker that turns AI answers into visibility, citation, and sentiment reporting and a weekly list of what to do next.",
 		features: {
 			multiLlmTracking: true,
 			chatgpt: true,
@@ -505,8 +507,7 @@ export const competitors: Competitor[] = [
 		ahrefsDR: 76,
 		ahrefsTraffic: 10127,
 		status: "active",
-		soundbite:
-			"AirOps is a content-operations platform first, and visibility tracking is one piece of it. Elmo is built only for AI visibility, and it's free to self-host.",
+		soundbite: `AirOps is a content-operations platform first, and visibility tracking is one piece of it. CiteRank.com is built only for AI visibility, with plans from ${ENTRY_PRICE}.`,
 		features: {
 			multiLlmTracking: true,
 			chatgpt: true,
@@ -548,8 +549,7 @@ export const competitors: Competitor[] = [
 		ahrefsDR: 74,
 		ahrefsTraffic: 1055,
 		status: "active",
-		soundbite:
-			"Peec AI is a capable hosted tracker, but it's closed: your prompts and history live in its cloud, and you can't check how a number was produced. Elmo gives you the code, the data, and the method, free to self-host.",
+		soundbite: `Peec AI is a capable hosted tracker. CiteRank.com pairs its tracker with an AI search agency that does the work, with plans from ${ENTRY_PRICE}.`,
 		features: {
 			multiLlmTracking: true,
 			chatgpt: true,
@@ -898,7 +898,7 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: false, startingPrice: "$79/mo", hasEnterprise: false },
 		highlights: [
-			"Keyword-based tracking — familiar for SEO pros",
+			"Keyword-based tracking, familiar for SEO pros",
 			"Auto fan-out prompt generation from keywords",
 			"Trusted by eBay, HubSpot, NVIDIA",
 		],
@@ -1139,7 +1139,7 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: true, startingPrice: "$49 one-off report; $79/mo", hasEnterprise: false },
 		highlights: [
-			"Page Inspector — see how AI crawlers view your content",
+			"Page Inspector: see how AI crawlers view your content",
 			"Free visibility report available",
 			"Dedicated AI visibility tracker",
 		],
@@ -1183,7 +1183,7 @@ export const competitors: Competitor[] = [
 			"AI bot analytics bundled with privacy-first web analytics",
 			"Acquired for $85,000",
 		],
-		notes: "Acquired — see TrustMRR listing",
+		notes: "Acquired (see TrustMRR listing)",
 	},
 	{
 		slug: "rank-ai",
@@ -1438,7 +1438,7 @@ export const competitors: Competitor[] = [
 		url: "https://aiclicks.io/",
 		tagline: "Done-for-you action plans with AI agents",
 		description:
-			"AIclicks provides done-for-you action plans powered by AI agents that identify visibility gaps and competitor opportunities. Their full-service approach means they don't just show you data — they create specific action plans for improving AI search presence.",
+			"AIclicks provides done-for-you action plans powered by AI agents that identify visibility gaps and competitor opportunities. Their full-service approach adds specific action plans for improving AI search presence on top of the data.",
 		category: "tracking",
 		ahrefsDR: 49,
 		ahrefsTraffic: 5718,
@@ -1631,7 +1631,7 @@ export const competitors: Competitor[] = [
 		url: "https://checkthat.ai/",
 		tagline: "No cold start AEO tracking, driving growth for GrowthX",
 		description:
-			"CheckThat offers AI visibility tracking with the key advantage of no cold start — you get data from the first query. Built as a lead generation tool for GrowthX, their consulting service. Includes SEO-focused features alongside AI tracking.",
+			"CheckThat offers AI visibility tracking with the key advantage of no cold start. You get data from the first query. Built as a lead generation tool for GrowthX, their consulting service. Includes SEO-focused features alongside AI tracking.",
 		category: "tracking",
 		ahrefsDR: 60,
 		ahrefsTraffic: 5139,
@@ -1651,7 +1651,7 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: true, hasEnterprise: false },
 		highlights: [
-			"No cold start — instant data from first query",
+			"No cold start (instant data from first query)",
 			"Drives leads for GrowthX consulting",
 			"SEO features alongside AI tracking",
 		],
@@ -1718,7 +1718,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.amionai.com/",
 		tagline: "Weekly action plans with impact tracking and 'The Index' leaderboards",
 		description:
-			"AmIOnAI serves 7,000+ marketers with AI visibility tracking centered around actionable weekly plans. Their standout features include 'The Index' — public AI visibility leaderboards by category — and action plans with specific Reddit/LinkedIn/content recommendations and impact tracking.",
+			"AmIOnAI serves 7,000+ marketers with AI visibility tracking centered around actionable weekly plans. Their standout features include 'The Index' (public AI visibility leaderboards by category) and action plans with specific Reddit/LinkedIn/content recommendations and impact tracking.",
 		category: "tracking",
 		ahrefsDR: 37,
 		ahrefsTraffic: 2,
@@ -1742,7 +1742,7 @@ export const competitors: Competitor[] = [
 		pricing: { hasFree: false, startingPrice: "$100/mo", hasEnterprise: true },
 		highlights: [
 			"7,000+ marketers on platform",
-			"'The Index' — public AI visibility leaderboards",
+			"'The Index', its public AI visibility leaderboards",
 			"Weekly action plans with impact tracking",
 		],
 	},
@@ -1753,7 +1753,7 @@ export const competitors: Competitor[] = [
 		url: "https://growwithless.com/shutting-down-lorelight/",
 		tagline: "Discontinued AI visibility startup with a public postmortem",
 		description:
-			"Lorelight was an AI visibility tracking platform that is shutting down. Their experience highlights the challenges of building in the AEO space — despite growing interest in AI search optimization, the competitive dynamics and unit economics proved difficult.",
+			"Lorelight was an AI visibility tracking platform that is shutting down. Their experience highlights the challenges of building in the AEO space. Despite growing interest in AI search optimization, the competitive dynamics and unit economics proved difficult.",
 		category: "tracking",
 		ahrefsDR: 33,
 		ahrefsTraffic: 814,
@@ -1770,7 +1770,7 @@ export const competitors: Competitor[] = [
 			brandMentionTracking: true,
 		},
 		pricing: { hasFree: false, hasEnterprise: false },
-		highlights: ["Shutting down — documented lessons learned publicly"],
+		highlights: ["Shutting down, with lessons learned documented publicly"],
 	},
 	{
 		slug: "showupinai",
@@ -1790,7 +1790,7 @@ export const competitors: Competitor[] = [
 		pricing: { hasFree: false, startingPrice: "$14.99/mo", hasEnterprise: false },
 		highlights: [
 			"IndexNow integration for faster AI indexing",
-			"AI View — see how AI crawlers interpret your pages",
+			"AI View: see how AI crawlers interpret your pages",
 			"Bing-focused for ChatGPT/Copilot/Perplexity",
 		],
 	},
@@ -1844,15 +1844,14 @@ export const competitors: Competitor[] = [
 		name: "GetCito",
 		domain: "getcito.com",
 		url: "https://getcito.com/",
-		tagline: "A fork of Elmo — if you are considering GetCito, use Elmo instead",
+		tagline: "A fork of another open-source AI visibility tracker",
 		description:
-			"If you are considering GetCito, use Elmo instead: GetCito is a fork of Elmo. It launched in November 2025 as its own Next.js and Firebase application, then on July 10, 2026 replaced that codebase with Elmo's — 847 files, +131,716/-50,931 lines — in a single pull request. Its feature set was Elmo's as of the fork date, and it has shipped less since — 17 commits to Elmo's 98 in the following month — so it is falling further behind rather than diverging into something competitive.",
+			"GetCito is a fork of another open-source AI visibility tracker. It launched in November 2025 as its own Next.js and Firebase application, then on July 10, 2026 replaced that codebase with the other project's (847 files, +131,716/-50,931 lines) in a single pull request. Its feature set was that project's as of the fork date, and it has shipped less since (17 commits to the original's 98 in the following month), so it is falling further behind.",
 		category: "open-source",
 		ahrefsDR: 34,
 		ahrefsTraffic: 34,
 		status: "active",
 		license: "MIT",
-		soundbite: "GetCito is a fork of Elmo. Elmo is the original, and it's shipping faster.",
 		features: {
 			multiLlmTracking: true,
 			chatgpt: true,
@@ -1878,11 +1877,11 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: true, startingPrice: "$599/mo", hasEnterprise: true },
 		highlights: [
-			"If you are considering GetCito, use Elmo instead — GetCito is a fork of it",
-			"Codebase replaced with Elmo's on July 10, 2026",
-			"Ships less than the project it forked — 17 commits to Elmo's 98 in the first month after",
+			"A fork of another open-source AI visibility tracker",
+			"Codebase replaced with the other project's on July 10, 2026",
+			"Ships less than the project it forked: 17 commits to the original's 98 in the first month after",
 		],
-		notes: "Fork of Elmo's codebase since July 2026.",
+		notes: "Fork of another open-source tracker's codebase since July 2026.",
 	},
 	{
 		slug: "meridian",
@@ -2488,7 +2487,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.mentionstack.com/",
 		tagline: "GEO optimization with Reddit and Quora management",
 		description:
-			"MentionStack combines GEO optimization with social media management for Reddit and Quora — two platforms that heavily influence AI search citations. Their approach recognizes that managing your brand presence on these forums directly impacts AI visibility.",
+			"MentionStack combines GEO optimization with social media management for Reddit and Quora, two platforms that heavily influence AI search citations. Their approach recognizes that managing your brand presence on these forums directly impacts AI visibility.",
 		category: "tracking",
 		ahrefsDR: 4.5,
 		ahrefsTraffic: 0,
@@ -2635,7 +2634,7 @@ export const competitors: Competitor[] = [
 		pricing: { hasFree: true, startingPrice: "Free", hasEnterprise: false },
 		highlights: [
 			"MIT licensed, free end-to-end, self-hosted in your own Supabase",
-			"Bring your own Anthropic, OpenAI, and Google keys — no usage markup",
+			"Bring your own Anthropic, OpenAI, and Google keys, with no usage markup",
 			"Generates prompt variations automatically from one topic",
 		],
 	},
@@ -2766,7 +2765,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.airix.app/",
 		tagline: "Weekly 16-engine visibility scans with Monday briefs",
 		description:
-			"AIRIX runs weekly automated scans across 16 AI engines — including ChatGPT, Claude, Gemini, Perplexity, DeepSeek, Grok, and several open-weight models — and reports a 0-100 visibility score with a per-platform breakdown of where a business appears and which competitor is named instead. Monday briefs summarize week-over-week movement, scans are run against a chosen location, and Growth subscribers get generated llms.txt files. A visibility checker and a ChatGPT ads tracker are free without signup.",
+			"AIRIX runs weekly automated scans across 16 AI engines (including ChatGPT, Claude, Gemini, Perplexity, DeepSeek, Grok, and several open-weight models) and reports a 0-100 visibility score with a per-platform breakdown of where a business appears and which competitor is named instead. Monday briefs summarize week-over-week movement, scans are run against a chosen location, and Growth subscribers get generated llms.txt files. A visibility checker and a ChatGPT ads tracker are free without signup.",
 		category: "tracking",
 		ahrefsDR: 22,
 		status: "active",
@@ -3151,7 +3150,7 @@ export const competitors: Competitor[] = [
 		tagline:
 			"Managed AI visibility service with a platform and MCP server, focused on insurance, finance, and B2B SaaS",
 		description:
-			"Visiblie leads with a managed AI visibility service for insurance, finance, and B2B SaaS — a paid audit followed by a monthly engagement — backed by a platform that tracks 8+ AI platforms including ChatGPT, Claude, Gemini, and Perplexity. The platform includes an MCP server for Claude and Cursor, sentiment and citation tracking, and real-time alerts.",
+			"Visiblie leads with a managed AI visibility service for insurance, finance, and B2B SaaS (a paid audit followed by a monthly engagement), backed by a platform that tracks 8+ AI platforms including ChatGPT, Claude, Gemini, and Perplexity. The platform includes an MCP server for Claude and Cursor, sentiment and citation tracking, and real-time alerts.",
 		category: "tracking",
 		ahrefsDR: 29,
 		ahrefsTraffic: 0,
@@ -4170,7 +4169,7 @@ export const competitors: Competitor[] = [
 		url: "https://canonry.ai/",
 		tagline: "Open-source, self-hosted agent-first AEO platform",
 		description:
-			"Canonry is an open-source, self-hosted AEO platform (MIT license) that tracks how AI answer engines — Gemini, ChatGPT, Claude, Perplexity, and any OpenAI-compatible local model — cite websites, calling provider APIs with your own keys. It ingests server logs to measure AI-driven traffic, integrates with Google Search Console, GA4, Bing Webmaster, and Google Business Profile, and executes fixes via WordPress and JSON-LD schema. A built-in agent (Aero) exposes an MCP adapter.",
+			"Canonry is an open-source, self-hosted AEO platform (MIT license) that tracks how AI answer engines (Gemini, ChatGPT, Claude, Perplexity, and any OpenAI-compatible local model) cite websites, calling provider APIs with your own keys. It ingests server logs to measure AI-driven traffic, integrates with Google Search Console, GA4, Bing Webmaster, and Google Business Profile, and executes fixes via WordPress and JSON-LD schema. A built-in agent (Aero) exposes an MCP adapter.",
 		category: "open-source",
 		ahrefsDR: 34,
 		ahrefsTraffic: 47619730,
@@ -4260,7 +4259,7 @@ export const competitors: Competitor[] = [
 		url: "https://foglift.io/",
 		tagline: "Technical AI-readiness audits paired with five-engine visibility monitoring",
 		description:
-			"Foglift opens with a free 30-second technical audit — no signup — that scores a site across SEO, AI readiness, performance, security, and accessibility, then returns severity-ranked issues and an action plan ordered by impact. Its visibility side runs prompts against ChatGPT, Perplexity, Google AI Overview, Claude, and Gemini on a daily to hourly cadence depending on plan, suggesting prompts from an auto-detected industry. A separate tracker package records AI-engine referrals with the landing page per visit, and server and edge adapters log recognized AI-crawler requests.",
+			"Foglift opens with a free 30-second technical audit (no signup) that scores a site across SEO, AI readiness, performance, security, and accessibility, then returns severity-ranked issues and an action plan ordered by impact. Its visibility side runs prompts against ChatGPT, Perplexity, Google AI Overview, Claude, and Gemini on a daily to hourly cadence depending on plan, suggesting prompts from an auto-detected industry. A separate tracker package records AI-engine referrals with the landing page per visit, and server and edge adapters log recognized AI-crawler requests.",
 		category: "tracking",
 		ahrefsDR: 18,
 		status: "active",
@@ -4299,7 +4298,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.genwolf.ai/",
 		tagline: "Daily prompt tracking across ChatGPT, Gemini, and Perplexity",
 		description:
-			"Genwolf runs a prompt set daily against ChatGPT, Gemini, and Perplexity and reports mentions, citations, sentiment, and the source domains behind each answer, keeping full answer history so runs can be compared over time. Its core evaluation engine is MIT licensed and self-hostable, while the hosted app is the paid product. Pricing is per prompt — $30/month covers ten, with per-prompt rates that drop as the count grows — and prompts can be added or removed at any time.",
+			"Genwolf runs a prompt set daily against ChatGPT, Gemini, and Perplexity and reports mentions, citations, sentiment, and the source domains behind each answer, keeping full answer history so runs can be compared over time. Its core evaluation engine is MIT licensed and self-hostable, while the hosted app is the paid product. Pricing is per prompt ($30/month covers ten, with per-prompt rates that drop as the count grows), and prompts can be added or removed at any time.",
 		category: "tracking",
 		ahrefsDR: 0.9,
 		darkScreenshot: true,
@@ -4374,7 +4373,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.atomicagi.com/",
 		tagline: "Combined AI search and Google analytics with vertical agents on top",
 		description:
-			"Atomic tracks prompts across ChatGPT, Claude, Perplexity, Gemini, Grok, AI Mode, and AI Overviews alongside conventional SEO analytics, so AI-search and Google performance sit in one place. It layers agents and workflows over that data — grounded in a self-updating company knowledge base — for opportunity triage, technical audits, and content refreshes, and exposes the whole thing over MCP so it can be driven from Claude, Cursor, Codex, or Slack. Free, $40, and $100 per-project tiers are self-serve; a managed tier adds done-for-you service and log analysis.",
+			"Atomic tracks prompts across ChatGPT, Claude, Perplexity, Gemini, Grok, AI Mode, and AI Overviews alongside conventional SEO analytics, so AI-search and Google performance sit in one place. It layers agents and workflows over that data, grounded in a self-updating company knowledge base, for opportunity triage, technical audits, and content refreshes, and exposes the whole thing over MCP so it can be driven from Claude, Cursor, Codex, or Slack. Free, $40, and $100 per-project tiers are self-serve; a managed tier adds done-for-you service and log analysis.",
 		category: "tracking",
 		ahrefsDR: 39,
 		status: "active",
@@ -4456,7 +4455,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.getmentioned.co/",
 		tagline: "Topic-level AI visibility tracking with a brand perception module",
 		description:
-			"GetMentioned runs fixed prompts daily across ChatGPT, Perplexity, and Gemini in the markets and languages a brand operates in, then aggregates them into Topics rather than reporting per-prompt noise. Its Perception module extracts the attributes AI consistently associates with a brand — positioning, strengths, pricing framing — broken out per model, and a My Domain view shows which of the brand's own pages get cited and which competitor URLs win the citations it misses. Every metric drills back to the stored full answer that produced it.",
+			"GetMentioned runs fixed prompts daily across ChatGPT, Perplexity, and Gemini in the markets and languages a brand operates in, then aggregates them into Topics rather than reporting per-prompt noise. Its Perception module extracts the attributes AI consistently associates with a brand (positioning, strengths, pricing framing), broken out per model, and a My Domain view shows which of the brand's own pages get cited and which competitor URLs win the citations it misses. Every metric drills back to the stored full answer that produced it.",
 		category: "tracking",
 		ahrefsDR: 18,
 		status: "active",
@@ -4493,7 +4492,7 @@ export const competitors: Competitor[] = [
 		url: "https://prominara.com/",
 		tagline: "Audit, generate, and validate loop with published measurement caveats",
 		description:
-			"Prominara scores a site against 40+ signals, generates the fixes it recommends — llms.txt, JSON-LD, answer-format rewrites — then re-runs the same prompts across five answer surfaces to report what moved. When AI cites a competitor it traces the citation to the specific source, whether a Reddit thread, G2 review, or press mention, and hands back a playbook for that source. Its methodology page states plainly that no vendor controls generative answers, that its visibility score is a diagnostic rather than a ranking probability, and that post-fix citations are reported against a baseline.",
+			"Prominara scores a site against 40+ signals, generates the fixes it recommends (llms.txt, JSON-LD, answer-format rewrites), then re-runs the same prompts across five answer surfaces to report what moved. When AI cites a competitor it traces the citation to the specific source, whether a Reddit thread, G2 review, or press mention, and hands back a playbook for that source. Its methodology page states plainly that no vendor controls generative answers, that its visibility score is a diagnostic rather than a ranking probability, and that post-fix citations are reported against a baseline.",
 		category: "tracking",
 		ahrefsDR: 35,
 		status: "active",
@@ -4520,7 +4519,7 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: false, startingPrice: "$29/mo", hasEnterprise: false },
 		highlights: [
-			"Publishes what it cannot do — no placement guarantees, score is a diagnostic, movement reported against a baseline",
+			"Publishes what it cannot do: no placement guarantees, score is a diagnostic, movement reported against a baseline",
 			"Generates llms.txt, schema, and rewrites rather than only listing findings",
 			"Traces each competitor citation to its source and returns a per-source playbook",
 		],
@@ -4532,7 +4531,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.geovector.ai/",
 		tagline: "Six-engine tracking wired into Search Console, Google Ads, and Analytics",
 		description:
-			"GeoVector monitors visibility, prompts, citations, sentiment, and a user-journey funnel weekly across six engines — ChatGPT, Gemini, Claude, Google AI Overview, Google AI Mode, and Perplexity — then connects to Google Search Console, Google Ads, and Analytics so visibility can be read against sessions, conversions, and paid efficiency. Every brand starts with a report covering a visibility scorecard, competitive ranking, citation deep-dive, and a prioritized six-week roadmap. Plans are credit-based, one credit per prompt tracked, from a free 25-prompt tier up to a white-labeled agency tier.",
+			"GeoVector monitors visibility, prompts, citations, sentiment, and a user-journey funnel weekly across six engines (ChatGPT, Gemini, Claude, Google AI Overview, Google AI Mode, and Perplexity), then connects to Google Search Console, Google Ads, and Analytics so visibility can be read against sessions, conversions, and paid efficiency. Every brand starts with a report covering a visibility scorecard, competitive ranking, citation deep-dive, and a prioritized six-week roadmap. Plans are credit-based, one credit per prompt tracked, from a free 25-prompt tier up to a white-labeled agency tier.",
 		category: "tracking",
 		ahrefsDR: 3.2,
 		status: "active",
@@ -4609,7 +4608,7 @@ export const competitors: Competitor[] = [
 		url: "https://generativepulse.ai/",
 		tagline: "GEO built around earned media, tracing AI citations to individual journalists",
 		description:
-			"Generative Pulse is Muck Rack's GEO product, aimed at PR and communications teams rather than SEO teams. It reports a visibility score across ChatGPT, Claude, and Gemini for up to ten companies at once, tracks sentiment and narrative risk, and — unlike domain-level citation tools — identifies the individual journalists and outlets whose coverage AI systems cite. Because it sits inside Muck Rack, pitching, earned coverage, and AI visibility are tracked in one workflow, so a pitch can be followed through to coverage to an AI citation. It ships with Muck Rack Premier and pricing is not published.",
+			"Generative Pulse is Muck Rack's GEO product, aimed at PR and communications teams rather than SEO teams. It reports a visibility score across ChatGPT, Claude, and Gemini for up to ten companies at once, tracks sentiment and narrative risk, and, unlike domain-level citation tools, identifies the individual journalists and outlets whose coverage AI systems cite. Because it sits inside Muck Rack, pitching, earned coverage, and AI visibility are tracked in one workflow, so a pitch can be followed through to coverage to an AI citation. It ships with Muck Rack Premier and pricing is not published.",
 		category: "tracking",
 		ahrefsDR: 46,
 		status: "active",
@@ -4641,7 +4640,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.getaiso.com/",
 		tagline: "AI visibility built on captured multi-turn conversations rather than guessed prompts",
 		description:
-			"Aiso builds its prompt set from real AI conversations it collects rather than from prompts a marketer invents, on the argument that most of what users say in a session comes after the opening question — it puts the median at 59%. A Conversation Explorer surfaces those questions, visibility reporting marks whether a brand was recommended, merely mentioned, or absent against each competitor, and source tracing shows what shaped the answer. It ships as an official Claude connector.",
+			"Aiso builds its prompt set from real AI conversations it collects rather than from prompts a marketer invents, on the argument that most of what users say in a session comes after the opening question (it puts the median at 59%). A Conversation Explorer surfaces those questions, visibility reporting marks whether a brand was recommended, merely mentioned, or absent against each competitor, and source tracing shows what shaped the answer. It ships as an official Claude connector.",
 		category: "tracking",
 		ahrefsDR: 40,
 		status: "active",
@@ -4682,7 +4681,7 @@ export const competitors: Competitor[] = [
 		url: "https://allmo.ai/",
 		tagline: "Visibility, citation intelligence, and AI crawler indexing in one platform",
 		description:
-			"ALLMO reports the share of AI answers mentioning a brand across models, prompts, and regions, tracks every page cited and why those sources win, and benchmarks competitors appearing alongside or instead of the brand. It also covers Query Fan-Out — how an assistant expands one question into related queries — and an indexing module that tracks AI index status and pushes crawler discovery. An Actions module generates AI-optimized content against the gaps found.",
+			"ALLMO reports the share of AI answers mentioning a brand across models, prompts, and regions, tracks every page cited and why those sources win, and benchmarks competitors appearing alongside or instead of the brand. It also covers Query Fan-Out (how an assistant expands one question into related queries) and an indexing module that tracks AI index status and pushes crawler discovery. An Actions module generates AI-optimized content against the gaps found.",
 		category: "tracking",
 		ahrefsDR: 33,
 		status: "active",
@@ -4751,7 +4750,7 @@ export const competitors: Competitor[] = [
 		pricing: { hasFree: false, startingPrice: "$99/mo", hasEnterprise: true },
 		highlights: [
 			"Governance view monitors risk terms and negative narrative drift",
-			"Positions against the category's own hype — argues the panic is profitable for vendors",
+			"Positions against the category's own hype, arguing the panic is profitable for vendors",
 			"Per-engine breakdown of where the brand is cited and where it is absent",
 		],
 	},
@@ -4888,7 +4887,7 @@ export const competitors: Competitor[] = [
 		url: "https://vercite.io/",
 		tagline: "AI visibility monitoring with citation-source discovery, formerly AI Brand Tracking",
 		description:
-			"Vercite tracks brand visibility across ChatGPT, Gemini, Perplexity, and Google AI Overviews and AI Mode, monitors the exact prompts customers ask, and identifies which websites and platforms those engines source from so a brand can go get listed there. Setup takes a brand and domain — competitors and queries are suggested automatically, with language and country set per market and no tags or code required.",
+			"Vercite tracks brand visibility across ChatGPT, Gemini, Perplexity, and Google AI Overviews and AI Mode, monitors the exact prompts customers ask, and identifies which websites and platforms those engines source from so a brand can go get listed there. Setup takes a brand and domain. Competitors and queries are suggested automatically, with language and country set per market and no tags or code required.",
 		category: "tracking",
 		ahrefsDR: 9,
 		status: "active",
@@ -4968,7 +4967,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.aisearchiq.com/",
 		tagline: "AI bot traffic analytics with a free AI visibility audit and $15 one-off reports",
 		description:
-			"AIsearchIQ runs a free ten-second audit of how AI engines read a site, then sells a $15 advanced report with a ten-section analysis, priority scoring, and competitor comparison. Its separate AI Traffic Dashboard logs AI bot visits by bot identity — GPTBot, Perplexity, Claude and others — along with silent citations and AI click-through rates. Pricing is one-off reports rather than a subscription, with enterprise plans for high volume.",
+			"AIsearchIQ runs a free ten-second audit of how AI engines read a site, then sells a $15 advanced report with a ten-section analysis, priority scoring, and competitor comparison. Its separate AI Traffic Dashboard logs AI bot visits by bot identity (GPTBot, Perplexity, Claude and others), along with silent citations and AI click-through rates. Pricing is one-off reports rather than a subscription, with enterprise plans for high volume.",
 		category: "tracking",
 		ahrefsDR: 0.1,
 		status: "active",
@@ -5039,7 +5038,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.brandrank.ai/",
 		tagline: "Recommendation Share tracking with an explicit defensive monitoring side",
 		description:
-			"BrandRank measures Recommendation Share — how often engines recommend a brand when buyers ask, question by question across ChatGPT, Gemini, Perplexity, and Copilot, benchmarked against every competitor in the category. Its offense side finds buying questions a competitor wins and maps the sources to take them; its defense side watches for engines repeating outdated claims, resurfacing old controversies, or confusing a brand's products with a rival's. It also scores existing content for AI readiness and produces the missing pages and third-party signals.",
+			"BrandRank measures Recommendation Share: how often engines recommend a brand when buyers ask, question by question across ChatGPT, Gemini, Perplexity, and Copilot, benchmarked against every competitor in the category. Its offense side finds buying questions a competitor wins and maps the sources to take them; its defense side watches for engines repeating outdated claims, resurfacing old controversies, or confusing a brand's products with a rival's. It also scores existing content for AI readiness and produces the missing pages and third-party signals.",
 		category: "tracking",
 		ahrefsDR: 44,
 		status: "active",
@@ -5126,7 +5125,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.azoma.ai/",
 		tagline: "Agentic commerce optimization measured in revenue rather than mentions",
 		description:
-			"Azoma targets enterprise retail and argues that generative engine optimization measures the wrong things: where GEO reports mentions, citations, and share of voice across LLM apps, Azoma reports revenue, conversion rate, and SKU-level discoverability across both LLM apps and retailer shopping agents — Amazon Rufus, Walmart Sparky, and Alexa for Shopping alongside ChatGPT, Gemini, Meta AI, and Claude. It supports the Agentic Merchant, Universal Commerce, and Agentic Commerce protocols, and sources tracked prompts from digital twin technology, public Q&A, and marketplace data.",
+			"Azoma targets enterprise retail and argues that generative engine optimization measures the wrong things: where GEO reports mentions, citations, and share of voice across LLM apps, Azoma reports revenue, conversion rate, and SKU-level discoverability across both LLM apps and retailer shopping agents. It covers Amazon Rufus, Walmart Sparky, and Alexa for Shopping alongside ChatGPT, Gemini, Meta AI, and Claude. It supports the Agentic Merchant, Universal Commerce, and Agentic Commerce protocols, and sources tracked prompts from digital twin technology, public Q&A, and marketplace data.",
 		category: "ecommerce",
 		ahrefsDR: 37,
 		status: "active",
@@ -5151,7 +5150,7 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: false, hasEnterprise: true },
 		highlights: [
-			"Tracks retailer shopping agents — Rufus, Sparky, Alexa — not just LLM apps",
+			"Tracks retailer shopping agents (Rufus, Sparky, Alexa) as well as LLM apps",
 			"Reports SKU-level discoverability, conversion, and revenue instead of share of voice",
 			"Supports the Agentic Merchant, Universal Commerce, and Agentic Commerce protocols",
 		],
@@ -5163,7 +5162,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.attensira.com/",
 		tagline: "Deliberately small prompt sets with prioritized fixes",
 		description:
-			"Attensira tracks a focused set of real buyer prompts — up to 350 on its entry plan — across ChatGPT, Claude, and Google AI daily, reporting visibility score, share of voice, sentiment, and competitive position. Output is a prioritized list of pages to rewrite, content to create, and sources to get mentioned on, and it generates GEO content tuned for entity density and schema.",
+			"Attensira tracks a focused set of real buyer prompts (up to 350 on its entry plan) across ChatGPT, Claude, and Google AI daily, reporting visibility score, share of voice, sentiment, and competitive position. Output is a prioritized list of pages to rewrite, content to create, and sources to get mentioned on, and it generates GEO content tuned for entity density and schema.",
 		category: "tracking",
 		ahrefsDR: 35,
 		status: "active",
@@ -5263,7 +5262,7 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: false, startingPrice: "$200/mo", hasEnterprise: true },
 		highlights: [
-			"Product split by team — PR, content, SEO, and brand/legal each get a distinct view",
+			"Product split by team: PR, content, SEO, and brand/legal each get a distinct view",
 			"Treats correcting brand misinformation in LLM answers as a named workflow",
 			"Publishes its own comparison research on competing GEO tools",
 		],
@@ -5507,7 +5506,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.emberos.ai/",
 		tagline: "Five-module agentic platform built around a Share-of-Prompt metric",
 		description:
-			"emberos splits into five products — Scout for detection and monitoring, Pilot for fixes and prediction, Flow for closed-loop orchestration, Merchant for commerce, and Echo for audit and governance — coordinated by a multi-agent architecture that turns monitoring into automated action. It reports on its own metrics, Share-of-Prompt and TAVI, and covers paid, owned, and earned surfaces rather than organic answers alone.",
+			"emberos splits into five products (Scout for detection and monitoring, Pilot for fixes and prediction, Flow for closed-loop orchestration, Merchant for commerce, and Echo for audit and governance), coordinated by a multi-agent architecture that turns monitoring into automated action. It reports on its own metrics, Share-of-Prompt and TAVI, and covers paid, owned, and earned surfaces rather than organic answers alone.",
 		category: "tracking",
 		ahrefsDR: 27,
 		status: "active",
@@ -5543,7 +5542,7 @@ export const competitors: Competitor[] = [
 		name: "Doppler",
 		domain: "askdoppler.com",
 		url: "https://askdoppler.com/",
-		tagline: "Search Console for AI traffic — impressions, clicks, position, and CTR",
+		tagline: "Search Console for AI traffic: impressions, clicks, position, and CTR",
 		description:
 			"Doppler models itself on Search Console rather than a visibility dashboard, reporting real-time impressions, clicks, average position, and click-through rate from Google AI Mode, ChatGPT, and Perplexity. Views split into analytics, context, chats, and sources, and it publishes free tools including an LLMs.txt generator and an AI agent compatibility test. It is GDPR compliant with a seven-day trial and no card required.",
 		category: "tracking",
@@ -5705,7 +5704,7 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: false, startingPrice: "$19.99/mo", hasEnterprise: true },
 		highlights: [
-			"Optimization is page-first — analysis starts from a single URL",
+			"Optimization is page-first, with analysis starting from a single URL",
 			"Per-platform relevance scores alongside competitor comparison",
 			"Free tier plus a set of standalone free GEO tools",
 		],
@@ -5777,7 +5776,7 @@ export const competitors: Competitor[] = [
 		name: "Siteline",
 		domain: "siteline.ai",
 		url: "https://siteline.ai/",
-		tagline: "Agent traffic analytics — where bots get stuck, and what to fix",
+		tagline: "Agent traffic analytics: where bots get stuck, and what to fix",
 		description:
 			"Siteline, previously GPTrends, measures how AI agents, bots, and crawlers move through a site: visit counts by provider, which content they prefer, where they get stuck, and human visits arriving from AI. A log explorer sits alongside visibility tracking and citation counts, plus an agent readiness check and a continuously updated directory of AI agents, bots, and crawlers. It was voted #1 Product of the Day on Product Hunt and has a free tier.",
 		category: "tracking",
@@ -5899,7 +5898,7 @@ export const competitors: Competitor[] = [
 		url: "https://genrank.io/",
 		tagline: "Conversational-funnel visibility with advertising and social monitoring",
 		description:
-			"Genrank frames AI mentions as only half the conversational funnel — the other half being whether positioning matches user intent well enough to convert — and reports both. Alongside content optimization it monitors brand sentiment across the wider internet and reports advertising insights showing which ads appear for which prompts and which competitors are paying for them.",
+			"Genrank frames AI mentions as only half the conversational funnel (the other half being whether positioning matches user intent well enough to convert) and reports both. Alongside content optimization it monitors brand sentiment across the wider internet and reports advertising insights showing which ads appear for which prompts and which competitors are paying for them.",
 		category: "tracking",
 		ahrefsDR: 34,
 		status: "active",
@@ -5952,7 +5951,7 @@ export const competitors: Competitor[] = [
 		highlights: [
 			"Competitor visibility overlaid on the same chart as your own",
 			"White-label reports aimed at SEO agencies reselling to clients",
-			"Narrow by design — AI Overviews and ChatGPT rather than broad engine coverage",
+			"Narrow by design: AI Overviews and ChatGPT rather than broad engine coverage",
 		],
 	},
 	{
@@ -5962,7 +5961,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.geostar.ai/",
 		tagline: "Managed GEO agency for Shopify and DTC brands",
 		description:
-			"Geostar is a managed service rather than software: it runs catalog optimization, content, schema, citations, and monthly reporting for Shopify and DTC brands, with playbooks split by vertical — apparel, beauty, health and supplements, home, pet, food and beverage. It runs Geostar University and a certified agency directory, and publishes research on AI writing patterns and their detection.",
+			"Geostar is a managed service rather than software: it runs catalog optimization, content, schema, citations, and monthly reporting for Shopify and DTC brands, with playbooks split by vertical (apparel, beauty, health and supplements, home, pet, food and beverage). It runs Geostar University and a certified agency directory, and publishes research on AI writing patterns and their detection.",
 		category: "ecommerce",
 		ahrefsDR: 31,
 		status: "active",
@@ -5998,7 +5997,7 @@ export const competitors: Competitor[] = [
 		url: "https://keytomic.com/",
 		tagline: "Agent-run SEO and AI visibility automation at a single low price",
 		description:
-			"Keytomic runs SEO and AI visibility work through agents rather than dashboards, covering backlink audits, technical audits, indexing status, topic calendars, a knowledge base, image generation, and a Reddit agent for high-intent threads. Its pitch is consolidation — replacing a roughly $2,500 stack of separate tools with one $99 platform. It claims 300+ users at a 4.5 rating.",
+			"Keytomic runs SEO and AI visibility work through agents rather than dashboards, covering backlink audits, technical audits, indexing status, topic calendars, a knowledge base, image generation, and a Reddit agent for high-intent threads. Its pitch is consolidation: replacing a roughly $2,500 stack of separate tools with one $99 platform. It claims 300+ users at a 4.5 rating.",
 		category: "tracking",
 		ahrefsDR: 22,
 		status: "active",
@@ -6025,7 +6024,7 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: false, startingPrice: "$99/mo", hasEnterprise: false },
 		highlights: [
-			"Sold as a stack replacement — one $99 platform against a ~$2,500 toolkit",
+			"Sold as a stack replacement: one $99 platform against a ~$2,500 toolkit",
 			"Reddit agent for finding high-intent threads to participate in",
 			"Bundles image generation and indexing status alongside AI visibility",
 		],
@@ -6100,7 +6099,7 @@ export const competitors: Competitor[] = [
 		url: "https://jarts.io/",
 		tagline: "Persona-based visibility tracker, acquired and shut down",
 		description:
-			"Jarts tracked brand visibility across ChatGPT, Gemini, and Perplexity with an unusual persona model — the same category measured through distinct buyer personas such as a beginner athlete or trend-seeking athleisure buyer — alongside source insights that classified each cited domain by type. It was acquired and the service ended on 4 May 2026; the German operating entity is in liquidation.",
+			"Jarts tracked brand visibility across ChatGPT, Gemini, and Perplexity with an unusual persona model (the same category measured through distinct buyer personas such as a beginner athlete or trend-seeking athleisure buyer), alongside source insights that classified each cited domain by type. It was acquired and the service ended on 4 May 2026; the German operating entity is in liquidation.",
 		category: "tracking",
 		ahrefsDR: 5,
 		darkScreenshot: true,
@@ -6121,7 +6120,7 @@ export const competitors: Competitor[] = [
 		pricing: { hasFree: false, hasEnterprise: false },
 		highlights: [
 			"Measured the same category separately through distinct buyer personas",
-			"Classified each cited source by type — comparison, video, review, peer",
+			"Classified each cited source by type: comparison, video, review, peer",
 			"Acquired and wound down; service ended 4 May 2026",
 		],
 	},
@@ -6209,7 +6208,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.openforge.ai/",
 		tagline: "Bootstrapped AEO platform sold on attributed traffic gains",
 		description:
-			"Open Forge tracks visibility for a brand and its competitors, turns it into plain-English next steps, and includes the tools to ship the fixes. It states plainly that it is backed by customers rather than venture capital, and leans on named marketing leaders with specific numbers — one director reports a 243% increase in ChatGPT-attributable direct traffic in the first month, growing to 468% at three months. It also runs an AEO newsletter with a claimed 10,000+ readers.",
+			"Open Forge tracks visibility for a brand and its competitors, turns it into plain-English next steps, and includes the tools to ship the fixes. It states plainly that it is backed by customers rather than venture capital, and leans on named marketing leaders with specific numbers. One director reports a 243% increase in ChatGPT-attributable direct traffic in the first month, growing to 468% at three months. It also runs an AEO newsletter with a claimed 10,000+ readers.",
 		category: "tracking",
 		ahrefsDR: 25,
 		status: "active",
@@ -6234,7 +6233,7 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: false, startingPrice: "$149/mo", hasEnterprise: true },
 		highlights: [
-			"Explicitly bootstrapped — states it is backed by customers, not venture capital",
+			"Explicitly bootstrapped, and states it is backed by customers instead of venture capital",
 			"Named customers give attributed traffic figures rather than generic praise",
 			"Runs a 10,000+ reader AEO newsletter as its top-of-funnel",
 		],
@@ -6419,7 +6418,7 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: true, startingPrice: "$45/mo", hasEnterprise: false },
 		highlights: [
-			"Local SEO first — Maps grid tracking and directory citations are the core",
+			"Local SEO first: Maps grid tracking and directory citations are the core",
 			"AI visibility scans run on a schedule or only when needed, priced in credits",
 			"In beta; reports 70+ SEO agencies using it",
 		],
@@ -6466,7 +6465,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.llmtel.com/",
 		tagline: "One-click checks across 13+ chatbots with a before-and-after score",
 		description:
-			"LLMtel asks 13 or more AI chatbots what they know about a brand, campaign, or keyword and returns a report of which tools mention it and how well that matches the intended positioning. Its workflow is built around proving campaign impact: follow the step-by-step fixes — add a Wikipedia page, adjust meta tags, improve site structure — then re-run the check for a before-and-after score. Separate tracks exist for brand managers, agencies, PR, startups, and enterprise.",
+			"LLMtel asks 13 or more AI chatbots what they know about a brand, campaign, or keyword and returns a report of which tools mention it and how well that matches the intended positioning. Its workflow is built around proving campaign impact: follow the step-by-step fixes (add a Wikipedia page, adjust meta tags, improve site structure), then re-run the check for a before-and-after score. Separate tracks exist for brand managers, agencies, PR, startups, and enterprise.",
 		category: "tracking",
 		ahrefsDR: 6,
 		status: "active",
@@ -6584,7 +6583,7 @@ export const competitors: Competitor[] = [
 		highlights: [
 			"Unlimited competitor tracking rather than a per-plan cap",
 			"30-day free trial without a card",
-			"Deliberately narrow — four models, real-time monitoring",
+			"Deliberately narrow: four models, real-time monitoring",
 		],
 	},
 	{
@@ -6624,7 +6623,7 @@ export const competitors: Competitor[] = [
 		url: "https://rankscale.ai/",
 		tagline: "Seventeen engines and 94 technical checkpoints with no per-engine upsell",
 		description:
-			"Rankscale tracks rankings across 17+ engines — Google AI Overviews and AI Mode, ChatGPT, Perplexity, Gemini, Claude, Copilot, DeepSeek and more — in one plan rather than charging per engine, covering 240+ countries and all languages. It monitors both chat interfaces and raw models, does intent-based prompt research, and runs 94 automatic technical checkpoints on the structural and authority signals engines use to verify and cite content. It publishes case studies, a partner program, and recurring live sessions.",
+			"Rankscale tracks rankings across 17+ engines (Google AI Overviews and AI Mode, ChatGPT, Perplexity, Gemini, Claude, Copilot, DeepSeek and more) in one plan rather than charging per engine, covering 240+ countries and all languages. It monitors both chat interfaces and raw models, does intent-based prompt research, and runs 94 automatic technical checkpoints on the structural and authority signals engines use to verify and cite content. It publishes case studies, a partner program, and recurring live sessions.",
 		category: "tracking",
 		ahrefsDR: 63,
 		status: "active",
@@ -6710,7 +6709,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.qwairy.co/",
 		tagline: "French GEO platform that distinguishes API from UI results per engine",
 		description:
-			"Qwairy tracks ten engines and labels each by how it is queried — ChatGPT, Perplexity, Gemini, and Grok via both API and UI, AI Overview and AI Mode via UI, Claude, Mistral, and DeepSeek via API — which matters because API answers and what users actually see diverge. The platform runs cockpit, monitor, analyze, act, optimize, measure, and explore stages, with API reference, MCP documentation, playbooks, and an agency track. It is French, GDPR aligned, and hosts data in the EU.",
+			"Qwairy tracks ten engines and labels each by how it is queried (ChatGPT, Perplexity, Gemini, and Grok via both API and UI, AI Overview and AI Mode via UI, Claude, Mistral, and DeepSeek via API), which matters because API answers and what users actually see diverge. The platform runs cockpit, monitor, analyze, act, optimize, measure, and explore stages, with API reference, MCP documentation, playbooks, and an agency track. It is French, GDPR aligned, and hosts data in the EU.",
 		category: "tracking",
 		ahrefsDR: 43,
 		status: "active",
@@ -6796,7 +6795,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.riffanalytics.ai/",
 		tagline: "Seven-engine tracking framed around answer share and citation gaps",
 		description:
-			"Riff Analytics tracks brand visibility across ChatGPT, Google AI Mode, Perplexity, Claude, Grok, DeepSeek, and Llama, reporting answer share and identifying top-cited sources so citation gaps can be closed. It scans a site for AI readiness — what engines see when they crawl the content — and returns a free report in about five minutes, with a seven-day trial.",
+			"Riff Analytics tracks brand visibility across ChatGPT, Google AI Mode, Perplexity, Claude, Grok, DeepSeek, and Llama, reporting answer share and identifying top-cited sources so citation gaps can be closed. It scans a site for AI readiness (what engines see when they crawl the content) and returns a free report in about five minutes, with a seven-day trial.",
 		category: "tracking",
 		ahrefsDR: 37,
 		status: "active",
@@ -6900,7 +6899,7 @@ export const competitors: Competitor[] = [
 		url: "https://rankplusplus.com/",
 		tagline: "Nine AEO tools aimed at indie hackers and solo founders",
 		description:
-			"Rank++ bundles nine AEO tools — visibility audits, schema builders, content optimization and more — explicitly for indie hackers, founders, and solopreneurs rather than marketing teams. Several tools are free to use standalone, and paid access starts with a 14-day trial.",
+			"Rank++ bundles nine AEO tools (visibility audits, schema builders, content optimization and more) explicitly for indie hackers, founders, and solopreneurs rather than marketing teams. Several tools are free to use standalone, and paid access starts with a 14-day trial.",
 		category: "tracking",
 		ahrefsDR: 22,
 		status: "active",
@@ -6959,7 +6958,7 @@ export const competitors: Competitor[] = [
 		url: "https://rankbee.ai/",
 		tagline: "GAIO consultancy and toolkit founded by Amazon's former global head of SEO",
 		description:
-			"RankBee combines a toolkit, audits, and consulting under what it calls GAIO — generative AI optimization — helping brands measure and influence how engines discover and recommend them. Its founder was previously Global Head of SEO at Amazon, and it reports a pilot achieving a tenfold improvement in ChatGPT visibility in 14 days. Alongside enterprise work it runs a political campaigns practice.",
+			"RankBee combines a toolkit, audits, and consulting under what it calls GAIO (generative AI optimization), helping brands measure and influence how engines discover and recommend them. Its founder was previously Global Head of SEO at Amazon, and it reports a pilot achieving a tenfold improvement in ChatGPT visibility in 14 days. Alongside enterprise work it runs a political campaigns practice.",
 		category: "tracking",
 		ahrefsDR: 17,
 		status: "active",
@@ -6992,7 +6991,7 @@ export const competitors: Competitor[] = [
 		url: "https://seen-by.ai/",
 		tagline: "UK visibility checker priced per report from £4.99",
 		description:
-			"Seen-By.AI tests whether a website appears in ChatGPT, Claude, Gemini, and Perplexity for questions the user supplies, returning instant recommendations. It is UK-focused with worked public examples — including an analysis of Tesco's visibility on queries like best online supermarkets UK — and sells one-off premium reports from £4.99 after a free scan, with separate guidance tracks for PR and marketing teams.",
+			"Seen-By.AI tests whether a website appears in ChatGPT, Claude, Gemini, and Perplexity for questions the user supplies, returning instant recommendations. It is UK-focused with worked public examples, including an analysis of Tesco's visibility on queries like best online supermarkets UK, and sells one-off premium reports from £4.99 after a free scan, with separate guidance tracks for PR and marketing teams.",
 		category: "tracking",
 		ahrefsDR: 1,
 		status: "active",
@@ -7024,7 +7023,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.promptsignal.ai/",
 		tagline: "Early-access brand monitoring with curated prompt suggestions",
 		description:
-			"PromptSignal monitors how leading models mention, rank, and describe a brand so teams can measure visibility, track competitors, and adjust positioning. Prompts come from curated suggestions tailored to the business rather than requiring a list up front. The product is in early access — signups join a waitlist and the site offers a call with the founders.",
+			"PromptSignal monitors how leading models mention, rank, and describe a brand so teams can measure visibility, track competitors, and adjust positioning. Prompts come from curated suggestions tailored to the business rather than requiring a list up front. The product is in early access. Signups join a waitlist and the site offers a call with the founders.",
 		category: "tracking",
 		ahrefsDR: 5,
 		status: "beta",
@@ -7045,7 +7044,7 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: false, startingPrice: "$99/mo", hasEnterprise: true },
 		highlights: [
-			"Still early access — new signups join a waitlist",
+			"Still early access, with new signups joining a waitlist",
 			"Curated prompt suggestions rather than user-supplied lists",
 			"Direct founder access offered as part of onboarding",
 		],
@@ -7057,7 +7056,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.xfunnel.ai/",
 		tagline: "Answer-engine visibility with a dedicated analyst and an experimentation platform",
 		description:
-			"XFunnel treats answer engines as a sales channel, pairing measurement with tailored playbooks, content briefs writers can execute immediately, an affiliate activation kit, and an experimentation platform for iterating on what moves visibility. Every account gets a dedicated analyst rather than a self-serve dashboard. Its customer roster is one of the strongest in the category — monday.com, LastPass, MyFitnessPal, Lemonade, Getty Images, Cox Enterprises, Betterment, Check Point, Fireblocks, Docebo, Cato Networks, HiBob, and MyHeritage. In August 2026 it announced an agreement to be acquired by HubSpot.",
+			"XFunnel treats answer engines as a sales channel, pairing measurement with tailored playbooks, content briefs writers can execute immediately, an affiliate activation kit, and an experimentation platform for iterating on what moves visibility. Every account gets a dedicated analyst rather than a self-serve dashboard. Its customer roster is one of the strongest in the category: monday.com, LastPass, MyFitnessPal, Lemonade, Getty Images, Cox Enterprises, Betterment, Check Point, Fireblocks, Docebo, Cato Networks, HiBob, and MyHeritage. In August 2026 it announced an agreement to be acquired by HubSpot.",
 		category: "tracking",
 		ahrefsDR: 61,
 		darkScreenshot: true,
@@ -7137,7 +7136,7 @@ export const competitors: Competitor[] = [
 		url: "https://www.trysight.ai/",
 		tagline: "Agent that tracks weekly, then writes and ships the content",
 		description:
-			"Sight AI, previously IndexPilot, runs an agent that tracks where a brand appears in ChatGPT, Perplexity, and Google — reporting visibility, sentiment, position, and models per prompt on a weekly check — then writes and publishes the content meant to put it in those answers. It includes website indexing tools and operates from Slack.",
+			"Sight AI, previously IndexPilot, runs an agent that tracks where a brand appears in ChatGPT, Perplexity, and Google (reporting visibility, sentiment, position, and models per prompt on a weekly check), then writes and publishes the content meant to put it in those answers. It includes website indexing tools and operates from Slack.",
 		category: "tracking",
 		ahrefsDR: 55,
 		status: "active",
@@ -7177,7 +7176,7 @@ export const competitors: Competitor[] = [
 		name: "Share of Model",
 		domain: "shareofmodel.ai",
 		url: "https://shareofmodel.ai/",
-		tagline: "Brand-marketing framing — perception, visibility, creative testing, activation",
+		tagline: "Brand-marketing framing: perception, visibility, creative testing, activation",
 		description:
 			"Share of Model is built for brand marketers rather than SEO teams, with four modules: how AI perceives a brand, AI search visibility, asset evaluation for testing and optimizing creative against AI, and activation that turns the insight into campaigns. It runs a partner program with other platforms powered by its data, plus a community with events and named experts.",
 		category: "tracking",
@@ -7253,7 +7252,7 @@ export const competitors: Competitor[] = [
 		url: "https://xofu.com/",
 		tagline: "Bottom-of-funnel prompt tracking with entity audits",
 		description:
-			"Xofu deliberately narrows to the prompts buyers use when shortlisting vendors — best X for Y, vendor comparisons, solution evaluations — across ChatGPT, Google AI Overviews, AI Mode, and Gemini, tracking recommendations over time. Citation gap analysis shows which sources get cited when competitors appear and the brand does not, prioritizing pages to improve and publishers to target. It ships a snapshot report and an entity audit, free to start with no card.",
+			"Xofu deliberately narrows to the prompts buyers use when shortlisting vendors (best X for Y, vendor comparisons, solution evaluations) across ChatGPT, Google AI Overviews, AI Mode, and Gemini, tracking recommendations over time. Citation gap analysis shows which sources get cited when competitors appear and the brand does not, prioritizing pages to improve and publishers to target. It ships a snapshot report and an entity audit, free to start with no card.",
 		category: "tracking",
 		ahrefsDR: 32,
 		status: "active",
@@ -7326,7 +7325,7 @@ export const competitors: Competitor[] = [
 		url: "https://trackerly.ai/",
 		tagline: "High prompt limits, every language, connected to external agents",
 		description:
-			"Trackerly competes on volume and customization — it claims higher prompt limits than comparable tools — tracking daily across models and languages with per-model frequency control and localization settings. Workflow runs from defining what to track through citation analysis, customized reports, and connections out to other tools and agents.",
+			"Trackerly competes on volume and customization (it claims higher prompt limits than comparable tools), tracking daily across models and languages with per-model frequency control and localization settings. Workflow runs from defining what to track through citation analysis, customized reports, and connections out to other tools and agents.",
 		category: "tracking",
 		ahrefsDR: 30,
 		status: "active",
@@ -7363,7 +7362,7 @@ export const competitors: Competitor[] = [
 		url: "https://govisible.ai/",
 		tagline: "GEO platform organized around a published seven-pillar framework",
 		description:
-			"GoVISIBLE, from agency SocialChamps, structures its product around a stated seven-pillar framework — voice of searcher, intent-to-answer mapping, structured content engineering, intelligent entity optimization, brand signals and citation ecosystem, learnability testing, and experience amplification. It tracks ChatGPT, Gemini, Copilot, Perplexity, and AI Overviews with a free audit, ships a separate ecommerce edition, and runs an agency partner program.",
+			"GoVISIBLE, from agency SocialChamps, structures its product around a stated seven-pillar framework: voice of searcher, intent-to-answer mapping, structured content engineering, intelligent entity optimization, brand signals and citation ecosystem, learnability testing, and experience amplification. It tracks ChatGPT, Gemini, Copilot, Perplexity, and AI Overviews with a free audit, ships a separate ecommerce edition, and runs an agency partner program.",
 		category: "tracking",
 		ahrefsDR: 28,
 		status: "active",
@@ -7442,7 +7441,7 @@ export const competitors: Competitor[] = [
 		url: "https://ziptie.ai/",
 		tagline: "Citations, mentions, and sentiment rolled into one AI Success Score",
 		description:
-			"ZipTie tracks what ChatGPT, Google AI Overviews, Perplexity, and four more engines say about a brand on a schedule the user sets, measuring three distinct signals — whether pages are cited as sources, whether the brand is named in the answer, and how the answer portrays it — and rolling them into a single 0–100 AI Success Score for leadership reporting. It then returns what to change to win more answers.",
+			"ZipTie tracks what ChatGPT, Google AI Overviews, Perplexity, and four more engines say about a brand on a schedule the user sets, measuring three distinct signals (whether pages are cited as sources, whether the brand is named in the answer, and how the answer portrays it) and rolling them into a single 0–100 AI Success Score for leadership reporting. It then returns what to change to win more answers.",
 		category: "tracking",
 		ahrefsDR: 17,
 		status: "active",
@@ -7518,7 +7517,7 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: false, startingPrice: "$199/mo", hasEnterprise: true },
 		highlights: [
-			"Enterprise logos — Samsung, monday.com, Lloyds Bank, Publicis Groupe — on a DR 11 domain",
+			"Enterprise logos (Samsung, monday.com, Lloyds Bank, Publicis Groupe) on a DR 11 domain",
 			"Publishes on autopilot with an approval step rather than only recommending",
 			"Free query fan-out browser extension, schema wizard, and MCP server",
 		],
@@ -7531,7 +7530,7 @@ export const competitors: Competitor[] = [
 		url: "https://tryxlr8.ai/",
 		tagline: "Enterprise GEO partner combining software with hands-on execution",
 		description:
-			"XLR8 AI positions between the two models it names as insufficient — a platform that hands over a dashboard and stops, or an agency that delivers a deck and a content calendar — offering proprietary software, GEO strategists, and end-to-end execution run with or for the customer. It reports 30+ enterprise clients and $10M+ in pipeline generated, and offers a free AI visibility score and audit.",
+			"XLR8 AI positions between the two models it names as insufficient (a platform that hands over a dashboard and stops, or an agency that delivers a deck and a content calendar), offering proprietary software, GEO strategists, and end-to-end execution run with or for the customer. It reports 30+ enterprise clients and $10M+ in pipeline generated, and offers a free AI visibility score and audit.",
 		category: "tracking",
 		ahrefsDR: 17,
 		status: "active",
@@ -7565,7 +7564,7 @@ export const competitors: Competitor[] = [
 		url: "https://vaylis.ai/",
 		tagline: "Self-serve AI visibility tracking with published customer results",
 		description:
-			"Vaylis is self-serve AI visibility software, from €49 a month, covering Perplexity, ChatGPT, Google AI Overviews, Copilot, Meta AI, Grok, and Claude. Its published case work is unusually concrete for its size — a German automotive services customer reports an 11x increase in AI search mentions and a 120% rise in new customer inquiries.",
+			"Vaylis is self-serve AI visibility software, from €49 a month, covering Perplexity, ChatGPT, Google AI Overviews, Copilot, Meta AI, Grok, and Claude. Its published case work is unusually concrete for its size. A German automotive services customer reports an 11x increase in AI search mentions and a 120% rise in new customer inquiries.",
 		category: "tracking",
 		ahrefsDR: 5,
 		status: "active",
@@ -7788,7 +7787,7 @@ export const competitors: Competitor[] = [
 		url: "https://llmrankings.io/",
 		tagline: "Deliberately retro rank tracker from a SaaS SEO agency",
 		description:
-			"LLM Rank Tracker, from SaaS SEO agency AUQ.io, checks whether a brand appears in AI responses for search terms the user enters and tracks that over time, with competitor tracking added more recently. The site is styled as a deliberate 1990s pastiche — a live visitor counter, a Best Viewed In Netscape Navigator badge, and rainbow button bars — which sets it apart from every other tool in the category.",
+			"LLM Rank Tracker, from SaaS SEO agency AUQ.io, checks whether a brand appears in AI responses for search terms the user enters and tracks that over time, with competitor tracking added more recently. The site is styled as a deliberate 1990s pastiche (a live visitor counter, a Best Viewed In Netscape Navigator badge, and rainbow button bars), which sets it apart from every other tool in the category.",
 		category: "tracking",
 		ahrefsDR: 0.7,
 		status: "active",
@@ -7802,7 +7801,7 @@ export const competitors: Competitor[] = [
 		},
 		pricing: { hasFree: true, startingPrice: "$10/mo", hasEnterprise: false },
 		highlights: [
-			"Search-term-first workflow — you add the brand after the terms",
+			"Search-term-first workflow: you add the brand after the terms",
 			"Built as a side tool by SaaS SEO agency AUQ.io",
 			"Deliberate retro-web design, visitor counter included",
 		],
@@ -7989,8 +7988,6 @@ export const competitors: Competitor[] = [
 		category: "tracking",
 		ahrefsDR: 51,
 		status: "active",
-		soundbite:
-			"Notra was open source until October 2026, then took its code private. Elmo is MIT-licensed, so that can't happen to you.",
 		features: {
 			multiLlmTracking: true,
 			chatgpt: true,
@@ -8635,7 +8632,7 @@ export function getCompetitorBySlug(slug: string): Competitor | undefined {
 }
 
 export function getComparisonSlug(competitor: Competitor): string {
-	return `elmo-vs-${competitor.slug}`;
+	return `citerank-vs-${competitor.slug}`;
 }
 
 /**

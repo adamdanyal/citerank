@@ -1,9 +1,9 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { cloudSignupUrl } from "@workspace/config/referrals";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { type GlossaryTerm, getGlossaryTerm, glossaryTerms } from "@/data/glossary";
-import { SELF_HOST_LINK } from "@/lib/self-host-link";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/glossary/$slug")({
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/glossary/$slug")({
 	head: ({ loaderData }) => {
 		if (!loaderData) return {};
 		const t = loaderData.term;
-		const title = `What is ${t.term}? · Elmo`;
+		const title = `What Is ${t.term}? · CiteRank.com`;
 		const description = t.short;
 		const path = `/glossary/${t.slug}`;
 		return {
@@ -76,7 +76,7 @@ function GlossaryTermPage() {
 
 						{term.seeAlso && term.seeAlso.length > 0 && (
 							<div className="mt-8 rounded-md border border-zinc-200 bg-zinc-50 p-5">
-								<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Go deeper</h2>
+								<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Go Deeper</h2>
 								<ul className="mt-3 space-y-2">
 									{term.seeAlso.map((link) => (
 										<li key={link.href}>
@@ -95,7 +95,7 @@ function GlossaryTermPage() {
 
 						{related.length > 0 && (
 							<div className="mt-8">
-								<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Related terms</h2>
+								<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Related Terms</h2>
 								<div className="mt-3 flex flex-wrap gap-2">
 									{related.map((r) => (
 										<a
@@ -114,24 +114,24 @@ function GlossaryTermPage() {
 
 				<section className="border-t border-zinc-200 bg-zinc-50 py-12">
 					<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-						<h2 className="font-heading text-2xl text-zinc-950">See it in your own data</h2>
+						<h2 className="font-heading text-2xl text-zinc-950">See It in Your Own Data</h2>
 						<p className="mx-auto mt-3 max-w-xl text-zinc-600">
-							Elmo is an open-source AI visibility platform. Self-host it for free and track how AI answer engines
-							mention and cite your brand.
+							CiteRank.com tracks how ChatGPT, Claude, Gemini, Perplexity and six more AI apps mention and cite your
+							brand, up to four times a day, and keeps every answer in full.
 						</p>
 						<div className="mt-6 flex flex-wrap justify-center gap-3">
-							<Link
-								{...SELF_HOST_LINK}
+							<a
+								href={cloudSignupUrl("marketing-page-cta")}
 								className="inline-flex h-9 items-center rounded-md bg-blue-600 px-4 text-sm font-medium text-white hover:bg-blue-700"
 							>
-								Get started
-							</Link>
-							<a
-								href="/ai-visibility-tools"
+								Start Tracking
+							</a>
+							<Link
+								to="/agency"
 								className="inline-flex h-9 items-center rounded-md border border-zinc-200 bg-white px-4 text-sm font-medium text-zinc-700 hover:text-zinc-950"
 							>
-								Compare tools
-							</a>
+								Have Us Do the Work
+							</Link>
 						</div>
 					</div>
 				</section>

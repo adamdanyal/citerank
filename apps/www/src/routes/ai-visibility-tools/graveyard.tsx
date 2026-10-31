@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { DirectoryBackLink, DirectoryHero, DirectorySection, ElmoCta } from "@/components/directory-shell";
+import { CiteRankCta, DirectoryBackLink, DirectoryHero, DirectorySection } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
@@ -16,7 +16,7 @@ import {
 import type { FaqItem } from "@/lib/faqs";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, itemListJsonLd, ogMeta } from "@/lib/seo";
 
-const title = "The AEO Graveyard: AI Visibility Tools That Shut Down · Elmo";
+const title = "The AEO Graveyard: AI Visibility Tools That Shut Down · CiteRank.com";
 const description =
 	"AI visibility and AEO tools that shut down, pivoted, or were acquired, with what happened to each and what to do if your tracker disappears.";
 const path = "/ai-visibility-tools/graveyard";
@@ -40,24 +40,24 @@ const FATE_LABEL: Record<GraveyardFate, string> = {
 
 const STEPS: { title: string; body: string }[] = [
 	{
-		title: "Export everything while you still can",
+		title: "Export Everything While You Still Can",
 		body: "Shutdown notices often give a few weeks. Pull your prompts, competitor list, and as much history as the tool will export: CSV, API, or screenshots of the charts if that's all there is.",
 	},
 	{
-		title: "Write down how your numbers were made",
+		title: "Write Down How Your Numbers Were Made",
 		body: "Note which engines you tracked, how often, and in which countries. Visibility scores are not portable between tools, so you need this to explain the jump when you switch.",
 	},
 	{
-		title: "Re-baseline instead of stitching",
+		title: "Re-Baseline Instead of Stitching",
 		body: "Start the new tool on the same prompts and treat its first few weeks as a fresh baseline. Grafting one vendor's numbers onto another's makes the trend line meaningless.",
 	},
 	{
-		title: "Pick a tool that can't disappear",
-		body: "Check whether the code is open source and under which license, whether you can self-host it, and whether your data leaves through an API. A permissive license means the software outlives the company.",
+		title: "Plan Your Exit Before You Commit",
+		body: "Check whether your data leaves through an API, whether the code is open source and under which license, and whether you can self-host it. A permissive license means the software outlives the company.",
 	},
 	{
-		title: "Move your prompts over",
-		body: "In Elmo you can paste a list of prompts in one go, add your competitors, and pick the engines to track. The first runs land within minutes.",
+		title: "Move Your Prompts Over",
+		body: "In CiteRank.com you can paste a list of prompts in one go, add your competitors, and pick the engines to track. The first runs land within minutes.",
 	},
 ];
 
@@ -83,9 +83,9 @@ const FAQS: FaqItem[] = [
 			"Not necessarily, but watch the roadmap. Acquired tools are often folded into the buyer's product, repriced, or put on a waitlist, as happened when Hall joined Tracksuit. Export your data now so you have the option, and re-evaluate when the new owner announces its plans.",
 	},
 	{
-		question: "Is Elmo going to shut down?",
+		question: "Can I get my data out of CiteRank.com?",
 		answer:
-			"Elmo is MIT-licensed and bootstrapped, and everything it does is on GitHub. Even in the worst case, you could keep running your own copy indefinitely, with your data in your own PostgreSQL database.",
+			"Yes. CiteRank.com keeps every answer in full, and its REST API returns each answer with its citations, along with your prompts, competitors, and visibility, citation, and share-of-voice data. The MCP server lets AI assistants such as Claude Code and Cursor read the same data.",
 	},
 ];
 
@@ -167,7 +167,7 @@ function Tombstone({ competitor }: { competitor: Competitor }) {
 						params={{ slug: getComparisonSlug(competitor) }}
 						className="text-stone-900 underline decoration-stone-500 underline-offset-4 hover:decoration-stone-900"
 					>
-						Elmo vs {competitor.name}
+						CiteRank.com vs {competitor.name}
 					</Link>
 				)}
 				{competitor.fate.source && (
@@ -197,15 +197,15 @@ function GraveyardPage() {
 				<DirectoryBackLink />
 				<DirectoryHero title="The AEO Graveyard" lead={lead}>
 					<div className="max-w-3xl border-l-2 border-blue-600 pl-4 text-sm text-zinc-600">
-						<p className="font-medium text-zinc-950">Open source is the safety net</p>
+						<p className="font-medium text-zinc-950">Keep a Copy of Your History</p>
 						<p className="mt-1">
-							When a hosted tracker goes under, your history goes with it. Elmo is open source, so you can always keep
-							running it yourself.{" "}
+							When a hosted tracker goes under, your history goes with it. CiteRank.com keeps every answer in full, and
+							its API and MCP server let you pull your prompts, answers, and scores into your own systems.{" "}
 							<Link
 								to="/"
 								className="text-zinc-950 underline decoration-zinc-400 underline-offset-4 hover:decoration-zinc-950"
 							>
-								Learn more about Elmo →
+								Learn More About CiteRank.com →
 							</Link>
 						</p>
 					</div>
@@ -227,7 +227,7 @@ function GraveyardPage() {
 					</ul>
 					<p className="mt-6 text-xs text-zinc-500">
 						Screenshots were taken while each tool was live. Dates are when the shutdown, pivot, or acquisition was
-						announced, or the month we found the site offline.
+						announced, or the month the site was found offline.
 					</p>
 				</DirectorySection>
 				<DirectorySection title="Your AI visibility tool shut down. Now what?">
@@ -242,7 +242,7 @@ function GraveyardPage() {
 					</ol>
 				</DirectorySection>
 				<Faq items={FAQS} />
-				<ElmoCta />
+				<CiteRankCta />
 			</main>
 			<Footer />
 		</div>

@@ -17,7 +17,7 @@ export const STAT_GROUPS: StatGroup[] = [
 
 export const GROUP_BLURBS: Record<StatGroup, string> = {
 	"Where AI cites from": "Which domains answer engines pull from, and how much of it you control.",
-	"How engines behave": "How individual engines retrieve, cite and change — and how far apart they sit.",
+	"How engines behave": "How individual engines retrieve, cite and change, and how far apart they sit.",
 	"Whether tactics work": "What measurably moves citation, and what has been tested and found not to.",
 	"What the numbers mean": "Why published figures disagree, and which measurement choices drive the spread.",
 };
@@ -26,7 +26,7 @@ export const stats: Stat[] = [
 	{
 		value: "84%",
 		claim:
-			"of links AI engines cite point at domains the brand does not own, across 25 million cited links — though the ratio flips on evaluation-stage prompts.",
+			"of links AI engines cite point at domains the brand does not own, across 25 million cited links, though the ratio flips on evaluation-stage prompts.",
 		source: "Analysis of 25M cited links",
 		slug: "where-ai-citations-come-from",
 		group: "Where AI cites from",
@@ -41,7 +41,7 @@ export const stats: Stat[] = [
 	{
 		value: "#2",
 		claim:
-			"LinkedIn ranks second only to Reddit or YouTube among cited domains — and most citations point at individual profiles, not company pages.",
+			"LinkedIn ranks second only to Reddit or YouTube among cited domains, and most citations point at individual profiles, not company pages.",
 		source: "Two 2026 studies",
 		slug: "linkedin-ai-citations",
 		group: "Where AI cites from",
@@ -110,7 +110,7 @@ export const stats: Stat[] = [
 	},
 	{
 		value: "8.9%",
-		claim: "of pages AI search retrieves show signs of GEO optimization — the first published measurement of adoption.",
+		claim: "of pages AI search retrieves show signs of GEO optimization (the first published measurement of adoption).",
 		source: "CISPA",
 		slug: "geo-detection",
 		group: "Whether tactics work",
@@ -179,7 +179,7 @@ export const stats: Stat[] = [
 	{
 		value: "same brand, two scores",
 		claim:
-			"Two tools can report very different AI visibility for the same brand in the same week without either being broken — the prompt set and its weights define what the score measures.",
+			"Two tools can report very different AI visibility for the same brand in the same week without either being broken. The prompt set and its weights define what the score measures.",
 		source: "Preprint",
 		slug: "why-ai-visibility-scores-differ",
 		group: "What the numbers mean",

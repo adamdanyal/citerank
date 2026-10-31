@@ -40,6 +40,9 @@ const ALLOWED_NAMES = [
 	/\bx-elmo-/g, // OpenAPI extension keys
 ];
 
+// Real names that happen to contain the letters, wherever they appear.
+const ALLOWED_WORDS = [/model\s?monitor/gi];
+
 const ALLOWED_TEXT = [
 	{ file: "apps/web/src/routes/auth/login.tsx", text: /demo@elmohq\.com/g, why: "demo-mode sign-in only" },
 	{ file: "packages/config/src/env-registry.ts", text: /`elmo init`|Elmo </g, why: "operator-only env descriptions" },
@@ -73,6 +76,7 @@ function visibleText(file, line) {
 	for (const allowed of ALLOWED_TEXT) {
 		if (allowed.file === file) text = text.replace(allowed.text, "");
 	}
+	for (const word of ALLOWED_WORDS) text = text.replace(word, "");
 	return text;
 }
 

@@ -1,3 +1,4 @@
+import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import type { FaqItem } from "@/lib/faqs";
 
 export interface PillarStep {
@@ -29,19 +30,19 @@ export interface Pillar {
 const AEO: Pillar = {
 	slug: "answer-engine-optimization",
 	h1: "Answer Engine Optimization (AEO)",
-	metaTitle: "Answer Engine Optimization (AEO): The Complete Guide · Elmo",
+	metaTitle: "Answer Engine Optimization (AEO): The Complete Guide · CiteRank.com",
 	description:
-		"What answer engine optimization is, how AEO differs from SEO, how AI answer engines decide what to cite, what to measure, and how to run it — a practical guide from an open-source AEO platform.",
+		"A practical guide to answer engine optimization from CiteRank.com: what AEO is, how it differs from SEO, how AI answer engines decide what to cite, what to measure, and how to run it.",
 	lead: "SEO got you ranked. AEO gets you quoted. Here is what answer engine optimization actually is, how it works, and how to run it without guessing.",
 	definition:
-		"Answer engine optimization (AEO) is the practice of measuring and improving how often AI answer engines — ChatGPT, Google AI Overviews, Perplexity, Gemini, Copilot — mention and cite your brand. Where SEO competes for a position in a list of links, AEO competes to be the source a model quotes inside a written answer.",
+		"Answer engine optimization (AEO) is the practice of measuring and improving how often AI answer engines (ChatGPT, Google AI Overviews, Perplexity, Gemini, Copilot) mention and cite your brand. Where SEO competes for a position in a list of links, AEO competes to be the source a model quotes inside a written answer.",
 	sections: [
 		{
 			id: "what-it-is",
 			heading: "What answer engine optimization is",
 			body: [
 				"An answer engine does not hand you ten links and let you choose. It reads the web, decides what is true, writes a paragraph, and names a handful of sources. Your brand is either in that paragraph or it is not, and there is no second page to be on.",
-				"Answer engine optimization is the work of getting into that paragraph. It borrows from SEO — clear writing, crawlable pages, credible sources — but the unit of success changes. You are no longer optimizing for a rank. You are optimizing for a mention, a citation, and the sentence the model writes about you.",
+				"Answer engine optimization is the work of getting into that paragraph. It borrows from SEO (clear writing, crawlable pages, credible sources), but the unit of success changes. You are no longer optimizing for a rank. You are optimizing for a mention, a citation, and the sentence the model writes about you.",
 				"The discipline is young enough that it goes by four names. AEO, GEO (generative engine optimization), LLMO (large language model optimization), and generative SEO all describe the same work. Choose one and move on; the practitioners arguing about the acronym are not the ones getting cited.",
 			],
 		},
@@ -49,7 +50,7 @@ const AEO: Pillar = {
 			id: "what-aeo-stands-for",
 			heading: "What AEO stands for in marketing",
 			body: [
-				"AEO stands for answer engine optimization. An answer engine is any system that responds to a question with a synthesized answer rather than a ranked list — ChatGPT, Perplexity, Claude, Gemini, Copilot, and Google's own AI Overviews and AI Mode.",
+				"AEO stands for answer engine optimization. An answer engine is any system that responds to a question with a synthesized answer rather than a ranked list: ChatGPT, Perplexity, Claude, Gemini, Copilot, and Google's own AI Overviews and AI Mode.",
 				"The term matters mostly because it marks a change in what marketing teams can control. For twenty years the deliverable was a position. Now the deliverable is a description: how the model characterizes your product, which competitors it names in the same breath, and whether it gets your pricing right.",
 			],
 		},
@@ -71,7 +72,7 @@ const AEO: Pillar = {
 				},
 				{
 					name: "Off-site sources carry more weight",
-					text: "Answers are frequently assembled from sources you do not own — Reddit threads, review roundups, LinkedIn posts, competitor comparison pages. Your own site is one input among many, and often not the decisive one.",
+					text: "Answers are frequently assembled from sources you do not own: Reddit threads, review roundups, LinkedIn posts, competitor comparison pages. Your own site is one input among many, and often not the decisive one.",
 				},
 				{
 					name: "Results are non-deterministic",
@@ -84,8 +85,8 @@ const AEO: Pillar = {
 			heading: "How answer engines decide what to cite",
 			body: [
 				"Two mechanisms operate at once, and conflating them is the most common mistake in AEO.",
-				"The first is retrieval. When an engine runs a live web search, it issues one or more queries, retrieves pages, and grounds its answer in what it finds. Here, classic SEO is doing the heavy lifting — if you do not surface for the query the model issues, you cannot be cited. The queries models issue are frequently not the queries humans type, which is why keyword research and prompt research are different exercises.",
-				"The second is the model's own parametric memory — what it absorbed during training. This is why a brand can be recommended confidently in a chat with web access turned off. Parametric memory moves slowly, is shaped by how widely a brand is discussed across the open web, and cannot be influenced on a campaign timescale.",
+				"The first is retrieval. When an engine runs a live web search, it issues one or more queries, retrieves pages, and grounds its answer in what it finds. Here, classic SEO is doing the heavy lifting. If you do not surface for the query the model issues, you cannot be cited. The queries models issue are frequently not the queries humans type, which is why keyword research and prompt research are different exercises.",
+				"The second is the model's own parametric memory (what it absorbed during training). This is why a brand can be recommended confidently in a chat with web access turned off. Parametric memory moves slowly, is shaped by how widely a brand is discussed across the open web, and cannot be influenced on a campaign timescale.",
 				"Practically: retrieval is what you can move this quarter. Parametric memory is what you move over years, by being the thing people write about.",
 			],
 			callout: {
@@ -133,7 +134,7 @@ const AEO: Pillar = {
 				},
 				{
 					name: "Fix the pages the engines already reach",
-					text: "Look at what gets cited for your prompts — yours and everyone else's. Usually a handful of third-party roundups and comparison pages carry the category. Getting listed accurately on those moves the number faster than anything you publish on your own domain.",
+					text: "Look at what gets cited for your prompts (yours and everyone else's). Usually a handful of third-party roundups and comparison pages carry the category. Getting listed accurately on those moves the number faster than anything you publish on your own domain.",
 				},
 				{
 					name: "Write the answer, not the article",
@@ -151,7 +152,7 @@ const AEO: Pillar = {
 			body: [
 				"Three patterns come up repeatedly in citation data, and they are not the patterns that win at SEO.",
 				"Comparison and alternatives pages punch far above their traffic. A page that honestly compares five tools in a category gets pulled into answers constantly, because that is the shape of the question people ask an answer engine. The same page may attract very little search traffic, which makes it easy to under-invest in.",
-				"Definitional content — clear 'what is X' pages with a short, extractable definition up top — is the cheapest citation you can buy. It is also the shape that compounds: once a model has a good definition of your category, your framing travels with it.",
+				"Definitional content (clear 'what is X' pages with a short, extractable definition up top) is the cheapest citation you can buy. It is also the shape that compounds: once a model has a good definition of your category, your framing travels with it.",
 				"First-party data is the only genuinely defensible asset. Anyone can restate a study. If you publish the study, every article about it is a path back to you, and models cite the origin more often than the commentary.",
 			],
 		},
@@ -159,13 +160,13 @@ const AEO: Pillar = {
 			id: "tools",
 			heading: "AEO tools",
 			body: [
-				"An AEO tool does one core job: run your prompts across the engines on a schedule, and record what came back. Everything else — dashboards, alerts, competitor tracking, reporting — is built on that log.",
+				"An AEO tool does one core job: run your prompts across the engines on a schedule, and record what came back. Everything else (dashboards, alerts, competitor tracking, reporting) is built on that log.",
 				"The differences that matter when choosing one are which engines are covered and how, how many runs per prompt you get (sampling noise is the whole problem), whether you can see the raw answer rather than a score, and whether the methodology behind the score is inspectable.",
-				"That last point is why Elmo is open source. A visibility score is a number somebody chose how to calculate. When two tools disagree about your brand — and they routinely do — the only way to know which is right is to read how each one counts. Elmo can be self-hosted, and the counting is in the repository.",
+				"A visibility score is a number somebody chose how to calculate. When two tools disagree about your brand (and they routinely do), the only way to know which is right is to see how each one counts. CiteRank.com documents how it counts and keeps every answer in full, so each number traces back to the words an AI wrote.",
 			],
 			callout: {
-				heading: "Try it without installing anything",
-				text: "Elmo's directory of AI visibility tools compares the options in this category, including the open-source and self-hosted ones. It is the same comparison an answer engine would assemble, written by people who build in the category.",
+				heading: "Compare the Tools",
+				text: "CiteRank.com's directory of AI visibility tools compares the options in this category. It is the same comparison an answer engine would assemble, written by people who build in the category.",
 			},
 		},
 		{
@@ -173,7 +174,7 @@ const AEO: Pillar = {
 			heading: "How long AEO takes",
 			body: [
 				"Retrieval-driven prompts respond within weeks. If you get added to a roundup the engines already cite, or you publish a page that ranks for the query the model issues, you can see the mention rate move on the next measurement cycle.",
-				"Parametric prompts — where the engine answers from memory without searching — move on a timescale of quarters to years, and only as a by-product of being genuinely well known. No tactic accelerates this. It is the accumulated residue of being written about.",
+				"Parametric prompts (where the engine answers from memory without searching) move on a timescale of quarters to years, and only as a by-product of being genuinely well known. No tactic accelerates this. It is the accumulated residue of being written about.",
 				"The honest framing for a marketing team: AEO is a measurement discipline first and a content discipline second. Most of the early wins come from finding out you are invisible on a question you assumed you owned.",
 			],
 		},
@@ -206,13 +207,12 @@ const AEO: Pillar = {
 		},
 		{
 			question: "Can you do AEO for free?",
-			answer:
-				"Yes, at small scale. You can run prompts manually and record the answers in a spreadsheet, which is enough to discover whether you are invisible on your category's central question. It stops working once you need repeated runs across several engines, because the volume required to see past sampling noise is more than a person will do by hand. Self-hosting an open-source tool is the free option beyond that point.",
+			answer: `Yes, at small scale. You can run prompts manually and record the answers in a spreadsheet, which is enough to discover whether you are invisible on your category's central question. It stops working once you need repeated runs across several engines, because the volume required to see past sampling noise is more than a person will do by hand. Beyond that point you need a tracker, and CiteRank.com plans start at $${CLOUD_ENTRY_PRICE_USD}/mo.`,
 		},
 		{
 			question: "How long does AEO take to work?",
 			answer:
-				"Prompts where the engine searches the live web can respond within weeks — getting added to a roundup the model already cites is often the fastest lever. Prompts the model answers from its own training data move over quarters or years and cannot be accelerated by any tactic, because they reflect how widely a brand is discussed across the open web.",
+				"Prompts where the engine searches the live web can respond within weeks. Getting added to a roundup the model already cites is often the fastest lever. Prompts the model answers from its own training data move over quarters or years and cannot be accelerated by any tactic, because they reflect how widely a brand is discussed across the open web.",
 		},
 	],
 	related: [
@@ -227,9 +227,9 @@ const AEO: Pillar = {
 			description: "Every AEO and AI visibility tracker on the market, compared feature by feature.",
 		},
 		{
-			label: "Open-source AEO tools",
-			href: "/ai-visibility-tools/category/open-source",
-			description: "The self-hostable options, for teams who want to read how the score is calculated.",
+			label: "AI search agency",
+			href: "/agency",
+			description: "CiteRank.com does this work every month and reports the AI answers before and after.",
 		},
 		{
 			label: "AEO glossary",
@@ -252,18 +252,18 @@ const AEO: Pillar = {
 const GEO: Pillar = {
 	slug: "generative-engine-optimization",
 	h1: "Generative Engine Optimization (GEO)",
-	metaTitle: "Generative Engine Optimization (GEO): The Complete Guide · Elmo",
+	metaTitle: "Generative Engine Optimization (GEO): The Complete Guide · CiteRank.com",
 	description:
-		"What generative engine optimization means, how GEO differs from SEO and AEO, what the research says actually works, and how to measure it — a practical guide from an open-source GEO platform.",
-	lead: "Generative engines write the answer instead of listing the links. GEO is the work of being in that answer — and of knowing, with numbers, whether you are.",
+		"A practical guide to generative engine optimization from CiteRank.com: what GEO means, how it differs from SEO and AEO, what the research says actually works, and how to measure it.",
+	lead: "Generative engines write the answer instead of listing the links. GEO is the work of being in that answer, and of knowing, with numbers, whether you are.",
 	definition:
-		"Generative engine optimization (GEO) is the practice of getting your brand mentioned and cited inside AI-generated answers — ChatGPT, Google AI Overviews and AI Mode, Perplexity, Gemini, Copilot. It is the same discipline as answer engine optimization (AEO); the two terms emerged in parallel and are used interchangeably.",
+		"Generative engine optimization (GEO) is the practice of getting your brand mentioned and cited inside AI-generated answers (ChatGPT, Google AI Overviews and AI Mode, Perplexity, Gemini, Copilot). It is the same discipline as answer engine optimization (AEO); the two terms emerged in parallel and are used interchangeably.",
 	sections: [
 		{
 			id: "what-it-is",
 			heading: "What generative engine optimization is",
 			body: [
-				"A generative engine answers a question by writing prose. It reads sources, synthesizes them, and names a few. There is no list to climb and no position ten to settle for — you are quoted or you are absent.",
+				"A generative engine answers a question by writing prose. It reads sources, synthesizes them, and names a few. There is no list to climb and no position ten to settle for. You are quoted or you are absent.",
 				"GEO is the practice of being quoted. In day-to-day work that means three things: knowing which questions your buyers actually put to these engines, measuring how often you appear in the answers, and changing what the engines can find so the number moves.",
 				"The name is contested and the distinction is not worth your time. GEO, AEO, LLMO, and generative SEO all label the same work. GEO is the term that came out of the academic literature; AEO is the term that came out of the SEO industry. They describe identical practice.",
 			],
@@ -273,7 +273,7 @@ const GEO: Pillar = {
 			heading: "What GEO means in marketing (and the older meaning)",
 			body: [
 				"In marketing, GEO now has two unrelated meanings, and searches for the term return both.",
-				"The older meaning is geographic: geo-targeting, geo-fencing, geo-modified keywords — anything scoped to a physical location. If you arrived here looking for local search, that is a different discipline entirely.",
+				"The older meaning is geographic: geo-targeting, geo-fencing, geo-modified keywords, and anything else scoped to a physical location. If you arrived here looking for local search, that is a different discipline entirely.",
 				"The newer meaning, and the subject of this guide, is generative engine optimization. It has nothing to do with location. The collision is unfortunate and shows no sign of resolving, which is part of why many practitioners prefer AEO.",
 			],
 		},
@@ -303,11 +303,11 @@ const GEO: Pillar = {
 				"Five surfaces account for nearly all of it, and they behave differently enough that a brand can dominate one and be invisible in another.",
 			],
 			bullets: [
-				"Google AI Overviews — the summary above the classic results, reaching the largest audience by a wide margin.",
-				"Google AI Mode — a full conversational surface, with its own retrieval behaviour distinct from AI Overviews.",
-				"ChatGPT — both the model's own memory and its live browsing mode, which behave very differently and should be measured separately.",
-				"Perplexity — search-first and citation-heavy, which makes it the most legible surface to optimize for.",
-				"Gemini, Copilot, Claude and Grok — smaller but growing, and each with its own retrieval quirks.",
+				"Google AI Overviews, the summary above the classic results, reaching the largest audience by a wide margin.",
+				"Google AI Mode, a full conversational surface, with its own retrieval behaviour distinct from AI Overviews.",
+				"ChatGPT, in two modes (the model's own memory and live browsing), which behave very differently and should be measured separately.",
+				"Perplexity, search-first and citation-heavy, which makes it the most legible surface to optimize for.",
+				"Gemini, Copilot, Claude and Grok, which are smaller but growing, each with its own retrieval quirks.",
 			],
 			callout: {
 				heading: "Measure engines separately, always",
@@ -321,7 +321,7 @@ const GEO: Pillar = {
 			steps: [
 				{
 					name: "Get onto the sources that already get cited",
-					text: "For any given prompt, a small set of third-party pages — roundups, comparison articles, community threads — supplies most of the citations. Being listed accurately on those moves your mention rate faster than anything you can publish yourself.",
+					text: "For any given prompt, a small set of third-party pages (roundups, comparison articles, community threads) supplies most of the citations. Being listed accurately on those moves your mention rate faster than anything you can publish yourself.",
 				},
 				{
 					name: "Write extractable passages",
@@ -337,7 +337,7 @@ const GEO: Pillar = {
 				},
 				{
 					name: "Fix what the model says, not just whether it speaks",
-					text: "Outdated pricing, a discontinued feature, a wrong category — models repeat these confidently. Correcting the underlying sources is often a larger win than a new mention.",
+					text: "Models confidently repeat outdated pricing, a discontinued feature, or a wrong category. Correcting the underlying sources is often a larger win than a new mention.",
 				},
 			],
 		},
@@ -363,13 +363,13 @@ const GEO: Pillar = {
 			id: "tools",
 			heading: "GEO tools",
 			body: [
-				"The category is crowded and young. Most tools do the same core job — schedule prompts, run them across engines, log what came back — and differ in engine coverage, sampling depth, and how much of the raw data they let you see.",
+				"The category is crowded and young. Most tools do the same core job (schedule prompts, run them across engines, log what came back) and differ in engine coverage, sampling depth, and how much of the raw data they let you see.",
 				"Two questions cut through the marketing. How many times is each prompt actually run, and can you read the answer behind the score? A tool that samples thinly will report movement that is not there, and a tool that hides the raw output cannot be checked when it does.",
-				"Elmo is open source for exactly this reason. Self-host it, read the code that computes the score, and verify the methodology rather than trusting it.",
+				"CiteRank.com checks each prompt up to four times a day and keeps every answer in full, so each number traces back to the words an AI wrote.",
 			],
 			callout: {
 				heading: "Compare the options",
-				text: "Elmo maintains an open directory of every GEO and AI visibility tool in the category, including the self-hostable ones, with an honest account of what each does.",
+				text: "CiteRank.com maintains a public directory of every GEO and AI visibility tool in the category, with an honest account of what each does.",
 			},
 		},
 	],
@@ -382,7 +382,7 @@ const GEO: Pillar = {
 		{
 			question: "What does GEO stand for in marketing?",
 			answer:
-				"It depends on which conversation you are in. In AI search, GEO stands for generative engine optimization. In older marketing usage it is shorthand for geographic — geo-targeting, geo-fencing, geo-modified keywords. The two are unrelated, and the overlap is a common source of confusion.",
+				"It depends on which conversation you are in. In AI search, GEO stands for generative engine optimization. In older marketing usage it is shorthand for geographic: geo-targeting, geo-fencing, geo-modified keywords. The two are unrelated, and the overlap is a common source of confusion.",
 		},
 		{
 			question: "Is GEO the same as AEO?",
@@ -392,12 +392,12 @@ const GEO: Pillar = {
 		{
 			question: "What is GEO in SEO?",
 			answer:
-				"GEO is the layer of SEO that deals with AI-generated answers rather than ranked links. The underlying work overlaps heavily — crawlability, structure, authority, credible external mentions — but the outcome measured is a mention and a citation inside an answer, not a position on a results page.",
+				"GEO is the layer of SEO that deals with AI-generated answers rather than ranked links. The underlying work overlaps heavily (crawlability, structure, authority, credible external mentions), but the outcome measured is a mention and a citation inside an answer, not a position on a results page.",
 		},
 		{
 			question: "Does GEO actually work?",
 			answer:
-				"The tactics with evidence behind them do: being listed on the third-party pages that engines already cite, writing self-contained passages engines can extract, and publishing original data. The tactics without much evidence — llms.txt files, keyword density aimed at models — absorb a lot of effort for little measurable return.",
+				"The tactics with evidence behind them do: being listed on the third-party pages that engines already cite, writing self-contained passages engines can extract, and publishing original data. The tactics without much evidence (llms.txt files, keyword density aimed at models) absorb a lot of effort for little measurable return.",
 		},
 		{
 			question: "How is GEO measured?",
@@ -422,9 +422,9 @@ const GEO: Pillar = {
 			description: "Every tool in the category, compared feature by feature.",
 		},
 		{
-			label: "Open-source GEO tools",
-			href: "/ai-visibility-tools/category/open-source",
-			description: "The self-hostable options, for teams who want to audit the methodology.",
+			label: "What CiteRank.com tracks",
+			href: "/features",
+			description: "Visibility, share of voice, sentiment, citations, and the searches AI runs, for each AI app.",
 		},
 		{
 			label: "AEO glossary",

@@ -258,7 +258,7 @@ export const glossaryTerms: GlossaryTerm[] = [
 		],
 		related: ["knowledge-graph", "structured-data", "grounding"],
 		seeAlso: [
-			{ label: "Off-site AEO", href: "/off-site-aeo" },
+			{ label: "What the AI search agency does", href: "/agency" },
 			{ label: "Where AI citations come from", href: "/blog/where-ai-citations-come-from" },
 		],
 	},
