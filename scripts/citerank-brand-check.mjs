@@ -16,6 +16,7 @@ const SCANNED = [
 	"apps/web/public",
 	"apps/www/src",
 	"apps/www/public",
+	"packages/api-spec/src",
 	"packages/config/src",
 	"packages/deployment/src",
 	"packages/docs/content",
@@ -41,6 +42,7 @@ const ALLOWED_NAMES = [
 const ALLOWED_TEXT = [
 	{ file: "apps/web/src/routes/auth/login.tsx", text: /demo@elmohq\.com/g, why: "demo-mode sign-in only" },
 	{ file: "packages/config/src/env-registry.ts", text: /`elmo init`|Elmo </g, why: "operator-only env descriptions" },
+	{ file: "packages/api-spec/src/openapi.json", text: /"x-elmo-[a-z-]+"/g, why: "machine-read spec extension keys" },
 ];
 
 const ALLOWED_FILES = {

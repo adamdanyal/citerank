@@ -19,7 +19,7 @@ export const heroVariants: Record<string, HeroVariant> = {
 	},
 	chatgpt: {
 		title: "Is ChatGPT Mentioning You?",
-		lede: "Elmo asks ChatGPT and every other major AI model the questions your buyers ask, then shows whether you're in the answer, who's there instead, and what to fix.",
+		lede: "CiteRank.com asks ChatGPT and nine other AI apps the questions your buyers ask, then shows whether you're in the answer, who's there instead, and what to change.",
 	},
 	"see-what-ai-says": {
 		title: "See What AI Says About Your Brand",
@@ -27,11 +27,11 @@ export const heroVariants: Record<string, HeroVariant> = {
 	},
 	"stop-checking": {
 		title: "Stop Checking ChatGPT by Hand",
-		lede: "Elmo runs your buyers' prompts across AI models on a schedule and tracks every answer, so you see trends instead of one-off screenshots.",
+		lede: "CiteRank.com asks your buyers' questions in ten AI apps, up to four times a day, and keeps every answer, so you see trends instead of one-off screenshots.",
 	},
 	"aeo-tool": {
 		title: "The AEO Tool That Tells You What to Fix",
-		lede: "Elmo tracks your visibility across AI answer engines and turns it into a ranked list of fixes, from the pages to update to the sources AI trusts.",
+		lede: "CiteRank.com tracks your visibility across AI answer engines and ranks what to do next, from the pages to update to the sources AI cites.",
 	},
 	geo: {
 		title: "Generative Engine Optimization, Measured",
@@ -43,7 +43,7 @@ export const heroVariants: Record<string, HeroVariant> = {
 	},
 	citations: {
 		title: "Know Which Sources AI Cites",
-		lede: "Elmo shows which pages and domains ChatGPT, Perplexity, and Google AI Overviews cite when they answer your buyers, so you know where to show up.",
+		lede: "CiteRank.com shows which pages and domains ChatGPT, Perplexity, and Google AI Overviews cite when they answer your buyers, so you know where to show up.",
 	},
 	"ai-overviews": {
 		title: "Track Your Brand in AI Overviews",
@@ -56,12 +56,9 @@ export const heroVariants: Record<string, HeroVariant> = {
 	"win-ai-search": {
 		title: "Win AI Search",
 	},
-	"open-source-tracker": {
-		title: "The Open-Source AI Visibility Tracker",
-	},
-	"open-source": {
-		title: "Open-Source AI Visibility Tracking",
-		lede: "Elmo is MIT-licensed AEO software. Track your brand across ChatGPT, Claude, Gemini, and more on Elmo Cloud, or self-host it for free.",
+	agency: {
+		title: "Get Named in ChatGPT Answers",
+		lede: "CiteRank.com's AI search agency writes the pages, gets you onto the lists and publishes the guest articles AI reads when buyers ask it who to choose.",
 	},
 };
 

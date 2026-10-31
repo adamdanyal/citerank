@@ -11,7 +11,7 @@ export interface CookieConsent {
 	marketing: boolean;
 }
 
-const CONSENT_STORAGE_KEY = "elmo.cookie-consent";
+const CONSENT_STORAGE_KEY = "citerank.cookie-consent";
 
 /** Bump when the categories change, so a stored answer is re-asked rather than misread. */
 const CONSENT_VERSION = 1;

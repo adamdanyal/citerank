@@ -85,7 +85,7 @@ function GhostCTA({
  */
 /** `from` names the button in the cloud app's analytics, so each placement can be told apart. */
 export function CloudSignupCTA({
-	label = "Start with Cloud",
+	label = "Start Tracking",
 	from = "marketing-page-cta",
 }: {
 	label?: string;
@@ -97,10 +97,6 @@ export function CloudSignupCTA({
 			<ArrowRight className="size-3.5" />
 		</PrimaryCTA>
 	);
-}
-
-export function SelfHostCTA({ label = "Self-host free" }: { label?: string }) {
-	return <GhostCTA to="/docs">{label}</GhostCTA>;
 }
 
 /** Third-tier link for the option that supports a CTA without competing with it. */

@@ -6,9 +6,9 @@ import { formatPostDate } from "@/lib/format";
 import type { LegalPageSummary } from "@/lib/legal";
 import { breadcrumbJsonLd, canonicalUrl, ogMeta } from "@/lib/seo";
 
-const title = "Legal · Elmo";
+const title = "Legal · CiteRank.com";
 const description =
-	"Elmo's terms of service, privacy policy, cookie policy, subprocessor list, and acceptable use policy — all versioned in public.";
+	"CiteRank.com's terms of service, privacy policy, cookie policy, subprocessor list and acceptable use policy.";
 
 const getLegalPages = createServerFn({ method: "GET" }).handler(async (): Promise<LegalPageSummary[]> => {
 	const { listLegalPages } = await import("@/lib/legal");
@@ -39,10 +39,10 @@ function LegalIndex() {
 			<main>
 				<section className="border-b border-zinc-200 bg-white py-12 lg:py-20">
 					<div className="mx-auto max-w-6xl px-4 md:px-6">
-						<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl">The fine print, in public</h1>
+						<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl">Legal</h1>
 						<p className="mt-4 max-w-3xl text-lg text-balance text-zinc-600">
-							These policies cover Elmo Cloud and our websites. They live in the same repository as the product, so
-							every revision is a diff you can read.
+							These policies cover the CiteRank.com tracker, the AI search agency and our websites. CiteRank.com is a
+							trading name of Danx Digital Limited.
 						</p>
 					</div>
 				</section>
@@ -64,17 +64,6 @@ function LegalIndex() {
 								</div>
 							))}
 						</dl>
-						<p className="mt-8 max-w-3xl text-sm text-zinc-600">
-							Running Elmo yourself instead? The{" "}
-							<a href="https://github.com/elmohq/elmo" className="text-zinc-950 underline hover:text-blue-700">
-								source
-							</a>{" "}
-							is MIT-licensed, and these terms don't govern your instance. Telemetry it sends us is covered by the{" "}
-							<a href="/legal/privacy" className="text-zinc-950 underline hover:text-blue-700">
-								Privacy Policy
-							</a>
-							.
-						</p>
 					</div>
 				</section>
 			</main>

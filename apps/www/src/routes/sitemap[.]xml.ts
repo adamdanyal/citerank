@@ -21,7 +21,7 @@ import {
 import { listLegalPages } from "@/lib/legal";
 import { source } from "@/lib/source";
 
-const SITE_URL = "https://www.elmohq.com";
+const SITE_URL = "https://citerank.com";
 
 interface SitemapEntry {
 	path: string;
@@ -41,19 +41,13 @@ const staticPages: SitemapEntry[] = [
 	{ path: "/generative-engine-optimization", changefreq: "monthly", priority: 0.9 },
 	{ path: "/features", changefreq: "monthly", priority: 0.8 },
 	{ path: "/pricing", changefreq: "monthly", priority: 0.8 },
-	{ path: "/off-site-aeo", changefreq: "monthly", priority: 0.8 },
-	{ path: "/changelog", changefreq: "weekly", priority: 0.7 },
-	{ path: "/roadmap", changefreq: "weekly", priority: 0.7 },
+	{ path: "/agency", changefreq: "monthly", priority: 0.9 },
 	{ path: "/docs", changefreq: "weekly", priority: 0.9 },
 	{ path: "/blog", changefreq: "weekly", priority: 0.7 },
 	{ path: "/statistics", changefreq: "weekly", priority: 0.8 },
 	{ path: "/ai-visibility-tools", changefreq: "weekly", priority: 0.8 },
 	{ path: "/about", changefreq: "monthly", priority: 0.7 },
-	{ path: "/vision", changefreq: "monthly", priority: 0.6 },
-	{ path: "/brand", changefreq: "monthly", priority: 0.5 },
-	{ path: "/status", changefreq: "daily", priority: 0.5 },
 	{ path: "/support", changefreq: "monthly", priority: 0.5 },
-	{ path: "/demo", changefreq: "monthly", priority: 0.5 },
 	{ path: "/legal", changefreq: "yearly", priority: 0.3 },
 ];
 

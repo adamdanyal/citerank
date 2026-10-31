@@ -1,22 +1,16 @@
+import { Link } from "@tanstack/react-router";
 import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
-import { bookDemoUrl, cloudAppUrl, demoSiteUrl, type ReferralSource } from "@workspace/config/referrals";
-import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
-import { externalRel } from "@/lib/external-link";
+import { cloudSignupUrl, type ReferralSource } from "@workspace/config/referrals";
+import { ArrowRight, Check } from "lucide-react";
 
-export const DISCORD_INVITE_URL = "https://discord.gg/s24nubCtKz";
-const BOOK_URL = bookDemoUrl("marketing-cta");
-
-const INCLUDED = ["Self-serve", "Unlimited seats", "API and MCP access"];
+const INCLUDED = ["Unlimited seats", "API and MCP access", "Cancel anytime"];
 
 const BUTTON =
 	"inline-flex h-12 items-center justify-center gap-2 rounded-lg px-6 text-base font-medium leading-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600";
-const QUIET = "font-medium text-zinc-800 underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-800";
 
-/** The last push on the page is for the cloud; self-hosting has its own section above. */
-/** `from` tags the sign-up and demo links so each page's closing band shows up separately in analytics. */
+/** `from` tags the sign-up link so each page's closing band shows up separately in analytics. */
 export function Closing({ from = "marketing-closing" }: { from?: ReferralSource }) {
-	const cloudUrl = cloudAppUrl(from);
-	const demoUrl = demoSiteUrl(from);
+	const signupUrl = cloudSignupUrl(from);
 	return (
 		<section className="relative overflow-hidden border-t border-zinc-200/80 bg-white">
 			<div
@@ -25,25 +19,22 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 			/>
 			<div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 py-20 text-center md:px-6 lg:py-28">
 				<h2 className="text-[2.5rem] font-semibold leading-[1.05] tracking-[-0.03em] text-balance text-zinc-950 md:text-[3.5rem]">
-					Start winning AI search today.
+					Find Out What AI Says About You
 				</h2>
 				<p className="mt-5 max-w-[52ch] text-pretty text-base/7 text-zinc-600 md:text-lg/8">
-					Start tracking your brand in minutes. Plans start at ${CLOUD_ENTRY_PRICE_USD}/mo.
+					Start tracking in minutes. Plans start at ${CLOUD_ENTRY_PRICE_USD}/mo.
 				</p>
 				<div className="mt-9 flex w-full flex-col items-stretch justify-center gap-3 sm:w-auto sm:flex-row sm:items-center">
-					<a href={cloudUrl} className={`${BUTTON} bg-blue-600 text-white hover:bg-blue-700`}>
-						Get started
+					<a href={signupUrl} className={`${BUTTON} bg-blue-600 text-white hover:bg-blue-700`}>
+						Start Tracking
 						<ArrowRight className="size-4" aria-hidden="true" />
 					</a>
-					<a
-						href={demoUrl}
-						target="_blank"
-						rel={externalRel(demoUrl)}
+					<Link
+						to="/agency"
 						className={`${BUTTON} bg-white text-zinc-950 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50 hover:ring-zinc-300`}
 					>
-						Try the live demo
-						<ArrowUpRight className="size-4" aria-hidden="true" />
-					</a>
+						Have Us Do the Work
+					</Link>
 				</div>
 				<ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-zinc-600">
 					{INCLUDED.map((item) => (
@@ -53,13 +44,6 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 						</li>
 					))}
 				</ul>
-				<p className="mt-8 text-sm text-zinc-500">
-					Want a walkthrough first?{" "}
-					<a href={BOOK_URL} className={QUIET}>
-						Book a 30-minute tour
-					</a>
-					.
-				</p>
 			</div>
 		</section>
 	);

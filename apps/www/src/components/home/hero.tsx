@@ -1,14 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { bookDemoUrl, cloudAppUrl, demoSiteUrl, type ReferralSource } from "@workspace/config/referrals";
-import { Dialog, DialogContent, DialogTitle } from "@workspace/ui/components/dialog";
-import { ArrowRight, ArrowUpRight, Play } from "lucide-react";
-import { Fragment, lazy, type ReactNode, Suspense, useState } from "react";
-import { externalRel } from "@/lib/external-link";
-import { SELF_HOST_LINK } from "@/lib/self-host-link";
+import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
+import { cloudSignupUrl, type ReferralSource } from "@workspace/config/referrals";
+import { ArrowRight } from "lucide-react";
+import { Fragment, type ReactNode } from "react";
 import { ProductDemo } from "./product-demo";
-import { HOME_FONT_CLASS } from "./styles";
-
-const MuxPlayer = lazy(() => import("@mux/mux-player-react"));
 
 // One size and box model for both buttons, so they sit on the same line.
 const BUTTON =
@@ -16,52 +11,10 @@ const BUTTON =
 const QUIET =
 	"rounded-sm font-medium text-zinc-600 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-950 hover:decoration-zinc-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600";
 
-function WalkthroughDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) {
-	return (
-		<Dialog open={open} onOpenChange={onOpenChange}>
-			<DialogContent
-				className={`${HOME_FONT_CLASS} gap-0 overflow-hidden bg-zinc-950 p-0 sm:max-w-5xl [&>button]:text-white`}
-			>
-				<DialogTitle className="sr-only">Elmo product walkthrough</DialogTitle>
-				{/* Mounted only while open, so the player's script and poster cost nothing up front. */}
-				{open ? (
-					<Suspense fallback={<div className="aspect-video w-full" />}>
-						<MuxPlayer
-							playbackId="PYV9FNIG008vlkchyQf9KMTxDt028zQdshaM4VLC6lS1Q"
-							streamType="on-demand"
-							// Mux Data otherwise writes a `muxData` cookie on page load — before
-							// anyone has answered the consent banner. Playback QoE still reports;
-							// only cross-visit viewer recognition goes away.
-							disableCookies
-							accentColor="#2563eb"
-							poster="/demo-poster.png"
-							autoPlay
-							metadata={{
-								video_id: "KGvs37kE02Z6mnTpcrnLJCtiS01V023aJEHK3MZlmaULPA",
-								video_title: "Elmo demo",
-							}}
-							style={{ aspectRatio: "16 / 9", display: "block", width: "100%" }}
-						/>
-					</Suspense>
-				) : null}
-			</DialogContent>
-		</Dialog>
-	);
-}
-
-const GITHUB_BADGE = (
-	<a
-		href="https://github.com/elmohq/elmo"
-		target="_blank"
-		rel="noopener noreferrer"
-		className="group inline-flex h-7 items-center gap-2 rounded-full bg-white/80 pl-1 pr-3 text-xs font-medium text-zinc-600 shadow-sm ring-1 ring-zinc-200 transition hover:text-zinc-950 hover:ring-zinc-300"
-	>
-		<span className="inline-flex h-5 items-center gap-1.5 rounded-full bg-zinc-100 px-2 font-mono text-[11px] font-normal text-zinc-700">
-			<span className="size-1.5 rounded-full bg-emerald-500" />v{__APP_VERSION__}
-		</span>
-		Open Source on GitHub
-		<ArrowUpRight className="size-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-	</a>
+const BADGE = (
+	<span className="inline-flex h-7 items-center rounded-full bg-white/80 px-3 text-xs font-medium text-zinc-600 shadow-sm ring-1 ring-zinc-200">
+		AI Visibility Tracker and AI Search Agency
+	</span>
 );
 
 function titleWords(title: string) {
@@ -74,34 +27,28 @@ function titleWords(title: string) {
 }
 
 const DEFAULT_LEDE =
-	"Elmo is the open-source AI visibility platform for AEO and GEO. See how ChatGPT, Claude, Gemini, and every other AI model talk about your brand, which sources they trust, and exactly what to do to get recommended.";
+	"CiteRank.com puts your buyers' questions to ChatGPT, Gemini, Perplexity, Google AI Overviews and six more AI apps, up to four times a day. You see how often each one names you against your competitors, and a ranked list of what to change. Our AI search agency can make those changes for you.";
 
-/**
- * Landing pages for a single audience reuse the homepage hero with their own
- * pitch. Audiences that won't run Docker get a tour booking in place of the
- * self-host link, so the quiet option is still one they would take.
- */
+/** Landing pages for a single audience reuse the homepage hero with their own pitch. */
 export function Hero({
-	badge = GITHUB_BADGE,
-	title = "Win AI Search",
+	badge = BADGE,
+	title = "Get Named in AI Answers",
 	lede = DEFAULT_LEDE,
-	selfHost = true,
 	from = "marketing-hero",
 }: {
 	badge?: ReactNode;
 	title?: string;
 	lede?: ReactNode;
+	/** Kept for callers written against the old hero; there is no self-hosted option to offer. */
 	selfHost?: boolean;
 	from?: ReferralSource;
 } = {}) {
-	const [videoOpen, setVideoOpen] = useState(false);
-	const cloudUrl = cloudAppUrl(from);
-	const demoUrl = demoSiteUrl(from);
+	const signupUrl = cloudSignupUrl(from);
 	// The display size suits a short slogan; a longer audience headline steps down so it holds to two lines.
 	const short = title.length <= 16;
 
 	return (
-		<section className="relative overflow-hidden bg-white">
+		<section className="relative overflow-hidden bg-paper">
 			<div
 				aria-hidden="true"
 				className="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,rgb(0_0_0/0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgb(0_0_0/0.04)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
@@ -124,41 +71,22 @@ export function Hero({
 					</h1>
 					<p className="mt-6 max-w-[60ch] text-balance text-[17px]/7 text-zinc-600 md:text-xl/8">{lede}</p>
 					<div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-						<a href={cloudUrl} className={`${BUTTON} bg-blue-600 text-white hover:bg-blue-700`}>
-							Get started
+						<a href={signupUrl} className={`${BUTTON} bg-blue-600 text-white hover:bg-blue-700`}>
+							Start Tracking
 							<ArrowRight className="size-4" aria-hidden="true" />
 						</a>
-						<a
-							href={demoUrl}
-							target="_blank"
-							rel={externalRel(demoUrl)}
+						<Link
+							to="/agency"
 							className={`${BUTTON} bg-white text-zinc-950 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50 hover:ring-zinc-300`}
 						>
-							Try the live demo
-							<ArrowUpRight className="size-4" aria-hidden="true" />
-						</a>
+							Have Us Do the Work
+						</Link>
 					</div>
-					<p className="mt-5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm text-zinc-500">
-						{selfHost ? (
-							<Link {...SELF_HOST_LINK} className={QUIET}>
-								Self-host for free
-							</Link>
-						) : (
-							<a href={bookDemoUrl(from)} className={QUIET}>
-								Book a 30-minute tour
-							</a>
-						)}
-						<span aria-hidden="true" className="text-zinc-300">
-							·
-						</span>
-						<button
-							type="button"
-							onClick={() => setVideoOpen(true)}
-							className={`${QUIET} inline-flex items-center gap-1.5`}
-						>
-							<Play className="size-3 fill-current" aria-hidden="true" />
-							Watch the walkthrough
-						</button>
+					<p className="mt-5 text-sm text-zinc-500">
+						Tracker plans from ${CLOUD_ENTRY_PRICE_USD} a month.{" "}
+						<Link to="/pricing" className={QUIET}>
+							See Pricing
+						</Link>
 					</p>
 				</div>
 
@@ -166,7 +94,6 @@ export function Hero({
 					<ProductDemo />
 				</div>
 			</div>
-			<WalkthroughDialog open={videoOpen} onOpenChange={setVideoOpen} />
 		</section>
 	);
 }

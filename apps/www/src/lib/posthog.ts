@@ -4,7 +4,7 @@ import type { PostHog } from "posthog-js";
 
 // Empty until CiteRank.com has its own PostHog project; the key this shipped with was Elmo's.
 const POSTHOG_KEY: string = "";
-const POSTHOG_HOST = "https://var.elmohq.com";
+const POSTHOG_HOST = "https://us.i.posthog.com";
 
 // posthog-js is ~60KB gzipped and sets cookies, so it is imported dynamically
 // and only once analytics consent is in effect. Visitors who decline never

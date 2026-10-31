@@ -10,93 +10,81 @@ export interface FaqItem {
 // crawler) sees on the page.
 export const HOME_FAQS: FaqItem[] = [
 	{
-		question: "What is Elmo?",
+		question: "What is CiteRank.com?",
 		answer:
-			"Elmo is an open-source AI visibility platform for Answer Engine Optimization (AEO) — an alternative to tools like Profound, Peec, and Otterly that you can self-host for free or run on Elmo Cloud. It tracks how AI answer engines — including ChatGPT, Google AI Overviews, Perplexity, Gemini, Claude, and Copilot — mention and describe your brand, which competitors appear alongside you, and which sources each model cites.",
+			"CiteRank.com is an AI visibility tracker and AI search agency. The AI Visibility Tracker puts your buyers' questions to ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Google AI Overviews and Google AI Mode, up to four times a day, and shows how often each one names you against your competitors. About once a week it ranks what to do next. The AI search agency does that work for businesses that would rather hand it over.",
 	},
 	{
-		question: "What is Answer Engine Optimization (AEO)?",
+		question: "What is answer engine optimization (AEO)?",
 		answer:
-			"Answer Engine Optimization (AEO) — also called Generative Engine Optimization (GEO) or LLM Optimization (LLMO) — is the practice of measuring and improving how often AI answer engines mention and cite your brand. Instead of ranking in a list of blue links, the goal is to be the source an AI quotes in its answer. (LLMO is also where Elmo gets its name.)",
+			"Answer engine optimization (AEO), also called generative engine optimization (GEO) or AI SEO, is the practice of measuring and improving how often AI apps name and cite your business. The goal is to be one of the businesses an AI names in its answer, with your pages among the sources it cites.",
 	},
 	{
-		question: "What is the difference between AEO, GEO, and SEO?",
+		question: "What is the difference between AEO, GEO and SEO?",
 		answer:
-			"SEO is about ranking pages in traditional search results, while AEO and GEO are two names for the same newer discipline: getting mentioned and cited inside AI-generated answers from tools like ChatGPT, Perplexity, and Google AI Overviews. The two overlap, because AI engines run web searches and cite the pages they find, but success is measured differently — by how often and how favorably an AI names your brand, not by your position on a results page. Elmo measures the AEO side, including the web searches AI engines fan a prompt out into and the sources they cite.",
+			"SEO ranks pages in traditional search results. AEO and GEO are two names for one newer discipline: getting named and cited inside answers from ChatGPT, Perplexity, Google AI Overviews and other AI apps. The two overlap, because AI apps run web searches and cite the pages they find, but AEO is measured by how often and how favorably an AI names your business. CiteRank.com measures the AEO side, including the web searches an AI runs before answering and the sources it cites.",
 	},
 	{
-		question: "Which AI models does Elmo track?",
+		question: "Which AI apps does CiteRank.com track?",
 		answer:
-			"Elmo tracks ChatGPT, Google AI Mode, Google AI Overviews, Gemini, Perplexity, Copilot, and Claude, plus models like Grok, Mistral, DeepSeek, Qwen, and Kimi. Consumer products like ChatGPT and Google AI Mode are scraped from the real interface your customers see, not approximated through an API. For each answer, Elmo records whether your brand appears, which competitors show up alongside it, and which sources the model cites.",
+			"ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Google AI Overviews and Google AI Mode. ChatGPT, Gemini, Perplexity, Copilot, Google AI Overviews and Google AI Mode are read from the same interface your buyers use. For each answer, CiteRank.com records whether you are named, which competitors appear with you, and which sources the AI cites.",
 	},
 	{
 		question: "How is AI visibility measured?",
 		answer:
-			"Elmo runs a fixed set of prompts across AI engines on a schedule and scores each prompt by how often your brand appears in the answers, from 0 to 100%. It also calculates share of voice (your share of brand mentions versus your competitors), sentiment (whether the answers that mention you praise or criticize you, scored 0 to 100), and position (where you rank among the brands an answer names), and breaks down which domains and URLs the models cite. Because AI answers vary from run to run, Elmo samples repeatedly and reports trends, not single results.",
+			"CiteRank.com asks a fixed set of questions in each AI app on a schedule and scores each question by how often your business appears in the answers, from 0 to 100%. It also calculates share of voice (your share of brand mentions against your competitors), sentiment (whether the answers that name you praise or criticize you, scored 0 to 100) and position (where you rank among the businesses an answer names), and shows which websites and pages the answers cite. AI answers vary from run to run, so CiteRank.com asks each question repeatedly and reports trends.",
 	},
 	{
-		question: "How do I track my brand in ChatGPT?",
+		question: "What does the AI search agency do?",
 		answer:
-			"Add your website to Elmo and its Prompt Wizard generates the questions your buyers are likely to ask ChatGPT, based on your products, competitors, and personas. Elmo then runs those prompts in ChatGPT on a schedule and records every answer: whether your brand was mentioned, which competitors were named, and which sources were cited. Every Elmo Cloud plan includes ChatGPT, starting with the $29/mo Starter plan.",
+			"It does the work the tracker ranks, every month. The agency writes the comparison, alternatives and guide pages your site is missing, updates pages AI has stopped citing, gets you onto the review sites and best-of lists AI cites, answers buyers' questions in forums and communities, publishes guest articles on high-authority sites AI already cites, and fixes anything that stops AI crawlers reading your site. Each month a report lists every piece of work, the question it targets, and the AI answers before and after.",
 	},
 	{
-		question: "How much does Elmo cost compared to Profound?",
+		question: "How much does CiteRank.com cost?",
 		answer:
-			"Elmo is much cheaper and simpler to buy. Profound's pricing page lists a free trial and an Enterprise plan quoted by sales, while Elmo Cloud is self-serve with public prices, starting at $29/mo for the Starter plan. From the $99/mo Basic plan, every prompt is checked 4× a day, where Profound checks daily. Pro ($299/mo) and Business ($649/mo) add more brands, more prompts, and premium grounded models, and self-hosting Elmo is free.",
+			"The AI Visibility Tracker costs $29/mo on Starter, $99/mo on Basic, $299/mo on Pro and $649/mo on Business. Yearly billing saves two months. Every plan includes unlimited seats and API and MCP access. The AI search agency is a separate service: book a call to talk it through.",
+		links: [{ text: "book a call", href: "/agency" }],
 	},
 	{
-		question: "Is Elmo free?",
+		question: "Do I need to talk to sales?",
 		answer:
-			"Elmo is free and open source to self-host — there is no license fee and no per-seat pricing. You only pay for your own infrastructure and any AI provider API keys you choose to use. If you'd rather not run it yourself, managed Elmo Cloud starts at $29/mo, and white-label plans are available for agencies.",
+			"No. The tracker is self-serve: sign up, pick a plan and start tracking. Billing is month to month, and you can cancel any time.",
 	},
 ];
 
 // Pricing page FAQ.
 export const PRICING_FAQS: FaqItem[] = [
 	{
-		question: "Is Elmo free?",
+		question: "Do I need to talk to sales to use the tracker?",
 		answer:
-			"Yes. Elmo is free and open source to self-host, forever. There is no license fee and no per-seat pricing — you only pay for your own infrastructure and the AI provider API keys you choose to use.",
+			"No. Sign up, pick a plan and start tracking without a demo or sales call. Every plan includes unlimited seats plus API and MCP access, and yearly billing saves two months. Only custom plans go through a conversation.",
 	},
 	{
-		question: "Is there a hosted or cloud version of Elmo?",
+		question: "How often does CiteRank.com ask my questions?",
 		answer:
-			"Yes. Elmo Cloud is managed hosting for teams that would rather not run their own infrastructure, starting at $29/mo. You can also self-host Elmo for free, or get in touch about white-label deployments.",
+			"The Starter plan asks each question once a day. Basic, Pro and Business ask each question up to four times a day in every AI app you choose. Premium models (GPT Search, and Claude and Grok on the web) run once a day.",
 	},
 	{
-		question: "Can agencies white-label Elmo?",
+		question: "Does CiteRank.com have an API or MCP server?",
 		answer:
-			"White-label deployments are available for agencies that want to offer AI visibility tracking under their own brand, with multi-client dashboards and custom branding. Get in touch about setting up a white-label instance for your agency.",
+			"Yes. A REST API covers brands, prompts, competitors, analytics, sentiment, citations, runs and opportunities, and an MCP server lets AI assistants such as Claude Code, Codex, Cursor and VS Code read your visibility data and manage prompts. Both come with every plan. API keys can be read-only or read-write and limited to specific brands.",
 	},
 	{
-		question: "What do I need to run Elmo myself?",
+		question: "Is the AI search agency included in a plan?",
 		answer:
-			"Elmo runs as a Docker Compose stack managed by a CLI. Install it, run the interactive init, and it's up in a couple of commands. You can use the bundled database or connect Elmo to your own PostgreSQL database.",
+			"No. The agency is a separate service for businesses that want the work done for them every month. Book a call to talk it through.",
+		links: [{ text: "Book a call", href: "/agency" }],
 	},
 	{
-		question: "Do I need a credit card to get started?",
+		question: "Can I cancel any time?",
 		answer:
-			"No. Self-hosting Elmo does not require an account or a credit card. Clone the open-source repository, deploy with the CLI, and start tracking your AI visibility.",
+			"Yes. Plans are billed month to month unless you choose yearly billing, and you can cancel any time from your billing settings.",
 	},
 	{
-		question: "Do I need to talk to sales to use Elmo Cloud?",
+		question: "Do you offer custom plans?",
 		answer:
-			"No. Elmo Cloud is fully self-serve: you sign up, pick a plan, and start tracking without a demo or sales call. Every plan includes unlimited seats plus API and MCP access, and annual billing gets you two months free. Only custom contracts (higher sampling rates, custom limits, or white label) go through a conversation.",
-	},
-	{
-		question: "How often does Elmo run my prompts?",
-		answer:
-			"On Elmo Cloud, the Starter plan runs each prompt once a day, and the Basic, Pro, and Business plans run each prompt up to 4 times a day on every platform you choose. Premium grounded models run once a day, and custom plans can sample more often. When you self-host Elmo, you set the schedule yourself.",
-	},
-	{
-		question: "Does Elmo have an API or MCP server?",
-		answer:
-			"Yes. Elmo has a REST API for brands, prompts, competitors, analytics, sentiment, citations, runs, opportunities, and reports, with TypeScript and Python SDKs, and an MCP server so AI assistants like Claude Code, Codex, Cursor, and VS Code can query your visibility data and manage prompts directly. Both are included on every Elmo Cloud plan and in every self-hosted instance. API keys can be read-only or read-write and limited to specific brands.",
-	},
-	{
-		question: "Is my data private if I self-host Elmo?",
-		answer:
-			"Yes. A self-hosted Elmo instance stores your brands, prompts, and AI responses in your own PostgreSQL database, and prompts are only sent to the scraping and AI providers you configure. Elmo's optional telemetry sends anonymous usage counts and never includes brand names, prompt text, responses, or API keys, and you can turn it off completely with DISABLE_TELEMETRY=1.",
+			"Yes, for more brands, more prompts or more frequent checks than the listed plans. Email team@citerank.com.",
+		links: [{ text: "team@citerank.com", href: "mailto:team@citerank.com" }],
 	},
 ];
 
@@ -104,70 +92,60 @@ export const PRICING_FAQS: FaqItem[] = [
 // them unstated: who runs it, where it is, and how it is paid for.
 export const ABOUT_FAQS: FaqItem[] = [
 	{
-		question: "Who founded Elmo?",
+		question: "Who founded CiteRank.com?",
 		answer:
-			"Elmo was founded in July 2025 by Jared Rhizor, previously a founding engineer at the open-source data integration platform Airbyte and a tech lead at LiveRamp. He leads Elmo's product and engineering.",
+			"Adam Danyal, who has more than 2 million LinkedIn followers, and Julia Danyal, who has more than 360,000. They also run Chief AI Leader, an exam-based AI certification for leaders, and AI For Leaders, a daily AI newsletter read by more than 50,000 leaders.",
 	},
 	{
-		question: "Who owns Elmo?",
+		question: "Who owns CiteRank.com?",
 		answer:
-			"Elmo is built and operated by Blue Whale Software, LLC, a software company headquartered in San Francisco. It provides Elmo Cloud, white-label deployments, and the Off-Site AEO service.",
+			"CiteRank.com is a trading name of Danx Digital Limited, a company registered in the United Kingdom (company number 13275434).",
 	},
 	{
-		question: "Where is Elmo based?",
+		question: "Where is CiteRank.com based?",
 		answer:
-			"Elmo is headquartered in San Francisco, California. The product is used by teams worldwide, either on Elmo Cloud or self-hosted on their own infrastructure.",
+			"In London. Danx Digital Limited, the company behind CiteRank.com, is registered at 86-90 Paul Street, London EC2A 4NE.",
 	},
 	{
-		question: "Is Elmo open source?",
+		question: "Does CiteRank.com require an annual contract?",
 		answer:
-			"Yes. The full Elmo platform is open source on GitHub at github.com/elmohq/elmo, and you can self-host it for free. Elmo Cloud runs the same code as a managed service.",
-		links: [{ text: "github.com/elmohq/elmo", href: "https://github.com/elmohq/elmo" }],
+			"No. The tracker is billed month to month and you can cancel any time. Yearly billing is optional and saves two months.",
 	},
 	{
-		question: "Does Elmo require an annual contract?",
+		question: "Is CiteRank.com an AEO, GEO or AI SEO tool?",
 		answer:
-			"No. Elmo Cloud is billed month to month and you can cancel any time; annual billing is optional and gets you two months free. Self-hosting needs no contract at all.",
+			"All three. Answer engine optimization (AEO), generative engine optimization (GEO) and AI SEO are names for the same work: getting your business named and cited in answers from ChatGPT, Perplexity, Google AI Overviews and other AI apps. The CiteRank.com tracker measures that, and its agency does the work.",
 	},
 	{
-		question: "Is Elmo an AEO, GEO, or AI SEO tool?",
+		question: "Where does the name CiteRank.com come from?",
 		answer:
-			"All three. Answer engine optimization (AEO), generative engine optimization (GEO), and AI SEO are different names for the same work: getting your brand mentioned and cited in AI search results from ChatGPT, Perplexity, Google AI Overviews, and other answer engines. Elmo measures that visibility so you can track and improve it.",
-	},
-	{
-		question: "Where does the name Elmo come from?",
-		answer:
-			"Elmo comes from LLMO, short for LLM optimization: the practice of improving how large language models like ChatGPT, Claude, and Gemini mention and cite your brand. Say LLMO out loud and you get Elmo.",
+			"It joins cite, what an AI does when it names a source, with rank, where a business stands against its competitors in those answers.",
 	},
 ];
 
-// Off-Site AEO service FAQ. Rendered on "/off-site-aeo" and emitted as FAQPage
-// JSON-LD from the same route.
-export const OFFSITE_FAQS: FaqItem[] = [
+// AI search agency FAQ. Rendered on "/agency" and emitted as FAQPage JSON-LD
+// from the same route.
+export const AGENCY_FAQS: FaqItem[] = [
 	{
-		question: "How does the off-site AEO service work?",
+		question: "What does the AI search agency do?",
 		answer:
-			"It starts with a call where we review how AI answer engines currently talk about you and pick the prompts and gaps to target. Within 30 days, that month's posts are planned, written, humanized, and live on high-authority sites, and you get a report tying each placement to the issue it targets. We then keep publishing for you every month, adjusting the targets as your visibility shifts.",
+			"Every month it writes the comparison, alternatives and guide pages your site is missing, updates pages AI has stopped citing, gets you onto the review sites and best-of lists AI cites, answers buyers' questions in forums and communities, publishes guest articles on high-authority sites AI already cites, and fixes anything that stops AI crawlers reading your site.",
 	},
 	{
-		question: "Are the articles AI-generated?",
+		question: "How does the agency decide what to work on?",
 		answer:
-			"Yes, and we're upfront about it. We draft with AI, then it is reworked until it lands under a 25% AI-detection score on both ZeroGPT and Pangram before it goes live. The result reads like human writing, and it lives on sites the models cite.",
+			"It works from what the AI Visibility Tracker ranks about once a week: the questions where competitors are named instead of you, the pages AI no longer cites, and the review sites, lists and forum threads that leave you out. Each guest article is aimed at a question where a competitor is named instead.",
 	},
 	{
-		question: "Do you offer refunds?",
+		question: "How do you report on the work?",
 		answer:
-			"No. All plans are non-refundable. We commission and place real editorial inventory on third-party sites as soon as your month begins, so those costs are committed up front. You can cancel future months at any time before that cycle's work starts.",
+			"Each month a report lists every piece of work, the question it targets, and the AI answers before and after.",
 	},
 	{
-		question: "How is this different from buying backlinks?",
+		question: "Can I use the tracker without the agency?",
 		answer:
-			"It's a similar process. Many backlink services offer low-quality placements with high spam scores and no traffic. They also make you write the content yourself — or generate it, which is easy to detect. We do neither: the content is useful for AEO, it only goes on high-quality sites, and it's humanized.",
-	},
-	{
-		question: "Will this help my traditional SEO too?",
-		answer:
-			"These all provide dofollow links on high-DR domains with actual traffic, so your search rankings should benefit as well. But the primary goal is giving AI answer engines more reasons to mention you.",
+			"Yes. The tracker shows what AI says about you and ranks what to do next, and many teams do that work themselves. Tracker plans start at $29/mo.",
+		links: [{ text: "Tracker plans", href: "/pricing" }],
 	},
 ];
 
@@ -176,22 +154,23 @@ export const DIRECTORY_FAQS: FaqItem[] = [
 	{
 		question: "What is an AI visibility tool?",
 		answer:
-			"An AI visibility tool tracks how AI answer engines like ChatGPT, Perplexity, Gemini, and Google AI Overviews mention and cite your brand. It measures how often you appear in AI answers, which competitors show up alongside you, and which sources the models reference.",
+			"An AI visibility tool tracks how AI answer engines like ChatGPT, Perplexity, Gemini and Google AI Overviews mention and cite your brand. It measures how often you appear in AI answers, which competitors show up alongside you, and which sources the models reference.",
 	},
 	{
-		question: "What is Answer Engine Optimization (AEO)?",
+		question: "What is answer engine optimization (AEO)?",
 		answer:
-			"Answer Engine Optimization (AEO), also called generative engine optimization (GEO), is the practice of improving how often AI answer engines mention and cite your brand. AI visibility tools measure that presence so you can track and improve it over time.",
+			"Answer engine optimization (AEO), also called generative engine optimization (GEO), is the practice of improving how often AI answer engines mention and cite your brand. AI visibility tools measure that presence so you can track and improve it over time.",
 	},
 	{
 		question: "How do I choose the best AI visibility tool?",
 		answer:
-			"The right tool depends on which AI engines you need to track, whether you want self-hosting and data ownership, your budget, and any agency or white-label needs. This directory compares 100+ tools feature-by-feature. If you want every major engine, auditable metrics, and no lock-in, Elmo is open source: self-host it for free or use Elmo Cloud.",
+			"The right tool depends on which AI engines you need to track, how often you need answers checked, your budget, and whether you want someone to do the work for you. This directory compares 100+ tools feature by feature. CiteRank.com tracks ten AI apps up to four times a day from $29/mo, and its AI search agency can do the work the tracker ranks.",
 	},
 	{
 		question: "Is there an open-source AI visibility tool?",
 		answer:
-			"Yes. Elmo is an open-source, self-hostable AI visibility platform. You can run it on your own infrastructure for free, audit exactly how each metric is calculated, and export your data at any time.",
+			"Yes. The directory's open-source category lists the AI visibility tools whose code is public, so you can run them yourself and audit how each metric is calculated.",
+		links: [{ text: "open-source category", href: "/ai-visibility-tools/category/open-source" }],
 	},
 	{
 		question: "How does AI visibility tracking work?",
@@ -201,6 +180,6 @@ export const DIRECTORY_FAQS: FaqItem[] = [
 	{
 		question: "Can you track brand mentions in ChatGPT?",
 		answer:
-			"Yes. AI visibility software queries ChatGPT with your prompts and records whether it mentions or cites your brand. Because answers vary between runs, tracking a consistent prompt set on a schedule gives a far more reliable read than a single manual check. Elmo does this for ChatGPT on every plan, capturing answers from the real ChatGPT app rather than only the API.",
+			"Yes. AI visibility software queries ChatGPT with your prompts and records whether it mentions or cites your brand. Because answers vary between runs, tracking a consistent prompt set on a schedule gives a far more reliable read than a single manual check. CiteRank.com does this for ChatGPT on every plan, reading answers from the real ChatGPT app rather than only the API.",
 	},
 ];

@@ -95,7 +95,7 @@ export function OverviewPageGraphic({ wide = false }: { wide?: boolean } = {}) {
 	return (
 		<Screenshot
 			src="/screenshots/overview.png"
-			alt="Elmo dashboard overview with visibility, share of voice, sentiment, and position cards above a competitive landscape chart"
+			alt="CiteRank.com dashboard overview with visibility, share of voice, sentiment, and position cards above a competitive landscape chart"
 			aspect={wide ? "aspect-[12/5]" : "aspect-[5/3]"}
 		/>
 	);
@@ -362,20 +362,15 @@ export function ApiGraphic() {
 			<div className="flex size-full flex-col gap-3 p-5 md:p-6">
 				<Mono>CONNECT · MCP</Mono>
 				<pre className={CODE_PANEL}>
-					<span className="select-none text-zinc-500">$ </span>claude mcp add --transport http elmo{"\n"}
+					<span className="select-none text-zinc-500">$ </span>claude mcp add --transport http citerank{"\n"}
 					{"  "}
-					<span className="text-blue-300">https://app.elmohq.com/api/mcp</span>
+					<span className="text-blue-300">https://app.citerank.com/api/mcp</span>
 				</pre>
-				<Mono className="mt-1">QUERY · TYPESCRIPT SDK</Mono>
+				<Mono className="mt-1">QUERY · REST API</Mono>
 				<pre className={`flex-1 ${CODE_PANEL}`}>
-					<span className="text-blue-300">import</span> {"{ Elmo }"} <span className="text-blue-300">from</span>{" "}
-					<span className="text-emerald-300">"@elmohq/sdk"</span>;{"\n\n"}
-					<span className="text-blue-300">const</span> elmo = <span className="text-blue-300">new</span> Elmo();
-					{"\n"}
-					<span className="text-blue-300">for await</span> (<span className="text-blue-300">const</span> brand{" "}
-					<span className="text-blue-300">of</span> elmo.brands.list()) {"{"}
-					{"\n  "}console.log(brand.name);{"\n"}
-					{"}"}
+					<span className="select-none text-zinc-500">$ </span>curl{" "}
+					<span className="text-blue-300">https://app.citerank.com/api/v1/brands</span> \{"\n"}
+					{"  "}-H <span className="text-emerald-300">"Authorization: Bearer $CITERANK_API_KEY"</span>
 				</pre>
 			</div>
 		</Frame>

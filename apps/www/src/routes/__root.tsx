@@ -3,25 +3,22 @@
 // Preload the 400-weight files used everywhere above the fold so they download
 // in parallel with the CSS instead of after it (the H1 LCP element was being
 // held back by the HTML→CSS→font waterfall).
-import geistMonoFont from "@fontsource/geist-mono/files/geist-mono-latin-400-normal.woff2?url";
-import geistSansFont from "@fontsource/geist-sans/files/geist-sans-latin-400-normal.woff2?url";
-import titanOneFont from "@fontsource/titan-one/files/titan-one-latin-400-normal.woff2?url";
+import interFont from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
+import schibstedFont from "@fontsource/schibsted-grotesk/files/schibsted-grotesk-latin-600-normal.woff2?url";
 import { Asset, createRootRoute, Outlet, Scripts, useLocation, useTags } from "@tanstack/react-router";
-import { CookieConsentBanner } from "@workspace/ui/consent/cookie-consent-banner";
 import { initAdTags, trackAdPageView } from "@workspace/ui/lib/ad-tags";
 import { isConsentRequired } from "@workspace/ui/lib/cookie-consent";
-import { type ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useEffect } from "react";
 import { AiReferralBanner } from "@/components/ai-referral-banner";
 import { NotFound } from "@/components/not-found";
 import { getConsentRegion } from "@/lib/consent-region";
 import { initCrisp } from "@/lib/crisp";
-import { getGitHubStars } from "@/lib/github-stars";
 import { getMarketingOgImage } from "@/lib/og";
 import { initAnalytics } from "@/lib/posthog";
 import { organizationJsonLd, SITE_DESCRIPTION, SITE_NAME, SITE_URL, websiteJsonLd } from "@/lib/seo";
 import appCss from "../styles.css?url";
 
-const ROOT_TITLE = `${SITE_NAME} · Open Source AI Visibility`;
+const ROOT_TITLE = `${SITE_NAME} · AI Visibility Tracker and AI Search Agency`;
 const ROOT_OG_IMAGE = `${SITE_URL}${getMarketingOgImage({ title: ROOT_TITLE, description: SITE_DESCRIPTION })}`;
 
 export const Route = createRootRoute({
@@ -49,8 +46,8 @@ export const Route = createRootRoute({
 			{ name: "twitter:title", content: ROOT_TITLE },
 			{ name: "twitter:description", content: SITE_DESCRIPTION },
 			{ name: "twitter:image", content: ROOT_OG_IMAGE },
-			{ name: "twitter:creator", content: "@tryelmo" },
-			{ name: "theme-color", content: "#2563eb" },
+			{ name: "twitter:creator", content: "@tryciterank" },
+			{ name: "theme-color", content: "#B84D25" },
 			{ name: "apple-mobile-web-app-title", content: SITE_NAME },
 		],
 		links: [
@@ -58,21 +55,14 @@ export const Route = createRootRoute({
 				rel: "preload",
 				as: "font",
 				type: "font/woff2",
-				href: geistSansFont,
+				href: interFont,
 				crossOrigin: "anonymous",
 			},
 			{
 				rel: "preload",
 				as: "font",
 				type: "font/woff2",
-				href: geistMonoFont,
-				crossOrigin: "anonymous",
-			},
-			{
-				rel: "preload",
-				as: "font",
-				type: "font/woff2",
-				href: titanOneFont,
+				href: schibstedFont,
 				crossOrigin: "anonymous",
 			},
 			{ rel: "icon", type: "image/svg+xml", href: "/icons/citerank-icon.svg" },
@@ -82,33 +72,22 @@ export const Route = createRootRoute({
 			{ rel: "manifest", href: "/site.webmanifest" },
 			{ rel: "stylesheet", href: appCss },
 		],
-		scripts: [
-			websiteJsonLd(),
-			organizationJsonLd(),
-			{
-				src: "/api/plausible/js/script",
-				defer: true,
-				"data-domain": "elmohq.com",
-				"data-api": "/api/plausible/event",
-			},
-		],
+		scripts: [websiteJsonLd(), organizationJsonLd()],
 	}),
 	loader: async () => {
-		const [githubStars, consentRegion] = await Promise.all([getGitHubStars(), getConsentRegion()]);
-		return { githubStars, consentRegion };
+		const consentRegion = await getConsentRegion();
+		return { consentRegion };
 	},
 	component: RootComponent,
 });
 
 function RootComponent() {
 	const { consentRegion } = Route.useLoaderData();
-	// Null until the browser resolves it — the time-zone fallback would read the
-	// server's own zone during SSR.
-	const [consentRequired, setConsentRequired] = useState<boolean | null>(null);
 
+	// No consent banner while CiteRank.com sets no analytics or ad cookies, so
+	// where consent is required these stay off.
 	useEffect(() => {
 		const required = isConsentRequired(consentRegion);
-		setConsentRequired(required);
 		initCrisp();
 		const stops = [initAnalytics(required), initAdTags(required)];
 		return () => {
@@ -125,9 +104,6 @@ function RootComponent() {
 		<RootDocument>
 			<AiReferralBanner />
 			<Outlet />
-			{consentRequired !== null && (
-				<CookieConsentBanner consentRequired={consentRequired} policyHref="/legal/cookies" />
-			)}
 		</RootDocument>
 	);
 }

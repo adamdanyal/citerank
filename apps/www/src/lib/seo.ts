@@ -1,13 +1,13 @@
 import { getMarketingOgImage } from "./og";
 
-export const SITE_URL = "https://www.elmohq.com";
-export const SITE_NAME = "Elmo";
+export const SITE_URL = "https://citerank.com";
+export const SITE_NAME = "CiteRank.com";
 // Fallback description for pages without their own, and the description on the
 // WebSite/Organization/SoftwareApplication entities. Spells out "answer engine
 // optimization" because answer engines expand the acronym when they search, and
 // carries no pricing so it stays true wherever it is reused.
 export const SITE_DESCRIPTION =
-	"Open-source answer engine optimization (AEO) platform: track how AI answers mention and cite your brand.";
+	"CiteRank.com is an AI visibility tracker and AI search agency for answer engine optimization (AEO). The tracker shows what ChatGPT, Gemini, Perplexity and Google AI say about a business and ranks what to change. The agency does the work.";
 const SITE_LOGO_URL = `${SITE_URL}/brand/icons/citerank-icon-512.png`;
 
 export function canonicalUrl(path: string): string {
@@ -75,46 +75,28 @@ export function organizationJsonLd() {
 	return jsonLd({
 		"@type": "Organization",
 		name: SITE_NAME,
-		// "Elmo" collides with several unrelated products and a Sesame Street
-		// character, so spell out the alternate names and what we actually do —
-		// the signals search engines use to tell entities apart.
-		alternateName: ["ElmoHQ", "Elmo AEO"],
+		alternateName: ["CiteRank"],
+		legalName: "Danx Digital Limited",
 		description: SITE_DESCRIPTION,
 		url: SITE_URL,
 		logo: SITE_LOGO_URL,
+		email: "team@citerank.com",
 		sameAs: [
-			"https://github.com/elmohq/elmo",
-			"https://hub.docker.com/u/elmohq",
-			"https://www.npmjs.com/package/@elmohq/cli",
-			"https://stackshare.io/elmo-mp4ocwtq",
-			"https://x.com/tryelmo",
-			"https://www.linkedin.com/company/elmohq",
-			"https://discord.gg/s24nubCtKz",
-			"https://www.producthunt.com/products/elmo",
-			"https://www.crunchbase.com/organization/elmo-14db",
-			"https://www.g2.com/products/blue-whale-software-llc-elmo/reviews",
-			"https://alternativeto.net/software/elmo/",
-			"https://www.saashub.com/elmohq",
-			"https://peerpush.com/p/elmo",
-			"https://devhunt.org/tool/elmo",
+			"https://www.linkedin.com/company/citerank",
+			"https://www.youtube.com/@citerank",
+			"https://www.facebook.com/citerank",
+			"https://x.com/tryciterank",
 		],
-		foundingDate: "2025-07",
-		founder: {
-			"@type": "Person",
-			name: "Jared Rhizor",
-			url: "https://jrhizor.dev",
-			sameAs: ["https://www.linkedin.com/in/jrhizor", "https://x.com/jaredrhizor", "https://github.com/jrhizor"],
-		},
+		founder: [
+			{ "@type": "Person", name: "Adam Danyal", sameAs: ["https://www.linkedin.com/in/adamdanyal/"] },
+			{ "@type": "Person", name: "Julia Danyal" },
+		],
 		address: {
 			"@type": "PostalAddress",
-			addressLocality: "San Francisco",
-			addressRegion: "CA",
-			addressCountry: "US",
-		},
-		parentOrganization: {
-			"@type": "Organization",
-			name: "Blue Whale Software, LLC",
-			url: "https://bluewhale.dev",
+			streetAddress: "86-90 Paul Street",
+			addressLocality: "London",
+			postalCode: "EC2A 4NE",
+			addressCountry: "GB",
 		},
 	});
 }
@@ -127,8 +109,9 @@ export function softwareApplicationJsonLd() {
 		applicationCategory: "BusinessApplication",
 		operatingSystem: "Any",
 		offers: {
-			"@type": "Offer",
-			price: "0",
+			"@type": "AggregateOffer",
+			lowPrice: "29",
+			highPrice: "649",
 			priceCurrency: "USD",
 		},
 		url: SITE_URL,
@@ -237,7 +220,7 @@ export function itemListJsonLd(items: { name: string; path?: string; url?: strin
 	});
 }
 
-/** Elmo's entry for a comparison ItemList (always the open-source option). */
+/** CiteRank.com's entry for a comparison ItemList. */
 export const ELMO_LISTING = { name: SITE_NAME, url: SITE_URL };
 
 /**
@@ -245,7 +228,7 @@ export const ELMO_LISTING = { name: SITE_NAME, url: SITE_URL };
  * SoftwareApplication. Honest structured data for "X vs Y" and "X vs Y vs Z"
  * pages: it names the tools compared so answer engines can parse the matchup,
  * without asserting prices or ratings we don't have for other vendors. Pair it
- * with softwareApplicationJsonLd() so Elmo's free offer is stated explicitly.
+ * with softwareApplicationJsonLd() so CiteRank.com's prices are stated explicitly.
  */
 export function comparisonJsonLd(tools: { name: string; url?: string }[]) {
 	return jsonLd({

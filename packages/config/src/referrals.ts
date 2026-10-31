@@ -9,8 +9,8 @@
 
 export const MARKETING_SITE_URL = "https://citerank.com";
 export const CLOUD_APP_URL = "https://app.citerank.com";
-/** The read-only instance anyone can poke at without an account. */
-const DEMO_SITE_URL = "https://demo.elmohq.com";
+/** CiteRank.com has no public demo instance, so anything still linking to one lands on the app. */
+const DEMO_SITE_URL = CLOUD_APP_URL;
 
 /**
  * Where a link back to us was clicked. A closed set rather than free-form
@@ -76,9 +76,9 @@ export function cloudPricingUrl(ref: ReferralSource): string {
 	return marketingUrl("/pricing", ref);
 }
 
-/** The demo booking page, tagged with where the click came from. */
+/** Booking a call with the team, which happens on the agency page. */
 export function bookDemoUrl(ref: ReferralSource): string {
-	return marketingUrl("/demo", ref);
+	return marketingUrl("/agency", ref);
 }
 
 /** The live demo instance, tagged with where the click came from. */

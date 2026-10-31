@@ -1,16 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type { ComponentProps } from "react";
-import { Community } from "@/components/community";
 import { Footer } from "@/components/footer";
+import { AgencyTeaser } from "@/components/home/agency";
 import { Closing } from "@/components/home/closing";
 import { Faq } from "@/components/home/faq";
 import { Hero } from "@/components/home/hero";
 import { HowItWorks } from "@/components/home/how-it-works";
-import { LogoStrip } from "@/components/home/logos";
 import { ModelCoverage } from "@/components/home/models";
 import { Pricing } from "@/components/home/pricing";
-import { Reviews } from "@/components/home/reviews";
-import { SelfHost } from "@/components/home/self-host";
 import { HOME_FONT_CLASS, HomeStyles } from "@/components/home/styles";
 import { WhySwitch } from "@/components/home/why-switch";
 import { Navbar } from "@/components/navbar";
@@ -19,12 +16,12 @@ import { useAiReferral } from "@/lib/ai-referral";
 import { HOME_FAQS } from "@/lib/faqs";
 import { canonicalUrl, faqJsonLd, ogMeta, SITE_NAME, softwareApplicationJsonLd } from "@/lib/seo";
 
-const title = `${SITE_NAME} · Open Source AEO & AI Visibility Tracker`;
+const title = `${SITE_NAME} · AI Visibility Tracker and AI Search Agency`;
 // The shared SITE_DESCRIPTION is a terse fallback for pages without their own
 // copy. The homepage takes the largest share of search clicks and is the page
 // answer engines cite most, so it gets a full-width description of its own.
 const description =
-	"Elmo is open-source answer engine optimization (AEO): track your brand's AI visibility in ChatGPT, Perplexity, and Gemini. Cloud from $29/mo or self-host free.";
+	"See what ChatGPT, Gemini, Perplexity and Google AI say about your business and what to change. Tracker plans from $29/mo. Our AI search agency can do the work.";
 
 export const Route = createFileRoute("/")({
 	// Passes every other param through untouched: ad clicks carry gclid and UTM
@@ -49,7 +46,7 @@ export const Route = createFileRoute("/")({
 function aiReferralHero(assistant: string): ComponentProps<typeof Hero> {
 	return {
 		title: `Get Customers from ${assistant}`,
-		lede: `You found us through ${assistant}. That's Elmo at work. See how AI search engines talk about your brand, which sources they trust, and what to change so they recommend you too.`,
+		lede: `You found us through ${assistant}. CiteRank.com shows how ${assistant} and other AI apps describe your business, which sources they cite, and what to change so they name you.`,
 		from: "marketing-ai-referral",
 	};
 }
@@ -59,20 +56,17 @@ function HomePage() {
 	const [referral] = useAiReferral();
 	const variant = explicit ?? (referral ? aiReferralHero(referral.assistant) : undefined);
 	return (
-		<div className={`${HOME_FONT_CLASS} min-h-screen bg-white antialiased`}>
+		<div className={`${HOME_FONT_CLASS} min-h-screen bg-paper antialiased`}>
 			<HomeStyles />
 			<Navbar />
 			<main>
 				<Hero {...variant} />
-				<LogoStrip />
 				<ModelCoverage />
-				<Reviews />
 				<HowItWorks />
 				<WhySwitch />
+				<AgencyTeaser />
 				<Pricing />
 				<Faq items={HOME_FAQS} />
-				<SelfHost />
-				<Community />
 				<Closing />
 			</main>
 			<Footer />

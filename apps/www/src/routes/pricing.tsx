@@ -8,9 +8,9 @@ import { Pricing } from "@/components/pricing";
 import { PRICING_FAQS } from "@/lib/faqs";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
-const title = "Pricing — Free, Cloud & White-Label AI Visibility · Elmo";
+const title = "Pricing · CiteRank.com AI Visibility Tracker";
 const description =
-	"Elmo is free and open source to self-host, available as managed cloud from $29/mo, and white-label for agencies.";
+	"CiteRank.com tracker plans: Starter $29/mo, Basic $99/mo, Pro $299/mo, Business $649/mo. Yearly billing saves two months. Unlimited seats, API and MCP on every plan.";
 
 export const Route = createFileRoute("/pricing")({
 	head: () => ({

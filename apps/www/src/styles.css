@@ -173,3 +173,143 @@
 mux-player::part(center play button) {
 	filter: drop-shadow(0 8px 24px rgba(37, 99, 235, 0.35));
 }
+
+/* CiteRank.com brand. Kept as one appended block so Elmo's rules above merge cleanly.
+   Remapping Tailwind's blue and zinc scales recolours every component that uses them. */
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("@fontsource/inter/files/inter-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("@fontsource/inter/files/inter-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url("@fontsource/inter/files/inter-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("@fontsource/inter/files/inter-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Schibsted Grotesk";
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url("@fontsource/schibsted-grotesk/files/schibsted-grotesk-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Schibsted Grotesk";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("@fontsource/schibsted-grotesk/files/schibsted-grotesk-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("@fontsource/jetbrains-mono/files/jetbrains-mono-latin-500-normal.woff2") format("woff2");
+}
+
+@theme {
+	--color-rust: #b84d25;
+	--color-ink: #1a1917;
+	--color-paper: #fbfaf9;
+	--color-paper-2: #f4f3f0;
+
+	--color-blue-50: #fbf3ef;
+	--color-blue-100: #f6e2d8;
+	--color-blue-200: #ecc2ae;
+	--color-blue-300: #df9a7c;
+	--color-blue-400: #cf714d;
+	--color-blue-500: #c25a32;
+	--color-blue-600: #b84d25;
+	--color-blue-700: #9c3f1e;
+	--color-blue-800: #7f341b;
+	--color-blue-900: #672c19;
+	--color-blue-950: #3a150b;
+
+	--color-zinc-50: #fbfaf9;
+	--color-zinc-100: #f4f3f0;
+	--color-zinc-200: #e7e3dc;
+	--color-zinc-300: #d6d0c6;
+	--color-zinc-400: #a39c90;
+	--color-zinc-500: #7a7368;
+	--color-zinc-600: #5f594f;
+	--color-zinc-700: #47423a;
+	--color-zinc-800: #2e2b26;
+	--color-zinc-900: #22201c;
+	--color-zinc-950: #1a1917;
+
+	--color-fd-background: #fbfaf9;
+	--color-fd-foreground: #1a1917;
+	--color-fd-muted: #f4f3f0;
+	--color-fd-muted-foreground: #6b6459;
+	--color-fd-popover: #ffffff;
+	--color-fd-popover-foreground: #1a1917;
+	--color-fd-card: #f4f3f0;
+	--color-fd-card-foreground: #1a1917;
+	--color-fd-border: #e7e3dc;
+	--color-fd-primary: #b84d25;
+	--color-fd-primary-foreground: #ffffff;
+	--color-fd-secondary: #f4f3f0;
+	--color-fd-secondary-foreground: #1a1917;
+	--color-fd-accent: #ece8e1;
+	--color-fd-accent-foreground: #1a1917;
+	--color-fd-ring: #b84d25;
+}
+
+:root {
+	--font-geist-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+	--font-geist-mono: "JetBrains Mono", ui-monospace, monospace;
+	--background: #fbfaf9;
+	--foreground: #1a1917;
+	--card: #ffffff;
+	--card-foreground: #1a1917;
+	--popover: #ffffff;
+	--popover-foreground: #1a1917;
+	--primary: #b84d25;
+	--primary-foreground: #ffffff;
+	--secondary: #f4f3f0;
+	--secondary-foreground: #1a1917;
+	--muted: #f4f3f0;
+	--muted-foreground: #6b6459;
+	--accent: #f4f3f0;
+	--accent-foreground: #1a1917;
+	--border: #e7e3dc;
+	--input: #dcd6cc;
+	--ring: #b84d25;
+}
+
+h1,
+h2,
+h3,
+.font-heading {
+	font-family: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+mux-player::part(center play button) {
+	filter: drop-shadow(0 8px 24px rgba(184, 77, 37, 0.35));
+}

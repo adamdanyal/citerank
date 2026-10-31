@@ -10,10 +10,10 @@ export function Pricing({ as: Heading = "h2" }: { as?: "h1" | "h2" } = {}) {
 		<section id="pricing" className="border-b border-zinc-200 bg-white">
 			<div className="mx-auto max-w-6xl px-4 py-16 md:px-6 lg:py-24">
 				<Heading className="max-w-[28ch] text-4xl font-semibold leading-[1.05] tracking-tight text-balance text-zinc-950 md:text-5xl">
-					Simple, self-serve pricing.
+					AI Visibility Tracker Pricing
 				</Heading>
 				<p className="mt-4 text-pretty text-zinc-600 md:text-lg">
-					Unlimited seats and API/MCP access on every plan. Annual billing saves two months.
+					Unlimited seats, API and MCP access on every plan. Yearly billing saves two months.
 				</p>
 
 				<CloudPlans />

@@ -2,8 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { PLAN_KEYS, PLANS, type PlanDefinition, type PlanKey } from "@workspace/config/plans";
 import { cloudAppUrl } from "@workspace/config/referrals";
 import { ArrowRight, Check, Minus } from "lucide-react";
-import { ContactForm } from "@/components/contact-form";
-import { SELF_HOST_LINK } from "@/lib/self-host-link";
 import { CARD, SectionHeading } from "./ui";
 
 function planLines(plan: PlanDefinition): { text: string; included: boolean }[] {
@@ -61,9 +59,6 @@ function TierCard({ planKey, badge }: { planKey: PlanKey; badge?: string }) {
 }
 
 const LINK = "group inline-flex items-center gap-1 text-sm font-medium text-blue-600 hover:text-blue-700";
-// The shared contact form renders a full-width button; here it should read as a quiet link.
-const FORM_AS_LINK =
-	"[&_button]:!h-auto [&_button]:!w-auto [&_button]:!bg-transparent [&_button]:!p-0 [&_button]:!text-sm [&_button]:!font-medium [&_button]:!text-blue-600 [&_button]:hover:!text-blue-700";
 
 function OtherOption({ name, body, action }: { name: string; body: string; action: React.ReactNode }) {
 	return (
@@ -75,36 +70,28 @@ function OtherOption({ name, body, action }: { name: string; body: string; actio
 	);
 }
 
-/** Self-hosting, custom contracts, and white label: the ways to run Elmo that aren't a self-serve cloud tier. */
+/** The two ways to buy beyond a self-serve tier: the agency, and a custom plan. */
 export function OtherPlans({ className = "" }: { className?: string }) {
 	return (
-		<div className={`grid gap-4 md:grid-cols-3 ${className}`}>
+		<div className={`grid gap-4 md:grid-cols-2 ${className}`}>
 			<OtherOption
-				name="Self-hosted"
-				body="The same product on your own servers. Unlimited prompts, every model, full source."
+				name="AI Search Agency"
+				body="We do the work the tracker ranks: the comparison and guide pages your site is missing, updates to pages AI stopped citing, review sites, forums and guest articles."
 				action={
-					<Link {...SELF_HOST_LINK} className={LINK}>
-						Read the setup guide
+					<Link to="/agency" className={LINK}>
+						Book a Call
 						<ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
 					</Link>
 				}
 			/>
 			<OtherOption
 				name="Custom"
-				body="More brands, custom prompt limits, higher sampling rates, and any models."
+				body="More brands, more prompts or more frequent checks than the plans above."
 				action={
-					<div className={FORM_AS_LINK}>
-						<ContactForm source="pricing-custom" title="Custom Plan Inquiry" />
-					</div>
-				}
-			/>
-			<OtherOption
-				name="White label"
-				body="Offer AI visibility tracking to your clients under your own brand, domain, and SSO."
-				action={
-					<div className={FORM_AS_LINK}>
-						<ContactForm source="pricing" />
-					</div>
+					<a href="mailto:team@citerank.com?subject=Custom%20plan" className={LINK}>
+						Email Us
+						<ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+					</a>
 				}
 			/>
 		</div>
@@ -113,7 +100,7 @@ export function OtherPlans({ className = "" }: { className?: string }) {
 
 /** `recommended` marks the tier that fits a landing page's audience, so the table doesn't leave them to guess. */
 export function Pricing({
-	lede = "Unlimited seats and API/MCP access on every plan.",
+	lede = "Unlimited seats, API and MCP access on every plan. Yearly billing saves two months.",
 	recommended,
 }: {
 	lede?: string;
@@ -122,7 +109,7 @@ export function Pricing({
 	return (
 		<section id="pricing" className="border-t border-zinc-200/80 bg-white">
 			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
-				<SectionHeading align="center" title="Simple, self-serve pricing." lede={lede} />
+				<SectionHeading align="center" title="AI Visibility Tracker Pricing" lede={lede} />
 
 				<div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 					{PLAN_KEYS.map((key) => (
@@ -134,7 +121,7 @@ export function Pricing({
 
 				<div className="mt-10 flex justify-center">
 					<Link to="/pricing" className={LINK}>
-						Compare every plan
+						Compare Every Plan
 						<ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
 					</Link>
 				</div>

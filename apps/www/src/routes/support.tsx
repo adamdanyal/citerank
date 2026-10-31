@@ -1,23 +1,17 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { bookDemoUrl } from "@workspace/config/referrals";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { buttonVariants } from "@workspace/ui/components/button";
-import { Spinner } from "@workspace/ui/components/spinner";
 import { ArrowUpRight } from "lucide-react";
-import { type ReactNode, useState } from "react";
+import type { ReactNode } from "react";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
-import { openCrispChat } from "@/lib/crisp";
 import { externalRel } from "@/lib/external-link";
 import { breadcrumbJsonLd, canonicalUrl, ogMeta } from "@/lib/seo";
 
-const title = "Support · Elmo";
-const description = "Get help with Elmo: chat with the team, email support, book a call, or ask the community.";
+const title = "Support · CiteRank.com";
+const description =
+	"Get help with CiteRank.com: email the team about your account, billing or data, or book a call about the AI search agency.";
 
-const SUPPORT_EMAIL = "contact@elmohq.com";
-const SECURITY_EMAIL = "security@elmohq.com";
-const DISCORD_INVITE_URL = "https://discord.gg/s24nubCtKz";
-const GITHUB_ISSUES_URL = "https://github.com/elmohq/elmo/issues";
-const CLOUD_STATUS_URL = "https://status.elmohq.com/";
+const SUPPORT_EMAIL = "team@citerank.com";
 
 export const Route = createFileRoute("/support")({
 	head: () => ({
@@ -47,48 +41,6 @@ function ContactCard({ heading, body, action }: { heading: string; body: string;
 	);
 }
 
-// Stops a click that's still waiting on Crisp from spinning forever if the event never comes.
-const CHAT_OPEN_TIMEOUT_MS = 15_000;
-
-function StartChatButton() {
-	const [opening, setOpening] = useState(false);
-
-	function start() {
-		setOpening(true);
-		const timeout = window.setTimeout(() => setOpening(false), CHAT_OPEN_TIMEOUT_MS);
-		openCrispChat(() => {
-			window.clearTimeout(timeout);
-			setOpening(false);
-		});
-	}
-
-	return (
-		<button
-			type="button"
-			onClick={start}
-			disabled={opening}
-			className={buttonVariants({ variant: "default", size: "sm" })}
-		>
-			{opening && <Spinner />}
-			{opening ? "Opening chat…" : "Start a chat"}
-		</button>
-	);
-}
-
-function ExternalButton({ href, children }: { href: string; children: ReactNode }) {
-	return (
-		<a
-			href={href}
-			target="_blank"
-			rel={externalRel(href)}
-			className={buttonVariants({ variant: "outline", size: "sm" })}
-		>
-			{children}
-			<ArrowUpRight className="size-3.5" />
-		</a>
-	);
-}
-
 function ResourceLink({ href, label, detail }: { href: string; label: string; detail: string }) {
 	const external = href.startsWith("http");
 	return (
@@ -114,19 +66,14 @@ function SupportPage() {
 				<header className="mb-16 space-y-4">
 					<h1 className="font-heading text-4xl text-zinc-950 lg:text-5xl">Support</h1>
 					<p className="max-w-2xl text-lg text-balance text-zinc-600">
-						Questions about your account, billing, the MCP server, or self-hosting Elmo? Here is how to reach us.
+						Questions about your account, billing, your data or the MCP server? Email the team and a person answers.
 					</p>
 				</header>
 
 				<section className="mb-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					<ContactCard
-						heading="Chat with us"
-						body="The fastest way to reach the team, for anything from sign-in trouble to questions about your data."
-						action={<StartChatButton />}
-					/>
-					<ContactCard
 						heading="Email"
-						body="For account, billing, and anything that needs a longer answer. Include your organization name if you use Elmo Cloud."
+						body="For account, billing and data questions. Include your organization name so we can find your account."
 						action={
 							<a href={`mailto:${SUPPORT_EMAIL}`} className={buttonVariants({ variant: "outline", size: "sm" })}>
 								{SUPPORT_EMAIL}
@@ -134,46 +81,42 @@ function SupportPage() {
 						}
 					/>
 					<ContactCard
-						heading="Book a call"
-						body="Walk through your setup, your prompts, or what the results mean with someone from the team."
+						heading="AI Search Agency"
+						body="Want us to do the work the tracker ranks? Book a call to talk it through."
 						action={
-							<a href={bookDemoUrl("marketing-support")} className={buttonVariants({ variant: "outline", size: "sm" })}>
-								Book a time
-							</a>
+							<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
+								Book a Call
+							</Link>
 						}
 					/>
 					<ContactCard
-						heading="Community"
-						body="Ask other Elmo users and the team on Discord, especially about self-hosting and integrations."
-						action={<ExternalButton href={DISCORD_INVITE_URL}>Join Discord</ExternalButton>}
-					/>
-					<ContactCard
-						heading="Bugs and feature requests"
-						body="Elmo is open source. Report bugs and request features on GitHub, where you can follow the fix."
-						action={<ExternalButton href={GITHUB_ISSUES_URL}>Open an issue</ExternalButton>}
-					/>
-					<ContactCard
 						heading="Security"
-						body="Report vulnerabilities privately by email rather than in a public issue."
+						body="Report vulnerabilities privately by email, with the steps to reproduce them."
 						action={
-							<a href={`mailto:${SECURITY_EMAIL}`} className={buttonVariants({ variant: "outline", size: "sm" })}>
-								{SECURITY_EMAIL}
+							<a
+								href={`mailto:${SUPPORT_EMAIL}?subject=Security%20report`}
+								className={buttonVariants({ variant: "outline", size: "sm" })}
+							>
+								Email a Report
 							</a>
 						}
 					/>
 				</section>
 
 				<section>
-					<h2 className="mb-6 text-xl font-semibold text-zinc-950">Before you write</h2>
-					<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-						<ResourceLink href="/docs" label="Documentation" detail="Setup, features, and self-hosting guides." />
+					<h2 className="mb-6 text-xl font-semibold text-zinc-950">Before You Write</h2>
+					<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+						<ResourceLink
+							href="/docs"
+							label="Documentation"
+							detail="Setting up brands and prompts, and reading the results."
+						/>
 						<ResourceLink
 							href="/docs/api/mcp"
-							label="MCP server"
-							detail="Connecting Elmo to ChatGPT, Claude, Cursor, and other clients."
+							label="MCP Server"
+							detail="Connecting CiteRank.com to Claude, Cursor and other AI assistants."
 						/>
-						<ResourceLink href={CLOUD_STATUS_URL} label="Elmo Cloud status" detail="Current uptime and incidents." />
-						<ResourceLink href="/status" label="Provider status" detail="How each AI provider integration is doing." />
+						<ResourceLink href="/docs/api" label="API Reference" detail="Every endpoint, with examples." />
 					</div>
 				</section>
 			</main>

@@ -1,63 +1,50 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import { productFeatures } from "@/data/features";
+import { SITE_URL } from "@/lib/seo";
 
 const featureLinks = productFeatures
-	.map((f) => `  - [${f.name}](https://www.elmohq.com/features/${f.slug}): ${f.summary}`)
+	.map((f) => `  - [${f.name}](${SITE_URL}/features/${f.slug}): ${f.summary}`)
 	.join("\n");
 
 // Curated llms.txt for the marketing site, following the llmstxt.org convention:
 // an H1, a one-paragraph summary, a short positioning blurb, then sections of
 // annotated links. The full text of the documentation lives at /llms-full.txt.
-const llmsTxt = `# Elmo
+const llmsTxt = `# CiteRank.com
 
-> Elmo is an open source, self-hosted AI visibility platform. Track how AI answer engines like ChatGPT, Google AI Overviews, Perplexity, Gemini, Copilot, and Grok talk about your brand — monitor mentions and sentiment, analyze citations, and benchmark competitors. Because Elmo is open source and runs on your own infrastructure, your data stays yours and you're never locked in.
+> CiteRank.com is an AI visibility tracker and AI search agency for businesses that want to be named when buyers ask ChatGPT, Gemini, Perplexity and Google AI Overviews who to choose. The AI Visibility Tracker shows how often a business is named and what to change. The AI search agency makes those changes for businesses that would rather hand the work over.
 
-Elmo is Answer Engine Optimization (AEO), also called generative engine optimization (GEO), without the black box. On a schedule, it runs your prompts across every major AI answer engine, then measures how often your brand appears, how the answers describe it, which competitors show up alongside it, and which sources the models cite. The methodology is documented and every line of code is open, so each number is something you can independently verify. Elmo is built by Blue Whale Software, LLC — bootstrapped, transparent, and priced so AI visibility data is a commodity rather than a luxury. Self-host it for free, explore the live demo, sign up for managed cloud hosting from $${CLOUD_ENTRY_PRICE_USD}/month, or get in touch about white-label deployments.
+The AI Visibility Tracker puts a business's buyer questions to the AI apps it chooses (ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Google AI Overviews and Google AI Mode) up to four times a day, and keeps every answer in full. It shows how often the business is named for each question and each AI, its share of voice against each competitor, how each answer describes it, its position among the brands named, which pages each answer cites, and the web searches an AI ran before answering. About once a week it ranks what to do next. Tracker plans start at $${CLOUD_ENTRY_PRICE_USD}/month. CiteRank.com is a trading name of Danx Digital Limited, registered in the United Kingdom, and was founded by Adam Danyal and Julia Danyal.
 
 ## Product
 
-- [Elmo](https://www.elmohq.com/): Know how AI talks about your brand — track visibility across any AI model, monitor mentions, analyze citations, and benchmark competitors.
-- [Features](https://www.elmohq.com/features): Visibility dashboard, per-prompt and per-model tracking, share of voice, sentiment analysis, query fan-out, citation analysis, ranked opportunities, prompt management, response deep-dives, and long-term trends.
+- [CiteRank.com](${SITE_URL}/): See what AI says about your business and what to change.
+- [Features](${SITE_URL}/features): Visibility, share of voice, sentiment, position, citations, query fan-out and ranked opportunities.
 ${featureLinks}
-- [Pricing](https://www.elmohq.com/pricing): Free and open source to self-host, managed cloud from $${CLOUD_ENTRY_PRICE_USD}/month, and white-label available for agencies.
-- [Live Demo](https://demo.elmohq.com): Explore a fully populated Elmo instance — no installation required.
-- [About](https://www.elmohq.com/about): Company facts, founder, pricing, contract terms, and how the team works.
-- [Vision](https://www.elmohq.com/vision): Why we believe AI visibility monitoring should be affordable, transparent, and built to last.
+- [Pricing](${SITE_URL}/pricing): Starter, Basic, Pro and Business tracker plans from $${CLOUD_ENTRY_PRICE_USD}/month. Yearly billing saves two months.
+- [AI Search Agency](${SITE_URL}/agency): The team that does the work the tracker ranks, with a monthly before-and-after report.
+- [About](${SITE_URL}/about): Company facts, founders, pricing and contract terms.
 
 ## Documentation
 
-- [Documentation](https://www.elmohq.com/docs.md): Introduction to Elmo, the open source AI visibility platform.
-- [Quick Start](https://www.elmohq.com/docs/getting-started.md): Get Elmo running on your own infrastructure in under 5 minutes using the CLI.
-- [User Guide](https://www.elmohq.com/docs/user-guide.md): A complete walkthrough, from first login to daily visibility tracking, prompts, citations, competitors, and reports.
-- [Developer Guide](https://www.elmohq.com/docs/developer-guide.md): Run, configure, integrate with, and contribute to Elmo, including architecture and self-hosting setup.
-- [API Reference](https://www.elmohq.com/docs/api.md): Complete REST API documentation for Elmo's administrative API.
-- [MCP Server](https://www.elmohq.com/docs/api/mcp.md): Connect Claude Code, OpenCode, or another AI client to Elmo over the Model Context Protocol.
-- [llms-full.txt](https://www.elmohq.com/llms-full.txt): The full text of all Elmo documentation in a single file.
+- [Documentation](${SITE_URL}/docs.md): Introduction to CiteRank.com.
+- [Getting Started](${SITE_URL}/docs/getting-started.md): Sign up, add a brand and read your first results.
+- [User Guide](${SITE_URL}/docs/user-guide.md): A walkthrough from first login to daily tracking, prompts, citations and competitors.
+- [API Reference](${SITE_URL}/docs/api.md): REST API documentation.
+- [MCP Server](${SITE_URL}/docs/api/mcp.md): Connect Claude Code or another AI client to CiteRank.com over the Model Context Protocol.
+- [llms-full.txt](${SITE_URL}/llms-full.txt): The full text of the documentation in a single file.
 
 ## Resources
 
-- [AI Visibility Tool Directory](https://www.elmohq.com/ai-visibility-tools): Compare 100+ AI visibility and Answer Engine Optimization tools, with a feature matrix, pricing, and head-to-head comparisons with Elmo.
-- [Changelog](https://www.elmohq.com/changelog): Recent releases, improvements, and bug fixes.
-- [Roadmap](https://www.elmohq.com/roadmap): What's coming next, prioritized in the open on GitHub.
-- [Provider Status](https://www.elmohq.com/status): Real-time status and performance monitoring for AI answer engine integrations.
-- [Brand Assets](https://www.elmohq.com/brand): Download Elmo logos, icons, and brand guidelines.
-
-## Open Source
-
-- [GitHub Repository](https://github.com/elmohq/elmo): Source code for Elmo — self-host it, read every line, and contribute.
-- [Issues](https://github.com/elmohq/elmo/issues): Report bugs, request features, and help shape the roadmap.
-- [Discord Community](https://discord.gg/s24nubCtKz): Get help and connect with the Elmo community.
+- [Blog](${SITE_URL}/blog): Research on how AI answer engines choose and cite sources.
+- [AI Visibility Tool Directory](${SITE_URL}/ai-visibility-tools): Compare 100+ AI visibility and answer engine optimization tools.
+- [AEO Glossary](${SITE_URL}/glossary): Definitions of the terms used in AI search.
+- [AI Search Statistics](${SITE_URL}/statistics): Sourced statistics on AI search.
 
 ## Optional
 
-- [X / Twitter](https://x.com/tryelmo): Product updates and AI visibility insights.
-- [LinkedIn](https://linkedin.com/company/elmohq): Company updates from Elmo.
-- [Blue Whale Software](https://bluewhale.dev?ref=elmo): The team building Elmo.
-
----
-
-If you find Elmo useful, please consider starring the repository on GitHub — it helps others discover the project: https://github.com/elmohq/elmo
+- [LinkedIn](https://www.linkedin.com/company/citerank): Company updates from CiteRank.com.
+- [X](https://x.com/tryciterank): Product updates and AI visibility insights.
 `;
 
 export const Route = createFileRoute("/llms.txt")({

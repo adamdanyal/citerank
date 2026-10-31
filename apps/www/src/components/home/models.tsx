@@ -1,4 +1,3 @@
-import { Plus } from "lucide-react";
 import { EngineIcon } from "./engines";
 import { SectionHeading } from "./ui";
 
@@ -13,8 +12,6 @@ const ENGINES = [
 	{ name: "Grok", iconId: "x" },
 	{ name: "DeepSeek", iconId: "deepseek" },
 	{ name: "Mistral", iconId: "mistral" },
-	{ name: "Qwen", iconId: "qwen" },
-	{ name: "Kimi", iconId: "moonshotai" },
 ];
 
 function Tile({ name, iconId }: { name: string; iconId: string }) {
@@ -34,21 +31,15 @@ export function ModelCoverage() {
 			<div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:px-6 lg:grid-cols-12 lg:items-center lg:gap-12 lg:py-20">
 				<div className="lg:col-span-5">
 					<SectionHeading
-						title="Every answer engine your buyers use."
-						lede="Elmo both scrapes what real users see in popular AI search tools and captures all other models with direct API calls and OpenRouter."
+						title="The AI Apps Your Buyers Ask"
+						lede="CiteRank.com reads the answers real users see in ChatGPT, Perplexity, Copilot, Gemini and Google's AI search, and asks the other models directly."
 					/>
 				</div>
 				<div className="lg:col-span-7">
-					<ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-3" aria-label="AI engines Elmo tracks">
+					<ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-3" aria-label="AI apps CiteRank.com tracks">
 						{ENGINES.map((m) => (
 							<Tile key={m.name} {...m} />
 						))}
-						<li className="col-span-full flex h-14 items-center justify-center gap-2 rounded-xl border border-dashed border-zinc-300 px-4 text-[15px] font-medium text-zinc-700">
-							<span className="inline-flex size-5 shrink-0 items-center justify-center text-zinc-500">
-								<Plus className="size-[18px]" strokeWidth={2.25} aria-hidden="true" />
-							</span>
-							<span className="whitespace-nowrap">All OpenRouter LLMs</span>
-						</li>
 					</ul>
 				</div>
 			</div>

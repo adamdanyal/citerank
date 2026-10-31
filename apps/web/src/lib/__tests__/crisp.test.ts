@@ -89,7 +89,7 @@ describe("the demo next steps", () => {
 		const [, nextSteps] = (shown[1]?.[2] ?? []) as [string, string];
 		const linked = [...String(nextSteps).matchAll(/\]\((https?:[^)]+)\)/g)].map((match) => match[1]);
 		expect(linked).toEqual([
-			"https://citerank.com/demo?ref=demo-chat",
+			"https://citerank.com/agency?ref=demo-chat",
 			CLOUD_SIGNUP_URL,
 			"https://www.elmohq.com/docs/getting-started",
 		]);
