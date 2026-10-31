@@ -212,7 +212,7 @@ function AnswerDetails({ review }: { review: AiReview }) {
 				delay={150}
 				className="rounded-sm text-sm text-zinc-500 underline decoration-zinc-400 decoration-dotted underline-offset-4 hover:text-zinc-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
 			>
-				Asked Sept 2026
+				Asked Oct 31, 2026
 			</PopoverTrigger>
 			<PopoverContent
 				align="start"
@@ -222,7 +222,7 @@ function AnswerDetails({ review }: { review: AiReview }) {
 				<p className="mt-1.5 rounded-lg bg-zinc-50 p-3 text-pretty text-[13px]/5 text-zinc-800 ring-1 ring-zinc-200/70">
 					{AI_PROMPT}
 				</p>
-				<p className="mt-4 text-[13px] font-medium text-zinc-500">Its full answer, Sept 23, 2026</p>
+				<p className="mt-4 text-[13px] font-medium text-zinc-500">Its full answer, Oct 31, 2026</p>
 				<div className="mt-1.5 max-h-44 space-y-2.5 overflow-y-auto overscroll-contain rounded-lg p-3 text-pretty text-sm/6 text-zinc-800 ring-1 ring-zinc-200/70">
 					{review.response.map((p) => (
 						<p key={p}>{p}</p>
