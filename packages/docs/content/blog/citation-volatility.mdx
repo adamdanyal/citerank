@@ -21,7 +21,7 @@ howTo:
   description: "Track how much the sources AI engines cite for your key prompts change over time, so you can tell a real trend from day-to-day noise."
   steps:
     - name: Choose prompts to track
-      text: "Select the questions your customers actually ask an AI assistant, mixing broad recommendations like 'best running shoes for flat feet' with narrow, branded comparisons like 'Jordan 1 vs Adidas Forum'."
+      text: "Select the questions your customers ask an AI assistant, mixing broad recommendations like 'best running shoes for flat feet' with narrow, branded comparisons like 'Jordan 1 vs Adidas Forum'."
     - name: Run them daily on each engine
       text: "Send each prompt to the AI engines you care about, such as ChatGPT and Google AI Mode, on a fixed daily schedule with web search enabled, and capture the full answer."
     - name: Record the domains cited each day
@@ -36,22 +36,22 @@ faq:
   - question: What is citation volatility?
     answer: "Citation volatility measures how much the set of web domains an AI answer engine cites for a given prompt changes from one day to the next. It is calculated as the average Jaccard distance between the sets of domains cited on consecutive days, where 0 means the engine cites the same sources every day and 1 means a completely different set each day."
   - question: Why do the sources AI cites change from day to day?
-    answer: "Most AI answers are generated from a fresh web search on every run. For broad questions there is a large pool of near-equivalent sources (review roundups, retailer pages, forum threads), and small shifts in search ranking change which subset surfaces that day. New content is also published constantly in popular categories, so the candidate pool itself keeps turning over."
+    answer: "Most AI answers are generated from a fresh web search on every run. For broad questions there is a large pool of near-equivalent sources (review roundups, retailer pages, forum threads), and small shifts in search ranking change which subset appears that day. New content is also published constantly in popular categories, so the candidate pool itself keeps turning over."
   - question: Does ChatGPT cite sources for every question?
     answer: "No. ChatGPT mainly grounds (runs a live web search and cites sources) for shopping and recommendation questions, and answers conceptual or opinion questions from its training data with few or no citations. In a 42-day study it cited sources on only 6 of 42 days for 'the most iconic sneakers of all time', while Google AI Mode cited sources every single day."
   - question: Is Google AI Mode more stable than ChatGPT?
-    answer: "It depends how you measure it. Google AI Mode's raw set of cited domains actually churns slightly more than ChatGPT's, because it cites more domains per day. But it concentrates the majority of its citations on a small, stable core of sources, so its volume-weighted volatility is lower. ChatGPT cites a smaller set of domains but rotates even its most-cited sources more often."
+    answer: "It depends how you measure it. Google AI Mode's raw set of cited domains churns slightly more than ChatGPT's, because it cites more domains per day. But it concentrates the majority of its citations on a small, stable core of sources, so its volume-weighted volatility is lower. ChatGPT cites a smaller set of domains but rotates even its most-cited sources more often."
   - question: How do I measure citation volatility for my brand?
     answer: "Track your key prompts daily across the AI engines you care about, record which domains each engine cites, and measure how much that set changes from one day to the next using Jaccard distance. Average over several weeks and weight by citation volume. An AI visibility tracker such as CiteRank.com records the cited domains on every run, which is the raw data this needs."
 ---
 
-**Get cited in an AI answer once and it is tempting to call it a win. Run the same prompt tomorrow and the sources can change completely.** This study tracked 28 shopping prompts about athletic shoes across ChatGPT and Google AI Mode, every day for six weeks, and recorded every domain each engine cited. The pattern was consistent: the list of cited sources is far less stable than a single check would suggest. On most prompts, the set of cited domains turned over by more than half from one day to the next. We call this **citation volatility**, and how much of it you see depends almost entirely on what the user asked.
+**Get cited in an AI answer once and it is tempting to call it a win. Run the same prompt tomorrow and the sources can change completely.** This study tracked 28 shopping prompts about athletic shoes across ChatGPT and Google AI Mode, every day for six weeks, and recorded every domain each engine cited. The pattern was consistent: the list of cited sources is far less stable than a single check would suggest. On most prompts, the set of cited domains turned over by more than half from one day to the next. This is called **citation volatility**, and how much of it you see depends almost entirely on what the user asked.
 
 **Key takeaways**
 
 - Across 28 prompts tracked daily for 42 days, the set of domains AI cited turned over by roughly 60–70% from one day to the next, on average. A one-time citation check tells you very little.
 - Underneath that churn sits a stable core. Weight each domain by how often it is cited and volatility drops sharply: on Google AI Mode a small set of domains earned about 56% of citations every day, even as the long tail reshuffled.
-- The two engines behave differently. Google AI Mode keeps a fixed cast of leading sources and churns the extras; ChatGPT cites a smaller set but rotates even its top sources, which makes it the more contestable surface.
+- The two engines behave differently. Google AI Mode keeps a fixed cast of leading sources and churns the extras; ChatGPT cites a smaller set but rotates even its top sources, which makes it the more contestable engine.
 - ChatGPT only searches the web when you are shopping. For "the most iconic sneakers of all time" it answered from memory and cited almost nothing, while Google AI Mode grounded every prompt, every day.
 - How much citations churn depends on the question. Narrow, branded comparisons like "Jordan 1 vs Adidas Forum" were the most stable; broad, open-ended recommendations like "most comfortable running shoes" churned the most, because they draw on a much larger pool of interchangeable sources.
 - Even for a category-defining brand like Nike, AI rarely answers with one name. Across these prompts it cited rivals constantly: Under Armour appeared in 81% of answers, Adidas in 59%, and New Balance in 57%.
@@ -163,15 +163,15 @@ The single biggest predictor of how much a prompt churns is the question itself.
 <figcaption>Citation volatility by prompt on Google AI Mode, 42 days. Open-ended recommendation prompts churn the most; narrow comparisons and definitional questions are the most stable.</figcaption>
 </figure>
 
-The mechanism is pool size. A question like "Jordan 1 vs Adidas Forum" has an obvious, finite set of relevant pages, so Google AI Mode drew on about 85 distinct domains across the whole six weeks and kept returning to the same ones (volatility 0.56). "Alternatives to Nike for high-performance running" sat on top of 445 distinct domains, a deep, interchangeable pool of best-of roundups and retailer pages, and a different slice surfaced each day (volatility 0.80). The broader the question, the larger the candidate pool, and the more the cited subset rotates.
+The mechanism is pool size. A question like "Jordan 1 vs Adidas Forum" has an obvious, finite set of relevant pages, so Google AI Mode drew on about 85 distinct domains across the whole six weeks and kept returning to the same ones (volatility 0.56). "Alternatives to Nike for high-performance running" sat on top of 445 distinct domains, a deep, interchangeable pool of best-of roundups and retailer pages, and a different slice appeared each day (volatility 0.80). The broader the question, the larger the candidate pool, and the more the cited subset rotates.
 
-This is the finding that travels. Absolute scores shift by category, but the ordering holds regardless of the brand: narrow, branded questions stay stable, while broad, open-ended ones churn. If you are tracking [prompt-level visibility](/blog/ai-prompt-tracking), expect your broadest, highest-intent prompts to be the noisiest.
+Absolute scores shift by category, but the ordering holds regardless of the brand: narrow, branded questions stay stable, while broad, open-ended ones churn. If you are tracking [prompt-level visibility](/blog/ai-prompt-tracking), expect your broadest, highest-intent prompts to be the noisiest.
 
 ## A churning list, a stable core
 
-Here is the part that a raw set-distance number hides. A prompt can swap out most of its cited domains every day and still cite the same two or three leaders every single time. The churn is real, but it is concentrated in the long tail.
+A prompt can swap out most of its cited domains every day and still cite the same two or three leaders every single time. The churn is real, but it is concentrated in the long tail.
 
-To separate the two, weight each domain by how often it is actually cited, then measure volatility on those weighted sets. The membership-based score and the volume-weighted score tell different stories, and the gap between them is the size of the stable core.
+To separate the two, weight each domain by how often it is cited, then measure volatility on those weighted sets. The membership-based score and the volume-weighted score tell different stories, and the difference between them is the size of the stable core.
 
 <figure>
 <svg viewBox="0 0 720 360" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Average citation volatility by engine. Google AI Mode has higher raw set volatility but lower volume-weighted volatility than ChatGPT.">
@@ -205,11 +205,11 @@ To separate the two, weight each domain by how often it is actually cited, then 
 <figcaption>Average citation volatility across 27 prompts (one prompt where ChatGPT rarely searched is excluded). Google AI Mode's raw set of domains churns more, but it pins most citations on a small core, so its volume-weighted volatility is lower. ChatGPT cites fewer domains yet rotates even its leaders.</figcaption>
 </figure>
 
-This chart holds the most useful finding in the whole study, and it is a little counterintuitive. Google AI Mode has the *higher* raw set volatility (0.69 vs ChatGPT's 0.62) because it casts a wider net, citing about 24 domains per day to ChatGPT's 17. But its volume-weighted volatility is *lower* (0.40 vs 0.52). The reason is concentration: on Google AI Mode, the domains cited on at least 80% of days accounted for about 56% of all citations. On ChatGPT, that stable core captured only about 23%.
+Google AI Mode has the *higher* raw set volatility (0.69 vs ChatGPT's 0.62) because it casts a wider net, citing about 24 domains per day to ChatGPT's 17. But its volume-weighted volatility is *lower* (0.40 vs 0.52). The reason is concentration: on Google AI Mode, the domains cited on at least 80% of days accounted for about 56% of all citations. On ChatGPT, that stable core captured only about 23%.
 
 So the two engines work differently. Google AI Mode keeps a fixed cast of headline sources and rotates the supporting extras. ChatGPT spreads its citations more evenly across a smaller cast and rotates even the leads. For anyone doing [answer engine optimization](/answer-engine-optimization), that distinction sets the strategy: breaking into Google AI Mode's core is hard but durable, while ChatGPT's lead roles turn over often, so there is more room to break in and more risk of dropping out.
 
-The practical takeaway is to never trust the set-membership number alone. A prompt that looks wildly volatile may have a rock-solid core with a noisy tail. Weight by citation volume before you read anything into the score.
+Never trust the set-membership number alone. A prompt that looks wildly volatile may have a rock-solid core with a noisy tail. Weight by citation volume before you read anything into the score.
 
 ## ChatGPT only searches when you are shopping
 
@@ -258,15 +258,15 @@ The two engines diverge in a more basic way too: whether they search the web at 
 <figcaption>How many of 42 days each engine cited sources. Google AI Mode grounded every prompt every day. ChatGPT grounded reliably for product picks but answered definitional and comparison questions largely from memory, citing on just 6 of 42 days for "most iconic sneakers".</figcaption>
 </figure>
 
-For commercial questions like "best basketball shoes 2026", ChatGPT searched and cited on nearly every day, just like Google. But for "the most iconic sneakers of all time", a question of opinion and history, it answered from its training data and cited sources on only 6 of 42 days. Head-to-head comparisons sat in between: it grounded some days, recalled others.
+For commercial questions like "best basketball shoes 2026", ChatGPT searched and cited on nearly every day, like Google. But for "the most iconic sneakers of all time", a question of opinion and history, it answered from its training data and cited sources on only 6 of 42 days. Head-to-head comparisons sat in between: it grounded some days, recalled others.
 
 That changes what you optimize for. Where an engine does not cite, there is no citation slot to win. The lever becomes whether the model already knows your brand from its training data, which you influence through broad [brand mentions](/blog/ai-share-of-voice) rather than a single citable page. Where the engine does cite, fresh, citable content is in play. The first step in any AEO plan is finding out which of your prompts are even grounded, on each engine, before you spend effort on them.
 
-One caution this surfaces: a score built on six citing days is noise, not signal. The 6-day prompts can post extreme volatility numbers purely because there is so little data. Gate every score on a minimum number of observations, around 20 day-to-day comparisons, before you trust it.
+A score built on six citing days is noise. The 6-day prompts can post extreme volatility numbers purely because there is so little data. Gate every score on a minimum number of observations, around 20 day-to-day comparisons, before you trust it.
 
 ## The two engines, side by side
 
-Two surfaces, two different games. The whole contrast in one view:
+Two engines, two different games. The whole contrast in one view:
 
 | | ChatGPT | Google AI Mode |
 |---|---|---|
@@ -308,18 +308,16 @@ Under Armour turned up in 81% of answers, Adidas in 59%, New Balance in 57%, wit
 
 ## What this means for your AEO strategy
 
-Pulling the threads together:
-
 - **Track trends, not snapshots.** A single citation check is a coin flip on a volatile prompt. Judge your AI visibility on rolling averages over weeks, and weight by citation volume so a noisy tail does not masquerade as instability.
 - **Go after your broad, contested prompts.** High volatility means no entrenched incumbent owns the citation slots. Those prompts are the most winnable, and the most worth a strong, repeatedly updated resource. Stable prompts with a fixed core are harder to crack but more durable once you are in.
-- **Run a per-engine playbook.** Google AI Mode rewards becoming part of a stable core; ChatGPT's faster rotation rewards fresh content and gives newcomers more openings. The same brand plays two different games.
+- **Run a per-engine plan.** Google AI Mode rewards becoming part of a stable core; ChatGPT's faster rotation rewards fresh content and gives newcomers more openings. The same brand plays two different games.
 - **Know where citations are not the lever.** On prompts an engine answers from memory, optimize for being known, through broad mentions and presence in the model's training data, not for a single citable link. Measure [brand mentions](/blog/ai-competitor-analysis) there, not citations.
 
 ## How to measure citation volatility yourself
 
 You do not need the study's dataset to run this. The method is simple and repeatable:
 
-1. **Choose prompts to track** that your customers actually ask, mixing broad recommendations with narrow, branded comparisons.
+1. **Choose prompts to track** that your customers ask, mixing broad recommendations with narrow, branded comparisons.
 2. **Run them daily on each engine** you care about, with web search enabled, and capture the full answer.
 3. **Record the domains cited each day**, stored with the date and engine.
 4. **Compare each day with the one before** using Jaccard distance: 1 minus the shared domains over the combined domains.

@@ -12,15 +12,15 @@ faq:
   - question: Can AI do SEO?
     answer: "AI can do most of the execution work in SEO and none of the judgment. It is genuinely good at keyword clustering, first drafts, schema generation, log-file analysis, internal-link suggestions, and turning data into a readable summary. It is unreliable at deciding what is worth publishing, verifying claims, and knowing when a page is already good enough. Teams that treat it as a fast junior who never checks their work get the most out of it."
   - question: Will AI replace SEO?
-    answer: "No, but it is changing what the job optimizes for. AI has not removed the need for someone to decide what a site should say and make sure search engines can read it. What it has changed is the destination: a growing share of queries now end in a generated answer rather than a click, so the work now includes being cited in that answer, not only ranking beneath it."
+    answer: "No, but it is changing what the job optimizes for. AI has not removed the need for someone to decide what a site should say and make sure search engines can read it. What it has changed is the destination: a growing share of queries now end in a generated answer rather than a click, so the work now includes being cited in that answer as well as ranking beneath it."
   - question: What are the best AI SEO tools?
     answer: "It depends which job you are buying. For content optimization, tools that grade drafts against ranking pages. For technical work, crawlers that use AI to prioritize issues rather than list them. For research, anything that clusters keywords and reads intent at volume. For AI search visibility, a tracker that runs your prompts through the answer engines on a schedule. Buying a general 'AI SEO tool' without knowing which of these you need is how software budgets disappear."
   - question: Is AI-generated content bad for SEO?
-    answer: "Not inherently. Google's guidance targets content produced primarily to manipulate rankings, regardless of how it was made. In practice AI content fails for ordinary reasons: it is generic, it repeats what is already ranking, it contains errors nobody checked, and it is published at a volume no one can edit. AI content that is accurate, specific, and genuinely additive performs like any other good content."
+    answer: "Not in itself. Google's guidance targets content produced primarily to manipulate rankings, regardless of how it was made. In practice AI content fails for ordinary reasons: it is generic, it repeats what is already ranking, it contains errors nobody checked, and it is published at a volume no one can edit. AI content that is accurate, specific, and genuinely additive performs like any other good content."
   - question: How do I use ChatGPT for SEO?
-    answer: "The reliable uses are transformations of data you already have: clustering an export of keywords, turning a crawl into a prioritized list, drafting schema, rewriting titles at scale, and summarizing competitor pages. The unreliable uses are anything requiring facts it has to recall (search volumes, competitor metrics, citations, current SERP features) because it will produce plausible numbers that are wrong."
+    answer: "The reliable uses are transformations of data you already have: clustering an export of keywords, turning a crawl into a prioritized list, drafting schema, rewriting titles in bulk, and summarizing competitor pages. The unreliable uses are anything requiring facts it has to recall (search volumes, competitor metrics, citations, current SERP features) because it will produce plausible numbers that are wrong."
   - question: Does AI content rank on Google?
-    answer: "Yes, routinely. There is no penalty for AI assistance as such, and no detector Google has confirmed using in ranking. What gets discounted is unhelpful content, which AI makes cheaper to produce at scale. The risk is not the tool; it is that the tool removes the cost that used to stop people publishing filler."
+    answer: "Yes, routinely. There is no penalty for AI assistance as such, and no detector Google has confirmed using in ranking. What gets discounted is unhelpful content, which AI makes cheaper to produce in bulk. The risk is that the tool removes the cost that used to stop people publishing filler."
   - question: What is the difference between AI SEO and AEO?
     answer: "AI SEO usually means using AI to do SEO work faster. AEO (answer engine optimization) means optimizing for AI answer engines as a destination, measuring whether ChatGPT, Perplexity, Gemini and Google AI Overviews mention and cite your brand. The first is a change in tooling; the second is a change in where visibility happens."
 ---
@@ -41,13 +41,13 @@ Almost every useful application of AI in SEO is a **transformation**: you give t
 
 Clustering 4,000 exported keywords into topics is a transformation. Asking for the search volume of those keywords is a recall, and the numbers will be fiction. Turning a Screaming Frog export into a prioritized fix list is a transformation. Asking which competitors rank for a term is a recall. Rewriting 200 title tags against a template is a transformation. Asking whether a study exists that supports your claim is a recall, and it will produce a citation that looks real.
 
-Hold that line and AI is the most useful thing to happen to SEO execution in a decade. Cross it and you will publish errors at scale.
+Hold that line and AI is the most useful thing to happen to SEO execution in a decade. Cross it and you will publish errors in bulk.
 
 ## Where AI genuinely speeds up SEO work
 
 ### Keyword research and clustering
 
-This is the strongest use case and the least glamorous. Export your keywords from a tool that actually has the data, then hand the list to a model to group by intent, identify the pages each cluster implies, and flag near-duplicates that would cannibalize each other. Work that used to take a day of spreadsheet sorting takes twenty minutes, and the model is good at spotting intent distinctions a human skims past.
+This is the strongest use case and the least glamorous. Export your keywords from a tool that has the data, then hand the list to a model to group by intent, identify the pages each cluster implies, and flag near-duplicates that would cannibalize each other. Work that used to take a day of spreadsheet sorting takes twenty minutes, and the model is good at spotting intent distinctions a human skims past.
 
 The catch is the export. The model has no keyword data of its own. Everything it tells you about volume or difficulty is invented.
 
@@ -59,17 +59,17 @@ Log files are the sharper win. A raw server log is unreadable at human scale, an
 
 ### Structured data
 
-Schema markup is a rule-following exercise with a published specification, which is exactly the kind of task models do well. Generate it, validate it, ship it. Just validate it. Models produce syntactically correct JSON-LD with invented property names often enough that you should never ship unvalidated output.
+Schema markup is a rule-following exercise with a published specification, which is exactly the kind of task models do well. Generate it, validate it, ship it. Models produce syntactically correct JSON-LD with invented property names often enough that you should never ship unvalidated output.
 
 ### Content drafting, with limits
 
-Models draft quickly and write competently, and that is the problem: competent, forgettable prose is the default output and it is exactly what the web now has too much of. The drafts that work start from something the model could not have invented: your own data, a customer conversation, an argument you actually hold.
+Models draft quickly and write competently, and that is the problem: competent, forgettable prose is the default output and it is exactly what the web now has too much of. The drafts that work start from something the model could not have invented: your own data, a customer conversation, an argument you hold.
 
-The most reliable content use is not drafting but editing: tightening pages you already have, expanding coverage on thin sections, generating FAQ blocks from existing text, and rewriting for clarity. Improving a page that already ranks is nearly always worth more than adding a new one.
+The most reliable content use is editing: tightening pages you already have, expanding coverage on thin sections, generating FAQ blocks from existing text, and rewriting for clarity. Improving a page that already ranks is nearly always worth more than adding a new one.
 
 ### Reporting
 
-Turning analytics into a stakeholder update is pure transformation, and models do it well. Feed in the numbers and the context, get back a readable summary with the anomalies flagged. Check the arithmetic anyway.
+Turning analytics into a status update is pure transformation, and models do it well. Feed in the numbers and the context, get back a readable summary with the anomalies flagged. Check the arithmetic anyway.
 
 ## Where AI quietly costs you
 
@@ -77,17 +77,17 @@ Turning analytics into a stakeholder update is pure transformation, and models d
 
 **Sameness.** Everyone is prompting similar models with similar instructions against the same ranking pages. The output converges. Whatever is genuinely yours (proprietary data, a real opinion, actual expertise) is worth more now than it was three years ago, precisely because the generic version is free.
 
-**Invented facts that survive review.** A fabricated statistic in AI-written prose reads exactly like a real one. Unlike a broken link, nothing surfaces it. The only defense is verifying every specific claim against a primary source, which is slower than writing the sentence yourself.
+**Invented facts that survive review.** A fabricated statistic in AI-written prose reads exactly like a real one. Unlike a broken link, nothing flags it. The only defense is verifying every specific claim against a primary source, which is slower than writing the sentence yourself.
 
-**Optimizing for the wrong destination.** Plenty of teams have used AI to triple content output while their category quietly moved to answer engines that never send a click. Volume against a shrinking surface is expensive motion.
+**Optimizing for the wrong destination.** Plenty of teams have used AI to triple content output while their category quietly moved to answer engines that never send a click.
 
-## AI SEO tools: what the categories actually are
+## AI SEO tools: what the categories are
 
 "AI SEO tool" describes at least four unrelated products. Knowing which one you are buying prevents most of the disappointment.
 
 - **Content optimization:** grade a draft against pages currently ranking, suggest coverage gaps and structure. Useful when you already know what you are writing and want it to compete.
 - **Technical and audit:** crawl, then use AI to prioritize and explain. The prioritization is the product; the crawl is commodity.
-- **Research:** keyword clustering, intent classification, competitor analysis at volume. Value depends entirely on the underlying data, not the AI layer on top.
+- **Research:** keyword clustering, intent classification, competitor analysis at volume. Value depends entirely on the underlying data, not the AI on top.
 - **AI visibility tracking:** run your prompts through ChatGPT, Perplexity, Gemini and Google AI Overviews on a schedule and record whether you are mentioned and cited. This is the newest category and the only one built for the destination shift below.
 
 For a vendor-neutral comparison of that last group, see the [best AI visibility tools](/blog/best-ai-visibility-tools).
@@ -106,7 +106,7 @@ The practical consequence is that a traffic decline no longer tells you what wen
 
 Three things, in order of return.
 
-1. **Measure whether you are cited.** Write out the twenty or thirty questions your buyers actually ask, run them through each engine repeatedly, and record how often you are mentioned and how often you are linked. Engines sample, so a single check is noise. The rate across many runs is the measurement. This is the step that tells you whether you have a problem at all.
+1. **Measure whether you are cited.** Write out the twenty or thirty questions your buyers ask, run them through each engine repeatedly, and record how often you are mentioned and how often you are linked. Engines sample, so a single check is noise. The rate across many runs is the measurement. This is the step that tells you whether you have a problem at all.
 
 2. **Get onto the pages engines already cite.** For most queries a small set of third-party roundups and comparison pages supplies the majority of citations. Being listed accurately on those moves your mention rate faster than anything you publish on your own domain.
 
@@ -114,7 +114,7 @@ Three things, in order of return.
 
 ## Does classic SEO still matter?
 
-Yes, and more directly than the "SEO is dead" framing suggests. Most answer engines ground their responses in live web search. If your page cannot be crawled, indexed, or surfaced for the query the model issues, it cannot be cited. Technical health and topical authority are now the entry requirement for a second competition rather than the whole game.
+Yes, and more directly than the "SEO is dead" claim suggests. Most answer engines ground their responses in live web search. If your page cannot be crawled, indexed, or returned for the query the model issues, it cannot be cited. Technical health and topical authority are now the entry requirement for a second competition rather than the whole game.
 
 What changes is the scoreboard. Rankings remain a leading indicator. Citations are the outcome. Teams that track only the first will keep reporting healthy numbers while their actual visibility erodes.
 

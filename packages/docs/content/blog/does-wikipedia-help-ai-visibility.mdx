@@ -45,7 +45,7 @@ faq:
     answer: "Its traffic is, its reach is not. The Wikimedia Foundation reported human pageviews down roughly 8% year over year after reclassifying bot traffic, and links the drop partly to search engines answering directly. Meanwhile Amazon, Meta, Microsoft, Mistral AI, Perplexity, and Google pay for high-volume Wikipedia data feeds. More people now meet Wikipedia's text inside an AI answer than on Wikipedia."
 ---
 
-**Wikipedia is the one source that touches AI answers at every stage: what models learn, what they cite, and what licensed data feeds they ingest. It is also the one source a brand is not allowed to write for itself.** The useful question for a marketing team is not "does Wikipedia matter?" (it does) but "is a Wikipedia article something we can realistically have, and if not, what substitutes for it?" The evidence answers both.
+**Wikipedia is the one source that touches AI answers at every stage: what models learn, what they cite, and what licensed data feeds they ingest. It is also the one source a brand is not allowed to write for itself.** Wikipedia matters, so the useful question for a marketing team is "is a Wikipedia article something we can realistically have, and if not, what substitutes for it?" The evidence answers both.
 
 **Key takeaways**
 
@@ -80,9 +80,9 @@ Two large datasets measure this with different metrics, which is why the numbers
 | [Profound](https://www.tryprofound.com/blog/ai-platform-citation-patterns), 680M citations, Aug 2024–Jun 2025 | Share of all citations | 7.8% | 0.6% (AI Overviews) | Not in top 10 |
 | [Semrush](https://www.semrush.com/blog/most-cited-domains-ai/), 230k+ prompts, Jul–Oct 2025 | Share of responses citing it | ~55%, falling to under 20% in mid-September | ~2–3% (AI Mode) | ~0.8% |
 
-Share of all citations and share of responses are not the same quantity. A domain can appear in half of all answers and still hold under a tenth of all citations, because each answer cites many sources. Read across, the two agree on the thing that matters: **ChatGPT treats Wikipedia as a primary reference; Google's AI surfaces and Perplexity do not.** We covered how far apart the engines are in general in [do AI engines cite the same sources](/blog/do-ai-engines-cite-the-same-sources).
+Share of all citations and share of responses are not the same quantity. A domain can appear in half of all answers and still hold under a tenth of all citations, because each answer cites many sources. Read across, the two agree: **ChatGPT treats Wikipedia as a primary reference; Google's AI surfaces and Perplexity do not.** How far apart the engines are in general is covered in [do AI engines cite the same sources](/blog/do-ai-engines-cite-the-same-sources).
 
-Branded queries are the exception on Google. Ahrefs tracked exact-name searches for 100 brands from Interbrand's Best Global Brands list and found Wikipedia cited in [41 of 57 AI Overviews with visible sources, or 71.9%](https://ahrefs.com/blog/ai-overviews-on-branded-searches/), well ahead of YouTube at 38.6%. We broke that study down in [AI Overviews on brand searches](/blog/ai-overviews-for-brand-searches). The limitation that matters here: every brand on that panel is famous enough to have a substantial Wikipedia article. The study tells you what Google cites when an article exists, not what it cites when one does not.
+Branded queries are the exception on Google. Ahrefs tracked exact-name searches for 100 brands from Interbrand's Best Global Brands list and found Wikipedia cited in [41 of 57 AI Overviews with visible sources, or 71.9%](https://ahrefs.com/blog/ai-overviews-on-branded-searches/), well ahead of YouTube at 38.6%. That study is broken down in [AI Overviews on brand searches](/blog/ai-overviews-for-brand-searches). Its limitation is that every brand on that panel is famous enough to have a substantial Wikipedia article. The study tells you what Google cites when an article exists, not what it cites when one does not.
 
 ### Licensing: the route you cannot track
 
@@ -104,7 +104,7 @@ Mallen and colleagues built PopQA, 14,000 questions about entities across a wide
 
 Kandpal and colleagues reached the same conclusion from the other direction in an [ICML 2023 paper](https://arxiv.org/abs/2211.08411): a model's accuracy on a question tracks how many training documents mention the entities involved, with "strong correlational and causal relationships," and retrieval reduces that dependence.
 
-Put those findings next to a mid-market brand. One Wikipedia article is one document. Even oversampled three times, it will not lift a brand from the long tail into the set a model reliably remembers. What determines how that brand appears in AI answers is the retrieval layer: the reviews, comparisons, trade coverage, and forum threads an engine finds when someone asks. That is the territory covered in [where AI citations come from](/blog/where-ai-citations-come-from), and it is where a smaller brand's effort pays off first.
+Put those findings next to a mid-market brand. One Wikipedia article is one document. Even oversampled three times, it will not lift a brand from the long tail into the set a model reliably remembers. What determines how that brand appears in AI answers is the retrieved material: the reviews, comparisons, trade coverage, and forum threads an engine finds when someone asks. That is the territory covered in [where AI citations come from](/blog/where-ai-citations-come-from), and it is where a smaller brand's effort pays off first.
 
 There is a caveat both papers share and the Wikipedia argument usually skips. Popularity in PopQA is a proxy for how much the web discusses an entity, not a measure of the Wikipedia article's effect. **No published study isolates what a brand's Wikipedia article adds to its AI mention rate** once you control for the coverage that made the article possible in the first place. Anyone quoting a lift figure is quoting a correlation.
 
@@ -116,7 +116,7 @@ The [notability guideline for companies](https://en.wikipedia.org/wiki/Wikipedia
 
 The [conflict-of-interest guideline](https://en.wikipedia.org/wiki/Wikipedia:Conflict_of_interest) says editors with a conflict of interest "are strongly discouraged from editing affected articles directly" and requires anyone editing for pay to disclose who is paying them. The sanctioned route is to propose changes on the article's talk page.
 
-Notice what the notability test is actually asking for: independent, in-depth, secondary coverage from reliable outlets. That is almost exactly the kind of earned coverage that makes up the majority of AI citations, and that a [press release does not substitute for](/blog/press-releases-ai-visibility). Wikipedia does not create authority; it summarizes authority that exists elsewhere. A brand that clears the bar already has most of what an article would bring, and a brand that cannot clear it will not get an article that lasts.
+Notice what the notability test is asking for: independent, in-depth, secondary coverage from reliable outlets. That is almost exactly the kind of earned coverage that makes up the majority of AI citations, and that a [press release does not substitute for](/blog/press-releases-ai-visibility). Wikipedia summarizes authority that exists elsewhere. A brand that clears the bar already has most of what an article would bring, and a brand that cannot clear it will not get an article that lasts.
 
 ## A decision rule
 
@@ -126,7 +126,7 @@ Notice what the notability test is actually asking for: independent, in-depth, s
 
 **Case 3: you cannot list several such pieces.** Stop pursuing an article. Spend the effort on the coverage Wikipedia would have required anyway: analyst mentions, independent reviews, trade press that covers you in depth, and comparison pages that name you. That is what retrieval engines read for brands they do not remember, and it is the only route that also leads to an article later.
 
-Whichever case you are in, the [entity signals that help a model resolve your name](/blog/ghost-citations), such as consistent naming and accurate Organization markup, apply regardless, as does checking per engine. A brand whose buyers live in Perplexity has much less reason to worry about Wikipedia than one whose buyers live in ChatGPT.
+Whichever case you are in, the [entity details that help a model resolve your name](/blog/ghost-citations), such as consistent naming and accurate Organization markup, apply regardless, as does checking per engine. A brand whose buyers live in Perplexity has much less reason to worry about Wikipedia than one whose buyers live in ChatGPT.
 
 ## How to check what Wikipedia is doing for you
 

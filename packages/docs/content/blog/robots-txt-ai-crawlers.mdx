@@ -1,6 +1,6 @@
 ---
 title: "Robots.txt and AI Crawlers: Is 'Disallow All' Killing Your AI Traffic?"
-description: "A leftover 'Disallow: /' can hide your site from AI search. Here's which AI crawlers to allow, which to block, and how to check your robots.txt in minutes."
+description: "A leftover 'Disallow: /' can hide your site from AI search. This guide shows which AI crawlers to allow, which to block, and how to check your robots.txt in minutes."
 date: "2026-06-02"
 author: ai
 metaTitle: "Robots.txt & AI Crawlers: Allow or Disallow? (2026)"
@@ -34,10 +34,10 @@ faq:
   - question: What is the best robots.txt for AI search visibility?
     answer: "Allow all crawlers by default, block only genuinely private paths (admin, cart, checkout, internal search), and include a Sitemap line. Avoid any standalone 'Disallow: /'. This keeps every AI crawler able to read your public pages while keeping sensitive areas out of reach."
   - question: Does robots.txt stop AI from training on my content?
-    answer: "Only partly. Blocking a training crawler like GPTBot or CCBot going forward stops that specific bot from fetching new pages, but it does not remove content models already learned, and it does not stop datasets that already copied your site. Robots.txt governs polite, compliant crawling, not what happens to data once it has been collected elsewhere."
+    answer: "Only partly. Blocking a training crawler like GPTBot or CCBot stops that specific bot from fetching new pages, but it does not remove content models already learned, and it does not stop datasets that already copied your site. Robots.txt governs polite, compliant crawling, not what happens to data once it has been collected elsewhere."
 ---
 
-**A single leftover line in robots.txt can quietly remove your site from AI search.** If `Disallow: /` is sitting under `User-agent: *`, you are telling ChatGPT's crawler, Perplexity's crawler, Google's crawler, and the rest to skip your pages, which means they have nothing to cite when someone asks about your category. The fix usually takes two minutes. The hard part is knowing which crawlers matter and which rules actually do what people think they do.
+**A single leftover line in robots.txt can quietly remove your site from AI search.** If `Disallow: /` is sitting under `User-agent: *`, you are telling ChatGPT's crawler, Perplexity's crawler, Google's crawler, and the rest to skip your pages, which means they have nothing to cite when someone asks about your category. The fix usually takes two minutes. The hard part is knowing which crawlers matter and which rules do what people think they do.
 
 This guide covers what robots.txt does and does not control for AI, the crawlers worth knowing by name, and two copy-paste configurations: one for maximum AI visibility, and one for blocking model training while staying in AI search.
 
@@ -50,7 +50,7 @@ This guide covers what robots.txt does and does not control for AI, the crawlers
 - There are separate crawlers for training, search indexing, and live user fetches. You can block training while keeping AI search, if that is your goal.
 - The most specific user-agent group wins, so a global allow does not save a bot that is disallowed in its own named block.
 
-## Does robots.txt actually affect AI search?
+## Does robots.txt affect AI search?
 
 Yes, more than most site owners realize. The major AI companies run named crawlers and, for the most part, respect robots.txt. When OpenAI's `OAI-SearchBot` or Perplexity's `PerplexityBot` is disallowed, it does not fetch your pages, so your content cannot become a cited source in those answers. Blocking is the difference between being in the running and not existing as far as the engine is concerned.
 
@@ -62,7 +62,7 @@ Second, robots.txt is a request, not a wall. Reputable crawlers honor it. Some s
 
 ## The history rhymes with the 1990s
 
-In the late 1990s, some publishers blocked early search engine crawlers because they worried about losing control of their content. It backfired. The sites that let Google in captured the traffic; the ones that walled themselves off faded from the web's main discovery layer.
+In the late 1990s, some publishers blocked early search engine crawlers because they worried about losing control of their content. It backfired. The sites that let Google in captured the traffic; the ones that walled themselves off faded from search results.
 
 AI search is the same decision arriving again. Buyers increasingly start in ChatGPT, Perplexity, Gemini, and Google's AI Overviews instead of a list of blue links. If your robots.txt keeps those crawlers out, you are repeating the 1990s mistake with a new set of bots. The upside of getting it right is that AI answers now drive measurable referral traffic and shape first impressions, so being readable is the price of entry.
 
@@ -87,7 +87,7 @@ Different bots do different jobs. Some crawl to train models, some index pages s
 | `Meta-ExternalAgent` | Meta | Crawls for Meta's AI products | Meta AI |
 | `CCBot` | Common Crawl | Crawls for an open dataset many model makers train on | A wide range of third-party training sets |
 
-User-agent names and behaviors change. Treat this as a starting map, not a permanent spec, and check each company's published crawler docs before writing strict rules.
+User-agent names and behaviors change. Treat this as a starting point, not a permanent spec, and check each company's published crawler docs before writing strict rules.
 
 ### The Googlebot trap
 
@@ -150,26 +150,26 @@ Disallow: /
 Sitemap: https://www.example.com/sitemap.xml
 ```
 
-This keeps you eligible for citations in ChatGPT search, Perplexity, and Google's AI answers while telling the main training crawlers to stay out. Two honest caveats: it only affects bots that comply, and it does nothing about content already collected. It is a forward-looking signal, not a delete button.
+This keeps you eligible for citations in ChatGPT search, Perplexity, and Google's AI answers while telling the main training crawlers to stay out. Two caveats: it only affects bots that comply, and it does nothing about content already collected.
 
 A subtle rule makes this work. When a crawler finds more than one matching group, it obeys the most specific one. `GPTBot` follows its own `GPTBot` block and ignores the `User-agent: *` group entirely. That is why naming bots explicitly is the only reliable way to give different crawlers different rules.
 
 ## Common robots.txt mistakes that cost AI traffic
 
 - **A staging `Disallow: /` that shipped to production.** Sites get launched with a blanket block left over from development. It is the first thing to check, and the most common single cause of missing AI and search traffic.
-- **Blocking Googlebot to "avoid AI."** This removes you from classic search too, and from AI Overviews and AI Mode. Almost never what anyone actually wants.
+- **Blocking Googlebot to "avoid AI."** This removes you from classic search too, and from AI Overviews and AI Mode. Almost never what anyone wants.
 - **Thinking Google-Extended controls AI Overviews.** It does not. It is a Gemini training switch only.
 - **Expecting robots.txt to remove old training data.** It governs future polite crawling, not data already gathered or copied into third-party datasets.
-- **Disallowing a page you want de-indexed.** If you block a URL in robots.txt, crawlers cannot see a `noindex` tag on it, so it can still surface as a bare link. To remove a page, allow crawling and use `noindex` instead.
+- **Disallowing a page you want de-indexed.** If you block a URL in robots.txt, crawlers cannot see a `noindex` tag on it, so it can still appear as a bare link. To remove a page, allow crawling and use `noindex` instead.
 - **Blocking the CSS and JS needed to render the page.** Crawlers that cannot render your layout may misread your content. Keep assets crawlable.
-- **Assuming a global `Allow` overrides a specific `Disallow`.** The most specific user-agent group wins, so check named blocks, not just the `*` group.
+- **Assuming a global `Allow` overrides a specific `Disallow`.** The most specific user-agent group wins, so check named blocks as well as the `*` group.
 
 ## Beyond robots.txt
 
-Getting crawlers in the door is necessary but not sufficient. Once your pages are readable, a few other layers decide whether AI engines actually cite you.
+Getting crawlers in the door is necessary but not sufficient. Once your pages are readable, a few other factors decide whether AI engines cite you.
 
 Use `noindex` (a meta robots tag or `X-Robots-Tag` header), not robots.txt, when you want a page kept out of results entirely. Remember the order of operations: the page must be crawlable for the crawler to read the `noindex`.
 
-Make your content easy for a model to lift and trust. That is the work of [answer engine optimization](/answer-engine-optimization): clear answers near the top of the page, clean structure, and consistent facts. [Structured data](/blog/structured-data-for-ai-search) removes ambiguity about what a page is, and the debate over whether [llms.txt files matter for AEO](/blog/do-llms-txt-files-matter-for-aeo) is worth reading before you add one. To turn crawlability into actual mentions, see how to [earn AI citations](/blog/ai-citations).
+Make your content easy for a model to lift and trust. That is the work of [answer engine optimization](/answer-engine-optimization): clear answers near the top of the page, clean structure, and consistent facts. [Structured data](/blog/structured-data-for-ai-search) removes ambiguity about what a page is, and the debate over whether [llms.txt files matter for AEO](/blog/do-llms-txt-files-matter-for-aeo) is worth reading before you add one. To turn crawlability into mentions, see how to [earn AI citations](/blog/ai-citations).
 
-Finally, measure it. The only way to know whether AI engines now read and cite you is to check the answers themselves, on a schedule, across the engines your buyers use. Our guide on [tracking your brand in AI search](/answer-engine-optimization) walks through the method, and [CiteRank.com](/) automates that loop across ChatGPT, Perplexity, Gemini, Claude, Google's AI Overviews and five more AI apps, up to four times a day. If you want the fixes done for you, its [AI search agency](/agency) fixes anything that stops AI crawlers reading your site. Fixing robots.txt gets you in the room. Tracking tells you whether it worked.
+Finally, measure it. The only way to know whether AI engines now read and cite you is to check the answers themselves, on a schedule, across the engines your buyers use. The guide on [tracking your brand in AI search](/answer-engine-optimization) walks through the method, and [CiteRank.com](/) automates that loop across ChatGPT, Perplexity, Gemini, Claude, Google's AI Overviews and seven more AI apps, up to four times a day. If you want the fixes done for you, its [AI search agency](/agency) fixes anything that stops AI crawlers reading your site.

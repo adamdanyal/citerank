@@ -19,7 +19,7 @@ faq:
     answer: "To varying degrees. Schema is well-established for traditional search and rich results, and it helps AI systems disambiguate entities and structure. Treat it as one input that makes your content clearer, not a switch that forces a citation."
 ---
 
-**Structured data helps AI engines understand, trust, and reuse your content.** Schema markup labels what a page is (an article, an FAQ, an organization), and `llms.txt` offers AI agents a plain-text map of your site. Neither forces a citation, but both reduce ambiguity, which makes your content easier to extract and quote. They're the technical backbone under every [answer engine optimization](/answer-engine-optimization) tactic.
+**Structured data helps AI engines understand, trust, and reuse your content.** Schema markup labels what a page is (an article, an FAQ, an organization), and `llms.txt` offers AI agents a plain-text guide to your site. Neither forces a citation, but both reduce ambiguity, which makes your content easier to extract and quote. They're the technical backbone under every [answer engine optimization](/answer-engine-optimization) tactic.
 
 **Key takeaways**
 
@@ -37,7 +37,7 @@ AI engines have to do three things with your page: find the relevant passage, un
 
 It helps with extraction. Models assemble answers from quotable passages, and a clear heading followed by a direct, self-contained answer (or a table, or a list) is far easier to lift accurately than a dense paragraph. Structure is what turns your content into something extractable.
 
-It helps with entities. Search and AI systems think in entities, the distinct, identifiable things like your brand, your product, and the concepts you cover. Schema and consistent on-page signals help an engine tie your brand name to your specific product, even when another entity shares the name, which is the difference between being cited correctly and being confused with something else.
+It helps with entities. Search and AI systems think in entities, the distinct, identifiable things like your brand, your product, and the concepts you cover. Schema and consistent on-page facts help an engine tie your brand name to your specific product, even when another entity shares the name, which is the difference between being cited correctly and being confused with something else.
 
 And it helps with disambiguation. When the same term means different things, or facts about you are scattered, engines have to guess. Explicit structure narrows the guesswork: it states what a page is, who published it, and how its parts relate, so the model doesn't have to infer it.
 
@@ -45,7 +45,7 @@ And it helps with disambiguation. When the same term means different things, or 
 
 Schema.org markup, usually delivered as JSON-LD, is a vocabulary for labeling content. A handful of types do most of the work for AEO.
 
-**Article** (or `TechArticle`/`BlogPosting`) tells engines this is an article, who wrote it, and when, which is useful for freshness and authorship signals:
+**Article** (or `TechArticle`/`BlogPosting`) tells engines this is an article, who wrote it, and when, which is useful for judging freshness and authorship:
 
 ```json
 {
@@ -89,9 +89,9 @@ Schema.org markup, usually delivered as JSON-LD, is a vocabulary for labeling co
 
 `llms.txt` is a proposed convention: a Markdown file at your site's root that gives AI agents a concise, readable guide to your most important content, plus links to plain-text versions of key pages. The idea is to offer language models a clean entry point instead of making them parse navigation and markup.
 
-It's worth being honest about its status: llms.txt is emerging and inconsistently adopted. Adoption among both publishers and AI platforms is uneven, and the most common way an agent encounters the file is by following a link to it from a page it's already reading, rather than checking for it by default. The downside of adding one is low, so offering it is reasonable, but it isn't a switch that makes AI engines read your site, and you shouldn't treat it as one. We dig into the nuances in [do llms.txt files matter for AEO?](/blog/do-llms-txt-files-matter-for-aeo).
+`llms.txt` is emerging and inconsistently adopted. Adoption among both publishers and AI platforms is uneven, and the most common way an agent encounters the file is by following a link to it from a page it's already reading, rather than checking for it by default. The downside of adding one is low, so offering it is reasonable, but it isn't a switch that makes AI engines read your site, and you shouldn't treat it as one. The nuances are covered in [do llms.txt files matter for AEO?](/blog/do-llms-txt-files-matter-for-aeo).
 
-The more durable version of the same goal is simply making your site easy for machines to consume: clean HTML, plain-text or Markdown versions of important pages where your stack supports it, and clear internal links. llms.txt is one expression of that principle, not a substitute for it.
+The more durable version of the same goal is making your site easy for machines to consume: clean HTML, plain-text or Markdown versions of important pages where your stack supports it, and clear internal links. llms.txt is one expression of that principle, not a substitute for it.
 
 ## A practical structuring checklist
 
@@ -104,10 +104,10 @@ Markup matters, but it amplifies good structure rather than replacing it. A page
 - Establishes entities, with consistent brand facts, `Organization` schema, and clear naming.
 - Stays fresh, with dated content, updated facts, and pruned stale claims.
 
-If a page does these, the schema is the finishing layer that makes the structure explicit. If it doesn't, no amount of markup will make unclear content citable.
+If a page does these, the schema is the finishing touch that makes the structure explicit. If it doesn't, no amount of markup will make unclear content citable.
 
 ## Measuring whether it's working
 
 Structured data is an input, so the way to know it helps is to watch the output: are AI engines citing and describing your content more accurately over time? You can't see an engine's parser, but you can sample the answers, tracking whether your pages get mentioned and [cited](/blog/ai-citations), and whether the facts come through correctly.
 
-[CiteRank.com](/) tracks your mentions and citations across 12 AI apps up to four times a day, so you can correlate structural improvements with changes in your visibility. Pair this guide with the [AI Overviews](/ai-search/google-ai-overviews) pillar for Google's surfaces, and the [AI search glossary](/glossary) for the underlying terms.
+[CiteRank.com](/) tracks your mentions and citations across 12 AI apps up to four times a day, so you can correlate structural improvements with changes in your visibility. Pair this guide with the [AI Overviews](/ai-search/google-ai-overviews) pillar for Google's AI features, and the [AI search glossary](/glossary) for the underlying terms.

@@ -10,9 +10,9 @@ tags:
   - aeo
 definedTerms:
   - term: AI-referred traffic
-    definition: "AI-referred traffic is the set of visits that arrive at a site from an AI assistant or AI search surface, identified by a referrer hostname belonging to that platform. Visits where the referrer is absent are not counted, so the measured figure is a floor rather than a total."
+    definition: "AI-referred traffic is the set of visits that arrive at a site from an AI assistant or AI search product, identified by a referrer hostname belonging to that platform. Visits where the referrer is absent are not counted, so the measured figure is a floor rather than a total."
   - term: Conversion premium
-    definition: "A conversion premium is the difference between one traffic source's conversion rate and a baseline, expressed as a relative percentage. It describes the visitors a channel actually delivered, not the visitors it could deliver, so it says nothing about the size of the channel."
+    definition: "A conversion premium is the difference between one traffic source's conversion rate and a baseline, expressed as a relative percentage. It describes the visitors a channel delivered, not the visitors it could deliver, so it says nothing about the size of the channel."
   - term: Dark AI traffic
     definition: "Dark AI traffic is AI-referred traffic that reaches a site without a referrer header and therefore lands in analytics as direct or unassigned. It is produced mechanically by in-app browsers and by links marked with the noreferrer attribute, not by user behaviour."
 howTo:
@@ -28,7 +28,7 @@ howTo:
     - name: Compare against the right baseline
       text: "Adobe's 54% premium is AI versus all non-AI retail traffic in one month. Contentsquare's 1.3% is a cross-industry annual rate next to email's 1.9%. Neither refutes the other, and neither transfers to your site unmeasured."
     - name: Audit whether your detail pages are machine-readable
-      text: "Adobe scored retail product pages at 66% machine-readable against 75% for homepages. The pages that convert are the pages agents parse worst, which is a fixable gap and a cheap one."
+      text: "Adobe scored retail product pages at 66% machine-readable against 75% for homepages. The pages that convert are the pages agents parse worst, which is a fixable problem and a cheap one."
     - name: Keep scoring AEO on mentions and citations, not sessions
       text: "Referral volume measures how often an engine chose to hand over a click, which is the engine's product decision. Mention rate and citation rate measure your standing in the answer, which is the part you can move."
 faq:
@@ -56,7 +56,7 @@ faq:
 - The same visitors spent 53% more time per visit, viewed 23% more pages, bounced 36% less, and were worth 53% more per visit than non-AI traffic.
 - Shopify's Q2 2026 results put a mechanism under the premium: **half of AI-referred sessions land straight on a product page**, 2.5x the rate of traditional search.
 - The denominator has not moved nearly as fast. Contentsquare's benchmark of 99 billion sessions put AI-referred traffic at **0.2% of all visits**, growing 632% year over year off a very small base.
-- Whatever you measure is a floor. In-app browsers and `noreferrer` links strip the referrer, and Cloudflare flags the same gap in its own methodology.
+- Whatever you measure is a floor. In-app browsers and `noreferrer` links strip the referrer, and Cloudflare flags the same limitation in its own methodology.
 - Adobe found retail product pages only **66% machine-readable**, against 75% for homepages. The pages that convert are the pages agents parse worst.
 - None of this makes referral sessions a good scoreboard for AEO. It makes the [mention](/blog/ghost-citations) the asset and the click a bonus.
 
@@ -75,7 +75,7 @@ Adobe's [May 2026 retail data](https://business.adobe.com/blog/ai-traffic-surge-
 
 The direction matters more than any single figure, because it flipped. [Digital Commerce 360's report on the same data](https://www.digitalcommerce360.com/2026/06/17/adobe-ai-referred-traffic-to-retail-sites-doubles-in-a-year/) notes that a year earlier AI-referred visitors were converting at close to half the rate of non-AI visitors. Revenue per visit alone moved from a 37% premium in March 2026 to 53% in May. A channel that was worse than average in early 2025 became materially better than average by mid-2026.
 
-Traffic grew alongside it: 138% year over year in May 2026, the highest share of total retail visits since Adobe began tracking. Vivek Pandya, Adobe's Director of Digital Insights, frames the opportunity as personalisation once the shopper continues on the retailer's own site.
+Traffic grew alongside it: 138% year over year in May 2026, the highest share of total retail visits since Adobe began tracking. Vivek Pandya, Adobe's Director of Digital Insights, describes the opportunity as personalisation once the shopper continues on the retailer's own site.
 
 Read that carefully, though. A conversion premium describes the visitors a channel delivered. It does not describe how many it delivered, and it is not a growth forecast.
 
@@ -85,11 +85,11 @@ The strongest explanation for the premium came from a company with the full funn
 
 The mechanism is in the landing behaviour. President Harley Finkelstein said half of all AI-referred sessions on Shopify go straight to a product description page, 2.5x the rate for sessions arriving through traditional search, and that new buyer orders from AI channels arrived at nearly twice the rate of other channels.
 
-That is the whole story of the conversion premium in one statistic. Traditional search delivers a visitor at the beginning of an evaluation. An AI assistant does the evaluation in the chat, then delivers a visitor to the specific product it decided on. The comparison "AI traffic versus search traffic" is not comparing two sources of the same visitor. It is comparing a visitor who is still deciding with a visitor who has decided.
+That one statistic explains the conversion premium. Traditional search delivers a visitor at the beginning of an evaluation. An AI assistant does the evaluation in the chat, then delivers a visitor to the specific product it decided on. The comparison "AI traffic versus search traffic" compares a visitor who is still deciding with a visitor who has decided.
 
-Two more findings from the same call are worth keeping. Shopify said 75% of AI-attributed purchases fell outside its top 100 categories, consistent with retrieval systems surfacing niche inventory that keyword ranking buried. And it reported that AI search running against its structured catalog converted at twice the rate of AI search relying on scraped product data. It is a claim that happens to describe a product Shopify sells, and which no independent party has replicated, but which points the same way as Adobe's machine-readability finding below.
+Two more findings from the same call are worth keeping. Shopify said 75% of AI-attributed purchases fell outside its top 100 categories, consistent with retrieval systems finding niche inventory that keyword ranking buried. And it reported that AI search running against its structured catalog converted at twice the rate of AI search relying on scraped product data. It is a claim that happens to describe a product Shopify sells, and which no independent party has replicated, but which points the same way as Adobe's machine-readability finding below.
 
-Finkelstein's own framing is the part most coverage skipped: AI is "a complement to search, rather than a substitute for it." Traditional search sessions were up 1.3x over two years and still account for roughly a third of storefront sessions. The largest disclosed dataset on AI commerce does not describe search being replaced.
+Finkelstein's own summary is the part most coverage skipped: AI is "a complement to search, rather than a substitute for it." Traditional search sessions were up 1.3x over two years and still account for roughly a third of storefront sessions. The largest disclosed dataset on AI commerce does not describe search being replaced.
 
 ## Now the denominator
 
@@ -108,37 +108,37 @@ These are not rival measurements of one quantity, and treating them as a contrad
 
 The period is doing most of the work. Adobe's own series shows the flip happening between early 2025 and 2026; a full-year 2025 average sits mostly on the wrong side of it. The comparison group does the rest: beating a blended site-wide average is a much lower bar than beating email, the channel that sends messages to people who already gave you their address.
 
-Put plainly: AI-referred traffic converts well relative to the average visitor, is still catching your best-performing owned channel, and arrives in volumes small enough that a 632% growth rate barely moves its share of sessions.
+AI-referred traffic converts well relative to the average visitor, is still catching your best-performing owned channel, and arrives in volumes small enough that a 632% growth rate barely moves its share of sessions.
 
 ## Whatever you measured, there was more of it
 
-Every number above rests on the same fragile signal: a referrer header naming an AI platform. When that header is absent, the visit is not "AI-referred with a missing label," it is direct traffic, and it disappears from the analysis entirely.
+Every number above rests on the same fragile marker: a referrer header naming an AI platform. When that header is absent, the visit counts as direct traffic, and it disappears from the analysis entirely.
 
 Two mechanisms remove it, and neither involves the user doing anything. Links opened from an assistant's mobile app render in an in-app browser that does not pass a referrer. Links marked `rel="noreferrer"` block it by design. Cloudflare is explicit about this in the methodology for its own [crawl-to-refer ratio](https://blog.cloudflare.com/ai-search-crawl-refer-ratio-on-radar/), noting that native app traffic lacks referral headers and may therefore overstate how one-sided the crawl-versus-referral picture looks.
 
-The scale of the loss is genuinely unknown. The vendor estimates in circulation range from roughly a third of AI sessions to well over two thirds, measured on samples too small and too self-selected to settle it. What is not in dispute is the direction. Your measured AI referral traffic is a lower bound.
+The scale of the loss is unknown. The vendor estimates in circulation range from roughly a third of AI sessions to well over two thirds, measured on samples too small and too self-selected to settle it. What is not in dispute is the direction. Your measured AI referral traffic is a lower bound.
 
 There is a subtler consequence for the conversion numbers themselves. If a meaningful share of AI-referred visits never carries a referrer, then every conversion premium published so far was measured on the *subset* of AI visitors whose platform, app, and link happened to pass one. Whether that subset behaves like the whole is untested. The premium is well evidenced; its precision is not.
 
-## What this actually changes
+## What this changes
 
-Not the case for AEO, which never rested on referral clicks. What it changes is the reporting.
+What it changes is the reporting. The case for AEO never rested on referral clicks.
 
 The temptation with a 54% conversion premium is to run it forward: multiply by projected AI traffic growth and produce a revenue case. That calculation compounds two numbers that are moving for different reasons: a premium that reflects who AI sends today, and a volume that reflects how often engines hand over a click at all. The second is the engine's product decision, and it has been trending toward answering in place rather than passing traffic on. [AI Overviews now appear on around 43% of US searches](/blog/ai-overviews-share-of-searches), and Pew measured clicks on 8% of results pages carrying an AI summary against 15% without one.
 
-So the honest position is the unglamorous one. AI referral traffic is a small, high-quality channel whose size you cannot control and whose measurement you cannot fully trust. The mention in the answer, which reaches everyone who reads it whether or not they click, is the thing worth managing, and [most of the citations behind those mentions point at domains you do not own](/blog/where-ai-citations-come-from) anyway.
+AI referral traffic is a small, high-quality channel whose size you cannot control and whose measurement you cannot fully trust. The mention in the answer, which reaches everyone who reads it whether or not they click, is the thing worth managing, and [most of the citations behind those mentions point at domains you do not own](/blog/where-ai-citations-come-from) anyway.
 
-One tactical item does come straight out of this data. Adobe scored retail product pages at 66% machine-readable, against 75% for homepages and 74% for category pages. The pages where AI-referred visitors actually land are the pages agents parse worst. Fixing that (real HTML, visible prices and specifications, [structured data](/blog/structured-data-for-ai-search), no content that only exists after JavaScript runs) is cheap, and it is the same work that makes those pages retrievable in the first place.
+One tactical item does come straight out of this data. Adobe scored retail product pages at 66% machine-readable, against 75% for homepages and 74% for category pages. The pages where AI-referred visitors land are the pages agents parse worst. Fixing that (real HTML, visible prices and specifications, [structured data](/blog/structured-data-for-ai-search), no content that only exists after JavaScript runs) is cheap, and it is the same work that makes those pages retrievable in the first place.
 
 ## What to do this quarter
 
 1. **Split the two numbers in your reporting.** AI sessions and AI conversion rate, never blended into a single "AI performance" figure that hides which one moved.
 2. **Label your AI referral number a floor.** Add the caveat once, in the report, so nobody downstream treats it as a total.
-3. **Look at AI landing pages, not just AI sessions.** Homepage-heavy AI traffic means engines have not resolved intent to a specific page of yours.
+3. **Look at AI landing pages as well as AI sessions.** Homepage-heavy AI traffic means engines have not resolved intent to a specific page of yours.
 4. **Audit detail pages for machine-readability** before touching your homepage. That is where the converting visitors arrive.
-5. **Keep the scoreboard on mentions and citations.** Referral sessions corroborate; [mention rate, citation rate, and share of voice](/blog/ai-share-of-voice) are what you can actually move.
+5. **Keep the scoreboard on mentions and citations.** Referral sessions corroborate; [mention rate, citation rate, and share of voice](/blog/ai-share-of-voice) are what you can move.
 6. **Check you are not blocking the engines that do send clicks.** Referral volume is capped by [which AI crawlers you allow](/blog/robots-txt-ai-crawlers) long before it is capped by your content.
 
-[CiteRank.com](/) is an AI visibility tracker that runs your prompt sets across ChatGPT, Claude, Gemini, Perplexity, and Google's AI surfaces up to four times a day, recording every mention, cited URL, and competitor named alongside you. Set the pages it shows being cited beside whatever AI referral sessions your analytics does capture, and you can see which citations send visitors.
+[CiteRank.com](/) is an AI visibility tracker that runs your prompt sets across ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews and Google AI Mode up to four times a day, recording every mention, cited URL, and competitor named alongside you. Set the pages it shows being cited beside whatever AI referral sessions your analytics does capture, and you can see which citations send visitors.
 
 For the fundamentals, start with [answer engine optimization](/answer-engine-optimization) and [how to track your brand in AI search](/answer-engine-optimization). For what to report to a board, see [the IAB's AI visibility metrics](/blog/iab-ai-visibility-metrics); for the referral data platforms do expose, [Microsoft Clarity's AI citation reporting](/blog/microsoft-clarity-ai-citations). For the vocabulary, see the [AI search glossary](/glossary).

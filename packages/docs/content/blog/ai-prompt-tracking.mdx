@@ -22,7 +22,7 @@ howTo:
   steps:
     - name: Start at the default
       text: "Run every tracked prompt once a day on each answer engine you monitor. That accumulates roughly 30 runs per prompt per engine each month, the floor at which per-prompt rates start to be readable."
-    - name: Decide which signal each prompt is for
+    - name: Decide which metric each prompt is for
       text: "Mention and share-of-voice tracking is comfortable at daily sampling; citation-level tracking, where the cited domains churn 60–70% day to day, is where higher frequency pays."
     - name: Raise frequency only on contested prompts
       text: "Sample the prompts you are actively trying to move, or that competitors contest hardest, two to four times a day. Leave stable prompts at daily rather than multiplying the whole bill by four."
@@ -49,22 +49,22 @@ faq:
 
 **Run answer engine optimization (AEO) prompt tracking once a day: every tracked prompt, against every engine you monitor, read as rolling seven-day averages rather than single runs. Daily is the default because AI answers change run to run. Sample less and you cannot separate real movement from noise; sample more only for citation-level tracking on volatile prompts.**
 
-That is the short answer, and the rest of this post is the reasoning, because the reasoning tells you when to deviate. "How often" is really four separate decisions people run together (how often each prompt runs, how many prompts you track, how many engines you run them against, and how often a human reads the output), and they trade off against each other under one budget. In answer engine optimization, sampling frequency is not a scheduling detail; it decides whether your numbers mean anything.
+That is the short answer, and the rest of this post is the reasoning, because the reasoning tells you when to deviate. "How often" is really four separate decisions people run together (how often each prompt runs, how many prompts you track, how many engines you run them against, and how often a human reads the output), and they trade off against each other under one budget. In answer engine optimization, sampling frequency decides whether your numbers mean anything.
 
 **Key takeaways**
 
 - The default in 2026: every prompt, once a day, on each engine you monitor, reviewed weekly against rolling windows. Deviate for reasons you can name.
 - AI answers are non-deterministic. In a 42-day tracking study, the set of domains cited for the same prompt turned over by roughly 60–70% from one day to the next. A single check is a sample of one.
 - Tracking estimates a rate, not a rank. Around 30 runs bounds a 30% mention rate to roughly ±16 points; about 120 runs tightens that to ±8. Below that, per-prompt numbers are decoration.
-- "How often" is four decisions, not one: run frequency, prompt count, engine count, and human review cadence. Only the last one is free.
+- "How often" is four decisions: run frequency, prompt count, engine count, and human review cadence. Only the last one is free.
 - Which brands get named moves slowly; which URLs get cited moves fast. Citation tracking needs denser sampling than share-of-voice tracking.
 - The bill is frequency × prompts × engines. Fifty prompts on four engines at four runs a day is 24,000 answers a month, every one a paid model call.
 
 ## What answer engine optimization (AEO) prompt tracking is
 
-Prompt tracking is the measurement layer of answer engine optimization. You define the questions your buyers actually ask ("best [category] tool for small teams", "[your brand] vs [competitor]", "how do I solve [problem]") and run them against ChatGPT, Gemini, Perplexity, and Google's AI surfaces on a schedule, recording whether your brand was mentioned, whether your pages were cited, how you were described, and which competitors appeared instead. Tools usually meter usage by [prompt volume](/glossary/prompt-volume), the number of prompts you run. The full method is covered in [how to track your brand in AI search](/answer-engine-optimization); the wider playbook in our guide to [answer engine optimization](/answer-engine-optimization).
+Prompt tracking is the measurement side of answer engine optimization. You define the questions your buyers ask ("best [category] tool for small teams", "[your brand] vs [competitor]", "how do I solve [problem]") and run them against ChatGPT, Gemini, Perplexity, Google AI Overviews, and Google AI Mode on a schedule, recording whether your brand was mentioned, whether your pages were cited, how you were described, and which competitors appeared instead. Tools usually meter usage by [prompt volume](/glossary/prompt-volume), the number of prompts you run. The full method is covered in [how to track your brand in AI search](/answer-engine-optimization); the wider strategy in our guide to [answer engine optimization](/answer-engine-optimization).
 
-This post is about the schedule. It is the part most guides treat as an afterthought, and the part that determines whether the output is measurement or anecdote.
+This post is about the schedule, the part that determines whether the output is measurement or anecdote.
 
 ## Why one check tells you almost nothing
 
@@ -72,7 +72,7 @@ Ask an answer engine the same question twice and you will not get the same answe
 
 A [42-day citation volatility study](/blog/citation-volatility) measured how much. It ran 28 prompts every day on ChatGPT and Google AI Mode and recorded every cited domain. On most prompts, the set of domains cited turned over by more than half from one day to the next, roughly 60–70% on average. Google AI Mode cited about 24 domains a day and ChatGPT about 17, and for one broad prompt ("alternatives to Nike for high-performance running"), Google drew on 445 distinct domains across six weeks. Even whether an engine searches at all is unstable: ChatGPT ran a web search on only 6 of 42 days for a definitional prompt it preferred to answer from memory.
 
-A single check is a sample of one from a noisy distribution. "We asked ChatGPT and we're in" and "we asked and we're not" carry the same amount of information: close to none. Everything else in this post follows from that.
+A single check is a sample of one from a noisy distribution. "We asked ChatGPT and we're in" and "we asked and we're not" carry the same amount of information, which is close to none.
 
 ## You are estimating a rate, not reading a rank
 
@@ -85,11 +85,11 @@ The arithmetic is unforgiving at small sample sizes. Suppose your true mention r
 - After 30 runs (a month of daily sampling), you can place the rate within roughly ±16 percentage points.
 - After 120 runs (a month at four per day), within roughly ±8 points.
 
-Detecting change is harder than estimating a level. Telling a 30% window from a 40% window takes on the order of 200 runs in each window at face value; with 30 runs per window, only swings of around 25 points stand out from the noise. And these are best-case figures: consecutive runs are not fully independent (same model version, same index state, sometimes cached retrieval), so real uncertainty is somewhat wider than the formula suggests. The point is not to run tracking like a clinical trial; it is to stop reading week-over-week per-prompt wiggles as findings.
+Detecting change is harder than estimating a level. Telling a 30% window from a 40% window takes on the order of 200 runs in each window at face value; with 30 runs per window, only swings of around 25 points stand out from the noise. And these are best-case figures: consecutive runs are not fully independent (same model version, same index state, sometimes cached retrieval), so real uncertainty is somewhat wider than the formula suggests. Stop reading week-over-week per-prompt wiggles as findings.
 
 The escape hatch is aggregation. Individual prompts are noisy, but a portfolio is not: 25 prompts sampled daily produce 175 runs a week, enough to make an overall [share of voice](/blog/ai-share-of-voice) trend readable at the week level even while every individual prompt stays murky. This is the real trade between cadence and prompt count. For a fixed budget, more prompts at daily frequency buys a better portfolio read; fewer prompts at higher frequency buys per-prompt answers on the questions you are contesting. Decide which of those you need before you buy either.
 
-## Four cadence decisions, not one
+## Four Cadence Decisions
 
 "How often should I track?" bundles four decisions with different answers, different costs, and different failure modes. Conflating them is how teams end up paying for four-times-daily runs nobody reads.
 
@@ -102,21 +102,21 @@ The escape hatch is aggregation. Individual prompts are noisy, but a portfolio i
 
 Run frequency is the subject of the rest of this post, so briefly on the other three.
 
-**Prompt count.** A useful set is representative, not exhaustive: buyer-intent questions, head-to-head comparisons, and category questions, phrased the way people actually ask them. Twenty-five to fifty covers most brands, and each addition multiplies cost at whatever frequency you choose, so a prompt that would never change a decision is not worth its run budget.
+**Prompt count.** A useful set is representative, not exhaustive: buyer-intent questions, head-to-head comparisons, and category questions, phrased the way people ask them. Twenty-five to fifty covers most brands, and each addition multiplies cost at whatever frequency you choose, so a prompt that would never change a decision is not worth its run budget.
 
-**Engine count.** The engines are different enough that tracking one tells you little about the others. In that study, Google AI Mode ran a web search on every prompt every day while ChatGPT grounded mainly commercial questions, and their cited-source mixes diverge sharply. Two to four engines, chosen by where your buyers actually are, is the defensible middle.
+**Engine count.** The engines are different enough that tracking one tells you little about the others. In that study, Google AI Mode ran a web search on every prompt every day while ChatGPT grounded mainly commercial questions, and their cited-source mixes diverge sharply. Two to four engines, chosen by where your buyers are, is the defensible middle.
 
 **Human cadence.** The only free one, and it should be the slowest. The machine samples daily so that when you look weekly, the window under your glance is statistically sound. Reversing that (humans checking daily on top of sparse machine runs) produces high anxiety on low data, the worst combination available.
 
 ## What moves fast and what moves slow
 
-Cadence has no single answer because the signals inside an AI answer move at different speeds.
+Cadence has no single answer because the parts of an AI answer move at different speeds.
 
 **Which brands get named moves slowly.** A model's sense of who belongs in a category comes substantially from training data and entity associations, which shift over months, on the timescale of model updates and sustained coverage. Across six weeks of tracked Nike-category prompts, the day-to-day churn almost never touched the roster: Under Armour appeared in 81% of answers, Adidas in 59%, New Balance in 57%, and the split barely differed by engine (Adidas was in 57% of ChatGPT answers and 60% of Google's). Earning a place on that roster is similarly slow; see [how long it takes to get cited by AI](/blog/how-long-to-get-cited-by-ai).
 
-**Which URLs get cited moves fast.** Citations come from the live search at ask time, and that layer is where the 60–70% daily churn lives. A stable core exists (on Google AI Mode, a small set of domains earned about 56% of all citations every day), but the long tail reshuffles constantly, and on ChatGPT even the leading sources rotate: its stable core covered only about 23% of citations.
+**Which URLs get cited moves fast.** Citations come from the live search at ask time, and that search is where the 60–70% daily churn lives. A stable core exists (on Google AI Mode, a small set of domains earned about 56% of all citations every day), but the long tail reshuffles constantly, and on ChatGPT even the leading sources rotate: its stable core covered only about 23% of citations.
 
-| Signal | How fast it moves | Sampling it needs |
+| What you track | How fast it moves | Sampling it needs |
 |---|---|---|
 | Whether the engine grounds the prompt at all | Slow, but shifts in steps with product updates | Daily; watch for step changes |
 | Which brands are named (share of voice) | Slow (weeks to months) | Daily is ample; read 28-day windows |
@@ -124,21 +124,21 @@ Cadence has no single answer because the signals inside an AI answer move at dif
 | Which domains are cited | Fast (60–70% day-to-day churn) | Daily minimum; 2–4×/day where contested |
 | Which specific URLs are cited | Fastest | 2–4×/day if URL-level detail matters to you |
 
-In practice, if what you care about is share of voice (being named at all), daily sampling is enough, and your constraint is window length. If what you care about is citations (which pages carry the answer, most of which [are not on your domain anyway](/blog/where-ai-citations-come-from)), you need denser sampling, because you are photographing a faster-moving subject. And the two are separate signals: engines routinely cite pages without naming the brand and name brands without citing them (the [ghost citations](/blog/ghost-citations) problem), so a cadence chosen for one can be wrong for the other.
+In practice, if what you care about is share of voice (being named at all), daily sampling is enough, and your constraint is window length. If what you care about is citations (which pages carry the answer, most of which [are not on your domain anyway](/blog/where-ai-citations-come-from)), you need denser sampling, because you are photographing a faster-moving subject. And the two are separate measures: engines routinely cite pages without naming the brand and name brands without citing them (the [ghost citations](/blog/ghost-citations) problem), so a cadence chosen for one can be wrong for the other.
 
 ## How often to run answer engine optimization prompt tracking, by situation
 
-With the mechanics on the table, here is what we would actually run in 2026.
+With the mechanics on the table, these are the frequencies to run in 2026.
 
 | Situation | Recommended frequency | Why | Rough cost implication |
 |---|---|---|---|
 | Actively running an AEO campaign | Daily everywhere; 2–4×/day on the prompts you are trying to move | Before/after windows tight enough to judge each shipped change within two to four weeks | Mid to high (the multiplier applies only to the contested subset) |
-| Stable monitoring | Daily, reviewed weekly | Keeps windows sound so a real drop surfaces within a week or two, without anyone watching | Low to mid (one answer per prompt per engine per day) |
+| Stable monitoring | Daily, reviewed weekly | Keeps windows sound so a real drop shows up within a week or two, without anyone watching | Low to mid (one answer per prompt per engine per day) |
 | Pre-launch baseline | Daily for 3–4 weeks before changing anything | 20+ runs per prompt is the floor for a usable before-window, and baselines cannot be reconstructed | A bounded, one-time spend |
 | Competitive category with volatile answers | 2–4×/day on contested prompts, daily elsewhere | Broad recommendation prompts churn hardest; sparse samples of a churning list read as trends that are not there | Highest (this is where 4× sampling earns its cost) |
 | Small budget | Daily on one engine with a trimmed prompt set; or weekly across more, read portfolio-only | A sound number for a narrow question beats noise across everything | Lowest ($29/month managed, or self-hosted plus API costs) |
 
-The pattern behind the table: frequency should follow the volatility of the signal you care about and the speed at which you are actually prepared to act. The pre-launch row matters because before-windows cannot be reconstructed: if you are about to start an answer engine optimization push, start sampling three to four weeks before you ship anything. A baseline you did not record is gone.
+Frequency should follow the volatility of the metric you care about and the speed at which you are prepared to act. The pre-launch row is there because before-windows cannot be reconstructed: if you are about to start an answer engine optimization push, start sampling three to four weeks before you ship anything. A baseline you did not record is gone.
 
 ## Cost is the real constraint
 
@@ -146,9 +146,9 @@ Every run is a paid model call. Either the API bill lands on your own keys (self
 
 The multiplication is the whole story. Fifty prompts on four engines at one run a day is 6,000 answers a month. The same set at four runs a day is 24,000. Nothing else in the setup grows that fast, which is why frequency is the one variable to set deliberately rather than default into.
 
-Grounding deserves its own line item. A grounded call (the model running its own web search and returning cited sources) costs roughly ten times an ungrounded one. That ratio is visible in how tracking products are priced: in [CiteRank.com's plans](/pricing), scraped surfaces are sampled up to four times a day from the $99-a-month tier up, while grounded model calls are metered at one run per prompt per day. The entry plan is $29 a month for 50 prompts sampled daily on ChatGPT. Other [AI visibility tools](/ai-visibility-tools) price the same variables differently, but all of them are selling the same multiplication.
+Grounding deserves its own line item. A grounded call (the model running its own web search and returning cited sources) costs roughly ten times an ungrounded one. That ratio is visible in how tracking products are priced: in [CiteRank.com's plans](/pricing), scraped AI apps are sampled up to four times a day from the $99-a-month tier up, while grounded model calls are metered at one run per prompt per day. The entry plan is $29 a month for 50 prompts sampled daily on ChatGPT. Other [AI visibility tools](/ai-visibility-tools) price the same variables differently, but all of them are selling the same multiplication.
 
-Two consequences. First, when budget forces a cut, cut scope before soundness: dropping prompts you never act on keeps the remaining numbers readable, while dropping frequency below daily quietly breaks per-prompt readability across the board. Second, the cheapest upgrade is usually not more runs but a longer unbroken stretch of the same cadence: window length buys statistical weight, and time is the one free input.
+Two consequences. First, when budget forces a cut, cut scope before soundness: dropping prompts you never act on keeps the remaining numbers readable, while dropping frequency below daily quietly breaks per-prompt readability across the board. Second, the cheapest upgrade is usually a longer unbroken stretch of the same cadence: window length buys statistical weight, and time is the one free input.
 
 ## Signs You Are Sampling Too Infrequently or Too Often
 
@@ -167,14 +167,14 @@ You are sampling too often if:
 - **You react to single days.** Shipping content because Tuesday looked bad is trading against noise; in the volatility data, most single-day changes in the cited set are churn that reverses.
 - **The machine outruns the humans by an order of magnitude.** Four-times-daily sampling reviewed monthly is archive-building. That can be a legitimate choice (dense archives make later before/after analysis possible), but it should be a deliberate choice that someone revisits.
 
-Note the asymmetry: too-sparse sampling destroys the measurement, while too-dense sampling only wastes money. If you must err, err dense. But for most brands, "err daily" is the answer.
+Too-sparse sampling destroys the measurement, while too-dense sampling only wastes money. If you must err, err dense. But for most brands, "err daily" is the answer.
 
 ## Compare rolling windows, not days
 
 The way to read volatile data without fooling yourself is boring and reliable: average over windows, compare windows to windows, and gate on sample size.
 
 - Use rolling 7-day windows for citation metrics, which move fast, and rolling 28-day windows for mention rate and share of voice, which move slowly. Compare each window to the one before it, not to the best week you ever had.
-- Gate every per-prompt number on a minimum of about 20 runs, the same floor we applied in the volatility study, and refuse to quote anything built on less. An impressive rate over six runs is a coin-flip streak.
+- Gate every per-prompt number on a minimum of about 20 runs, the same floor the volatility study applied, and refuse to quote anything built on less. An impressive rate over six runs is a coin-flip streak.
 - Mark the dates you ship changes, and judge each one on the first full window after it, not the first morning. Citation-level effects can show inside a couple of weeks; entity-level effects (getting named) move on model-update timescales, so re-measure those after two months.
 - Keep the raw answers. Aggregates tell you whether something changed; the underlying responses are how you find out what changed, and they cannot be regenerated later: the distribution you would resample has already moved.
 
@@ -183,12 +183,12 @@ That last point is the quiet argument for a steady cadence over bursts. A panic 
 ## How to set your cadence
 
 1. **Start at the default.** Every prompt, once a day, on each engine you monitor (roughly 30 runs per prompt per engine per month).
-2. **Decide which signal each prompt is for.** Mentions and share of voice are comfortable at daily; citation-level tracking is where more frequency pays.
+2. **Decide which metric each prompt is for.** Mentions and share of voice are comfortable at daily; citation-level tracking is where more frequency pays.
 3. **Raise frequency only on contested prompts.** The ones you are actively trying to move, or that churn hardest, go to 2–4 runs a day. The rest stay at daily.
 4. **Fix the human cadence separately.** Weekly review, monthly reporting, regardless of what the machine does.
 5. **Read rolling windows, gated on about 20 runs.** Seven days for citations, 28 for mention rates.
 6. **Rebalance quarterly.** Retire prompts you never act on before you cut frequency below daily; cut scope, not soundness.
 
-Cadence is what separates measurement from anecdote. Run daily, read weekly, report monthly, and deviate for reasons you can name.
+Run daily, read weekly, report monthly, and deviate for reasons you can name.
 
-[CiteRank.com](/) is an AI visibility tracker built around exactly this loop. It runs your prompt set across ChatGPT, Claude, Gemini, Perplexity, and Google's AI surfaces up to four times a day, records every mention and citation, and keeps every answer in full. Plans start at $29/month ([pricing](/pricing)), and the [user guide](/docs/user-guide) covers the rest of the loop. For the vocabulary, see the [AI search glossary](/glossary).
+[CiteRank.com](/) is an AI visibility tracker built around this loop. It runs your prompt set across ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews, and Google AI Mode up to four times a day, records every mention and citation, and keeps every answer in full. Plans start at $29/month ([pricing](/pricing)), and the [user guide](/docs/user-guide) covers the rest of the loop. For the vocabulary, see the [AI search glossary](/glossary).

@@ -32,8 +32,8 @@ definedTerms:
 faq:
   - question: What is an LLM scraping API?
     answer: "An LLM scraping API submits a prompt to a consumer AI product such as ChatGPT, Gemini, or Perplexity and returns the answer, its citations, and often its web-search queries as structured JSON. It exists because none of those products expose a public API for the interface real users see, so the only way to observe what a user would get is to drive the product itself."
-  - question: Why not just call the OpenAI API instead of scraping ChatGPT?
-    answer: "Because the model API and the ChatGPT product are different systems. The product adds its own retrieval, ranking, memory, and formatting layers, and it is those layers that decide which brands get named and which sources get cited. A gpt-5-mini call with web search enabled is cheaper and faster, but it does not reproduce the answer a customer sees at chatgpt.com."
+  - question: Why not call the OpenAI API instead of scraping ChatGPT?
+    answer: "Because the model API and the ChatGPT product are different systems. The product adds its own retrieval, ranking, memory, and formatting steps, and it is those steps that decide which brands get named and which sources get cited. A gpt-5-mini call with web search enabled is cheaper and faster, but it does not reproduce the answer a customer sees at chatgpt.com."
   - question: Which LLM scraping API is cheapest?
     answer: "Per run, Oxylabs, at roughly $0.15 a month to track one prompt across ChatGPT and Google AI Mode. It has no pay-as-you-go tier though, so the real floor is the $49/mo Micro plan. If you are tracking fewer than about 325 prompts, BrightData's pay-as-you-go pricing at roughly $0.45 per prompt per month works out cheaper in absolute terms."
   - question: How much does it cost to track one prompt for a month?
@@ -43,7 +43,7 @@ faq:
   - question: Which LLM scraping API is the most reliable?
     answer: "Cloro. In recent production monitoring of all five providers it has not dropped a run, against 95% for both DataForSEO and BrightData, 83% for Oxylabs, and 82% for Olostep. Failures concentrate on Google AI Overview, where BrightData and Oxylabs both sit at 71% while clearing 96% or better everywhere else."
   - question: Do I need more than one scraping provider?
-    answer: "Most teams do not. One provider covering ChatGPT and Google AI Mode captures the bulk of AI referral traffic. A second provider is worth it mainly as a failover, since a single provider's outage otherwise leaves a gap in your history that cannot be backfilled."
+    answer: "Most teams do not. One provider covering ChatGPT and Google AI Mode captures the bulk of AI referral traffic. A second provider is worth it mainly as a failover, since a single provider's outage otherwise leaves a hole in your history that cannot be backfilled."
 ---
 
 **Every AI visibility tool is built on top of a scraping API, and which one it sits on decides what the numbers mean.** ChatGPT, Google AI Mode, Gemini, Perplexity, and Copilot have no public API for the interface real users see, so tracking what an answer engine says about your brand means driving the product itself. The figures below come from an AI visibility tracker that runs all five of these scraping providers side by side in production, and they show the trade-offs.
@@ -51,17 +51,17 @@ faq:
 **Key takeaways**
 
 - The price spread between the cheapest and most expensive provider is about 15x for identical work. Tracking one prompt across ChatGPT and Google AI Mode for a month costs roughly $0.15 on [Oxylabs](https://oxylabs.io) and $2.25 on [Olostep](https://www.olostep.com).
-- Headline per-run pricing is the wrong number to compare. If you're only tracking a handful of prompts, a provider without a minimum monthly payment might be better. If you're tracking at scale, you may want to check the volume pricing for each provider.
+- Headline per-run pricing is the wrong number to compare. If you're only tracking a handful of prompts, a provider without a minimum monthly payment might be better. If you're tracking many prompts, you may want to check the volume pricing for each provider.
 - Coverage is not uniform. [Cloro](https://cloro.dev), [BrightData](https://brightdata.com), and [Olostep](https://www.olostep.com) reach all six surfaces; [Oxylabs](https://oxylabs.io) cannot reach Gemini or Copilot; [DataForSEO](https://dataforseo.com) has no Perplexity scraper.
 - Reliability varies more than price does, and it is the variable nobody publishes, and a failed scrape is a hole in your prompt's history that you cannot backfill.
 - Google AI Overview scrapers are the least reliable across most scraping providers, except for [Cloro](https://cloro.dev).
 - Latency ranges from seconds to individual runs of nearly 19 minutes. It rarely matters for scheduled tracking but matters enormously for anything a user is waiting on.
 
-## What an LLM scraping API actually does
+## What an LLM scraping API does
 
 An LLM scraping API takes a prompt, drives a consumer AI product with it, and returns the generated answer as structured JSON, usually with the cited source URLs and sometimes the search queries the product ran behind the scenes.
 
-That last part is why the category exists at all. You can approximate ChatGPT by calling `gpt-5-mini` with web search enabled, but it is significantly more expensive and the results will be different. This is because the ChatGPT product wraps the model in its own retrieval, ranking, and formatting layers, and those layers are what decide whether your brand gets named and which sources get linked. The model API answer and the product answer routinely disagree about both.
+That last part is why the category exists at all. You can approximate ChatGPT by calling `gpt-5-mini` with web search enabled, but it is significantly more expensive and the results will be different. This is because the ChatGPT product wraps the model in its own retrieval, ranking, and formatting steps, and those steps are what decide whether your brand gets named and which sources get linked. The model API answer and the product answer routinely disagree about both.
 
 The same holds for Google. AI Mode and AI Overviews are Search features, not models, and there is no endpoint that returns them.
 
@@ -100,9 +100,9 @@ Two things this table hides, both of which change the answer at small scale.
 
 ## The variable nobody publishes: reliability
 
-Price and coverage are on every vendor's website. Success rate is not, and it is the number that actually determines whether your tracking data is usable.
+Price and coverage are on every vendor's website. Success rate is not, and it is the number that determines whether your tracking data is usable.
 
-A failed scrape is not the same kind of problem as a slow one. Retries may cost money and eventually give up, and a run that never completes leaves a gap in a time series that cannot be backfilled, because the answer that surface would have given yesterday no longer exists.
+A failed scrape is not the same kind of problem as a slow one. Retries may cost money and eventually give up, and a run that never completes leaves a hole in a time series that cannot be backfilled, because the answer that surface would have given yesterday no longer exists.
 
 The monitoring behind these figures runs every provider against every surface it supports, several times a day, and records every result, including the failures. Here is what recent monitoring shows:
 
@@ -141,7 +141,7 @@ Ahrefs, Scrunch, and Evertune run on it.
 
 ### BrightData
 
-A common default for web scraping in general, and reasonably so. Pay-as-you-go with no monthly minimum (although you have to pay $10 up front), a little cheaper per run than [Cloro](https://cloro.dev), and a battle-tested dataset collector for each major surface. Only Google AI Overview is a real weak point in terms of reliability.
+A common default for web scraping in general, and reasonably so. Pay-as-you-go with no monthly minimum (although you have to pay $10 up front), a little cheaper per run than [Cloro](https://cloro.dev), and a battle-tested dataset collector for each major surface. Only Google AI Overview is a real weak point for reliability.
 
 Two trade-offs. It is slower than [Cloro](https://cloro.dev) on identical surfaces, which does not matter for scheduled tracking and does if a user is waiting. And Google AI Overview is its weak spot at 71%, well below the 96–98% it manages everywhere else.
 
@@ -155,7 +155,7 @@ Cheapest per run of any provider here, by roughly 3x against [BrightData](https:
 
 Three real limitations. It cannot reach Gemini or Copilot, so it is a non-starter if either matters to you. There is no pay-as-you-go tier, so you are committing $49/mo whether you use it or not. And it has been the least reliable provider in the monitoring, at 83%, with ChatGPT at 85% and Perplexity at 80%. The saving is real, and so is the missing fifth of your data.
 
-<Callout title="Best for">High volume on ChatGPT, Perplexity, and the Google surfaces, where the per-run saving actually compounds.</Callout>
+<Callout title="Best for">High volume on ChatGPT, Perplexity, and the Google surfaces, where the per-run saving compounds.</Callout>
 
 <ProviderCTA href="https://oxylabs.io" name="Oxylabs" />
 
@@ -193,4 +193,4 @@ The reliability and latency figures come from production monitoring that runs re
 
 Pricing is taken from each vendor's public pricing pages as of August 2026 and normalised to the same workload. Vendors change prices; check before you commit.
 
-If you would rather not run any of this yourself, [CiteRank.com](/) puts your buyer questions to ChatGPT, Google AI Overviews and AI Mode, Gemini, Perplexity, Copilot and four more AI apps up to four times a day, keeps every answer in full, and starts at $29/month ([pricing](/pricing)).
+If you would rather not run any of this yourself, [CiteRank.com](/) asks ChatGPT, Google AI Overviews and AI Mode, Gemini, Perplexity, Copilot and six more AI apps the questions your buyers ask, up to four times a day, keeps every answer in full, and starts at $29/month ([pricing](/pricing)).
