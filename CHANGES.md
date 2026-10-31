@@ -85,7 +85,7 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | `apps/www/src/styles.css` | One appended block: brand fonts, Tailwind's blue scale remapped to rust and zinc to warm greys (which recolours every component), docs colours. |
 | `apps/www/src/lib/seo.ts` | Site URL, name and description; Organization data for Danx Digital Limited; tracker price range. |
 | `apps/www/src/routes/__root.tsx` | Fonts, title, theme colour. No Plausible tag, GitHub star fetch or cookie banner. |
-| `apps/www/src/components/navbar.tsx`, `apps/www/src/components/footer.tsx`, `apps/www/src/components/logo.tsx` | CiteRank.com navigation, footer with the Danx Digital Limited legal line, wordmark. |
+| `apps/www/src/components/navbar.tsx`, `apps/www/src/components/footer.tsx`, `apps/www/src/components/logo.tsx` | CiteRank.com navigation, footer with a short "© year CiteRank.com (trademarked)" line linking to the UK IPO record, wordmark. The company name, number and address are on the About page. |
 | `apps/www/src/routes/index.tsx`, `apps/www/src/components/home/*` (hero, product-demo, how-it-works, why-switch, models, pricing, closing, faq, styles; new agency.tsx), `apps/www/src/data/hero-variants.ts` | Home page copy from the brand text; Elmo's self-hosting and community sections removed. The logo strip and reviews are Elmo's, kept with our name for the local demo (see "Before going live"). |
 | `packages/ui/src/brand/customers.tsx`, `packages/ui/src/brand/g2-rating.tsx` | Elmo's customer quotes, logos and G2 badge with our name and `?ref=citerank` links, for the local demo (see "Before going live"). |
 | `apps/www/src/lib/faqs.ts` | Every FAQ set rewritten; AGENCY_FAQS replaces the off-site AEO FAQs. |
@@ -138,3 +138,4 @@ Elmo's code reported to Elmo's own accounts, so CiteRank.com visitors and custom
 | 2026-10-31 | Started from Elmo v0.7.7 (commit 5e76f422, released 28 October 2026). |
 | 2026-10-31 | Local build: rebranded the dashboard, emails, share images, marketing site, docs, blog and legal pages as CiteRank.com; switched off Elmo's chat, analytics and ad accounts. Not deployed. |
 | 2026-10-31 | Replaced the marketing site's 11 dashboard screenshots with captures of the CiteRank.com dashboard showing a fictional brand. Not deployed. |
+| 2026-10-31 | Put Elmo's wording back inside the app (only the name changed) and resized the rewritten marketing copy to the length of the Elmo text it replaced. Not deployed. |
