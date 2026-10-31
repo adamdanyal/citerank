@@ -32,6 +32,12 @@ by hand, or one `add-mcp` doesn't cover, follow its section below.
 Give the client the URL and it opens a browser for you to sign in. There is no application to
 register first.
 
+Sign in to CiteRank.com if you aren't already. A **Connect to CiteRank.com** screen then shows the
+client's name, the domain that published it (or that it is unverified, when the client named itself),
+and the address it sends you back to. Allow the connection with the button that names the client, or
+choose **Deny**. When the client runs on your own computer, CiteRank.com can't tell which program is
+asking, so allow it only if you just started the connection from a client you trust.
+
 ### Claude Code
 
 ```bash
@@ -192,7 +198,7 @@ reach CiteRank.com through [`mcp-remote`](https://www.npmjs.com/package/mcp-remo
 
 Issue one from **Settings → API Keys** in the organization's settings sidebar. Keys belong to the
 organization, so they are not found under a brand. Issue it read-only and optionally narrow it to
-selected brands.
+selected brands. Copy the key when CiteRank.com shows it, because it is shown only once.
 
 Send it as a bearer token. ChatGPT only connects by signing in; Claude.ai and Claude Desktop take the
 key when you add the connector: choose **No sign in** under **Authentication** and add an
@@ -286,6 +292,10 @@ OpenCode, in `opencode.json`:
 }
 ```
 
+A connection made with a key reaches only that key's brands, with that key's access, and shares its
+limit of 1,000 requests a minute. Revoking the key in **Settings → API Keys** cuts the connection off
+immediately.
+
 ## Try
 
 > What is the visibility and share of voice for each tagged prompt in CiteRank.com for `<brand>`?
@@ -293,6 +303,21 @@ OpenCode, in `opencode.json`:
 > What are some AEO opportunities for my `<brand>`?
 
 > Give me an example run for my `<description>` prompt.
+
+## What the Tools Return
+
+Most tools take a brand ID, so an assistant starts with `list_brands`. `get_analytics` returns a
+brand's visibility, share of voice, per-model breakdown, and citation totals for a time window.
+`get_citations` and `get_query_fanout` show the pages the models cited and the searches they ran, and
+`list_runs` and `get_run` return the answers behind the numbers.
+
+Analytics tools take the window as `start` and `end` ISO 8601 timestamps, such as
+`2026-01-01T00:00:00Z`, and report rates as fractions of 1, not percentages.
+
+`create_prompts` adds up to 100 prompts to a brand in one call, and adds none of them if the batch
+would go over your plan's prompt limit. `update_prompt` changes a prompt's text, its tags, or whether
+it's tracked, but not its premium models, which spend your organization's paid pairings; change those
+in **Settings → Prompts**.
 
 ## Scopes
 

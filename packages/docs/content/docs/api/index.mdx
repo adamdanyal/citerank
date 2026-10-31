@@ -18,7 +18,7 @@ Include your API key in the `Authorization` header:
 Authorization: Bearer YOUR_API_KEY
 ```
 
-Organization owners and admins can issue API keys from **Settings → API Keys** in the organization's settings sidebar. Each key belongs to the organization and starts with `citerank_`. A key is issued either read-only or read-write, and can be restricted to selected brands and given an expiry date.
+Organization owners and admins can issue API keys from **Settings → API Keys** in the organization's settings sidebar. Each key belongs to the organization and starts with `citerank_`. A key is issued either read-only or read-write, and can be restricted to selected brands and given an expiry date. CiteRank.com shows each key only once, when you create it.
 
 To work with the same data from an AI assistant, connect it to the [MCP server](/docs/api/mcp), which uses the same permissions and the same tenancy.
 
@@ -35,6 +35,11 @@ Browse the available endpoints in the sidebar, grouped by resource:
 - **Tags**: list the prompt tags in use on a brand
 - **Opportunities**: retrieve the latest generated brand opportunities
 - **Organizations and billing**: inspect organization and subscription state
+- **Identity**: describe the calling key and what it reaches
 - **Models**: list the AI apps CiteRank.com tracks
 
 The **Reports** and **Tools** endpoints, and deleting a prompt, are reserved for CiteRank.com's own admin keys, so an organization key receives `403` there. To stop tracking a prompt and keep its history, update it with `enabled: false`.
+
+## Limits and Errors
+
+Each key can make 1,000 requests a minute. Past that, the API answers `429` with a `Retry-After` header. Lists are paged with `page` and `limit`, analytics take `start` and `end` as ISO 8601 timestamps, and errors return JSON with an `error`, a `message`, and a stable `code`.
