@@ -5,6 +5,8 @@ import { externalRel } from "@/lib/external-link";
 
 type FooterLink = { label: string; href: string; external?: boolean };
 
+const TRADE_MARK_URL = "https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00004399266";
+
 const legalLinks = [
 	{ label: "Terms", href: "/legal/terms" },
 	{ label: "Privacy", href: "/legal/privacy" },
@@ -94,9 +96,16 @@ export function Footer() {
 				<div className="flex flex-col gap-4 border-t border-zinc-200/80 py-6 text-xs text-zinc-500 md:flex-row md:items-start md:justify-between">
 					<div className="flex max-w-3xl flex-col gap-3">
 						<p>
-							&copy; {new Date().getFullYear()} Danx Digital Limited, trading as CiteRank.com. CiteRank.com is a UK
-							registered trade mark (UK00004399266). Registered in the United Kingdom, company number 13275434, 86-90
-							Paul Street, London EC2A 4NE.
+							&copy; {new Date().getFullYear()} CiteRank.com (
+							<a
+								href={TRADE_MARK_URL}
+								target="_blank"
+								rel={externalRel(TRADE_MARK_URL)}
+								className="underline underline-offset-2 hover:text-zinc-950"
+							>
+								trademarked
+							</a>
+							)
 						</p>
 						<nav aria-label="Legal" className="flex flex-wrap items-center gap-x-4 gap-y-2">
 							{legalLinks.map((link) => (
