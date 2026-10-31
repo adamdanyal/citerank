@@ -18,7 +18,7 @@ import { initAnalytics } from "@/lib/posthog";
 import { organizationJsonLd, SITE_DESCRIPTION, SITE_NAME, SITE_URL, websiteJsonLd } from "@/lib/seo";
 import appCss from "../styles.css?url";
 
-const ROOT_TITLE = `${SITE_NAME} · AI Visibility Tracker and AI Search Agency`;
+const ROOT_TITLE = `${SITE_NAME} · AI Search Tracker and Agency`;
 const ROOT_OG_IMAGE = `${SITE_URL}${getMarketingOgImage({ title: ROOT_TITLE, description: SITE_DESCRIPTION })}`;
 
 export const Route = createRootRoute({

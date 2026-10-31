@@ -75,11 +75,11 @@ export function OtherPlans({ className = "" }: { className?: string }) {
 	return (
 		<div className={`grid gap-4 md:grid-cols-2 ${className}`}>
 			<OtherOption
-				name="AI Search Agency"
-				body="We do the work the tracker ranks: the comparison and guide pages your site is missing, updates to pages AI stopped citing, review sites, forums and guest articles."
+				name="Our Agency"
+				body="We do the work the tracker ranks: new pages, page updates, review sites and forums."
 				action={
 					<Link to="/agency" className={LINK}>
-						Book a Call
+						Book an Agency Call
 						<ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
 					</Link>
 				}
@@ -100,7 +100,7 @@ export function OtherPlans({ className = "" }: { className?: string }) {
 
 /** `recommended` marks the tier that fits a landing page's audience, so the table doesn't leave them to guess. */
 export function Pricing({
-	lede = "Unlimited seats, API and MCP access on every plan. Yearly billing saves two months.",
+	lede = "Unlimited seats, API and MCP access on every plan.",
 	recommended,
 }: {
 	lede?: string;

@@ -14,9 +14,9 @@ import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 const SIGN_UP_URL = cloudSignupUrl("marketing-about");
 const CONTACT_EMAIL = "team@citerank.com";
 
-const title = "About CiteRank.com · AI Visibility Tracker and AI Search Agency";
+const title = "About CiteRank.com · AI Visibility Tracker and Agency";
 const description =
-	"CiteRank.com is an AI visibility tracker and AI search agency founded by Adam Danyal and Julia Danyal. Company facts, what we do, pricing and how to reach us.";
+	"CiteRank.com is an AI visibility tracker and AI search agency for AEO and GEO, founded by Adam Danyal and Julia Danyal. Company facts, what we do, who it is for, pricing and how to reach us.";
 
 export const Route = createFileRoute("/about")({
 	head: () => ({
@@ -43,62 +43,62 @@ const SOCIAL_LINKS = [
 
 const offerings = [
 	{
-		title: "AI Visibility Tracker",
-		body: "Puts your buyers' questions to ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews and Google AI Mode, up to four times a day, and keeps every answer in full.",
+		title: "The AI Visibility Tracker",
+		body: "Puts your buyers' questions to ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews and Google AI Mode, up to four times a day, and keeps every answer in full. CiteRank.com suggests the questions from your website, and you can add or edit them at any time.",
 	},
 	{
 		title: "What the Answers Show",
 		body: "How often you are named for each question and each AI, your share of voice against each competitor, how each answer describes you, your position among the brands named, the pages each answer cites, and the web searches an AI ran first.",
 	},
 	{
-		title: "A Ranked List of What to Do Next",
-		body: "About once a week: a comparison page your site is missing, an old page AI no longer cites, a review site or best-of list that names competitors and leaves you out, or a forum thread where buyers ask about your field.",
+		title: "What to Do Next, Ranked",
+		body: "About once a week: a missing comparison page, a page AI no longer cites, a review site or best-of list that names competitors but not you, or a forum thread where buyers ask about your field.",
 	},
 	{
 		title: "AI Search Agency",
-		body: "Does that work every month: new comparison, alternatives and guide pages, updates to pages AI stopped citing, review sites and best-of lists, forum answers, guest articles on sites AI already cites, and crawler fixes.",
+		body: "Does that work every month: new comparison and guide pages, updates to pages AI stopped citing, review sites, best-of lists, forum answers, guest articles and crawler fixes.",
 	},
 	{
 		title: "A Monthly Report",
-		body: "Agency clients get a report each month that lists every piece of work, the question it targets, and the AI answers before and after.",
+		body: "Agency clients get a report each month. It lists every piece of work we did that month, the buyer question each piece targets, and what the AI answers to that question said before the work and after it went live.",
 	},
 	{
 		title: "API and MCP",
-		body: "A REST API and an MCP server on every tracker plan, so your own reports and AI assistants such as Claude Code and Cursor can read the data.",
+		body: "A REST API and an MCP server on every tracker plan, so your own reports and AI assistants such as Claude Code and Cursor can read the data. Pull visibility, share of voice, citations and opportunities, or edit prompts, from your own tools.",
 	},
 ];
 
 const principles = [
 	{
-		title: `Public Pricing From $${CLOUD_ENTRY_PRICE_USD}/mo`,
-		body: "Tracker prices are on the pricing page. Sign up, pick a plan and start tracking without a sales call.",
+		title: "Every Answer Kept, Word for Word",
+		body: "Each number traces back to the words an AI wrote, so you can open any score and read the answers behind it. Every answer is stored in full, along with the pages it cited and the web searches it ran before answering, so nothing is lost to a summary.",
+	},
+	{
+		title: `Public, Self-Serve Pricing From $${CLOUD_ENTRY_PRICE_USD}/mo`,
+		body: "Tracker prices are published on the pricing page, so you know the cost before you talk to anyone. Sign up, pick a plan and start tracking the same day, with no sales call, demo or quote to wait for.",
 	},
 	{
 		title: "Month-to-Month Billing",
-		body: "Cancel any time. Yearly billing is optional and saves two months.",
+		body: "The tracker bills month to month with no minimum term, and you can cancel any time. Yearly billing is optional and saves two months, so you can see your data first and commit for longer later.",
 	},
 	{
 		title: `Questions Asked ${basic.standardRunsPerDay}× a Day`,
-		body: `From the Basic plan up, every question runs ${basic.standardRunsPerDay} times a day in each AI app you choose, because AI answers change from one run to the next.`,
+		body: `From the Basic plan up, every question runs ${basic.standardRunsPerDay} times a day in each AI app you choose. AI answers change from one run to the next, so more runs give you trends you can rely on instead of one-off snapshots.`,
 	},
 	{
-		title: "Answers From the Real Apps",
-		body: "ChatGPT, Gemini, Perplexity, Copilot, Google AI Overviews and Google AI Mode are read from the same interface your buyers use.",
+		title: "Answers From the Apps Your Buyers Use",
+		body: "ChatGPT, Gemini, Perplexity, Copilot, Google AI Overviews and Google AI Mode are read from the same interface people use, so you see the answers your buyers see. The other AI apps are asked directly.",
 	},
 	{
-		title: "Every Answer Kept",
-		body: "Each number traces back to the words an AI wrote, so you can read the answer behind any score.",
-	},
-	{
-		title: "Unlimited Seats",
-		body: "Your whole team gets the data on every plan, with no per-seat fees.",
+		title: "Unlimited Seats, API and MCP on Every Plan",
+		body: "Every tracker plan includes unlimited team members, the REST API and an MCP server for Claude Code, Cursor and other AI assistants. Your whole team and your own tools get the data, with no per-seat fees and no upgrade needed.",
 	},
 ];
 
 const audiences = [
-	"Software companies whose buyers ask ChatGPT which tool to choose",
-	"Professional services firms whose clients ask AI who to hire",
-	"Marketing agencies tracking AI answers for their own brand and their clients'",
+	"In-house marketing and SEO teams at software companies whose buyers ask ChatGPT which tool to choose",
+	"Professional services firms, such as law and accounting firms, whose clients ask AI who to hire",
+	"Marketing and SEO agencies tracking AI answers for their own brand and for each of their clients' brands",
 	"Founders and marketing leads who want the AI search agency to do the work",
 ];
 
@@ -171,7 +171,7 @@ function AboutPage() {
 		{
 			term: "AI Visibility Tracker",
 			detail:
-				"Shows how of12 AI apps name a business, how they describe it, which pages they cite, and what to do next",
+				"Shows how often 12 AI apps name a business, how they describe it, which pages they cite, and what to do next",
 		},
 		{
 			term: "AI Search Agency",
@@ -179,17 +179,20 @@ function AboutPage() {
 				"Does the work the tracker ranks, every month, with a monthly report of every piece of work and the AI answers before and after",
 		},
 		{
-			term: "Tracker Pricing",
-			detail: `Starter $${starter.monthlyPriceUsd}/mo, Basic $${basic.monthlyPriceUsd}/mo, Pro $${pro.monthlyPriceUsd}/mo, Business $${business.monthlyPriceUsd}/mo. Yearly billing saves two months.`,
+			term: "Pricing",
+			detail: `AI Visibility Tracker: Starter $${starter.monthlyPriceUsd}/mo, Basic $${basic.monthlyPriceUsd}/mo, Pro $${pro.monthlyPriceUsd}/mo, Business $${business.monthlyPriceUsd}/mo, with unlimited seats on every plan. AI search agency and custom plans on request.`,
 		},
-		{ term: "Contract Terms", detail: "Month to month, cancel any time" },
+		{
+			term: "Contract Terms",
+			detail: "Month to month, cancel any time; yearly billing is optional and saves two months",
+		},
 		{
 			term: "AI Apps Tracked",
 			detail:
 				"ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews and Google AI Mode",
 		},
 		{
-			term: "Contact",
+			term: "Contact Email",
 			detail: <ExternalLink href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</ExternalLink>,
 		},
 		{ term: "Social", detail: <LinkList links={SOCIAL_LINKS} /> },
@@ -211,13 +214,12 @@ function AboutPage() {
 							</h1>
 							<p className="mt-6 max-w-2xl text-lg text-pretty text-zinc-600 md:text-xl">
 								CiteRank.com shows businesses what AI says about them, and gets them named in the answer. Its AI
-								Visibility Tracker shows how often ChatGPT, Gemini, Perplexity, Google AI Overviews and other AI apps
-								name a business and what to change. Its AI search agency makes those changes for businesses that would
-								rather hand the work over.
+								Visibility Tracker shows how often ChatGPT, Gemini and other AI apps name a business and what to change.
+								Its AI search agency makes the changes for those who would rather hand the work over.
 							</p>
 							<p className="mt-4 max-w-2xl text-lg text-pretty text-zinc-600">
-								The name joins cite, what an AI does when it names a source, with rank, where a business stands against
-								its competitors in those answers.
+								The name CiteRank.com joins two words: cite, what an AI does when it names a source in an answer, and
+								rank, where a business stands against its competitors in those answers.
 							</p>
 							<div className="mt-8 flex flex-wrap gap-3">
 								<a href={SIGN_UP_URL} className={buttonVariants({ size: "lg" })}>
@@ -232,7 +234,7 @@ function AboutPage() {
 					</div>
 				</section>
 
-				<Section heading="Key Facts" tinted>
+				<Section heading="Key Facts About CiteRank.com" tinted>
 					<dl className="divide-y divide-zinc-200 overflow-hidden rounded-lg border border-zinc-200 bg-white">
 						{keyFacts.map((fact) => (
 							<div key={fact.term} className="grid gap-1 px-5 py-4 md:grid-cols-[14rem_1fr] md:gap-6">
@@ -243,15 +245,15 @@ function AboutPage() {
 					</dl>
 				</Section>
 
-				<Section heading="What We Do">
+				<Section heading="What CiteRank.com Does">
 					<CardGrid items={offerings} />
 				</Section>
 
-				<Section heading="How We Work" tinted>
+				<Section heading="What Makes CiteRank.com Different" tinted>
 					<CardGrid items={principles} tinted />
 				</Section>
 
-				<Section heading="Who It Is For">
+				<Section heading="Who CiteRank.com Is For">
 					<p className="max-w-3xl text-pretty text-zinc-600">
 						Founders and marketing leads at B2B companies whose buyers ask AI who to choose.
 					</p>
@@ -264,7 +266,7 @@ function AboutPage() {
 					</ul>
 				</Section>
 
-				<Section heading="The Founders" tinted>
+				<Section heading="Founders" tinted>
 					<div className="max-w-3xl space-y-4 text-pretty text-zinc-600">
 						<p>
 							CiteRank.com was founded by{" "}

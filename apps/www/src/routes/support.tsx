@@ -9,7 +9,7 @@ import { breadcrumbJsonLd, canonicalUrl, ogMeta } from "@/lib/seo";
 
 const title = "Support · CiteRank.com";
 const description =
-	"Get help with CiteRank.com: email the team about your account, billing or data, or book a call about the AI search agency.";
+	"Get help with CiteRank.com: email the team about your account, billing or data, or book an agency call.";
 
 const SUPPORT_EMAIL = "team@citerank.com";
 
@@ -73,7 +73,7 @@ function SupportPage() {
 				<section className="mb-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					<ContactCard
 						heading="Email"
-						body="For account, billing and data questions. Include your organization name so we can find your account."
+						body="For account, billing, data and anything that needs a longer answer. Include your organization name so we can find your account."
 						action={
 							<a href={`mailto:${SUPPORT_EMAIL}`} className={buttonVariants({ variant: "outline", size: "sm" })}>
 								{SUPPORT_EMAIL}
@@ -81,11 +81,11 @@ function SupportPage() {
 						}
 					/>
 					<ContactCard
-						heading="AI Search Agency"
-						body="Want us to do the work the tracker ranks? Book a call to talk it through."
+						heading="Book a Call"
+						body="Want our AI search agency to do the work the tracker ranks? Book a call to talk it through."
 						action={
 							<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
-								Book a Call
+								Book a Time
 							</Link>
 						}
 					/>
@@ -97,7 +97,7 @@ function SupportPage() {
 								href={`mailto:${SUPPORT_EMAIL}?subject=Security%20report`}
 								className={buttonVariants({ variant: "outline", size: "sm" })}
 							>
-								Email a Report
+								Email Your Report
 							</a>
 						}
 					/>
@@ -106,11 +106,7 @@ function SupportPage() {
 				<section>
 					<h2 className="mb-6 text-xl font-semibold text-zinc-950">Before You Write</h2>
 					<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-						<ResourceLink
-							href="/docs"
-							label="Documentation"
-							detail="Setting up brands and prompts, and reading the results."
-						/>
+						<ResourceLink href="/docs" label="Documentation" detail="Brand and prompt setup, and reading results." />
 						<ResourceLink
 							href="/docs/api/mcp"
 							label="MCP Server"

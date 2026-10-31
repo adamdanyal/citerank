@@ -8,9 +8,9 @@ import { Pricing } from "@/components/pricing";
 import { PRICING_FAQS } from "@/lib/faqs";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
-const title = "Pricing · CiteRank.com AI Visibility Tracker";
+const title = "Pricing: Self-Serve AI Visibility Tracker Plans · CiteRank.com";
 const description =
-	"CiteRank.com tracker plans: Starter $29/mo, Basic $99/mo, Pro $299/mo, Business $649/mo. Yearly billing saves two months. Unlimited seats, API and MCP on every plan.";
+	"CiteRank.com tracker plans: Starter $29/mo, Basic $99/mo, Pro $299/mo, Business $649/mo. Yearly billing saves two months.";
 
 export const Route = createFileRoute("/pricing")({
 	head: () => ({

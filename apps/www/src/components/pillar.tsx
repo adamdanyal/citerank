@@ -11,16 +11,15 @@ export function CiteRankCta() {
 			<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
 				<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">See What AI Says About Your Business</h2>
 				<p className="mx-auto mt-4 max-w-xl text-lg text-balance text-zinc-600">
-					CiteRank.com puts your buyers' questions to ChatGPT, Claude, Gemini, Perplexity and the other AI apps you
-					choose, up to four times a day, and ranks what to do next. Plans start at ${CLOUD_ENTRY_PRICE_USD}/mo, and our
-					AI search agency can do the work for you.
+					CiteRank.com puts your buyers' questions to ChatGPT, Claude, Gemini and other AI apps and ranks what to do
+					next, from ${CLOUD_ENTRY_PRICE_USD}/mo. Our AI search agency can do the work.
 				</p>
 				<div className="mt-8 flex flex-wrap justify-center gap-3">
 					<a href={cloudSignupUrl("marketing-page-cta")} className={buttonVariants({ size: "sm" })}>
-						Start Tracking
+						Start Tracking Today
 					</a>
 					<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
-						Have Us Do the Work
+						Hire Our Agency
 					</Link>
 				</div>
 			</div>

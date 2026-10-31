@@ -19,7 +19,7 @@ export function CTA() {
 						</h2>
 						<p className="mt-5 max-w-[52ch] text-pretty text-zinc-600 md:text-lg">
 							See what ChatGPT, Gemini, Perplexity and Google AI say about your business, from ${CLOUD_ENTRY_PRICE_USD}
-							/mo. Our AI search agency can do the work the tracker ranks.
+							/mo. Our AI search agency can do the work.
 						</p>
 						<div className="mt-7 flex flex-wrap items-center gap-2">
 							<CloudSignupCTA />

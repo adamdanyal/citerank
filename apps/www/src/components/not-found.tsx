@@ -6,8 +6,8 @@ import { Navbar } from "./navbar";
 const suggestedLinks = [
 	{ label: "Documentation", href: "/docs", description: "Get started and learn the API" },
 	{ label: "Features", href: "/features", description: "What the CiteRank.com tracker shows you" },
-	{ label: "Pricing", href: "/pricing", description: "Free to self-host; cloud from $29/mo" },
-	{ label: "Roadmap", href: "/roadmap", description: "What we're building next" },
+	{ label: "Pricing", href: "/pricing", description: "Four tracker plans, starting at $29/mo" },
+	{ label: "Agency", href: "/agency", description: "Have us do the work for you" },
 ];
 
 export function NotFound() {

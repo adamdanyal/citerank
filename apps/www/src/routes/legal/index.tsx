@@ -8,7 +8,7 @@ import { breadcrumbJsonLd, canonicalUrl, ogMeta } from "@/lib/seo";
 
 const title = "Legal · CiteRank.com";
 const description =
-	"CiteRank.com's terms of service, privacy policy, cookie policy, subprocessor list and acceptable use policy.";
+	"CiteRank.com's terms of service, privacy policy, cookie policy, subprocessor list and acceptable use policy, with the date each was updated.";
 
 const getLegalPages = createServerFn({ method: "GET" }).handler(async (): Promise<LegalPageSummary[]> => {
 	const { listLegalPages } = await import("@/lib/legal");
@@ -39,7 +39,7 @@ function LegalIndex() {
 			<main>
 				<section className="border-b border-zinc-200 bg-white py-12 lg:py-20">
 					<div className="mx-auto max-w-6xl px-4 md:px-6">
-						<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl">Legal</h1>
+						<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl">Legal Terms and Policies</h1>
 						<p className="mt-4 max-w-3xl text-lg text-balance text-zinc-600">
 							These policies cover the CiteRank.com tracker, the AI search agency and our websites. CiteRank.com is a
 							trading name of Danx Digital Limited.

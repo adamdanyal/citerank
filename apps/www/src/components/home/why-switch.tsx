@@ -1,12 +1,9 @@
 const FACTS = [
-	{
-		lead: "12 AI Apps",
-		rest: "ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek, Mistral, Qwen, Kimi and Google's two.",
-	},
-	{ lead: "Up to 4× a Day", rest: "Each question is asked up to four times a day in every AI app you pick." },
-	{ lead: "Every Answer Kept", rest: "Read the full answer behind every number." },
+	{ lead: "12 AI Apps", rest: "ChatGPT, Claude, Gemini, Perplexity, Copilot and seven more." },
+	{ lead: "Full Answers", rest: "Read the whole answer behind every number." },
 	{ lead: "Unlimited Seats", rest: "For your whole team on every plan." },
-	{ lead: "API and MCP", rest: "Pull your data into your own reports and AI agents." },
+	{ lead: "API and MCP", rest: "Pull your data into your reports and AI agents." },
+	{ lead: "Up to 4× a Day", rest: "Each question, in every AI app you pick." },
 ];
 
 export function WhySwitch() {
@@ -17,7 +14,7 @@ export function WhySwitch() {
 					id="why-switch"
 					className="text-center text-2xl font-semibold tracking-[-0.025em] text-zinc-950 md:text-3xl"
 				>
-					What Every Plan Includes
+					What You Get With CiteRank.com
 				</h2>
 				<ul className="mt-10 grid gap-px overflow-hidden rounded-2xl bg-zinc-200/80 ring-1 ring-zinc-200/80 sm:grid-cols-2 lg:grid-cols-5">
 					{FACTS.map((f) => (

@@ -3,7 +3,7 @@ import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import { cloudSignupUrl, type ReferralSource } from "@workspace/config/referrals";
 import { ArrowRight, Check } from "lucide-react";
 
-const INCLUDED = ["Unlimited seats", "API and MCP access", "Cancel anytime"];
+const INCLUDED = ["Cancel anytime", "Unlimited seats", "API and MCP access"];
 
 const BUTTON =
 	"inline-flex h-12 items-center justify-center gap-2 rounded-lg px-6 text-base font-medium leading-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600";
@@ -22,7 +22,7 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 					Find Out What AI Says About You
 				</h2>
 				<p className="mt-5 max-w-[52ch] text-pretty text-base/7 text-zinc-600 md:text-lg/8">
-					Start tracking in minutes. Plans start at ${CLOUD_ENTRY_PRICE_USD}/mo.
+					Start tracking your brand in minutes. Plans start at ${CLOUD_ENTRY_PRICE_USD}/mo.
 				</p>
 				<div className="mt-9 flex w-full flex-col items-stretch justify-center gap-3 sm:w-auto sm:flex-row sm:items-center">
 					<a href={signupUrl} className={`${BUTTON} bg-blue-600 text-white hover:bg-blue-700`}>

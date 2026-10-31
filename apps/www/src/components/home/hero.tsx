@@ -13,7 +13,7 @@ const QUIET =
 
 const BADGE = (
 	<span className="inline-flex h-7 items-center rounded-full bg-white/80 px-3 text-xs font-medium text-zinc-600 shadow-sm ring-1 ring-zinc-200">
-		AI Visibility Tracker and AI Search Agency
+		AI Visibility + AI Search Agency
 	</span>
 );
 
@@ -27,12 +27,12 @@ function titleWords(title: string) {
 }
 
 const DEFAULT_LEDE =
-	"CiteRank.com puts your buyers' questions to ChatGPT, Gemini, Perplexity, Google AI Overviews and eight more AI apps, up to four times a day. You see how often each one names you against your competitors, and a ranked list of what to change. Our AI search agency can make those changes for you.";
+	"CiteRank.com puts your buyers' questions to ChatGPT, Gemini, Perplexity and nine more AI apps, up to four times a day. You see how often each names you against competitors and what to change, and our AI search agency can make the changes.";
 
 /** Landing pages for a single audience reuse the homepage hero with their own pitch. */
 export function Hero({
 	badge = BADGE,
-	title = "Get Named in AI Answers",
+	title = "Get Named by AI",
 	lede = DEFAULT_LEDE,
 	from = "marketing-hero",
 }: {

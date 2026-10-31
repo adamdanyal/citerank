@@ -366,7 +366,7 @@ export function ApiGraphic() {
 					{"  "}
 					<span className="text-blue-300">https://app.citerank.com/api/mcp</span>
 				</pre>
-				<Mono className="mt-1">QUERY · REST API</Mono>
+				<Mono className="mt-1">QUERY · REST API · CURL</Mono>
 				<pre className={`flex-1 ${CODE_PANEL}`}>
 					<span className="select-none text-zinc-500">$ </span>curl{" "}
 					<span className="text-blue-300">https://app.citerank.com/api/v1/brands</span> \{"\n"}
@@ -421,7 +421,7 @@ export function EnginesGraphic() {
 					</ul>
 				</div>
 				<div>
-					<Mono>DIRECT APIS</Mono>
+					<Mono>CALLED THROUGH DIRECT APIS</Mono>
 					<ul className="mt-2.5 grid grid-cols-2 gap-2 sm:grid-cols-3">
 						{API_ENGINES.map((e) => (
 							<EngineChip key={e.name} {...e} />
