@@ -27,7 +27,7 @@ function titleWords(title: string) {
 }
 
 const DEFAULT_LEDE =
-	"CiteRank.com puts your buyers' questions to ChatGPT, Gemini, Perplexity and nine more AI apps, up to four times a day. You see how often each names you against competitors and what to change, and our AI search agency can make the changes.";
+	"CiteRank.com puts your buyers' questions to ChatGPT, Gemini, Perplexity and nine more AI apps, up to four times a day. See how often you're named against competitors and what to change, or let our AI search agency do it.";
 
 /** Landing pages for a single audience reuse the homepage hero with their own pitch. */
 export function Hero({
@@ -57,7 +57,7 @@ export function Hero({
 					{badge}
 
 					<h1
-						className={`mt-8 font-semibold text-balance text-zinc-950 ${short ? "text-[3.5rem] leading-[0.95] tracking-[-0.045em] sm:text-7xl lg:text-[6.5rem]" : "text-[2.75rem] leading-[1] tracking-[-0.04em] sm:text-6xl lg:text-7xl"}`}
+						className={`mt-8 font-semibold text-balance text-zinc-950 ${short ? "whitespace-nowrap text-[min(11.5vw,3.5rem)] leading-[0.95] tracking-[-0.045em] sm:text-7xl lg:text-[6.25rem]" : "text-[2.75rem] leading-[1] tracking-[-0.04em] sm:text-6xl lg:text-7xl"}`}
 					>
 						{titleWords(title).map(({ word, at }) => (
 							<Fragment key={at}>

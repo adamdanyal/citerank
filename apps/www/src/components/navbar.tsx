@@ -95,9 +95,9 @@ export function Navbar() {
 					</a>
 					<a
 						href={SIGN_UP_URL}
-						className="inline-flex h-8 items-center gap-1.5 rounded-md bg-blue-600 px-3 text-sm font-medium leading-none text-white ring-1 ring-blue-600 hover:bg-blue-700"
+						className="inline-flex h-8 items-center gap-1.5 whitespace-nowrap rounded-md bg-blue-600 px-3 text-sm font-medium leading-none text-white ring-1 ring-blue-600 hover:bg-blue-700"
 					>
-						Start Tracking
+						Sign Up
 						<ArrowRight className="size-3.5" />
 					</a>
 				</div>
