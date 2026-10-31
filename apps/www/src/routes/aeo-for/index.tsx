@@ -47,7 +47,7 @@ function AeoForIndex() {
 					/>
 					<div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 pb-16 pt-14 text-center md:px-6 md:pt-20">
 						<h1 className="text-[2.75rem] font-semibold leading-[1] tracking-[-0.04em] text-balance text-zinc-950 sm:text-6xl">
-							Answer Engine Optimization by Industry
+							Answer Engine Optimization, by Industry
 						</h1>
 						<p className="mt-6 max-w-[60ch] text-pretty text-[17px]/7 text-zinc-600 md:text-xl/8">
 							The fundamentals of AEO are the same everywhere, but the prompts that matter and the stakes are not. Pick
@@ -102,8 +102,9 @@ function AeoForIndex() {
 							<p>
 								The shape of the deciding question changes too. SaaS buyers ask for comparisons and alternatives.
 								Industrial buyers ask by specification. Donors ask about efficiency, patients ask about symptoms, and
-								travellers ask for itineraries rather than for hotels. AI visibility becomes measurable when you track
-								the prompts that actually precede a decision in your category, phrased the way your buyers ask them.
+								travellers ask for itineraries rather than for hotels. Tracking the prompts that precede a decision in
+								your category, rather than a generic set of brand queries, is what makes AI visibility measurable
+								instead of anecdotal.
 							</p>
 							<p>
 								Each guide above covers the prompts worth tracking in that industry, what to publish so engines have

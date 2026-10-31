@@ -48,7 +48,7 @@ const REASONS = [
 	},
 	{
 		name: "An Agency That Does the Work",
-		text: "When you want the gaps closed for you, CiteRank.com's AI search agency writes the missing comparison pages, gets you onto the review sites AI cites, and reports the AI answers before and after each month.",
+		text: "When you want the work done for you, CiteRank.com's AI search agency writes the missing comparison pages, gets you onto the review sites AI cites, and reports the AI answers before and after each month.",
 	},
 ];
 
@@ -152,7 +152,7 @@ function Reasons() {
 			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
 				<SectionHeading
 					title="Everything You Check in Profound, Without the Rest"
-					lede="CiteRank.com suits teams whose tool for a weekly visibility number has turned into a suite, a sales process, and a credit balance."
+					lede="Switch to CiteRank.com when the tool you bought for a weekly visibility number turns into a suite, a sales process, and a credit balance."
 				/>
 				<ul className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 					{REASONS.map((r) => (

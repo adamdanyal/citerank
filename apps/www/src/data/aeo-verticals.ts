@@ -30,25 +30,25 @@ export const aeoVerticals: AeoVertical[] = [
 		headline: "AI Visibility Software for Agencies",
 		metaTitle: "AI Visibility & SEO Software for Agencies (Multi-Client) · CiteRank.com",
 		metaDescription:
-			"AI visibility software for agencies: track each client's presence in ChatGPT, Perplexity and AI Overviews, benchmark it against named competitors, and turn every gap into billable work.",
+			"AI visibility software for agencies: track every client's presence in ChatGPT, Perplexity and AI Overviews, report it in your own decks, and add your whole team without per-seat fees.",
 		short:
-			"Track AI visibility for your clients, benchmark each one against named competitors, and turn every gap into a content brief.",
+			"Track AI visibility for every client and report it in your own decks, on a platform with unlimited seats for the whole agency.",
 		intro: [
-			"Agencies tend to feel the shift to AI search first, because clients start asking why a competitor shows up in ChatGPT and they do not. AEO turns into a service line: measure each client's presence across the answer engines, find the gaps, and show the work.",
+			"Agencies tend to feel the shift to AI search first, because clients start asking why a competitor shows up in ChatGPT and they do not. AEO turns into a service line: measure each client's presence across the answer engines, find the content gaps, and show the work.",
 			"The hard part is doing that across many clients without paying per seat for each one. Every CiteRank.com plan includes unlimited seats, so bringing in more account managers, writers, and analysts never changes the bill.",
 		],
 		examplePrompts: ["best [client category] companies", "[client] vs [competitor]", "is [client] worth it"],
 		plays: [
 			{
 				name: "Run a Prompt Set per Client",
-				text: "Build a focused list of the questions each client's buyers actually ask, and track it on a schedule so changes stand out.",
+				text: "Build a focused list of the questions each client's buyers ask, and track it on a schedule so changes stand out.",
 			},
 			{
 				name: "Benchmark Against Named Competitors",
 				text: "Share of voice against specific rivals is the metric clients understand. Show who gets cited instead of them, and on which prompts.",
 			},
 			{
-				name: "Turn Gaps Into a Retainer",
+				name: "Turn Content Gaps Into Work",
 				text: "Every prompt where a client is missing is a concrete content brief, which turns reporting into billable work.",
 			},
 			{
@@ -108,7 +108,7 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "Models go stale. Monitor for outdated descriptions of your features or pricing and correct the underlying sources.",
 			},
 		],
-		fit: "CiteRank.com tracks exactly these prompts across every major engine, shows which competitors get named with or instead of you, and keeps every answer, so you can catch wrong feature or pricing claims.",
+		fit: "CiteRank.com tracks exactly these prompts across 12 AI apps, shows which competitors get named with or instead of you, and keeps every answer, so you see when a model gets your features or pricing wrong.",
 		faqs: [
 			{
 				question: "What is the best AEO tool for B2B SaaS?",
@@ -131,7 +131,7 @@ export const aeoVerticals: AeoVertical[] = [
 		audience: "e-commerce brands",
 		plan: "basic",
 		headline: "AEO for E-Commerce",
-		short: "Make sure AI shopping answers and buying-guide queries surface your products, not just your competitors'.",
+		short: "Make sure AI shopping answers and buying-guide queries name your products as well as your competitors'.",
 		intro: [
 			"Shoppers ask AI engines to compare products and recommend the best option, and some engines now have dedicated shopping features. Best running shoes for flat feet, cheapest option under a hundred dollars. The answer usually names a few brands and skips the rest.",
 			"Product and category content, clean structured data, and reviews on trusted sources are what get your catalog into those answers. The work overlaps with SEO, but the target is the recommendation rather than the ranking.",
@@ -315,7 +315,7 @@ export const aeoVerticals: AeoVertical[] = [
 		short: "Monitor and correct how AI engines describe your healthcare brand, where accuracy is not optional.",
 		intro: [
 			"Health topics are exactly where AI engines are most cautious, and where errors do the most damage. An inaccurate description of a provider, product, or service carries real risk.",
-			"Accuracy and monitoring both matter here. Authoritative, well-sourced content shapes what the models say, and tracking the same prompts every day shows when an answer about your services goes wrong.",
+			"Accuracy and monitoring both matter here. Authoritative, well-sourced content shapes what the models say, and tracking the same prompts every day lets you see when an answer about your services goes wrong.",
 		],
 		examplePrompts: ["is [treatment] safe", "best [specialty] near me", "what does [brand] treat"],
 		plays: [
@@ -346,7 +346,7 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "How do I catch AI errors about my health brand?",
 				answer:
-					"Track a consistent set of prompts about your brand and services across engines, and watch for inaccurate or stale claims. CiteRank.com records how each engine describes you so errors surface quickly.",
+					"Track a consistent set of prompts about your brand and services across engines, and watch for inaccurate or stale claims. CiteRank.com records how each engine describes you so you can spot errors quickly.",
 			},
 		],
 	},
@@ -354,7 +354,8 @@ export const aeoVerticals: AeoVertical[] = [
 		slug: "financial-services",
 		audience: "financial services",
 		plan: "pro",
-		short: "Track how AI engines describe your financial brand, with the accuracy and data control the sector demands.",
+		short:
+			"Track how AI engines describe your financial brand, with the accuracy and record-keeping the sector demands.",
 		intro: [
 			"Finance is another area where engines tread carefully, and where a wrong answer about rates, products, or eligibility carries compliance weight. Buyers ask AI engines for recommendations and comparisons all the same.",
 			"Authoritative content earns the citation, and a full, dated record of what each engine said about your products and terms gives your compliance team something concrete to review when a claim is questioned.",
@@ -411,7 +412,7 @@ export const aeoVerticals: AeoVertical[] = [
 		plays: [
 			{
 				name: "Track by Practice Area and Jurisdiction, Not by Firm Name",
-				text: "Nobody asks an engine about your firm before they know they need one. Build the prompt set around the situations clients describe (the injury, the dispute, the filing deadline) in each city you actually practise in.",
+				text: "Nobody asks an engine about your firm before they know they need one. Build the prompt set around the situations clients describe (the injury, the dispute, the filing deadline) in each city you practise in.",
 			},
 			{
 				name: "Publish Jurisdiction-Specific Answers, Not National Boilerplate",
@@ -426,12 +427,12 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "A citation that describes your practice areas wrongly, or attributes another firm's outcome to you, is worse than being absent. Sentiment and description accuracy matter more in legal than in most categories.",
 			},
 		],
-		fit: "CiteRank.com tracks practice-area and city-level prompts across every engine and keeps every answer in full, so you can see when one describes your firm inaccurately. It also shows which competing firms get named in each city, and which directories the engines cite.",
+		fit: "CiteRank.com tracks practice-area and city-level prompts across 12 AI apps and keeps every answer in full, so you can see when one describes your firm inaccurately. It also shows which competing firms get named in each city, and which directories the engines cite.",
 		faqs: [
 			{
 				question: "Is AEO different for law firms than for other businesses?",
 				answer:
-					"Yes, in two ways. Legal queries are treated as Your Money or Your Life content, so engines weight author credentials and jurisdiction heavily, and the answers are hyper-local (the same question has a different correct answer in Texas than in New York). Effective legal AEO is practice-area and jurisdiction specific.",
+					"Yes, in two ways. Legal queries are treated as Your Money or Your Life content, so engines weight author credentials and jurisdiction heavily, and the answers are hyper-local. The same question has a different correct answer in Texas than in New York. Effective legal AEO is practice-area and jurisdiction specific.",
 			},
 			{
 				question: "Do AI answer engines recommend specific law firms?",
@@ -441,7 +442,7 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "What should a law firm publish to get cited by AI engines?",
 				answer:
-					"Direct answers to the questions clients actually ask, written for a specific jurisdiction, signed by a named attorney with visible bar credentials. Process explanations, cost ranges, and deadline rules get cited far more often than practice-area landing pages.",
+					"Direct answers to the questions clients ask, written for a specific jurisdiction, signed by a named attorney with visible bar credentials. Process explanations, cost ranges, and deadline rules get cited far more often than practice-area landing pages.",
 			},
 		],
 	},
@@ -453,7 +454,7 @@ export const aeoVerticals: AeoVertical[] = [
 			"Show up when someone asks an AI assistant for the best option near them, across every location you operate.",
 		intro: [
 			"Near-me search was the last big shift in local discovery, and it is happening again. Rather than scanning a map pack, people ask an assistant for a recommendation and get a short list with reasons attached. The engine assembles that list from your business profile, your reviews, and whatever local publications say about you.",
-			"For multi-location operators the problem compounds: visibility is not one number but one per city, and the answer in Austin can look nothing like the answer in Denver. A single national ranking hides exactly the variance you need to act on.",
+			"For multi-location operators the problem compounds: visibility is one number per city, and the answer in Austin can look nothing like the answer in Denver. A single national ranking hides exactly the variance you need to act on.",
 		],
 		examplePrompts: [
 			"best [service] near me",
@@ -500,8 +501,8 @@ export const aeoVerticals: AeoVertical[] = [
 		short:
 			"Be the brokerage an AI assistant names when someone asks how to buy, sell, or find an agent in your market.",
 		intro: [
-			"Buyers and sellers now open a research phase with an assistant rather than a portal. Questions like what the market is doing in this neighbourhood, what a listing agent actually charges, and how long homes sit precede any contact with an agent, and they are answered before you enter the picture.",
-			"Real estate is unusual in that the big portals dominate transactional search but have little to say about local specifics. That gap is where a brokerage with genuine market knowledge can get cited: neighbourhood-level analysis, real timelines, and honest fee explanations are exactly what a general-purpose portal page cannot provide.",
+			"Buyers and sellers now open a research phase with an assistant rather than a portal. What is the market doing in this neighbourhood, what does a listing agent charge, how long do homes sit. These are the questions that precede any contact with an agent, and they are answered before you enter the picture.",
+			"Real estate is unusual in that the big portals dominate transactional search but have little to say about local specifics. That is where a brokerage with genuine market knowledge can get cited: neighbourhood-level analysis, real timelines, and honest fee explanations are exactly what a general-purpose portal page cannot provide.",
 		],
 		examplePrompts: [
 			"best real estate agent in [city]",
@@ -568,10 +569,10 @@ export const aeoVerticals: AeoVertical[] = [
 			},
 			{
 				name: "Make Accreditation Explicit and Machine-Readable",
-				text: "Accreditation is the trust signal that decides whether an engine will recommend a programme at all. State it on the programme page and mark it up, rather than burying it in a policy PDF.",
+				text: "Accreditation is the trust marker that decides whether an engine will recommend a programme at all. State it on the programme page and mark it up, rather than burying it in a policy PDF.",
 			},
 			{
-				name: "Answer the Sceptical Question Honestly",
+				name: "Answer the Sceptical Question Openly",
 				text: "'Is this degree worth it' is asked constantly. An institution that addresses it with real numbers, including the cases where the answer is nuanced, earns citations that promotional copy never will.",
 			},
 		],
@@ -580,7 +581,7 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Do students use AI to choose programmes?",
 				answer:
-					"Widely, for the research and shortlisting phase. Assistants are asked to compare programmes, explain credential value, and estimate cost and duration. Those are the questions that determine which institutions get a closer look.",
+					"Widely, for the research and shortlisting phase. Assistants are asked to compare programmes, explain credential value, and estimate cost and duration, the questions that determine which institutions get a closer look.",
 			},
 			{
 				question: "What content gets an education institution cited by AI engines?",
@@ -597,7 +598,7 @@ export const aeoVerticals: AeoVertical[] = [
 			"Get named in the itineraries and recommendations AI assistants now build for travellers before they ever reach a booking site.",
 		intro: [
 			"Trip planning is the single most obvious AI use case, and travellers adopted it immediately. Assistants build itineraries, recommend neighbourhoods, and name specific hotels and restaurants. That recommendation happens upstream of every booking channel you currently measure.",
-			"The competitive picture is unusual too: the sources engines cite for travel skew heavily toward independent guides, editorial reviews, and forums rather than brand sites. Hotel and destination brands that only publish their own marketing are largely absent from the material engines actually draw on.",
+			"The competitive picture is unusual too: the sources engines cite for travel skew heavily toward independent guides, editorial reviews, and forums rather than brand sites. Hotel and destination brands that only publish their own marketing are largely absent from the material engines draw on.",
 		],
 		examplePrompts: [
 			"best hotels in [city] for [traveller type]",
@@ -608,11 +609,11 @@ export const aeoVerticals: AeoVertical[] = [
 		plays: [
 			{
 				name: "Track Itinerary Prompts Alongside Brand Prompts",
-				text: "The recommendation that matters is 'where should I stay in [city]', not 'tell me about [hotel]'. Build the prompt set around the planning questions travellers actually ask.",
+				text: "The recommendation that matters is 'where should I stay in [city]', not 'tell me about [hotel]'. Build the prompt set around the planning questions travellers ask.",
 			},
 			{
 				name: "Compete on Traveller Segment, Not on Adjectives",
-				text: "Engines answer segmented questions: for families, for solo travellers, for a first visit. Content organised around who the trip is for is far more citable than a generic property description.",
+				text: "Engines answer segmented questions, for families, for solo travellers, for a first visit. Content organised around who the trip is for is far more citable than a generic property description.",
 			},
 			{
 				name: "Get Into the Independent Guides",
@@ -670,7 +671,7 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "'Alternatives to [competitor part]' is high-intent and poorly served. A clear cross-reference table is one of the most citable assets a manufacturer can publish.",
 			},
 		],
-		fit: "CiteRank.com tracks specification and application-level prompts so you can see whether engines name you for the parts you actually make, and which competitors and distributors are being named instead.",
+		fit: "CiteRank.com tracks specification and application-level prompts so you can see whether engines name you for the parts you make, and which competitors and distributors are being named instead.",
 		faqs: [
 			{
 				question: "Do B2B industrial buyers use AI search?",
@@ -688,10 +689,10 @@ export const aeoVerticals: AeoVertical[] = [
 		slug: "insurance",
 		audience: "insurance companies",
 		plan: "pro",
-		short: "Be named accurately when someone asks an AI assistant which policy to buy and what it actually covers.",
+		short: "Be named accurately when someone asks an AI assistant which policy to buy and what it covers.",
 		intro: [
 			"Insurance shopping is a research problem before it is a purchase, and the research has moved to assistants. What does this policy cover, what is a reasonable premium, which carrier handles claims well. The answers shape the shortlist before any quote form is filled in.",
-			"The stakes on accuracy are unusually high. An engine that misstates your coverage terms creates a mismatch between what a customer expects and what the policy says, and that surfaces later as a complaint or a lapsed policy. Monitoring how engines describe your products matters at least as much as whether they mention them.",
+			"The stakes on accuracy are unusually high. An engine that misstates your coverage terms creates a mismatch between what a customer expects and what the policy says, and that shows up later as a complaint or a lapsed policy. Monitoring how engines describe your products matters at least as much as whether they mention them.",
 		],
 		examplePrompts: [
 			"best [type] insurance for [situation]",
@@ -710,7 +711,7 @@ export const aeoVerticals: AeoVertical[] = [
 			},
 			{
 				name: "Monitor Accuracy as Well as Presence",
-				text: "A wrong description of your coverage is a compliance and service problem, not just a marketing one. Track how engines characterise your products and correct the sources behind bad answers.",
+				text: "A wrong description of your coverage is a compliance and service problem as well as a marketing one. Track how engines characterise your products and correct the sources behind bad answers.",
 			},
 			{
 				name: "Address the Price Question With Real Ranges",
@@ -722,7 +723,7 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Why does answer accuracy matter more in insurance?",
 				answer:
-					"Because a misdescribed policy sets a false expectation that surfaces at claim time. Insurance is also regulated content, so an inaccurate third-party description of coverage is a risk issue rather than only a marketing one.",
+					"Because a misdescribed policy sets a false expectation that shows up at claim time. Insurance is also regulated content, so an inaccurate third-party description of coverage is a risk issue rather than only a marketing one.",
 			},
 			{
 				question: "Can insurers influence how AI engines describe their policies?",
@@ -738,7 +739,7 @@ export const aeoVerticals: AeoVertical[] = [
 		short:
 			"Get named in the comparisons AI assistants build when someone is deciding which vehicle or service to choose.",
 		intro: [
-			"Vehicle research is long, comparison-heavy, and now heavily assisted. Buyers ask which model suits their situation, how two trims differ, what ownership actually costs. Those conversations produce a two or three vehicle shortlist well before a dealership visit.",
+			"Vehicle research is long, comparison-heavy, and now heavily assisted. Buyers ask which model suits their situation, how two trims differ, what ownership costs. Those conversations produce a two or three vehicle shortlist well before a dealership visit.",
 			"Automotive content is also unusually well covered by independent reviewers, which means engines have plenty of non-brand sources to draw on. A manufacturer or dealer group that only publishes spec pages is competing against a deep body of editorial review content and generally losing.",
 		],
 		examplePrompts: [
@@ -753,7 +754,7 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "Buyers ask for the best vehicle for a commute, a family, or towing. Those questions decide the shortlist; model-name queries happen after the decision is largely made.",
 			},
 			{
-				name: "Publish Total Cost of Ownership Honestly",
+				name: "Publish Total Cost of Ownership Openly",
 				text: "Fuel, insurance, maintenance, and depreciation over five years is what buyers ask about and what brand sites almost never state. It is one of the most citable things an automotive brand can publish.",
 			},
 			{
@@ -765,12 +766,12 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "These behave differently. A strong model can sit inside a brand that engines describe poorly, and dealer-level answers are local and driven by entirely different sources.",
 			},
 		],
-		fit: "CiteRank.com tracks model, brand, and dealer-level prompts separately so you can see where the shortlist is actually being formed, and which independent reviewers are driving the citations behind it.",
+		fit: "CiteRank.com tracks model, brand, and dealer-level prompts separately so you can see where the shortlist is being formed, and which independent reviewers are driving the citations behind it.",
 		faqs: [
 			{
 				question: "Do car buyers use AI assistants for research?",
 				answer:
-					"Heavily, in the comparison phase. Assistants are asked to narrow options by use case, compare trims, and estimate ownership cost. That is the work that produces the shortlist a buyer eventually acts on.",
+					"Heavily, in the comparison phase. Assistants are asked to narrow options by use case, compare trims, and estimate ownership cost, the work that produces the shortlist a buyer eventually acts on.",
 			},
 			{
 				question: "Why do independent reviewers matter so much for automotive AEO?",
@@ -802,11 +803,11 @@ export const aeoVerticals: AeoVertical[] = [
 			},
 			{
 				name: "Publish Financials and Impact Data as HTML",
-				text: "Annual reports as PDF downloads are close to invisible to AI crawlers. The same programme ratios and outcome figures as on-page content are directly quotable and answer the question donors actually ask.",
+				text: "Annual reports as PDF downloads are close to invisible to AI crawlers. The same programme ratios and outcome figures as on-page content are directly quotable and answer the question donors ask.",
 			},
 			{
 				name: "Make Third-Party Ratings Easy to Find",
-				text: "Charity evaluator ratings and regulatory registration numbers are the trust signals engines reach for on legitimacy questions. Stating them on the site makes the answer easy.",
+				text: "Charity evaluator ratings and regulatory registration numbers are the trust markers engines reach for on legitimacy questions. Stating them on the site makes the answer easy.",
 			},
 			{
 				name: "Answer the Efficiency Question Head On",
@@ -818,7 +819,7 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Do donors use AI to decide where to give?",
 				answer:
-					"For discovery and vetting, increasingly yes. Assistants are asked which organisations work on a cause, whether a given one is legitimate, and how efficiently donations are used. Those are the questions that produce a donor's shortlist.",
+					"For discovery and vetting, increasingly yes. Assistants are asked which organisations work on a cause, whether a given one is legitimate, and how efficiently donations are used, the questions that produce a donor's shortlist.",
 			},
 			{
 				question: "What should a nonprofit publish to be cited by AI engines?",
@@ -835,7 +836,7 @@ export const aeoVerticals: AeoVertical[] = [
 		short:
 			"Win the vendor shortlist that security buyers now assemble by asking an AI assistant before they call an analyst.",
 		intro: [
-			"Security buying is committee-driven, long, and heavily researched, which makes it exactly the kind of decision people delegate to an assistant early. Which vendors cover this control, how do two platforms differ, what does deployment actually involve. The shortlist forms in that research phase.",
+			"Security buying is committee-driven, long, and heavily researched, which makes it exactly the kind of decision people delegate to an assistant early. Which vendors cover this control, how do two platforms differ, what does deployment involve. The shortlist forms in that research phase.",
 			"Security is also a category where engines lean hard on technical credibility. Vendor marketing about being AI-powered and next-generation is functionally interchangeable and gets skipped; published research, detection methodology, and honest architecture documentation are what get quoted. Firms with a real research output have an advantage they usually under-exploit.",
 		],
 		examplePrompts: [
@@ -847,7 +848,7 @@ export const aeoVerticals: AeoVertical[] = [
 		plays: [
 			{
 				name: "Track Category and Control Prompts",
-				text: "Buyers ask by category and by control, not by vendor. Track the categories you claim to compete in and see whether engines actually place you in them.",
+				text: "Buyers ask by category and by control, not by vendor. Track the categories you claim to compete in and see whether engines place you in them.",
 			},
 			{
 				name: "Turn Security Research Into Citable Content",
@@ -858,16 +859,16 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "'How do I meet SOC 2 / ISO 27001 / NIS2' generates enormous assistant traffic. A control-by-control mapping page is high-intent, well-defined, and rarely done well.",
 			},
 			{
-				name: "Document Architecture Honestly, Including Limits",
+				name: "Document Architecture Openly, Including Limits",
 				text: "Engines reward sources that state constraints. Saying what your product does not cover makes the rest of the description more credible and more quotable.",
 			},
 		],
-		fit: "CiteRank.com tracks category, comparison, and compliance prompts across engines so you can see which categories you are actually placed in. It also shows which vendors get named alongside or instead of you, and whether engines cite your research or a competitor's when they answer.",
+		fit: "CiteRank.com tracks category, comparison, and compliance prompts across engines so you can see which categories you are placed in. It also shows which vendors get named alongside or instead of you, and whether engines cite your research or a competitor's when they answer.",
 		faqs: [
 			{
 				question: "Do security buyers really use AI assistants for vendor research?",
 				answer:
-					"For the early shortlist, consistently. Assistants are used to map a category, compare vendors, and understand technology differences before analyst calls or RFPs begin, which means the shortlist is often set before a vendor knows the evaluation exists.",
+					"For the early shortlist, consistently. Assistants are used to survey a category, compare vendors, and understand technology differences before analyst calls or RFPs begin, which means the shortlist is often set before a vendor knows the evaluation exists.",
 			},
 			{
 				question: "What content gets a security vendor cited?",
@@ -894,7 +895,7 @@ export const aeoVerticals: AeoVertical[] = [
 		plays: [
 			{
 				name: "Specialise the Prompt Set by Role and Region",
-				text: "Nobody asks for the best recruiting agency in general. They ask for engineering recruiters in Berlin or healthcare staffing in Texas. Track the specific combinations you actually serve.",
+				text: "Nobody asks for the best recruiting agency in general. They ask for engineering recruiters in Berlin or healthcare staffing in Texas. Track the specific combinations you serve.",
 			},
 			{
 				name: "Publish Fee Structures and Timelines",
@@ -906,7 +907,7 @@ export const aeoVerticals: AeoVertical[] = [
 			},
 			{
 				name: "Track Employer Brand Prompts Separately",
-				text: "How engines describe you to candidates is a different question from how they describe you to employers, driven by different sources (review platforms rather than industry press).",
+				text: "How engines describe you to candidates is a different question from how they describe you to employers, driven by different sources, review platforms rather than industry press.",
 			},
 		],
 		fit: "CiteRank.com tracks role, region, and platform-comparison prompts separately, and shows the employer-facing and candidate-facing pictures side by side rather than collapsing them into one score.",
@@ -943,11 +944,11 @@ export const aeoVerticals: AeoVertical[] = [
 		plays: [
 			{
 				name: "Make Documentation Server-Rendered and Crawlable",
-				text: "AI crawlers generally do not execute JavaScript. Documentation that renders client-side is invisible to them no matter how good it is. It is a surprisingly common and entirely fixable failure.",
+				text: "AI crawlers generally do not execute JavaScript. Documentation that renders client-side is invisible to them no matter how good it is, a surprisingly common and entirely fixable failure.",
 			},
 			{
 				name: "Publish Runnable Examples for Real Tasks",
-				text: "Assistants quote code. Complete, copy-pasteable examples organised by task are what get surfaced; API reference tables alone rarely are.",
+				text: "Assistants quote code. Complete, copy-pasteable examples organised by task are what get cited; API reference tables alone rarely are.",
 			},
 			{
 				name: "Write the Migration and Comparison Pages",
@@ -958,7 +959,7 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "Serving plain markdown alongside the rendered docs gives models a clean, unambiguous source and removes any dependence on their HTML parsing.",
 			},
 		],
-		fit: "CiteRank.com tracks the library and framework recommendation prompts developers actually run, across engines, and reports which sources drove each citation. Its REST API and MCP server also let you pull the same data into your own scripts and AI assistants.",
+		fit: "CiteRank.com tracks the library and framework recommendation prompts developers run, across engines, and reports which sources drove each citation. Its REST API and MCP server also let you pull the same data into your own scripts and AI assistants.",
 		faqs: [
 			{
 				question: "How do AI coding assistants decide which libraries to recommend?",

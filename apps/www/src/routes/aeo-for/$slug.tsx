@@ -173,8 +173,8 @@ function Playbook({ vertical }: { vertical: AeoVertical }) {
 		<section className="border-t border-zinc-200/80 bg-white">
 			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
 				<SectionHeading
-					title={`The AEO Playbook for ${titleCase(vertical.audience)}`}
-					lede="What gets a brand named in AI answers in your category, and where CiteRank.com shows you the gaps."
+					title={`The AEO Checklist for ${titleCase(vertical.audience)}`}
+					lede="What gets a brand named in AI answers in your category, and where CiteRank.com shows you the content gaps."
 				/>
 				<ol className="mt-12 grid gap-4 md:grid-cols-2">
 					{vertical.plays.map((play, i) => (
