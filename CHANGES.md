@@ -24,6 +24,10 @@ A merge keeps every change below: where Elmo changed the same lines, git stops f
 3. Run `node scripts/citerank-brand-check.mjs`. It lists any customer-facing Elmo text the release added; rebrand each one and add the file to the table below.
 4. Test, deploy, then add a line to the log.
 
+## Before going live
+
+The home page logo strip ("Used by 200+ brands to optimize their AI visibility"), the "Loved by marketers. Recommended by AI." reviews, and the sign-up page quote and G2 stars are Elmo's customers, Elmo's reviews and AI answers about Elmo, shown with our name for the local demo. Swap in CiteRank.com's own logos, count, quotes and AI answers before deploying: `apps/www/src/components/home/logos.tsx`, `apps/www/src/components/home/reviews.tsx`, `packages/ui/src/brand/customers.tsx`, `packages/ui/src/brand/g2-rating.tsx`, `apps/www/public/testimonials/` and the three customer logo files in `apps/www/public/`.
+
 ## Running locally
 
 Everything runs in cloud mode (plans and billing) with no real keys.
@@ -65,7 +69,7 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | `apps/web/src/routes/api/manifest/index.ts`, `apps/web/src/stories/brand-kit.stories.tsx` | Icon paths. |
 | `apps/web/public/icons/*`, `apps/www/public/icons/*`, `apps/www/public/favicon.ico`, `apps/www/public/apple-touch-icon.png`, `apps/www/public/brand/icons/citerank-icon-512.png` | CiteRank.com mark from the old site, renamed from `elmo-icon*`. |
 | `apps/www/public/site.webmanifest`, `apps/www/src/lib/seo.ts`, `apps/www/src/lib/ai-catalog.ts`, `apps/www/src/routes/__root.tsx` | Name, colours and logo paths. |
-| `apps/web/src/components/auth/sales-panel.tsx` | Sign-up pitch rewritten from the brand text. Elmo's customer quote, G2 badge, demo and GitHub links removed; a Book a Call link to /agency added. |
+| `apps/web/src/components/auth/sales-panel.tsx` | Elmo's pitch with our name. The demo and GitHub links are gone, and a Book a Call link to /agency replaces the demo link. The customer quote and G2 stars are Elmo's, kept for the local demo (see "Before going live"). |
 | `apps/web/src/components/nav-app-info.tsx` | Website link goes to citerank.com; Elmo's GitHub and release links removed. |
 | `apps/web/src/components/legal-consent-notice.tsx`, `apps/web/src/components/chart-export-preview.tsx`, `apps/web/src/lib/route-head.ts`, `apps/web/src/routes/auth/login.tsx`, `apps/web/src/routes/auth/authorize.tsx`, `apps/web/src/routes/_authed/choose-plan.tsx`, `settings/billing.tsx`, `apps/web/src/routes/_authed/reports/render/$reportId.tsx` | Elmo's name, email address and domain replaced. |
 | `apps/web/src/components/app-sidebar.tsx`, `settings/api.tsx` | Elmo's AEO skill and SDK snippets appear in local mode only. |
@@ -82,7 +86,8 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | `apps/www/src/lib/seo.ts` | Site URL, name and description; Organization data for Danx Digital Limited; tracker price range. |
 | `apps/www/src/routes/__root.tsx` | Fonts, title, theme colour. No Plausible tag, GitHub star fetch or cookie banner. |
 | `apps/www/src/components/navbar.tsx`, `apps/www/src/components/footer.tsx`, `apps/www/src/components/logo.tsx` | CiteRank.com navigation, footer with the Danx Digital Limited legal line, wordmark. |
-| `apps/www/src/routes/index.tsx`, `apps/www/src/components/home/*` (hero, product-demo, how-it-works, why-switch, models, pricing, closing, faq, styles; new agency.tsx), `apps/www/src/data/hero-variants.ts` | Home page copy from the brand text; Elmo's customer logos, reviews, self-hosting and community sections removed. |
+| `apps/www/src/routes/index.tsx`, `apps/www/src/components/home/*` (hero, product-demo, how-it-works, why-switch, models, pricing, closing, faq, styles; new agency.tsx), `apps/www/src/data/hero-variants.ts` | Home page copy from the brand text; Elmo's self-hosting and community sections removed. The logo strip and reviews are Elmo's, kept with our name for the local demo (see "Before going live"). |
+| `packages/ui/src/brand/customers.tsx`, `packages/ui/src/brand/g2-rating.tsx` | Elmo's customer quotes, logos and G2 badge with our name and `?ref=citerank` links, for the local demo (see "Before going live"). |
 | `apps/www/src/lib/faqs.ts` | Every FAQ set rewritten; AGENCY_FAQS replaces the off-site AEO FAQs. |
 | `apps/www/src/routes/agency.tsx` | New. The agency page, with placeholder tiers and a booking slot (AGENCY_CAL_LINK) waiting for Adam's Cal.com link. |
 | `apps/www/src/routes/pricing.tsx`, `apps/www/src/components/pricing.tsx`, `apps/www/src/routes/about.tsx`, `apps/www/src/routes/support.tsx`, `apps/www/src/routes/legal/index.tsx` | Rewritten for CiteRank.com. |
@@ -110,7 +115,7 @@ Keep these deleted when an Elmo merge reports changes to them.
 - Elmo-only pages: `apps/www/src/routes/` changelog, roadmap, vision, status, brand, demo, off-site-aeo, off-site-aeo_.book, `og/status[.]png.tsx`, `repo-activity[.]svg.ts`, `api/repo-activity/`.
 - Their helpers: `apps/www/src/lib/` github-changelog, github-releases, github-roadmap, github-stars, release-markdown, repo-activity/, status, status-helpers, status-og, redis; `apps/www/src/data/upcoming-features.json`.
 - Components only they used: `apps/www/src/components/` off-site-aeo, booking-page, contact-form, newsletter-signup, community, quickstart-block; `apps/www/src/lib/self-host-link.ts`.
-- Elmo's customers and self-hosting pitch: `apps/www/src/components/home/` logos, reviews, self-host; `packages/ui/src/brand/` customers, g2-rating; `apps/www/public/` testimonials/, recordranks-logo.svg, askhotel-logo.png, aisearch-global-logo.svg, demo-poster.png.
+- Elmo's self-hosting pitch: `apps/www/src/components/home/self-host.tsx`, `apps/www/public/demo-poster.png`.
 - Elmo's brand kit: `apps/www/public/brand/` banners, logos, architecture.svg, `icons/elmo-icon-*`.
 - Icons renamed: `apps/web/public/icons/elmo-icon*` and `apps/www/public/icons/elmo-icon*` became `citerank-icon*`.
 - Docs: `packages/docs/content/docs/developer-guide/`, `api/sdks.mdx`, `api/skill.mdx`.

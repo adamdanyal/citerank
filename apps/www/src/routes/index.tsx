@@ -6,8 +6,10 @@ import { Closing } from "@/components/home/closing";
 import { Faq } from "@/components/home/faq";
 import { Hero } from "@/components/home/hero";
 import { HowItWorks } from "@/components/home/how-it-works";
+import { LogoStrip } from "@/components/home/logos";
 import { ModelCoverage } from "@/components/home/models";
 import { Pricing } from "@/components/home/pricing";
+import { Reviews } from "@/components/home/reviews";
 import { HOME_FONT_CLASS, HomeStyles } from "@/components/home/styles";
 import { WhySwitch } from "@/components/home/why-switch";
 import { Navbar } from "@/components/navbar";
@@ -61,11 +63,13 @@ function HomePage() {
 			<Navbar />
 			<main>
 				<Hero {...variant} />
+				<LogoStrip />
 				<ModelCoverage />
+				<Reviews />
 				<HowItWorks />
 				<WhySwitch />
-				<AgencyTeaser />
 				<Pricing />
+				<AgencyTeaser />
 				<Faq items={HOME_FAQS} />
 				<Closing />
 			</main>
