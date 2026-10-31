@@ -103,7 +103,7 @@ function AeoForIndex() {
 								The shape of the deciding question changes too. SaaS buyers ask for comparisons and alternatives.
 								Industrial buyers ask by specification. Donors ask about efficiency, patients ask about symptoms, and
 								travellers ask for itineraries rather than for hotels. AI visibility becomes measurable when you track
-								the prompts that actually precede a decision in your category.
+								the prompts that actually precede a decision in your category, phrased the way your buyers ask them.
 							</p>
 							<p>
 								Each guide above covers the prompts worth tracking in that industry, what to publish so engines have

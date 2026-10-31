@@ -93,7 +93,7 @@ const STEPS = [
 const FAQS = [
 	{
 		question: "Do I need to talk to sales to use CiteRank.com?",
-		answer: `No. Every CiteRank.com plan is self-serve: sign up, pay by card, and start tracking. Plans start at $${CLOUD_ENTRY_PRICE_USD}/mo, and you can change or cancel from the billing page.`,
+		answer: `No. Every CiteRank.com plan is self-serve: sign up, pay by card, and start tracking. Plans start at $${CLOUD_ENTRY_PRICE_USD}/mo, and you can change or cancel from the billing page. Calls are only for the AI search agency, which is a separate service.`,
 	},
 	{
 		question: "Can I bring my prompts over from Profound?",
@@ -106,7 +106,7 @@ const FAQS = [
 	},
 	{
 		question: "Which CiteRank.com plan matches a Profound setup?",
-		answer: `We recommend ${RECOMMENDED.name} for teams coming from Profound: ${RECOMMENDED.maxPrompts} prompts across ${RECOMMENDED.platformPicks} AI platforms, checked ${RECOMMENDED.standardRunsPerDay}× daily, with premium grounded models included, for $${RECOMMENDED.monthlyPriceUsd}/mo. Larger programs can step up to ${PLANS.business.name}.`,
+		answer: `We recommend ${RECOMMENDED.name} for teams coming from Profound: ${RECOMMENDED.maxPrompts} prompts across ${RECOMMENDED.platformPicks} AI platforms, checked ${RECOMMENDED.standardRunsPerDay}× daily, with premium grounded models included, for $${RECOMMENDED.monthlyPriceUsd}/mo. Larger programs can step up to ${PLANS.business.name}, which adds more prompts and brands.`,
 	},
 	{
 		question: "Can CiteRank.com do the work as well as track it?",

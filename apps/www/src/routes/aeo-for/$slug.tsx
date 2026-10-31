@@ -121,7 +121,7 @@ function Prompts({ vertical }: { vertical: AeoVertical }) {
 		<section className="border-t border-zinc-200/80 bg-zinc-50/70">
 			<div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 md:px-6 lg:grid-cols-12 lg:items-center lg:py-28">
 				<div className="lg:col-span-6">
-					<SectionHeading title="Your Buyers Are Asking AI Who to Choose" lede={lead} />
+					<SectionHeading title="Your Buyers Are Asking AI. Is It Naming You?" lede={lead} />
 					<div className="mt-5 max-w-[56ch] space-y-4 text-pretty text-[15px]/7 text-zinc-600">
 						{rest.map((p) => (
 							<p key={p.slice(0, 32)}>{p}</p>

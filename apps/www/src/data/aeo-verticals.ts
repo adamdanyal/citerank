@@ -28,14 +28,14 @@ export const aeoVerticals: AeoVertical[] = [
 		plan: "business",
 		technical: true,
 		headline: "AI Visibility Software for Agencies",
-		metaTitle: "AI Visibility & SEO Software for Agencies · CiteRank.com",
+		metaTitle: "AI Visibility & SEO Software for Agencies (Multi-Client) · CiteRank.com",
 		metaDescription:
 			"AI visibility software for agencies: track each client's presence in ChatGPT, Perplexity and AI Overviews, benchmark it against named competitors, and turn every gap into billable work.",
 		short:
 			"Track AI visibility for your clients, benchmark each one against named competitors, and turn every gap into a content brief.",
 		intro: [
 			"Agencies tend to feel the shift to AI search first, because clients start asking why a competitor shows up in ChatGPT and they do not. AEO turns into a service line: measure each client's presence across the answer engines, find the gaps, and show the work.",
-			"The hard part is doing that across many clients without paying per seat for each one. Every CiteRank.com plan includes unlimited seats, so adding people to the account never changes the bill.",
+			"The hard part is doing that across many clients without paying per seat for each one. Every CiteRank.com plan includes unlimited seats, so bringing in more account managers, writers, and analysts never changes the bill.",
 		],
 		examplePrompts: ["best [client category] companies", "[client] vs [competitor]", "is [client] worth it"],
 		plays: [
@@ -52,16 +52,16 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "Every prompt where a client is missing is a concrete content brief, which turns reporting into billable work.",
 			},
 			{
-				name: "Put the Charts in Client Reports",
+				name: "Put Charts in Client Reports",
 				text: "Download any prompt's visibility chart as an image for the monthly report, with every number traceable to the AI answers behind it.",
 			},
 		],
-		fit: "CiteRank.com tracks each client as its own brand, with its own prompts and competitors, keeps every answer in full, and charges nothing per seat, so the whole team can work in it.",
+		fit: "CiteRank.com tracks each client as its own brand, with its own prompts and competitors, keeps every answer in full for client reporting, and charges nothing per seat, so the whole agency can work in it.",
 		faqs: [
 			{
-				question: "Can agencies put AI visibility data in client reports?",
+				question: "Can agencies put AI visibility charts in reports?",
 				answer:
-					"Yes. Any prompt's visibility chart downloads as a PNG for a slide or report, and every number traces back to the AI answers it came from.",
+					"Yes. Any prompt's visibility chart downloads as a PNG for a slide or report, and every number traces back to the AI answers it came from. The REST API can also feed the same data into your own reporting tools.",
 			},
 			{
 				question: "How do agencies price AEO services?",
@@ -108,7 +108,7 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "Models go stale. Monitor for outdated descriptions of your features or pricing and correct the underlying sources.",
 			},
 		],
-		fit: "CiteRank.com tracks exactly these prompts across every major engine, shows which competitors get named with or instead of you, and keeps every answer in full, so you can see when a model gets your features or pricing wrong.",
+		fit: "CiteRank.com tracks exactly these prompts across every major engine, shows which competitors get named with or instead of you, and keeps every answer, so you can catch wrong feature or pricing claims.",
 		faqs: [
 			{
 				question: "What is the best AEO tool for B2B SaaS?",
@@ -224,10 +224,10 @@ export const aeoVerticals: AeoVertical[] = [
 		metaTitle: "Startup SEO in the AI Search Era: A Practical Guide · CiteRank.com",
 		metaDescription:
 			"Startup SEO when a growing share of searches end in an AI answer: which prompts to track first, what to publish, and how to measure visibility on a small budget.",
-		short: `Build AI visibility from zero without enterprise pricing, on plans from $${CLOUD_ENTRY_PRICE_USD}/mo.`,
+		short: `Build AI visibility from zero without enterprise pricing, on self-serve plans from $${CLOUD_ENTRY_PRICE_USD}/mo.`,
 		intro: [
 			"A new brand starts out invisible to AI engines, because there is little for the models to have learned. The job is to build a credible footprint quickly: clear content, early reviews, and mentions on sources the models trust.",
-			`Budgets are tight, and most tools in this space are priced for larger companies. CiteRank.com's ${PLANS.starter.name} plan tracks ${PLANS.starter.maxPrompts} prompts in ChatGPT for $${PLANS.starter.monthlyPriceUsd}/mo, so you can start measuring on day one.`,
+			`Budgets are tight, and most tools in this space are priced for larger companies. CiteRank.com's ${PLANS.starter.name} plan tracks ${PLANS.starter.maxPrompts} prompts in ChatGPT for $${PLANS.starter.monthlyPriceUsd}/mo, so you can start measuring on day one and only pay more when you track more.`,
 		],
 		examplePrompts: ["best [new category] tools", "alternatives to [incumbent]", "what is [your brand]"],
 		plays: [
@@ -248,10 +248,10 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "Visibility moves as you publish and get covered. A weekly read shows whether it is working.",
 			},
 		],
-		fit: `CiteRank.com's plans start at $${CLOUD_ENTRY_PRICE_USD}/mo with no sales call or contract, so an early-stage team can track AI visibility from day one.`,
+		fit: `CiteRank.com's plans start at $${CLOUD_ENTRY_PRICE_USD}/mo, so an early-stage team can track AI visibility without an enterprise contract, a sales call, or a per-seat bill.`,
 		faqs: [
 			{
-				question: "How much does AI visibility tracking cost for a startup?",
+				question: "What does AI visibility tracking cost a startup?",
 				answer: `CiteRank.com's ${PLANS.starter.name} plan costs $${PLANS.starter.monthlyPriceUsd}/mo for ${PLANS.starter.maxPrompts} prompts checked ${PLANS.starter.standardRunsPerDay}× daily in ChatGPT, with unlimited seats. Move up a plan when you need more AI apps or more checks a day.`,
 			},
 			{
@@ -269,11 +269,11 @@ export const aeoVerticals: AeoVertical[] = [
 		headline: "Enterprise AI Visibility Platforms",
 		metaTitle: "Enterprise AI Visibility & AEO Platform Requirements · CiteRank.com",
 		metaDescription:
-			"What an enterprise AEO platform has to do: multi-brand tracking, API export, and numbers your analysts can trace back to the AI answers behind them.",
+			"What an enterprise AEO platform has to do: multi-brand tracking, unlimited seats, API export, and numbers your analysts can trace back to the AI answers behind them.",
 		short: "Track AI visibility across brands and AI apps, with every number traceable to the answer behind it.",
 		intro: [
-			"Large brands have the most to lose when an AI engine describes them wrongly, and the most scrutiny over the numbers that reach leadership.",
-			"CiteRank.com keeps every AI answer in full, so each number traces back to the words an AI wrote, and documents how each metric is computed, which matters when the number ends up in a board report.",
+			"Large brands have the most to lose when an AI engine describes them wrongly, and the most scrutiny over the numbers that reach leadership. A visibility score has to hold up when someone asks which answers it came from and how it was counted.",
+			"CiteRank.com is built for that scrutiny. It keeps every AI answer in full, so each number traces back to the words an AI wrote, and documents how each metric is computed, which matters when the number ends up in a board report.",
 		],
 		examplePrompts: ["is [brand] trustworthy", "[brand] vs [competitor]", "best [category] for enterprise"],
 		plays: [
@@ -290,21 +290,21 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "Track share of voice against the specific rivals leadership cares about, on the prompts that matter.",
 			},
 			{
-				name: "Check the Answers Behind the Score",
+				name: "Trace Scores to Answers",
 				text: "Every answer is kept in full, so your team can check any number against the responses it was built from.",
 			},
 		],
 		fit: "CiteRank.com tracks each brand against the competitors leadership cares about, keeps every answer behind every number, and serves the same data through an API for your own BI tools.",
 		faqs: [
 			{
-				question: "Can we export AI visibility data to our own tools?",
+				question: "Can we export AI visibility data via API?",
 				answer:
 					"Yes. Every plan includes API access. The REST API covers brands, prompts, analytics, citations, and query fan-out, and an MCP server lets AI assistants read the same data.",
 			},
 			{
-				question: "Can analysts check how the numbers are calculated?",
+				question: "Can analysts check how each metric is counted?",
 				answer:
-					"Yes. How each metric is counted is documented, and every answer is kept in full, so any score can be traced back to the responses behind it.",
+					"Yes. How each metric is counted is documented, and every answer is kept in full with the sources it cited, so any score can be traced back to the responses behind it.",
 			},
 		],
 	},
@@ -315,7 +315,7 @@ export const aeoVerticals: AeoVertical[] = [
 		short: "Monitor and correct how AI engines describe your healthcare brand, where accuracy is not optional.",
 		intro: [
 			"Health topics are exactly where AI engines are most cautious, and where errors do the most damage. An inaccurate description of a provider, product, or service carries real risk.",
-			"Accuracy and monitoring both matter here. Authoritative, well-sourced content shapes what the models say, and regular tracking shows when an answer about you goes wrong.",
+			"Accuracy and monitoring both matter here. Authoritative, well-sourced content shapes what the models say, and tracking the same prompts every day shows when an answer about your services goes wrong.",
 		],
 		examplePrompts: ["is [treatment] safe", "best [specialty] near me", "what does [brand] treat"],
 		plays: [
@@ -332,11 +332,11 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "References from respected health sources carry extra weight in how engines ground their answers.",
 			},
 			{
-				name: "Find the Source of a Wrong Claim",
-				text: "See which sites engines cite for your prompts, so you know where an inaccurate claim comes from and which sources to correct or earn.",
+				name: "Trace Errors to the Source",
+				text: "See which sites engines cite for your prompts, so you know where a wrong claim comes from.",
 			},
 		],
-		fit: "CiteRank.com lets healthcare teams track how engines describe their brand and catch inaccuracies, with every answer kept in full and the sources behind it listed.",
+		fit: "CiteRank.com lets healthcare teams track how engines describe their brand and catch inaccuracies, with every answer kept in full and the sources behind each one listed.",
 		faqs: [
 			{
 				question: "Why does AEO matter in healthcare?",
@@ -357,7 +357,7 @@ export const aeoVerticals: AeoVertical[] = [
 		short: "Track how AI engines describe your financial brand, with the accuracy and data control the sector demands.",
 		intro: [
 			"Finance is another area where engines tread carefully, and where a wrong answer about rates, products, or eligibility carries compliance weight. Buyers ask AI engines for recommendations and comparisons all the same.",
-			"Authoritative content earns the citation, and a full record of what each engine said gives compliance teams something concrete to review.",
+			"Authoritative content earns the citation, and a full, dated record of what each engine said about your products and terms gives your compliance team something concrete to review when a claim is questioned.",
 		],
 		examplePrompts: ["best [product] for [need]", "is [brand] legit", "[brand] vs [competitor] fees"],
 		plays: [
@@ -374,11 +374,11 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "References from respected financial sources weigh heavily in what engines repeat about you.",
 			},
 			{
-				name: "Keep a Record of Every Answer",
+				name: "Keep a Record of Answers",
 				text: "Every answer is stored in full with its date, so you can show what an engine said about your products and when.",
 			},
 		],
-		fit: "CiteRank.com tracks your AI visibility across engines and keeps every answer in full, so inaccurate descriptions are easy to find and every number can be checked.",
+		fit: "CiteRank.com tracks your AI visibility across engines and keeps every answer in full, so inaccurate descriptions are easy to find and every number can be checked for compliance.",
 		faqs: [
 			{
 				question: "Why does AEO matter for financial services?",
@@ -422,11 +422,11 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "Bar admissions, practice years, and case types on the page and in Person schema are the evidence engines lean on for legal answers. An unsigned article is the easiest thing in the world for a model to skip.",
 			},
 			{
-				name: "Watch How Engines Describe Your Firm",
+				name: "Watch How Engines Describe Your Firm as Well as Whether They Name It",
 				text: "A citation that describes your practice areas wrongly, or attributes another firm's outcome to you, is worse than being absent. Sentiment and description accuracy matter more in legal than in most categories.",
 			},
 		],
-		fit: "CiteRank.com tracks practice-area and city-level prompts across every engine and keeps every answer in full, so you can see when one describes your firm inaccurately.",
+		fit: "CiteRank.com tracks practice-area and city-level prompts across every engine and keeps every answer in full, so you can see when one describes your firm inaccurately. It also shows which competing firms get named in each city, and which directories the engines cite.",
 		faqs: [
 			{
 				question: "Is AEO different for law firms than for other businesses?",
@@ -479,7 +479,7 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "Pricing ranges, response times, service radius, and what happens on a first visit are exactly what people ask assistants. Publishing them plainly gives the engine something concrete to quote.",
 			},
 		],
-		fit: "CiteRank.com runs the same questions for every location you operate, tagged by city, and reports visibility for each tag, so a strong city never hides a weak one.",
+		fit: "CiteRank.com runs the same questions for every location you operate, tagged by city, and reports visibility for each tag, so a strong city never hides a weak one. Seats are unlimited on every plan, so each location manager can log in and check their own city.",
 		faqs: [
 			{
 				question: "Do AI assistants give local recommendations?",
@@ -527,7 +527,7 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "'Best agent in [city]' and 'best brokerage in [city]' produce different answers from different sources. Both matter, and improving one does not move the other.",
 			},
 		],
-		fit: "CiteRank.com tracks neighbourhood, city, and agent-level prompts side by side so you can see which markets you own and which are still owned by the portals, with every answer kept in full.",
+		fit: "CiteRank.com tracks neighbourhood, city, and agent-level prompts side by side so you can see which markets you own and which are still owned by the portals, with every answer kept in full, month after month.",
 		faqs: [
 			{
 				question: "Can real estate brokerages outrank portals in AI answers?",
@@ -575,7 +575,7 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "'Is this degree worth it' is asked constantly. An institution that addresses it with real numbers, including the cases where the answer is nuanced, earns citations that promotional copy never will.",
 			},
 		],
-		fit: "CiteRank.com tracks whether the institution is named and how engines describe each programme, and keeps every answer in full, so you can see when one misstates cost, length, or accreditation.",
+		fit: "CiteRank.com tracks whether the institution is named and how engines describe each programme, and keeps every answer in full, so you can see when one misstates cost, length, or accreditation. It also shows which competing institutions are named instead.",
 		faqs: [
 			{
 				question: "Do students use AI to choose programmes?",
@@ -607,7 +607,7 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track Itinerary Prompts",
+				name: "Track Itinerary Prompts Alongside Brand Prompts",
 				text: "The recommendation that matters is 'where should I stay in [city]', not 'tell me about [hotel]'. Build the prompt set around the planning questions travellers actually ask.",
 			},
 			{
@@ -701,7 +701,7 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track Coverage Questions",
+				name: "Track Coverage Questions Alongside Carrier Comparisons",
 				text: "'Does X cover Y' is the highest-volume question shape in insurance and the one most likely to be answered wrongly. It is also where clear published answers win citations easily.",
 			},
 			{
@@ -717,7 +717,7 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "Cost is the most-asked and most-evaded question in the category. Honest ranges with the factors that move them get cited over pages that route straight to a quote form.",
 			},
 		],
-		fit: "CiteRank.com tracks coverage, comparison, and pricing prompts across engines and keeps every answer in full, so your compliance team can see when one describes your policies inaccurately.",
+		fit: "CiteRank.com tracks coverage, comparison, and pricing prompts across engines and keeps every answer in full, so your compliance team can see when one describes your policies inaccurately. Each answer is stored with its date and the sources it cited.",
 		faqs: [
 			{
 				question: "Why does answer accuracy matter more in insurance?",
@@ -813,7 +813,7 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "'How much goes to the programme' is the most common donor question and the most commonly dodged. A clear, current answer earns citations precisely because it is rare.",
 			},
 		],
-		fit: `CiteRank.com tracks cause-area and legitimacy prompts across engines so you can see whether donors researching your cause are being pointed at your organisation. Plans start at $${CLOUD_ENTRY_PRICE_USD}/mo.`,
+		fit: `CiteRank.com tracks cause-area and legitimacy prompts across engines so you can see whether donors researching your cause are being pointed at your organisation. Plans start at $${CLOUD_ENTRY_PRICE_USD}/mo with unlimited seats, so staff and volunteers can each have a login.`,
 		faqs: [
 			{
 				question: "Do donors use AI to decide where to give?",
@@ -862,7 +862,7 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "Engines reward sources that state constraints. Saying what your product does not cover makes the rest of the description more credible and more quotable.",
 			},
 		],
-		fit: "CiteRank.com tracks category, comparison, and compliance prompts across engines so you can see which categories you are actually placed in.",
+		fit: "CiteRank.com tracks category, comparison, and compliance prompts across engines so you can see which categories you are actually placed in. It also shows which vendors get named alongside or instead of you, and whether engines cite your research or a competitor's when they answer.",
 		faqs: [
 			{
 				question: "Do security buyers really use AI assistants for vendor research?",
@@ -958,7 +958,7 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "Serving plain markdown alongside the rendered docs gives models a clean, unambiguous source and removes any dependence on their HTML parsing.",
 			},
 		],
-		fit: "CiteRank.com tracks the library and framework recommendation prompts developers actually run, across engines, and reports which sources drove each citation.",
+		fit: "CiteRank.com tracks the library and framework recommendation prompts developers actually run, across engines, and reports which sources drove each citation. Its REST API and MCP server also let you pull the same data into your own scripts and AI assistants.",
 		faqs: [
 			{
 				question: "How do AI coding assistants decide which libraries to recommend?",
