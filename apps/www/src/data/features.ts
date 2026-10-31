@@ -115,12 +115,12 @@ export const productFeatures: ProductFeature[] = [
 		],
 		why: [
 			{
-				name: "Scraped From the Real Apps",
+				name: "The Real Apps, Plus APIs",
 				text: "ChatGPT, Google AI Overviews, AI Mode, Gemini, Perplexity, and Copilot are scraped from the interfaces your customers use, with direct APIs for everything else.",
 			},
 			{
-				name: "Public Methodology",
-				text: "How a mention is counted is spelled out in docs anyone can read, so every number can be checked rather than taken on trust.",
+				name: "Open Methodology",
+				text: "How a mention is counted is documented for anyone to read, so every number can be checked rather than taken on trust.",
 			},
 			{
 				name: "Every Answer Behind the Number",
@@ -158,7 +158,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				question: "How often does CiteRank.com check my prompts?",
-				answer: `Prompts run ${PLANS.starter.standardRunsPerDay}× a day on the ${PLANS.starter.name} plan and up to ${PLANS.basic.standardRunsPerDay}× a day on the others. Each run covers every AI app the brand tracks and keeps the full answer.`,
+				answer: `Prompts run ${PLANS.starter.standardRunsPerDay}× a day on the ${PLANS.starter.name} plan and up to ${PLANS.basic.standardRunsPerDay}× a day on the others. GPT Search, Claude (web), and Grok (web) run once a day on Pro and Business.`,
 			},
 		],
 	},
@@ -285,7 +285,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				name: "Read the Passages",
-				text: "Open the clearest praise and criticism, linked to the prompt they came from, or filter every response down to just the negative ones.",
+				text: "Open the clearest praise and criticism, linked to the prompt they came from, or filter every response down to the negative ones.",
 			},
 		],
 		metrics: [
@@ -326,7 +326,7 @@ export const productFeatures: ProductFeature[] = [
 				text: "Most answers state facts rather than opinions. A factual mention scores 50, so it never counts against you.",
 			},
 			{
-				name: "The Passage Behind Every Score",
+				name: "Evidence Behind the Number",
 				text: "Click a company's badge on any response to highlight the passage its sentiment was read from.",
 			},
 			{
@@ -424,7 +424,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				term: "Reddit and Google Shopping",
-				definition: "Which subreddits get cited, and the products Google AI Mode surfaces from Shopping.",
+				definition: "Which subreddits get cited, and the products Google AI Mode shows from Shopping.",
 			},
 		],
 		useCases: [
@@ -488,7 +488,7 @@ export const productFeatures: ProductFeature[] = [
 		metaTitle: "Query Fan-Out Tracking: See the Searches Behind AI Answers · CiteRank.com",
 		metaDescription:
 			"AI engines turn one prompt into several web searches. CiteRank.com tracks the exact fan-out queries ChatGPT and other engines run for your prompts, and how they rewrite your wording.",
-		lede: "When an AI engine with web search answers a prompt, it often runs several web searches first. CiteRank.com records those fan-out queries for every prompt, so you can see what the engines actually search for, which searches recur across your category, and how they rewrite your wording.",
+		lede: "When an AI engine with web search answers a prompt, it often runs several web searches first. CiteRank.com records those fan-out queries for every prompt, so you can see what the engines search for, which searches recur across your category, and how they rewrite your wording.",
 		summary: "The web searches AI engines run behind each answer, and the words they add to or drop from your prompts.",
 		graphic: "query-fan-out",
 		steps: [
@@ -498,7 +498,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				name: "Find the Recurring Queries",
-				text: "Top queries surface the searches that come up again and again across all your prompts.",
+				text: "Top queries show the searches that come up again and again across all your prompts.",
 			},
 			{
 				name: "Learn How Engines Rewrite You",
@@ -526,7 +526,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 		],
 		useCases: [
-			"Find the search phrasing to target, based on what the engines actually search for rather than what you guess.",
+			"Find the search phrasing to target, based on what the engines search for rather than what you guess.",
 			"See the qualifiers engines add, like the current year or 'vs', and cover them in your content.",
 			"Check whether your pages rank for the searches behind the prompts you're losing.",
 		],
@@ -536,12 +536,12 @@ export const productFeatures: ProductFeature[] = [
 				text: "Every figure comes from the searches recorded on real prompt runs, the same way for every provider.",
 			},
 			{
-				name: "Honest About Gaps",
+				name: "Honest About Unknowns",
 				text: "Some engines don't reveal their searches. CiteRank.com counts those runs separately instead of guessing what they searched for.",
 			},
 			{
 				name: "Only Real Rewrites",
-				text: "A search that just repeats your prompt says nothing about how it was rewritten, so the page leaves those out.",
+				text: "A search that repeats your prompt says nothing about how it was rewritten, so the page leaves those out.",
 			},
 		],
 		docs: { title: "Provider docs", href: "/docs/user-guide/providers" },
@@ -593,7 +593,7 @@ export const productFeatures: ProductFeature[] = [
 		steps: [
 			{
 				name: "Start From Your Website",
-				text: "Paste your site and CiteRank.com suggests products, competitors, aliases, and tagged starter prompts. Ask for more suggestions any time; it skips what you already track.",
+				text: "Paste your site and CiteRank.com suggests domains, competitors, aliases, and tagged starter prompts. Ask for more suggestions any time; it skips what you already track.",
 			},
 			{
 				name: "Organize With Tags",
@@ -727,7 +727,7 @@ export const productFeatures: ProductFeature[] = [
 		],
 		useCases: [
 			"Turn a month of tracking data into a content and outreach plan for the next sprint.",
-			"Find the review sites and roundups to pitch, based on what AI actually cites for your prompts.",
+			"Find the review sites and roundups to pitch, based on what AI cites for your prompts.",
 			"Hand an agent or a writer a specific brief with the prompts and competitor pages attached.",
 			"Have CiteRank.com's AI search agency do the work each month, with a report on the AI answers before and after.",
 		],
@@ -766,7 +766,7 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "How does CiteRank.com generate AEO recommendations?",
 				answer:
-					"CiteRank.com assembles a digest of your tracked data, including visibility per platform, each prompt's standing against the leading competitor over 7 and 30 days, and the sites cited for your prompts, and asks a language model to turn it into categorized opportunities. The prompts and cited pages behind each one are attached from your data.",
+					"CiteRank.com assembles a digest of your tracked data, including visibility per platform, each prompt's standing against the leading competitor over 7 and 30 days, and the citation landscape, and asks a language model to turn it into categorized opportunities. The prompts and cited pages behind each one are attached from your data.",
 			},
 			{
 				question: "How often are opportunities updated?",
@@ -790,7 +790,7 @@ export const productFeatures: ProductFeature[] = [
 		title: "AI Visibility Reporting and Dashboards",
 		metaTitle: "AI Visibility Reporting & Dashboards for AI Search · CiteRank.com",
 		metaDescription:
-			"Report AI search performance with CiteRank.com's overview dashboard, PNG exports of any prompt chart, and a REST API for your own BI tools and spreadsheets.",
+			"Report AI search performance with CiteRank.com's overview dashboard, PNG chart exports, an MCP server for AI assistants, and an API for your own BI tools.",
 		lede: "CiteRank.com's overview puts visibility, share of voice, sentiment, and position on one screen, with every competitor ranked beside you. Export any prompt chart as a PNG for a deck, pull the numbers into your own dashboards through the API, or ask an AI assistant for them over MCP.",
 		summary:
 			"An overview dashboard, PNG chart exports, an API for your own BI tools, and an MCP server for AI assistants.",
@@ -802,11 +802,11 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				name: "Export for Your Deck",
-				text: "Download any prompt's chart as a PNG from the Visibility page, sized for slides and reports.",
+				text: "Download prompt charts as PNGs, with CiteRank.com's branding, sized for slides and reports.",
 			},
 			{
 				name: "Send It Where You Report",
-				text: "Pull analytics into a spreadsheet or BI tool through the REST API, or ask an AI assistant about them over MCP.",
+				text: "Ask an AI assistant for the numbers over MCP, or pull analytics into a spreadsheet or BI tool through the REST API.",
 			},
 		],
 		metrics: [
@@ -830,7 +830,7 @@ export const productFeatures: ProductFeature[] = [
 		why: [
 			{
 				name: "Numbers You Can Defend",
-				text: "Every figure traces back to stored answers, and the methodology is documented publicly.",
+				text: "Every figure traces back to stored answers, and the methodology is documented in the open.",
 			},
 			{
 				name: "Your Data, Your Tools",
@@ -869,7 +869,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				question: "Can I export charts?",
-				answer: "Yes. Every prompt chart downloads as a PNG, sized for slides and reports.",
+				answer: "Yes. Prompt charts download as PNGs that include CiteRank.com's branding.",
 			},
 			{
 				question: "Does the AI search agency report on its work?",
@@ -892,7 +892,7 @@ export const productFeatures: ProductFeature[] = [
 		steps: [
 			{
 				name: "Issue a Key, or Sign In",
-				text: "Create an organization API key, read-only or read-write, optionally limited to some brands and given an expiry. MCP clients can also just sign in from a browser.",
+				text: "Create an organization API key, read-only or read-write, optionally limited to some brands and given an expiry. MCP clients can also sign in from a browser.",
 			},
 			{
 				name: "Call It From Code",
@@ -990,18 +990,18 @@ export const productFeatures: ProductFeature[] = [
 			{
 				term: "Direct Model APIs",
 				definition:
-					"Claude, DeepSeek, Mistral, Qwen, and Kimi, called through their APIs without web search, and Claude and Grok with web search on Pro and Business.",
+					"Claude, DeepSeek, Mistral, Qwen, and Kimi without web search, and Claude, Grok, and GPT Search with web search on Pro and Business.",
 			},
 		],
 		useCases: [
 			"Compare how ChatGPT and Google AI Overviews treat your brand, since they often disagree.",
 			"Add an engine your audience uses, like Copilot for enterprise buyers, without switching tools.",
-			"Track a specific model version alongside the consumer app to see how much they differ.",
+			"Track GPT Search alongside the ChatGPT consumer app to see how much they differ.",
 		],
 		why: [
 			{
-				name: "What Customers Actually See",
-				text: "A model's API isn't the consumer product. Scraping the real ChatGPT and Google surfaces is closer to the answers your buyers get.",
+				name: "What Your Customers See",
+				text: "A model's API isn't the consumer product. Scraping the real ChatGPT and Google apps is closer to the answers your buyers get.",
 			},
 			{
 				name: "12 AI Apps in One Place",
@@ -1028,7 +1028,7 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "Which AI engines does CiteRank.com track?",
 				answer:
-					"ChatGPT, Google AI Overviews, Google AI Mode, Gemini, Perplexity, and Copilot are scraped from their real interfaces. Claude, DeepSeek, Mistral, Qwen, and Kimi are called through their APIs, and Claude and Grok can be tracked with web search on the Pro and Business plans.",
+					"ChatGPT, Google AI Overviews, Google AI Mode, Gemini, Perplexity, and Copilot are scraped from their real interfaces. Claude, DeepSeek, Mistral, Qwen, and Kimi are called through their APIs, and Claude, Grok, and GPT Search can be tracked with web search on Pro and Business.",
 			},
 			{
 				question: "Why scrape instead of using the API?",
