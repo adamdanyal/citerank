@@ -11,9 +11,21 @@ import { createOpenAPI } from "fumadocs-openapi/server";
  * request instead.
  */
 export const hostedSpec = {
-	...spec,
+	...withoutVendorExtensions(spec),
 	servers: [{ url: `${CLOUD_APP_URL}/api/v1`, description: `${DEFAULT_APP_NAME} API` }],
 };
+
+// The spec's x-elmo-* keys are read by the app, but the docs pages embed the
+// spec in their page data, where the keys would show the upstream name.
+function withoutVendorExtensions<T>(value: T): T {
+	if (Array.isArray(value)) return value.map(withoutVendorExtensions) as T;
+	if (value === null || typeof value !== "object") return value;
+	return Object.fromEntries(
+		Object.entries(value)
+			.filter(([key]) => !key.startsWith("x-elmo-"))
+			.map(([key, entry]) => [key, withoutVendorExtensions(entry)]),
+	) as T;
+}
 
 export const openapi = createOpenAPI({
 	// fumadocs-openapi v11 replaced the `() => SchemaMap` factory with a record

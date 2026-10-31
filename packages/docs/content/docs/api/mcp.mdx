@@ -1,45 +1,41 @@
 ---
 title: MCP
-description: Connect Claude, ChatGPT, Claude Code, Codex, Cursor, VS Code, or another AI client to Elmo.
+description: Connect Claude, ChatGPT, Claude Code, Codex, Cursor, VS Code, or another AI client to CiteRank.com.
 ---
 
-Elmo serves a [Model Context Protocol](https://modelcontextprotocol.io) endpoint at `/api/mcp`, so an
-AI client can read your visibility data and manage prompts without you copying numbers between
-windows.
+CiteRank.com serves a [Model Context Protocol](https://modelcontextprotocol.io) endpoint at
+`https://app.citerank.com/api/mcp`, so an AI client can read your visibility data and manage prompts
+without you copying numbers between windows.
 
-On cloud that is `https://app.elmohq.com/api/mcp`. A self-hosted instance serves the same endpoint on
-its own address, so swap `app.elmohq.com` for yours in everything below.
-
-Every deployment also documents its own connection at **Settings → MCP** in the organization's settings
-sidebar: the endpoint on that instance's own address, snippets for the common clients, and the tools
-it registers.
+The dashboard also documents the connection at **Settings → MCP** in the organization's settings
+sidebar: the endpoint, snippets for the common clients, and the tools it registers.
 
 There are two ways to connect. Signing in from the client is the quickest, and the connection then
-acts as you, in the workspaces you belong to. An API key is for a client that can't open a browser —
-a container, a scheduled job — and is also how you grant a client *less* than your own access.
+acts as you, in the workspaces you belong to. An API key is for a client that can't open a browser,
+such as a container or a scheduled job, and is also how you grant a client *less* than your own access.
 
-## Quick setup
+## Quick Setup
 
 [`add-mcp`](https://github.com/neon-solutions/add-mcp) finds the AI clients installed on your machine and
-adds Elmo to each of them:
+adds CiteRank.com to each of them:
 
 ```bash
-npx add-mcp https://app.elmohq.com/api/mcp --name elmo
+npx add-mcp https://app.citerank.com/api/mcp --name citerank
 ```
 
 Add `-g` to install it for every project rather than just the current one, and `-y` to skip the
-prompt. Each client then asks you to sign in the first time it uses Elmo. To set up a single client
+prompt. Each client then asks you to sign in the first time it uses CiteRank.com. To set up a single client
 by hand, or one `add-mcp` doesn't cover, follow its section below.
 
-## Sign in from the client
+## Sign In From the Client
 
 Give the client the URL and it opens a browser for you to sign in. There is no application to
-register first, on cloud or on your own instance.
+register first.
 
 ### Claude Code
 
 ```bash
-claude mcp add --transport http elmo https://app.elmohq.com/api/mcp
+claude mcp add --transport http citerank https://app.citerank.com/api/mcp
 ```
 
 Then run `/mcp` and choose **Authenticate**.
@@ -49,9 +45,9 @@ Then run `/mcp` and choose **Authenticate**.
 Custom connectors are available on every Claude plan; the Free plan is limited to one.
 
 1. Open **Customize → Connectors**, choose **+ Add**, then **Add custom connector**.
-2. Name it `Elmo`, set the URL to `https://app.elmohq.com/api/mcp`, and choose **Continue**.
+2. Name it `CiteRank.com`, set the URL to `https://app.citerank.com/api/mcp`, and choose **Continue**.
 3. Review the detected authentication settings, choose **Continue**, and choose **Add**.
-4. Sign in to Elmo when Claude asks.
+4. Sign in to CiteRank.com when Claude asks.
 
 On Team and Enterprise plans, an owner adds the connector first under **Organization settings →
 Connectors**, choosing **Add**, then **Custom → Web**. Members then find it under **Customize →
@@ -62,43 +58,43 @@ Connectors** and choose **Connect**.
 Custom MCP servers are added from ChatGPT on the web, and workspace admins can restrict them.
 
 1. Open [Plugins](https://chatgpt.com/plugins), choose **+**, then **Add custom MCP server**.
-2. Name it `Elmo`, set the server URL to `https://app.elmohq.com/api/mcp`, and choose **OAuth** for
+2. Name it `CiteRank.com`, set the server URL to `https://app.citerank.com/api/mcp`, and choose **OAuth** for
    authentication.
 3. Confirm the warning with **I understand and want to continue**, then choose **Create as a plugin**.
-4. Install the plugin and sign in to Elmo.
+4. Install the plugin and sign in to CiteRank.com.
 
 ### Codex
 
 ```bash
-codex mcp add elmo --url https://app.elmohq.com/api/mcp
-codex mcp login elmo
+codex mcp add citerank --url https://app.citerank.com/api/mcp
+codex mcp login citerank
 ```
 
 ### Cursor
 
-[Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=elmo&config=eyJ1cmwiOiJodHRwczovL2FwcC5lbG1vaHEuY29tL2FwaS9tY3AifQ%3D%3D)
+[Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=citerank&config=eyJ1cmwiOiJodHRwczovL2FwcC5jaXRlcmFuay5jb20vYXBpL21jcCJ9)
 
 Or put it in `~/.cursor/mcp.json`, or `.cursor/mcp.json` for a single project:
 
 ```json
 {
   "mcpServers": {
-    "elmo": { "url": "https://app.elmohq.com/api/mcp" }
+    "citerank": { "url": "https://app.citerank.com/api/mcp" }
   }
 }
 ```
 
 Cursor shows the server as needing login; sign in from there. Older Cursor releases send a callback
-Elmo can't accept, so if signing in fails, use an API key instead.
+CiteRank.com can't accept, so if signing in fails, use an API key instead.
 
 ### VS Code
 
-[Add to VS Code](vscode:mcp/install?%7B%22name%22%3A%22elmo%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fapp.elmohq.com%2Fapi%2Fmcp%22%7D)
+[Add to VS Code](vscode:mcp/install?%7B%22name%22%3A%22citerank%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fapp.citerank.com%2Fapi%2Fmcp%22%7D)
 
 Or from a terminal:
 
 ```bash
-code --add-mcp '{"name":"elmo","type":"http","url":"https://app.elmohq.com/api/mcp"}'
+code --add-mcp '{"name":"citerank","type":"http","url":"https://app.citerank.com/api/mcp"}'
 ```
 
 Or run **MCP: Add Server** from the Command Palette, choose **HTTP**, and enter the URL. Or put it
@@ -107,7 +103,7 @@ under `servers` in `mcp.json`:
 ```json
 {
   "servers": {
-    "elmo": { "type": "http", "url": "https://app.elmohq.com/api/mcp" }
+    "citerank": { "type": "http", "url": "https://app.citerank.com/api/mcp" }
   }
 }
 ```
@@ -119,8 +115,8 @@ VS Code asks you to sign in the first time it starts the server.
 Devin Desktop, formerly Windsurf, shares its MCP servers with Devin CLI:
 
 ```bash
-devin mcp add -s user elmo https://app.elmohq.com/api/mcp
-devin mcp login elmo
+devin mcp add -s user citerank https://app.citerank.com/api/mcp
+devin mcp login citerank
 ```
 
 Or put it in `~/.config/devin/mcp_config.json`:
@@ -128,7 +124,7 @@ Or put it in `~/.config/devin/mcp_config.json`:
 ```json
 {
   "mcpServers": {
-    "elmo": { "url": "https://app.elmohq.com/api/mcp" }
+    "citerank": { "url": "https://app.citerank.com/api/mcp" }
   }
 }
 ```
@@ -140,12 +136,12 @@ Antigravity's IDE and CLI, which replaced Gemini CLI, read `~/.gemini/config/mcp
 ```json
 {
   "mcpServers": {
-    "elmo": { "serverUrl": "https://app.elmohq.com/api/mcp" }
+    "citerank": { "serverUrl": "https://app.citerank.com/api/mcp" }
   }
 }
 ```
 
-To sign in, open **Agent settings → Customizations** and choose **Authenticate** next to Elmo. After
+To sign in, open **Agent settings → Customizations** and choose **Authenticate** next to CiteRank.com. After
 signing in, Antigravity shows a code in the browser; paste it back into the settings panel and choose
 **Submit**.
 
@@ -157,68 +153,68 @@ In `opencode.json`, or `~/.config/opencode/opencode.json` for every project:
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
-    "elmo": {
+    "citerank": {
       "type": "remote",
-      "url": "https://app.elmohq.com/api/mcp",
+      "url": "https://app.citerank.com/api/mcp",
       "enabled": true
     }
   }
 }
 ```
 
-Then `opencode mcp auth elmo`.
+Then `opencode mcp auth citerank`.
 
 ### Goose
 
-[Add to Goose](goose://extension?url=https%3A%2F%2Fapp.elmohq.com%2Fapi%2Fmcp&type=streamable_http&id=elmo&name=Elmo&description=Read%20your%20AI%20visibility%20data%20and%20manage%20prompts%20in%20Elmo)
+[Add to Goose](goose://extension?url=https%3A%2F%2Fapp.citerank.com%2Fapi%2Fmcp&type=streamable_http&id=citerank&name=CiteRank.com&description=Read%20your%20AI%20visibility%20data%20and%20manage%20prompts%20in%20CiteRank.com)
 
 Or run `goose configure`, choose **Add Extension → Remote Extension (Streamable HTTP)**, and enter the
 URL.
 
-### Other clients
+### Other Clients
 
 Any client that supports remote MCP servers over Streamable HTTP with OAuth can connect: give it
-`https://app.elmohq.com/api/mcp` and sign in when it asks. A client that only runs local servers can
-reach Elmo through [`mcp-remote`](https://www.npmjs.com/package/mcp-remote):
+`https://app.citerank.com/api/mcp` and sign in when it asks. A client that only runs local servers can
+reach CiteRank.com through [`mcp-remote`](https://www.npmjs.com/package/mcp-remote):
 
 ```json
 {
   "mcpServers": {
-    "elmo": {
+    "citerank": {
       "command": "npx",
-      "args": ["-y", "mcp-remote", "https://app.elmohq.com/api/mcp"]
+      "args": ["-y", "mcp-remote", "https://app.citerank.com/api/mcp"]
     }
   }
 }
 ```
 
-## Or use an API key
+## Or Use an API Key
 
-Issue one from **Settings → API Keys** in the organization's settings sidebar — keys belong to the
+Issue one from **Settings → API Keys** in the organization's settings sidebar. Keys belong to the
 organization, so they are not found under a brand. Issue it read-only and optionally narrow it to
 selected brands.
 
 Send it as a bearer token. ChatGPT only connects by signing in; Claude.ai and Claude Desktop take the
 key when you add the connector: choose **No sign in** under **Authentication** and add an
-`Authorization: Bearer elmo_...` request header. `add-mcp` takes it as a header for every client it configures:
+`Authorization: Bearer citerank_...` request header. `add-mcp` takes it as a header for every client it configures:
 
 ```bash
-npx add-mcp https://app.elmohq.com/api/mcp --name elmo \
-  --header "Authorization: Bearer elmo_..."
+npx add-mcp https://app.citerank.com/api/mcp --name citerank \
+  --header "Authorization: Bearer citerank_..."
 ```
 
 Claude Code:
 
 ```bash
-claude mcp add --transport http elmo https://app.elmohq.com/api/mcp \
-  --header "Authorization: Bearer elmo_..."
+claude mcp add --transport http citerank https://app.citerank.com/api/mcp \
+  --header "Authorization: Bearer citerank_..."
 ```
 
 Codex, which reads the key from the environment rather than the config file:
 
 ```bash
-codex mcp add elmo --url https://app.elmohq.com/api/mcp \
-  --bearer-token-env-var ELMO_API_KEY
+codex mcp add citerank --url https://app.citerank.com/api/mcp \
+  --bearer-token-env-var CITERANK_API_KEY
 ```
 
 Cursor, in `~/.cursor/mcp.json`:
@@ -226,9 +222,9 @@ Cursor, in `~/.cursor/mcp.json`:
 ```json
 {
   "mcpServers": {
-    "elmo": {
-      "url": "https://app.elmohq.com/api/mcp",
-      "headers": { "Authorization": "Bearer elmo_..." }
+    "citerank": {
+      "url": "https://app.citerank.com/api/mcp",
+      "headers": { "Authorization": "Bearer citerank_..." }
     }
   }
 }
@@ -239,10 +235,10 @@ VS Code, in `mcp.json`:
 ```json
 {
   "servers": {
-    "elmo": {
+    "citerank": {
       "type": "http",
-      "url": "https://app.elmohq.com/api/mcp",
-      "headers": { "Authorization": "Bearer elmo_..." }
+      "url": "https://app.citerank.com/api/mcp",
+      "headers": { "Authorization": "Bearer citerank_..." }
     }
   }
 }
@@ -253,9 +249,9 @@ Devin Desktop and Devin CLI, in `~/.config/devin/mcp_config.json`:
 ```json
 {
   "mcpServers": {
-    "elmo": {
-      "url": "https://app.elmohq.com/api/mcp",
-      "headers": { "Authorization": "Bearer elmo_..." }
+    "citerank": {
+      "url": "https://app.citerank.com/api/mcp",
+      "headers": { "Authorization": "Bearer citerank_..." }
     }
   }
 }
@@ -266,9 +262,9 @@ Antigravity, in `~/.gemini/config/mcp_config.json`:
 ```json
 {
   "mcpServers": {
-    "elmo": {
-      "serverUrl": "https://app.elmohq.com/api/mcp",
-      "headers": { "Authorization": "Bearer elmo_..." }
+    "citerank": {
+      "serverUrl": "https://app.citerank.com/api/mcp",
+      "headers": { "Authorization": "Bearer citerank_..." }
     }
   }
 }
@@ -280,52 +276,37 @@ OpenCode, in `opencode.json`:
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
-    "elmo": {
+    "citerank": {
       "type": "remote",
-      "url": "https://app.elmohq.com/api/mcp",
+      "url": "https://app.citerank.com/api/mcp",
       "enabled": true,
-      "headers": { "Authorization": "Bearer elmo_..." }
+      "headers": { "Authorization": "Bearer citerank_..." }
     }
   }
 }
 ```
 
-## Self-hosting
-
-Nothing has to be turned on — the endpoint is there as soon as the instance is, and signing in from a
-client works against your instance the same way it does against cloud.
-
-The one thing that has to be right is `APP_URL`: it must be the address clients actually reach you on,
-because that is where the sign-in flow is advertised from and what the tokens it issues are bound to.
-It has to be an HTTPS URL, or `localhost` — the app refuses to start otherwise, since a token bound to
-anything else is one no MCP client will accept.
-
-Keys come from the same organization settings page as on cloud, and instance-wide admin keys can also
-be configured server-side through the `ADMIN_API_KEYS` environment variable.
-
 ## Try
 
-> What is the visibility and share of voice for each tagged prompt in Elmo for `<brand>`?
+> What is the visibility and share of voice for each tagged prompt in CiteRank.com for `<brand>`?
 
 > What are some AEO opportunities for my `<brand>`?
 
 > Give me an example run for my `<description>` prompt.
-
-For a full measure-diagnose-fix workflow on top of this data, install the [skill](/docs/api/skill).
 
 ## Scopes
 
 A connection is only offered the tools its scopes allow, so a client is never shown something it
 would then be refused:
 
-| Scope | MCP tool |
+| Scope | MCP Tool |
 | --- | --- |
 | *(none)* | `whoami`, `list_models` |
 | `read` | `list_brands`, `get_brand`, `list_competitors`, `list_prompts`, `list_prompt_tags`, `get_analytics`, `get_prompt_performance`, `get_citations`, `get_query_fanout`, `get_opportunities`, `list_runs`, `get_run`, `get_billing` |
 | `write` | `create_prompts`, `update_prompt` |
 
 A read-write key can create and edit prompts over MCP, but no tool deletes data and no tool changes
-billing — those are [REST API](/docs/api) concerns or reserved for an instance admin key entirely.
+billing. Deleting is a [REST API](/docs/api) concern, and no API key can change billing.
 
 A connection you signed in from acts as you and reaches everything you can, so scopes are a property
 of a key rather than of the sign-in.

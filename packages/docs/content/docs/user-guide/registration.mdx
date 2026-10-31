@@ -1,37 +1,30 @@
 ---
 title: Registration & Login
-description: Create your Elmo account and sign in for the first time.
+description: Create your CiteRank.com account and sign in.
 ---
 
 ## Create an Account
 
-With Elmo running locally, open your browser to **http://localhost:1515**.
+Open [app.citerank.com/auth/register](https://app.citerank.com/auth/register). You can click **Continue with Google** to sign up with your Google account, or fill in your details:
 
-You'll see the Elmo landing page with a **Sign In** button. Click it to navigate to the login page, then click **Create an account** to register.
-
-{/* TODO: Screenshot of the Elmo landing page */}
-
-Fill in your details:
-
-- **Name** — Your display name
-- **Email** — Your email address
-- **Password** — A secure password
+- **Name**: your display name
+- **Email**: your work or personal email address (disposable email addresses aren't accepted)
+- **Password**: at least 8 characters
 
 {/* TODO: Screenshot of the registration form */}
 
-Click **Create Account** to complete registration. You'll be signed in automatically and redirected to the app.
+Click **Create Account**. CiteRank.com emails you a verification link; click it to verify your address and continue. If the email doesn't arrive, click **Resend Verification Email**. The link expires, so verify soon.
+
+CiteRank.com creates an organization for your account, then asks you to [choose a plan](/docs/getting-started#choose-a-plan).
 
 ## Sign In
 
-On return visits, go to **http://localhost:1515** and click **Sign In**. Enter your email and password to access the dashboard.
+On return visits, go to [app.citerank.com](https://app.citerank.com) and sign in with Google, or with your email and password.
 
 {/* TODO: Screenshot of the login form */}
 
-## Deployment Modes and Authentication
+If you've forgotten your password, click **Forgot Password?** on the sign-in page and CiteRank.com emails you a link to reset it.
 
-The registration flow depends on your [deployment mode](/docs/developer-guide/configuration):
+## Joining a Team
 
-| Mode | Authentication |
-|------|---------------|
-| **Local** (default) | Email and password — the flow described above |
-| **Demo** | Read-only access, no registration needed |
+When an organization admin invites you from **Settings → Team**, you get an email with an invitation link. Open it while signed in with the email address that received the invitation, or create an account with that address first, then click **Accept Invitation**.

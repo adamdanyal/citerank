@@ -1,20 +1,21 @@
 ---
 title: Settings
-description: Configure your brand, competitors, prompts, and AI model settings.
+description: Configure your brand, competitors, prompts, AI apps, team, and billing.
 ---
 
 ## Settings Overview
 
-The **Settings** section is accessible from the sidebar. It has four sub-pages for managing your Elmo configuration.
+The **Settings** section is accessible from the sidebar. Each brand has four sub-pages for managing what CiteRank.com tracks: Brand, Competitors, Prompts, and LLMs. Your organization's settings hold the team, billing, and API keys, which apply to every brand.
 
 ## Brand Settings
 
 Configure your brand identity:
 
-- **Name** — Your brand name as tracked in AI responses
-- **Website** — Primary website URL
-- **Domains** — Additional domains associated with your brand (e.g. blog subdomain, product domains)
-- **Aliases** — Alternative names or spellings that AI models might use
+- **Brand Name**: your brand name as tracked in AI responses
+- **Brand Slug**: the part of the dashboard address that names this brand
+- **Website**: primary website URL
+- **Additional Domains**: other domains your brand owns (e.g. blog subdomain, product domains)
+- **Brand Aliases**: alternative names or spellings that AI models might use
 
 {/* TODO: Screenshot of brand settings */}
 
@@ -32,36 +33,30 @@ Manage the competitors you're tracking:
 
 Manage your tracking prompts:
 
-- **Add prompts** — Create new prompts manually, paste several at once, or click **Suggest Prompts** for AI suggestions that skip what you already track
-- **Edit prompts** — Modify prompt text and tags
-- **Enable/Disable** — Toggle tracking for individual prompts without deleting them
-- **Delete** — Remove prompts you no longer need
+- **Add prompts**: create new prompts with **Add Prompt**, paste several at once with **Add Multiple**, or click **Suggest Prompts** for AI suggestions that skip what you already track
+- **Edit prompts**: modify prompt text and tags
+- **Enable/Disable**: toggle tracking for individual prompts without deleting them, or select several and enable or disable them together
+- **Remove**: stop tracking prompts you no longer need; their history is kept
+- **Premium**: on Pro and Business, also track a prompt on premium models, each of which uses one of your organization's premium pairings ([details](/docs/user-guide/providers#premium-llm-apis))
+
+Click **Save Changes** in the bar at the bottom of the page to apply your edits. Your plan sets how many prompts your organization can track across all its brands.
 
 {/* TODO: Screenshot of prompt settings */}
 
 ## LLM Settings
 
-Configure which AI models Elmo queries:
-
-- **OpenAI (ChatGPT)** — Requires `OPENAI_API_KEY` in your environment
-- **Anthropic (Claude)** — Requires `ANTHROPIC_API_KEY` in your environment
-- **Google AI Overviews** — Tracks Google's AI-generated summaries
-
-You can enable or disable individual models and adjust query parameters.
+Choose which AI apps CiteRank.com checks this brand's prompts on, within your plan's limits. See [AI Apps](/docs/user-guide/providers#choosing-ai-apps-for-a-brand) for what each one tells you and how many you can pick.
 
 {/* TODO: Screenshot of LLM settings */}
 
-## Updating Environment Variables
+## Team
 
-Some settings (like API keys) are configured via environment variables rather than the UI. To update them:
+Organization admins invite teammates from **Settings → Team**. Enter an email address, choose **Member** or **Admin**, and click **Invite**. Only admins can choose the plan and issue API keys.
 
-```bash
-# Edit your .env file in the config directory
-nano ./elmo/.env
+## Billing
 
-# Restart to pick up changes
-elmo compose down
-elmo compose up -d
-```
+**Settings → Billing** shows your plan, what it costs, and how much of it you're using. Organization admins can change the plan there, buy extra premium pairings on Pro and Business, and click **Manage Billing** to manage payment methods and invoices in the Stripe customer portal.
 
-See the [Configuration](/docs/developer-guide/configuration) page for a complete reference of environment variables.
+## API Keys
+
+Organization admins issue and revoke keys for the [REST API](/docs/api) and the [MCP server](/docs/api/mcp) from **Settings → API Keys**.

@@ -1,16 +1,13 @@
 {
 	"openapi": "3.1.1",
 	"info": {
-		"title": "Elmo API",
-		"description": "Track how AI answer engines like ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews mention and cite your brands. Manage the brands, prompts, and competitors Elmo tracks, and pull the visibility and citation analytics behind the dashboard.\n\n## Authentication\n\nEvery request carries a Bearer token in the `Authorization` header. Two kinds of token are accepted.\n\n**Instance admin keys** come from the operator's `ADMIN_API_KEYS` environment variable. They reach every organization and every endpoint, including the admin-only ones, and are not subject to plan limits or rate limits.\n\n**Organization keys** (`elmo_…`) are issued from the dashboard. A key acts inside exactly one organization, is issued either read or read-write access, and may be narrowed further to a subset of that organization's brands. Plan limits, read-only mode, and per-key rate limits all apply.\n\n## Scopes\n\nA key holds one of two scopes. `read` reaches every read operation; `write` adds every create, update, and delete one, and is issued alongside `read` rather than instead of it. Each operation lists what it requires in `x-elmo-scopes` — an operation listing none is reachable by any valid key. Admin keys hold both implicitly.\n\n| Scope | Grants |\n| --- | --- |\n| `read` | Read brands, prompts, competitors, runs, citations, analytics, and the organization's plan and usage |\n| `write` | Everything `read` grants, plus creating, updating, and deleting brands, prompts, and competitors |\n\nNothing finer is offered, because the operations actually worth withholding are not ones a scope can withhold. Deleting a *prompt* has no scope at all: it takes every run and citation with it, the dashboard offers no such action, and `PATCH /prompts/{promptId}` with `enabled: false` stops the tracking without losing the history. It is reachable with an instance admin key only.\n\nThere is deliberately no billing write scope: the API cannot change a subscription, an add-on quantity, or a payment method under any key, including an admin key. Operations marked `x-elmo-admin-only` are reachable with an instance admin key only; no scope grants them. Report generation and brand analysis spend provider budget with no organization to bill it to; deleting a prompt destroys tracked history the dashboard itself will not. For the same reason a single *field* can be admin-only: `enabled` on `PATCH /brands/{brandId}` stops a brand being sampled at all, so setting it with an organization key is a `403`.\n\n## Access and errors\n\nA brand outside the calling key's reach answers `404` with the same body a brand that does not exist would, so a key can never probe another tenant's data. A key that is valid but lacks the scope an operation requires answers `403` naming the missing scope.\n\nErrors share one envelope — `{ error, message, code }` — where `code` is a stable machine-readable string. Treat an unrecognized `code` as its HTTP status implies; new values are added without a version bump.\n\n## Conventions\n\nTimestamps are ISO-8601 UTC; dates are `YYYY-MM-DD`. Collections take `page` (1-based) and `limit` (max 100) and answer with a `pagination` object. Analytics endpoints take `start` + `end` as ISO 8601 timestamps, half-open, and answer with the whole window in one response; daily series are labelled in UTC. `/prompts/{promptId}/snapshot` keeps the `startDate`/`endDate` calendar days it shipped with.\n\n## Stability\n\nAn operation whose response shape may still change carries `x-stability: experimental`, and says so in the first line of its description. A schema can carry the same marker when only part of a stable operation's response is experimental. Everything else is stable: its shape will only ever gain fields. The absence of the marker is the promise.",
+		"title": "CiteRank.com API",
+		"description": "Track how AI answer engines like ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews mention and cite your brands. Manage the brands, prompts, and competitors CiteRank.com tracks, and pull the visibility and citation analytics behind the dashboard.\n\n## Authentication\n\nEvery request carries a Bearer token in the `Authorization` header.\n\n**Organization keys** (`citerank_…`) are issued from the dashboard. A key acts inside exactly one organization, is issued either read or read-write access, and may be narrowed further to a subset of that organization's brands. Plan limits and per-key rate limits apply.\n\n**Instance admin keys** reach every organization and every endpoint, including the admin-only ones. CiteRank.com does not issue them to customers.\n\n## Scopes\n\nA key holds one of two scopes. `read` reaches every read operation; `write` adds every create, update, and delete one, and is issued alongside `read` rather than instead of it. Each operation lists the scopes it requires; an operation listing none is reachable by any valid key. Admin keys hold both implicitly.\n\n| Scope | Grants |\n| --- | --- |\n| `read` | Read brands, prompts, competitors, runs, citations, analytics, and the organization's plan and usage |\n| `write` | Everything `read` grants, plus creating, updating, and deleting brands, prompts, and competitors |\n\nNothing finer is offered, because the operations actually worth withholding are not ones a scope can withhold. Deleting a *prompt* has no scope at all: it takes every run and citation with it, the dashboard offers no such action, and `PATCH /prompts/{promptId}` with `enabled: false` stops the tracking without losing the history. It is reachable with an instance admin key only.\n\nThere is deliberately no billing write scope: the API cannot change a subscription, an add-on quantity, or a payment method under any key, including an admin key. Operations marked admin-only are reachable with an instance admin key only; no scope grants them. Report generation and brand analysis spend provider budget with no organization to bill it to; deleting a prompt destroys tracked history the dashboard itself will not. For the same reason a single *field* can be admin-only: `enabled` on `PATCH /brands/{brandId}` stops a brand being sampled at all, so setting it with an organization key is a `403`.\n\n## Access and Errors\n\nA brand outside the calling key's reach answers `404` with the same body a brand that does not exist would, so a key can never probe another tenant's data. A key that is valid but lacks the scope an operation requires answers `403` naming the missing scope.\n\nErrors share one envelope, `{ error, message, code }`, where `code` is a stable machine-readable string. Treat an unrecognized `code` as its HTTP status implies; new values are added without a version bump.\n\n## Conventions\n\nTimestamps are ISO-8601 UTC; dates are `YYYY-MM-DD`. Collections take `page` (1-based) and `limit` (max 100) and answer with a `pagination` object. Analytics endpoints take `start` + `end` as ISO 8601 timestamps, half-open, and answer with the whole window in one response; daily series are labelled in UTC. `/prompts/{promptId}/snapshot` keeps the `startDate`/`endDate` calendar days it shipped with.\n\n## Stability\n\nAn operation whose response shape may still change carries `x-stability: experimental`, and says so in the first line of its description. A schema can carry the same marker when only part of a stable operation's response is experimental. Everything else is stable: its shape will only ever gain fields. The absence of the marker is the promise.",
 		"version": "1.1.0",
 		"contact": {
-			"name": "Elmo",
-			"url": "https://github.com/elmohq/elmo"
-		},
-		"license": {
-			"name": "MIT",
-			"url": "https://github.com/elmohq/elmo/blob/main/LICENSE.md"
+			"name": "CiteRank.com",
+			"url": "https://citerank.com",
+			"email": "team@citerank.com"
 		}
 	},
 	"servers": [
@@ -29,7 +26,7 @@
 			"BearerAuth": {
 				"type": "http",
 				"scheme": "bearer",
-				"description": "An instance admin key from `ADMIN_API_KEYS`, or an organization key (`elmo_…`) issued from the dashboard."
+				"description": "An organization key (`citerank_…`) issued from the dashboard."
 			}
 		},
 		"schemas": {
@@ -184,7 +181,7 @@
 					},
 					"brandWebsite": {
 						"type": "string",
-						"description": "The brand's website — a domain (nike.com) or a full URL. A URL with a path (e.g. https://www.nike.com/golf) scopes the analysis to that page; mentions are tracked against its domain either way.",
+						"description": "The brand's website: a domain (nike.com) or a full URL. A URL with a path (e.g. https://www.nike.com/golf) scopes the analysis to that page; mentions are tracked against its domain either way.",
 						"minLength": 1
 					},
 					"manualPrompts": {
@@ -319,7 +316,7 @@
 				"properties": {
 					"website": {
 						"type": "string",
-						"description": "Brand's website — a hostname or a full URL. A URL with a path (e.g. https://www.nike.com/golf) is analyzed as given; the returned website is always its domain.",
+						"description": "Brand's website: a hostname or a full URL. A URL with a path (e.g. https://www.nike.com/golf) is analyzed as given; the returned website is always its domain.",
 						"minLength": 1
 					},
 					"brandName": {
@@ -486,7 +483,7 @@
 					},
 					"organizationId": {
 						"type": "string",
-						"description": "Organization to create the brand in.\n\n| | Omitted | Present |\n| --- | --- | --- |\n| **Organization key** | creates in the key's own organization | must name the key's own organization; any other value is a `400` |\n| **Admin key** | provisions a new organization named after the brand id | creates in the named organization, which must already exist — `404` if it does not |\n\nAn admin key omitting this field is currently the only way to create an organization over the API."
+						"description": "Organization to create the brand in.\n\n| | Omitted | Present |\n| --- | --- | --- |\n| **Organization key** | creates in the key's own organization | must name the key's own organization; any other value is a `400` |\n| **Admin key** | provisions a new organization named after the brand id | creates in the named organization, which must already exist (`404` if it does not) |\n\nAn admin key omitting this field is currently the only way to create an organization over the API."
 					}
 				},
 				"required": ["id", "name", "domains"]
@@ -854,7 +851,7 @@
 						"description": "Scopes this key holds. A read-write key lists both; an admin key always does."
 					},
 					"brandIds": {
-						"description": "Brands the key is narrowed to, or null when it reaches every brand in its organization. Never an empty array — a restriction to no brands is rejected at creation rather than treated as no restriction.",
+						"description": "Brands the key is narrowed to, or null when it reaches every brand in its organization. Never an empty array. A restriction to no brands is rejected at creation rather than treated as no restriction.",
 						"type": ["array", "null"],
 						"items": {
 							"type": "string"
@@ -880,7 +877,7 @@
 								"enum": ["minute", "hour"]
 							}
 						},
-						"description": "The key's configured limit — generous by design: it exists to stop a runaway loop, not to meter normal use. Enforcement is a fixed window and approximate under concurrency.",
+						"description": "The key's configured limit. It is set high, to stop a runaway loop without metering normal use. Enforcement is a fixed window and approximate under concurrency.",
 						"required": ["limit", "window"]
 					},
 					"createdBy": {
@@ -972,7 +969,7 @@
 				]
 			},
 			"OrganizationBilling": {
-				"description": "Read-only view of an organization's subscription, limits, and usage. The API has no way to change any of it: there is no billing write endpoint and no billing write scope. Stripe identifiers, payment methods, and invoices are deliberately not exposed — those live in the Stripe customer portal.",
+				"description": "Read-only view of an organization's subscription, limits, and usage. The API has no way to change any of it: there is no billing write endpoint and no billing write scope. Stripe identifiers, payment methods, and invoices are deliberately not exposed. Those live in the Stripe customer portal.",
 				"type": "object",
 				"properties": {
 					"organizationId": {
@@ -980,7 +977,7 @@
 					},
 					"billingEnabled": {
 						"type": "boolean",
-						"description": "False on self-hosted deployments, where nothing is metered."
+						"description": "False on deployments without billing, where nothing is metered."
 					},
 					"plan": {
 						"description": "Null when the organization has no subscription, or when billing is disabled.",
@@ -1073,7 +1070,7 @@
 				"required": ["date", "visibility"]
 			},
 			"Position": {
-				"description": "**Experimental — the shape may still change.**\n\nThe company's position among the tracked companies the answers name, 1 being named first. Companies that aren't tracked aren't ranked. Counted over every answer in the window, unlike `visibility.current` and the share-of-voice `mentions` and `share`, which count each prompt's latest result.",
+				"description": "**Experimental: the shape may still change.**\n\nThe company's position among the tracked companies the answers name, 1 being named first. Companies that aren't tracked aren't ranked. Counted over every answer in the window, unlike `visibility.current` and the share-of-voice `mentions` and `share`, which count each prompt's latest result.",
 				"x-stability": "experimental",
 				"type": "object",
 				"properties": {
@@ -1178,7 +1175,7 @@
 					"changeFactor": {
 						"type": ["number", "null"],
 						"minimum": 0,
-						"description": "How this window compares with the equal-length window before it, as a multiplier of the previous count: 2 means twice as many citations, 0.5 means half, 1 means unchanged. Not a percentage change — 1.5 is \"1.5x\", which is a 50% increase. Null when the domain had no citations in the previous window, so there is nothing to divide by."
+						"description": "How this window compares with the equal-length window before it, as a multiplier of the previous count: 2 means twice as many citations, 0.5 means half, 1 means unchanged. Not a percentage change: 1.5 is \"1.5x\", which is a 50% increase. Null when the domain had no citations in the previous window, so there is nothing to divide by."
 					}
 				},
 				"required": ["domain", "category", "count", "share", "promptCount", "previousCount", "changeFactor"]
@@ -1630,7 +1627,7 @@
 					},
 					"system": {
 						"type": "boolean",
-						"description": "True for `branded` and `unbranded`, which Elmo computes from the prompt text. A system tag always appears here; applying it to a prompt as a user tag overrides the computed classification rather than creating a new tag."
+						"description": "True for `branded` and `unbranded`, which CiteRank.com computes from the prompt text. A system tag always appears here; applying it to a prompt as a user tag overrides the computed classification rather than creating a new tag."
 					}
 				},
 				"required": ["name", "promptCount", "system"]
@@ -1646,7 +1643,7 @@
 						"items": {
 							"$ref": "#/components/schemas/Tag"
 						},
-						"description": "System tags first, then user tags alphabetically — the order the dashboard's filter shows."
+						"description": "System tags first, then user tags alphabetically, in the order the dashboard's filter shows."
 					}
 				},
 				"required": ["brandId", "data"]
@@ -1692,7 +1689,7 @@
 					},
 					"title": {
 						"type": "string",
-						"description": "Short and action-oriented — the concrete surface or angle."
+						"description": "Short and action-oriented: the concrete surface or angle."
 					},
 					"why": {
 						"type": "string",
@@ -1723,7 +1720,7 @@
 				"required": ["category", "title", "why", "relatedPrompts", "yourCitations", "competitorCitations"]
 			},
 			"BrandOpportunities": {
-				"description": "The brand's latest Opportunities report — the same LLM-generated analysis the dashboard shows, read from the append-only history rather than regenerated. Elmo decides when to produce a new one; there is no way to trigger generation over the API, because it spends provider budget with no per-call metering behind it.",
+				"description": "The brand's latest Opportunities report: the same LLM-generated analysis the dashboard shows, read from the append-only history rather than regenerated. CiteRank.com decides when to produce a new one; there is no way to trigger generation over the API, because it spends provider budget with no per-call metering behind it.",
 				"type": "object",
 				"properties": {
 					"brandId": {
@@ -1820,7 +1817,7 @@
 								"type": ["number", "null"],
 								"minimum": 0,
 								"maximum": 1,
-								"description": "The last plotted point — the number the dashboard hero shows. Ratio 0–1; multiply by 100 for a percentage."
+								"description": "The last plotted point, which is the number the dashboard hero shows. Ratio 0–1; multiply by 100 for a percentage."
 							},
 							"series": {
 								"type": "array",
@@ -1941,7 +1938,7 @@
 				"required": ["id", "label", "premiumCapable", "configured"]
 			},
 			"MentionAssessment": {
-				"description": "**Experimental — the shape may still change.**\n\nThe mention judge's assessment of one brand or competitor named in an answer.",
+				"description": "**Experimental: the shape may still change.**\n\nThe mention judge's assessment of one brand or competitor named in an answer.",
 				"type": "object",
 				"properties": {
 					"mentioned": {
@@ -1995,7 +1992,7 @@
 				"x-stability": "experimental"
 			},
 			"RunAssessments": {
-				"description": "**Experimental — the shape may still change.**\n\nThe mention judge's assessments for one answer. Null when the run's mentions were matched by name, before the judge, until a replay judges it.",
+				"description": "**Experimental: the shape may still change.**\n\nThe mention judge's assessments for one answer. Null when the run's mentions were matched by name, before the judge, until a replay judges it.",
 				"type": ["object", "null"],
 				"properties": {
 					"brand": {
@@ -2021,7 +2018,7 @@
 				"x-stability": "experimental"
 			},
 			"SentimentSummary": {
-				"description": "**Experimental — the shape may still change.**\n\nAnswers that mention the company, by the mention judge's sentiment toward it. An answer that only links to the company counts in none. All zero for history the judge hasn't re-judged yet. Counted over every answer in the window, unlike `visibility.current` and the share-of-voice `mentions` and `share`, which count each prompt's latest result.",
+				"description": "**Experimental: the shape may still change.**\n\nAnswers that mention the company, by the mention judge's sentiment toward it. An answer that only links to the company counts in none. All zero for history the judge hasn't re-judged yet. Counted over every answer in the window, unlike `visibility.current` and the share-of-voice `mentions` and `share`, which count each prompt's latest result.",
 				"type": "object",
 				"properties": {
 					"positive": {
@@ -2051,7 +2048,7 @@
 				"x-stability": "experimental"
 			},
 			"BrandSentiment": {
-				"description": "**Experimental — the shape may still change.**\n\nThe brand's sentiment over the window, with the counts for each day so a client can chart or smooth them.",
+				"description": "**Experimental: the shape may still change.**\n\nThe brand's sentiment over the window, with the counts for each day so a client can chart or smooth them.",
 				"x-stability": "experimental",
 				"allOf": [
 					{
@@ -2095,7 +2092,7 @@
 				]
 			},
 			"BrandPosition": {
-				"description": "**Experimental — the shape may still change.**\n\nThe brand's position among the tracked companies the answers name, 1 being named first, averaged over the window and per day.",
+				"description": "**Experimental: the shape may still change.**\n\nThe brand's position among the tracked companies the answers name, 1 being named first, averaged over the window and per day.",
 				"x-stability": "experimental",
 				"type": "object",
 				"properties": {
@@ -2606,7 +2603,7 @@
 		"/brands/{brandId}/analytics": {
 			"get": {
 				"summary": "Get a brand's analytics",
-				"description": "Visibility, share of voice, the per-model breakdown and the citation totals for one window, in one request.\n\nThe long lists — cited domains and URLs, sub-queries, per-prompt results — are endpoints of their own. Everything else is always included.",
+				"description": "Visibility, share of voice, the per-model breakdown and the citation totals for one window, in one request.\n\nThe long lists (cited domains and URLs, sub-queries, per-prompt results) are endpoints of their own. Everything else is always included.",
 				"operationId": "getBrandAnalytics",
 				"tags": ["Analytics"],
 				"x-elmo-scopes": ["read"],
@@ -2819,7 +2816,7 @@
 		"/brands/{brandId}/opportunities": {
 			"get": {
 				"summary": "Get the latest opportunities report",
-				"description": "**Experimental — the response shape may still change.**\n\nThe brand's Opportunities report: a prioritized set of ways to get cited more often, with the tracked prompts and cited pages behind each one. The same analysis the dashboard shows, from the same code.\n\nGeneration is inline and synchronous. A stored report is served while it is fresh and regenerated when it is not, so there is nothing to poll for and no way to be handed a stale one — but a request that triggers a generation waits for it. The freshness window bounds the cost: however many callers ask, one generation per brand per window. There is deliberately no `POST`, which would spend provider budget with nothing metering it per call.",
+				"description": "**Experimental: the response shape may still change.**\n\nThe brand's Opportunities report: a prioritized set of ways to get cited more often, with the tracked prompts and cited pages behind each one. The same analysis the dashboard shows, from the same code.\n\nGeneration is inline and synchronous. A stored report is served while it is fresh and regenerated when it is not, so there is nothing to poll for and no way to be handed a stale one. A request that triggers a generation does wait for it. The freshness window bounds the cost: however many callers ask, one generation per brand per window. There is deliberately no `POST`, which would spend provider budget with nothing metering it per call.",
 				"operationId": "getBrandOpportunities",
 				"tags": ["Opportunities"],
 				"x-elmo-scopes": ["read"],
@@ -2988,7 +2985,7 @@
 		"/brands/{brandId}/tags": {
 			"get": {
 				"summary": "List a brand's tags",
-				"description": "Every tag in use on the brand's prompts, with how many carry each — enough to build the same filter the dashboard shows without paging the whole prompt list to derive it.\n\nTags are not a resource of their own: a tag exists exactly as long as some prompt carries it. `branded` and `unbranded` are computed by Elmo and always listed.",
+				"description": "Every tag in use on the brand's prompts, with how many carry each, enough to build the same filter the dashboard shows without paging the whole prompt list to derive it.\n\nTags are not a resource of their own: a tag exists exactly as long as some prompt carries it. `branded` and `unbranded` are computed by CiteRank.com and always listed.",
 				"operationId": "listBrandTags",
 				"tags": ["Tags"],
 				"x-elmo-scopes": ["read"],
@@ -3351,7 +3348,7 @@
 		"/organizations": {
 			"get": {
 				"summary": "List organizations",
-				"description": "One entry for an organization key — the one it acts inside. Every organization for an instance admin key. No scope required: a key can only ever see the organization it is already bound to.",
+				"description": "One entry for an organization key: the one it acts inside. Every organization for an instance admin key. No scope required: a key can only ever see the organization it is already bound to.",
 				"operationId": "listOrganizations",
 				"tags": ["Organizations"],
 				"x-elmo-scopes": [],
@@ -3438,7 +3435,7 @@
 		"/organizations/{organizationId}/billing": {
 			"get": {
 				"summary": "Get billing state",
-				"description": "The organization's plan, its limits, and how much of each limit is already spent — enough for an integration to know a write will be rejected before attempting it.\n\nThis endpoint is read-only by construction. No API key of any kind can change a subscription, an add-on quantity, or a payment method; there is no billing write endpoint and no billing write scope. Stripe identifiers, invoices, and payment methods are never returned.\n\nDeployments without billing answer `200` with `billingEnabled: false`, a null plan, and null limits, so callers need no special case.",
+				"description": "The organization's plan, its limits, and how much of each limit is already spent, enough for an integration to know a write will be rejected before attempting it.\n\nThis endpoint is read-only by construction. No API key of any kind can change a subscription, an add-on quantity, or a payment method; there is no billing write endpoint and no billing write scope. Stripe identifiers, invoices, and payment methods are never returned.\n\nDeployments without billing answer `200` with `billingEnabled: false`, a null plan, and null limits, so callers need no special case.",
 				"operationId": "getOrganizationBilling",
 				"tags": ["Organizations"],
 				"x-elmo-scopes": ["read"],
@@ -3756,7 +3753,7 @@
 			},
 			"delete": {
 				"summary": "Delete a prompt",
-				"description": "Permanently delete a prompt and cancel all related scheduled jobs. This will also cascade delete all associated prompt runs.\n\nRequires an instance admin key; organization keys receive `403`. The dashboard has no delete either — stop tracking a prompt with `PATCH /prompts/{promptId}` and `enabled: false`, which keeps its history and frees the plan slot.",
+				"description": "Permanently delete a prompt and cancel all related scheduled jobs. This will also cascade delete all associated prompt runs.\n\nRequires an instance admin key; organization keys receive `403`. The dashboard has no delete either. Stop tracking a prompt with `PATCH /prompts/{promptId}` and `enabled: false`, which keeps its history and frees the plan slot.",
 				"operationId": "deletePrompt",
 				"tags": ["Prompts"],
 				"parameters": [
@@ -3828,7 +3825,7 @@
 		"/prompts/{promptId}/runs": {
 			"get": {
 				"summary": "List runs for a prompt",
-				"description": "Individual model answers behind the aggregates, newest first, without their text — the list stays small enough to page through. Fetch `GET /prompts/{promptId}/runs/{runId}` for the answer itself.",
+				"description": "Individual model answers behind the aggregates, newest first, without their text, so the list stays small enough to page through. Fetch `GET /prompts/{promptId}/runs/{runId}` for the answer itself.",
 				"operationId": "listPromptRuns",
 				"tags": ["Runs"],
 				"x-elmo-scopes": ["read"],
@@ -3893,7 +3890,7 @@
 		"/prompts/{promptId}/runs/{runId}": {
 			"get": {
 				"summary": "Get a run",
-				"description": "One model answer, with its text normalized out of the provider’s response and its citations in the order the engine listed them. A run belonging to some other prompt answers `404`. The provider’s raw payload is deliberately not exposed — its shape belongs to the provider, not to this API.",
+				"description": "One model answer, with its text normalized out of the provider’s response and its citations in the order the engine listed them. A run belonging to some other prompt answers `404`. The provider’s raw payload is deliberately not exposed, because its shape belongs to the provider.",
 				"operationId": "getRun",
 				"tags": ["Runs"],
 				"x-elmo-scopes": ["read"],

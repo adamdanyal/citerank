@@ -37,6 +37,7 @@ const ALLOWED_NAMES = [
 	/\belmo_(orgs|admin|report_generator_access)\b/g, // whitelabel Auth0 claims
 	/\belmo_cloud_/g, // Stripe price lookup keys
 	/\belmo[.:][a-z][\w.-]*/g, // browser storage keys and symbols
+	/\bx-elmo-/g, // OpenAPI extension keys
 ];
 
 const ALLOWED_TEXT = [

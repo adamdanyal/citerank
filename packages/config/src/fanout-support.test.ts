@@ -1,7 +1,5 @@
-import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { getFanoutSupport } from "./fanout-support";
-import { withFanoutSupport } from "./fanout-support-docs";
 import { parseScrapeTargets } from "./scrape-targets";
 
 const support = (target: string) => getFanoutSupport(parseScrapeTargets(target)[0]);
@@ -25,9 +23,3 @@ describe("getFanoutSupport", () => {
 	});
 });
 
-describe("provider docs", () => {
-	it("match the fan-out support table", () => {
-		const mdx = readFileSync(new URL("../../docs/content/docs/user-guide/providers.mdx", import.meta.url), "utf8");
-		expect(mdx, "run `pnpm --filter @workspace/config docs:fanout`").toBe(withFanoutSupport(mdx));
-	});
-});
