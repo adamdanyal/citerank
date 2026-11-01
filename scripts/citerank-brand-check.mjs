@@ -18,6 +18,7 @@ const SCANNED = [
 	"apps/www/public",
 	"packages/api-spec/src",
 	"packages/config/src",
+	"packages/deployment/scripts",
 	"packages/deployment/src",
 	"packages/docs/content",
 	"packages/og/src",
@@ -36,6 +37,7 @@ const ALLOWED_NAMES = [
 	/\bisElmo\w*/g, // variable and function names
 	/\belmo_(orgs|admin|report_generator_access)\b/g, // whitelabel Auth0 claims
 	/\belmo_cloud_/g, // Stripe price lookup keys
+	/\belmo_catalog_key\b/g, // Stripe product metadata
 	/\belmo[.:][a-z][\w.-]*/g, // browser storage keys and symbols
 	/\bx-elmo-/g, // OpenAPI extension keys
 ];
@@ -44,7 +46,6 @@ const ALLOWED_NAMES = [
 const ALLOWED_WORDS = [/model\s?monitor/gi];
 
 const ALLOWED_TEXT = [
-	{ file: "apps/web/src/routes/auth/login.tsx", text: /demo@elmohq\.com/g, why: "demo-mode sign-in only" },
 	{ file: "packages/config/src/env-registry.ts", text: /`elmo init`|Elmo </g, why: "operator-only env descriptions" },
 	{ file: "packages/api-spec/src/openapi.json", text: /"x-elmo-[a-z-]+"/g, why: "machine-read spec extension keys" },
 ];

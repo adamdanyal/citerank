@@ -92,6 +92,7 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | `apps/web/src/lib/crisp.ts` | The demo's chat greeting names CiteRank.com, and its next steps offer the tracker and the agency instead of Elmo Cloud, self-hosting and a 30-minute walkthrough. |
 | `apps/web/src/server/__tests__/config.test.ts`, `apps/web/src/lib/__tests__/crisp.test.ts` | Expect the new Crisp ID and URLs. |
 | `apps/web/package.json`, `apps/www/package.json`, `pnpm-lock.yaml` | Font packages. |
+| `packages/deployment/scripts/bootstrap-stripe.ts` | Stripe products are named CiteRank.com, since customers see them at checkout and on invoices. |
 | `scripts/citerank-brand-check.mjs` | New. Lists customer-facing Elmo text left after a merge. |
 | `apps/www/src/styles.css` | One appended block: brand fonts, Tailwind's blue scale remapped to rust and zinc to warm greys (which recolours every component), docs colours. |
 | `apps/www/src/lib/seo.ts` | Site URL, name and description; Organization data for Danx Digital Limited; tracker price range. |
