@@ -28,7 +28,7 @@ A merge keeps every change below: where Elmo changed the same lines, git stops f
 
 The home page logo strip ("Used by 200+ brands to optimize their AI visibility"), the "Loved by marketers. Recommended by AI." reviews, and the sign-up page quote and G2 stars are Elmo's customers, Elmo's reviews and AI answers about Elmo, shown with our name for the local demo. Swap in CiteRank.com's own logos, count, quotes and AI answers before deploying: `apps/www/src/components/home/logos.tsx`, `apps/www/src/components/home/reviews.tsx`, `packages/ui/src/brand/customers.tsx`, `packages/ui/src/brand/g2-rating.tsx`, `apps/www/public/testimonials/` and the three customer logo files in `apps/www/public/`.
 
-Deploy the live demo at `demo.citerank.com` with the rest (see "Live demo"), since the home page links to it.
+Deploy the live demo at `demo.citerank.com` in its own Railway project (see "Live demo"), since the home page links to it.
 
 ## Running locally
 
@@ -59,7 +59,7 @@ The hero's "Try the live demo" link and the screenshot frame under it open `demo
 
 To run it locally, seed `citerank_demo` (steps 1 and 2 above), then in `apps/web` build with `VITE_MARKETING_SITE_URL=http://localhost:3001 VITE_CLOUD_APP_URL=http://localhost:3000 pnpm exec vite build` and start it with `PORT=3100 node --env-file=<demo env> .output/server/index.mjs`. The demo env holds the step 3 values with `DEPLOYMENT_MODE=demo`, `APP_URL` and `VITE_APP_URL` set to `http://127.0.0.1:3100`, and its own `BETTER_AUTH_SECRET` and `ELMO_ENCRYPTION_KEY`. The marketing site's `.env.development.local` sets `VITE_DEMO_SITE_URL=http://127.0.0.1:3100`, so its demo links open it. Use 127.0.0.1 rather than localhost: browsers share localhost cookies across ports, so the demo's sign-in would sign you out of the dashboard on port 3000.
 
-To deploy it, add a fifth Railway service to the same project: the web build with the demo env, pointed at a `citerank_demo` database on the same Postgres. The seed's dates are relative to when it runs, so add a daily job that reruns it, or the charts empty out after 30 days. Until it is up, the demo links go nowhere.
+To deploy it, give it its own Railway project and its own Postgres, apart from the main project, so it shares no network, database or variables with the real app. The project holds the web build with the demo env and `demo.citerank.com` as its domain, and a `citerank_demo` database (the seed refuses any other name) with the migrations applied. Give it no real provider keys. The seed's dates are relative to when it runs, so add a daily job in that project that reruns it, or the charts empty out after 30 days. Until it is up, the demo links go nowhere.
 
 ## Files we have changed
 
