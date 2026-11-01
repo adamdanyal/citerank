@@ -7,6 +7,7 @@ import { Faq } from "@/components/home/faq";
 import { HOME_FONT_CLASS, HomeStyles } from "@/components/home/styles";
 import { CARD, SectionHeading } from "@/components/home/ui";
 import { Navbar } from "@/components/navbar";
+import { AGENCY_PLANS, type AgencyPlan, FOUNDING_DISCOUNT, formatUsd, foundingPriceUsd } from "@/lib/agency-plans";
 import { embedInlineBooking } from "@/lib/cal-embed";
 import { AGENCY_FAQS } from "@/lib/faqs";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
@@ -84,9 +85,6 @@ const STEPS = [
 	},
 ];
 
-// Tier names, contents and prices are not decided yet; these cards hold the layout until they are.
-const PLACEHOLDER_TIERS = ["Tier One", "Tier Two", "Tier Three"];
-
 const BUTTON =
 	"inline-flex h-12 items-center justify-center gap-2 rounded-lg px-6 text-base font-medium leading-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600";
 
@@ -114,6 +112,67 @@ function Booking() {
 			>
 				Email {CONTACT_EMAIL}
 			</a>
+		</div>
+	);
+}
+
+function FoundingRate() {
+	return (
+		<div className="mt-12 flex flex-col gap-5 rounded-2xl bg-blue-50 p-6 ring-1 ring-blue-200 md:flex-row md:items-center md:justify-between">
+			<div>
+				<p className="font-mono text-[11px] uppercase tracking-[0.18em] text-blue-700">Founding-Client Rate</p>
+				<p className="mt-2 text-lg font-semibold tracking-[-0.015em] text-zinc-950">
+					{FOUNDING_DISCOUNT * 100}% Off Your First Six Months
+				</p>
+				<p className="mt-1 max-w-[60ch] text-pretty text-[15px]/6 text-zinc-600">
+					For our first five agency clients. In return, we write up your results as a public case study, and you approve
+					it before it goes live.
+				</p>
+			</div>
+			<a href="#book" className={`${BUTTON} shrink-0 bg-blue-600 text-white hover:bg-blue-700`}>
+				Claim a founding place
+			</a>
+		</div>
+	);
+}
+
+function AgencyPlanCard({ plan }: { plan: AgencyPlan }) {
+	return (
+		<div className={`flex flex-col p-6 ${CARD} ${plan.recommended ? "ring-2 ring-blue-600" : ""}`}>
+			<div className="flex items-center justify-between gap-3">
+				<h3 className="text-lg font-semibold tracking-[-0.015em] text-zinc-950">{plan.name}</h3>
+				{plan.recommended && (
+					<span className="rounded-full bg-blue-50 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.15em] text-blue-700 ring-1 ring-blue-200">
+						Recommended
+					</span>
+				)}
+			</div>
+			<div className="mt-3 flex items-baseline gap-1">
+				<span className="text-4xl font-semibold tracking-tight text-zinc-950 tabular-nums">
+					{formatUsd(plan.monthlyPriceUsd)}
+				</span>
+				<span className="font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-500">/ mo</span>
+			</div>
+			<p className="mt-1 text-sm text-blue-700 tabular-nums">
+				{formatUsd(foundingPriceUsd(plan))}/mo for six months at the founding rate
+			</p>
+			<p className="mt-4 text-pretty text-[15px]/6 text-zinc-600">{plan.summary}</p>
+			<ul className="mt-5 space-y-2.5 border-t border-zinc-100 pt-5">
+				{plan.includes.map((item) => (
+					<li key={item} className="flex gap-2 text-sm/5 text-zinc-700">
+						<Check className="mt-0.5 size-4 shrink-0 text-blue-600" strokeWidth={2.5} aria-hidden="true" />
+						{item}
+					</li>
+				))}
+			</ul>
+			<div className="mt-auto pt-6">
+				<a
+					href="#book"
+					className={`${BUTTON} w-full ${plan.recommended ? "bg-blue-600 text-white hover:bg-blue-700" : "bg-white text-zinc-950 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50 hover:ring-zinc-300"}`}
+				>
+					Book a call
+				</a>
+			</div>
 		</div>
 	);
 }
@@ -191,19 +250,21 @@ function AgencyPage() {
 
 				<section className="border-t border-zinc-200/80 bg-white">
 					<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
-						<SectionHeading title="Agency Plans" lede="Placeholder: tier names, contents and prices to be confirmed." />
-						<div className="mt-12 grid gap-4 md:grid-cols-3">
-							{PLACEHOLDER_TIERS.map((tier) => (
-								<div
-									key={tier}
-									className="flex min-h-56 flex-col rounded-2xl border-2 border-dashed border-zinc-300 bg-zinc-50/60 p-6"
-								>
-									<p className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Placeholder</p>
-									<p className="mt-3 text-lg font-semibold text-zinc-950">{tier}</p>
-									<p className="mt-2 text-sm text-zinc-500">Contents and price to be confirmed.</p>
-								</div>
+						<SectionHeading
+							title="Agency Plans"
+							lede="Each plan includes a tracker plan, so your dashboard and the monthly report show the same data."
+						/>
+						<FoundingRate />
+						<div className="mt-6 grid gap-4 md:grid-cols-3">
+							{AGENCY_PLANS.map((plan) => (
+								<AgencyPlanCard key={plan.name} plan={plan} />
 							))}
 						</div>
+						<p className="mt-6 max-w-3xl text-pretty text-sm/6 text-zinc-500">
+							Every plan has a three-month minimum, then runs month to month. Prices are in US dollars, plus VAT where
+							it applies. We pitch review sites and lists but can't promise they'll add you, and we post forum answers
+							openly as your brand.
+						</p>
 					</div>
 				</section>
 

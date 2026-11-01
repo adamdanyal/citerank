@@ -1,3 +1,5 @@
+import { AGENCY_PLANS, FOUNDING_DISCOUNT, formatUsd } from "@/lib/agency-plans";
+
 export interface FaqItem {
 	question: string;
 	answer: string;
@@ -145,11 +147,28 @@ export const ABOUT_FAQS: FaqItem[] = [
 
 // AI search agency FAQ. Rendered on "/agency" and emitted as FAQPage JSON-LD
 // from the same route.
+const AGENCY_PRICES = new Intl.ListFormat("en-GB", { type: "disjunction" }).format(
+	AGENCY_PLANS.map((plan) => formatUsd(plan.monthlyPriceUsd)),
+);
+
 export const AGENCY_FAQS: FaqItem[] = [
 	{
 		question: "What does the AI search agency do?",
 		answer:
 			"Every month it writes the comparison, alternatives and guide pages your site is missing, updates pages AI has stopped citing, gets you onto the review sites and best-of lists AI cites, answers buyers' questions in forums and communities, publishes guest articles on high-authority sites AI already cites, and fixes anything that stops AI crawlers reading your site.",
+	},
+	{
+		question: "How much does the AI search agency cost?",
+		answer: `Agency plans cost ${AGENCY_PRICES} a month, depending on how much work you want each month and how many brands or markets it covers. Each plan includes a tracker plan. Every plan has a three-month minimum, then runs month to month.`,
+	},
+	{
+		question: "What is the founding-client rate?",
+		answer: `Our first five agency clients get ${FOUNDING_DISCOUNT * 100}% off their first six months. In return, we publish a case study of their results, which they approve before it goes live.`,
+	},
+	{
+		question: "Why is there a three-month minimum?",
+		answer:
+			"AI answer engines take weeks to find new and updated pages and start citing them, so a single month rarely shows a change in the answers.",
 	},
 	{
 		question: "How does the agency decide what to work on?",

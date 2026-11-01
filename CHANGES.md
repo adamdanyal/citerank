@@ -32,6 +32,8 @@ Deploy the live demo at `demo.citerank.com` in its own Railway project (see "Liv
 
 Have a solicitor check the legal pages (`packages/docs/content/legal/`). Points to raise: whether Danx Digital Limited needs an EU representative to sell into the EU, and whether the Crisp chat, which stores a session identifier as the page loads, needs cookie consent. Make sure Danx Digital Limited has paid the ICO's data protection fee. If Turnstile or Sentry stay off in production, take them out of the cookie policy and the subprocessor list.
 
+Once five agency clients have the founding-client rate, take it off the site: `FoundingRate` and the founding price on each plan card in `apps/www/src/routes/agency.tsx`, and the founding-rate FAQ in `apps/www/src/lib/faqs.ts`.
+
 ## Running locally
 
 Everything runs in cloud mode (plans and billing) with no real keys.
@@ -102,8 +104,8 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | `apps/www/src/components/navbar.tsx`, `apps/www/src/components/footer.tsx`, `apps/www/src/components/logo.tsx` | CiteRank.com navigation, footer with a short "© year CiteRank.com (Registered trademark)" line linking to the UK IPO record, wordmark. The company name, number and address are on the About page. |
 | `apps/www/src/routes/index.tsx`, `apps/www/src/components/home/*` (hero, product-demo, how-it-works, why-switch, models, pricing, closing, faq, styles; new agency.tsx), `apps/www/src/data/hero-variants.ts` | Home page copy from the brand text; Elmo's self-hosting and community sections removed. The logo strip and reviews are Elmo's, kept with our name for the local demo (see "Before going live"). |
 | `packages/ui/src/brand/customers.tsx`, `packages/ui/src/brand/g2-rating.tsx` | Elmo's customer quotes, logos and G2 badge with our name and `?ref=citerank` links, for the local demo (see "Before going live"). |
-| `apps/www/src/lib/faqs.ts` | Every FAQ set rewritten; AGENCY_FAQS replaces the off-site AEO FAQs. |
-| `apps/www/src/routes/agency.tsx` | New. The agency page, with placeholder tiers and a booking slot (AGENCY_CAL_LINK) waiting for Adam's Cal.com link. |
+| `apps/www/src/lib/faqs.ts` | Every FAQ set rewritten; AGENCY_FAQS replaces the off-site AEO FAQs and answers the agency's price, founding-client rate and minimum term. |
+| `apps/www/src/routes/agency.tsx`, `apps/www/src/lib/agency-plans.ts` | New. The agency page: three plans (Foundation $1,500, Growth $3,500 and Authority $7,500 a month, three-month minimum), a founding-client rate of 25% off the first six months for the first five clients, and a booking slot (AGENCY_CAL_LINK) waiting for Adam's Cal.com link. |
 | `apps/www/src/routes/pricing.tsx`, `apps/www/src/components/pricing.tsx`, `apps/www/src/routes/about.tsx`, `apps/www/src/routes/support.tsx`, `apps/www/src/routes/legal/index.tsx` | Rewritten for CiteRank.com. |
 | `apps/www/src/routes/llms[.]txt.ts`, `apps/www/src/routes/sitemap[.]xml.ts`, `apps/www/src/routes/robots[.]txt.ts`, `apps/www/src/lib/ai-catalog.ts`, `apps/www/src/routes/[.]well-known/api-catalog.ts` | Discovery files point at citerank.com. |
 | `apps/www/src/server.ts` | CSP allows PostHog's own hosts instead of Elmo's; no Elmo status, licence or agent-skill discovery links. |
@@ -162,3 +164,4 @@ Crisp support chat runs on CiteRank.com's own workspace (`CRISP_WEBSITE_ID` in `
 | 2026-10-31 | Put the marketing site's buttons and action links in sentence case, as Elmo's site has them ("Sign up", "Start tracking", "Have us do the work"). Not deployed. |
 | 2026-11-01 | Added a live demo, the read-only dashboard on the fictional Quaildesk data, linked from the hero and the screenshot frame as on Elmo's site. Runs locally on port 3100. Not deployed. |
 | 2026-11-01 | Rewrote the legal pages for Danx Digital Limited under the law of England and Wales, and cut the analytics, advertising and hosting services CiteRank.com doesn't use. Not deployed. |
+| 2026-11-01 | Put three agency plans on the agency page (Foundation $1,500, Growth $3,500, Authority $7,500 a month), with a founding-client rate of 25% off the first six months for the first five clients, and FAQs on price, the founding rate and the minimum term. Not deployed. |
