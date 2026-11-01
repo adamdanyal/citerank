@@ -102,7 +102,7 @@ export function Footer() {
 								rel={externalRel(TRADE_MARK_URL)}
 								className="underline underline-offset-2 hover:text-zinc-950"
 							>
-								trademarked
+								Registered trademark
 							</a>
 							)
 						</p>
