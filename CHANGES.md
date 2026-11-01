@@ -30,6 +30,8 @@ The home page logo strip ("Used by 200+ brands to optimize their AI visibility")
 
 Deploy the live demo at `demo.citerank.com` in its own Railway project (see "Live demo"), since the home page links to it.
 
+Have a solicitor check the legal pages (`packages/docs/content/legal/`). Points to raise: whether Danx Digital Limited needs an EU representative to sell into the EU, and whether the Crisp chat, which stores a session identifier as the page loads, needs cookie consent. Make sure Danx Digital Limited has paid the ICO's data protection fee. If Turnstile or Sentry stay off in production, take them out of the cookie policy and the subprocessor list.
+
 ## Running locally
 
 Everything runs in cloud mode (plans and billing) with no real keys.
@@ -116,7 +118,7 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | `apps/www/src/data/authors.ts`, `apps/www/src/routes/blog/index.tsx`, `apps/www/src/routes/blog/$.tsx`, `apps/www/src/components/blog-post-layout.tsx`, `apps/www/src/components/provider-cta.tsx` | Byline "CiteRank.com Team" replaces Elmo's founder; titles; Elmo's partner dofollow list and affiliate `sponsored` links removed. |
 | `packages/docs/content/docs/**` | Product docs reworded as CiteRank.com; getting-started is a hosted quickstart; providers.mdx describes the AI apps tracked. |
 | `packages/api-spec/src/openapi.json` | Title, contact, key prefix and descriptions. The `x-elmo-*` keys stay because code reads them. |
-| `packages/docs/content/legal/*.mdx` | Elmo's policies with CiteRank.com as the company and the open-source passages removed. A placeholder until proper policies exist: governing law and arbitration still name California. |
+| `packages/docs/content/legal/*.mdx` | Elmo's policies rewritten for Danx Digital Limited under the law of England and Wales: English courts instead of California law and American arbitration, UK GDPR lawful bases and ICO complaints, UK transfer rules, and only the services CiteRank.com runs (no analytics, ad tags or cookie banner). |
 | `apps/www/public/screenshots/*.png` | Retaken from our dashboard with the fictional Quaildesk data instead of Elmo's logo, demo org and Nike data (see "Marketing screenshots"). `feature-graphics.tsx` names the tags the prompt filter capture now shows. |
 | `scripts/demo-data/` | New. Seeds the demo database behind the screenshots and the live demo, and captures the screenshots. |
 
@@ -159,3 +161,4 @@ Crisp support chat runs on CiteRank.com's own workspace (`CRISP_WEBSITE_ID` in `
 | 2026-10-31 | Stopped the industry pages scrolling sideways on phones, where a long example prompt widened the page. Not deployed. |
 | 2026-10-31 | Put the marketing site's buttons and action links in sentence case, as Elmo's site has them ("Sign up", "Start tracking", "Have us do the work"). Not deployed. |
 | 2026-11-01 | Added a live demo, the read-only dashboard on the fictional Quaildesk data, linked from the hero and the screenshot frame as on Elmo's site. Runs locally on port 3100. Not deployed. |
+| 2026-11-01 | Rewrote the legal pages for Danx Digital Limited under the law of England and Wales, and cut the analytics, advertising and hosting services CiteRank.com doesn't use. Not deployed. |
