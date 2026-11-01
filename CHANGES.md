@@ -28,6 +28,8 @@ A merge keeps every change below: where Elmo changed the same lines, git stops f
 
 The home page logo strip ("Used by 200+ brands to optimize their AI visibility"), the "Loved by marketers. Recommended by AI." reviews, and the sign-up page quote and G2 stars are Elmo's customers, Elmo's reviews and AI answers about Elmo, shown with our name for the local demo. Swap in CiteRank.com's own logos, count, quotes and AI answers before deploying: `apps/www/src/components/home/logos.tsx`, `apps/www/src/components/home/reviews.tsx`, `packages/ui/src/brand/customers.tsx`, `packages/ui/src/brand/g2-rating.tsx`, `apps/www/public/testimonials/` and the three customer logo files in `apps/www/public/`.
 
+Deploy the live demo at `demo.citerank.com` with the rest (see "Live demo"), since the home page links to it.
+
 ## Running locally
 
 Everything runs in cloud mode (plans and billing) with no real keys.
@@ -51,6 +53,14 @@ Everything runs in cloud mode (plans and billing) with no real keys.
 4. Capture: `DATABASE_URL=<that URL> DASHBOARD_URL=http://localhost:3100 pnpm exec tsx scripts/demo-data/capture.ts` (or name the shots to retake). If Playwright's own browser isn't installed, set `CHROMIUM_PATH` to a cached one in `~/Library/Caches/ms-playwright`. It signs in as the demo user from `scripts/demo-data/content.ts` and draws the fictional companies' logos itself.
 5. If the dashboard sidebar moved, update the `y` fractions in `apps/www/src/components/home/product-demo.tsx`; `how-it-works.tsx` crops the left 17.5% of each capture.
 
+## Live demo
+
+The hero's "Try the live demo" link and the screenshot frame under it open `demo.citerank.com`: the dashboard in Elmo's demo mode (`DEPLOYMENT_MODE=demo`) on the Quaildesk database above. `DEPLOYMENT_MODE=local` with `READ_ONLY=true` is also read-only but leaves the chat off. Every visitor is signed in as the demo user from `scripts/demo-data/content.ts`, edits are refused, and Crisp shows its own launcher with the demo next steps. No worker runs against it, so nothing is scraped.
+
+To run it locally, seed `citerank_demo` (steps 1 and 2 above), then in `apps/web` build with `VITE_MARKETING_SITE_URL=http://localhost:3001 VITE_CLOUD_APP_URL=http://localhost:3000 pnpm exec vite build` and start it with `PORT=3100 node --env-file=<demo env> .output/server/index.mjs`. The demo env holds the step 3 values with `DEPLOYMENT_MODE=demo`, `APP_URL` and `VITE_APP_URL` set to `http://127.0.0.1:3100`, and its own `BETTER_AUTH_SECRET` and `ELMO_ENCRYPTION_KEY`. The marketing site's `.env.development.local` sets `VITE_DEMO_SITE_URL=http://127.0.0.1:3100`, so its demo links open it. Use 127.0.0.1 rather than localhost: browsers share localhost cookies across ports, so the demo's sign-in would sign you out of the dashboard on port 3000.
+
+To deploy it, add a fifth Railway service to the same project: the web build with the demo env, pointed at a `citerank_demo` database on the same Postgres. The seed's dates are relative to when it runs, so add a daily job that reruns it, or the charts empty out after 30 days. Until it is up, the demo links go nowhere.
+
 ## Files we have changed
 
 Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app/org/$org/settings/`.
@@ -59,7 +69,7 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | --- | --- |
 | `apps/web/vite.config.ts` | Excludes linkedom from the dev pre-bundle; without it a fresh `pnpm dev` crashes. |
 | `packages/config/src/constants.ts` | Product name, icon path, brand colour and font, docs URLs. CiteRank.com's own Crisp ID. |
-| `packages/config/src/referrals.ts` | Links go to citerank.com and app.citerank.com. Demo-booking links go to /agency, and the demo-instance URL to the app, since CiteRank.com has no public demo. Vite builds can point both hosts elsewhere with `VITE_MARKETING_SITE_URL` and `VITE_CLOUD_APP_URL`. |
+| `packages/config/src/referrals.ts` | Links go to citerank.com, app.citerank.com and demo.citerank.com. Demo-booking links go to /agency. Vite builds can point the hosts elsewhere with `VITE_MARKETING_SITE_URL`, `VITE_CLOUD_APP_URL` and `VITE_DEMO_SITE_URL`. |
 | `packages/config/src/fanout-support.test.ts` | Drops the check that the providers docs page carries the per-scraper fan-out table; the customer page no longer has it. |
 | `packages/config/src/legal.ts` | Legal links go to the marketing site (`MARKETING_SITE_URL`). No cookie consent prompt while nothing sets analytics or ad cookies. |
 | `packages/config/src/referrals.test.ts`, `packages/config/src/legal.test.ts` | Expect the citerank.com URLs. |
@@ -79,6 +89,7 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | `packages/og/src/render.tsx`, `packages/og/src/fonts.ts`, `packages/og/src/vite-plugin.ts`, `packages/og/src/virtual.d.ts` | Share images: mark, wordmark, fonts, colours, tagline. |
 | `apps/web/src/server/config.ts`, `apps/web/src/lib/posthog.ts`, `apps/web/src/server.ts`, `apps/www/src/lib/posthog.ts`, `apps/www/src/lib/crisp.ts`, `apps/worker/src/telemetry.ts`, `packages/ui/src/lib/ad-tags.ts` | Elmo's analytics, chat and ad accounts switched off (see below). |
 | `packages/ui/src/consent/cookie-consent-banner.tsx` | Banner text. |
+| `apps/web/src/lib/crisp.ts` | The demo's chat greeting names CiteRank.com, and its next steps offer the tracker and the agency instead of Elmo Cloud, self-hosting and a 30-minute walkthrough. |
 | `apps/web/src/server/__tests__/config.test.ts`, `apps/web/src/lib/__tests__/crisp.test.ts` | Expect the new Crisp ID and URLs. |
 | `apps/web/package.json`, `apps/www/package.json`, `pnpm-lock.yaml` | Font packages. |
 | `scripts/citerank-brand-check.mjs` | New. Lists customer-facing Elmo text left after a merge. |
@@ -106,7 +117,7 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | `packages/api-spec/src/openapi.json` | Title, contact, key prefix and descriptions. The `x-elmo-*` keys stay because code reads them. |
 | `packages/docs/content/legal/*.mdx` | Elmo's policies with CiteRank.com as the company and the open-source passages removed. A placeholder until proper policies exist: governing law and arbitration still name California. |
 | `apps/www/public/screenshots/*.png` | Retaken from our dashboard with the fictional Quaildesk data instead of Elmo's logo, demo org and Nike data (see "Marketing screenshots"). `feature-graphics.tsx` names the tags the prompt filter capture now shows. |
-| `scripts/demo-data/` | New. Seeds the demo database and captures the screenshots. |
+| `scripts/demo-data/` | New. Seeds the demo database behind the screenshots and the live demo, and captures the screenshots. |
 
 ## Files we have removed
 
@@ -146,3 +157,4 @@ Crisp support chat runs on CiteRank.com's own workspace (`CRISP_WEBSITE_ID` in `
 | 2026-10-31 | Changed the home page headline to "Track Your Brand in AI Search", sized to hold to two lines down to 320px phones. Not deployed. |
 | 2026-10-31 | Stopped the industry pages scrolling sideways on phones, where a long example prompt widened the page. Not deployed. |
 | 2026-10-31 | Put the marketing site's buttons and action links in sentence case, as Elmo's site has them ("Sign up", "Start tracking", "Have us do the work"). Not deployed. |
+| 2026-11-01 | Added a live demo, the read-only dashboard on the fictional Quaildesk data, linked from the hero and the screenshot frame as on Elmo's site. Runs locally on port 3100. Not deployed. |

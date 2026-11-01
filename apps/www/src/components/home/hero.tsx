@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
-import { cloudSignupUrl, type ReferralSource } from "@workspace/config/referrals";
-import { ArrowRight } from "lucide-react";
+import { cloudSignupUrl, demoSiteUrl, type ReferralSource } from "@workspace/config/referrals";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
-import { ProductDemo } from "./product-demo";
+import { externalRel } from "@/lib/external-link";
+import { DEMO_BRAND_PATH, ProductDemo } from "./product-demo";
 
 // One size and box model for both buttons, so they sit on the same line.
 const BUTTON =
@@ -42,6 +43,7 @@ export function Hero({
 	from?: ReferralSource;
 } = {}) {
 	const signupUrl = cloudSignupUrl(from);
+	const demoUrl = demoSiteUrl(from, DEMO_BRAND_PATH);
 	// The display size suits a short slogan; a longer headline steps down so it holds to two lines.
 	const short = title.length <= 16;
 
@@ -85,6 +87,19 @@ export function Hero({
 						<Link to="/pricing" className={`${QUIET} whitespace-nowrap`}>
 							See pricing
 						</Link>
+						<span aria-hidden="true" className="mx-2 text-zinc-300 max-sm:hidden">
+							·
+						</span>
+						<br className="sm:hidden" />
+						<a
+							href={demoUrl}
+							target="_blank"
+							rel={externalRel(demoUrl)}
+							className={`${QUIET} inline-flex items-center gap-1 max-sm:mt-2`}
+						>
+							Try the live demo
+							<ArrowUpRight className="size-3.5" aria-hidden="true" />
+						</a>
 					</p>
 				</div>
 

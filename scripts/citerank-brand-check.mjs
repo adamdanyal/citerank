@@ -50,7 +50,6 @@ const ALLOWED_TEXT = [
 ];
 
 const ALLOWED_FILES = {
-	"apps/web/src/lib/crisp.ts": "this chat text is demo-mode only; rebrand it before running a demo deployment",
 	"apps/web/src/routes/_authed/app/org/$org/settings/skill.tsx": "the sidebar links it in local mode only",
 	"apps/web/src/routes/_authed/app/org/$org/settings/api.tsx": "its Elmo SDK snippets render in local mode only",
 };

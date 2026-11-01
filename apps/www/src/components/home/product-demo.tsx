@@ -1,8 +1,9 @@
-import { cloudSignupUrl } from "@workspace/config/referrals";
-import { ArrowRight } from "lucide-react";
+import { demoSiteUrl } from "@workspace/config/referrals";
+import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { externalRel } from "@/lib/external-link";
 
-const SIGN_UP_URL = cloudSignupUrl("marketing-demo-frame");
+export const DEMO_BRAND_PATH = "/app/org/quaildesk/brand/quaildesk";
 
 /*
  * Each slide is a real screenshot. `y` is where that page's link sits in the
@@ -176,12 +177,15 @@ export function ProductDemo() {
 	};
 
 	const slide = SLIDES[index];
+	const demoUrl = demoSiteUrl("marketing-demo-frame", `${DEMO_BRAND_PATH}${slide.path}`);
 
 	return (
 		<div ref={ref} className="mx-auto max-w-4xl">
 			<a
-				href={SIGN_UP_URL}
-				aria-label={`Start tracking: ${slide.label}`}
+				href={demoUrl}
+				target="_blank"
+				rel={externalRel(demoUrl)}
+				aria-label={`View the live demo: ${slide.label}`}
 				className="group relative block overflow-hidden rounded-xl bg-white shadow-[0_0_0_1px_rgb(24_24_27/0.08),0_2px_4px_rgb(24_24_27/0.04),0_32px_64px_-24px_rgb(37_99_235/0.28)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
 			>
 				<div className="relative aspect-[5/3] bg-zinc-50">
@@ -201,8 +205,8 @@ export function ProductDemo() {
 					className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center bg-zinc-950/0 transition-colors duration-200 group-hover:bg-zinc-950/10 group-focus-visible:bg-zinc-950/10"
 				>
 					<span className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white opacity-0 shadow-[0_0_0_4px_rgb(37_99_235/0.2),0_0_24px_4px_rgb(59_130_246/0.55),0_0_64px_16px_rgb(96_165_250/0.35)] transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
-						Start tracking
-						<ArrowRight className="size-4" />
+						View live demo
+						<ArrowUpRight className="size-4" />
 					</span>
 				</div>
 			</a>

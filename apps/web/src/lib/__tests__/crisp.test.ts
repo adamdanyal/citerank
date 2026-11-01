@@ -88,11 +88,7 @@ describe("the demo next steps", () => {
 
 		const [, nextSteps] = (shown[1]?.[2] ?? []) as [string, string];
 		const linked = [...String(nextSteps).matchAll(/\]\((https?:[^)]+)\)/g)].map((match) => match[1]);
-		expect(linked).toEqual([
-			"https://citerank.com/agency?ref=demo-chat",
-			CLOUD_SIGNUP_URL,
-			"https://www.elmohq.com/docs/getting-started",
-		]);
+		expect(linked).toEqual([CLOUD_SIGNUP_URL, "https://citerank.com/agency?ref=demo-chat"]);
 	});
 
 	it("is not offered on cloud, which shares the same chatbox", async () => {
@@ -211,7 +207,7 @@ describe("session identity", () => {
 		["identified before load", true],
 	])("leaves demo visitors anonymous (%s)", async (_label, identifyFirst) => {
 		const { initCrisp, identifyCrispUser } = await loadCrisp();
-		const demoUser = { id: "demo", email: "demo@elmohq.com", name: "Demo User" };
+		const demoUser = { id: "demo", email: "demo@citerank.com", name: "Demo User" };
 
 		if (identifyFirst) {
 			identifyCrispUser(demoUser);

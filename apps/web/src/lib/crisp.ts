@@ -1,6 +1,6 @@
 // Crisp replays anything pushed onto `window.$crisp` once its script loads, so
 // nothing here has to wait for a ready signal.
-import { CLOUD_SIGNUP_URL } from "@workspace/config/plans";
+import { CLOUD_ENTRY_PRICE_USD, CLOUD_SIGNUP_URL } from "@workspace/config/plans";
 import { bookDemoUrl } from "@workspace/config/referrals";
 import type { DeploymentMode } from "@workspace/config/types";
 
@@ -16,26 +16,23 @@ declare global {
 
 const CRISP_SCRIPT_URL = "https://client.crisp.chat/l.js";
 
-const DEMO_WALKTHROUGH_URL = bookDemoUrl("demo-chat");
-const SELF_HOST_DOCS_URL = "https://www.elmohq.com/docs/getting-started";
+const DEMO_AGENCY_URL = bookDemoUrl("demo-chat");
 
 const DEMO_GREETING =
-	"👋 You're in the Elmo demo — it's read-only sample data, so click around freely. Ask me anything as you go.";
+	"👋 You're in the CiteRank.com demo — it's read-only sample data, so click around freely. Ask me anything as you go.";
 
 // Not a carousel: at chatbox width its track shows one card at a time, which
 // left the last option off screen.
 const DEMO_NEXT_STEPS = [
 	"Whenever you're ready:",
-	`• [Book a walkthrough](${DEMO_WALKTHROUGH_URL}) — 30 minutes on your own brand's data`,
-	`• [Start with Elmo Cloud](${CLOUD_SIGNUP_URL}) — the managed version, nothing to deploy`,
-	`• [Self-host it free](${SELF_HOST_DOCS_URL}) — open source, running in about five minutes`,
+	`• [Start with CiteRank.com](${CLOUD_SIGNUP_URL}) — plans from $${CLOUD_ENTRY_PRICE_USD} a month, nothing to deploy`,
+	`• [Have us do the work](${DEMO_AGENCY_URL}) — book a call with our AI search agency`,
 ].join("\n");
 
-// So an operator picking up the thread points at the same three places.
+// So an operator picking up the thread points at the same two places.
 const DEMO_SESSION_DATA: [string, string][] = [
-	["walkthrough_url", DEMO_WALKTHROUGH_URL],
-	["self_host_docs_url", SELF_HOST_DOCS_URL],
 	["cloud_signup_url", CLOUD_SIGNUP_URL],
+	["agency_url", DEMO_AGENCY_URL],
 ];
 
 interface CrispUser {

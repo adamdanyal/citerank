@@ -4,7 +4,8 @@
 // are real sites, so the Citations page reads like a real category.
 
 /** A sign-in for the local demo database only. */
-export const DEMO_LOGIN = { name: "Demo User", email: "demo@citerank.com", password: "quaildesk-demo" };
+// The demo deployment signs every visitor in with these (apps/web/src/routes/auth/login.tsx).
+export const DEMO_LOGIN = { name: "Demo User", email: "demo@citerank.com", password: "demo" };
 
 export const DEMO_ORG = { id: "demo-org", name: "Quaildesk", slug: "quaildesk" };
 export const DEMO_BRAND = { id: "demo-brand", slug: "quaildesk" };

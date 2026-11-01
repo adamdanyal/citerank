@@ -12,8 +12,7 @@ const env = (import.meta as ImportMeta & { env?: Record<string, string | undefin
 
 export const MARKETING_SITE_URL = env?.VITE_MARKETING_SITE_URL || "https://citerank.com";
 export const CLOUD_APP_URL = env?.VITE_CLOUD_APP_URL || "https://app.citerank.com";
-/** CiteRank.com has no public demo instance, so anything still linking to one lands on the app. */
-const DEMO_SITE_URL = CLOUD_APP_URL;
+const DEMO_SITE_URL = env?.VITE_DEMO_SITE_URL || "https://demo.citerank.com";
 
 /**
  * Where a link back to us was clicked. A closed set rather than free-form

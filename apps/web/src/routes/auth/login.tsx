@@ -134,7 +134,7 @@ export function DemoLogin({ destination = "/app" }: { destination?: string }) {
 		let cancelled = false;
 
 		authClient.signIn
-			.email({ email: "demo@elmohq.com", password: "demo" })
+			.email({ email: "demo@citerank.com", password: "demo" })
 			.then((result) => {
 				if (cancelled) return;
 				if (result.error) {
