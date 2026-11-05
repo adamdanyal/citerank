@@ -224,10 +224,10 @@ export const CloudSwappingAPlatform: Story = {
 };
 
 /**
- * Starter tracks one platform, so there is nothing to choose: the page says what
+ * A custom plan that tracks one platform has nothing to choose: the page says what
  * is tracked and what upgrading would add, rather than showing a lone checkbox.
  */
-export const StarterSinglePlatform: Story = {
+export const CustomSinglePlatform: Story = {
 	render: () => {
 		loader({
 			available: menuOptions(["chatgpt"]),

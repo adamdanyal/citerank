@@ -3,7 +3,7 @@ import type { FaqItem } from "@/lib/faqs";
 import { type Competitor, type CompetitorCategory, ELMO_FEATURES, type FeatureKey, getFeatureLabel } from "./types";
 
 export const ENTRY_PRICE = `$${CLOUD_ENTRY_PRICE_USD}/mo`;
-export const PLAN_RANGE = `$${PLANS.starter.monthlyPriceUsd}/mo (Starter) to $${PLANS.business.monthlyPriceUsd}/mo (Business)`;
+export const PLAN_RANGE = `$${PLANS.basic.monthlyPriceUsd}/mo (Basic) to $${PLANS.business.monthlyPriceUsd}/mo (Business)`;
 
 // Prose-friendly category nouns (acronyms kept uppercase, descriptive words
 // lowercased) so they read naturally mid-sentence — e.g. "an AI visibility

@@ -157,7 +157,7 @@ export const SetupPlatformStep: StoryObj = {
 };
 
 /**
- * A single-platform menu (Starter) shows the pick locked in rather than a
+ * A single-platform menu (a custom plan) shows the pick locked in rather than a
  * one-checkbox chooser.
  */
 export const SetupSinglePlatformPlan: StoryObj = {

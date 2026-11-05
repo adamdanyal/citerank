@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import { Closing } from "@/components/citerank/home/closing";
 import { Faq } from "@/components/citerank/home/faq";
 import { OtherPlans } from "@/components/citerank/home/pricing";
@@ -11,8 +12,7 @@ import { PRICING_FAQS } from "@/lib/faqs";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
 const title = "Pricing: Self-Serve, Agency & Custom AI Visibility · CiteRank.com";
-const description =
-	"CiteRank.com is a self-serve AI visibility tracker from $29/mo, with an AI search agency and custom plans on request.";
+const description = `CiteRank.com is a self-serve AI visibility tracker from $${CLOUD_ENTRY_PRICE_USD}/mo, with an AI search agency and custom plans on request.`;
 
 export const Route = createFileRoute("/pricing")({
 	head: () => ({

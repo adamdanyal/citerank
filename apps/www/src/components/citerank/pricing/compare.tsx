@@ -36,7 +36,7 @@ export function Compare() {
 					<h2 className="heading-2 text-zinc-950">What Each Plan Checks</h2>
 					<p className="body-8 mt-6 text-zinc-700">The AI apps each plan can track, and how often.</p>
 				</Reveal>
-				<div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+				<div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
 					{PLAN_KEYS.map((key, index) => {
 						const plan = PLANS[key];
 						const breakdown = planPlatformBreakdown(plan);

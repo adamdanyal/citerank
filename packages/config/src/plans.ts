@@ -15,7 +15,7 @@
 import { getModelMeta } from "./models";
 import { CLOUD_APP_URL } from "./referrals";
 
-export type PlanKey = "starter" | "basic" | "pro" | "business";
+export type PlanKey = "basic" | "pro" | "business";
 
 export type BillingInterval = "monthly" | "annual";
 
@@ -170,19 +170,6 @@ export interface PlanDefinition {
 }
 
 export const PLANS: Record<PlanKey, PlanDefinition> = {
-	starter: {
-		key: "starter",
-		name: "Starter",
-		monthlyPriceUsd: 29,
-		annualPriceUsd: 290,
-		maxBrands: 1,
-		maxPrompts: 50,
-		platformMenu: ["chatgpt"],
-		platformPicks: 1,
-		standardRunsPerDay: 1,
-		premiumIncluded: 0,
-		premiumAddonAvailable: false,
-	},
 	basic: {
 		key: "basic",
 		name: "Basic",

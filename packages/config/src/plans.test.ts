@@ -96,15 +96,14 @@ describe("planPlatformBreakdown", () => {
 	});
 
 	it("drops tiers a plan cannot pick from", () => {
-		// Starter is ChatGPT only: one scraped tier, no APIs at all.
-		const { pickGroups } = planPlatformBreakdown(PLANS.starter);
+		// A custom plan sold on ChatGPT alone: one scraped tier, no APIs at all.
+		const { pickGroups } = planPlatformBreakdown({ ...PLANS.basic, platformMenu: ["chatgpt"], platformPicks: 1 });
 		expect(pickGroups.map((g) => g.id)).toEqual(["scraped"]);
 		expect(pickGroups[0].models.map((m) => m.model)).toEqual(["chatgpt"]);
 	});
 
 	it("omits the premium tier on plans that do not sell it", () => {
 		// Better to say nothing than to advertise an absence in a price column.
-		expect(planPlatformBreakdown(PLANS.starter).premium).toBeNull();
 		expect(planPlatformBreakdown(PLANS.basic).premium).toBeNull();
 	});
 
@@ -198,9 +197,9 @@ describe("summarizeSubscriptionCost", () => {
 	});
 
 	it("omits the add-on line when none is purchased", () => {
-		const cost = summarizeSubscriptionCost({ plan: "starter", interval: "monthly", addonQuantity: 0 });
+		const cost = summarizeSubscriptionCost({ plan: "basic", interval: "monthly", addonQuantity: 0 });
 		expect(cost.lines).toHaveLength(1);
-		expect(cost.totalUsd).toBe(PLANS.starter.monthlyPriceUsd);
+		expect(cost.totalUsd).toBe(PLANS.basic.monthlyPriceUsd);
 	});
 
 	it("ignores a negative or fractional quantity rather than crediting it", () => {
@@ -219,7 +218,9 @@ describe("summarizeSubscriptionCost", () => {
 
 describe("plan copy the surfaces share", () => {
 	it("names the single option instead of asking a one-platform plan to choose", () => {
-		expect(planPlatformBreakdown(PLANS.starter).pickHeading).toBe("ChatGPT only");
+		expect(planPlatformBreakdown({ ...PLANS.basic, platformMenu: ["chatgpt"], platformPicks: 1 }).pickHeading).toBe(
+			"ChatGPT only",
+		);
 	});
 
 	it("states the budget once, so the paywall and the marketing table cannot word it differently", () => {

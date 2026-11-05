@@ -399,7 +399,7 @@ export const competitors: Competitor[] = [
 					headline: "Enterprise pricing for a weekly number",
 					detail:
 						"Profound sells to enterprises and prices accordingly, with no public entry tier. That is a real mismatch for teams who want to watch a few dozen prompts and are not running a procurement cycle to do it.",
-					citeRank: `CiteRank.com's Starter plan tracks ${PLANS.starter.maxPrompts} prompts for $${PLANS.starter.monthlyPriceUsd}/mo, and you sign up yourself, with no sales call or procurement cycle. Plans run up to $${PLANS.business.monthlyPriceUsd}/mo, and yearly billing saves two months.`,
+					citeRank: `CiteRank.com's Basic plan tracks ${PLANS.basic.maxPrompts} prompts on ${PLANS.basic.platformPicks} AI apps for $${PLANS.basic.monthlyPriceUsd}/mo, and you sign up yourself, with no sales call or procurement cycle. Plans run up to $${PLANS.business.monthlyPriceUsd}/mo, and yearly billing saves two months.`,
 				},
 				{
 					headline: "You cannot check the numbers",

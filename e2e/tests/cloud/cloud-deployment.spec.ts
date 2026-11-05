@@ -94,7 +94,7 @@ test.describe("Cloud self-serve signup", () => {
 
     await page.waitForURL(/\/choose-plan(?:\?.*)?$/, { timeout: 30_000 });
     await expect(page.getByRole("heading", { name: "Choose your plan" })).toBeVisible({ timeout: 30_000 });
-    await expect(page.getByRole("button", { name: "Subscribe to Starter" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Subscribe to Basic" })).toBeVisible();
   });
 
   // A 400 rather than the allowlist's 403, so unlike the case below this

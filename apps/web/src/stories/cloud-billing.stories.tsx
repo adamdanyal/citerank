@@ -125,18 +125,18 @@ export const ProPlan: Story = {
 export const OverLimitAfterDowngrade: Story = {
 	render: () =>
 		renderWith({
-			plan: "starter",
+			plan: "basic",
 			periodEnd: new Date(NOW.getTime() + 12 * DAY_MS),
 			usage: { brands: 3, enabledPrompts: 212, premiumAssigned: 0 },
 		}),
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
-		// No add-on, so the total needs no breakdown. ($29 also appears on the
-		// Starter card below, so the arithmetic is asserted in plans.test.ts.)
+		// No add-on, so the total needs no breakdown. ($99 also appears on the
+		// Basic card below, so the arithmetic is asserted in plans.test.ts.)
 		await expect(canvas.queryByText(/extra premium prompt/)).toBeNull();
 		await expect(await canvas.findByText("3 / 1")).toBeVisible();
 		await expect(await canvas.findByText("212 / 50")).toBeVisible();
-		// Starter has no premium pool, so that meter and the add-on card are absent.
+		// Basic has no premium pool, so that meter and the add-on card are absent.
 		await expect(canvas.queryByText("Extra premium prompts")).toBeNull();
 	},
 };
@@ -246,7 +246,7 @@ export const OpeningBillingPortal: Story = {
 		const canvas = within(canvasElement);
 		await userEvent.click(await canvas.findByRole("button", { name: /manage billing/i }));
 		// Every other action disables while one is in flight.
-		await expect(await canvas.findByRole("button", { name: /switch to starter/i })).toBeDisabled();
+		await expect(await canvas.findByRole("button", { name: /switch to basic/i })).toBeDisabled();
 	},
 };
 
@@ -281,7 +281,7 @@ export const ComparesPlansWithCurrentMarked: Story = {
 		await expect(await canvas.findByText("Current")).toBeVisible();
 		await expect(await canvas.findByRole("button", { name: "Your plan" })).toBeDisabled();
 		// Every other plan offers a switch.
-		for (const name of ["Starter", "Basic", "Business"]) {
+		for (const name of ["Basic", "Business"]) {
 			await expect(await canvas.findByRole("button", { name: `Switch to ${name}` })).toBeEnabled();
 		}
 		await expect(canvas.queryByRole("button", { name: "Switch to Pro" })).toBeNull();

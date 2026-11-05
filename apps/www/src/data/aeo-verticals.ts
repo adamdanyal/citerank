@@ -218,7 +218,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "startups",
 		audience: "startups",
-		plan: "starter",
+		plan: "basic",
 		technical: true,
 		headline: "Startup SEO and AI Search Visibility",
 		metaTitle: "Startup SEO in the AI Search Era: A Practical Guide · CiteRank.com",
@@ -227,7 +227,7 @@ export const aeoVerticals: AeoVertical[] = [
 		short: `Build AI visibility from zero without enterprise pricing, on self-serve plans from $${CLOUD_ENTRY_PRICE_USD}/mo.`,
 		intro: [
 			"A new brand starts out invisible to AI engines, because there is little for the models to have learned. The job is to build a credible footprint quickly: clear content, early reviews, and mentions on sources the models trust.",
-			`Budgets are tight, and most tools in this space are priced for larger companies. CiteRank.com's ${PLANS.starter.name} plan tracks ${PLANS.starter.maxPrompts} prompts in ChatGPT for $${PLANS.starter.monthlyPriceUsd}/mo, so you can start measuring on day one and only pay more when you track more.`,
+			`Budgets are tight, and most tools in this space are priced for larger companies. CiteRank.com's ${PLANS.basic.name} plan tracks ${PLANS.basic.maxPrompts} prompts on ${PLANS.basic.platformPicks} AI apps for $${PLANS.basic.monthlyPriceUsd}/mo, so you can start measuring on day one and only pay more when you track more.`,
 		],
 		examplePrompts: ["best [new category] tools", "alternatives to [incumbent]", "what is [your brand]"],
 		plays: [
@@ -252,7 +252,7 @@ export const aeoVerticals: AeoVertical[] = [
 		faqs: [
 			{
 				question: "What does AI visibility tracking cost a startup?",
-				answer: `CiteRank.com's ${PLANS.starter.name} plan costs $${PLANS.starter.monthlyPriceUsd}/mo for ${PLANS.starter.maxPrompts} prompts checked ${PLANS.starter.standardRunsPerDay}× daily in ChatGPT, with unlimited seats. Move up a plan when you need more AI apps or more checks a day.`,
+				answer: `CiteRank.com's ${PLANS.basic.name} plan costs $${PLANS.basic.monthlyPriceUsd}/mo for ${PLANS.basic.maxPrompts} prompts checked ${PLANS.basic.standardRunsPerDay}× daily on any ${PLANS.basic.platformPicks} of 12 AI apps, with unlimited seats. Move up a plan when you need more brands, more prompts or premium models.`,
 			},
 			{
 				question: "When should a startup start doing AEO?",
@@ -449,7 +449,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "local-business",
 		audience: "local businesses",
-		plan: "starter",
+		plan: "basic",
 		short:
 			"Show up when someone asks an AI assistant for the best option near them, across every location you operate.",
 		intro: [
@@ -783,7 +783,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "nonprofits",
 		audience: "nonprofits",
-		plan: "starter",
+		plan: "basic",
 		short:
 			"Be the organisation an AI assistant names when someone asks where to donate or who is doing the work in your cause area.",
 		intro: [

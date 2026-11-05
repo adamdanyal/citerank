@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import { ArrowRight, ArrowUpRight, Home } from "lucide-react";
 import { Footer } from "./footer";
 import { Navbar } from "./navbar";
@@ -6,7 +7,7 @@ import { Navbar } from "./navbar";
 const suggestedLinks = [
 	{ label: "Documentation", href: "/docs", description: "Get started and learn the API" },
 	{ label: "Features", href: "/features", description: "What CiteRank.com can do for your brand" },
-	{ label: "Pricing", href: "/pricing", description: "Four tracker plans, starting at $29/mo" },
+	{ label: "Pricing", href: "/pricing", description: `Three tracker plans, from $${CLOUD_ENTRY_PRICE_USD}/mo` },
 	{ label: "Agency", href: "/agency", description: "Have us do the work for you" },
 ];
 

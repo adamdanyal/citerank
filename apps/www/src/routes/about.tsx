@@ -34,7 +34,7 @@ export const Route = createFileRoute("/about")({
 	component: AboutPage,
 });
 
-const { starter, basic, pro, business } = PLANS;
+const { basic, pro, business } = PLANS;
 
 const SOCIAL_LINKS = [
 	{ label: "LinkedIn", href: "https://www.linkedin.com/company/citerank" },
@@ -76,7 +76,7 @@ const principles = [
 	},
 	{
 		title: `Public, Self-Serve Pricing From $${CLOUD_ENTRY_PRICE_USD}/mo`,
-		body: `CiteRank.com plans are listed publicly at $${starter.monthlyPriceUsd}, $${basic.monthlyPriceUsd}, $${pro.monthlyPriceUsd}, and $${business.monthlyPriceUsd} a month, and you can sign up without a sales call. Profound has no public entry tier and quotes its Enterprise plan through sales.`,
+		body: `CiteRank.com plans are listed publicly at $${basic.monthlyPriceUsd}, $${pro.monthlyPriceUsd}, and $${business.monthlyPriceUsd} a month, and you can sign up without a sales call. Profound has no public entry tier and quotes its Enterprise plan through sales.`,
 	},
 	{
 		title: "Month-to-Month Billing",
@@ -84,7 +84,7 @@ const principles = [
 	},
 	{
 		title: `Prompts Checked ${basic.standardRunsPerDay}× a Day`,
-		body: `From the $${basic.monthlyPriceUsd}/mo Basic plan, every prompt runs ${basic.standardRunsPerDay} times a day on each platform you track, and Starter checks ChatGPT once a day. AI answers vary from run to run, so more samples means trends you can trust instead of one-off snapshots.`,
+		body: `On every plan, every prompt runs ${basic.standardRunsPerDay} times a day on each platform you track. AI answers vary from run to run, so more samples means trends you can trust instead of one-off snapshots.`,
 	},
 	{
 		title: "The Same Interfaces Your Buyers Use",
@@ -178,7 +178,7 @@ function AboutPage() {
 		},
 		{
 			term: "Pricing",
-			detail: `AI Visibility Tracker: Starter $${starter.monthlyPriceUsd}/mo, Basic $${basic.monthlyPriceUsd}/mo, Pro $${pro.monthlyPriceUsd}/mo, Business $${business.monthlyPriceUsd}/mo, with unlimited seats on every plan. AI search agency and custom plans on request.`,
+			detail: `AI Visibility Tracker: Basic $${basic.monthlyPriceUsd}/mo, Pro $${pro.monthlyPriceUsd}/mo, Business $${business.monthlyPriceUsd}/mo, with unlimited seats on every plan. AI search agency and custom plans on request.`,
 		},
 		{
 			term: "Contract Terms",

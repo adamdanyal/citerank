@@ -1,4 +1,4 @@
-import { PLANS } from "@workspace/config/plans";
+import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 
 export interface HeroVariant {
 	title: string;
@@ -50,7 +50,7 @@ export const heroVariants: Record<string, HeroVariant> = {
 		lede: "See when Google AI Overviews, AI Mode, ChatGPT, and Perplexity mention your brand, and which sources they pull from when they don't.",
 	},
 	price: {
-		title: `AI Visibility Tracking From $${PLANS.starter.monthlyPriceUsd}/mo`,
+		title: `AI Visibility Tracking From $${CLOUD_ENTRY_PRICE_USD}/mo`,
 		lede: "Track how AI models talk about your brand without an enterprise contract. Unlimited seats on every plan, no sales call, and you can start in minutes.",
 	},
 	"win-ai-search": {

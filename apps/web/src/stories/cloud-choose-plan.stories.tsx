@@ -98,14 +98,12 @@ export const ComparesPlansAcrossSharedRows: Story = {
 export const ShowsWhatEachPlanOmits: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
-		// Premium is sold on two of the four plans, so its rows carry two ticks
-		// and two dashes apiece.
+		// Premium is sold on two of the three plans, so its rows carry two ticks
+		// and one dash apiece.
 		const included = await canvas.findAllByLabelText("Included");
 		const excluded = await canvas.findAllByLabelText("Not included");
 		await expect(included.length).toBeGreaterThan(0);
 		await expect(excluded.length).toBeGreaterThan(0);
-		// Starter sells one scraped platform, so the API and premium tiers are
-		// dashes down its whole column.
 		await expect(await canvas.findByText(`${PLANS.pro.premiumIncluded} prompt/model pairings`)).toBeVisible();
 	},
 };

@@ -65,7 +65,7 @@ export function PlanComparison({
 			    narrow one instead of inheriting the table's minimum width. */}
 			<div
 				className={cn(
-					"grid gap-3 sm:grid-cols-2 lg:grid-cols-4",
+					"grid gap-3 sm:grid-cols-2 lg:grid-cols-3",
 					align === "center" ? "mx-auto max-w-3xl" : "max-w-4xl",
 				)}
 			>

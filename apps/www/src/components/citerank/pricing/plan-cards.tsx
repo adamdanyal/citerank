@@ -10,7 +10,6 @@ type Billing = "monthly" | "annual";
 const RECOMMENDED: PlanKey = "pro";
 
 const FOR: Record<PlanKey, string> = {
-	starter: "One brand, ChatGPT only.",
 	basic: "One brand on four AI apps.",
 	pro: "Two brands, with premium models.",
 	business: "Five brands, the full set.",
@@ -105,7 +104,7 @@ export function PlanCards() {
 					</button>
 				))}
 			</fieldset>
-			<ul className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+			<ul className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
 				{PLAN_KEYS.map((key, index) => (
 					<PlanCard key={key} plan={PLANS[key]} billing={billing} delay={index * 60} />
 				))}

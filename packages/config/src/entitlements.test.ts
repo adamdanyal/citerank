@@ -82,14 +82,6 @@ describe("resolveEntitlements: cloud plans", () => {
 	it("an unknown plan name resolves to the paywall state", () => {
 		expect(resolve({ subscription: activeSubscription("enterprise-legacy") })).toEqual(NO_PLAN_ENTITLEMENTS);
 	});
-
-	it("starter is chatgpt-only with one pick at 1×/day", () => {
-		const result = resolve({ subscription: activeSubscription("starter") });
-		expect(result.platformMenu).toEqual(["chatgpt"]);
-		expect(result.platformPicks).toBe(1);
-		expect(result.standardRunsPerDay).toBe(1);
-		expect(result.premiumPool).toBe(0);
-	});
 });
 
 describe("resolveEntitlements: claude add-on", () => {
@@ -100,7 +92,6 @@ describe("resolveEntitlements: claude add-on", () => {
 
 	it("ignores add-on quantity on plans without the add-on", () => {
 		expect(resolve({ subscription: activeSubscription("basic"), premiumAddonQuantity: 5 }).premiumPool).toBe(0);
-		expect(resolve({ subscription: activeSubscription("starter"), premiumAddonQuantity: 5 }).premiumPool).toBe(0);
 	});
 
 	it("clamps negative or fractional quantities", () => {

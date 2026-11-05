@@ -1,3 +1,4 @@
+import { CLOUD_ENTRY_PRICE_USD, PLANS } from "@workspace/config/plans";
 import { AGENCY_PLANS, FOUNDING_DISCOUNT, formatUsd } from "@/lib/agency-plans";
 
 export interface FaqItem {
@@ -13,8 +14,7 @@ export interface FaqItem {
 export const HOME_FAQS: FaqItem[] = [
 	{
 		question: "What is CiteRank.com?",
-		answer:
-			"CiteRank.com is an AI visibility tracker and AI search agency for answer engine optimization (AEO), an alternative to tools like Profound, Peec, and Otterly, with plans from $29/mo. It tracks how AI answer engines, including ChatGPT, Google AI Overviews, Perplexity, Gemini, Claude, and Copilot, mention and describe your brand, which competitors appear alongside you, and which sources each model cites.",
+		answer: `CiteRank.com is an AI visibility tracker and AI search agency for answer engine optimization (AEO), an alternative to tools like Profound, Peec, and Otterly, with plans from $${CLOUD_ENTRY_PRICE_USD}/mo. It tracks how AI answer engines, including ChatGPT, Google AI Overviews, Perplexity, Gemini, Claude, and Copilot, mention and describe your brand, which competitors appear alongside you, and which sources each model cites.`,
 	},
 	{
 		question: "What is answer engine optimization (AEO)?",
@@ -38,19 +38,16 @@ export const HOME_FAQS: FaqItem[] = [
 	},
 	{
 		question: "How do I track my brand in ChatGPT?",
-		answer:
-			"Add your website to CiteRank.com and its Prompt Wizard generates the questions your buyers are likely to ask ChatGPT, based on your products, competitors, and personas. CiteRank.com then runs those prompts in ChatGPT on a schedule and records every answer: whether your brand was mentioned, which competitors were named, and which sources were cited. Every CiteRank.com plan includes ChatGPT, starting with the $29/mo Starter plan.",
+		answer: `Add your website to CiteRank.com and its Prompt Wizard generates the questions your buyers are likely to ask ChatGPT, based on your products, competitors, and personas. CiteRank.com then runs those prompts in ChatGPT on a schedule and records every answer: whether your brand was mentioned, which competitors were named, and which sources were cited. Every CiteRank.com plan can track ChatGPT, from the $${CLOUD_ENTRY_PRICE_USD}/mo Basic plan up.`,
 	},
 	{
 		question: "How much does CiteRank.com cost compared to Profound?",
-		answer:
-			"CiteRank.com is much cheaper and simpler to buy. Profound's pricing page lists a free trial and an Enterprise plan quoted by sales, while CiteRank.com is self-serve with public prices, starting at $29/mo for the Starter plan. From the $99/mo Basic plan, every prompt is checked 4× a day, where Profound checks daily. Pro ($299/mo) and Business ($649/mo) add more brands, more prompts, and premium grounded models, and you can book a call about the AI search agency.",
+		answer: `CiteRank.com is much cheaper and simpler to buy. Profound's pricing page lists a free trial and an Enterprise plan quoted by sales, while CiteRank.com is self-serve with public prices, starting at $${CLOUD_ENTRY_PRICE_USD}/mo for the Basic plan. On every plan, each prompt is checked 4× a day, where Profound checks daily. Pro ($${PLANS.pro.monthlyPriceUsd}/mo) and Business ($${PLANS.business.monthlyPriceUsd}/mo) add more brands, more prompts, and premium grounded models, and you can book a call about the AI search agency.`,
 		links: [{ text: "book a call", href: "/agency" }],
 	},
 	{
 		question: "Is CiteRank.com free?",
-		answer:
-			"No. CiteRank.com has no free plan or free trial, but there is no per-seat pricing either. You only pay for the plan you choose, from $29/mo, with no sales call, and you can cancel any time from your billing settings. If you'd rather not do the work yourself, the AI search agency does it for you every month.",
+		answer: `No. CiteRank.com has no free plan or free trial, but there is no per-seat pricing either. You only pay for the plan you choose, from $${CLOUD_ENTRY_PRICE_USD}/mo, with no sales call, and you can cancel any time from your billing settings. If you'd rather not do the work yourself, the AI search agency does it for you every month.`,
 	},
 ];
 
@@ -58,8 +55,7 @@ export const HOME_FAQS: FaqItem[] = [
 export const PRICING_FAQS: FaqItem[] = [
 	{
 		question: "Is CiteRank.com free?",
-		answer:
-			"No. CiteRank.com has no free plan or free trial. There is no per-seat pricing either, so you only pay for the plan you choose, from $29/mo, and you can cancel any time from your billing settings.",
+		answer: `No. CiteRank.com has no free plan or free trial. There is no per-seat pricing either, so you only pay for the plan you choose, from $${CLOUD_ENTRY_PRICE_USD}/mo, and you can cancel any time from your billing settings.`,
 	},
 	{
 		question: "Do you offer custom plans beyond the Business plan?",
@@ -90,12 +86,12 @@ export const PRICING_FAQS: FaqItem[] = [
 	{
 		question: "How often does CiteRank.com run my prompts?",
 		answer:
-			"On CiteRank.com, the Starter plan runs each prompt once a day, and the Basic, Pro, and Business plans run each prompt up to 4 times a day on every platform you choose. Premium grounded models (GPT Search, and Claude and Grok on the web) run once a day, and custom plans can sample more often.",
+			"Every CiteRank.com plan runs each prompt up to 4 times a day on every platform you choose. Premium grounded models (GPT Search, and Claude and Grok on the web) run once a day, and custom plans can sample more often.",
 	},
 	{
 		question: "Does CiteRank.com have an API or MCP server?",
 		answer:
-			"Yes. CiteRank.com has a REST API for brands, prompts, competitors, analytics, sentiment, citations, runs, opportunities, and reports, and an MCP server so AI assistants like Claude Code, Codex, Cursor, and VS Code can query your visibility data and manage prompts directly. Both are included on every CiteRank.com plan, from Starter to Business. API keys are issued from Settings, can be read-only or read-write, and can be limited to specific brands.",
+			"Yes. CiteRank.com has a REST API for brands, prompts, competitors, analytics, sentiment, citations, runs, opportunities, and reports, and an MCP server so AI assistants like Claude Code, Codex, Cursor, and VS Code can query your visibility data and manage prompts directly. Both are included on every CiteRank.com plan, from Basic to Business. API keys are issued from Settings, can be read-only or read-write, and can be limited to specific brands.",
 	},
 	{
 		question: "Is the AI search agency included in a plan?",
@@ -125,8 +121,7 @@ export const ABOUT_FAQS: FaqItem[] = [
 	},
 	{
 		question: "Is CiteRank.com open source?",
-		answer:
-			"No. CiteRank.com is a closed-source, hosted product, so there is no public code and nothing to self-host. You sign up and use it in your browser, with plans from $29/mo.",
+		answer: `No. CiteRank.com is a closed-source, hosted product, so there is no public code and nothing to self-host. You sign up and use it in your browser, with plans from $${CLOUD_ENTRY_PRICE_USD}/mo.`,
 	},
 	{
 		question: "Does CiteRank.com require an annual contract?",
@@ -182,8 +177,7 @@ export const AGENCY_FAQS: FaqItem[] = [
 	},
 	{
 		question: "Can I use the tracker without the agency?",
-		answer:
-			"Yes. The tracker shows what AI says about you and ranks what to do next, and many teams do that work themselves. Tracker plans start at $29/mo.",
+		answer: `Yes. The tracker shows what AI says about you and ranks what to do next, and many teams do that work themselves. Tracker plans start at $${CLOUD_ENTRY_PRICE_USD}/mo.`,
 		links: [{ text: "Tracker plans", href: "/pricing" }],
 	},
 ];
@@ -202,8 +196,7 @@ export const DIRECTORY_FAQS: FaqItem[] = [
 	},
 	{
 		question: "How do I choose the best AI visibility tool?",
-		answer:
-			"The right tool depends on which AI engines you need to track, whether you want self-hosting and data ownership, your budget, and any agency or white-label needs. This directory compares 100+ tools feature-by-feature. If you want 12 AI apps and every answer kept in full, CiteRank.com starts at $29/mo, and its AI search agency can do the work.",
+		answer: `The right tool depends on which AI engines you need to track, whether you want self-hosting and data ownership, your budget, and any agency or white-label needs. This directory compares 100+ tools feature-by-feature. If you want 12 AI apps and every answer kept in full, CiteRank.com starts at $${CLOUD_ENTRY_PRICE_USD}/mo, and its AI search agency can do the work.`,
 	},
 	{
 		question: "Is there an AI visibility tool with an agency?",

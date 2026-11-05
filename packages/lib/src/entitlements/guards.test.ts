@@ -37,7 +37,6 @@ function planEntitlements(plan: string): Entitlements {
 }
 
 const PRO = planEntitlements("pro");
-const STARTER = planEntitlements("starter");
 
 describe("unlimited entitlements short-circuit every guard", () => {
 	it("allows everything", () => {
@@ -248,10 +247,10 @@ describe("decideEnabledModels", () => {
 		expect(decideEnabledModels(PRO, ["chatgpt", "claude"]).allowed).toBe(true);
 	});
 
-	it("starter is chatgpt-only", () => {
-		const starter = planEntitlements("starter");
-		expect(decideEnabledModels(starter, ["chatgpt"]).allowed).toBe(true);
-		expect(decideEnabledModels(starter, ["perplexity"])).toMatchObject({
+	it("a single-platform plan is held to its menu", () => {
+		const chatgptOnly = { ...PRO, platformMenu: ["chatgpt"], platformPicks: 1 };
+		expect(decideEnabledModels(chatgptOnly, ["chatgpt"]).allowed).toBe(true);
+		expect(decideEnabledModels(chatgptOnly, ["perplexity"])).toMatchObject({
 			allowed: false,
 			code: "platform-not-in-plan",
 		});
@@ -319,10 +318,10 @@ describe("decideCadenceOverride", () => {
 		expect(decideCadenceOverride(PRO, null).allowed).toBe(true);
 	});
 
-	it("the floor follows the plan: starter's once-daily rejects a half-day override", () => {
-		const starter = planEntitlements("starter");
-		expect(decideCadenceOverride(starter, 12)).toMatchObject({ allowed: false, code: "cadence-faster-than-plan" });
-		expect(decideCadenceOverride(starter, 24).allowed).toBe(true);
+	it("the floor follows the plan: a once-daily plan rejects a half-day override", () => {
+		const onceDaily = { ...PRO, standardRunsPerDay: 1 };
+		expect(decideCadenceOverride(onceDaily, 12)).toMatchObject({ allowed: false, code: "cadence-faster-than-plan" });
+		expect(decideCadenceOverride(onceDaily, 24).allowed).toBe(true);
 	});
 
 	it("a custom plan's higher sampling lowers the floor", () => {

@@ -172,8 +172,13 @@ describe("defaultPlatformPicks", () => {
 		expect(defaultPlatformPicks(cloudEntitlements("pro"), partial)).toEqual(["gemini", "mistral"]);
 	});
 
-	it("gives starter its single platform", () => {
-		expect(defaultPlatformPicks(cloudEntitlements("starter"), CLOUD_TARGETS)).toEqual(["chatgpt"]);
+	it("gives a single-platform plan its one platform", () => {
+		expect(
+			defaultPlatformPicks(
+				{ ...cloudEntitlements("basic"), platformMenu: ["chatgpt"], platformPicks: 1 },
+				CLOUD_TARGETS,
+			),
+		).toEqual(["chatgpt"]);
 	});
 });
 
@@ -230,10 +235,15 @@ describe("resolvePromptRunPlan: cloud", () => {
 		expect(plan.targets.find((t) => t.config.model === "claude" && t.config.webSearch)?.intervalHours).toBe(24);
 	});
 
-	it("starter runs its single pick once daily", () => {
+	it("a once-daily plan runs its single pick once daily", () => {
 		const plan = resolvePromptRunPlan(
 			cloudInput({
-				entitlements: cloudEntitlements("starter"),
+				entitlements: {
+					...cloudEntitlements("basic"),
+					platformMenu: ["chatgpt"],
+					platformPicks: 1,
+					standardRunsPerDay: 1,
+				},
 				brand: { enabledModels: ["chatgpt"], delayOverrideHours: null },
 			}),
 		);
@@ -244,7 +254,7 @@ describe("resolvePromptRunPlan: cloud", () => {
 	it("clamps picks to the plan menu and pick count (downgrade behavior)", () => {
 		const plan = resolvePromptRunPlan(
 			cloudInput({
-				entitlements: cloudEntitlements("starter"), // menu: chatgpt only, 1 pick
+				entitlements: { ...cloudEntitlements("basic"), platformMenu: ["chatgpt"], platformPicks: 1 }, // menu: chatgpt only, 1 pick
 				brand: { enabledModels: ["perplexity", "chatgpt", "gemini"], delayOverrideHours: null },
 			}),
 		);

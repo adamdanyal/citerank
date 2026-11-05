@@ -44,7 +44,7 @@ faq:
   - question: Why do AI answers change every time I ask the same question?
     answer: "Two reasons: language models generate answers probabilistically, and most answer engines also run a fresh web search per ask, so both the wording and the retrieved sources vary. In a 42-day tracking study, the set of domains cited for the same prompt turned over by roughly 60–70% from one day to the next. A single answer is a sample from a distribution, not a fixed result."
   - question: How much does daily AI prompt tracking cost?
-    answer: "Cost scales with prompts × engines × runs per day, because every run is a paid model call. Self-hosting an open-source tracker is free in license terms, but you pay the per-run API costs yourself. For managed pricing, CiteRank.com starts at $29/month for 50 prompts sampled daily on ChatGPT, and $99/month for four AI apps sampled up to four times a day."
+    answer: "Cost scales with prompts × engines × runs per day, because every run is a paid model call. Self-hosting an open-source tracker is free in license terms, but you pay the per-run API costs yourself. For managed pricing, CiteRank.com starts at $99/month for 50 prompts on four AI apps, sampled up to four times a day."
 ---
 
 **Run answer engine optimization (AEO) prompt tracking once a day: every tracked prompt, against every engine you monitor, read as rolling seven-day averages rather than single runs. Daily is the default because AI answers change run to run. Sample less and you cannot separate real movement from noise; sample more only for citation-level tracking on volatile prompts.**
@@ -136,7 +136,7 @@ With the mechanics on the table, these are the frequencies to run in 2026.
 | Stable monitoring | Daily, reviewed weekly | Keeps windows sound so a real drop shows up within a week or two, without anyone watching | Low to mid (one answer per prompt per engine per day) |
 | Pre-launch baseline | Daily for 3–4 weeks before changing anything | 20+ runs per prompt is the floor for a usable before-window, and baselines cannot be reconstructed | A bounded, one-time spend |
 | Competitive category with volatile answers | 2–4×/day on contested prompts, daily elsewhere | Broad recommendation prompts churn hardest; sparse samples of a churning list read as trends that are not there | Highest (this is where 4× sampling earns its cost) |
-| Small budget | Daily on one engine with a trimmed prompt set; or weekly across more, read portfolio-only | A sound number for a narrow question beats noise across everything | Lowest ($29/month managed, or self-hosted plus API costs) |
+| Small budget | Daily on one engine with a trimmed prompt set; or weekly across more, read portfolio-only | A sound number for a narrow question beats noise across everything | Lowest ($99/month managed, or self-hosted plus API costs) |
 
 Frequency should follow the volatility of the metric you care about and the speed at which you are prepared to act. The pre-launch row is there because before-windows cannot be reconstructed: if you are about to start an answer engine optimization push, start sampling three to four weeks before you ship anything. A baseline you did not record is gone.
 
@@ -146,7 +146,7 @@ Every run is a paid model call. Either the API bill lands on your own keys (self
 
 The multiplication is the whole story. Fifty prompts on four engines at one run a day is 6,000 answers a month. The same set at four runs a day is 24,000. Nothing else in the setup grows that fast, which is why frequency is the one variable to set deliberately rather than default into.
 
-Grounding deserves its own line item. A grounded call (the model running its own web search and returning cited sources) costs roughly ten times an ungrounded one. That ratio is visible in how tracking products are priced: in [CiteRank.com's plans](/pricing), scraped AI apps are sampled up to four times a day from the $99-a-month tier up, while grounded model calls are metered at one run per prompt per day. The entry plan is $29 a month for 50 prompts sampled daily on ChatGPT. Other [AI visibility tools](/ai-visibility-tools) price the same variables differently, but all of them are selling the same multiplication.
+Grounding deserves its own line item. A grounded call (the model running its own web search and returning cited sources) costs roughly ten times an ungrounded one. That ratio is visible in how tracking products are priced: in [CiteRank.com's plans](/pricing), scraped AI apps are sampled up to four times a day on every plan, while grounded model calls are metered at one run per prompt per day. The entry plan is $99 a month for 50 prompts on four AI apps. Other [AI visibility tools](/ai-visibility-tools) price the same variables differently, but all of them are selling the same multiplication.
 
 Two consequences. First, when budget forces a cut, cut scope before soundness: dropping prompts you never act on keeps the remaining numbers readable, while dropping frequency below daily quietly breaks per-prompt readability across the board. Second, the cheapest upgrade is usually a longer unbroken stretch of the same cadence: window length buys statistical weight, and time is the one free input.
 
@@ -191,4 +191,4 @@ That last point is the quiet argument for a steady cadence over bursts. A panic 
 
 Run daily, read weekly, report monthly, and deviate for reasons you can name.
 
-[CiteRank.com](/) is an AI visibility tracker built around this loop. It runs your prompt set across ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews, and Google AI Mode up to four times a day, records every mention and citation, and keeps every answer in full. Plans start at $29/month ([pricing](/pricing)), and the [user guide](/docs/user-guide) covers the rest of the loop. For the vocabulary, see the [AI search glossary](/glossary).
+[CiteRank.com](/) is an AI visibility tracker built around this loop. It runs your prompt set across ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews, and Google AI Mode up to four times a day, records every mention and citation, and keeps every answer in full. Plans start at $99/month ([pricing](/pricing)), and the [user guide](/docs/user-guide) covers the rest of the loop. For the vocabulary, see the [AI search glossary](/glossary).

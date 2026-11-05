@@ -158,7 +158,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				question: "How often does CiteRank.com check my prompts?",
-				answer: `Prompts run ${PLANS.starter.standardRunsPerDay}× a day on the ${PLANS.starter.name} plan and up to ${PLANS.basic.standardRunsPerDay}× a day on the others. GPT Search, Claude (web), and Grok (web) run once a day on Pro and Business.`,
+				answer: `Prompts run up to ${PLANS.basic.standardRunsPerDay}× a day on every plan. GPT Search, Claude (web), and Grok (web) run once a day on Pro and Business.`,
 			},
 		],
 	},
@@ -668,7 +668,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				question: "How many prompts can I track?",
-				answer: `CiteRank.com plans include ${PLANS.starter.maxPrompts} to ${PLANS.business.maxPrompts} prompts, depending on the plan. The limit covers every brand in your organization, and only enabled prompts count toward it.`,
+				answer: `CiteRank.com plans include ${PLANS.basic.maxPrompts} to ${PLANS.business.maxPrompts} prompts, depending on the plan. The limit covers every brand in your organization, and only enabled prompts count toward it.`,
 			},
 			{
 				question: "What's the difference between branded and unbranded prompts?",

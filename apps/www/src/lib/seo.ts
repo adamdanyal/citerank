@@ -1,3 +1,4 @@
+import { CLOUD_ENTRY_PRICE_USD, PLANS } from "@workspace/config/plans";
 import { getMarketingOgImage } from "./og";
 
 export const SITE_URL = "https://citerank.com";
@@ -110,8 +111,8 @@ export function softwareApplicationJsonLd() {
 		operatingSystem: "Any",
 		offers: {
 			"@type": "AggregateOffer",
-			lowPrice: "29",
-			highPrice: "649",
+			lowPrice: String(CLOUD_ENTRY_PRICE_USD),
+			highPrice: String(Math.max(...Object.values(PLANS).map((plan) => plan.monthlyPriceUsd))),
 			priceCurrency: "USD",
 		},
 		url: SITE_URL,
