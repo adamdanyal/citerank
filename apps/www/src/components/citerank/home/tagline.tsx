@@ -46,8 +46,8 @@ export function Tagline() {
 	}, []);
 
 	return (
-		<section className="bg-paper-2">
-			<Container className="py-24">
+		<section className="cr-grain relative bg-paper-2">
+			<Container className="relative py-24">
 				<p
 					ref={ref}
 					data-armed={armed ? "" : undefined}

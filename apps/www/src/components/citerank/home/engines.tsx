@@ -1,5 +1,5 @@
 import { EngineIcon } from "@/components/home/engines";
-import { Container, Reveal } from "../ui";
+import { Container, Reveal, RevealItem } from "../ui";
 
 const ENGINES = [
 	{ name: "ChatGPT", iconId: "openai" },
@@ -27,16 +27,20 @@ export function EngineCoverage() {
 						with direct API calls.
 					</p>
 				</Reveal>
-				<Reveal delay={100} className="lg:col-span-7">
-					<ul className="grid grid-cols-2 gap-x-8 gap-y-4 sm:grid-cols-3" aria-label="AI engines CiteRank.com tracks">
-						{ENGINES.map((engine) => (
-							<li key={engine.name} className="flex items-center gap-3 title-3 text-zinc-900">
-								<EngineIcon iconId={engine.iconId} className="size-5 shrink-0" />
-								<span className="truncate">{engine.name}</span>
-							</li>
-						))}
-					</ul>
-				</Reveal>
+				<ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:col-span-7" aria-label="AI engines CiteRank.com tracks">
+					{ENGINES.map((engine, index) => (
+						<RevealItem
+							key={engine.name}
+							delay={index * 40}
+							className="flex items-center gap-3 rounded-xl bg-paper-2 py-3 pl-3 pr-4 title-4 text-zinc-900"
+						>
+							<span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg bg-white">
+								<EngineIcon iconId={engine.iconId} className="size-4" />
+							</span>
+							<span className="truncate">{engine.name}</span>
+						</RevealItem>
+					))}
+				</ul>
 			</Container>
 		</section>
 	);

@@ -3,18 +3,18 @@ import { ArrowRight } from "lucide-react";
 import { Container, PRIMARY_BUTTON, Reveal } from "../ui";
 
 const WORK = [
-	"Writes the comparison, alternatives and guide pages your site is missing",
-	"Updates pages AI has stopped citing",
-	"Gets you onto the review sites and best-of lists AI cites",
-	"Answers buyers' questions in forums and communities",
-	"Publishes guest articles on high-authority sites AI already cites",
-	"Fixes anything that stops AI crawlers reading your site",
+	{ tag: "Content", text: "Writes the comparison, alternatives and guide pages your site is missing" },
+	{ tag: "Content", text: "Updates pages AI has stopped citing" },
+	{ tag: "Outreach", text: "Gets you onto the review sites and best-of lists AI cites" },
+	{ tag: "Community", text: "Answers buyers' questions in forums and communities" },
+	{ tag: "Outreach", text: "Publishes guest articles on high-authority sites AI already cites" },
+	{ tag: "Technical", text: "Fixes anything that stops AI crawlers reading your site" },
 ];
 
 export function AgencySection() {
 	return (
-		<section className="bg-paper-2">
-			<Container className="grid gap-12 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
+		<section className="cr-grain relative bg-paper-2">
+			<Container className="relative grid gap-12 py-20 lg:grid-cols-12 lg:items-center lg:gap-16 lg:py-24">
 				<Reveal className="lg:col-span-5">
 					<h2 className="heading-2 text-zinc-950">Want It Done for You?</h2>
 					<p className="body-7 mt-6 text-zinc-600">
@@ -27,13 +27,22 @@ export function AgencySection() {
 					</Link>
 				</Reveal>
 				<Reveal delay={100} className="lg:col-span-7">
-					<ul className="divide-y divide-zinc-200/80 border-y border-zinc-200/80">
-						{WORK.map((item) => (
-							<li key={item} className="body-3 py-4 text-zinc-700">
-								{item}
-							</li>
-						))}
-					</ul>
+					<div className="rounded-2xl bg-white p-2 shadow-[0_1px_2px_rgb(26_25_23/0.05),0_24px_48px_-24px_rgb(26_25_23/0.25)]">
+						<div className="flex items-baseline justify-between gap-4 px-4 pb-3 pt-3">
+							<p className="title-3 text-zinc-950">What a month includes</p>
+							<p className="caption-2 text-zinc-500">Reported with the AI answers before and after</p>
+						</div>
+						<ul className="divide-y divide-zinc-200/80 rounded-lg bg-paper-2/60">
+							{WORK.map((item) => (
+								<li key={item.text} className="flex items-start gap-4 px-4 py-4">
+									<span className="caption-3 w-24 shrink-0 rounded-md bg-white px-2 py-1 text-center text-zinc-600">
+										{item.tag}
+									</span>
+									<span className="body-6 text-zinc-800">{item.text}</span>
+								</li>
+							))}
+						</ul>
+					</div>
 				</Reveal>
 			</Container>
 		</section>

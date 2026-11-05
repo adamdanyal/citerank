@@ -56,6 +56,8 @@ html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 .caption-4 { font-size: 0.75rem; line-height: 1rem; font-weight: 500; }
 .caption-5 { font-size: 0.75rem; line-height: 1rem; font-weight: 400; }
 
+.cr-grain::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.06; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
 .cr-gradient-text { background-image: linear-gradient(to right, #1a1917, #5f594f); -webkit-background-clip: text; background-clip: text; color: transparent; padding-bottom: 0.08em; margin-bottom: -0.08em; }
 
 .cr-reveal[data-state="hidden"] { opacity: 0; transform: translateY(32px); transition: none; }
