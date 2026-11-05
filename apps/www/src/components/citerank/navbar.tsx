@@ -51,7 +51,7 @@ export function Navbar() {
 			<header className="pointer-events-none fixed inset-x-0 top-4 z-40 flex justify-center px-4">
 				<nav
 					aria-label="Main"
-					className="pointer-events-auto flex h-12 w-full max-w-6xl items-center justify-between gap-6 rounded-xl bg-paper/80 pl-4 pr-2 shadow-[0_1px_2px_rgb(26_25_23/0.05),0_12px_32px_-16px_rgb(26_25_23/0.25)] ring-1 ring-zinc-950/5 backdrop-blur-md md:pl-6"
+					className="pointer-events-auto flex h-12 w-full max-w-7xl items-center justify-between gap-6 rounded-xl bg-paper/80 pl-4 pr-2 shadow-[0_1px_2px_rgb(26_25_23/0.05),0_12px_32px_-16px_rgb(26_25_23/0.25)] ring-1 ring-zinc-950/5 backdrop-blur-md md:pl-6"
 				>
 					<Link to="/" className={`flex items-center rounded-md ${FOCUS}`}>
 						<Logo className="text-xl" />

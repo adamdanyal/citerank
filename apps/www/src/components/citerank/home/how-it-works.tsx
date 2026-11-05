@@ -19,7 +19,7 @@ export function HowItWorks() {
 	return (
 		<section className="bg-paper-2">
 			<Container className="py-20 lg:py-24">
-				<Reveal className="max-w-[42.5rem]">
+				<Reveal className="max-w-3xl">
 					<h2 className="heading-2 text-zinc-950">From Zero to a Plan in One Afternoon</h2>
 					<p className="body-7 mt-6 text-zinc-600">
 						No sales call, no bloat. CiteRank.com sets up your tracking and tells you what to change.

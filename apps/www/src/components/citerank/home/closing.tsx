@@ -13,9 +13,9 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 				className="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,rgb(0_0_0/0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgb(0_0_0/0.04)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:linear-gradient(to_top,black,transparent_85%)]"
 			/>
 			<Container className="relative py-20 lg:py-24">
-				<Reveal className="mx-auto flex max-w-[42.5rem] flex-col items-center text-center">
-					<h2 className="heading-1 text-zinc-950">Know Where You Stand in AI Search</h2>
-					<p className="body-8 mt-6 text-zinc-600">
+				<Reveal className="mx-auto flex max-w-3xl flex-col items-center text-center">
+					<h2 className="heading-2 text-zinc-950">Know Where You Stand in AI Search</h2>
+					<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
 						Set up takes minutes, and plans start at ${CLOUD_ENTRY_PRICE_USD} a month.
 					</p>
 					<div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">

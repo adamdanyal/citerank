@@ -21,8 +21,11 @@ html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
   .heading-2 { font-size: 2.25rem; line-height: 2.5rem; }
   .heading-3 { font-size: 1.875rem; line-height: 2.25rem; }
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .heading-1 { font-size: 3.75rem; line-height: 1; }
+}
+@media (min-width: 1024px) {
+  .heading-1 { font-size: 4.5rem; line-height: 1; letter-spacing: -0.04em; }
   .heading-2 { font-size: 3rem; line-height: 1; }
   .heading-3 { font-size: 2.25rem; line-height: 2.5rem; }
   .heading-4 { font-size: 1.875rem; line-height: 2.25rem; }

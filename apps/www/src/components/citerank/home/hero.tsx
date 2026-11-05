@@ -30,12 +30,12 @@ export function Hero({
 			/>
 
 			<Container className="relative pt-32 lg:pt-40">
-				<div className="mx-auto flex max-w-[42.5rem] flex-col items-center text-center">
+				<div className="mx-auto flex max-w-3xl flex-col items-center text-center">
 					<p className="caption-3 rounded-md bg-blue-50 px-3 py-1 text-blue-800">
 						AI Visibility Tracker + AI Search Agency
 					</p>
 					<h1 className="heading-1 cr-gradient-text mt-8">{title}</h1>
-					<p className="body-8 mt-6 text-zinc-600">{lede}</p>
+					<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">{lede}</p>
 					<div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">
 						<a href={signupUrl} className={PRIMARY_BUTTON}>
 							Start tracking
