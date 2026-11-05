@@ -3,7 +3,7 @@ import { afterPageIdle } from "@workspace/ui/lib/idle";
 import type { PostHog } from "posthog-js";
 
 // Empty until CiteRank.com has its own PostHog project; the key this shipped with was Elmo's.
-const POSTHOG_KEY: string = "";
+const POSTHOG_KEY: string = import.meta.env.VITE_POSTHOG_KEY ?? "";
 const POSTHOG_HOST = "https://us.i.posthog.com";
 
 // posthog-js is ~60KB gzipped and sets cookies, so it is imported dynamically

@@ -70,7 +70,7 @@ function Screenshot({
 	aspect?: string;
 	objectPosition?: string;
 }) {
-	const useOptimized = import.meta.env.PROD;
+	const useOptimized = import.meta.env.PROD && import.meta.env.VITE_IMAGE_OPTIMIZER === "vercel";
 	const srcSet = useOptimized ? SCREENSHOT_WIDTHS.map((w) => `${optimizedSrc(src, w)} ${w}w`).join(", ") : undefined;
 	return (
 		<Frame aspect={aspect}>

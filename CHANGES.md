@@ -65,6 +65,27 @@ To run it locally, seed `citerank_demo` (steps 1 and 2 above), then in `apps/web
 
 To deploy it, give it its own Railway project and its own Postgres, apart from the main project, so it shares no network, database or variables with the real app. The project holds the web build with the demo env and `demo.citerank.com` as its domain, and a `citerank_demo` database (the seed refuses any other name) with the migrations applied. Give it no real provider keys. The seed's dates are relative to when it runs, so add a daily job in that project that reruns it, or the charts empty out after 30 days. Until it is up, the demo links go nowhere.
 
+## Launch runbook
+
+Two Railway projects, as planned: the main one with Postgres, web, worker and www, and a separate one for the demo. Railway builds a Dockerfile's last stage and cannot pick a target, so each service points at its own file with `RAILWAY_DOCKERFILE_PATH`: `docker/web.Dockerfile` (web), `docker/Dockerfile` (worker, its last stage), `docker/migrate.Dockerfile` (a one-off that applies migrations) and `docker/www.Dockerfile` (the marketing site). The web and migrate files are cut-downs of Elmo's `docker/Dockerfile`; regenerate them when Elmo changes it.
+
+What Adam supplies before any of this starts:
+
+1. Keys: Stripe (live secret key and webhook secret), Resend (domain citerank.com verified, `RESEND_FROM_EMAIL`), a Google OAuth client for app.citerank.com, the scraper and model keys named in `SCRAPE_TARGETS`, one direct LLM key with `ONBOARDING_LLM_TARGET`, `TYPESAFE_API_KEY`.
+2. Accounts: a PostHog project (its key goes in `VITE_POSTHOG_KEY`, otherwise analytics stay off), the Crisp workspace renamed CiteRank.com, the Cal.com link for `AGENCY_CAL_LINK` in `apps/www/src/routes/agency.tsx`.
+3. Content: real customer logos and quotes for the placeholders (see "Before going live"), the founder photo and LinkedIn URL for `apps/www/src/components/citerank/home/letter.tsx`.
+4. The go-ahead to push to origin and to deploy.
+
+Order of work once those are in:
+
+1. Main project. Create Postgres. Run the migrate service once against it (`DATABASE_URL` only). Then web with `DEPLOYMENT_MODE=cloud`, `APP_URL` and `VITE_APP_URL` = `https://app.citerank.com`, `VITE_APP_NAME=CiteRank.com`, `VITE_MARKETING_SITE_URL=https://citerank.com`, `VITE_DEMO_SITE_URL=https://demo.citerank.com`, `BETTER_AUTH_SECRET`, `ELMO_ENCRYPTION_KEY`, `DATABASE_URL`, `SCRAPE_TARGETS`, `ONBOARDING_LLM_TARGET` plus its key, Google, Resend and Stripe values, `DISABLE_TELEMETRY=1`. Worker: the same database, keys and `TYPESAFE_API_KEY`. Domains: app.citerank.com on web.
+2. www service from `docker/www.Dockerfile` with build args `VITE_MARKETING_SITE_URL=https://citerank.com`, `VITE_CLOUD_APP_URL=https://app.citerank.com`, `VITE_DEMO_SITE_URL=https://demo.citerank.com`, `VITE_POSTHOG_KEY`; leave `VITE_IMAGE_OPTIMIZER` unset (it is `vercel` only on Vercel, where `/_vercel/image` exists). Domains: citerank.com and www.citerank.com.
+3. Stripe: `pnpm exec tsx packages/deployment/scripts/bootstrap-stripe.ts` with the live key creates the CiteRank.com products and prices; add the webhook for `https://app.citerank.com/api/auth/stripe/webhook` and put its secret in `STRIPE_WEBHOOK_SECRET`.
+4. Demo project (see "Live demo"): its own Postgres named `citerank_demo`, the migrate service, the seed, then web from `docker/web.Dockerfile` with `DEPLOYMENT_MODE=demo`, no real provider keys, and a daily cron service that reruns the seed. Domain: demo.citerank.com.
+5. DNS: point citerank.com, www, app and demo at the new services. The old "citerank" Railway project stays untouched; retire it only after the new site has served traffic for a few days.
+6. Checks on the live site: sign up with a real address and receive the verification email, sign in with Google, buy a plan in Stripe test mode before switching to live, open the live demo from the hero, run the home page through Google's Rich Results test (FAQPage and SoftwareApplication), confirm a PostHog pageview, the Crisp chat, the 404 page, the legal pages and `/sitemap.xml`.
+7. After launch: read PostHog weekly for the sign-up rate, replace the placeholder reviews as real ones arrive, and take the founding-client rate off once five agency clients have it.
+
 ## Files we have changed
 
 Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app/org/$org/settings/`.
@@ -105,6 +126,8 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | `apps/www/src/routes/index.tsx`, `apps/www/src/components/home/*` (hero, product-demo, how-it-works, why-switch, models, pricing, closing, faq, styles; new agency.tsx), `apps/www/src/data/hero-variants.ts` | `index.tsx` renders the `components/citerank/home` sections. Elmo's `components/home/*` stay rebranded because the about, industry, feature, pricing and agency pages still use them. The logo strip and reviews are Elmo's, kept with our name for the local demo (see "Before going live"). |
 | `apps/www/src/components/citerank/*` (styles, ui, navbar, home/*) | New. The home page's sections and the floating navigation, built after Basecamp, Plausible, Hubstaff and Crazy Egg. Our own files, so Elmo's home page changes never conflict with them. The review wall there is Elmo's placeholder data (see "Before going live"). |
 | `apps/web/src/routes/auth/register.tsx` | Accepts `?email=` so the sign-up form on the marketing site carries the address into registration. |
+| `docker/www.Dockerfile`, `docker/web.Dockerfile`, `docker/migrate.Dockerfile` | New. Railway builds a Dockerfile's last stage, so each service gets its own file; www is the marketing site as a Nitro server (see "Launch runbook"). |
+| `apps/www/src/lib/posthog.ts`, `apps/www/src/components/home/product-demo.tsx`, `apps/www/src/components/feature-graphics.tsx` | The PostHog key comes from `VITE_POSTHOG_KEY`; Vercel's image optimizer is used only when `VITE_IMAGE_OPTIMIZER=vercel`, so screenshots load on Railway. |
 | `packages/ui/src/brand/customers.tsx`, `packages/ui/src/brand/g2-rating.tsx` | Elmo's customer quotes, logos and G2 badge with our name and `?ref=citerank` links, for the local demo (see "Before going live"). |
 | `apps/www/src/lib/faqs.ts` | Every FAQ set rewritten; AGENCY_FAQS replaces the off-site AEO FAQs and answers the agency's price, founding-client rate and minimum term. |
 | `apps/www/src/routes/agency.tsx`, `apps/www/src/lib/agency-plans.ts` | New. The agency page: three plans (Foundation $1,500, Growth $3,500 and Authority $7,500 a month, three-month minimum), a founding-client rate of 25% off the first six months for the first five clients, and a booking slot (AGENCY_CAL_LINK) waiting for Adam's Cal.com link. |
@@ -168,3 +191,4 @@ Crisp support chat runs on CiteRank.com's own workspace (`CRISP_WEBSITE_ID` in `
 | 2026-11-01 | Rewrote the legal pages for Danx Digital Limited under the law of England and Wales, and cut the analytics, advertising and hosting services CiteRank.com doesn't use. Not deployed. |
 | 2026-11-01 | Put three agency plans on the agency page (Foundation $1,500, Growth $3,500, Authority $7,500 a month), with a founding-client rate of 25% off the first six months for the first five clients, and FAQs on price, the founding rate and the minimum term. Not deployed. |
 | 2026-11-05 | Replaced the home page with a long-form page after Basecamp, Plausible, Hubstaff and Crazy Egg: two hero buttons (Start tracking, Try the live demo), a founder's letter, an example AI answer, three chapters with large screenshots, benefit cards, pricing with a recommended plan, an agency work panel, FAQ and support cards. The floating navigation is now on every page. Not deployed. |
+| 2026-11-05 | Made the site deployable on Railway: www, web and migrate Dockerfiles, screenshots served without Vercel's optimizer, the analytics key from the environment, and a launch runbook. Not deployed. |

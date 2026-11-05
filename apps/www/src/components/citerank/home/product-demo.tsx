@@ -80,7 +80,7 @@ function optimized(src: string, width: number) {
 }
 
 function Shot({ src, alt, active, eager }: { src: string; alt: string; active: boolean; eager: boolean }) {
-	const prod = import.meta.env.PROD;
+	const prod = import.meta.env.PROD && import.meta.env.VITE_IMAGE_OPTIMIZER === "vercel";
 	return (
 		<img
 			src={prod ? optimized(src, 1200) : src}
