@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { trackEvent } from "@/lib/posthog";
 import { Container, PRIMARY_BUTTON, Reveal } from "../ui";
 
 const WORK = [
@@ -21,7 +22,11 @@ export function AgencySection() {
 						The tracker ranks what to do next. Our agency does that work every month and reports it with the AI answers
 						before and after.
 					</p>
-					<Link to="/agency" className={`${PRIMARY_BUTTON} mt-8`}>
+					<Link
+						to="/agency"
+						onClick={() => trackEvent("agency_call_click", { from: "home" })}
+						className={`${PRIMARY_BUTTON} mt-8`}
+					>
 						Book a call
 						<ArrowRight className="size-4" aria-hidden="true" />
 					</Link>

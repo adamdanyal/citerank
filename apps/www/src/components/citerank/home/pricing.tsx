@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { PLAN_KEYS, PLANS, type PlanDefinition, type PlanKey } from "@workspace/config/plans";
 import { cloudAppUrl } from "@workspace/config/referrals";
 import { ArrowRight, Check, Minus } from "lucide-react";
+import { trackEvent } from "@/lib/posthog";
 import { CARD, Container, LinkArrow, PRIMARY_BUTTON, Reveal, RevealItem, SECONDARY_BUTTON, TEXT_LINK } from "../ui";
 
 const RECOMMENDED: PlanKey = "pro";
@@ -52,6 +53,7 @@ function Tier({ planKey, delay }: { planKey: PlanKey; delay: number }) {
 			</ul>
 			<a
 				href={cloudAppUrl(`marketing-plan-${planKey}`)}
+				onClick={() => trackEvent("plan_click", { plan: planKey, from: "home" })}
 				className={`mt-8 w-full ${recommended ? PRIMARY_BUTTON : SECONDARY_BUTTON}`}
 			>
 				Get {plan.name}
@@ -121,6 +123,10 @@ export function Pricing() {
 						Compare every plan
 						<LinkArrow />
 					</Link>
+				</p>
+				<p className="caption-2 mt-6 text-center text-zinc-500">
+					Start on Starter for ${PLANS.starter.monthlyPriceUsd} and upgrade any time, with nothing to move. Payments by
+					Stripe; cancel from your account. Danx Digital Limited, registered in England and Wales.
 				</p>
 			</Container>
 		</section>

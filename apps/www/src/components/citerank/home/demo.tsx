@@ -1,6 +1,7 @@
 import { demoSiteUrl } from "@workspace/config/referrals";
 import { ArrowUpRight } from "lucide-react";
 import { externalRel } from "@/lib/external-link";
+import { trackEvent } from "@/lib/posthog";
 import { Container, PRIMARY_BUTTON_LG, Reveal, WINDOW_FRAME, WindowBar } from "../ui";
 import { DEMO_BRAND_PATH } from "./product-demo";
 
@@ -14,7 +15,13 @@ export function Demo() {
 					<p className="body-8 mt-6 text-zinc-700">
 						No slides and no sales call. Click through every page of the real product before you pay.
 					</p>
-					<a href={demoUrl} target="_blank" rel={externalRel(demoUrl)} className={`${PRIMARY_BUTTON_LG} mt-8`}>
+					<a
+						href={demoUrl}
+						target="_blank"
+						rel={externalRel(demoUrl)}
+						onClick={() => trackEvent("demo_open", { from: "demo-section" })}
+						className={`${PRIMARY_BUTTON_LG} mt-8`}
+					>
 						Open the live demo
 						<ArrowUpRight className="size-4" aria-hidden="true" />
 					</a>

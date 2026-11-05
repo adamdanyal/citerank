@@ -2,6 +2,7 @@ import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import { cloudSignupUrl, demoSiteUrl, type ReferralSource } from "@workspace/config/referrals";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { externalRel } from "@/lib/external-link";
+import { trackEvent } from "@/lib/posthog";
 import { Container, PRIMARY_BUTTON_LG, Reveal, SECONDARY_BUTTON_LG } from "../ui";
 import { DEMO_BRAND_PATH } from "./product-demo";
 
@@ -22,11 +23,17 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 						any time.
 					</p>
 					<div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">
-						<a href={signupUrl} className={PRIMARY_BUTTON_LG}>
+						<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={PRIMARY_BUTTON_LG}>
 							Start tracking
 							<ArrowRight className="size-4" aria-hidden="true" />
 						</a>
-						<a href={demoUrl} target="_blank" rel={externalRel(demoUrl)} className={SECONDARY_BUTTON_LG}>
+						<a
+							href={demoUrl}
+							target="_blank"
+							rel={externalRel(demoUrl)}
+							onClick={() => trackEvent("demo_open", { from })}
+							className={SECONDARY_BUTTON_LG}
+						>
 							Try the live demo
 							<ArrowUpRight className="size-4" aria-hidden="true" />
 						</a>

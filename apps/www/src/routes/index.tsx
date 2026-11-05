@@ -9,8 +9,8 @@ import { Hero } from "@/components/citerank/home/hero";
 import { Letter } from "@/components/citerank/home/letter";
 import { Pricing } from "@/components/citerank/home/pricing";
 import { Reviews } from "@/components/citerank/home/reviews";
+import { StickyCta } from "@/components/citerank/home/sticky-cta";
 import { Story } from "@/components/citerank/home/story";
-import { Support } from "@/components/citerank/home/support";
 import { Why } from "@/components/citerank/home/why";
 import { PRIMARY_BUTTON } from "@/components/citerank/ui";
 import { Footer } from "@/components/footer";
@@ -59,8 +59,7 @@ function aiReferralHero(assistant: string): ComponentProps<typeof Hero> {
  * In order: the offer and the product, the pitch in the founder's words, the
  * problem made concrete, how the product answers it, what every plan includes,
  * what it covers, who vouches for it, a no-risk way to try it, the price, the
- * done-for-you option, the remaining objections, who answers questions, and
- * the offer again.
+ * done-for-you option, the remaining objections, and the offer again.
  */
 function HomePage() {
 	const explicit = getHeroVariant(Route.useSearch().v);
@@ -86,10 +85,10 @@ function HomePage() {
 				<Pricing />
 				<AgencySection />
 				<Faq items={HOME_FAQS} />
-				<Support />
 				<Closing />
 			</main>
 			<Footer />
+			<StickyCta />
 		</div>
 	);
 }

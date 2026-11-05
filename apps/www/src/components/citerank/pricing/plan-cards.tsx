@@ -2,6 +2,7 @@ import { PLAN_KEYS, PLANS, type PlanDefinition, type PlanKey, planPlatformBreakd
 import { cloudAppUrl } from "@workspace/config/referrals";
 import { ArrowRight, Check } from "lucide-react";
 import { useState } from "react";
+import { trackEvent } from "@/lib/posthog";
 import { CARD, EASE_CLASS, PRIMARY_BUTTON, RevealItem, SECONDARY_BUTTON } from "../ui";
 
 type Billing = "monthly" | "annual";
@@ -54,11 +55,12 @@ function PlanCard({ plan, billing, delay }: { plan: PlanDefinition; billing: Bil
 			</p>
 			<p className="caption-2 mt-1 text-zinc-500">
 				{billing === "annual"
-					? `Billed $${plan.annualPriceUsd.toLocaleString("en-US")} a year`
+					? `Billed $${plan.annualPriceUsd.toLocaleString("en-US")} a year. Saves $${(plan.monthlyPriceUsd * 12 - plan.annualPriceUsd).toLocaleString("en-US")}.`
 					: `Or $${yearlyPerMonth.toLocaleString("en-US")} a month, billed yearly`}
 			</p>
 			<a
 				href={cloudAppUrl(`marketing-pricing-${plan.key}`)}
+				onClick={() => trackEvent("plan_click", { plan: plan.key, from: "pricing" })}
 				className={`mt-6 w-full ${recommended ? PRIMARY_BUTTON : SECONDARY_BUTTON}`}
 			>
 				Get {plan.name}
@@ -78,7 +80,7 @@ function PlanCard({ plan, billing, delay }: { plan: PlanDefinition; billing: Bil
 }
 
 export function PlanCards() {
-	const [billing, setBilling] = useState<Billing>("monthly");
+	const [billing, setBilling] = useState<Billing>("annual");
 	const options: { value: Billing; label: string }[] = [
 		{ value: "monthly", label: "Monthly" },
 		{ value: "annual", label: "Yearly, two months free" },
