@@ -23,7 +23,7 @@ export function Letter() {
 						</p>
 						<p>
 							So you check by hand. One prompt, one app, one day. It says nothing about the trend or about what to
-							change. The best known tools that do this properly are sold to enterprises, through sales calls and annual
+							change. The big tools that do this well are sold to large companies, with sales calls and yearly
 							contracts.
 						</p>
 						<p>

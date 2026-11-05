@@ -77,7 +77,7 @@ export function Pricing() {
 			<Container className="py-20 lg:py-24">
 				<Reveal className="max-w-3xl">
 					<h2 className="heading-2 text-zinc-950">Simple Pricing, No Sales Call</h2>
-					<p className="body-7 mt-6 text-zinc-600">Unlimited seats and API/MCP access on every plan.</p>
+					<p className="body-7 mt-6 text-zinc-600">Every plan includes your whole team and API access.</p>
 				</Reveal>
 
 				<ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

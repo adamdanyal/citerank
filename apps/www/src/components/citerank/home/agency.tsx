@@ -18,8 +18,8 @@ export function AgencySection() {
 				<Reveal className="lg:col-span-5">
 					<h2 className="heading-2 text-zinc-950">Don't Want to Do the Work? We Will.</h2>
 					<p className="body-7 mt-6 text-zinc-600">
-						The tracker ranks what to do next. Our AI search agency does that work every month, and a monthly report
-						shows every piece of work, the question it targets, and the AI answers before and after.
+						The tracker ranks what to do next. Our agency does that work every month and reports it with the AI answers
+						before and after.
 					</p>
 					<Link to="/agency" className={`${PRIMARY_BUTTON} mt-8`}>
 						Book a call

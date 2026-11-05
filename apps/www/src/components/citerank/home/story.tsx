@@ -73,28 +73,12 @@ function AnswerCard() {
 const CHAPTERS = [
 	{
 		title: "So We Ask the AI for You, Every Day",
-		body: [
-			{
-				id: "p1-1",
-				text: (
-					<>
-						Every question your buyers might type runs against ChatGPT, Claude, Gemini, Perplexity and eight other AI
-						apps, <Mark>up to four times a day</Mark>. Each answer is saved word for word, with the brands it named and
-						the sources it cited.
-					</>
-				),
-			},
-			{
-				id: "p1-2",
-				text: (
-					<>
-						You stop checking by hand. On the Basic plan that is up to{" "}
-						<Mark>{BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day</Mark>, kept and compared, instead of
-						one lucky screenshot.
-					</>
-				),
-			},
-		],
+		body: (
+			<>
+				We ask 12 AI apps your buyers' questions, up to four times a day, and save every answer word for word. On the
+				Basic plan that is <Mark>up to {BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day</Mark>.
+			</>
+		),
 		shot: {
 			src: "/screenshots/responses.png",
 			alt: "CiteRank.com responses page listing AI answers with each brand's rank and tone",
@@ -102,17 +86,12 @@ const CHAPTERS = [
 	},
 	{
 		title: "Then We Show You Where You Stand",
-		body: [
-			{
-				id: "p2-1",
-				text: (
-					<>
-						How often you are named, how often each competitor is, how AI describes you, and{" "}
-						<Mark>which pages it trusts</Mark> when it answers. One dashboard, your whole team on it, no seat limits.
-					</>
-				),
-			},
-		],
+		body: (
+			<>
+				How often you are named, how often each competitor is, how AI describes you, and{" "}
+				<Mark>which pages it trusts</Mark>. One dashboard, your whole team on it.
+			</>
+		),
 		shot: {
 			src: "/screenshots/share-of-voice.png",
 			alt: "CiteRank.com share of voice page comparing how often AI recommends each brand",
@@ -120,17 +99,12 @@ const CHAPTERS = [
 	},
 	{
 		title: "And What to Do About It",
-		body: [
-			{
-				id: "p3-1",
-				text: (
-					<>
-						Opportunities ranks the fixes by impact: the page to write, the page to update, the review site to get
-						listed on, the forum thread to answer. <Mark>Do them, and watch the answers change.</Mark>
-					</>
-				),
-			},
-		],
+		body: (
+			<>
+				Opportunities lists what to fix, biggest win first: the page to write, the page to update, the review site to
+				get listed on. <Mark>Do them, and watch the answers change.</Mark>
+			</>
+		),
 		shot: {
 			src: "/screenshots/opportunities.png",
 			alt: "CiteRank.com opportunities page with recommendations ranked by impact",
@@ -159,13 +133,7 @@ export function Story() {
 					<Container className="py-20 lg:py-24">
 						<Reveal className="mx-auto max-w-3xl text-center">
 							<h2 className="heading-2 text-zinc-950">{chapter.title}</h2>
-							<div className="mt-6 space-y-4">
-								{chapter.body.map((paragraph) => (
-									<p key={paragraph.id} className="body-8 text-zinc-700">
-										{paragraph.text}
-									</p>
-								))}
-							</div>
+							<p className="body-8 mt-6 text-zinc-700">{chapter.body}</p>
 						</Reveal>
 						<Reveal delay={100} className="mx-auto mt-12 max-w-5xl lg:mt-16">
 							<Frame {...chapter.shot} />

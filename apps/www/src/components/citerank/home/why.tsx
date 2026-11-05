@@ -26,17 +26,17 @@ const REASONS: { icon: LucideIcon; title: string; body: string }[] = [
 	{
 		icon: LayoutGrid,
 		title: "12 AI apps, including Google AI Overviews and AI Mode",
-		body: "ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok and more, scraped as real users see them or called through their APIs.",
+		body: "ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok and more.",
 	},
 	{
 		icon: ListOrdered,
 		title: "Fixes ranked by impact",
-		body: "Opportunities tells you which page to write, which to update and which sources to earn, in order.",
+		body: "Opportunities tells you which page to write, which to update and which sites to get listed on, in order.",
 	},
 	{
 		icon: Users,
 		title: "Unlimited seats and API access on every plan",
-		body: "Sales, content and leadership see the same numbers, and your agents and reports can pull them over the API or MCP.",
+		body: "Your whole team sees the same numbers, and your own tools can pull them too.",
 	},
 	{
 		icon: BadgeCheck,
