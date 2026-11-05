@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { CARD, Container, Reveal, SECONDARY_BUTTON } from "../ui";
 
-/* The photo is apps/www/public/founder.jpg; the LinkedIn profile URL goes in `linkedin`. */
+/* The photo is apps/www/public/founder.jpg. */
 const FOUNDER = {
 	name: "Adam Danyal",
 	title: "Founder, CiteRank.com",
 	proof: "Trusted by 2M+ on LinkedIn",
 	photo: "/founder.jpg",
-	linkedin: "" as string,
+	linkedin: "https://www.linkedin.com/in/adamdanyal/",
 };
 
 const PARAGRAPHS = [
@@ -87,16 +87,14 @@ export function Letter() {
 								<LinkedInMark />
 								{FOUNDER.proof}
 							</p>
-							{FOUNDER.linkedin ? (
-								<a
-									href={FOUNDER.linkedin}
-									target="_blank"
-									rel="noopener noreferrer"
-									className={`${SECONDARY_BUTTON} mt-8 w-fit`}
-								>
-									Follow on LinkedIn
-								</a>
-							) : null}
+							<a
+								href={FOUNDER.linkedin}
+								target="_blank"
+								rel="noopener noreferrer"
+								className={`${SECONDARY_BUTTON} mt-8 w-fit`}
+							>
+								Follow on LinkedIn
+							</a>
 						</aside>
 						<div className="p-8 lg:col-span-8 lg:p-12">
 							<p className="heading-4 text-zinc-950">Tell me if this sounds familiar.</p>
