@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Closing } from "@/components/citerank/home/closing";
+import { SiteStyles } from "@/components/citerank/styles";
 import { FeatureCard, featurePath } from "@/components/features";
 import { Footer } from "@/components/footer";
-import { Closing } from "@/components/home/closing";
-import { HOME_FONT_CLASS, HomeStyles } from "@/components/home/styles";
 import { Navbar } from "@/components/navbar";
 import { productFeatures } from "@/data/features";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
@@ -32,23 +32,21 @@ export const Route = createFileRoute("/features/")({
 
 function FeaturesPage() {
 	return (
-		<div className={`${HOME_FONT_CLASS} min-h-screen bg-white antialiased`}>
-			<HomeStyles />
+		<div className="min-h-screen bg-paper antialiased">
+			<SiteStyles />
 			<Navbar />
 			<main>
-				<section className="relative overflow-hidden border-b border-zinc-200/80 bg-white">
+				<section className="relative overflow-hidden bg-paper">
 					<div
 						aria-hidden="true"
 						className="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,rgb(0_0_0/0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgb(0_0_0/0.04)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
 					/>
-					<div className="relative mx-auto max-w-6xl px-4 pb-14 pt-14 md:px-6 md:pt-20 lg:pb-20">
-						<h1 className="max-w-3xl text-[2.75rem] font-semibold leading-[1] tracking-[-0.04em] text-balance text-zinc-950 sm:text-6xl">
-							All You Need to Grow AI Visibility
-						</h1>
-						<p className="mt-6 max-w-[60ch] text-pretty text-[17px]/7 text-zinc-600 md:text-xl/8">
-							CiteRank.com tracks how ChatGPT, Google AI Overviews, Perplexity, Gemini, and other AI engines talk about
-							your brand: whether they mention you, how they describe you, which competitors they name instead, and
-							which sources they cite. Then it tells you what to do, and our{" "}
+					<div className="relative mx-auto max-w-6xl px-4 pb-16 pt-16 md:px-6 lg:pb-20 lg:pt-24">
+						<h1 className="heading-1 max-w-3xl text-zinc-950">All You Need to Grow AI Visibility</h1>
+						<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
+							CiteRank.com tracks whether ChatGPT, Google AI Overviews, Perplexity, Gemini and other AI apps mention
+							you, how they describe you, who they name instead and which sources they cite. Then it tells you what to
+							do, and our{" "}
 							<Link to="/agency" className="font-medium text-zinc-950 underline decoration-zinc-300 underline-offset-4">
 								AI search agency
 							</Link>{" "}
@@ -57,8 +55,8 @@ function FeaturesPage() {
 					</div>
 				</section>
 
-				<section className="bg-zinc-50/70">
-					<div className="mx-auto max-w-6xl px-4 py-14 md:px-6 lg:py-20">
+				<section className="bg-white">
+					<div className="mx-auto max-w-6xl px-4 py-16 md:px-6 lg:py-20">
 						<ul className="grid gap-5 md:grid-cols-2">
 							{productFeatures.map((f) => (
 								<li key={f.slug} className="flex">

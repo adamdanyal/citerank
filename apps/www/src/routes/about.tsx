@@ -4,8 +4,10 @@ import { cloudSignupUrl } from "@workspace/config/referrals";
 import { buttonVariants } from "@workspace/ui/components/button";
 import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
+import { Closing } from "@/components/citerank/home/closing";
+import { Faq } from "@/components/citerank/home/faq";
+import { SiteStyles } from "@/components/citerank/styles";
 import { Footer } from "@/components/footer";
-import { Faq } from "@/components/home/faq";
 import { Navbar } from "@/components/navbar";
 import { externalRel } from "@/lib/external-link";
 import { ABOUT_FAQS } from "@/lib/faqs";
@@ -202,7 +204,8 @@ function AboutPage() {
 	];
 
 	return (
-		<div className="min-h-screen">
+		<div className="min-h-screen bg-paper antialiased">
+			<SiteStyles />
 			<Navbar />
 			<main>
 				<section className="relative overflow-hidden border-b border-zinc-200 bg-white py-16 lg:py-28">
@@ -347,6 +350,7 @@ function AboutPage() {
 				</Section>
 
 				<Faq items={ABOUT_FAQS} />
+				<Closing from="marketing-about" />
 
 				<section className="border-y border-zinc-200 bg-white py-16 lg:py-24">
 					<div className="mx-auto max-w-6xl px-4 text-center md:px-6">

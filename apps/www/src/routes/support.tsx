@@ -4,6 +4,7 @@ import { buttonVariants } from "@workspace/ui/components/button";
 import { Spinner } from "@workspace/ui/components/spinner";
 import { ArrowUpRight } from "lucide-react";
 import { type ReactNode, useState } from "react";
+import { SiteStyles } from "@/components/citerank/styles";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { openCrispChat } from "@/lib/crisp";
@@ -115,7 +116,8 @@ function ResourceLink({ href, label, detail }: { href: string; label: string; de
 
 function SupportPage() {
 	return (
-		<div className="min-h-screen">
+		<div className="min-h-screen bg-paper antialiased">
+			<SiteStyles />
 			<Navbar />
 			<main className="mx-auto max-w-6xl px-4 py-12 md:px-6 lg:py-20">
 				<header className="mb-16 space-y-4">
