@@ -67,7 +67,7 @@ export function Footer() {
 				<div className="grid grid-cols-2 gap-10 py-16 sm:grid-cols-3 lg:grid-cols-5">
 					{cols.map((col) => (
 						<div key={col.heading}>
-							<h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">{col.heading}</h3>
+							<h3 className="text-sm font-medium text-zinc-950">{col.heading}</h3>
 							<ul className="mt-4 space-y-3 text-sm">
 								{col.links.map((link) => (
 									<li key={link.href}>

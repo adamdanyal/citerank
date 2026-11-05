@@ -15,33 +15,33 @@ const RUNS_PER_DAY = Math.max(...Object.values(PLANS).map((plan) => plan.standar
 const REASONS: { icon: LucideIcon; title: string; body: string }[] = [
 	{
 		icon: MessageSquareText,
-		title: "Every answer, kept word for word",
-		body: "Each AI answer is stored with the brands it named and the sources it cited, so you can read exactly what a buyer was told.",
+		title: "Every Answer, Kept",
+		body: "Each answer is stored with the brands it named and the sources it cited.",
 	},
 	{
 		icon: RefreshCw,
-		title: `Up to ${RUNS_PER_DAY} checks a day`,
-		body: "Answers change often. Checking several times a day shows the trend.",
+		title: `${RUNS_PER_DAY} Checks a Day`,
+		body: "Answers change often. Several checks a day show the trend.",
 	},
 	{
 		icon: LayoutGrid,
-		title: "12 AI apps, including Google AI Overviews and AI Mode",
+		title: "12 AI Apps",
 		body: "ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok and more.",
 	},
 	{
 		icon: ListOrdered,
-		title: "Fixes ranked by impact",
-		body: "Opportunities tells you which page to write, which to update and which sites to get listed on, in order.",
+		title: "Fixes, Ranked",
+		body: "Which page to write, which to update, which sites to get listed on.",
 	},
 	{
 		icon: Users,
-		title: "Unlimited seats and API access on every plan",
-		body: "Your whole team sees the same numbers, and your own tools can pull them too.",
+		title: "Unlimited Seats",
+		body: "Your whole team sees the same numbers. API and MCP included.",
 	},
 	{
 		icon: BadgeCheck,
-		title: "Monthly, cancel any time",
-		body: "No contract and no sales call. Pick a plan, pay monthly, stop when you like.",
+		title: "Cancel Any Time",
+		body: "No contract, no sales call. Pay monthly, stop when you like.",
 	},
 ];
 
@@ -51,13 +51,13 @@ export function Why() {
 			<Container className="py-20 lg:py-24">
 				<Reveal className="mx-auto max-w-3xl text-center">
 					<h2 className="heading-2 text-zinc-950">Why CiteRank.com</h2>
-					<p className="body-8 mt-6 text-zinc-700">What you get on every plan, in plain terms.</p>
+					<p className="body-8 mt-6 text-zinc-700">What every plan includes.</p>
 				</Reveal>
 				<ul className="mt-12 grid gap-5 md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
 					{REASONS.map((reason, index) => {
 						const Icon = reason.icon;
 						return (
-							<RevealItem key={reason.title} delay={index * 60} className={`${CARD} p-6 lg:p-8`}>
+							<RevealItem key={reason.title} delay={index * 60} className={`${CARD} p-6`}>
 								<span className={ICON_BOX}>
 									<Icon className="size-5" aria-hidden="true" />
 								</span>

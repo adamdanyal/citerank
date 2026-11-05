@@ -19,8 +19,7 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 				<Reveal className="mx-auto flex max-w-3xl flex-col items-center text-center">
 					<h2 className="heading-2 text-zinc-950">Know Where You Stand in AI Search</h2>
 					<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
-						Set up takes minutes. Plans start at ${CLOUD_ENTRY_PRICE_USD} a month, with no contract, and you can cancel
-						any time.
+						Set up takes minutes. Plans from ${CLOUD_ENTRY_PRICE_USD} a month, cancel any time.
 					</p>
 					<div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">
 						<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={PRIMARY_BUTTON_LG}>

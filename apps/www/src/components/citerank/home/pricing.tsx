@@ -106,7 +106,7 @@ export function Pricing() {
 		<section id="pricing" className="bg-white">
 			<Container className="py-20 lg:py-24">
 				<Reveal className="max-w-3xl">
-					<h2 className="heading-2 text-zinc-950">Simple Pricing, No Sales Call</h2>
+					<h2 className="heading-2 text-zinc-950">Simple Pricing</h2>
 					<p className="body-7 mt-6 text-zinc-600">Every plan includes your whole team and API access.</p>
 				</Reveal>
 
@@ -125,8 +125,8 @@ export function Pricing() {
 					</Link>
 				</p>
 				<p className="caption-2 mt-6 text-center text-zinc-500">
-					Start on Starter for ${PLANS.starter.monthlyPriceUsd} and upgrade any time, with nothing to move. Payments by
-					Stripe; cancel from your account. Danx Digital Limited, registered in England and Wales.
+					Start on Starter for ${PLANS.starter.monthlyPriceUsd} and upgrade any time. Payments by Stripe, cancel from
+					your account.
 				</p>
 			</Container>
 		</section>

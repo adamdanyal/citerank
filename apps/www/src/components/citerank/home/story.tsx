@@ -45,7 +45,7 @@ function AnswerCard() {
 		<figure className={`${CARD} p-6 lg:p-8`}>
 			<ExampleTag>A buyer's question and an AI answer, with the demo brands</ExampleTag>
 			<p className="title-1 mt-6 text-zinc-950">“{ANSWER.prompt}”</p>
-			<div className="mt-6 rounded-xl bg-paper-2 p-5">
+			<div className="mt-6 rounded-xl bg-paper-2 p-4">
 				<p className="body-6 text-zinc-700">{ANSWER.intro}</p>
 				<ol className="mt-4 space-y-3">
 					{ANSWER.picks.map((pick, index) => (
@@ -72,11 +72,11 @@ function AnswerCard() {
 
 const CHAPTERS = [
 	{
-		title: "So We Ask the AI for You, Every Day",
+		title: "We Ask AI Every Day",
 		body: (
 			<>
-				We ask 12 AI apps your buyers' questions, up to four times a day, and save every answer word for word. On the
-				Basic plan that is <Mark>up to {BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day</Mark>.
+				We ask 12 AI apps your buyers' questions, up to four times a day, and save every answer. On the Basic plan that
+				is <Mark>up to {BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day</Mark>.
 			</>
 		),
 		shot: {
@@ -85,11 +85,11 @@ const CHAPTERS = [
 		},
 	},
 	{
-		title: "Then We Show You Where You Stand",
+		title: "See Where You Stand",
 		body: (
 			<>
 				How often you are named, how often each competitor is, how AI describes you, and{" "}
-				<Mark>which pages it trusts</Mark>. One dashboard, your whole team on it.
+				<Mark>which pages it trusts</Mark>.
 			</>
 		),
 		shot: {
@@ -98,11 +98,11 @@ const CHAPTERS = [
 		},
 	},
 	{
-		title: "And What to Do About It",
+		title: "Know What to Fix",
 		body: (
 			<>
-				Opportunities lists what to fix, biggest win first: the page to write, the page to update, the review site to
-				get listed on. <Mark>Do them, and watch the answers change.</Mark>
+				Opportunities lists what to fix, biggest win first: a page to write, a page to update, a review site to get on.{" "}
+				<Mark>Do them, and watch the answers change.</Mark>
 			</>
 		),
 		shot: {

@@ -18,24 +18,19 @@ export function Letter() {
 					<p className="heading-4 text-zinc-950">Tell me if this sounds familiar.</p>
 					<div className="body-8 mt-8 space-y-5 text-zinc-800">
 						<p>
-							Your buyers ask ChatGPT, Perplexity or Gemini which product to pick. The answer names two or three brands,
-							cites a few sources, and that is it. There is no page two, and nothing tells you whether you were in it.
+							Your buyers ask ChatGPT, Perplexity or Gemini which product to pick. The answer names two or three brands
+							and cites a few sources. There is no page two, and nothing tells you whether you were in it.
 						</p>
 						<p>
-							So you check by hand. One prompt, one app, one day. It says nothing about the trend or about what to
-							change. The big tools that do this well are sold to large companies, with sales calls and yearly
-							contracts.
+							So you check by hand: one prompt, one app, one day. It says nothing about the trend or what to change. The
+							big tools are sold to large companies, with sales calls and yearly contracts.
 						</p>
 						<p>
-							CiteRank.com is the tracker we wanted instead. You sign up in minutes. It asks 12 AI apps the questions
-							your buyers ask, up to four times a day, keeps every answer, and ranks what to fix. Plans start at $
-							{CLOUD_ENTRY_PRICE_USD} a month and you can cancel any time. And if nobody on your team has time for the
-							fixes, our agency does them.
+							CiteRank.com is the tracker we wanted instead. Sign up in minutes. It asks 12 AI apps your buyers'
+							questions up to four times a day, keeps every answer and ranks what to fix. From ${CLOUD_ENTRY_PRICE_USD}{" "}
+							a month, cancel any time. If nobody has time for the fixes, our agency does them.
 						</p>
-						<p>
-							Thanks for reading. Try the live demo first, and if it is useful, start tracking. We would be glad to have
-							you as a customer.
-						</p>
+						<p>Try the live demo first. If it is useful, start tracking. We would be glad to have you.</p>
 					</div>
 					<div className="mt-10 flex items-center gap-4">
 						{FOUNDER.photo ? (
@@ -47,14 +42,7 @@ export function Letter() {
 								loading="lazy"
 								className="size-16 rounded-lg object-cover"
 							/>
-						) : (
-							<span
-								aria-hidden="true"
-								className="inline-flex size-16 items-center justify-center rounded-lg bg-blue-50 font-heading text-2xl text-blue-800"
-							>
-								{FOUNDER.name[0]}
-							</span>
-						)}
+						) : null}
 						<div>
 							<p className="font-heading text-2xl text-zinc-950">{FOUNDER.name}</p>
 							<p className="caption-2 text-zinc-500">
