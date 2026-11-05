@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { PLAN_KEYS, PLANS, type PlanDefinition, type PlanKey } from "@workspace/config/plans";
 import { cloudAppUrl } from "@workspace/config/referrals";
 import { ArrowRight, Check, Minus } from "lucide-react";
-import { Container, Eyebrow, LinkArrow, PRIMARY_BUTTON, Reveal, RevealItem, SECONDARY_BUTTON, TEXT_LINK } from "../ui";
+import { Container, LinkArrow, PRIMARY_BUTTON, Reveal, RevealItem, SECONDARY_BUTTON, TEXT_LINK } from "../ui";
 
 const RECOMMENDED: PlanKey = "pro";
 
@@ -79,8 +79,7 @@ export function Pricing() {
 		<section id="pricing" className="bg-white">
 			<Container className="py-20 lg:py-24">
 				<Reveal className="max-w-[42.5rem]">
-					<Eyebrow>Pricing</Eyebrow>
-					<h2 className="heading-2 mt-4 text-zinc-950">Simple Pricing, No Sales Call</h2>
+					<h2 className="heading-2 text-zinc-950">Simple Pricing, No Sales Call</h2>
 					<p className="body-7 mt-6 text-zinc-600">Unlimited seats and API/MCP access on every plan.</p>
 				</Reveal>
 

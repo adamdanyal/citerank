@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import { Container } from "../ui";
 
-const TAGLINE =
-	"Your buyers ask AI who to trust. See what it says about you today, and what to change so it recommends you.";
+// One thought per line, so the breaks land where the sentence breaks.
+const LINES = ["Your buyers ask AI who to trust.", "See what it says about you,", "and how to change the answer."];
 
 function words(text: string) {
 	let at = 0;
@@ -46,13 +46,27 @@ export function Tagline() {
 	}, []);
 
 	return (
-		<section className="bg-white">
-			<Container className="py-20 lg:py-24">
-				<p ref={ref} data-armed={armed ? "" : undefined} className="cr-tagline heading-2 max-w-[42.5rem] text-zinc-950">
-					{words(TAGLINE).map(({ word, at }) => (
-						<Fragment key={at}>
-							{at > 0 ? " " : null}
-							<span className="cr-word">{word}</span>
+		<section className="bg-paper-2">
+			<Container className="py-24">
+				<p
+					ref={ref}
+					data-armed={armed ? "" : undefined}
+					className="cr-tagline heading-2 mx-auto max-w-[48rem] text-center text-zinc-950"
+				>
+					{LINES.map((line, index) => (
+						<Fragment key={line}>
+							{index > 0 ? (
+								<>
+									{" "}
+									<br className="max-sm:hidden" />
+								</>
+							) : null}
+							{words(line).map(({ word, at }) => (
+								<Fragment key={at}>
+									{at > 0 ? " " : null}
+									<span className="cr-word">{word}</span>
+								</Fragment>
+							))}
 						</Fragment>
 					))}
 				</p>

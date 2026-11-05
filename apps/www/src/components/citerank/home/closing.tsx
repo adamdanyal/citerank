@@ -1,10 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import { cloudSignupUrl, type ReferralSource } from "@workspace/config/referrals";
-import { ArrowRight, Check } from "lucide-react";
-import { Container, LinkArrow, PRIMARY_BUTTON, Reveal, TEXT_LINK } from "../ui";
-
-const INCLUDED = ["Cancel any time", "Unlimited seats", "API and MCP access"];
+import { ArrowRight } from "lucide-react";
+import { Container, PRIMARY_BUTTON, Reveal, SECONDARY_BUTTON } from "../ui";
 
 export function Closing({ from = "marketing-closing" }: { from?: ReferralSource }) {
 	const signupUrl = cloudSignupUrl(from);
@@ -20,24 +18,16 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 					<p className="body-8 mt-6 text-zinc-600">
 						Set up takes minutes, and plans start at ${CLOUD_ENTRY_PRICE_USD} a month.
 					</p>
-					<div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:gap-6">
+					<div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">
 						<a href={signupUrl} className={PRIMARY_BUTTON}>
 							Start tracking
 							<ArrowRight className="size-4" aria-hidden="true" />
 						</a>
-						<Link to="/agency" className={TEXT_LINK}>
+						<Link to="/agency" className={SECONDARY_BUTTON}>
 							Have us do the work
-							<LinkArrow />
 						</Link>
 					</div>
-					<ul className="caption-1 mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-zinc-600">
-						{INCLUDED.map((item) => (
-							<li key={item} className="inline-flex items-center gap-2">
-								<Check className="size-4 text-blue-600" strokeWidth={2.5} aria-hidden="true" />
-								{item}
-							</li>
-						))}
-					</ul>
+					<p className="caption-2 mt-6 text-zinc-500">Unlimited seats on every plan. Cancel any time.</p>
 				</Reveal>
 			</Container>
 		</section>

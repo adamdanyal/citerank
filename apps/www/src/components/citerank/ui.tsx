@@ -26,10 +26,6 @@ export function Container({ children, className = "" }: { children: ReactNode; c
 	return <div className={`mx-auto max-w-6xl px-4 md:px-6 ${className}`}>{children}</div>;
 }
 
-export function Eyebrow({ children }: { children: ReactNode }) {
-	return <p className="caption-1 text-blue-700">{children}</p>;
-}
-
 type RevealState = "idle" | "hidden" | "shown";
 
 /*

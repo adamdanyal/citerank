@@ -2,7 +2,7 @@ import { CUSTOMER_QUOTES } from "@workspace/ui/brand/customers";
 import { Popover, PopoverContent, PopoverTrigger } from "@workspace/ui/components/popover";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { EngineIcon } from "@/components/home/engines";
-import { Container, EASE_CLASS, Eyebrow, Reveal } from "../ui";
+import { Container, EASE_CLASS, Reveal } from "../ui";
 
 /*
  * AI reviews are real answers to one prompt, asked over each provider's API
@@ -234,8 +234,7 @@ export function Reviews() {
 		<section className="bg-white">
 			<Container className="py-20 lg:py-24">
 				<Reveal className="max-w-[42.5rem]">
-					<Eyebrow>Proof</Eyebrow>
-					<h2 className="heading-2 mt-4 text-zinc-950">Loved by Marketers. Recommended by AI.</h2>
+					<h2 className="heading-2 text-zinc-950">Loved by Marketers. Recommended by AI.</h2>
 				</Reveal>
 				<Reveal delay={100} className="mt-12 grid gap-4 md:grid-cols-2 lg:hidden">
 					{ROW_ORDER.map((r) => (

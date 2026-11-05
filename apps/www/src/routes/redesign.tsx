@@ -39,8 +39,8 @@ function RedesignPreview() {
 			<main id="content">
 				<Hero />
 				<LogoStrip />
-				<Tagline />
 				<Benefits />
+				<Tagline />
 				<EngineCoverage />
 				<HowItWorks />
 				<Reviews />

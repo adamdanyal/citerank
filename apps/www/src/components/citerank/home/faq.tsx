@@ -1,17 +1,17 @@
+import { Plus } from "lucide-react";
 import type { ReactNode } from "react";
 import { externalRel } from "@/lib/external-link";
 import type { FaqItem } from "@/lib/faqs";
-import { Container, Eyebrow, QUIET_LINK, Reveal } from "../ui";
+import { Container, EASE_CLASS, QUIET_LINK, Reveal } from "../ui";
 
-/** Every answer is open on the page, in two columns, so nothing is hidden behind a click. */
+/** Answers live inside closed <details>, so they stay in the DOM for crawlers and the FAQPage JSON-LD. */
 export function Faq({ items }: { items: FaqItem[] }) {
 	return (
 		<section className="bg-white">
-			<Container className="py-20 lg:py-24">
-				<Reveal className="max-w-[42.5rem]">
-					<Eyebrow>FAQ</Eyebrow>
-					<h2 className="heading-2 mt-4 text-zinc-950">Frequently Asked Questions</h2>
-					<p className="body-7 mt-6 text-zinc-600">
+			<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
+				<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
+					<h2 className="heading-2 text-zinc-950">Frequently Asked Questions</h2>
+					<p className="body-6 mt-6 text-zinc-600">
 						Something we didn't cover? Email us at{" "}
 						<a href="mailto:team@citerank.com" className={`${QUIET_LINK} text-zinc-950`}>
 							team@citerank.com
@@ -19,16 +19,22 @@ export function Faq({ items }: { items: FaqItem[] }) {
 						.
 					</p>
 				</Reveal>
-				<dl className="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2 lg:mt-16">
-					{items.map((item, index) => (
-						<Reveal key={item.question} delay={(index % 2) * 80}>
-							<dt className="title-2 text-zinc-950">{item.question}</dt>
-							<dd className="body-3 mt-3 max-w-[60ch] text-zinc-600">
+				<Reveal delay={100} className="divide-y divide-zinc-200/80 border-y border-zinc-200/80 lg:col-span-8">
+					{items.map((item) => (
+						<details key={item.question} className="group">
+							<summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 [&::-webkit-details-marker]:hidden">
+								<h3 className="title-3 text-zinc-950">{item.question}</h3>
+								<Plus
+									className={`mt-1 size-4 shrink-0 text-zinc-400 transition-transform duration-300 ${EASE_CLASS} group-open:rotate-45`}
+									aria-hidden="true"
+								/>
+							</summary>
+							<p className="body-6 max-w-[60ch] pb-6 text-zinc-600">
 								<FaqAnswer item={item} />
-							</dd>
-						</Reveal>
+							</p>
+						</details>
 					))}
-				</dl>
+				</Reveal>
 			</Container>
 		</section>
 	);
