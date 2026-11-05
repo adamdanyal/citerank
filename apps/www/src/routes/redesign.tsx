@@ -1,14 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AgencySection } from "@/components/citerank/home/agency";
-import { Benefits } from "@/components/citerank/home/benefits";
 import { Closing } from "@/components/citerank/home/closing";
 import { EngineCoverage } from "@/components/citerank/home/engines";
 import { Faq } from "@/components/citerank/home/faq";
 import { Hero } from "@/components/citerank/home/hero";
-import { HowItWorks } from "@/components/citerank/home/how-it-works";
 import { LogoStrip } from "@/components/citerank/home/logos";
 import { Pricing } from "@/components/citerank/home/pricing";
 import { Reviews } from "@/components/citerank/home/reviews";
+import { Story } from "@/components/citerank/home/story";
 import { Tagline } from "@/components/citerank/home/tagline";
 import { Navbar } from "@/components/citerank/navbar";
 import { RedesignStyles } from "@/components/citerank/styles";
@@ -39,10 +38,9 @@ function RedesignPreview() {
 			<main id="content">
 				<Hero />
 				<LogoStrip />
-				<Benefits />
+				<Story />
 				<Tagline />
 				<EngineCoverage />
-				<HowItWorks />
 				<Reviews />
 				<Pricing />
 				<AgencySection />

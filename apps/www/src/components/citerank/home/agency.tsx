@@ -16,7 +16,7 @@ export function AgencySection() {
 		<section className="cr-grain relative bg-paper-2">
 			<Container className="relative grid gap-12 py-20 lg:grid-cols-12 lg:items-center lg:gap-16 lg:py-24">
 				<Reveal className="lg:col-span-5">
-					<h2 className="heading-2 text-zinc-950">Want It Done for You?</h2>
+					<h2 className="heading-2 text-zinc-950">Don't Want to Do the Work? We Will.</h2>
 					<p className="body-7 mt-6 text-zinc-600">
 						The tracker ranks what to do next. Our AI search agency does that work every month, and a monthly report
 						shows every piece of work, the question it targets, and the AI answers before and after.

@@ -4,7 +4,7 @@ import { cloudSignupUrl, demoSiteUrl, type ReferralSource } from "@workspace/con
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { externalRel } from "@/lib/external-link";
-import { Container, PRIMARY_BUTTON, QUIET_LINK, SECONDARY_BUTTON } from "../ui";
+import { Container, LinkArrow, PRIMARY_BUTTON, QUIET_LINK, TEXT_LINK } from "../ui";
 import { DEMO_BRAND_PATH, ProductDemo } from "./product-demo";
 
 const DEFAULT_LEDE =
@@ -36,17 +36,20 @@ export function Hero({
 					</p>
 					<h1 className="heading-1 cr-gradient-text mt-8">{title}</h1>
 					<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">{lede}</p>
-					<div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">
-						<a href={signupUrl} className={PRIMARY_BUTTON}>
+					<div className="mt-8 flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:gap-6">
+						<a href={signupUrl} className={`${PRIMARY_BUTTON} w-full sm:w-auto`}>
 							Start tracking
 							<ArrowRight className="size-4" aria-hidden="true" />
 						</a>
-						<Link to="/agency" className={SECONDARY_BUTTON}>
+						<Link to="/agency" className={TEXT_LINK}>
 							Have us do the work
+							<LinkArrow />
 						</Link>
 					</div>
 					<p className="caption-2 mt-6 text-zinc-500">
-						<span className="block sm:inline">Tracker plans from ${CLOUD_ENTRY_PRICE_USD} a month.</span>{" "}
+						<span className="block sm:inline">
+							Tracker plans from ${CLOUD_ENTRY_PRICE_USD} a month. Cancel any time.
+						</span>{" "}
 						<span className="mt-1 block whitespace-nowrap sm:mt-0 sm:inline">
 							<Link to="/pricing" className={QUIET_LINK}>
 								See pricing
@@ -60,7 +63,7 @@ export function Hero({
 								rel={externalRel(demoUrl)}
 								className={`${QUIET_LINK} inline-flex items-center gap-1`}
 							>
-								Try the live demo
+								Try the live demo, no sign-up
 								<ArrowUpRight className="size-3.5" aria-hidden="true" />
 							</a>
 						</span>

@@ -21,7 +21,7 @@ export function EngineCoverage() {
 		<section className="bg-white">
 			<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:items-center lg:gap-16 lg:py-24">
 				<Reveal className="lg:col-span-5">
-					<h2 className="heading-2 text-zinc-950">12 Answer Engines Your Buyers Use</h2>
+					<h2 className="heading-2 text-zinc-950">It Checks 12 AI Apps, Not Just ChatGPT</h2>
 					<p className="body-7 mt-6 text-zinc-600">
 						CiteRank.com both scrapes what real users see in popular AI search tools and captures the other six models
 						with direct API calls.
