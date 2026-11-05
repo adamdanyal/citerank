@@ -2,7 +2,7 @@ import { Plus } from "lucide-react";
 import type { ReactNode } from "react";
 import { externalRel } from "@/lib/external-link";
 import type { FaqItem } from "@/lib/faqs";
-import { Container, EASE_CLASS, QUIET_LINK, Reveal } from "../ui";
+import { CARD, Container, EASE_CLASS, QUIET_LINK, Reveal } from "../ui";
 
 /** Answers live inside closed <details>, so they stay in the DOM for crawlers and the FAQPage JSON-LD. */
 export function Faq({ items }: { items: FaqItem[] }) {
@@ -19,7 +19,7 @@ export function Faq({ items }: { items: FaqItem[] }) {
 						.
 					</p>
 				</Reveal>
-				<Reveal delay={100} className="divide-y divide-zinc-200/80 border-y border-zinc-200/80 lg:col-span-8">
+				<Reveal delay={100} className={`${CARD} divide-y divide-zinc-200/80 px-6 lg:col-span-8`}>
 					{items.map((item) => (
 						<details key={item.question} className="group">
 							<summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 [&::-webkit-details-marker]:hidden">

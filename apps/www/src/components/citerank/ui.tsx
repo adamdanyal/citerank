@@ -29,6 +29,10 @@ export function Container({ children, className = "" }: { children: ReactNode; c
 	return <div className={`mx-auto max-w-6xl px-4 md:px-6 ${className}`}>{children}</div>;
 }
 
+export const CARD =
+	"rounded-2xl bg-white ring-1 ring-zinc-200 shadow-[0_1px_2px_rgb(26_25_23/0.04),0_16px_40px_-24px_rgb(26_25_23/0.2)]";
+export const ICON_BOX = "inline-flex size-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-700";
+
 export const WINDOW_FRAME =
 	"rounded-2xl bg-white p-2 shadow-[0_1px_2px_rgb(26_25_23/0.05),0_40px_80px_-40px_rgb(26_25_23/0.35)]";
 

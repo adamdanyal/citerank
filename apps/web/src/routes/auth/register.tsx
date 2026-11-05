@@ -27,8 +27,9 @@ import { safeReturnTo } from "@/lib/return-to";
 import { buildTitle, getAppName } from "@/lib/route-head";
 
 export const Route = createFileRoute("/auth/register")({
-	validateSearch: (search: Record<string, unknown>): { returnTo?: string } & AttributionParams => ({
+	validateSearch: (search: Record<string, unknown>): { returnTo?: string; email?: string } & AttributionParams => ({
 		...(typeof search.returnTo === "string" ? { returnTo: search.returnTo } : {}),
+		...(typeof search.email === "string" ? { email: search.email } : {}),
 		...attributionParams(search),
 	}),
 	head: ({ match }) => {
@@ -54,6 +55,7 @@ function RegisterPage() {
 	return (
 		<RegisterForm
 			returnTo={returnTo}
+			initialEmail={search.email}
 			attribution={attributionParams(search)}
 			isCloud={context.clientConfig?.mode === "cloud"}
 			hasUsers={context.clientConfig?.hasUsers ?? false}
@@ -63,11 +65,14 @@ function RegisterPage() {
 
 export function RegisterForm({
 	returnTo,
+	initialEmail,
 	attribution,
 	isCloud,
 	hasUsers,
 }: {
 	returnTo?: string;
+	/** Typed on the marketing site, so the visitor doesn't enter it twice. */
+	initialEmail?: string;
 	attribution?: AttributionParams;
 	isCloud?: boolean;
 	/** A local instance before its bootstrap signup has nowhere to send an existing account. */
@@ -75,7 +80,7 @@ export function RegisterForm({
 }) {
 	const navigate = useNavigate();
 	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
+	const [email, setEmail] = useState(initialEmail ?? "");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState<string | null>(null);
 	const [loading, setLoading] = useState(false);

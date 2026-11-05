@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { PLAN_KEYS, PLANS, type PlanDefinition, type PlanKey } from "@workspace/config/plans";
 import { cloudAppUrl } from "@workspace/config/referrals";
 import { ArrowRight, Check, Minus } from "lucide-react";
-import { Container, LinkArrow, PRIMARY_BUTTON, Reveal, RevealItem, SECONDARY_BUTTON, TEXT_LINK } from "../ui";
+import { CARD, Container, LinkArrow, PRIMARY_BUTTON, Reveal, RevealItem, SECONDARY_BUTTON, TEXT_LINK } from "../ui";
 
 const RECOMMENDED: PlanKey = "pro";
 
@@ -22,10 +22,7 @@ function Tier({ planKey, delay }: { planKey: PlanKey; delay: number }) {
 	const plan = PLANS[planKey];
 	const recommended = planKey === RECOMMENDED;
 	return (
-		<RevealItem
-			delay={delay}
-			className={`flex flex-col rounded-2xl p-6 ${recommended ? "bg-white ring-2 ring-blue-600" : "bg-paper-2"}`}
-		>
+		<RevealItem delay={delay} className={`${CARD} flex flex-col p-6 ${recommended ? "ring-2 ring-blue-600" : ""}`}>
 			<p className="flex items-center justify-between gap-2 title-3 text-zinc-950">
 				{plan.name}
 				{recommended ? (
@@ -66,7 +63,7 @@ function Tier({ planKey, delay }: { planKey: PlanKey; delay: number }) {
 
 function OtherOption({ name, body, action }: { name: string; body: string; action: React.ReactNode }) {
 	return (
-		<div className="flex flex-col rounded-2xl bg-paper-2 p-6">
+		<div className={`${CARD} flex flex-col p-6`}>
 			<h3 className="title-3 text-zinc-950">{name}</h3>
 			<p className="body-6 mt-2 flex-1 text-zinc-600">{body}</p>
 			<div className="-ml-1 mt-4">{action}</div>

@@ -1,7 +1,7 @@
 import { PLANS } from "@workspace/config/plans";
 import type { ReactNode } from "react";
 import { ExampleTag } from "@/components/home/ui";
-import { Container, Reveal, WINDOW_FRAME, WindowBar } from "../ui";
+import { CARD, Container, Reveal, WINDOW_FRAME, WindowBar } from "../ui";
 
 const BASIC_ANSWERS_PER_DAY = PLANS.basic.maxPrompts * PLANS.basic.platformPicks * PLANS.basic.standardRunsPerDay;
 
@@ -42,10 +42,10 @@ const ANSWER = {
 
 function AnswerCard() {
 	return (
-		<figure className="rounded-2xl bg-paper-2 p-6 lg:p-8">
+		<figure className={`${CARD} p-6 lg:p-8`}>
 			<ExampleTag>A buyer's question and an AI answer, with the demo brands</ExampleTag>
 			<p className="title-1 mt-6 text-zinc-950">“{ANSWER.prompt}”</p>
-			<div className="mt-6 rounded-xl bg-white p-5">
+			<div className="mt-6 rounded-xl bg-paper-2 p-5">
 				<p className="body-6 text-zinc-700">{ANSWER.intro}</p>
 				<ol className="mt-4 space-y-3">
 					{ANSWER.picks.map((pick, index) => (

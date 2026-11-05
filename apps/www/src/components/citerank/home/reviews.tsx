@@ -2,7 +2,7 @@ import { CUSTOMER_QUOTES } from "@workspace/ui/brand/customers";
 import { Popover, PopoverContent, PopoverTrigger } from "@workspace/ui/components/popover";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { EngineIcon } from "@/components/home/engines";
-import { Container, EASE_CLASS, Reveal } from "../ui";
+import { CARD, Container, EASE_CLASS, Reveal } from "../ui";
 
 /*
  * AI reviews are real answers to one prompt, asked over each provider's API
@@ -136,7 +136,7 @@ function Initials({ name }: { name: string }) {
 		.join("")
 		.slice(0, 2);
 	return (
-		<span className="caption-3 inline-flex size-10 shrink-0 items-center justify-center rounded-lg bg-white text-zinc-600">
+		<span className="caption-3 inline-flex size-10 shrink-0 items-center justify-center rounded-lg bg-paper-2 text-zinc-600">
 			{letters}
 		</span>
 	);
@@ -169,7 +169,7 @@ function Avatar({ review }: { review: Review }) {
 function ReviewCard({ review }: { review: Review }) {
 	const isAi = review.kind === "ai";
 	return (
-		<figure className={`rounded-2xl p-6 ${isAi ? "bg-blue-50" : "bg-paper-2"}`}>
+		<figure className={`${CARD} p-6 ${isAi ? "bg-blue-50" : ""}`}>
 			<blockquote className="body-3 text-zinc-950">“{review.quote}”</blockquote>
 			<figcaption className="mt-6 flex items-center gap-3">
 				<Avatar review={review} />

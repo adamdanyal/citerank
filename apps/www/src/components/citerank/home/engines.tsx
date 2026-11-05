@@ -1,5 +1,5 @@
 import { EngineIcon } from "@/components/home/engines";
-import { Container, Reveal, RevealItem } from "../ui";
+import { CARD, Container, Reveal, RevealItem } from "../ui";
 
 const ENGINES = [
 	{ name: "ChatGPT", iconId: "openai" },
@@ -32,9 +32,9 @@ export function EngineCoverage() {
 						<RevealItem
 							key={engine.name}
 							delay={index * 40}
-							className="flex items-center gap-3 rounded-xl bg-paper-2 py-3 pl-3 pr-4 title-4 text-zinc-900"
+							className={`${CARD} flex items-center gap-3 py-3 pl-3 pr-4 title-4 text-zinc-900`}
 						>
-							<span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg bg-white">
+							<span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg bg-paper-2">
 								<EngineIcon iconId={engine.iconId} className="size-4" />
 							</span>
 							<span className="truncate">{engine.name}</span>
