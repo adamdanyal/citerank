@@ -1,14 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AgencySection } from "@/components/citerank/home/agency";
 import { Closing } from "@/components/citerank/home/closing";
+import { Demo } from "@/components/citerank/home/demo";
 import { EngineCoverage } from "@/components/citerank/home/engines";
 import { Faq } from "@/components/citerank/home/faq";
 import { Hero } from "@/components/citerank/home/hero";
-import { LogoStrip } from "@/components/citerank/home/logos";
+import { Letter } from "@/components/citerank/home/letter";
 import { Pricing } from "@/components/citerank/home/pricing";
 import { Reviews } from "@/components/citerank/home/reviews";
 import { Story } from "@/components/citerank/home/story";
-import { Tagline } from "@/components/citerank/home/tagline";
+import { Support } from "@/components/citerank/home/support";
 import { Navbar } from "@/components/citerank/navbar";
 import { RedesignStyles } from "@/components/citerank/styles";
 import { PRIMARY_BUTTON } from "@/components/citerank/ui";
@@ -24,6 +25,12 @@ export const Route = createFileRoute("/redesign")({
 	component: RedesignPreview,
 });
 
+/*
+ * In order: the offer and the product, the pitch in the founder's words, the
+ * problem made concrete, how the product answers it, what it covers, who vouches
+ * for it, a no-risk way to try it, the price, the done-for-you option, who
+ * answers questions, the remaining objections, and the offer again.
+ */
 function RedesignPreview() {
 	return (
 		<div className="min-h-screen bg-paper antialiased">
@@ -37,13 +44,14 @@ function RedesignPreview() {
 			<Navbar />
 			<main id="content">
 				<Hero />
-				<LogoStrip />
+				<Letter />
 				<Story />
-				<Tagline />
 				<EngineCoverage />
 				<Reviews />
+				<Demo />
 				<Pricing />
 				<AgencySection />
+				<Support />
 				<Faq items={HOME_FAQS} />
 				<Closing />
 			</main>

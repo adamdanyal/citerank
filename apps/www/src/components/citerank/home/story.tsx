@@ -139,14 +139,9 @@ export function Story() {
 			<section className="bg-white">
 				<Container className="py-20 lg:py-24">
 					<Reveal className="max-w-3xl">
-						<h2 className="heading-2 text-zinc-950">Here's the Problem</h2>
+						<h2 className="heading-2 text-zinc-950">What a Buyer Sees</h2>
 						<p className="body-8 mt-6 text-zinc-700">
-							When a buyer asks ChatGPT which tool to choose, it names <Mark>two or three brands</Mark>, cites a few
-							sources, and moves on. There is no page two.
-						</p>
-						<p className="body-8 mt-4 text-zinc-700">
-							If you are not one of the names, nothing tells you. No results page, no rank, no report. You find out when
-							a deal goes to someone the AI mentioned.
+							Here is the kind of answer your buyers get. Notice who is in it, and who is not.
 						</p>
 					</Reveal>
 					<Reveal delay={100} className="mt-12 max-w-3xl">

@@ -7,6 +7,7 @@ const FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visi
 
 const BUTTON = `inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-lg px-4 button-md transition-[background-color,color,transform] duration-300 ${EASE_CLASS} active:scale-[0.98] ${FOCUS}`;
 export const PRIMARY_BUTTON = `${BUTTON} bg-blue-600 text-white hover:bg-blue-700`;
+export const PRIMARY_BUTTON_LG = `inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-lg px-6 button-md bg-blue-600 text-white transition-[background-color,transform] duration-300 ${EASE_CLASS} hover:bg-blue-700 active:scale-[0.98] ${FOCUS}`;
 export const SECONDARY_BUTTON = `${BUTTON} bg-white text-zinc-950 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50`;
 export const SMALL_BUTTON_BASE = `h-8 items-center justify-center gap-1 whitespace-nowrap rounded-md px-3 button-sm transition-[background-color,color,transform] duration-300 ${EASE_CLASS} active:scale-[0.98] ${FOCUS}`;
 export const SMALL_BUTTON = `inline-flex ${SMALL_BUTTON_BASE}`;
