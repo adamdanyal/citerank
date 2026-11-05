@@ -2,7 +2,7 @@ import { demoSiteUrl } from "@workspace/config/referrals";
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { externalRel } from "@/lib/external-link";
-import { EASE_CLASS } from "../ui";
+import { EASE_CLASS, SMALL_BUTTON } from "../ui";
 
 export const DEMO_BRAND_PATH = "/app/org/quaildesk/brand/quaildesk";
 
@@ -214,28 +214,25 @@ export function ProductDemo() {
 				</div>
 			</a>
 
-			<div className="mt-4 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-				<p className="caption-2 text-center text-zinc-600 sm:text-left" aria-live="polite">
-					<span className="caption-1 text-zinc-950">{slide.label}.</span> {slide.caption}.
-				</p>
-				<div className="flex items-center">
+			<div className="mt-6">
+				<div className="flex flex-wrap justify-center gap-1">
 					{SLIDES.map((s, i) => (
 						<button
 							key={s.src}
 							type="button"
 							onClick={() => pick(i)}
-							aria-label={`Show ${s.label}`}
-							aria-current={i === index}
-							className="group flex size-6 items-center justify-center"
+							aria-pressed={i === index}
+							className={`${SMALL_BUTTON} ${
+								i === index ? "bg-paper-2 text-zinc-950" : "text-zinc-600 hover:bg-paper-2 hover:text-zinc-950"
+							}`}
 						>
-							<span
-								className={`block h-1 rounded-full transition-[width,background-color] duration-300 ${EASE_CLASS} ${
-									i === index ? "w-4 bg-blue-600" : "w-1 bg-zinc-300 group-hover:bg-zinc-400"
-								}`}
-							/>
+							{s.label}
 						</button>
 					))}
 				</div>
+				<p className="caption-2 mt-4 text-center text-zinc-600" aria-live="polite">
+					<span className="caption-1 text-zinc-950">{slide.label}.</span> {slide.caption}.
+				</p>
 			</div>
 		</div>
 	);
