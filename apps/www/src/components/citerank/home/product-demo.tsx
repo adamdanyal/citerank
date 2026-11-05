@@ -2,7 +2,7 @@ import { demoSiteUrl } from "@workspace/config/referrals";
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { externalRel } from "@/lib/external-link";
-import { EASE_CLASS, SMALL_BUTTON, WINDOW_FRAME, WindowBar } from "../ui";
+import { EASE_CLASS, WINDOW_FRAME, WindowBar } from "../ui";
 
 export const DEMO_BRAND_PATH = "/app/org/quaildesk/brand/quaildesk";
 
@@ -171,12 +171,6 @@ export function ProductDemo() {
 		};
 	}, [auto]);
 
-	const pick = (i: number) => {
-		setAuto(false);
-		setIndex(i);
-		setCursorY(SLIDES[i].y);
-	};
-
 	const slide = SLIDES[index];
 	const demoUrl = demoSiteUrl("marketing-demo-frame", `${DEMO_BRAND_PATH}${slide.path}`);
 
@@ -214,27 +208,6 @@ export function ProductDemo() {
 					</div>
 				</div>
 			</a>
-
-			<div className="mt-6">
-				<div className="flex flex-wrap justify-center gap-1">
-					{SLIDES.map((s, i) => (
-						<button
-							key={s.src}
-							type="button"
-							onClick={() => pick(i)}
-							aria-pressed={i === index}
-							className={`${SMALL_BUTTON} ${
-								i === index ? "bg-paper-2 text-zinc-950" : "text-zinc-600 hover:bg-paper-2 hover:text-zinc-950"
-							}`}
-						>
-							{s.label}
-						</button>
-					))}
-				</div>
-				<p className="caption-2 mt-4 text-center text-zinc-600" aria-live="polite">
-					<span className="caption-1 text-zinc-950">{slide.label}.</span> {slide.caption}.
-				</p>
-			</div>
 		</div>
 	);
 }

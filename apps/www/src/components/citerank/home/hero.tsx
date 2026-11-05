@@ -1,10 +1,9 @@
-import { Link } from "@tanstack/react-router";
 import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import { cloudSignupUrl, demoSiteUrl, type ReferralSource } from "@workspace/config/referrals";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { externalRel } from "@/lib/external-link";
-import { Container, PRIMARY_BUTTON_LG, QUIET_LINK, SECONDARY_BUTTON_LG } from "../ui";
+import { Container, PRIMARY_BUTTON_LG, SECONDARY_BUTTON_LG } from "../ui";
 import { DEMO_BRAND_PATH, ProductDemo } from "./product-demo";
 
 const DEFAULT_LEDE =
@@ -46,15 +45,9 @@ export function Hero({
 							<ArrowUpRight className="size-4" aria-hidden="true" />
 						</a>
 					</div>
-					<ul className="caption-2 mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-zinc-500">
-						<li>
-							<Link to="/pricing" className={QUIET_LINK}>
-								Tracker plans from ${CLOUD_ENTRY_PRICE_USD} a month
-							</Link>
-						</li>
-						<li>Cancel any time</li>
-						<li>The demo needs no account</li>
-					</ul>
+					<p className="caption-2 mt-6 text-zinc-500">
+						Tracker plans from ${CLOUD_ENTRY_PRICE_USD} a month. No contract, cancel any time.
+					</p>
 				</div>
 			</Container>
 
