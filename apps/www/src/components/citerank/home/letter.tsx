@@ -75,10 +75,6 @@ export function Letter() {
 							</p>
 						</div>
 					</div>
-					<p className="body-6 mt-8 text-zinc-600">
-						P.S. CiteRank.com is a small, independent UK company with no sales team. Questions go straight to the people
-						who run it.
-					</p>
 				</Reveal>
 			</Container>
 		</section>
