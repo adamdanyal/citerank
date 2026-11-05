@@ -30,7 +30,7 @@ export const Route = createFileRoute("/redesign")({
  * In order: the offer and the product, the pitch in the founder's words, the
  * problem made concrete, how the product answers it, what every plan includes, what it covers, who vouches
  * for it, a no-risk way to try it, the price, the done-for-you option, who
- * answers questions, the remaining objections, and the offer again.
+ * the remaining objections, who answers questions, and the offer again.
  */
 function RedesignPreview() {
 	return (
@@ -53,8 +53,8 @@ function RedesignPreview() {
 				<Demo />
 				<Pricing />
 				<AgencySection />
-				<Support />
 				<Faq items={HOME_FAQS} />
+				<Support />
 				<Closing />
 			</main>
 			<Footer />

@@ -35,9 +35,6 @@ export function Support() {
 						</p>
 					</Reveal>
 				</div>
-				<p className="caption-2 mt-8 text-center text-zinc-500">
-					CiteRank.com is a trading name of Danx Digital Limited, a company registered in England and Wales.
-				</p>
 			</Container>
 		</section>
 	);
