@@ -7,7 +7,7 @@ import { Container, EASE_CLASS, QUIET_LINK, Reveal } from "../ui";
 /** Answers live inside closed <details>, so they stay in the DOM for crawlers and the FAQPage JSON-LD. */
 export function Faq({ items }: { items: FaqItem[] }) {
 	return (
-		<section className="bg-white">
+		<section className="bg-paper-2">
 			<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
 				<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
 					<h2 className="heading-2 text-zinc-950">Frequently Asked Questions</h2>

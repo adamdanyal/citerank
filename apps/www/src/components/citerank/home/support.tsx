@@ -13,6 +13,9 @@ export function Support() {
 						</a>{" "}
 						or use the chat in the corner of any page, and the team that runs CiteRank.com answers.
 					</p>
+					<p className="body-7 mt-4 text-zinc-600">
+						CiteRank.com is a trading name of Danx Digital Limited, a company registered in England and Wales.
+					</p>
 				</Reveal>
 			</Container>
 		</section>

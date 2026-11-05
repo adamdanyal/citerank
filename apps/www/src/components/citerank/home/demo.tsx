@@ -1,7 +1,7 @@
 import { demoSiteUrl } from "@workspace/config/referrals";
 import { ArrowUpRight } from "lucide-react";
 import { externalRel } from "@/lib/external-link";
-import { Container, PRIMARY_BUTTON_LG, Reveal } from "../ui";
+import { Container, PRIMARY_BUTTON_LG, Reveal, WINDOW_FRAME, WindowBar } from "../ui";
 import { DEMO_BRAND_PATH } from "./product-demo";
 
 export function Demo() {
@@ -26,8 +26,9 @@ export function Demo() {
 						target="_blank"
 						rel={externalRel(demoUrl)}
 						aria-label="Open the live demo"
-						className="block rounded-2xl bg-white p-2 shadow-[0_1px_2px_rgb(26_25_23/0.05),0_32px_64px_-32px_rgb(26_25_23/0.3)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+						className={`block ${WINDOW_FRAME} focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600`}
 					>
+						<WindowBar />
 						<div className="relative aspect-[5/3] overflow-hidden rounded-lg bg-paper-2">
 							<img
 								src="/screenshots/overview.png"

@@ -27,6 +27,20 @@ export function Container({ children, className = "" }: { children: ReactNode; c
 	return <div className={`mx-auto max-w-6xl px-4 md:px-6 ${className}`}>{children}</div>;
 }
 
+export const WINDOW_FRAME =
+	"rounded-2xl bg-white p-2 shadow-[0_1px_2px_rgb(26_25_23/0.05),0_40px_80px_-40px_rgb(26_25_23/0.35)]";
+
+/** The three dots of a browser window, so a screenshot reads as the app running rather than a picture. */
+export function WindowBar() {
+	return (
+		<div aria-hidden="true" className="flex h-6 items-center gap-2 px-2">
+			<span className="size-2 rounded-full bg-zinc-200" />
+			<span className="size-2 rounded-full bg-zinc-200" />
+			<span className="size-2 rounded-full bg-zinc-200" />
+		</div>
+	);
+}
+
 type RevealState = "idle" | "hidden" | "shown";
 
 /*

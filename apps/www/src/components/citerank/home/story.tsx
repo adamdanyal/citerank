@@ -1,6 +1,9 @@
+import { PLANS } from "@workspace/config/plans";
 import type { ReactNode } from "react";
 import { ExampleTag } from "@/components/home/ui";
-import { Container, Reveal } from "../ui";
+import { Container, Reveal, WINDOW_FRAME, WindowBar } from "../ui";
+
+const BASIC_ANSWERS_PER_DAY = PLANS.basic.maxPrompts * PLANS.basic.platformPicks * PLANS.basic.standardRunsPerDay;
 
 function Mark({ children }: { children: ReactNode }) {
 	return <mark className="rounded-sm bg-blue-100 px-1 text-zinc-950">{children}</mark>;
@@ -9,12 +12,8 @@ function Mark({ children }: { children: ReactNode }) {
 /* The capture includes the app sidebar (the left 17.5% of the image); the frame shows the page itself. */
 function Frame({ src, alt }: { src: string; alt: string }) {
 	return (
-		<div className="rounded-2xl bg-white p-2 shadow-[0_1px_2px_rgb(26_25_23/0.05),0_40px_80px_-40px_rgb(26_25_23/0.35)]">
-			<div aria-hidden="true" className="flex h-6 items-center gap-2 px-2">
-				<span className="size-2 rounded-full bg-zinc-200" />
-				<span className="size-2 rounded-full bg-zinc-200" />
-				<span className="size-2 rounded-full bg-zinc-200" />
-			</div>
+		<div className={WINDOW_FRAME}>
+			<WindowBar />
 			<div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-paper-2 sm:aspect-[16/10]">
 				<img
 					src={src}
@@ -87,7 +86,13 @@ const CHAPTERS = [
 			},
 			{
 				id: "p1-2",
-				text: <>You stop checking by hand, and you see trends instead of one lucky screenshot.</>,
+				text: (
+					<>
+						You stop checking by hand. On the Basic plan that is up to{" "}
+						<Mark>{BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day</Mark>, kept and compared, instead of
+						one lucky screenshot.
+					</>
+				),
 			},
 		],
 		shot: {
@@ -136,7 +141,7 @@ const CHAPTERS = [
 export function Story() {
 	return (
 		<>
-			<section className="bg-white">
+			<section className="bg-paper-2">
 				<Container className="py-20 lg:py-24">
 					<Reveal className="max-w-3xl">
 						<h2 className="heading-2 text-zinc-950">What a Buyer Sees</h2>
@@ -150,7 +155,7 @@ export function Story() {
 				</Container>
 			</section>
 			{CHAPTERS.map((chapter, index) => (
-				<section key={chapter.title} className={index % 2 === 0 ? "bg-paper" : "bg-white"}>
+				<section key={chapter.title} className={index % 2 === 0 ? "bg-white" : "bg-paper"}>
 					<Container className="py-20 lg:py-24">
 						<Reveal className="max-w-3xl">
 							<h2 className="heading-2 text-zinc-950">{chapter.title}</h2>

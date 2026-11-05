@@ -2,7 +2,7 @@ import { demoSiteUrl } from "@workspace/config/referrals";
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { externalRel } from "@/lib/external-link";
-import { EASE_CLASS, SMALL_BUTTON } from "../ui";
+import { EASE_CLASS, SMALL_BUTTON, WINDOW_FRAME, WindowBar } from "../ui";
 
 export const DEMO_BRAND_PATH = "/app/org/quaildesk/brand/quaildesk";
 
@@ -187,8 +187,9 @@ export function ProductDemo() {
 				target="_blank"
 				rel={externalRel(demoUrl)}
 				aria-label={`View the live demo: ${slide.label}`}
-				className="group relative block rounded-2xl bg-white p-2 shadow-[0_1px_2px_rgb(26_25_23/0.05),0_40px_80px_-40px_rgb(26_25_23/0.35)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+				className={`group relative block ${WINDOW_FRAME} focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600`}
 			>
+				<WindowBar />
 				<div className="relative aspect-[5/3] overflow-hidden rounded-lg bg-paper-2">
 					{SLIDES.map((s, i) => (
 						<Shot
