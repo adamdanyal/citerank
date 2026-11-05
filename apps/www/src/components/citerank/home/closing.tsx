@@ -1,12 +1,12 @@
 import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
-import { demoSiteUrl, type ReferralSource } from "@workspace/config/referrals";
-import { ArrowUpRight } from "lucide-react";
+import { cloudSignupUrl, demoSiteUrl, type ReferralSource } from "@workspace/config/referrals";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { externalRel } from "@/lib/external-link";
-import { Container, QUIET_LINK, Reveal } from "../ui";
+import { Container, PRIMARY_BUTTON_LG, Reveal, SECONDARY_BUTTON_LG } from "../ui";
 import { DEMO_BRAND_PATH } from "./product-demo";
-import { SignupForm } from "./signup-form";
 
 export function Closing({ from = "marketing-closing" }: { from?: ReferralSource }) {
+	const signupUrl = cloudSignupUrl(from);
 	const demoUrl = demoSiteUrl(from, DEMO_BRAND_PATH);
 	return (
 		<section className="relative overflow-hidden bg-paper">
@@ -21,20 +21,16 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 						Set up takes minutes. Plans start at ${CLOUD_ENTRY_PRICE_USD} a month, with no contract, and you can cancel
 						any time.
 					</p>
-					<SignupForm from={from} className="mt-8 sm:w-auto" />
-					<p className="caption-2 mt-4 text-zinc-500">
-						Or{" "}
-						<a
-							href={demoUrl}
-							target="_blank"
-							rel={externalRel(demoUrl)}
-							className={`${QUIET_LINK} inline-flex items-center gap-1 text-zinc-700`}
-						>
-							try the live demo first
-							<ArrowUpRight className="size-3.5" aria-hidden="true" />
+					<div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">
+						<a href={signupUrl} className={PRIMARY_BUTTON_LG}>
+							Start tracking
+							<ArrowRight className="size-4" aria-hidden="true" />
 						</a>
-						.
-					</p>
+						<a href={demoUrl} target="_blank" rel={externalRel(demoUrl)} className={SECONDARY_BUTTON_LG}>
+							Try the live demo
+							<ArrowUpRight className="size-4" aria-hidden="true" />
+						</a>
+					</div>
 				</Reveal>
 			</Container>
 		</section>

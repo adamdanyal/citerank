@@ -1,11 +1,10 @@
 import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
-import { demoSiteUrl, type ReferralSource } from "@workspace/config/referrals";
-import { ArrowUpRight } from "lucide-react";
+import { cloudSignupUrl, demoSiteUrl, type ReferralSource } from "@workspace/config/referrals";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { externalRel } from "@/lib/external-link";
-import { Container, QUIET_LINK } from "../ui";
+import { Container, PRIMARY_BUTTON_LG, SECONDARY_BUTTON_LG } from "../ui";
 import { DEMO_BRAND_PATH, ProductDemo } from "./product-demo";
-import { SignupForm } from "./signup-form";
 
 const DEFAULT_LEDE =
 	"CiteRank.com is the AI visibility tracker and AI search agency for AEO and GEO. See how ChatGPT, Claude, Gemini and nine other AI apps talk about your brand, which sources they trust, and what to do to get recommended.";
@@ -19,6 +18,7 @@ export function Hero({
 	lede?: ReactNode;
 	from?: ReferralSource;
 } = {}) {
+	const signupUrl = cloudSignupUrl(from);
 	const demoUrl = demoSiteUrl(from, DEMO_BRAND_PATH);
 
 	return (
@@ -35,19 +35,18 @@ export function Hero({
 					</p>
 					<h1 className="heading-1 cr-gradient-text mt-8">{title}</h1>
 					<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">{lede}</p>
-					<SignupForm from={from} className="mt-8 sm:w-auto" />
-					<p className="caption-2 mt-4 text-zinc-500">
-						Tracker plans from ${CLOUD_ENTRY_PRICE_USD} a month. No contract, cancel any time. Or{" "}
-						<a
-							href={demoUrl}
-							target="_blank"
-							rel={externalRel(demoUrl)}
-							className={`${QUIET_LINK} inline-flex items-center gap-1 text-zinc-700`}
-						>
-							try the live demo first
-							<ArrowUpRight className="size-3.5" aria-hidden="true" />
+					<div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">
+						<a href={signupUrl} className={PRIMARY_BUTTON_LG}>
+							Start tracking
+							<ArrowRight className="size-4" aria-hidden="true" />
 						</a>
-						.
+						<a href={demoUrl} target="_blank" rel={externalRel(demoUrl)} className={SECONDARY_BUTTON_LG}>
+							Try the live demo
+							<ArrowUpRight className="size-4" aria-hidden="true" />
+						</a>
+					</div>
+					<p className="caption-2 mt-6 text-zinc-500">
+						Tracker plans from ${CLOUD_ENTRY_PRICE_USD} a month. No contract, cancel any time.
 					</p>
 				</div>
 			</Container>
