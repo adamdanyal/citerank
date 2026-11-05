@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import type { ComponentProps } from "react";
 import { AgencySection } from "@/components/citerank/home/agency";
 import { Closing } from "@/components/citerank/home/closing";
@@ -7,6 +8,7 @@ import { EngineCoverage } from "@/components/citerank/home/engines";
 import { Faq } from "@/components/citerank/home/faq";
 import { Hero } from "@/components/citerank/home/hero";
 import { Letter } from "@/components/citerank/home/letter";
+import { Logos } from "@/components/citerank/home/logos";
 import { Pricing } from "@/components/citerank/home/pricing";
 import { Reviews } from "@/components/citerank/home/reviews";
 import { StickyCta } from "@/components/citerank/home/sticky-cta";
@@ -24,8 +26,7 @@ const title = `${SITE_NAME} · AI Visibility Tracker and AI Search Agency`;
 // The shared SITE_DESCRIPTION is a terse fallback for pages without their own
 // copy. The homepage takes the largest share of search clicks and is the page
 // answer engines cite most, so it gets a full-width description of its own.
-const description =
-	"CiteRank.com is answer engine optimization (AEO): track your brand's AI visibility in ChatGPT, Perplexity, and Gemini. Plans from $29/mo, or hire our AI search agency.";
+const description = `CiteRank.com is answer engine optimization (AEO): track your brand's AI visibility in ChatGPT, Perplexity, and Gemini. Plans from $${CLOUD_ENTRY_PRICE_USD}/mo, or hire our AI search agency.`;
 
 export const Route = createFileRoute("/")({
 	// Passes every other param through untouched: ad clicks carry gclid and UTM
@@ -56,10 +57,11 @@ function aiReferralHero(assistant: string): ComponentProps<typeof Hero> {
 }
 
 /*
- * In order: the offer and the product, the pitch in the founder's words, the
- * problem made concrete, how the product answers it, what every plan includes,
- * what it covers, who vouches for it, a no-risk way to try it, the price, the
- * done-for-you option, the remaining objections, and the offer again.
+ * In order: the offer and the product, who uses it, the problem made concrete,
+ * how the product answers it, what every plan includes, what it covers, who
+ * vouches for it, the pitch in the founder's words, a no-risk way to try it,
+ * the price, the done-for-you option, the remaining objections, and the offer
+ * again.
  */
 function HomePage() {
 	const explicit = getHeroVariant(Route.useSearch().v);
@@ -76,11 +78,12 @@ function HomePage() {
 			<Navbar />
 			<main id="content">
 				<Hero {...variant} />
-				<Letter />
+				<Logos />
 				<Story />
 				<Why />
 				<EngineCoverage />
 				<Reviews />
+				<Letter />
 				<Demo />
 				<Pricing />
 				<AgencySection />

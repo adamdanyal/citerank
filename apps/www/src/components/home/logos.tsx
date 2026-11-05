@@ -8,7 +8,7 @@ interface Customer {
 	render: () => React.ReactNode;
 }
 
-const customers: Customer[] = [
+export const CUSTOMERS: Customer[] = [
 	{
 		name: "Fermat Commerce",
 		url: "https://www.fermatcommerce.com/?ref=citerank",
@@ -90,7 +90,7 @@ export function LogoStrip() {
 					</h2>
 				</div>
 				<ul className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
-					{customers.map((c) => (
+					{CUSTOMERS.map((c) => (
 						<li key={c.name} className="flex h-6 items-center">
 							<a
 								href={c.url}

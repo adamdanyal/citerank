@@ -1,66 +1,111 @@
-import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
-import { Container, QUIET_LINK, Reveal } from "../ui";
+import { useEffect, useRef, useState } from "react";
+import { CARD, Container, Reveal, SECONDARY_BUTTON } from "../ui";
 
-/* Fill these in before launch: a photo at apps/www/public/founder.jpg and the LinkedIn profile URL. */
+/* The photo is apps/www/public/founder.jpg; the LinkedIn profile URL goes in `linkedin`. */
 const FOUNDER = {
-	name: "Adam",
+	name: "Adam Danyal",
 	title: "Founder, CiteRank.com",
-	photo: undefined as string | undefined,
-	linkedin: undefined as string | undefined,
+	proof: "Trusted by 2M+ on LinkedIn",
+	photo: "/founder.jpg",
+	linkedin: "" as string,
 };
+
+const PARAGRAPHS = [
+	{
+		id: "problem",
+		text: "Your buyers ask ChatGPT, Perplexity or Gemini which product to pick. The answer names two or three brands. There is no page two, and nothing tells you whether you were in it.",
+	},
+	{
+		id: "by-hand",
+		text: "So you check by hand: one prompt, one app, one day. It says nothing about the trend or what to change. The big tools are sold with sales calls and yearly contracts.",
+	},
+	{
+		id: "tracker",
+		text: "CiteRank.com is the tracker we wanted instead. It asks 12 AI apps your buyers' questions up to four times a day, keeps every answer and ranks what to fix. If nobody has time for the fixes, our agency does them.",
+	},
+	{
+		id: "invite",
+		text: "Try the live demo first. If it is useful, start tracking. We would be glad to have you.",
+	},
+];
+
+function LinkedInMark() {
+	return (
+		<svg viewBox="0 0 24 24" aria-hidden="true" className="size-3.5 fill-current">
+			<path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+		</svg>
+	);
+}
+
+/* The server renders the image, so a missing file errors before React hydrates and onError alone would miss it. */
+function Portrait() {
+	const ref = useRef<HTMLImageElement>(null);
+	const [missing, setMissing] = useState(false);
+	useEffect(() => {
+		const img = ref.current;
+		if (img?.complete && img.naturalWidth === 0) setMissing(true);
+	}, []);
+	if (missing) {
+		return (
+			<span
+				aria-hidden="true"
+				className="heading-5 inline-flex size-24 items-center justify-center rounded-xl bg-blue-50 text-blue-800"
+			>
+				{FOUNDER.name
+					.split(" ")
+					.map((part) => part[0])
+					.join("")}
+			</span>
+		);
+	}
+	return (
+		<img
+			ref={ref}
+			src={FOUNDER.photo}
+			alt={FOUNDER.name}
+			width={96}
+			height={96}
+			loading="lazy"
+			onError={() => setMissing(true)}
+			className="size-24 rounded-xl object-cover"
+		/>
+	);
+}
 
 /* A letter in the founder's voice: the reader's situation first, then what CiteRank.com does about it. */
 export function Letter() {
 	return (
-		<section className="bg-white">
+		<section className="bg-paper-2">
 			<Container className="py-20 lg:py-24">
-				<Reveal className="mx-auto max-w-2xl rounded-2xl bg-paper p-8 shadow-[0_1px_2px_rgb(26_25_23/0.05),0_32px_64px_-40px_rgb(26_25_23/0.35)] ring-1 ring-zinc-950/5 sm:p-12">
-					<p className="heading-4 text-zinc-950">Tell me if this sounds familiar.</p>
-					<div className="body-8 mt-8 space-y-5 text-zinc-800">
-						<p>
-							Your buyers ask ChatGPT, Perplexity or Gemini which product to pick. The answer names two or three brands
-							and cites a few sources. There is no page two, and nothing tells you whether you were in it.
-						</p>
-						<p>
-							So you check by hand: one prompt, one app, one day. It says nothing about the trend or what to change. The
-							big tools are sold to large companies, with sales calls and yearly contracts.
-						</p>
-						<p>
-							CiteRank.com is the tracker we wanted instead. Sign up in minutes. It asks 12 AI apps your buyers'
-							questions up to four times a day, keeps every answer and ranks what to fix. From ${CLOUD_ENTRY_PRICE_USD}{" "}
-							a month, cancel any time. If nobody has time for the fixes, our agency does them.
-						</p>
-						<p>Try the live demo first. If it is useful, start tracking. We would be glad to have you.</p>
-					</div>
-					<div className="mt-10 flex items-center gap-4">
-						{FOUNDER.photo ? (
-							<img
-								src={FOUNDER.photo}
-								alt={`${FOUNDER.name}, ${FOUNDER.title}`}
-								width={64}
-								height={64}
-								loading="lazy"
-								className="size-16 rounded-lg object-cover"
-							/>
-						) : null}
-						<div>
-							<p className="font-heading text-2xl text-zinc-950">{FOUNDER.name}</p>
-							<p className="caption-2 text-zinc-500">
-								{FOUNDER.title}
-								{FOUNDER.linkedin ? (
-									<>
-										{" · "}
-										<a
-											href={FOUNDER.linkedin}
-											target="_blank"
-											rel="noopener noreferrer"
-											className={`${QUIET_LINK} text-zinc-700`}
-										>
-											LinkedIn
-										</a>
-									</>
-								) : null}
+				<Reveal className={`${CARD} mx-auto max-w-5xl overflow-hidden`}>
+					<div className="grid lg:grid-cols-12">
+						<aside className="flex flex-col bg-paper p-8 lg:col-span-4 lg:p-10">
+							<Portrait />
+							<p className="heading-5 mt-6 text-zinc-950">{FOUNDER.name}</p>
+							<p className="body-6 mt-1 text-zinc-600">{FOUNDER.title}</p>
+							<p className="caption-1 mt-4 inline-flex w-fit items-center gap-2 rounded-md bg-blue-50 px-3 py-1 text-blue-800">
+								<LinkedInMark />
+								{FOUNDER.proof}
 							</p>
+							{FOUNDER.linkedin ? (
+								<a
+									href={FOUNDER.linkedin}
+									target="_blank"
+									rel="noopener noreferrer"
+									className={`${SECONDARY_BUTTON} mt-8 w-fit`}
+								>
+									Follow on LinkedIn
+								</a>
+							) : null}
+						</aside>
+						<div className="p-8 lg:col-span-8 lg:p-12">
+							<p className="heading-4 text-zinc-950">Tell me if this sounds familiar.</p>
+							<div className="body-7 mt-8 space-y-5 text-zinc-800">
+								{PARAGRAPHS.map((paragraph) => (
+									<p key={paragraph.id}>{paragraph.text}</p>
+								))}
+							</div>
+							<p className="font-heading mt-10 text-3xl text-zinc-950">Adam</p>
 						</div>
 					</div>
 				</Reveal>

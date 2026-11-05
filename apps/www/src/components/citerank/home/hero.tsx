@@ -23,13 +23,13 @@ export function Hero({
 	const demoUrl = demoSiteUrl(from, DEMO_BRAND_PATH);
 
 	return (
-		<section className="relative overflow-hidden bg-paper">
+		<section className="relative -mt-16 overflow-hidden bg-paper">
 			<div
 				aria-hidden="true"
 				className="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,rgb(0_0_0/0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgb(0_0_0/0.04)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
 			/>
 
-			<Container className="relative pt-16 lg:pt-24">
+			<Container className="relative pt-32 lg:pt-40">
 				<div className="mx-auto flex max-w-3xl flex-col items-center text-center">
 					<p className="caption-3 rounded-md bg-blue-50 px-3 py-1 text-blue-800">
 						AI Visibility Tracker + AI Search Agency
@@ -58,12 +58,9 @@ export function Hero({
 				</div>
 			</Container>
 
-			<div className="relative mt-16 md:mt-20">
-				<div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/2 bg-white" />
-				<Container className="relative">
-					<ProductDemo />
-				</Container>
-			</div>
+			<Container className="relative mt-16 pb-20 md:mt-20 lg:pb-24">
+				<ProductDemo />
+			</Container>
 		</section>
 	);
 }
