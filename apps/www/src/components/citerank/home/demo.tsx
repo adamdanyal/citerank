@@ -12,8 +12,7 @@ export function Demo() {
 				<Reveal className="lg:col-span-5">
 					<h2 className="heading-2 text-zinc-950">See the Real Product First</h2>
 					<p className="body-8 mt-6 text-zinc-700">
-						No slides and no sales call. The live demo is CiteRank.com itself on a demo account, so you can click
-						through every page before you pay.
+						No slides and no sales call. Click through every page of the real product before you pay.
 					</p>
 					<a href={demoUrl} target="_blank" rel={externalRel(demoUrl)} className={`${PRIMARY_BUTTON_LG} mt-8`}>
 						Open the live demo
