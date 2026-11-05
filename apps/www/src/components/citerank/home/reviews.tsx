@@ -231,7 +231,7 @@ function AnswerDetails({ review }: { review: AiReview }) {
 
 export function Reviews() {
 	return (
-		<section className="bg-white">
+		<section className="bg-paper">
 			<Container className="py-20 lg:py-24">
 				<Reveal className="max-w-3xl">
 					<h2 className="heading-2 text-zinc-950">Loved by Marketers. Recommended by AI.</h2>

@@ -1,6 +1,14 @@
 import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import { Container, QUIET_LINK, Reveal } from "../ui";
 
+/* Fill these in before launch: a photo at apps/www/public/founder.jpg and the LinkedIn profile URL. */
+const FOUNDER = {
+	name: "Adam",
+	title: "Founder, CiteRank.com",
+	photo: undefined as string | undefined,
+	linkedin: undefined as string | undefined,
+};
+
 /* A letter in the founder's voice: the reader's situation first, then what CiteRank.com does about it. */
 export function Letter() {
 	return (
@@ -25,16 +33,51 @@ export function Letter() {
 							fixes, our agency does them.
 						</p>
 						<p>
-							Thanks for reading. Try the live demo first, and if it is useful, start tracking. Either way, you can
-							email me.
+							Thanks for reading. Try the live demo first, and if it is useful, start tracking. We would be glad to have
+							you as a customer.
 						</p>
 					</div>
-					<p className="mt-10 font-heading text-2xl text-zinc-950">Adam</p>
-					<p className="caption-2 mt-1 text-zinc-500">
-						Founder, CiteRank.com ·{" "}
-						<a href="mailto:team@citerank.com" className={`${QUIET_LINK} text-zinc-700`}>
-							team@citerank.com
-						</a>
+					<div className="mt-10 flex items-center gap-4">
+						{FOUNDER.photo ? (
+							<img
+								src={FOUNDER.photo}
+								alt={`${FOUNDER.name}, ${FOUNDER.title}`}
+								width={64}
+								height={64}
+								loading="lazy"
+								className="size-16 rounded-lg object-cover"
+							/>
+						) : (
+							<span
+								aria-hidden="true"
+								className="inline-flex size-16 items-center justify-center rounded-lg bg-blue-50 font-heading text-2xl text-blue-800"
+							>
+								{FOUNDER.name[0]}
+							</span>
+						)}
+						<div>
+							<p className="font-heading text-2xl text-zinc-950">{FOUNDER.name}</p>
+							<p className="caption-2 text-zinc-500">
+								{FOUNDER.title}
+								{FOUNDER.linkedin ? (
+									<>
+										{" · "}
+										<a
+											href={FOUNDER.linkedin}
+											target="_blank"
+											rel="noopener noreferrer"
+											className={`${QUIET_LINK} text-zinc-700`}
+										>
+											LinkedIn
+										</a>
+									</>
+								) : null}
+							</p>
+						</div>
+					</div>
+					<p className="body-6 mt-8 text-zinc-600">
+						P.S. CiteRank.com is a small, independent UK company with no sales team. Questions go straight to the people
+						who run it.
 					</p>
 				</Reveal>
 			</Container>

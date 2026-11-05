@@ -10,6 +10,7 @@ import { Pricing } from "@/components/citerank/home/pricing";
 import { Reviews } from "@/components/citerank/home/reviews";
 import { Story } from "@/components/citerank/home/story";
 import { Support } from "@/components/citerank/home/support";
+import { Why } from "@/components/citerank/home/why";
 import { Navbar } from "@/components/citerank/navbar";
 import { RedesignStyles } from "@/components/citerank/styles";
 import { PRIMARY_BUTTON } from "@/components/citerank/ui";
@@ -27,7 +28,7 @@ export const Route = createFileRoute("/redesign")({
 
 /*
  * In order: the offer and the product, the pitch in the founder's words, the
- * problem made concrete, how the product answers it, what it covers, who vouches
+ * problem made concrete, how the product answers it, what every plan includes, what it covers, who vouches
  * for it, a no-risk way to try it, the price, the done-for-you option, who
  * answers questions, the remaining objections, and the offer again.
  */
@@ -46,6 +47,7 @@ function RedesignPreview() {
 				<Hero />
 				<Letter />
 				<Story />
+				<Why />
 				<EngineCoverage />
 				<Reviews />
 				<Demo />

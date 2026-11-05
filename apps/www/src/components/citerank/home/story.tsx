@@ -143,13 +143,13 @@ export function Story() {
 		<>
 			<section className="bg-paper-2">
 				<Container className="py-20 lg:py-24">
-					<Reveal className="max-w-3xl">
+					<Reveal className="mx-auto max-w-3xl text-center">
 						<h2 className="heading-2 text-zinc-950">What a Buyer Sees</h2>
 						<p className="body-8 mt-6 text-zinc-700">
 							Here is the kind of answer your buyers get. Notice who is in it, and who is not.
 						</p>
 					</Reveal>
-					<Reveal delay={100} className="mt-12 max-w-3xl">
+					<Reveal delay={100} className="mx-auto mt-12 max-w-3xl">
 						<AnswerCard />
 					</Reveal>
 				</Container>
@@ -157,7 +157,7 @@ export function Story() {
 			{CHAPTERS.map((chapter, index) => (
 				<section key={chapter.title} className={index % 2 === 0 ? "bg-white" : "bg-paper"}>
 					<Container className="py-20 lg:py-24">
-						<Reveal className="max-w-3xl">
+						<Reveal className="mx-auto max-w-3xl text-center">
 							<h2 className="heading-2 text-zinc-950">{chapter.title}</h2>
 							<div className="mt-6 space-y-4">
 								{chapter.body.map((paragraph) => (
