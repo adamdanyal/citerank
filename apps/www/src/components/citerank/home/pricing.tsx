@@ -71,6 +71,34 @@ function OtherOption({ name, body, action }: { name: string; body: string; actio
 	);
 }
 
+/** The two ways to buy beyond a self-serve plan: the agency, and a custom plan. */
+export function OtherPlans({ className = "" }: { className?: string }) {
+	return (
+		<Reveal className={`grid gap-4 md:grid-cols-2 ${className}`}>
+			<OtherOption
+				name="Our Agency"
+				body="We do the work the tracker ranks: new pages, page updates, review sites and forums."
+				action={
+					<Link to="/agency" className={TEXT_LINK}>
+						Book an agency call
+						<LinkArrow />
+					</Link>
+				}
+			/>
+			<OtherOption
+				name="Custom"
+				body="More brands, custom prompt limits, higher sampling rates, and more models."
+				action={
+					<a href="mailto:team@citerank.com?subject=Custom%20plan" className={TEXT_LINK}>
+						Email us
+						<LinkArrow />
+					</a>
+				}
+			/>
+		</Reveal>
+	);
+}
+
 export function Pricing() {
 	return (
 		<section id="pricing" className="bg-white">
@@ -86,28 +114,7 @@ export function Pricing() {
 					))}
 				</ul>
 
-				<Reveal className="mt-4 grid gap-4 md:grid-cols-2">
-					<OtherOption
-						name="Our Agency"
-						body="We do the work the tracker ranks: new pages, page updates, review sites and forums."
-						action={
-							<Link to="/agency" className={TEXT_LINK}>
-								Book an agency call
-								<LinkArrow />
-							</Link>
-						}
-					/>
-					<OtherOption
-						name="Custom"
-						body="More brands, custom prompt limits, higher sampling rates, and more models."
-						action={
-							<a href="mailto:team@citerank.com?subject=Custom%20plan" className={TEXT_LINK}>
-								Email us
-								<LinkArrow />
-							</a>
-						}
-					/>
-				</Reveal>
+				<OtherPlans className="mt-4" />
 
 				<p className="mt-10 flex justify-center">
 					<Link to="/pricing" className={TEXT_LINK}>

@@ -1,10 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Closing } from "@/components/citerank/home/closing";
+import { Faq } from "@/components/citerank/home/faq";
+import { OtherPlans } from "@/components/citerank/home/pricing";
+import { Compare } from "@/components/citerank/pricing/compare";
+import { PlanCards } from "@/components/citerank/pricing/plan-cards";
+import { SiteStyles } from "@/components/citerank/styles";
+import { Container, PRIMARY_BUTTON } from "@/components/citerank/ui";
 import { Footer } from "@/components/footer";
-import { Closing } from "@/components/home/closing";
-import { Faq } from "@/components/home/faq";
-import { HOME_FONT_CLASS, HomeStyles } from "@/components/home/styles";
 import { Navbar } from "@/components/navbar";
-import { Pricing } from "@/components/pricing";
 import { PRICING_FAQS } from "@/lib/faqs";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
@@ -31,13 +34,36 @@ export const Route = createFileRoute("/pricing")({
 	component: PricingPage,
 });
 
+/* The plans first with one button each, then the two other ways to buy, then the detail, the objections and the offer again. */
 function PricingPage() {
 	return (
-		<div className={`${HOME_FONT_CLASS} min-h-screen`}>
-			<HomeStyles />
+		<div className="min-h-screen bg-paper antialiased">
+			<SiteStyles />
+			<a
+				href="#content"
+				className={`${PRIMARY_BUTTON} sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50`}
+			>
+				Skip to content
+			</a>
 			<Navbar />
-			<main>
-				<Pricing as="h1" />
+			<main id="content">
+				<section className="bg-paper">
+					<Container className="pt-16 lg:pt-24">
+						<div className="mx-auto max-w-3xl text-center">
+							<h1 className="heading-1 text-zinc-950">AI Visibility Tracker Pricing</h1>
+							<p className="body-8 mt-6 text-zinc-600">
+								Every plan includes your whole team and API access. Pay monthly or yearly, and cancel any time.
+							</p>
+						</div>
+					</Container>
+				</section>
+				<section className="bg-paper">
+					<Container className="py-12 lg:py-16">
+						<PlanCards />
+						<OtherPlans className="mt-10" />
+					</Container>
+				</section>
+				<Compare />
 				<Faq items={PRICING_FAQS} />
 				<Closing from="marketing-pricing-closing" />
 			</main>
