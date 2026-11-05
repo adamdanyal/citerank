@@ -3,7 +3,6 @@ import { AgencySection } from "@/components/citerank/home/agency";
 import { Closing } from "@/components/citerank/home/closing";
 import { EngineCoverage } from "@/components/citerank/home/engines";
 import { Faq } from "@/components/citerank/home/faq";
-import { FounderNote } from "@/components/citerank/home/founder-note";
 import { Hero } from "@/components/citerank/home/hero";
 import { LogoStrip } from "@/components/citerank/home/logos";
 import { Pricing } from "@/components/citerank/home/pricing";
@@ -46,7 +45,6 @@ function RedesignPreview() {
 				<Pricing />
 				<AgencySection />
 				<Faq items={HOME_FAQS} />
-				<FounderNote />
 				<Closing />
 			</main>
 			<Footer />
