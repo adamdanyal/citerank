@@ -4,7 +4,6 @@ import { Faq } from "@/components/citerank/home/faq";
 import { OtherPlans } from "@/components/citerank/home/pricing";
 import { Compare } from "@/components/citerank/pricing/compare";
 import { PlanCards } from "@/components/citerank/pricing/plan-cards";
-import { SiteStyles } from "@/components/citerank/styles";
 import { Container, PRIMARY_BUTTON } from "@/components/citerank/ui";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
@@ -37,8 +36,7 @@ export const Route = createFileRoute("/pricing")({
 /* The plans first with one button each, then the two other ways to buy, then the detail, the objections and the offer again. */
 function PricingPage() {
 	return (
-		<div className="min-h-screen bg-paper antialiased">
-			<SiteStyles />
+		<div className="min-h-screen bg-white antialiased">
 			<a
 				href="#content"
 				className={`${PRIMARY_BUTTON} sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50`}

@@ -12,7 +12,6 @@ import { Reviews } from "@/components/citerank/home/reviews";
 import { Story } from "@/components/citerank/home/story";
 import { Support } from "@/components/citerank/home/support";
 import { Why } from "@/components/citerank/home/why";
-import { SiteStyles } from "@/components/citerank/styles";
 import { PRIMARY_BUTTON } from "@/components/citerank/ui";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
@@ -68,8 +67,7 @@ function HomePage() {
 	const [referral] = useAiReferral();
 	const variant = explicit ?? (referral ? aiReferralHero(referral.assistant) : undefined);
 	return (
-		<div className="min-h-screen bg-paper antialiased">
-			<SiteStyles />
+		<div className="min-h-screen bg-white antialiased">
 			<a
 				href="#content"
 				className={`${PRIMARY_BUTTON} sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50`}

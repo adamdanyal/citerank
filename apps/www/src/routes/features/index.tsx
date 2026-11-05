@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Closing } from "@/components/citerank/home/closing";
-import { SiteStyles } from "@/components/citerank/styles";
 import { FeatureCard, featurePath } from "@/components/features";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
@@ -32,8 +31,7 @@ export const Route = createFileRoute("/features/")({
 
 function FeaturesPage() {
 	return (
-		<div className="min-h-screen bg-paper antialiased">
-			<SiteStyles />
+		<div className="min-h-screen bg-white antialiased">
 			<Navbar />
 			<main>
 				<section className="relative overflow-hidden bg-paper">

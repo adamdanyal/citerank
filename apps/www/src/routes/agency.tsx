@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { Faq } from "@/components/citerank/home/faq";
-import { SiteStyles } from "@/components/citerank/styles";
 import {
 	CARD,
 	Container,
@@ -203,8 +202,7 @@ function AgencyPlanCard({ plan, delay }: { plan: AgencyPlan; delay: number }) {
 /* The offer, what the work is, how a month runs, the plans, the objections, then the call. */
 function AgencyPage() {
 	return (
-		<div className="min-h-screen bg-paper antialiased">
-			<SiteStyles />
+		<div className="min-h-screen bg-white antialiased">
 			<a
 				href="#content"
 				className={`${PRIMARY_BUTTON} sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50`}
