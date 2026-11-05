@@ -21,7 +21,7 @@ const REASONS: { icon: LucideIcon; title: string; body: string }[] = [
 	{
 		icon: RefreshCw,
 		title: `Up to ${RUNS_PER_DAY} checks a day`,
-		body: "Answers change often. Checking several times a day shows the trend, not one lucky screenshot.",
+		body: "Answers change often. Checking several times a day shows the trend.",
 	},
 	{
 		icon: LayoutGrid,

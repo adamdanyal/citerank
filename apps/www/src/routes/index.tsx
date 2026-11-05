@@ -1,17 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type { ComponentProps } from "react";
+import { AgencySection } from "@/components/citerank/home/agency";
+import { Closing } from "@/components/citerank/home/closing";
+import { Demo } from "@/components/citerank/home/demo";
+import { EngineCoverage } from "@/components/citerank/home/engines";
+import { Faq } from "@/components/citerank/home/faq";
+import { Hero } from "@/components/citerank/home/hero";
+import { Letter } from "@/components/citerank/home/letter";
+import { Pricing } from "@/components/citerank/home/pricing";
+import { Reviews } from "@/components/citerank/home/reviews";
+import { Story } from "@/components/citerank/home/story";
+import { Support } from "@/components/citerank/home/support";
+import { Why } from "@/components/citerank/home/why";
+import { SiteStyles } from "@/components/citerank/styles";
+import { PRIMARY_BUTTON } from "@/components/citerank/ui";
 import { Footer } from "@/components/footer";
-import { AgencyTeaser } from "@/components/home/agency";
-import { Closing } from "@/components/home/closing";
-import { Faq } from "@/components/home/faq";
-import { Hero } from "@/components/home/hero";
-import { HowItWorks } from "@/components/home/how-it-works";
-import { LogoStrip } from "@/components/home/logos";
-import { ModelCoverage } from "@/components/home/models";
-import { Pricing } from "@/components/home/pricing";
-import { Reviews } from "@/components/home/reviews";
-import { HOME_FONT_CLASS, HomeStyles } from "@/components/home/styles";
-import { WhySwitch } from "@/components/home/why-switch";
 import { Navbar } from "@/components/navbar";
 import { getHeroVariant } from "@/data/hero-variants";
 import { useAiReferral } from "@/lib/ai-referral";
@@ -53,24 +56,39 @@ function aiReferralHero(assistant: string): ComponentProps<typeof Hero> {
 	};
 }
 
+/*
+ * In order: the offer and the product, the pitch in the founder's words, the
+ * problem made concrete, how the product answers it, what every plan includes,
+ * what it covers, who vouches for it, a no-risk way to try it, the price, the
+ * done-for-you option, the remaining objections, who answers questions, and
+ * the offer again.
+ */
 function HomePage() {
 	const explicit = getHeroVariant(Route.useSearch().v);
 	const [referral] = useAiReferral();
 	const variant = explicit ?? (referral ? aiReferralHero(referral.assistant) : undefined);
 	return (
-		<div className={`${HOME_FONT_CLASS} min-h-screen bg-paper antialiased`}>
-			<HomeStyles />
+		<div className="min-h-screen bg-paper antialiased">
+			<SiteStyles />
+			<a
+				href="#content"
+				className={`${PRIMARY_BUTTON} sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50`}
+			>
+				Skip to content
+			</a>
 			<Navbar />
-			<main>
+			<main id="content">
 				<Hero {...variant} />
-				<LogoStrip />
-				<ModelCoverage />
+				<Letter />
+				<Story />
+				<Why />
+				<EngineCoverage />
 				<Reviews />
-				<HowItWorks />
-				<WhySwitch />
+				<Demo />
 				<Pricing />
-				<AgencyTeaser />
+				<AgencySection />
 				<Faq items={HOME_FAQS} />
+				<Support />
 				<Closing />
 			</main>
 			<Footer />

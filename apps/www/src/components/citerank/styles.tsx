@@ -76,6 +76,6 @@ html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 }
 `;
 
-export function RedesignStyles() {
+export function SiteStyles() {
 	return <style>{css}</style>;
 }

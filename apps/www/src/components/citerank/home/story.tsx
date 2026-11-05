@@ -119,9 +119,7 @@ export function Story() {
 				<Container className="py-20 lg:py-24">
 					<Reveal className="mx-auto max-w-3xl text-center">
 						<h2 className="heading-2 text-zinc-950">What a Buyer Sees</h2>
-						<p className="body-8 mt-6 text-zinc-700">
-							Here is the kind of answer your buyers get. Notice who is in it, and who is not.
-						</p>
+						<p className="body-8 mt-6 text-zinc-700">Here is the kind of answer your buyers get.</p>
 					</Reveal>
 					<Reveal delay={100} className="mx-auto mt-12 max-w-3xl">
 						<AnswerCard />

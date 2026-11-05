@@ -18,7 +18,6 @@ import { Route as LlmsFullDottxtRouteImport } from './routes/llms-full[.]txt'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as OgDotpngRouteImport } from './routes/og[.]png'
 import { Route as PricingRouteImport } from './routes/pricing'
-import { Route as RedesignRouteImport } from './routes/redesign'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StatisticsRouteImport } from './routes/statistics'
@@ -106,11 +105,6 @@ const OgDotpngRoute = OgDotpngRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RedesignRoute = RedesignRouteImport.update({
-  id: '/redesign',
-  path: '/redesign',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
@@ -340,7 +334,6 @@ export interface FileRoutesByFullPath {
   '/llms.txt': typeof LlmsDottxtRoute
   '/og.png': typeof OgDotpngRoute
   '/pricing': typeof PricingRoute
-  '/redesign': typeof RedesignRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/statistics': typeof StatisticsRoute
@@ -393,7 +386,6 @@ export interface FileRoutesByTo {
   '/llms.txt': typeof LlmsDottxtRoute
   '/og.png': typeof OgDotpngRoute
   '/pricing': typeof PricingRoute
-  '/redesign': typeof RedesignRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/statistics': typeof StatisticsRoute
@@ -447,7 +439,6 @@ export interface FileRoutesById {
   '/llms.txt': typeof LlmsDottxtRoute
   '/og.png': typeof OgDotpngRoute
   '/pricing': typeof PricingRoute
-  '/redesign': typeof RedesignRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/statistics': typeof StatisticsRoute
@@ -502,7 +493,6 @@ export interface FileRouteTypes {
     | '/llms.txt'
     | '/og.png'
     | '/pricing'
-    | '/redesign'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/statistics'
@@ -555,7 +545,6 @@ export interface FileRouteTypes {
     | '/llms.txt'
     | '/og.png'
     | '/pricing'
-    | '/redesign'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/statistics'
@@ -608,7 +597,6 @@ export interface FileRouteTypes {
     | '/llms.txt'
     | '/og.png'
     | '/pricing'
-    | '/redesign'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/statistics'
@@ -662,7 +650,6 @@ export interface RootRouteChildren {
   LlmsDottxtRoute: typeof LlmsDottxtRoute
   OgDotpngRoute: typeof OgDotpngRoute
   PricingRoute: typeof PricingRoute
-  RedesignRoute: typeof RedesignRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StatisticsRoute: typeof StatisticsRoute
@@ -769,13 +756,6 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/redesign': {
-      id: '/redesign'
-      path: '/redesign'
-      fullPath: '/redesign'
-      preLoaderRoute: typeof RedesignRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/robots.txt': {
@@ -1078,7 +1058,6 @@ const rootRouteChildren: RootRouteChildren = {
   LlmsDottxtRoute: LlmsDottxtRoute,
   OgDotpngRoute: OgDotpngRoute,
   PricingRoute: PricingRoute,
-  RedesignRoute: RedesignRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StatisticsRoute: StatisticsRoute,

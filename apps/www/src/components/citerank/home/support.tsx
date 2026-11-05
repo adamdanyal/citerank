@@ -8,7 +8,7 @@ export function Support() {
 				<Reveal className="mx-auto max-w-3xl text-center">
 					<h2 className="heading-2 text-zinc-950">Questions Answered by the People Who Built It</h2>
 					<p className="body-8 mt-6 text-zinc-700">
-						No support tiers and no ticket queue. The team that runs CiteRank.com answers, by email or chat.
+						The team that runs CiteRank.com answers your questions by email or chat. There are no support tiers.
 					</p>
 				</Reveal>
 				<div className="mx-auto mt-12 grid max-w-3xl gap-5 sm:grid-cols-2">

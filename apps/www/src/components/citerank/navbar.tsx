@@ -93,6 +93,7 @@ export function Navbar() {
 					</div>
 				</nav>
 			</header>
+			<div aria-hidden="true" className="h-16" />
 
 			<div
 				id="site-menu"
