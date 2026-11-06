@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { CARD, Container, Reveal, SECONDARY_BUTTON } from "../ui";
 
-/* The photo is apps/www/public/founder.jpg. */
+/* The photo is apps/www/public/founder.jpg, the signature apps/www/public/signature.png. */
 const FOUNDER = {
 	name: "Adam Danyal",
 	title: "Founder, CiteRank.com",
 	proof: "Trusted by 2M+ on LinkedIn",
 	photo: "/founder.jpg",
+	signature: { src: "/signature.png", width: 815, height: 267 },
 	linkedin: "https://www.linkedin.com/in/adamdanyal/",
 };
 
@@ -31,7 +32,7 @@ const PARAGRAPHS = [
 
 function LinkedInMark() {
 	return (
-		<svg viewBox="0 0 24 24" aria-hidden="true" className="size-3.5 fill-current">
+		<svg viewBox="0 0 24 24" aria-hidden="true" className="size-4 fill-current">
 			<path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
 		</svg>
 	);
@@ -49,7 +50,7 @@ function Portrait() {
 		return (
 			<span
 				aria-hidden="true"
-				className="heading-5 inline-flex size-24 items-center justify-center rounded-xl bg-blue-50 text-blue-800"
+				className="heading-5 inline-flex size-24 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-800"
 			>
 				{FOUNDER.name
 					.split(" ")
@@ -67,7 +68,7 @@ function Portrait() {
 			height={96}
 			loading="lazy"
 			onError={() => setMissing(true)}
-			className="size-24 rounded-xl object-cover"
+			className="size-24 shrink-0 rounded-xl object-cover"
 		/>
 	);
 }
@@ -79,22 +80,21 @@ export function Letter() {
 			<Container className="py-20 lg:py-24">
 				<Reveal className={`${CARD} mx-auto max-w-5xl overflow-hidden`}>
 					<div className="grid lg:grid-cols-12">
-						<aside className="flex flex-col bg-paper p-8 lg:col-span-4 lg:p-10">
+						<aside className="flex flex-col gap-6 bg-paper p-8 sm:flex-row sm:items-center lg:col-span-4 lg:flex-col lg:items-start lg:p-10">
 							<Portrait />
-							<p className="heading-5 mt-6 text-zinc-950">{FOUNDER.name}</p>
-							<p className="body-6 mt-1 text-zinc-600">{FOUNDER.title}</p>
-							<p className="caption-1 mt-4 inline-flex w-fit items-center gap-2 rounded-md bg-blue-50 px-3 py-1 text-blue-800">
-								<LinkedInMark />
-								{FOUNDER.proof}
-							</p>
-							<a
-								href={FOUNDER.linkedin}
-								target="_blank"
-								rel="noopener noreferrer"
-								className={`${SECONDARY_BUTTON} mt-8 w-fit`}
-							>
-								Follow on LinkedIn
-							</a>
+							<div className="min-w-0">
+								<p className="heading-5 text-zinc-950">{FOUNDER.name}</p>
+								<p className="body-6 mt-1 text-zinc-600">{FOUNDER.title}</p>
+								<a
+									href={FOUNDER.linkedin}
+									target="_blank"
+									rel="noopener noreferrer"
+									className={`${SECONDARY_BUTTON} mt-4`}
+								>
+									<LinkedInMark />
+									{FOUNDER.proof}
+								</a>
+							</div>
 						</aside>
 						<div className="p-8 lg:col-span-8 lg:p-12">
 							<p className="heading-4 text-zinc-950">Tell me if this sounds familiar.</p>
@@ -103,7 +103,14 @@ export function Letter() {
 									<p key={paragraph.id}>{paragraph.text}</p>
 								))}
 							</div>
-							<p className="font-heading mt-10 text-3xl text-zinc-950">Adam</p>
+							<img
+								src={FOUNDER.signature.src}
+								alt={FOUNDER.name}
+								width={FOUNDER.signature.width}
+								height={FOUNDER.signature.height}
+								loading="lazy"
+								className="mt-10 h-16 w-auto"
+							/>
 						</div>
 					</div>
 				</Reveal>
