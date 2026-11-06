@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { CARD, Container, EASE_CLASS, Reveal } from "../ui";
 
 /* The photo is apps/www/public/founder.jpg, the signature apps/www/public/signature.png. */
@@ -6,7 +5,7 @@ const FOUNDER = {
 	name: "Adam Danyal",
 	title: "Founder, CiteRank.com",
 	proof: "Trusted by 2M+ on LinkedIn",
-	photo: "/founder.jpg",
+	photo: { src: "/founder.jpg", width: 256, height: 256 },
 	signature: { src: "/signature.png", width: 815, height: 267 },
 	linkedin: "https://www.linkedin.com/in/adamdanyal/",
 };
@@ -38,80 +37,50 @@ function LinkedInMark() {
 	);
 }
 
-/* The server renders the image, so a missing file errors before React hydrates and onError alone would miss it. */
-function Portrait() {
-	const ref = useRef<HTMLImageElement>(null);
-	const [missing, setMissing] = useState(false);
-	useEffect(() => {
-		const img = ref.current;
-		if (img?.complete && img.naturalWidth === 0) setMissing(true);
-	}, []);
-	if (missing) {
-		return (
-			<span
-				aria-hidden="true"
-				className="heading-5 inline-flex size-24 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-800"
-			>
-				{FOUNDER.name
-					.split(" ")
-					.map((part) => part[0])
-					.join("")}
-			</span>
-		);
-	}
-	return (
-		<img
-			ref={ref}
-			src={FOUNDER.photo}
-			alt={FOUNDER.name}
-			width={96}
-			height={96}
-			loading="lazy"
-			onError={() => setMissing(true)}
-			className="size-24 shrink-0 rounded-xl object-cover"
-		/>
-	);
-}
-
-/* A letter in the founder's voice: the reader's situation first, then what CiteRank.com does about it. */
+/* A letter in the founder's voice: who is writing, the reader's situation, then what CiteRank.com does about it. */
 export function Letter() {
 	return (
 		<section className="bg-paper-2">
 			<Container className="py-20 lg:py-24">
-				<Reveal className={`${CARD} mx-auto max-w-5xl overflow-hidden`}>
-					<div className="grid lg:grid-cols-12">
-						<aside className="flex flex-col gap-6 bg-paper p-8 sm:flex-row sm:items-center lg:col-span-4 lg:flex-col lg:items-start lg:p-10">
-							<Portrait />
-							<div className="min-w-0">
-								<p className="heading-5 text-zinc-950">{FOUNDER.name}</p>
-								<p className="body-6 mt-1 text-zinc-600">{FOUNDER.title}</p>
-								<a
-									href={FOUNDER.linkedin}
-									target="_blank"
-									rel="noopener noreferrer"
-									className={`caption-1 mt-4 inline-flex items-center gap-2 rounded-md bg-blue-50 px-3 py-1 text-blue-800 transition-colors duration-300 ${EASE_CLASS} hover:bg-blue-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
-								>
-									<LinkedInMark />
-									{FOUNDER.proof}
-								</a>
-							</div>
-						</aside>
-						<div className="p-8 lg:col-span-8 lg:p-12">
-							<p className="heading-4 text-zinc-950">Tell me if this sounds familiar.</p>
-							<div className="body-7 mt-8 space-y-5 text-zinc-800">
-								{PARAGRAPHS.map((paragraph) => (
-									<p key={paragraph.id}>{paragraph.text}</p>
-								))}
-							</div>
-							<img
-								src={FOUNDER.signature.src}
-								alt={FOUNDER.name}
-								width={FOUNDER.signature.width}
-								height={FOUNDER.signature.height}
-								loading="lazy"
-								className="mt-10 h-16 w-auto"
-							/>
+				<Reveal className={`${CARD} mx-auto max-w-3xl overflow-hidden`}>
+					<header className="flex flex-wrap items-center gap-4 border-zinc-200 border-b bg-paper px-6 py-5 sm:px-8 lg:px-14">
+						<img
+							src={FOUNDER.photo.src}
+							alt={FOUNDER.name}
+							width={FOUNDER.photo.width}
+							height={FOUNDER.photo.height}
+							loading="lazy"
+							className="size-14 shrink-0 rounded-lg object-cover"
+						/>
+						<div className="min-w-0">
+							<p className="heading-6 text-zinc-950">{FOUNDER.name}</p>
+							<p className="body-6 text-zinc-600">{FOUNDER.title}</p>
 						</div>
+						<a
+							href={FOUNDER.linkedin}
+							target="_blank"
+							rel="noopener noreferrer"
+							className={`caption-1 inline-flex items-center gap-2 rounded-md bg-blue-50 px-3 py-1 text-blue-800 transition-colors duration-300 ${EASE_CLASS} hover:bg-blue-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:ml-auto`}
+						>
+							<LinkedInMark />
+							{FOUNDER.proof}
+						</a>
+					</header>
+					<div className="px-6 py-8 sm:p-8 lg:px-14 lg:py-12">
+						<p className="heading-4 text-zinc-950">Tell me if this sounds familiar.</p>
+						<div className="body-7 mt-8 space-y-5 text-zinc-800">
+							{PARAGRAPHS.map((paragraph) => (
+								<p key={paragraph.id}>{paragraph.text}</p>
+							))}
+						</div>
+						<img
+							src={FOUNDER.signature.src}
+							alt={FOUNDER.name}
+							width={FOUNDER.signature.width}
+							height={FOUNDER.signature.height}
+							loading="lazy"
+							className="mt-10 h-14 w-auto"
+						/>
 					</div>
 				</Reveal>
 			</Container>
