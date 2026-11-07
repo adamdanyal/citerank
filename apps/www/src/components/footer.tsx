@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { cn } from "@workspace/ui/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 import { externalRel } from "@/lib/external-link";
@@ -62,7 +61,7 @@ const cols: { heading: string; links: FooterLink[] }[] = [
 
 export function Footer() {
 	return (
-		<footer className="relative overflow-hidden border-t border-zinc-200/80 bg-white">
+		<footer className="border-t border-zinc-200/80 bg-white">
 			<div className="mx-auto max-w-6xl px-4 md:px-6">
 				<div className="grid grid-cols-2 gap-10 py-16 sm:grid-cols-3 lg:grid-cols-5">
 					{cols.map((col) => (
@@ -117,13 +116,18 @@ export function Footer() {
 					<SocialLinks className="gap-4 text-zinc-400" linkClassName="transition-colors hover:text-zinc-950" />
 				</div>
 			</div>
-			{/* Deliberately oversized and cropped by the page edge. */}
-			<Link
-				to="/"
-				className="-mb-[0.14em] block translate-y-[0.1em] select-none text-center font-heading text-[clamp(3rem,12vw,10rem)] leading-[0.8] tracking-[-0.03em] text-blue-600"
-			>
-				CiteRank.com
-			</Link>
+			{/* A watermark: the wordmark spans the content width and fades out towards its baseline.
+			   The viewBox is the ink box of "CiteRank.com" at 100px in the heading font, so it stays edge to edge in any font. */}
+			<div aria-hidden="true" className="mx-auto max-w-6xl px-4 pt-4 pb-24 md:px-6 md:pb-10">
+				<svg
+					viewBox="4 0 630 79"
+					className="block w-full select-none fill-zinc-300 [mask-image:linear-gradient(to_bottom,black,transparent_92%)]"
+				>
+					<text x="0" y="77" fontSize="100" textLength="638" lengthAdjust="spacing" className="font-heading">
+						CiteRank.com
+					</text>
+				</svg>
+			</div>
 		</footer>
 	);
 }
