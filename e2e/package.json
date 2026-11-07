@@ -20,10 +20,10 @@
     "@workspace/lib": "workspace:*"
   },
   "devDependencies": {
-    "@better-auth/utils": "0.5.0",
-    "@modelcontextprotocol/sdk": "^1.32.1",
+    "@better-auth/utils": "0.5.1",
+    "@modelcontextprotocol/sdk": "^1.32.2",
     "@playwright/test": "^1.64.1",
-    "@types/node": "^26.6.5",
+    "@types/node": "^26.6.6",
     "@types/pg": "^8.23.1",
     "@usebruno/cli": "4.3.0",
     "ajv": "^8.20.0",
