@@ -13,13 +13,13 @@ import { AiReferralBanner } from "@/components/ai-referral-banner";
 import { NotFound } from "@/components/not-found";
 import { getConsentRegion } from "@/lib/consent-region";
 import { initCrisp } from "@/lib/crisp";
-import { getMarketingOgImage } from "@/lib/og";
 import { initAnalytics } from "@/lib/posthog";
 import { organizationJsonLd, SITE_DESCRIPTION, SITE_NAME, SITE_URL, websiteJsonLd } from "@/lib/seo";
 import appCss from "../styles.css?url";
 
 const ROOT_TITLE = `${SITE_NAME} · AI Visibility Tracker`;
-const ROOT_OG_IMAGE = `${SITE_URL}${getMarketingOgImage({ title: ROOT_TITLE, description: SITE_DESCRIPTION })}`;
+/* The designed brand card; pages with their own title still get a generated card from /og.png. */
+const ROOT_OG_IMAGE = `${SITE_URL}/og-home.png`;
 
 export const Route = createRootRoute({
 	notFoundComponent: NotFound,

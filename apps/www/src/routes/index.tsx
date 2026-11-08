@@ -40,6 +40,7 @@ export const Route = createFileRoute("/")({
 				title,
 				description,
 				path: "/",
+				image: "/og-home.png",
 			}),
 		],
 		links: [{ rel: "canonical", href: canonicalUrl("/") }],
