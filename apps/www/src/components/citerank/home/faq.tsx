@@ -1,10 +1,9 @@
-import { Plus } from "lucide-react";
 import type { ReactNode } from "react";
 import { externalRel } from "@/lib/external-link";
 import type { FaqItem } from "@/lib/faqs";
-import { CARD, Container, EASE_CLASS, QUIET_LINK, Reveal } from "../ui";
+import { CARD, Container, QUIET_LINK, Reveal } from "../ui";
 
-/** Answers live inside closed <details>, so they stay in the DOM for crawlers and the FAQPage JSON-LD. */
+/** Answers are always open: nothing to click for a reader, and plain text for crawlers and the FAQPage JSON-LD. */
 export function Faq({ items }: { items: FaqItem[] }) {
 	return (
 		<section className="bg-paper-2">
@@ -19,20 +18,14 @@ export function Faq({ items }: { items: FaqItem[] }) {
 						.
 					</p>
 				</Reveal>
-				<Reveal delay={100} className={`${CARD} divide-y divide-zinc-200/80 px-6 lg:col-span-8`}>
+				<Reveal delay={100} className={`${CARD} divide-y divide-zinc-200/80 px-6 lg:col-span-8 lg:px-8`}>
 					{items.map((item) => (
-						<details key={item.question} className="group">
-							<summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 [&::-webkit-details-marker]:hidden">
-								<h3 className="title-3 text-zinc-950">{item.question}</h3>
-								<Plus
-									className={`mt-1 size-4 shrink-0 text-zinc-400 transition-transform duration-300 ${EASE_CLASS} group-open:rotate-45`}
-									aria-hidden="true"
-								/>
-							</summary>
-							<p className="body-6 max-w-[60ch] pb-6 text-zinc-600">
+						<div key={item.question} className="py-6">
+							<h3 className="title-3 text-zinc-950">{item.question}</h3>
+							<p className="body-6 mt-2 max-w-[65ch] text-zinc-600">
 								<FaqAnswer item={item} />
 							</p>
-						</details>
+						</div>
 					))}
 				</Reveal>
 			</Container>
