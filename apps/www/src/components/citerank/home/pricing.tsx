@@ -124,7 +124,7 @@ export function Pricing() {
 						<LinkArrow />
 					</Link>
 				</p>
-				<p className="caption-2 mt-6 text-center text-zinc-500">
+				<p className="caption-2 mt-6 text-center text-zinc-600">
 					Pay monthly or yearly. Payments by Stripe, cancel from your account.
 				</p>
 			</Container>

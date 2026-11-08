@@ -57,6 +57,7 @@ function PricingPage() {
 				</section>
 				<section className="bg-paper">
 					<Container className="py-12 lg:py-16">
+						<h2 className="sr-only">Tracker Plans</h2>
 						<PlanCards />
 						<OtherPlans className="mt-10" />
 					</Container>

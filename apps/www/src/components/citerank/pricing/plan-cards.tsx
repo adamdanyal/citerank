@@ -109,7 +109,7 @@ export function PlanCards() {
 					<PlanCard key={key} plan={PLANS[key]} billing={billing} delay={index * 60} />
 				))}
 			</ul>
-			<p className="caption-2 mt-6 text-center text-zinc-500">
+			<p className="caption-2 mt-6 text-center text-zinc-600">
 				Prices in US dollars. Yearly plans are billed once a year.
 			</p>
 		</div>
