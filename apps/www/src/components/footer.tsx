@@ -99,8 +99,8 @@ export function Footer() {
 				<div className="flex flex-col gap-4 border-t border-zinc-200/80 py-6 text-xs text-zinc-500 md:flex-row md:items-start md:justify-between">
 					<div className="flex max-w-3xl flex-col gap-3">
 						<p>
-							&copy; {new Date().getFullYear()} {COMPANY}. <TrademarkLink {...TRADEMARKS[0]} /> and{" "}
-							<TrademarkLink {...TRADEMARKS[1]} /> are registered trademarks of {COMPANY}.
+							&copy; {new Date().getFullYear()} {COMPANY}. <Trademark {...TRADEMARKS[0]} /> and{" "}
+							<Trademark {...TRADEMARKS[1]} /> are registered trademarks of {COMPANY}.
 						</p>
 						<nav aria-label="Legal" className="flex flex-wrap items-center gap-x-4 gap-y-2">
 							{legalLinks.map((link) => (
@@ -129,23 +129,23 @@ export function Footer() {
 	);
 }
 
-/* Each mark opens its own UK IPO record, with the same arrow the footer's other outbound links carry. */
-function TrademarkLink({ name, number }: { name: string; number: string }) {
+/* The name is plain text; only the arrow after it opens the mark's UK IPO record. */
+function Trademark({ name, number }: { name: string; number: string }) {
 	const href = `https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/${number}`;
 	return (
-		<a
-			href={href}
-			target="_blank"
-			rel={externalRel(href)}
-			title={`UK trade mark ${number}`}
-			className="group inline-flex items-center gap-px transition-colors hover:text-zinc-950"
-		>
+		<>
 			{name}
-			<ArrowUpRight
-				className="size-3 opacity-50 transition group-hover:-translate-y-px group-hover:translate-x-px group-hover:opacity-100"
-				aria-hidden="true"
-			/>
-		</a>
+			<a
+				href={href}
+				target="_blank"
+				rel={externalRel(href)}
+				title={`UK trade mark ${number}`}
+				aria-label={`${name} trade mark record`}
+				className="ml-px inline-flex align-middle opacity-50 transition hover:-translate-y-px hover:translate-x-px hover:text-zinc-950 hover:opacity-100"
+			>
+				<ArrowUpRight className="size-3" aria-hidden="true" />
+			</a>
+		</>
 	);
 }
 
