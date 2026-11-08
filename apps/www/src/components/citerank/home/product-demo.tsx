@@ -14,6 +14,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
+import { screenshotSet } from "@/lib/screenshots";
 import { EASE_CLASS, WINDOW_FRAME, WindowBar } from "../ui";
 
 export const DEMO_BRAND_PATH = "/app/org/quaildesk/brand/quaildesk";
@@ -86,8 +87,32 @@ const HOLD_MS = 5000;
  */
 export function ProductDemo() {
 	const [index, setIndex] = useState(0);
+	const [previous, setPrevious] = useState<number | null>(null);
 	const [auto, setAuto] = useState(true);
 	const ref = useRef<HTMLDivElement>(null);
+	const indexRef = useRef(0);
+	indexRef.current = index;
+
+	const show = (next: number) => {
+		if (next === indexRef.current) return;
+		setPrevious(indexRef.current);
+		setIndex(next);
+	};
+
+	/* Only the shown page and the one fading out are in the DOM, so the hero loads one capture, not eight. */
+	useEffect(() => {
+		if (previous === null) return;
+		const timer = setTimeout(() => setPrevious(null), 600);
+		return () => clearTimeout(timer);
+	}, [previous]);
+
+	useEffect(() => {
+		const next = screenshotSet(PAGES[(index + 1) % PAGES.length].src);
+		const img = new Image();
+		img.sizes = "(min-width: 1024px) 70vw, 100vw";
+		img.srcset = next.srcSet;
+		img.src = next.src;
+	}, [index]);
 
 	useEffect(() => {
 		if (!auto || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -97,7 +122,7 @@ export function ProductDemo() {
 		});
 		if (ref.current) observer.observe(ref.current);
 		const timer = setInterval(() => {
-			if (visible) setIndex((current) => (current + 1) % PAGES.length);
+			if (visible) show((indexRef.current + 1) % PAGES.length);
 		}, HOLD_MS);
 		return () => {
 			clearInterval(timer);
@@ -124,7 +149,7 @@ export function ProductDemo() {
 							aria-pressed={current}
 							onClick={() => {
 								setAuto(false);
-								setIndex(i);
+								show(i);
 							}}
 							className={`flex shrink-0 items-center gap-2 whitespace-nowrap rounded-lg px-3 py-2 button-sm text-left transition-colors duration-300 ${EASE_CLASS} focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
 								current ? "bg-blue-50 text-blue-800" : "text-zinc-600 hover:bg-paper-2 hover:text-zinc-950"
@@ -146,20 +171,21 @@ export function ProductDemo() {
 			>
 				<WindowBar />
 				<div className="relative aspect-[5/3] overflow-hidden rounded-lg bg-paper-2">
-					{PAGES.map((item, i) => (
-						<img
-							key={item.src}
-							src={item.src}
-							alt={item.alt}
-							width={3000}
-							height={1800}
-							loading={i < 2 ? "eager" : "lazy"}
-							decoding="async"
-							aria-hidden={i !== index}
-							className={`absolute inset-0 size-full object-cover object-left-top transition-opacity duration-500 ${EASE_CLASS}`}
-							style={{ opacity: i === index ? 1 : 0 }}
-						/>
-					))}
+					{PAGES.map((item, i) =>
+						i === index || i === previous ? (
+							<img
+								key={item.src}
+								{...screenshotSet(item.src)}
+								sizes="(min-width: 1024px) 70vw, 100vw"
+								alt={item.alt}
+								fetchPriority={i === 0 ? "high" : undefined}
+								decoding="async"
+								aria-hidden={i !== index}
+								className={`absolute inset-0 size-full object-cover object-left-top transition-opacity duration-500 ${EASE_CLASS}`}
+								style={{ opacity: i === index ? 1 : 0, zIndex: i === index ? 1 : 0 }}
+							/>
+						) : null,
+					)}
 					<div
 						aria-hidden="true"
 						className={`pointer-events-none absolute inset-0 flex items-center justify-center bg-zinc-950/0 transition-colors duration-300 ${EASE_CLASS} group-hover:bg-zinc-950/10 group-focus-visible:bg-zinc-950/10`}

@@ -2,6 +2,7 @@ import { demoSiteUrl } from "@workspace/config/referrals";
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { externalRel } from "@/lib/external-link";
+import { screenshotSet } from "@/lib/screenshots";
 
 export const DEMO_BRAND_PATH = "/app/org/quaildesk/brand/quaildesk";
 
@@ -73,21 +74,16 @@ const CURSOR_X = 0.055;
 const MOVE_MS = 900;
 const HOLD_MS = 3200;
 
-// Vercel's optimizer only exists in production; dev serves the originals.
-function optimized(src: string, width: number) {
-	return `/_vercel/image?${new URLSearchParams({ url: src, w: String(width), q: "75" })}`;
-}
-
 function Shot({ src, alt, active, eager }: { src: string; alt: string; active: boolean; eager: boolean }) {
-	const prod = import.meta.env.PROD;
+	const shot = screenshotSet(src);
 	return (
 		<img
-			src={prod ? optimized(src, 1200) : src}
-			srcSet={prod ? [750, 1200, 1920].map((w) => `${optimized(src, w)} ${w}w`).join(", ") : undefined}
+			src={shot.src}
+			srcSet={shot.srcSet}
 			sizes="(min-width: 1024px) 896px, 100vw"
 			alt={alt}
-			width={3000}
-			height={1800}
+			width={shot.width}
+			height={shot.height}
 			loading={eager ? "eager" : "lazy"}
 			decoding="async"
 			className="absolute inset-0 size-full object-cover object-left-top transition-opacity duration-500"

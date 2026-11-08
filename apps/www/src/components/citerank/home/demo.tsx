@@ -2,6 +2,7 @@ import { demoSiteUrl } from "@workspace/config/referrals";
 import { ArrowUpRight } from "lucide-react";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
+import { screenshotSet } from "@/lib/screenshots";
 import { Container, PRIMARY_BUTTON_LG, Reveal, WINDOW_FRAME, WindowBar } from "../ui";
 import { DEMO_BRAND_PATH } from "./product-demo";
 
@@ -37,10 +38,9 @@ export function Demo() {
 						<WindowBar />
 						<div className="relative aspect-[5/3] overflow-hidden rounded-lg bg-paper-2">
 							<img
-								src="/screenshots/overview.webp"
+								{...screenshotSet("/screenshots/overview.webp")}
+								sizes="(min-width: 1024px) 50vw, 100vw"
 								alt="The CiteRank.com overview page in the live demo"
-								width={3000}
-								height={1800}
 								loading="lazy"
 								decoding="async"
 								className="absolute inset-0 size-full object-cover object-left-top"

@@ -1,6 +1,7 @@
 import { PLANS } from "@workspace/config/plans";
 import type { ReactNode } from "react";
 import { ExampleTag } from "@/components/home/ui";
+import { screenshotSet } from "@/lib/screenshots";
 import { CARD, Container, Reveal, WINDOW_FRAME, WindowBar } from "../ui";
 
 const BASIC_ANSWERS_PER_DAY = PLANS.basic.maxPrompts * PLANS.basic.platformPicks * PLANS.basic.standardRunsPerDay;
@@ -11,15 +12,18 @@ function Mark({ children }: { children: ReactNode }) {
 
 /* The capture includes the app sidebar (the left 17.5% of the image); the frame shows the page itself. */
 function Frame({ src, alt }: { src: string; alt: string }) {
+	const shot = screenshotSet(src);
 	return (
 		<div className={WINDOW_FRAME}>
 			<WindowBar />
 			<div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-paper-2 sm:aspect-[16/10]">
 				<img
-					src={src}
+					src={shot.src}
+					srcSet={shot.srcSet}
+					sizes="(min-width: 1024px) 58vw, 100vw"
 					alt={alt}
-					width={1600}
-					height={960}
+					width={shot.width}
+					height={shot.height}
 					loading="lazy"
 					decoding="async"
 					className="absolute top-0 left-[-21.2%] w-[121.2%] max-w-none"
