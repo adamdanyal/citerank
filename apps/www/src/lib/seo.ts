@@ -1,4 +1,5 @@
 import { CLOUD_ENTRY_PRICE_USD, PLANS } from "@workspace/config/plans";
+import { AGENCY_PLANS } from "./agency-plans";
 import { getMarketingOgImage } from "./og";
 
 export const SITE_URL = "https://citerank.com";
@@ -102,20 +103,69 @@ export function organizationJsonLd() {
 	});
 }
 
+function monthlyOffer(name: string, priceUsd: number, path: string) {
+	return {
+		"@type": "Offer",
+		name,
+		price: String(priceUsd),
+		priceCurrency: "USD",
+		priceSpecification: {
+			"@type": "UnitPriceSpecification",
+			price: String(priceUsd),
+			priceCurrency: "USD",
+			billingIncrement: 1,
+			unitCode: "MON",
+		},
+		availability: "https://schema.org/InStock",
+		url: canonicalUrl(path),
+	};
+}
+
 export function softwareApplicationJsonLd() {
+	const plans = Object.values(PLANS);
 	return jsonLd({
 		"@type": "SoftwareApplication",
 		name: SITE_NAME,
+		alternateName: "CiteRank",
 		description: SITE_DESCRIPTION,
 		applicationCategory: "BusinessApplication",
-		operatingSystem: "Any",
+		applicationSubCategory: "AI visibility tracker",
+		operatingSystem: "Web",
+		url: SITE_URL,
+		image: SITE_LOGO_URL,
+		screenshot: `${SITE_URL}/screenshots/overview.webp`,
+		featureList: [
+			"Tracks brand mentions in ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews, AI Mode, Copilot, Grok, DeepSeek, Mistral, Qwen and Kimi",
+			"Checks every prompt up to 4 times a day and keeps every answer in full",
+			"Share of voice, sentiment and position against competitors",
+			"Citation analysis: which domains and pages each AI engine cites",
+			"Ranked opportunities: which pages to write, update or get listed on",
+			"Unlimited seats, REST API and MCP server on every plan",
+		],
 		offers: {
 			"@type": "AggregateOffer",
 			lowPrice: String(CLOUD_ENTRY_PRICE_USD),
-			highPrice: String(Math.max(...Object.values(PLANS).map((plan) => plan.monthlyPriceUsd))),
+			highPrice: String(Math.max(...plans.map((plan) => plan.monthlyPriceUsd))),
 			priceCurrency: "USD",
+			offerCount: plans.length,
+			offers: plans.map((plan) => monthlyOffer(`${plan.name} plan`, plan.monthlyPriceUsd, "/pricing")),
 		},
-		url: SITE_URL,
+		publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+	});
+}
+
+/* The agency as a Service, with its three monthly plans as offers. */
+export function agencyServiceJsonLd() {
+	return jsonLd({
+		"@type": "Service",
+		name: `${SITE_NAME} AI Search Agency`,
+		serviceType: "Answer engine optimization agency",
+		description:
+			"A monthly service that does the work the CiteRank.com tracker ranks: new and updated pages, review site and best-of list pitches, forum answers, guest articles and crawler fixes, reported with the AI answers before and after.",
+		url: canonicalUrl("/agency"),
+		provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+		areaServed: "Worldwide",
+		offers: AGENCY_PLANS.map((plan) => monthlyOffer(`${plan.name} agency plan`, plan.monthlyPriceUsd, "/agency")),
 	});
 }
 

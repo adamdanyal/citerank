@@ -30,7 +30,7 @@ import { Navbar } from "@/components/navbar";
 import { AGENCY_PLANS, type AgencyPlan, FOUNDING_DISCOUNT, formatUsd, foundingPriceUsd } from "@/lib/agency-plans";
 import { embedInlineBooking } from "@/lib/cal-embed";
 import { AGENCY_FAQS } from "@/lib/faqs";
-import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
+import { agencyServiceJsonLd, breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
 // Placeholder until Adam supplies the booking calendar (a Cal.com "user/event" link).
 const AGENCY_CAL_LINK = "";
@@ -54,6 +54,7 @@ export const Route = createFileRoute("/agency")({
 				{ name: "AI Search Agency", path: "/agency" },
 			]),
 			faqJsonLd(AGENCY_FAQS),
+			agencyServiceJsonLd(),
 		],
 	}),
 	component: AgencyPage,
