@@ -16,17 +16,17 @@
 		"@workspace/config": "workspace:*",
 		"@workspace/deployment": "workspace:*",
 		"@workspace/lib": "workspace:*",
-		"auth0": "^7.6.0",
+		"auth0": "^7.7.0",
 		"drizzle-orm": "^0.45.4",
 		"pg": "^8.23.1",
 		"pg-boss": "^12.38.0",
-		"posthog-node": "^5.57.0"
+		"posthog-node": "^5.61.2"
 	},
 	"devDependencies": {
-		"@types/node": "^26.6.5",
+		"@types/node": "^26.6.6",
 		"@types/pg": "^8.23.1",
 		"tsx": "^4.23.15",
 		"typescript": "^7.0.2",
-		"vitest": "^5.0.5"
+		"vitest": "^5.1.0"
 	}
 }
