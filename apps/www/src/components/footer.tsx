@@ -7,8 +7,8 @@ type FooterLink = { label: string; href: string; external?: boolean };
 const COMPANY = "Danx Digital Limited";
 
 const TRADEMARKS = [
-	{ name: "CiteRank", href: "https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00004430998" },
-	{ name: "CiteRank.com", href: "https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00004399266" },
+	{ name: "CiteRank", number: "UK00004430998" },
+	{ name: "CiteRank.com", number: "UK00004399266" },
 ];
 
 const legalLinks = [
@@ -129,16 +129,22 @@ export function Footer() {
 	);
 }
 
-/* Each mark links to its own UK IPO record. */
-function TrademarkLink({ name, href }: { name: string; href: string }) {
+/* Each mark opens its own UK IPO record, with the same arrow the footer's other outbound links carry. */
+function TrademarkLink({ name, number }: { name: string; number: string }) {
+	const href = `https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/${number}`;
 	return (
 		<a
 			href={href}
 			target="_blank"
 			rel={externalRel(href)}
-			className="underline decoration-zinc-300 underline-offset-2 transition-colors hover:text-zinc-950 hover:decoration-zinc-500"
+			title={`UK trade mark ${number}`}
+			className="group inline-flex items-center gap-px transition-colors hover:text-zinc-950"
 		>
 			{name}
+			<ArrowUpRight
+				className="size-3 opacity-50 transition group-hover:-translate-y-px group-hover:translate-x-px group-hover:opacity-100"
+				aria-hidden="true"
+			/>
 		</a>
 	);
 }
