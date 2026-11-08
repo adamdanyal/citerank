@@ -65,7 +65,7 @@ function GlossaryIndex() {
 													{t.term}
 												</a>
 												{t.aka && t.aka.length > 0 && (
-													<span className="ml-2 text-sm text-zinc-400">{t.aka.join(", ")}</span>
+													<span className="ml-2 text-sm text-zinc-500">{t.aka.join(", ")}</span>
 												)}
 											</dt>
 											<dd className="mt-1.5 text-sm leading-relaxed text-zinc-600">{t.short}</dd>

@@ -42,7 +42,7 @@ export function PillarBody({ pillar }: { pillar: Pillar }) {
 						<ol className="mt-4 space-y-2">
 							{pillar.sections.map((section, i) => (
 								<li key={section.id} className="flex gap-3 text-sm">
-									<span className="font-mono text-zinc-400 tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+									<span className="font-mono text-zinc-500 tabular-nums">{String(i + 1).padStart(2, "0")}</span>
 									<a href={`#${section.id}`} className="text-zinc-700 transition-colors hover:text-zinc-950">
 										{section.heading}
 									</a>

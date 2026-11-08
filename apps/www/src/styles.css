@@ -256,7 +256,8 @@ mux-player::part(center play button) {
 	--color-zinc-200: #e7e3dc;
 	--color-zinc-300: #d6d0c6;
 	--color-zinc-400: #a39c90;
-	--color-zinc-500: #7a7368;
+	/* Dark enough for 4.5:1 on paper-2, so small captions pass contrast on every background. */
+	--color-zinc-500: #726b60;
 	--color-zinc-600: #5f594f;
 	--color-zinc-700: #47423a;
 	--color-zinc-800: #2e2b26;

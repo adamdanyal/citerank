@@ -54,7 +54,7 @@ function AnswerCard() {
 				<ol className="mt-4 space-y-3">
 					{ANSWER.picks.map((pick, index) => (
 						<li key={pick.name} className="flex gap-3 body-6 text-zinc-700">
-							<span className="caption-1 font-mono text-zinc-400 tabular-nums">{index + 1}.</span>
+							<span className="caption-1 font-mono text-zinc-500 tabular-nums">{index + 1}.</span>
 							<span>
 								<span className="body-5 text-zinc-950">{pick.name}</span>: {pick.why}
 							</span>
