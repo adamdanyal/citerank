@@ -18,11 +18,11 @@ function Frame({ src, alt }: { src: string; alt: string }) {
 				<img
 					src={src}
 					alt={alt}
-					width={3000}
-					height={1800}
+					width={1600}
+					height={960}
 					loading="lazy"
 					decoding="async"
-					className="absolute left-[-21.2%] top-0 w-[121.2%] max-w-none"
+					className="absolute top-0 left-[-21.2%] w-[121.2%] max-w-none"
 				/>
 			</div>
 		</div>
@@ -62,51 +62,50 @@ function AnswerCard() {
 			<figcaption className="mt-4 flex flex-col gap-3 rounded-xl bg-blue-50 p-5 sm:flex-row sm:items-start sm:gap-4">
 				<span className="caption-3 shrink-0 rounded-md bg-blue-600 px-2 py-1 text-white">Not in the answer</span>
 				<p className="body-6 text-blue-900">
-					Quaildesk, the brand in our demo. Nothing tells its team this happened. CiteRank.com asks this question up to
-					four times a day and shows what to change so the answer includes you.
+					Quaildesk, our demo brand, and nothing told its team. CiteRank.com asks this question up to four times a day
+					and shows what to change.
 				</p>
 			</figcaption>
 		</figure>
 	);
 }
 
-const CHAPTERS = [
+const STEPS = [
 	{
-		title: "We Ask AI Every Day",
+		title: "We ask AI your buyers' questions",
 		body: (
 			<>
-				We ask 12 AI apps your buyers' questions, up to four times a day, and save every answer. On the Basic plan that
-				is <Mark>up to {BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day</Mark>.
+				12 AI apps, up to four times a day. Every answer is saved with the brands it named and the sources it cited. On
+				the Basic plan that is <Mark>up to {BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day</Mark>.
 			</>
 		),
 		shot: {
-			src: "/screenshots/responses.png",
+			src: "/screenshots/responses.webp",
 			alt: "CiteRank.com responses page listing AI answers with each brand's rank and tone",
 		},
 	},
 	{
-		title: "See Where You Stand",
+		title: "See where you stand",
 		body: (
 			<>
-				How often you are named, how often each competitor is, how AI describes you, and{" "}
-				<Mark>which pages it trusts</Mark>.
+				How often you are named, how often each rival is, how AI describes you, and <Mark>which pages it trusts</Mark>.
 			</>
 		),
 		shot: {
-			src: "/screenshots/share-of-voice.png",
+			src: "/screenshots/share-of-voice.webp",
 			alt: "CiteRank.com share of voice page comparing how often AI recommends each brand",
 		},
 	},
 	{
-		title: "Know What to Fix",
+		title: "Know what to fix",
 		body: (
 			<>
-				Opportunities lists what to fix, biggest win first: a page to write, a page to update, a review site to get on.{" "}
-				<Mark>Do them, and watch the answers change.</Mark>
+				Opportunities ranks the fixes, biggest win first: a page to write, a page to update, a review site to get on.{" "}
+				<Mark>Do them yourself, or hand them to our agency.</Mark>
 			</>
 		),
 		shot: {
-			src: "/screenshots/opportunities.png",
+			src: "/screenshots/opportunities.webp",
 			alt: "CiteRank.com opportunities page with recommendations ranked by impact",
 		},
 	},
@@ -114,31 +113,47 @@ const CHAPTERS = [
 
 export function Story() {
 	return (
-		<>
-			<section className="bg-paper-2">
-				<Container className="py-20 lg:py-24">
-					<Reveal className="mx-auto max-w-3xl text-center">
-						<h2 className="heading-2 text-zinc-950">What a Buyer Sees</h2>
-						<p className="body-8 mt-6 text-zinc-700">Here is the kind of answer your buyers get.</p>
-					</Reveal>
-					<Reveal delay={100} className="mx-auto mt-12 max-w-3xl">
-						<AnswerCard />
-					</Reveal>
-				</Container>
-			</section>
-			{CHAPTERS.map((chapter, index) => (
-				<section key={chapter.title} className={index % 2 === 0 ? "bg-white" : "bg-paper"}>
-					<Container className="py-20 lg:py-24">
-						<Reveal className="mx-auto max-w-3xl text-center">
-							<h2 className="heading-2 text-zinc-950">{chapter.title}</h2>
-							<p className="body-8 mt-6 text-zinc-700">{chapter.body}</p>
-						</Reveal>
-						<Reveal delay={100} className="mx-auto mt-12 max-w-5xl lg:mt-16">
-							<Frame {...chapter.shot} />
-						</Reveal>
-					</Container>
-				</section>
-			))}
-		</>
+		<section className="bg-paper-2">
+			<Container className="py-20 lg:py-24">
+				<Reveal className="mx-auto max-w-3xl text-center">
+					<h2 className="heading-2 text-zinc-950">What a Buyer Sees</h2>
+					<p className="body-8 mt-6 text-zinc-700">Here is the kind of answer your buyers get.</p>
+				</Reveal>
+				<Reveal delay={100} className="mx-auto mt-12 max-w-3xl">
+					<AnswerCard />
+				</Reveal>
+			</Container>
+		</section>
+	);
+}
+
+/* Three steps as alternating rows, so the whole flow fits in a couple of screens. */
+export function HowItWorks() {
+	return (
+		<section className="bg-white">
+			<Container className="py-20 lg:py-24">
+				<Reveal className="mx-auto max-w-3xl text-center">
+					<h2 className="heading-2 text-zinc-950">How CiteRank.com Works</h2>
+					<p className="body-8 mt-6 text-zinc-700">Three steps, every day.</p>
+				</Reveal>
+				<ol className="mt-12 space-y-16 lg:mt-20 lg:space-y-24">
+					{STEPS.map((step, index) => {
+						const flipped = index % 2 === 1;
+						return (
+							<li key={step.title} className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+								<Reveal className={`lg:col-span-5 ${flipped ? "lg:order-2" : ""}`}>
+									<p className="caption-1 text-blue-700">Step {index + 1}</p>
+									<h3 className="heading-3 mt-3 text-zinc-950">{step.title}</h3>
+									<p className="body-7 mt-4 text-zinc-700">{step.body}</p>
+								</Reveal>
+								<Reveal delay={100} className={`lg:col-span-7 ${flipped ? "lg:order-1" : ""}`}>
+									<Frame {...step.shot} />
+								</Reveal>
+							</li>
+						);
+					})}
+				</ol>
+			</Container>
+		</section>
 	);
 }

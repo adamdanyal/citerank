@@ -94,7 +94,7 @@ function Screenshot({
 export function OverviewPageGraphic({ wide = false }: { wide?: boolean } = {}) {
 	return (
 		<Screenshot
-			src="/screenshots/overview.png"
+			src="/screenshots/overview.webp"
 			alt="CiteRank.com dashboard overview with visibility, share of voice, sentiment, and position cards above a competitive landscape chart"
 			aspect={wide ? "aspect-[12/5]" : "aspect-[5/3]"}
 		/>
@@ -108,7 +108,7 @@ export function OverviewPageGraphic({ wide = false }: { wide?: boolean } = {}) {
 export function VisibilityPageGraphic() {
 	return (
 		<Screenshot
-			src="/screenshots/visibility.png"
+			src="/screenshots/visibility.webp"
 			alt="Per-prompt visibility tracking with brand and competitor trend lines across multiple AI models"
 		/>
 	);
@@ -121,7 +121,7 @@ export function VisibilityPageGraphic() {
 export function ShareOfVoicePageGraphic() {
 	return (
 		<Screenshot
-			src="/screenshots/share-of-voice.png"
+			src="/screenshots/share-of-voice.webp"
 			alt="Share of voice donut chart, 30-day trend, and a leaderboard ranking your brand's mention share against competitors"
 		/>
 	);
@@ -134,7 +134,7 @@ export function ShareOfVoicePageGraphic() {
 export function SentimentPageGraphic() {
 	return (
 		<Screenshot
-			src="/screenshots/sentiment.png"
+			src="/screenshots/sentiment.webp"
 			alt="Sentiment score donut, sentiment trends against competitors, sentiment by model, and the passages where AI praises the brand"
 		/>
 	);
@@ -147,7 +147,7 @@ export function SentimentPageGraphic() {
 export function QueryFanOutPageGraphic() {
 	return (
 		<Screenshot
-			src="/screenshots/query-fan-out.png"
+			src="/screenshots/query-fan-out.webp"
 			alt="Query fan-out word cloud of the search terms AI engines generate, with a breakdown of how prompts get rewritten"
 		/>
 	);
@@ -160,7 +160,7 @@ export function QueryFanOutPageGraphic() {
 export function CitationsPageGraphic() {
 	return (
 		<Screenshot
-			src="/screenshots/citations.png"
+			src="/screenshots/citations.webp"
 			alt="Citation analysis showing brand citation share, unique domains, total citations, and category and page-type trends"
 		/>
 	);
@@ -173,7 +173,7 @@ export function CitationsPageGraphic() {
 export function OpportunitiesPageGraphic() {
 	return (
 		<Screenshot
-			src="/screenshots/opportunities.png"
+			src="/screenshots/opportunities.webp"
 			alt="Opportunities page with an AI-generated summary and prioritized recommendations for content to create and sources to pitch"
 		/>
 	);
@@ -186,7 +186,7 @@ export function OpportunitiesPageGraphic() {
 export function PromptSearchGraphic() {
 	return (
 		<Screenshot
-			src="/screenshots/prompts.png"
+			src="/screenshots/prompts.webp"
 			alt="Prompt filtering with the Tags dropdown open showing Automation and Comparison selected"
 		/>
 	);
@@ -199,7 +199,7 @@ export function PromptSearchGraphic() {
 export function PromptDetailGraphic() {
 	return (
 		<Screenshot
-			src="/screenshots/prompt-detail.png"
+			src="/screenshots/prompt-detail.webp"
 			alt="Prompt history detail showing an individual AI response with the brands it mentioned and the sources behind it"
 		/>
 	);
@@ -208,7 +208,7 @@ export function PromptDetailGraphic() {
 export function PromptSettingsGraphic() {
 	return (
 		<Screenshot
-			src="/screenshots/prompt-settings.png"
+			src="/screenshots/prompt-settings.webp"
 			alt="Prompt settings listing tracked prompts with their branded or unbranded system tag and topic tags"
 		/>
 	);
@@ -217,7 +217,7 @@ export function PromptSettingsGraphic() {
 export function ResponsesGraphic() {
 	return (
 		<Screenshot
-			src="/screenshots/responses.png"
+			src="/screenshots/responses.webp"
 			alt="Responses page with a sentiment split across every answer and a ChatGPT response showing each brand's position and sentiment"
 		/>
 	);

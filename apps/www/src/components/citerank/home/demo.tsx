@@ -37,7 +37,7 @@ export function Demo() {
 						<WindowBar />
 						<div className="relative aspect-[5/3] overflow-hidden rounded-lg bg-paper-2">
 							<img
-								src="/screenshots/overview.png"
+								src="/screenshots/overview.webp"
 								alt="The CiteRank.com overview page in the live demo"
 								width={3000}
 								height={1800}

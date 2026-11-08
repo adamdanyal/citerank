@@ -4,7 +4,6 @@ import type { ComponentProps } from "react";
 import { AgencySection } from "@/components/citerank/home/agency";
 import { Closing } from "@/components/citerank/home/closing";
 import { Demo } from "@/components/citerank/home/demo";
-import { EngineCoverage } from "@/components/citerank/home/engines";
 import { Faq } from "@/components/citerank/home/faq";
 import { Hero } from "@/components/citerank/home/hero";
 import { Letter } from "@/components/citerank/home/letter";
@@ -12,7 +11,7 @@ import { Logos } from "@/components/citerank/home/logos";
 import { Pricing } from "@/components/citerank/home/pricing";
 import { Reviews } from "@/components/citerank/home/reviews";
 import { StickyCta } from "@/components/citerank/home/sticky-cta";
-import { Story } from "@/components/citerank/home/story";
+import { HowItWorks, Story } from "@/components/citerank/home/story";
 import { Why } from "@/components/citerank/home/why";
 import { PRIMARY_BUTTON } from "@/components/citerank/ui";
 import { Footer } from "@/components/footer";
@@ -81,8 +80,8 @@ function HomePage() {
 				<Hero {...variant} />
 				<Logos />
 				<Story />
+				<HowItWorks />
 				<Why />
-				<EngineCoverage />
 				<Reviews />
 				<Letter />
 				<Demo />
