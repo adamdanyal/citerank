@@ -22,12 +22,18 @@ export const Route = createFileRoute("/aeo-for/$slug")({
 		const v = getAeoVertical(params.slug);
 		if (!v) throw notFound();
 		const others = aeoVerticals.filter((x) => x.slug !== v.slug);
-		return { vertical: v, others };
+		/* The head reads these so the vertical data stays out of the client entry bundle. */
+		return {
+			vertical: v,
+			others,
+			headline: aeoHeadline(v),
+			otherItems: others.map((o) => ({ name: aeoHeadline(o), path: `/aeo-for/${o.slug}`, description: o.short })),
+		};
 	},
 	head: ({ loaderData }) => {
 		if (!loaderData) return {};
-		const { vertical: v, others } = loaderData;
-		const title = v.metaTitle ?? `${aeoHeadline(v)}: Track AI Visibility · CiteRank.com`;
+		const { vertical: v, headline, otherItems } = loaderData;
+		const title = v.metaTitle ?? `${headline}: Track AI Visibility · CiteRank.com`;
 		const description = v.metaDescription ?? v.short;
 		const path = `/aeo-for/${v.slug}`;
 		return {
@@ -37,7 +43,7 @@ export const Route = createFileRoute("/aeo-for/$slug")({
 				breadcrumbJsonLd([
 					{ name: "Home", path: "/" },
 					{ name: "AEO by industry", path: "/aeo-for" },
-					{ name: aeoHeadline(v), path },
+					{ name: headline, path },
 				]),
 				faqJsonLd(v.faqs),
 				howToJsonLd({
@@ -45,7 +51,7 @@ export const Route = createFileRoute("/aeo-for/$slug")({
 					description: v.short,
 					steps: v.plays.map((play) => ({ name: play.name, text: play.text })),
 				}),
-				itemListJsonLd(others.map((o) => ({ name: aeoHeadline(o), path: `/aeo-for/${o.slug}`, description: o.short }))),
+				itemListJsonLd(otherItems),
 			],
 		};
 	},

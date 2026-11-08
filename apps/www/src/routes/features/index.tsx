@@ -11,7 +11,11 @@ const description =
 	"Everything CiteRank.com's tracker does: AI visibility tracking across 12 AI apps, share of voice, sentiment, citations, query fan-out, prompt tracking, recommendations, reporting, and an API and MCP server.";
 
 export const Route = createFileRoute("/features/")({
-	head: () => ({
+	/* The head reads loader data so the feature catalog stays out of the client entry bundle. */
+	loader: () => ({
+		items: productFeatures.map((f) => ({ name: f.name, path: featurePath(f.slug), description: f.summary })),
+	}),
+	head: ({ loaderData }) => ({
 		meta: [
 			{ title },
 			{ name: "description", content: description },
@@ -23,7 +27,7 @@ export const Route = createFileRoute("/features/")({
 				{ name: "Home", path: "/" },
 				{ name: "Features", path: "/features" },
 			]),
-			itemListJsonLd(productFeatures.map((f) => ({ name: f.name, path: featurePath(f.slug), description: f.summary }))),
+			itemListJsonLd(loaderData?.items ?? []),
 		],
 	}),
 	component: FeaturesPage,

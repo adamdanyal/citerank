@@ -9,13 +9,16 @@ const title = "AI Visibility Tools by Category · CiteRank.com";
 const description =
 	"Browse AI visibility tools by category: dedicated trackers, content platforms, developer APIs, SEO suites, and e-commerce tools.";
 
-const items = indexableCategories.map((category) => ({
-	name: CATEGORY_HEADINGS[category],
-	path: `/ai-visibility-tools/category/${CATEGORY_SLUGS[category]}`,
-}));
+/* Built inside the loader so the tool data stays out of the client entry bundle. */
+function items() {
+	return indexableCategories.map((category) => ({
+		name: CATEGORY_HEADINGS[category],
+		path: `/ai-visibility-tools/category/${CATEGORY_SLUGS[category]}`,
+	}));
+}
 
 export const Route = createFileRoute("/ai-visibility-tools/category/")({
-	loader: () => ({ items }),
+	loader: () => ({ items: items() }),
 	head: ({ loaderData }) => ({
 		meta: [
 			{ title },

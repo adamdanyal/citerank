@@ -9,13 +9,16 @@ const title = "AI Visibility Tool Alternatives · CiteRank.com";
 const description =
 	"Find alternatives to the AI visibility tools you're evaluating. Each guide compares the closest options feature by feature, with CiteRank.com included for reference.";
 
-const items = indexedCompetitors.map((c) => ({
-	name: `${c.name} Alternatives`,
-	path: `/ai-visibility-tools/alternatives/${c.slug}`,
-}));
+/* Built inside the loader so the tool data stays out of the client entry bundle. */
+function items() {
+	return indexedCompetitors.map((c) => ({
+		name: `${c.name} Alternatives`,
+		path: `/ai-visibility-tools/alternatives/${c.slug}`,
+	}));
+}
 
 export const Route = createFileRoute("/ai-visibility-tools/alternatives/")({
-	loader: () => ({ items }),
+	loader: () => ({ items: items() }),
 	head: ({ loaderData }) => ({
 		meta: [
 			{ title },

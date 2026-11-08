@@ -14,15 +14,18 @@ const description =
 
 // Indexed comparison pages (mirrors the sitemap filter), surfaced as ItemList
 // structured data so AI engines can extract the full directory of tools.
-const directoryItems = competitors
-	.filter((c) => !isRetired(c) && c.category !== "other" && !isLowDR(c))
-	.map((c) => ({
-		name: c.name,
-		path: `/ai-visibility-tools/${getComparisonSlug(c)}`,
-	}));
+// Built inside the loader so the tool data stays out of the client entry bundle.
+function directoryItems() {
+	return competitors
+		.filter((c) => !isRetired(c) && c.category !== "other" && !isLowDR(c))
+		.map((c) => ({
+			name: c.name,
+			path: `/ai-visibility-tools/${getComparisonSlug(c)}`,
+		}));
+}
 
 export const Route = createFileRoute("/ai-visibility-tools/")({
-	loader: () => ({ directoryItems }),
+	loader: () => ({ directoryItems: directoryItems() }),
 	head: ({ loaderData }) => ({
 		meta: [
 			{ title },

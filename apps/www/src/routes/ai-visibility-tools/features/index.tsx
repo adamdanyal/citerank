@@ -16,24 +16,28 @@ const title = "AI Visibility Tools by Feature · CiteRank.com";
 const description =
 	"Browse AI visibility tools by capability: multi-LLM tracking, citation analytics, sentiment, white-label, and more. See which tools offer each feature.";
 
-const indexableKeys = new Set(indexableFeatureKeys());
-
 // Group the indexable features under their feature-matrix sections, keeping the
-// matrix order. Sections with no indexable feature are dropped.
-const featureGroups = Object.values(FEATURE_CATEGORIES)
-	.map((section) => ({
-		label: section.label,
-		keys: (Object.keys(section.features) as FeatureKey[]).filter((key) => indexableKeys.has(key)),
-	}))
-	.filter((group) => group.keys.length > 0);
+// matrix order. Sections with no indexable feature are dropped. Computed on
+// demand so the tool data stays out of the client entry bundle.
+function featureGroups() {
+	const indexableKeys = new Set(indexableFeatureKeys());
+	return Object.values(FEATURE_CATEGORIES)
+		.map((section) => ({
+			label: section.label,
+			keys: (Object.keys(section.features) as FeatureKey[]).filter((key) => indexableKeys.has(key)),
+		}))
+		.filter((group) => group.keys.length > 0);
+}
 
-const items = indexableFeatureKeys().map((key) => ({
-	name: getFeatureLabel(key),
-	path: `/ai-visibility-tools/features/${FEATURE_SLUGS[key]}`,
-}));
+function items() {
+	return indexableFeatureKeys().map((key) => ({
+		name: getFeatureLabel(key),
+		path: `/ai-visibility-tools/features/${FEATURE_SLUGS[key]}`,
+	}));
+}
 
 export const Route = createFileRoute("/ai-visibility-tools/features/")({
-	loader: () => ({ items }),
+	loader: () => ({ items: items() }),
 	head: ({ loaderData }) => ({
 		meta: [
 			{ title },
@@ -63,7 +67,7 @@ function FeatureHub() {
 					title="Browse AI Visibility Tools by Feature"
 					lead="Filter the field by capability. Pick a feature to see which AI visibility tools offer it and how they compare, including CiteRank.com, a tracker plus an AI search agency."
 				/>
-				{featureGroups.map((group) => (
+				{featureGroups().map((group) => (
 					<DirectorySection key={group.label} title={group.label}>
 						<ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
 							{group.keys.map((key) => (

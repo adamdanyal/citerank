@@ -46,7 +46,7 @@ const loadStats = createServerFn({ method: "GET" }).handler(
 );
 
 export const Route = createFileRoute("/statistics")({
-	head: () => ({
+	head: ({ loaderData }) => ({
 		meta: [
 			{ title },
 			{ name: "description", content: description },
@@ -58,7 +58,12 @@ export const Route = createFileRoute("/statistics")({
 				{ name: "Home", path: "/" },
 				{ name: "AI search statistics", path: "/statistics" },
 			]),
-			itemListJsonLd(stats.map((stat) => ({ name: `${stat.value}: ${stat.claim}`, path: `/blog/${stat.slug}` }))),
+			itemListJsonLd(
+				(loaderData?.resolved ?? []).map((stat) => ({
+					name: `${stat.value}: ${stat.claim}`,
+					path: `/blog/${stat.slug}`,
+				})),
+			),
 		],
 	}),
 	loader: async () => await loadStats(),

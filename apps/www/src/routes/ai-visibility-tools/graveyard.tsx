@@ -22,15 +22,26 @@ const description =
 const path = "/ai-visibility-tools/graveyard";
 
 // A rounded count reads as prose; the exact number changes every time we add a tool.
-const roundedCount = (() => {
+// Computed on demand so the tool data stays out of the client entry bundle.
+function roundedCount() {
 	const n = graveyardTools.length;
 	const rounded = Math.round(n / 10) * 10;
 	if (rounded > n) return `Nearly ${rounded}`;
 	if (rounded < n) return `More than ${rounded}`;
 	return `${n}`;
-})();
+}
 
-const lead = `${roundedCount} AI visibility tools have disappeared in the last two years. Most shut down, and the rest pivoted to something else or were bought and folded into another product. When a tracker disappears, its customers have to adjust to a new system or start from scratch.`;
+function lead() {
+	return `${roundedCount()} AI visibility tools have disappeared in the last two years. Most shut down, and the rest pivoted to something else or were bought and folded into another product. When a tracker disappears, its customers have to adjust to a new system or start from scratch.`;
+}
+
+function graveyardItems() {
+	return graveyardTools.map((c) => ({
+		name: c.name,
+		path: hasComparisonPage(c) ? `/ai-visibility-tools/${getComparisonSlug(c)}` : undefined,
+		description: c.fate?.summary,
+	}));
+}
 
 const FATE_LABEL: Record<GraveyardFate, string> = {
 	"shut-down": "Shut Down",
@@ -90,7 +101,8 @@ const FAQS: FaqItem[] = [
 ];
 
 export const Route = createFileRoute("/ai-visibility-tools/graveyard")({
-	head: () => ({
+	loader: () => ({ items: graveyardItems() }),
+	head: ({ loaderData }) => ({
 		meta: [{ title }, { name: "description", content: description }, ...ogMeta({ title, description, path })],
 		links: [{ rel: "canonical", href: canonicalUrl(path) }],
 		scripts: [
@@ -99,13 +111,7 @@ export const Route = createFileRoute("/ai-visibility-tools/graveyard")({
 				{ name: "AI Visibility Tool Directory", path: "/ai-visibility-tools" },
 				{ name: "AEO Graveyard", path },
 			]),
-			itemListJsonLd(
-				graveyardTools.map((c) => ({
-					name: c.name,
-					path: hasComparisonPage(c) ? `/ai-visibility-tools/${getComparisonSlug(c)}` : undefined,
-					description: c.fate?.summary,
-				})),
-			),
+			itemListJsonLd(loaderData?.items ?? []),
 			faqJsonLd(FAQS),
 		],
 	}),
@@ -195,7 +201,7 @@ function GraveyardPage() {
 			<Navbar />
 			<main>
 				<DirectoryBackLink />
-				<DirectoryHero title="The AEO Graveyard" lead={lead}>
+				<DirectoryHero title="The AEO Graveyard" lead={lead()}>
 					<div className="max-w-3xl border-l-2 border-blue-600 pl-4 text-sm text-zinc-600">
 						<p className="font-medium text-zinc-950">Keep a Copy of Your History</p>
 						<p className="mt-1">

@@ -9,20 +9,23 @@ const title = "Compare AI Visibility Tools Head-to-Head · CiteRank.com";
 const description =
 	"Head-to-head comparisons of the leading AI visibility platforms and SEO suites (Profound, Peec AI, Ahrefs Brand Radar, HubSpot AEO, Semrush, Scrunch, and more), feature by feature, with CiteRank.com included for reference.";
 
-const setItems = compareSets.map((tools) => ({
-	name: tools.map((t) => t.name).join(" vs "),
-	path: `/ai-visibility-tools/compare/${compareSetSlug(tools)}`,
-}));
+/* Built on demand so the tool data stays out of the client entry bundle. */
+function setItems() {
+	return compareSets.map((tools) => ({
+		name: tools.map((t) => t.name).join(" vs "),
+		path: `/ai-visibility-tools/compare/${compareSetSlug(tools)}`,
+	}));
+}
 
-const pairItems = comparePairs.map(([a, b]) => ({
-	name: `${a.name} vs ${b.name}`,
-	path: `/ai-visibility-tools/compare/${comparePairSlug(a, b)}`,
-}));
-
-const items = [...setItems, ...pairItems];
+function pairItems() {
+	return comparePairs.map(([a, b]) => ({
+		name: `${a.name} vs ${b.name}`,
+		path: `/ai-visibility-tools/compare/${comparePairSlug(a, b)}`,
+	}));
+}
 
 export const Route = createFileRoute("/ai-visibility-tools/compare/")({
-	loader: () => ({ items }),
+	loader: () => ({ items: [...setItems(), ...pairItems()] }),
 	head: ({ loaderData }) => ({
 		meta: [
 			{ title },
@@ -54,7 +57,7 @@ function CompareHub() {
 				/>
 				<DirectorySection title="Compare Several at Once">
 					<ul className="grid gap-3 sm:grid-cols-2">
-						{setItems.map((item) => (
+						{setItems().map((item) => (
 							<li key={item.path}>
 								<a
 									href={item.path}
@@ -68,7 +71,7 @@ function CompareHub() {
 				</DirectorySection>
 				<DirectorySection title="Pick a Matchup">
 					<ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-						{pairItems.map((item) => (
+						{pairItems().map((item) => (
 							<li key={item.path}>
 								<a
 									href={item.path}
