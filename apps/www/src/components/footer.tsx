@@ -4,7 +4,12 @@ import { externalRel } from "@/lib/external-link";
 
 type FooterLink = { label: string; href: string; external?: boolean };
 
-const TRADE_MARK_URL = "https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00004399266";
+const COMPANY = "Danx Digital Limited";
+
+const TRADEMARKS = [
+	{ name: "CiteRank", href: "https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00004430998" },
+	{ name: "CiteRank.com", href: "https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00004399266" },
+];
 
 const legalLinks = [
 	{ label: "Terms", href: "/legal/terms" },
@@ -94,16 +99,8 @@ export function Footer() {
 				<div className="flex flex-col gap-4 border-t border-zinc-200/80 py-6 text-xs text-zinc-500 md:flex-row md:items-start md:justify-between">
 					<div className="flex max-w-3xl flex-col gap-3">
 						<p>
-							&copy; {new Date().getFullYear()} CiteRank.com (
-							<a
-								href={TRADE_MARK_URL}
-								target="_blank"
-								rel={externalRel(TRADE_MARK_URL)}
-								className="underline underline-offset-2 hover:text-zinc-950"
-							>
-								Registered trademark
-							</a>
-							)
+							&copy; {new Date().getFullYear()} {COMPANY}. <TrademarkLink {...TRADEMARKS[0]} /> and{" "}
+							<TrademarkLink {...TRADEMARKS[1]} /> are registered trademarks of {COMPANY}.
 						</p>
 						<nav aria-label="Legal" className="flex flex-wrap items-center gap-x-4 gap-y-2">
 							{legalLinks.map((link) => (
@@ -129,6 +126,20 @@ export function Footer() {
 				</svg>
 			</div>
 		</footer>
+	);
+}
+
+/* Each mark links to its own UK IPO record. */
+function TrademarkLink({ name, href }: { name: string; href: string }) {
+	return (
+		<a
+			href={href}
+			target="_blank"
+			rel={externalRel(href)}
+			className="underline decoration-zinc-300 underline-offset-2 transition-colors hover:text-zinc-950 hover:decoration-zinc-500"
+		>
+			{name}
+		</a>
 	);
 }
 
