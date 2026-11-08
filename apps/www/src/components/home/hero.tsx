@@ -28,7 +28,7 @@ function titleWords(title: string) {
 }
 
 const DEFAULT_LEDE =
-	"CiteRank.com is the AI visibility tracker and AI search agency for AEO and GEO. See how ChatGPT, Claude, Gemini and nine other AI apps talk about your brand, which sources they trust, and what to do to get recommended.";
+	"CiteRank.com is the AI visibility tracker and AI search agency for AEO and GEO. See how ChatGPT, Claude, Gemini and nine other AI apps talk about your brand and what to fix. Fix it yourself or hire our agency.";
 
 /** Landing pages for a single audience reuse the homepage hero with their own pitch. */
 export function Hero({
