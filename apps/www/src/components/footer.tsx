@@ -100,7 +100,7 @@ export function Footer() {
 					<div className="flex max-w-3xl flex-col gap-3">
 						<p>
 							&copy; {new Date().getFullYear()} {COMPANY}. <Trademark {...TRADEMARKS[0]} /> and{" "}
-							<Trademark {...TRADEMARKS[1]} /> are registered trademarks.
+							<Trademark {...TRADEMARKS[1]} /> are registered UK trade marks.
 						</p>
 						<nav aria-label="Legal" className="flex flex-wrap items-center gap-x-4 gap-y-2">
 							{legalLinks.map((link) => (
