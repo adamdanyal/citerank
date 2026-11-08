@@ -117,6 +117,7 @@ export function Footer() {
 			   The viewBox is the ink box of "CiteRank.com" at 100px in the heading font, so it stays edge to edge in any font. */}
 			<div aria-hidden="true" className="mx-auto max-w-6xl px-4 pt-4 pb-24 md:px-6 md:pb-10">
 				<svg
+					aria-hidden="true"
 					viewBox="4 0 630 79"
 					className="block w-full select-none fill-zinc-300 [mask-image:linear-gradient(to_bottom,black,transparent_92%)]"
 				>

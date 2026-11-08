@@ -122,7 +122,9 @@ export function ProductDemo() {
 		});
 		if (ref.current) observer.observe(ref.current);
 		const timer = setInterval(() => {
-			if (visible) show((indexRef.current + 1) % PAGES.length);
+			if (!visible) return;
+			setPrevious(indexRef.current);
+			setIndex((indexRef.current + 1) % PAGES.length);
 		}, HOLD_MS);
 		return () => {
 			clearInterval(timer);
