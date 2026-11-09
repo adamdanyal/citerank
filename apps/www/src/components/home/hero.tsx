@@ -33,7 +33,7 @@ const DEFAULT_LEDE =
 /** Landing pages for a single audience reuse the homepage hero with their own pitch. */
 export function Hero({
 	badge = BADGE,
-	title = "Track Your Brand in AI Search",
+	title = "Track your brand in AI search",
 	lede = DEFAULT_LEDE,
 	from = "marketing-hero",
 }: {

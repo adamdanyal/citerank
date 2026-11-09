@@ -12,7 +12,7 @@ export function Demo() {
 		<section className="bg-white">
 			<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:items-center lg:gap-16 lg:py-24">
 				<Reveal className="lg:col-span-5">
-					<h2 className="heading-2 text-zinc-950">Try the Real Product</h2>
+					<h2 className="heading-2 text-zinc-950">Try the real product</h2>
 					<p className="body-8 mt-6 text-zinc-700">
 						No slides and no sales call. Click through every page of the real product before you pay.
 					</p>

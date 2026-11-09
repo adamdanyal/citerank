@@ -16,7 +16,7 @@ const legalLinks = [
 	{ label: "Privacy", href: "/legal/privacy" },
 	{ label: "Cookies", href: "/legal/cookies" },
 	{ label: "Subprocessors", href: "/legal/subprocessors" },
-	{ label: "Acceptable Use", href: "/legal/acceptable-use" },
+	{ label: "Acceptable use", href: "/legal/acceptable-use" },
 ];
 
 const cols: { heading: string; links: FooterLink[] }[] = [
@@ -25,7 +25,7 @@ const cols: { heading: string; links: FooterLink[] }[] = [
 		links: [
 			{ label: "Features", href: "/features" },
 			{ label: "Pricing", href: "/pricing" },
-			{ label: "AI Search Agency", href: "/agency" },
+			{ label: "AI search agency", href: "/agency" },
 		],
 	},
 	{
@@ -33,7 +33,7 @@ const cols: { heading: string; links: FooterLink[] }[] = [
 		links: [
 			{ label: "Blog", href: "/blog" },
 			{ label: "Documentation", href: "/docs" },
-			{ label: "API Reference", href: "/docs/api" },
+			{ label: "API reference", href: "/docs/api" },
 			{ label: "Support", href: "/support" },
 		],
 	},
@@ -42,17 +42,17 @@ const cols: { heading: string; links: FooterLink[] }[] = [
 		links: [
 			{ label: "What is AEO?", href: "/answer-engine-optimization" },
 			{ label: "What is GEO?", href: "/generative-engine-optimization" },
-			{ label: "AEO Glossary", href: "/glossary" },
-			{ label: "AI Search Guides", href: "/ai-search" },
-			{ label: "AI Search Statistics", href: "/statistics" },
-			{ label: "AEO by Industry", href: "/aeo-for" },
+			{ label: "AEO glossary", href: "/glossary" },
+			{ label: "AI search guides", href: "/ai-search" },
+			{ label: "AI search statistics", href: "/statistics" },
+			{ label: "AEO by industry", href: "/aeo-for" },
 		],
 	},
 	{
 		heading: "Tools",
 		links: [
-			{ label: "Tool Directory", href: "/ai-visibility-tools" },
-			{ label: "Compare Tools", href: "/ai-visibility-tools/compare" },
+			{ label: "Tool directory", href: "/ai-visibility-tools" },
+			{ label: "Compare tools", href: "/ai-visibility-tools/compare" },
 		],
 	},
 	{

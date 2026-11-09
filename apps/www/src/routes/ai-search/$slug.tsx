@@ -89,7 +89,7 @@ function EnginePage() {
 							))}
 						</div>
 
-						<h2 className="font-heading mt-12 text-2xl text-zinc-950">How to Improve Your Odds</h2>
+						<h2 className="font-heading mt-12 text-2xl text-zinc-950">How to improve your odds</h2>
 						<ol className="mt-6 space-y-5">
 							{engine.steps.map((step, i) => (
 								<li key={step.name} className="flex gap-4">
@@ -119,7 +119,7 @@ function EnginePage() {
 
 						{related.length > 0 && (
 							<div className="mt-10">
-								<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Other Engines</h2>
+								<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Other engines</h2>
 								<div className="mt-3 flex flex-wrap gap-2">
 									{related.map((r) => (
 										<a

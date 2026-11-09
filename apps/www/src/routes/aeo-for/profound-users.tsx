@@ -14,7 +14,7 @@ import { Navbar } from "@/components/navbar";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
 const PATH = "/aeo-for/profound-users";
-const TITLE = "The Simpler Profound Alternative";
+const TITLE = "The simpler Profound alternative";
 const META_TITLE = "Profound Alternative: Simpler, Self-Serve AI Visibility · CiteRank.com";
 const META_DESCRIPTION = `Switching from Profound? CiteRank.com tracks your brand in ChatGPT, Perplexity, Gemini and AI Overviews up to 4× daily, with no sales call, no credit packs, and API access on every plan. From $${CLOUD_ENTRY_PRICE_USD}/mo.`;
 const FROM = "marketing-profound-users-hero";
@@ -27,27 +27,27 @@ const FOUR_TIMES_DAILY_FROM = PLANS.basic;
 
 const REASONS = [
 	{
-		name: "No Bloat",
+		name: "No bloat",
 		text: "Profound grew into a suite: content generation, shopping tracking, crawler analytics. CiteRank.com's tracker does one job, AI visibility, and every screen is about it.",
 	},
 	{
-		name: "Not Complicated",
+		name: "Not complicated",
 		text: "Are we showing up, who is beating us, what changed, and what to fix. Every view answers one of those in seconds, so checking in daily is not a chore.",
 	},
 	{
-		name: "More Data for the Price",
+		name: "More data for the price",
 		text: `From the $${FOUR_TIMES_DAILY_FROM.monthlyPriceUsd}/mo ${FOUR_TIMES_DAILY_FROM.name} plan, CiteRank.com asks every prompt ${FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× a day. AI answers vary run to run, so more samples means numbers you can trust.`,
 	},
 	{
-		name: "Fully Self-Serve",
+		name: "Fully self-serve",
 		text: "Pick a plan, pay by card, and start tracking. There is no demo to book, no procurement cycle, and no sales rep between you and your data.",
 	},
 	{
-		name: "No Paywall Maze",
+		name: "No paywall maze",
 		text: "No credit packs to top up and no API held back for Enterprise. Each plan is a number of brands, prompts, and platforms, and the rest of the product comes with it.",
 	},
 	{
-		name: "An Agency That Does the Work",
+		name: "An agency that does the work",
 		text: "When you want the work done for you, CiteRank.com's AI search agency writes the missing comparison pages, gets you onto the review sites AI cites, and reports the AI answers before and after each month.",
 	},
 ];
@@ -55,37 +55,37 @@ const REASONS = [
 // What tryprofound.com/pricing listed as of October 2026: a 7-day trial, then Enterprise through sales.
 const COMPARISON: { label: string; ours: string; profound: string; profoundHas?: boolean }[] = [
 	{
-		label: "Getting Started",
+		label: "Getting started",
 		ours: `Sign up and pay by card, from $${CLOUD_ENTRY_PRICE_USD}/mo`,
 		profound: "7-day trial, then a call with sales",
 	},
-	{ label: "Published Pricing", ours: "Every plan, on the pricing page", profound: "Enterprise is custom-quoted" },
+	{ label: "Published pricing", ours: "Every plan, on the pricing page", profound: "Enterprise is custom-quoted" },
 	{
-		label: "How Often Answers Are Checked",
+		label: "How often answers are checked",
 		ours: `Up to ${FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× daily`,
 		profound: "Daily",
 		profoundHas: true,
 	},
-	{ label: "API and MCP Access", ours: "Every plan", profound: "API on Enterprise only" },
+	{ label: "API and MCP access", ours: "Every plan", profound: "API on Enterprise only" },
 	{
-		label: "Usage Credits",
+		label: "Usage credits",
 		ours: "None. Plans are priced by prompts and platforms",
 		profound: "Credit allotments, more via sales",
 	},
-	{ label: "Unlimited Seats", ours: "Every plan", profound: "Yes", profoundHas: true },
+	{ label: "Unlimited seats", ours: "Every plan", profound: "Yes", profoundHas: true },
 ];
 
 const STEPS = [
 	{
-		name: "Create an Account",
+		name: "Create an account",
 		text: "Sign up and choose a plan. No call, no contract, cancel any time.",
 	},
 	{
-		name: "Paste Your Prompt List",
+		name: "Paste your prompt list",
 		text: "Copy the prompts you track in Profound and paste them in, one per line. Duplicates are skipped for you.",
 	},
 	{
-		name: "Add Your Competitors",
+		name: "Add your competitors",
 		text: "Name the rivals you benchmark against, and CiteRank.com tracks their share of voice and citations next to yours.",
 	},
 ];
@@ -151,7 +151,7 @@ function Reasons() {
 		<section className="border-t border-zinc-200/80 bg-zinc-50/70">
 			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
 				<SectionHeading
-					title="Everything You Check in Profound, Without the Rest"
+					title="Everything you check in Profound, without the rest"
 					lede="Switch to CiteRank.com when the tool you bought for a weekly visibility number turns into a suite, a sales process, and a credit balance."
 				/>
 				<ul className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -187,7 +187,7 @@ function Comparison() {
 		<section className="border-t border-zinc-200/80 bg-white">
 			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
 				<SectionHeading
-					title="CiteRank.com and Profound, Side by Side"
+					title="CiteRank.com and Profound, side by side"
 					lede="How the two compare on the things that decide what you pay and how quickly you get going."
 				/>
 				<div className={`mt-12 overflow-x-auto ${CARD}`}>
@@ -246,7 +246,7 @@ function Switching() {
 		<section className="border-t border-zinc-200/80 bg-zinc-50/70">
 			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
 				<SectionHeading
-					title="Switch in an Afternoon"
+					title="Switch in an afternoon"
 					lede={`Bring the prompts you already track, and CiteRank.com starts checking them up to ${FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× a day across the engines you pick.`}
 				/>
 				<ol className="mt-12 grid gap-4 md:grid-cols-3">

@@ -17,7 +17,7 @@ export function AgencyTeaser() {
 			<div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 md:px-6 lg:grid-cols-12 lg:gap-12 lg:py-28">
 				<div className="lg:col-span-5">
 					<SectionHeading
-						title="Want It Done for You?"
+						title="Want it done for you?"
 						lede="The tracker ranks what to do next. Our AI search agency does that work every month, and a monthly report shows every piece of work, the question it targets, and the AI answers before and after."
 					/>
 					<Link

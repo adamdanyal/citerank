@@ -41,7 +41,7 @@ export function Compare() {
 		<section className="bg-paper">
 			<Container className="py-20 lg:py-24">
 				<Reveal className="mx-auto max-w-3xl text-center">
-					<h2 className="heading-2 text-zinc-950">What Every Plan Checks</h2>
+					<h2 className="heading-2 text-zinc-950">What every plan checks</h2>
 					<p className="body-8 mt-6 text-zinc-700">{shared.pickHeading} per brand. Same menu on every plan.</p>
 				</Reveal>
 				<div className="mt-12 grid gap-5 lg:grid-cols-12">

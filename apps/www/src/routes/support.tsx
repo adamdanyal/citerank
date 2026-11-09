@@ -114,10 +114,10 @@ const RESOURCES = [
 	{ href: "/docs", label: "Documentation", detail: "Setup, features and integration guides." },
 	{
 		href: "/docs/api/mcp",
-		label: "MCP Server",
+		label: "MCP server",
 		detail: "Connecting CiteRank.com to ChatGPT, Claude, Cursor and other clients.",
 	},
-	{ href: "/docs/api", label: "API Reference", detail: "Every endpoint, with examples." },
+	{ href: "/docs/api", label: "API reference", detail: "Every endpoint, with examples." },
 ];
 
 function SupportPage() {
@@ -129,7 +129,7 @@ function SupportPage() {
 					<Container className="pt-32 pb-16 lg:pt-40 lg:pb-20">
 						<div className="max-w-3xl">
 							<p className="caption-3 text-blue-800">Support</p>
-							<h1 className="heading-1 mt-6 text-zinc-950">How Can We Help?</h1>
+							<h1 className="heading-1 mt-6 text-zinc-950">How can we help?</h1>
 							<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
 								For your account, billing, the MCP server or the AI search agency, here is how to reach the team.
 							</p>
@@ -142,7 +142,7 @@ function SupportPage() {
 						<ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 							<ContactCard
 								icon={MessageCircle}
-								heading="Chat With Us"
+								heading="Chat with us"
 								body="The fastest way to reach the team, for anything from sign-in trouble to questions about your data."
 								action={<StartChatButton />}
 								delay={0}
@@ -160,7 +160,7 @@ function SupportPage() {
 							/>
 							<ContactCard
 								icon={CalendarDays}
-								heading="Book a Call"
+								heading="Book a call"
 								body="Walk through your results, or the work our AI search agency would do, with someone from the team."
 								action={
 									<Link to="/agency" className={SECONDARY_BUTTON}>
@@ -183,7 +183,7 @@ function SupportPage() {
 							/>
 							<ContactCard
 								icon={Bug}
-								heading="Bugs and Feature Requests"
+								heading="Bugs and feature requests"
 								body="Report bugs and request features by email, and we'll follow up with you after a fix or release."
 								action={
 									<a
@@ -213,7 +213,7 @@ function SupportPage() {
 				<section className="bg-paper-2">
 					<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
 						<Reveal className="lg:col-span-4">
-							<h2 className="heading-3 text-zinc-950">Before You Write</h2>
+							<h2 className="heading-3 text-zinc-950">Before you write</h2>
 							<p className="body-6 mt-4 text-zinc-600">Most setup and integration questions are answered here.</p>
 						</Reveal>
 						<ul className="grid gap-4 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-3">

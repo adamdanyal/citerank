@@ -76,7 +76,7 @@ function StatisticsPage() {
 		<div className="min-h-screen bg-white antialiased">
 			<Navbar />
 			<main>
-				<DirectoryHero title="AI Search Statistics" lead={lead} />
+				<DirectoryHero title="AI search statistics" lead={lead} />
 
 				<section className="bg-white py-16 lg:py-20">
 					<div className="mx-auto max-w-6xl px-4 md:px-6">

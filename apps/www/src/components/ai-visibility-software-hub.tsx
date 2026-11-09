@@ -8,23 +8,23 @@ const LINK = "font-medium text-blue-700 underline underline-offset-2 hover:text-
 
 const FEATURES = [
 	{
-		title: "Cross-Platform Tracking",
+		title: "Cross-platform tracking",
 		body: "Monitors your brand across the engines that matter: ChatGPT, Perplexity, Gemini, Copilot, and Google AI Overviews, all at once.",
 	},
 	{
-		title: "Mention & Citation Analysis",
+		title: "Mention & citation analysis",
 		body: "Separates being named in an answer from being cited with a link, so you can see which content earns traffic.",
 	},
 	{
-		title: "Prompt Monitoring",
+		title: "Prompt monitoring",
 		body: "Runs a defined set of prompts on a schedule, because a single check is a snapshot and AI answers shift over time.",
 	},
 	{
-		title: "Competitor Benchmarking",
+		title: "Competitor benchmarking",
 		body: "Shows your share of voice against named rivals on the same prompts, the most actionable metric in AI visibility.",
 	},
 	{
-		title: "Sentiment & Accuracy",
+		title: "Sentiment & accuracy",
 		body: "Flags when an engine describes your brand incorrectly, so you can correct the record before buyers see it.",
 	},
 	{
@@ -42,7 +42,7 @@ export function AiVisibilitySoftwareHub() {
 			<section className="border-b border-zinc-200 bg-white py-12 lg:py-20">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
 					<div className="max-w-3xl">
-						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">What AI Visibility Software Does</h2>
+						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">What AI visibility software does</h2>
 						<div className="mt-8 space-y-6 text-[1.0625rem] leading-relaxed text-zinc-600">
 							<p>
 								AI visibility software tracks how your brand appears in AI search: how often it's mentioned, cited, and
@@ -69,7 +69,7 @@ export function AiVisibilitySoftwareHub() {
 			<section className="border-b border-zinc-200 bg-zinc-50 py-12 lg:py-20">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
 					<div className="max-w-3xl">
-						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Why AI Visibility Matters Now</h2>
+						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Why AI visibility matters now</h2>
 						<div className="mt-8 space-y-6 text-[1.0625rem] leading-relaxed text-zinc-600">
 							<p>
 								Search is shifting from a list of blue links to a synthesized answer. Google now shows{" "}
@@ -96,7 +96,7 @@ export function AiVisibilitySoftwareHub() {
 			<section className="border-b border-zinc-200 bg-white py-12 lg:py-20">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
 					<div className="max-w-3xl">
-						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Key Features to Look For</h2>
+						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Key features to look for</h2>
 						<p className="mt-6 text-[1.0625rem] leading-relaxed text-zinc-600">
 							The category is young and tools vary widely. These are the capabilities that separate a genuine AI
 							visibility platform from a basic prompt checker.
@@ -117,7 +117,7 @@ export function AiVisibilitySoftwareHub() {
 			<section className="border-b border-zinc-200 bg-zinc-50 py-12 lg:py-20">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
 					<div className="max-w-3xl">
-						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">CiteRank.com's Approach</h2>
+						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">CiteRank.com's approach</h2>
 						<div className="mt-8 space-y-6 text-[1.0625rem] leading-relaxed text-zinc-600">
 							<p>
 								CiteRank.com is an AI visibility tracker and AI search agency. It tracks mentions, citations, and

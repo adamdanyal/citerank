@@ -57,8 +57,8 @@ export interface ProductFeature {
 export const productFeatures: ProductFeature[] = [
 	{
 		slug: "ai-visibility-tracking",
-		name: "AI Visibility Tracking",
-		title: "AI Visibility Tracking",
+		name: "AI visibility tracking",
+		title: "AI visibility tracking",
 		metaTitle: "AI Visibility Tracking: Monitor Your Brand in ChatGPT & AI Search · CiteRank.com",
 		metaDescription:
 			"Track how often ChatGPT, Google AI Overviews, Perplexity, Gemini, and other AI engines mention your brand, per prompt and per model, and how that changes over time.",
@@ -69,25 +69,25 @@ export const productFeatures: ProductFeature[] = [
 		secondaryGraphic: "trend",
 		steps: [
 			{
-				name: "Track the Prompts That Matter",
+				name: "Track the prompts that matter",
 				text: "Add the questions your buyers ask AI, or let CiteRank.com suggest them from your website. Each prompt runs against every engine you track, on a schedule.",
 			},
 			{
-				name: "See Where You Show Up",
+				name: "See where you show up",
 				text: "Filter by AI model, tags, and time range to see your visibility score for every prompt, with trend lines comparing your brand against competitors.",
 			},
 			{
-				name: "Watch the Trend",
+				name: "Watch the trend",
 				text: "Look back a week, a month, a year, or over all time to spot the impact of content changes and market shifts.",
 			},
 		],
 		metrics: [
 			{
-				term: "AI Visibility",
+				term: "AI visibility",
 				definition: "The share of AI answers to your prompts that mention your brand.",
 			},
 			{
-				term: "Share of Voice",
+				term: "Share of voice",
 				definition: "Your brand's share of every mention of you and your tracked competitors.",
 			},
 			{
@@ -100,11 +100,11 @@ export const productFeatures: ProductFeature[] = [
 					"Where your brand comes among the tracked companies an answer names, on average. 1 means named first.",
 			},
 			{
-				term: "Per-Prompt Visibility",
+				term: "Per-prompt visibility",
 				definition: "Each prompt's score and trend, so you can see which questions you win and which you lose.",
 			},
 			{
-				term: "Visibility by Model",
+				term: "Visibility by model",
 				definition: "You and every tracked competitor, side by side for each AI engine.",
 			},
 		],
@@ -115,15 +115,15 @@ export const productFeatures: ProductFeature[] = [
 		],
 		why: [
 			{
-				name: "The Real Apps, Plus APIs",
+				name: "The real apps, plus APIs",
 				text: "ChatGPT, Google AI Overviews, AI Mode, Gemini, Perplexity, and Copilot are scraped from the interfaces your customers use, with direct APIs for everything else.",
 			},
 			{
-				name: "Open Methodology",
+				name: "Open methodology",
 				text: "How a mention is counted is documented for anyone to read, so every number can be checked rather than taken on trust.",
 			},
 			{
-				name: "Every Answer Behind the Number",
+				name: "Every answer behind the number",
 				text: "Click through from any score to the exact responses it was built from.",
 			},
 		],
@@ -164,8 +164,8 @@ export const productFeatures: ProductFeature[] = [
 	},
 	{
 		slug: "share-of-voice",
-		name: "Share of Voice",
-		title: "AI Share of Voice and Competitor Tracking",
+		name: "Share of voice",
+		title: "AI share of voice and competitor tracking",
 		metaTitle: "AI Share of Voice & Competitor Analysis for AI Search · CiteRank.com",
 		metaDescription:
 			"See how often AI engines mention you versus your competitors. CiteRank.com ranks every tracked company by share of voice, per model and over time.",
@@ -174,21 +174,21 @@ export const productFeatures: ProductFeature[] = [
 		graphic: "share-of-voice",
 		steps: [
 			{
-				name: "Add Your Competitors",
+				name: "Add your competitors",
 				text: "CiteRank.com suggests competitors from your website when you set up a brand. Add or edit them, with their own domains and aliases, any time.",
 			},
 			{
-				name: "See Who AI Names Most",
+				name: "See who AI names most",
 				text: "The leaderboard ranks your brand against every competitor by mentions, prompts, and share, for any model, tag, or time range.",
 			},
 			{
-				name: "Track the Race Over Time",
+				name: "Track the race over time",
 				text: "Share of voice trends chart you against your top competitors, so you can see who is gaining ground and when it started.",
 			},
 		],
 		metrics: [
 			{
-				term: "Share of Voice",
+				term: "Share of voice",
 				definition: "Your brand's share of every mention of you and your tracked competitors.",
 			},
 			{
@@ -200,11 +200,11 @@ export const productFeatures: ProductFeature[] = [
 				definition: "How many distinct prompts each company appeared in.",
 			},
 			{
-				term: "Share of Voice Trends",
+				term: "Share of voice trends",
 				definition: "You and your top competitors over time, ending on today's figure.",
 			},
 			{
-				term: "Competitors by Model",
+				term: "Competitors by model",
 				definition: "Visibility, share of voice, sentiment, and position for every tracked company on each AI engine.",
 			},
 		],
@@ -215,15 +215,15 @@ export const productFeatures: ProductFeature[] = [
 		],
 		why: [
 			{
-				name: "Competitors Judged Like You",
+				name: "Competitors judged like you",
 				text: "Competitor mentions go through the same name, alias, and domain matching and the same judging as yours, so the comparison is fair.",
 			},
 			{
-				name: "Edits Apply to the Past",
+				name: "Edits apply to the past",
 				text: "Add a competitor or change its aliases and CiteRank.com re-judges recent responses for that company in the background, so history stays comparable.",
 			},
 			{
-				name: "Every Engine Separately",
+				name: "Every engine separately",
 				text: "Share of voice in ChatGPT and in Google AI Overviews can tell very different stories. CiteRank.com shows both.",
 			},
 		],
@@ -264,8 +264,8 @@ export const productFeatures: ProductFeature[] = [
 	},
 	{
 		slug: "sentiment-analysis",
-		name: "Sentiment Analysis",
-		title: "AI Sentiment Analysis and Brand Mention Tracking",
+		name: "Sentiment analysis",
+		title: "AI sentiment analysis and brand mention tracking",
 		metaTitle: "AI Sentiment Analysis & Brand Mention Tracking · CiteRank.com",
 		metaDescription:
 			"See how ChatGPT and other AI engines describe your brand. CiteRank.com scores the sentiment of every answer that mentions you, beside each competitor, with the passages behind the score.",
@@ -276,42 +276,42 @@ export const productFeatures: ProductFeature[] = [
 		secondaryGraphic: "responses",
 		steps: [
 			{
-				name: "Catch Every Real Mention",
+				name: "Catch every real mention",
 				text: "CiteRank.com matches your brand's name, aliases, and domains, then confirms each answer is really about your brand, not a word that means something else.",
 			},
 			{
-				name: "See How AI Describes You",
+				name: "See how AI describes you",
 				text: "Each answer that names you is classed as positive, neutral, mixed, or negative, and scored beside your competitors and per AI engine.",
 			},
 			{
-				name: "Read the Passages",
+				name: "Read the passages",
 				text: "Open the clearest praise and criticism, linked to the prompt they came from, or filter every response down to the negative ones.",
 			},
 		],
 		metrics: [
 			{
-				term: "Sentiment Score",
+				term: "Sentiment score",
 				definition:
 					"0 to 100. Positive answers count 100, neutral and mixed 50, negative 0. Above 50, praise outweighs criticism.",
 			},
 			{
-				term: "Sentiment Split",
+				term: "Sentiment split",
 				definition: "How the answers that mention you divide into positive, neutral, mixed, and negative.",
 			},
 			{
-				term: "Sentiment Trends",
+				term: "Sentiment trends",
 				definition: "Your score over time beside your top competitors'.",
 			},
 			{
-				term: "Sentiment by Model",
+				term: "Sentiment by model",
 				definition: "The score for you and each tracked competitor, per AI engine.",
 			},
 			{
-				term: "What AI Says About You",
+				term: "What AI says about you",
 				definition: "The passages behind the clearest praise and criticism, one per prompt.",
 			},
 			{
-				term: "Sentiment by Prompt",
+				term: "Sentiment by prompt",
 				definition: "Each prompt's score over the period, with links to its positive and negative answers.",
 			},
 		],
@@ -322,15 +322,15 @@ export const productFeatures: ProductFeature[] = [
 		],
 		why: [
 			{
-				name: "Neutral Isn't Negative",
+				name: "Neutral isn't negative",
 				text: "Most answers state facts rather than opinions. A factual mention scores 50, so it never counts against you.",
 			},
 			{
-				name: "Evidence Behind the Number",
+				name: "Evidence behind the number",
 				text: "Click a company's badge on any response to highlight the passage its sentiment was read from.",
 			},
 			{
-				name: "Mentions Judged, Not Keyword-Matched",
+				name: "Mentions judged, not keyword-matched",
 				text: "A language model built for judging text confirms each mention, so 'an apple a day' doesn't count for a brand called Apple.",
 			},
 		],
@@ -372,8 +372,8 @@ export const productFeatures: ProductFeature[] = [
 	},
 	{
 		slug: "citation-tracking",
-		name: "Citation Tracking",
-		title: "AI Citation Tracking",
+		name: "Citation tracking",
+		title: "AI citation tracking",
 		metaTitle: "AI Citation Tracking: See Which Sources AI Engines Cite · CiteRank.com",
 		metaDescription:
 			"See which domains and URLs ChatGPT, Perplexity, and Google AI cite for your prompts, which of your own pages get cited, and how sources shift over time.",
@@ -383,43 +383,43 @@ export const productFeatures: ProductFeature[] = [
 		graphic: "citations",
 		steps: [
 			{
-				name: "See What AI Trusts",
+				name: "See what AI trusts",
 				text: "Rank the domains and URLs AI engines cite most for your prompts, filtered by model, tags, and time range.",
 			},
 			{
-				name: "Find Your Own Pages",
+				name: "Find your own pages",
 				text: "See your brand's share of all citations and exactly which of your pages are cited, and for which prompts.",
 			},
 			{
-				name: "Catch the Shifts",
+				name: "Catch the shifts",
 				text: "Track new and dropped pages and domains, and the prompts where competitors are cited but your brand isn't.",
 			},
 		],
 		metrics: [
 			{
-				term: "Brand Citation Share",
+				term: "Brand citation share",
 				definition: "The percentage of all citations that link to your brand's domains.",
 			},
 			{
-				term: "Top Domains and URLs",
+				term: "Top domains and URLs",
 				definition: "The sources AI engines cite most for your prompts, with each page's title and type.",
 			},
 			{
-				term: "Source Categories",
+				term: "Source categories",
 				definition:
 					"Citations grouped as brand, competitor, editorial, reviews, e-commerce, social, developer, PR, reference, and institutional.",
 			},
 			{
-				term: "Page Types",
+				term: "Page types",
 				definition:
 					"Whether cited pages are articles, listicles, comparisons, reviews, how-tos, docs, forums, videos, and more.",
 			},
 			{
-				term: "Recent Changes",
+				term: "Recent changes",
 				definition: "New and dropped pages, and new and dropped domains.",
 			},
 			{
-				term: "Content Gaps",
+				term: "Content gaps",
 				definition: "Prompts where competitors are cited but your brand isn't.",
 			},
 			{
@@ -434,15 +434,15 @@ export const productFeatures: ProductFeature[] = [
 		],
 		why: [
 			{
-				name: "Categorized for You",
+				name: "Categorized for you",
 				text: "Every cited domain is sorted into a category from a maintained list, so you see the shape of your sources without tagging them by hand.",
 			},
 			{
-				name: "Counted Once per Answer",
+				name: "Counted once per answer",
 				text: "A page an answer cites twice counts once, and each prompt citing a page counts once, so popular pages don't inflate the totals.",
 			},
 			{
-				name: "From the Real Interfaces",
+				name: "From the real interfaces",
 				text: "Citations come from the scraped consumer apps where possible, which can cite differently from the same model's API.",
 			},
 		],
@@ -483,8 +483,8 @@ export const productFeatures: ProductFeature[] = [
 	},
 	{
 		slug: "query-fan-out",
-		name: "Query Fan-Out",
-		title: "Query Fan-Out Tracking",
+		name: "Query fan-out",
+		title: "Query fan-out tracking",
 		metaTitle: "Query Fan-Out Tracking: See the Searches Behind AI Answers · CiteRank.com",
 		metaDescription:
 			"AI engines turn one prompt into several web searches. CiteRank.com tracks the exact fan-out queries ChatGPT and other engines run for your prompts, and how they rewrite your wording.",
@@ -493,35 +493,35 @@ export const productFeatures: ProductFeature[] = [
 		graphic: "query-fan-out",
 		steps: [
 			{
-				name: "See Every Search",
+				name: "See every search",
 				text: "Open any prompt to see the web searches each engine ran while answering it, and how often each one recurred.",
 			},
 			{
-				name: "Find the Recurring Queries",
+				name: "Find the recurring queries",
 				text: "Top queries show the searches that come up again and again across all your prompts.",
 			},
 			{
-				name: "Learn How Engines Rewrite You",
+				name: "Learn how engines rewrite you",
 				text: "Query words show which words from your prompt engines keep, which they drop, and which they add, like 'best', a year, or 'vs'.",
 			},
 		],
 		metrics: [
 			{ term: "Queries", definition: "The distinct web searches engines ran for your prompts." },
 			{
-				term: "Average Fan-Out",
+				term: "Average fan-out",
 				definition: "Average searches per run, counting runs that issued at least one web search.",
 			},
 			{
-				term: "Search Prompt Runs",
+				term: "Search prompt runs",
 				definition: "How many times your prompts ran on engines configured with web search.",
 			},
 			{
-				term: "Runs With Known and Unknown Queries",
+				term: "Runs with known and unknown queries",
 				definition:
 					"Search runs that exposed their queries, and those where the engine didn't search or didn't reveal what it searched.",
 			},
 			{
-				term: "Added, Preserved, and Dropped Words",
+				term: "Added, preserved, and dropped words",
 				definition: "How engines rewrite your prompt wording on the way to a search.",
 			},
 		],
@@ -532,15 +532,15 @@ export const productFeatures: ProductFeature[] = [
 		],
 		why: [
 			{
-				name: "Straight From the Runs",
+				name: "Straight from the runs",
 				text: "Every figure comes from the searches recorded on real prompt runs, the same way for every provider.",
 			},
 			{
-				name: "Honest About Unknowns",
+				name: "Honest about unknowns",
 				text: "Some engines don't reveal their searches. CiteRank.com counts those runs separately instead of guessing what they searched for.",
 			},
 			{
-				name: "Only Real Rewrites",
+				name: "Only real rewrites",
 				text: "A search that repeats your prompt says nothing about how it was rewritten, so the page leaves those out.",
 			},
 		],
@@ -580,8 +580,8 @@ export const productFeatures: ProductFeature[] = [
 	},
 	{
 		slug: "prompt-tracking",
-		name: "Prompt Tracking",
-		title: "AI Prompt Tracking",
+		name: "Prompt tracking",
+		title: "AI prompt tracking",
 		metaTitle: "AI Prompt Tracking: Monitor the Questions Buyers Ask AI · CiteRank.com",
 		metaDescription:
 			"Track the prompts your buyers ask ChatGPT and other AI engines. CiteRank.com suggests prompts from your website, tags them, and keeps every answer for you to search and inspect.",
@@ -592,29 +592,29 @@ export const productFeatures: ProductFeature[] = [
 		secondaryGraphic: "responses",
 		steps: [
 			{
-				name: "Start From Your Website",
+				name: "Start from your website",
 				text: "Paste your site and CiteRank.com suggests domains, competitors, aliases, and tagged starter prompts. Ask for more suggestions any time; it skips what you already track.",
 			},
 			{
-				name: "Organize With Tags",
+				name: "Organize with tags",
 				text: "Tag prompts by topic, product, or persona, then filter every page in CiteRank.com by tag. Prompts that name your brand are marked branded automatically.",
 			},
 			{
-				name: "Inspect Every Answer",
+				name: "Inspect every answer",
 				text: "Open any prompt to see each engine's response, the brands it named and where, the searches it ran, and the sources it cited.",
 			},
 		],
 		metrics: [
 			{
-				term: "Per-Prompt Visibility",
+				term: "Per-prompt visibility",
 				definition: "How often answers to each prompt mention your brand, and the trend.",
 			},
 			{
-				term: "Branded and Unbranded",
+				term: "Branded and unbranded",
 				definition: "Whether a prompt names your brand, set automatically and overridable with a tag.",
 			},
 			{
-				term: "Brands Mentioned",
+				term: "Brands mentioned",
 				definition: "Each company an answer names, with its position and the answer's sentiment toward it.",
 			},
 			{
@@ -623,7 +623,7 @@ export const productFeatures: ProductFeature[] = [
 					"Every AI answer to your prompts, searchable by its text and filterable by prompt, model, and sentiment.",
 			},
 			{
-				term: "Prompt History",
+				term: "Prompt history",
 				definition: "Each prompt's mentions, web queries, citations, and responses over time, and when it runs next.",
 			},
 		],
@@ -634,15 +634,15 @@ export const productFeatures: ProductFeature[] = [
 		],
 		why: [
 			{
-				name: "Prompts You Can See and Edit",
+				name: "Prompts you can see and edit",
 				text: "Every prompt is plain text you control: add them one at a time or paste several at once, and pause or remove any of them.",
 			},
 			{
-				name: "Nothing Summarized Away",
+				name: "Nothing summarized away",
 				text: "Every response is stored and shown in full, so any score can be traced back to the answers behind it.",
 			},
 			{
-				name: "Same Data Over API and MCP",
+				name: "Same data over API and MCP",
 				text: "Create and update prompts, and read runs, from the API or an AI assistant connected over MCP.",
 			},
 		],
@@ -680,7 +680,7 @@ export const productFeatures: ProductFeature[] = [
 	{
 		slug: "aeo-recommendations",
 		name: "Opportunities",
-		title: "AEO Recommendations",
+		title: "AEO recommendations",
 		metaTitle: "AEO Recommendations: What to Do Next to Get Cited by AI · CiteRank.com",
 		metaDescription:
 			"CiteRank.com turns your tracked AI visibility and citation data into concrete opportunities: content to create, pages to refresh, sites to pitch, and communities to join.",
@@ -690,15 +690,15 @@ export const productFeatures: ProductFeature[] = [
 		graphic: "opportunities",
 		steps: [
 			{
-				name: "Read the Summary",
+				name: "Read the summary",
 				text: "A few plain bullets on where you stand: what's working, what's slipping, and where competitors lead.",
 			},
 			{
-				name: "Pick an Opportunity",
+				name: "Pick an opportunity",
 				text: "Recommendations are grouped into creation, existing content, outreach, and social, each with a plain-language reason.",
 			},
 			{
-				name: "Check the Evidence",
+				name: "Check the evidence",
 				text: "Every opportunity links to the prompts it's about, your pages cited for them, and the competitor pages cited instead.",
 			},
 		],
@@ -709,7 +709,7 @@ export const productFeatures: ProductFeature[] = [
 					"Net-new content to publish or earn, like comparisons, guides, and 'best of' angles for topics you're absent on.",
 			},
 			{
-				term: "Existing Content",
+				term: "Existing content",
 				definition: "Pages already getting cited that are slipping, or could win the mention with a refresh.",
 			},
 			{
@@ -721,7 +721,7 @@ export const productFeatures: ProductFeature[] = [
 				definition: "The Reddit, YouTube, and forum conversations AI engines pull from.",
 			},
 			{
-				term: "Reality Check",
+				term: "Reality check",
 				definition: "The risks and limits to keep in mind before acting.",
 			},
 		],
@@ -733,15 +733,15 @@ export const productFeatures: ProductFeature[] = [
 		],
 		why: [
 			{
-				name: "Built on Your Data",
+				name: "Built on your data",
 				text: "Opportunities come from your own per-prompt visibility, competitor standings, and citations over the last 30 days, not generic best practices.",
 			},
 			{
-				name: "Evidence Attached",
+				name: "Evidence attached",
 				text: "Each recommendation shows the prompts and cited pages behind it, so you can judge it before acting.",
 			},
 			{
-				name: "Refreshed Weekly",
+				name: "Refreshed weekly",
 				text: "The list is regenerated about once a week as new data comes in, and shows when it was last evaluated.",
 			},
 		],
@@ -787,7 +787,7 @@ export const productFeatures: ProductFeature[] = [
 	{
 		slug: "ai-visibility-reporting",
 		name: "Reporting",
-		title: "AI Visibility Reporting and Dashboards",
+		title: "AI visibility reporting and dashboards",
 		metaTitle: "AI Visibility Reporting & Dashboards for AI Search · CiteRank.com",
 		metaDescription:
 			"Report AI search performance with CiteRank.com's overview dashboard, PNG chart exports, an MCP server for AI assistants, and an API for your own BI tools.",
@@ -797,27 +797,27 @@ export const productFeatures: ProductFeature[] = [
 		graphic: "overview",
 		steps: [
 			{
-				name: "Start From the Overview",
+				name: "Start from the overview",
 				text: "Four headline cards, how they changed, and a comparison of you and your competitors on every AI engine.",
 			},
 			{
-				name: "Export for Your Deck",
+				name: "Export for your deck",
 				text: "Download prompt charts as PNGs, with CiteRank.com's branding, sized for slides and reports.",
 			},
 			{
-				name: "Send It Where You Report",
+				name: "Send it where you report",
 				text: "Ask an AI assistant for the numbers over MCP, or pull analytics into a spreadsheet or BI tool through the REST API.",
 			},
 		],
 		metrics: [
-			{ term: "Headline Cards", definition: "Visibility, share of voice, sentiment, and position, with their change." },
+			{ term: "Headline cards", definition: "Visibility, share of voice, sentiment, and position, with their change." },
 			{
-				term: "Competitors by Model",
+				term: "Competitors by model",
 				definition: "Every tracked company on every AI engine, sortable by any model or by the overall figure.",
 			},
-			{ term: "Prompts Tracked and Evaluations", definition: "How much tracking is behind the numbers." },
+			{ term: "Prompts tracked and evaluations", definition: "How much tracking is behind the numbers." },
 			{
-				term: "Prompt Chart Exports",
+				term: "Prompt chart exports",
 				definition:
 					"Any prompt's visibility chart as a PNG, with your brand and competitors over the chosen time range, ready for a slide or a report.",
 			},
@@ -829,15 +829,15 @@ export const productFeatures: ProductFeature[] = [
 		],
 		why: [
 			{
-				name: "Numbers You Can Defend",
+				name: "Numbers you can defend",
 				text: "Every figure traces back to stored answers, and the methodology is documented in the open.",
 			},
 			{
-				name: "Your Data, Your Tools",
+				name: "Your data, your tools",
 				text: "Everything on the dashboard is available through the REST API and the MCP server, both included on every plan.",
 			},
 			{
-				name: "Reports From the Agency",
+				name: "Reports from the agency",
 				text: "Businesses that hire CiteRank.com's AI search agency get a monthly report on the work and the AI answers before and after.",
 			},
 		],
@@ -881,7 +881,7 @@ export const productFeatures: ProductFeature[] = [
 	{
 		slug: "api-and-mcp",
 		name: "API and MCP",
-		title: "AI Visibility REST API and MCP Server",
+		title: "AI visibility REST API and MCP server",
 		metaTitle: "AI Visibility REST API & MCP Server · CiteRank.com",
 		metaDescription:
 			"CiteRank.com's REST API and MCP server give your code and AI assistants the same AI visibility data as the dashboard, on every plan, with read-only or read-write keys.",
@@ -891,15 +891,15 @@ export const productFeatures: ProductFeature[] = [
 		graphic: "api",
 		steps: [
 			{
-				name: "Issue a Key, or Sign In",
+				name: "Issue a key, or sign in",
 				text: "Create an organization API key, read-only or read-write, optionally limited to some brands and given an expiry. MCP clients can also sign in from a browser.",
 			},
 			{
-				name: "Call It From Code",
+				name: "Call it from code",
 				text: "Send your key as a bearer token to list brands, pull analytics, or create prompts from any language.",
 			},
 			{
-				name: "Ask Your Assistant",
+				name: "Ask your assistant",
 				text: "Connect over MCP and ask 'What are some AEO opportunities for my brand?' The assistant can also pull analytics and create or update prompts.",
 			},
 		],
@@ -911,12 +911,12 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{ term: "Runs", definition: "Every prompt evaluation, with the full response and its mention assessments." },
 			{
-				term: "Prompts, Competitors, and Brands",
+				term: "Prompts, competitors, and brands",
 				definition: "Manage the setup behind your tracking programmatically.",
 			},
 			{ term: "Opportunities", definition: "The latest generated recommendations for a brand." },
 			{
-				term: "MCP Tools",
+				term: "MCP tools",
 				definition:
 					"Read tools like get_analytics, get_citations, and get_query_fanout, and write tools for creating and updating prompts.",
 			},
@@ -928,15 +928,15 @@ export const productFeatures: ProductFeature[] = [
 		],
 		why: [
 			{
-				name: "Included on Every Plan",
+				name: "Included on every plan",
 				text: "API and MCP access come with every CiteRank.com plan, so there's no separate API tier to buy.",
 			},
 			{
-				name: "Scoped Access",
+				name: "Scoped access",
 				text: "An MCP client is only offered the tools its key allows, and no MCP tool deletes data or changes billing.",
 			},
 			{
-				name: "OpenAPI Spec Included",
+				name: "OpenAPI spec included",
 				text: "The API serves its own OpenAPI spec, so you can generate a client in the language you work in and regenerate it as endpoints are added.",
 			},
 		],
@@ -959,8 +959,8 @@ export const productFeatures: ProductFeature[] = [
 	},
 	{
 		slug: "multi-engine-tracking",
-		name: "AI Engines",
-		title: "Track Your Brand Across 12 AI Engines",
+		name: "AI engines",
+		title: "Track your brand across 12 AI engines",
 		metaTitle: "Multi-Engine AI Visibility Tracking: ChatGPT, AI Overviews, Gemini & More · CiteRank.com",
 		metaDescription:
 			"Track your brand in ChatGPT, Google AI Overviews, AI Mode, Gemini, Perplexity, and Copilot from the real apps, plus Claude, Grok, DeepSeek, Mistral, Qwen, and Kimi.",
@@ -970,25 +970,25 @@ export const productFeatures: ProductFeature[] = [
 		graphic: "engines",
 		steps: [
 			{
-				name: "Pick Your Engines",
+				name: "Pick your engines",
 				text: "Choose the engines that matter for your buyers. Your plan sets how many each brand can track at once, and changes apply from the next check.",
 			},
 			{
-				name: "Run the Same Prompts Everywhere",
+				name: "Run the same prompts everywhere",
 				text: "Every prompt runs on every engine you track, so the results are directly comparable.",
 			},
 			{
-				name: "Compare Engine by Engine",
+				name: "Compare engine by engine",
 				text: "Filter any page by model, and compare yourself with competitors on each engine side by side.",
 			},
 		],
 		metrics: [
 			{
-				term: "Scraped From the Real Interface",
+				term: "Scraped from the real interface",
 				definition: "ChatGPT, Google AI Overviews, Google AI Mode, Gemini, Perplexity, and Copilot.",
 			},
 			{
-				term: "Direct Model APIs",
+				term: "Direct model APIs",
 				definition:
 					"Claude, DeepSeek, Mistral, Qwen, and Kimi without web search, and Claude, Grok, and GPT Search with web search on Pro and Business.",
 			},
@@ -1000,15 +1000,15 @@ export const productFeatures: ProductFeature[] = [
 		],
 		why: [
 			{
-				name: "What Your Customers See",
+				name: "What your customers see",
 				text: "A model's API isn't the consumer product. Scraping the real ChatGPT and Google apps is closer to the answers your buyers get.",
 			},
 			{
-				name: "12 AI Apps in One Place",
+				name: "12 AI apps in one place",
 				text: "Six AI apps scraped from their real interfaces and six more by API, from one account and one set of prompts.",
 			},
 			{
-				name: "Every Answer Kept",
+				name: "Every answer kept",
 				text: "Each answer is stored in full, so a number for any AI app traces back to the words it wrote.",
 			},
 		],

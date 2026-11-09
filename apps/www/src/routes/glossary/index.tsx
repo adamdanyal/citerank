@@ -46,7 +46,7 @@ function GlossaryIndex() {
 					<Container className="pt-32 pb-16 lg:pt-40 lg:pb-20">
 						<div className="max-w-3xl">
 							<p className="caption-3 text-blue-800">Glossary</p>
-							<h1 className="heading-1 mt-6 text-zinc-950">The AI Search Glossary</h1>
+							<h1 className="heading-1 mt-6 text-zinc-950">The AI search glossary</h1>
 							<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
 								The vocabulary of AI search and answer engine optimization, defined in plain English and cross-linked.
 								Start anywhere.

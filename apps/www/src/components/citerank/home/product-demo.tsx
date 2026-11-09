@@ -35,7 +35,7 @@ const PAGES: { label: string; path: string; src: string; alt: string; icon: Luci
 		icon: Eye,
 	},
 	{
-		label: "Share of Voice",
+		label: "Share of voice",
 		path: "/share-of-voice",
 		src: "/screenshots/share-of-voice.webp",
 		alt: "Share of voice: who AI recommends instead of you",
@@ -56,7 +56,7 @@ const PAGES: { label: string; path: string; src: string; alt: string; icon: Luci
 		icon: MessageSquare,
 	},
 	{
-		label: "Query Fan-Out",
+		label: "Query fan-out",
 		path: "/query-fan-out",
 		src: "/screenshots/query-fan-out.webp",
 		alt: "Query fan-out: the searches AI runs behind each answer",

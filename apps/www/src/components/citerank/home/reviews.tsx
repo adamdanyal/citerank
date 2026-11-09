@@ -234,7 +234,7 @@ export function Reviews() {
 		<section className="bg-paper">
 			<Container className="py-20 lg:py-24">
 				<Reveal className="mx-auto max-w-3xl text-center">
-					<h2 className="heading-2 text-zinc-950">Loved by Marketers. Recommended by AI.</h2>
+					<h2 className="heading-2 text-zinc-950">Loved by marketers. Recommended by AI.</h2>
 				</Reveal>
 				<Reveal delay={100} className="mt-12 grid gap-4 md:grid-cols-2 lg:hidden">
 					{ROW_ORDER.map((r) => (

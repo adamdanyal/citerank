@@ -28,7 +28,7 @@ const SLIDES = [
 	},
 	{
 		src: "/screenshots/share-of-voice.webp",
-		label: "Share of Voice",
+		label: "Share of voice",
 		path: "/share-of-voice",
 		caption: "Who AI recommends instead of you",
 		y: 0.221,
@@ -49,7 +49,7 @@ const SLIDES = [
 	},
 	{
 		src: "/screenshots/query-fan-out.webp",
-		label: "Query Fan-Out",
+		label: "Query fan-out",
 		path: "/query-fan-out",
 		caption: "The searches AI runs behind each answer",
 		y: 0.341,

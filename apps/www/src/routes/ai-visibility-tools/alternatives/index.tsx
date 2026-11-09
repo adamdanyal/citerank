@@ -54,7 +54,7 @@ function AlternativesHub() {
 			<main>
 				<DirectoryBackLink />
 				<DirectoryHero
-					title="Alternatives to Every AI Visibility Tool"
+					title="Alternatives to every AI visibility tool"
 					lead="Shopping for a replacement, or want to know your options? Pick a tool to see its closest alternatives, including CiteRank.com, a tracker plus an AI search agency."
 				/>
 				{indexableCategories.map((category) => (

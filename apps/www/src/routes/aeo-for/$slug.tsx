@@ -14,7 +14,7 @@ import { HOME_FONT_CLASS, HomeStyles } from "@/components/home/styles";
 import { CARD, SectionHeading } from "@/components/home/ui";
 import { WhySwitch } from "@/components/home/why-switch";
 import { Navbar } from "@/components/navbar";
-import { type AeoVertical, aeoHeadline, aeoVerticals, getAeoVertical, titleCase } from "@/data/aeo-verticals";
+import { type AeoVertical, aeoHeadline, aeoVerticals, getAeoVertical } from "@/data/aeo-verticals";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, howToJsonLd, itemListJsonLd, ogMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/aeo-for/$slug")({
@@ -127,7 +127,7 @@ function Prompts({ vertical }: { vertical: AeoVertical }) {
 		<section className="border-t border-zinc-200/80 bg-zinc-50/70">
 			<div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 py-20 md:px-6 lg:grid-cols-12 lg:items-center lg:py-28">
 				<div className="lg:col-span-6">
-					<SectionHeading title="Your Buyers Are Asking AI. Is It Naming You?" lede={lead} />
+					<SectionHeading title="Your buyers are asking AI. Is it naming you?" lede={lead} />
 					<div className="mt-5 max-w-[56ch] space-y-4 text-pretty text-[15px]/7 text-zinc-600">
 						{rest.map((p) => (
 							<p key={p.slice(0, 32)}>{p}</p>
@@ -136,7 +136,7 @@ function Prompts({ vertical }: { vertical: AeoVertical }) {
 				</div>
 				<div className="lg:col-span-6">
 					<div className={`p-5 sm:p-6 ${CARD}`}>
-						<p className="text-[13px] font-medium text-zinc-500">Prompts {titleCase(vertical.audience)} Should Track</p>
+						<p className="text-[13px] font-medium text-zinc-500">Prompts {vertical.audience} should track</p>
 						<ul className="mt-4 space-y-2.5">
 							{vertical.examplePrompts.map((p) => (
 								<li
@@ -179,7 +179,7 @@ function Playbook({ vertical }: { vertical: AeoVertical }) {
 		<section className="border-t border-zinc-200/80 bg-white">
 			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
 				<SectionHeading
-					title={`The AEO Checklist for ${titleCase(vertical.audience)}`}
+					title={`The AEO checklist for ${vertical.audience}`}
 					lede="What gets a brand named in AI answers in your category, and where CiteRank.com shows you the content gaps."
 				/>
 				<ol className="mt-12 grid gap-4 md:grid-cols-2">
@@ -198,7 +198,7 @@ function Playbook({ vertical }: { vertical: AeoVertical }) {
 
 				<div className="mt-5 flex flex-col gap-6 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 p-6 text-white md:flex-row md:items-center md:justify-between md:p-8">
 					<div className="max-w-[60ch]">
-						<p className="text-lg font-semibold tracking-[-0.015em]">Where CiteRank.com Fits</p>
+						<p className="text-lg font-semibold tracking-[-0.015em]">Where CiteRank.com fits</p>
 						<p className="mt-2 text-pretty text-[15px]/7 text-blue-50">{vertical.fit}</p>
 					</div>
 					<div className="flex shrink-0 flex-col gap-2.5 sm:flex-row md:flex-col lg:flex-row">

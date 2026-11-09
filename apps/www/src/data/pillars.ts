@@ -29,7 +29,7 @@ export interface Pillar {
 
 const AEO: Pillar = {
 	slug: "answer-engine-optimization",
-	h1: "Answer Engine Optimization (AEO)",
+	h1: "Answer engine optimization (AEO)",
 	metaTitle: "Answer Engine Optimization (AEO): A Guide · CiteRank.com",
 	description:
 		"What answer engine optimization is, how AEO differs from SEO, how AI answer engines decide what to cite, what to measure and how to run it.",
@@ -39,7 +39,7 @@ const AEO: Pillar = {
 	sections: [
 		{
 			id: "what-it-is",
-			heading: "What Answer Engine Optimization Is",
+			heading: "What answer engine optimization is",
 			body: [
 				"An answer engine does not hand you ten links and let you choose. It reads the web, decides what is true, writes a paragraph, and names a handful of sources. Your brand is either in that paragraph or it is not, and there is no second page to be on.",
 				"Answer engine optimization is the work of getting into that paragraph. It borrows from SEO (clear writing, crawlable pages, credible sources), but the unit of success changes. You are no longer optimizing for a rank. You are optimizing for a mention, a citation, and the sentence the model writes about you.",
@@ -48,7 +48,7 @@ const AEO: Pillar = {
 		},
 		{
 			id: "what-aeo-stands-for",
-			heading: "What AEO Stands for in Marketing",
+			heading: "What AEO stands for in marketing",
 			body: [
 				"AEO stands for answer engine optimization. An answer engine is any system that responds to a question with a synthesized answer rather than a ranked list: ChatGPT, Perplexity, Claude, Gemini, Copilot, and Google's own AI Overviews and AI Mode.",
 				"The term matters mostly because it marks a change in what marketing teams can control. For twenty years the deliverable was a position. Now the deliverable is a description: how the model characterizes your product, which competitors it names in the same breath, and whether it gets your pricing right.",
@@ -56,33 +56,33 @@ const AEO: Pillar = {
 		},
 		{
 			id: "aeo-vs-seo",
-			heading: "AEO vs SEO: What Changes in Practice",
+			heading: "AEO vs SEO: what changes in practice",
 			body: [
 				"Most of SEO still applies. Answer engines read the same web crawlers index, prefer the same well-structured pages, and trust the same authoritative domains. If your site is unindexable, AEO is not your problem yet.",
 				"Four things are genuinely different.",
 			],
 			steps: [
 				{
-					name: "The Winner Set Is Smaller",
+					name: "The winner set is smaller",
 					text: "A search result page has ten organic positions. An AI answer names three to six sources. The long tail of positions four through ten, which quietly carried a lot of traffic, does not exist.",
 				},
 				{
-					name: "You Are Described as Well as Listed",
+					name: "You are described as well as listed",
 					text: "The model writes a sentence about your product. That sentence can be wrong, outdated, or subtly unflattering, and it will be repeated to every person who asks. Monitoring what the model says is as important as monitoring whether it mentions you.",
 				},
 				{
-					name: "Off-Site Sources Carry More Weight",
+					name: "Off-site sources carry more weight",
 					text: "Answers are frequently assembled from sources you do not own: Reddit threads, review roundups, LinkedIn posts, competitor comparison pages. Your own site is one input among many, and often not the decisive one.",
 				},
 				{
-					name: "Results Are Non-Deterministic",
+					name: "Results are non-deterministic",
 					text: "Ask the same question twice and you can get different sources. A single check tells you almost nothing. Measurement has to be repeated across many runs to mean anything, which is the single biggest practical difference from rank tracking.",
 				},
 			],
 		},
 		{
 			id: "how-engines-choose",
-			heading: "How Answer Engines Decide What to Cite",
+			heading: "How answer engines decide what to cite",
 			body: [
 				"Two mechanisms operate at once, and conflating them is the most common mistake in AEO.",
 				"The first is retrieval. When an engine runs a live web search, it issues one or more queries, retrieves pages, and grounds its answer in what it finds. Here, classic SEO is doing the heavy lifting. If you do not show up for the query the model issues, you cannot be cited. The queries models issue are frequently not the queries humans type, which is why keyword research and prompt research are different exercises.",
@@ -90,65 +90,65 @@ const AEO: Pillar = {
 				"Practically: retrieval is what you can move this quarter. Parametric memory is what you move over years, by being the thing people write about.",
 			],
 			callout: {
-				heading: "Why the Same Prompt Gives Different Answers",
+				heading: "Why the same prompt gives different answers",
 				text: "Engines sample. They rewrite your question into search queries that vary run to run, and they retrieve different pages each time. Any claim about your AI visibility drawn from a single check is noise. Run each prompt repeatedly and look at the rate, not the result.",
 			},
 		},
 		{
 			id: "what-to-measure",
-			heading: "What to Measure",
+			heading: "What to measure",
 			body: ["Four metrics carry almost all the information. Everything else is a slice of one of them."],
 			steps: [
 				{
-					name: "Mention Rate",
+					name: "Mention rate",
 					text: "Across many runs of a prompt, how often does your brand appear at all? This is the base metric. A brand at 3% on the central question in its category has a positioning problem, not a content problem.",
 				},
 				{
-					name: "Citation Rate",
+					name: "Citation rate",
 					text: "How often does the engine link to a page you own? Mention without citation is common and still valuable, but a citation is the only version that sends traffic.",
 				},
 				{
-					name: "Share of Voice",
+					name: "Share of voice",
 					text: "Of all the brands named in answers to your prompts, what fraction are you? This is the number that tells you whether you are winning, because AI answers are explicitly comparative in a way search results are not.",
 				},
 				{
-					name: "Sentiment and Accuracy",
+					name: "Sentiment and accuracy",
 					text: "What does the model say about you? Track the descriptions as well as the counts. A factual error repeated across thousands of answers is a bigger problem than a missing mention.",
 				},
 			],
 		},
 		{
 			id: "playbook",
-			heading: "How to Run AEO",
+			heading: "How to run AEO",
 			body: [
 				"A workable programme has five parts. None of them are exotic; the discipline is in doing them repeatedly rather than once.",
 			],
 			steps: [
 				{
-					name: "Build a Prompt Set That Reflects Real Buying Questions",
+					name: "Build a prompt set that reflects real buying questions",
 					text: "Twenty to forty prompts, written the way a buyer would ask them. Include the generic category question ('best X tool'), the qualified versions ('best X tool for B2B SaaS'), the comparison questions, and the problem-first questions where your category is the answer but nobody names it. Track branded and unbranded separately.",
 				},
 				{
-					name: "Measure Before You Change Anything",
+					name: "Measure before you change anything",
 					text: "Run the set across the engines that matter to you, repeatedly, for at least a couple of weeks. You need a baseline with enough runs behind it to distinguish a real move from sampling noise.",
 				},
 				{
-					name: "Fix the Pages the Engines Already Reach",
+					name: "Fix the pages the engines already reach",
 					text: "Look at what gets cited for your prompts, yours and everyone else's. Usually a handful of third-party roundups and comparison pages carry the category. Getting listed accurately on those moves the number faster than anything you publish on your own domain.",
 				},
 				{
-					name: "Write the Answer, Not the Article",
+					name: "Write the answer, not the article",
 					text: "Put a direct, self-contained answer in the first 40 to 60 words under each heading. Models extract passages, not pages. A clear definitional paragraph is far more quotable than a well-argued essay that takes 400 words to reach the point.",
 				},
 				{
-					name: "Re-Measure and Attribute",
+					name: "Re-measure and attribute",
 					text: "Check the same prompts on the same cadence. Tag AI referral traffic so you can tell what converts. Expect movement in weeks for retrieval-driven prompts and quarters for anything that depends on how widely you are discussed.",
 				},
 			],
 		},
 		{
 			id: "content",
-			heading: "What Kind of Content Gets Cited",
+			heading: "What kind of content gets cited",
 			body: [
 				"Three patterns come up repeatedly in citation data, and they are not the patterns that win at SEO.",
 				"Comparison and alternatives pages punch far above their traffic. A page that fairly compares five tools in a category gets pulled into answers constantly, because that is the shape of the question people ask an answer engine. The same page may attract very little search traffic, which makes it easy to under-invest in.",
@@ -158,20 +158,20 @@ const AEO: Pillar = {
 		},
 		{
 			id: "tools",
-			heading: "AEO Tools",
+			heading: "AEO tools",
 			body: [
 				"An AEO tool does one core job: run your prompts across the engines on a schedule, and record what came back. Everything else (dashboards, alerts, competitor tracking, reporting) is built on that log.",
 				"The differences that matter when choosing one are which engines are covered and how, how many runs per prompt you get (sampling noise is the whole problem), whether you can see the raw answer rather than a score, and whether the methodology behind the score is inspectable.",
 				"That last point is why CiteRank.com documents how it counts. A visibility score is a number somebody chose how to calculate. When two tools disagree about your brand, and they routinely do, the only way to know which is right is to read how each one counts. CiteRank.com keeps every answer in full, so each number traces back to the words an AI wrote.",
 			],
 			callout: {
-				heading: "Compare the AI Visibility Tools",
+				heading: "Compare the AI visibility tools",
 				text: "CiteRank.com's directory of AI visibility tools compares the options in this category, from dedicated trackers to SEO suites and APIs. It is the same comparison an answer engine would assemble, written by people who build in the category.",
 			},
 		},
 		{
 			id: "timeline",
-			heading: "How Long AEO Takes",
+			heading: "How long AEO takes",
 			body: [
 				"Retrieval-driven prompts respond within weeks. If you get added to a roundup the engines already cite, or you publish a page that ranks for the query the model issues, you can see the mention rate move on the next measurement cycle.",
 				"Parametric prompts, where the engine answers from memory without searching, move on a timescale of quarters to years, and only as a by-product of being genuinely well known. No tactic accelerates this. It is the accumulated residue of being written about.",
@@ -217,22 +217,22 @@ const AEO: Pillar = {
 	],
 	related: [
 		{
-			label: "Generative Engine Optimization",
+			label: "Generative engine optimization",
 			href: "/generative-engine-optimization",
 			description: "The same discipline under its other common name, and where the two terms diverge.",
 		},
 		{
-			label: "AI Visibility Tools",
+			label: "AI visibility tools",
 			href: "/ai-visibility-tools",
 			description: "Every AEO and AI visibility tracker on the market, compared feature by feature.",
 		},
 		{
-			label: "The AI Search Agency",
+			label: "The AI search agency",
 			href: "/agency",
 			description: "CiteRank.com does this work every month and reports the AI answers before and after.",
 		},
 		{
-			label: "AEO Glossary",
+			label: "AEO glossary",
 			href: "/glossary",
 			description: "Short definitions for every term in this guide.",
 		},
@@ -242,7 +242,7 @@ const AEO: Pillar = {
 			description: "A longer treatment of where and how the two disciplines part ways.",
 		},
 		{
-			label: "AEO by Industry",
+			label: "AEO by industry",
 			href: "/aeo-for",
 			description: "What the work looks like for SaaS, ecommerce, agencies, and other verticals.",
 		},
@@ -251,7 +251,7 @@ const AEO: Pillar = {
 
 const GEO: Pillar = {
 	slug: "generative-engine-optimization",
-	h1: "Generative Engine Optimization (GEO)",
+	h1: "Generative engine optimization (GEO)",
 	metaTitle: "Generative Engine Optimization (GEO): A Guide · CiteRank.com",
 	description:
 		"What generative engine optimization means, how GEO differs from SEO and AEO, what the research says works and how to measure it.",
@@ -261,7 +261,7 @@ const GEO: Pillar = {
 	sections: [
 		{
 			id: "what-it-is",
-			heading: "What Generative Engine Optimization Is",
+			heading: "What generative engine optimization is",
 			body: [
 				"A generative engine answers a question by writing prose. It reads sources, synthesizes them, and names a few. There is no list to climb and no position ten to settle for. You are quoted or you are absent.",
 				"GEO is the practice of being quoted. In day-to-day work that means three things: knowing which questions your buyers ask these engines, measuring how often you appear in the answers, and changing what the engines can find so the number moves.",
@@ -270,7 +270,7 @@ const GEO: Pillar = {
 		},
 		{
 			id: "geo-meaning-marketing",
-			heading: "What GEO Means in Marketing (and the Older Meaning)",
+			heading: "What GEO means in marketing (and the older meaning)",
 			body: [
 				"In marketing, GEO now has two unrelated meanings, and searches for the term return both.",
 				"The older meaning is geographic: geo-targeting, geo-fencing, geo-modified keywords, and anything else scoped to a physical location. If you arrived here looking for local search, that is a different discipline entirely.",
@@ -291,14 +291,14 @@ const GEO: Pillar = {
 					text: "Compete to be one of three to six sources named inside a written answer. Success is a mention, a citation, and a favourable description. Non-deterministic, so a single check means nothing and only repeated sampling produces a number you can act on.",
 				},
 				{
-					name: "What Carries Over",
+					name: "What carries over",
 					text: "Crawlability, page structure, topical authority, and credible external mentions all still matter, because most generative engines ground their answers in a live web search. GEO sits on top of SEO rather than replacing it.",
 				},
 			],
 		},
 		{
 			id: "where-answers-appear",
-			heading: "Where Generative Answers Appear",
+			heading: "Where generative answers appear",
 			body: [
 				"Five places account for nearly all of it, and they behave differently enough that a brand can dominate one and be invisible in another.",
 			],
@@ -310,40 +310,40 @@ const GEO: Pillar = {
 				"Gemini, Copilot, Claude and Grok, which are smaller but growing, each with its own retrieval quirks.",
 			],
 			callout: {
-				heading: "Measure Engines Separately, Always",
+				heading: "Measure engines separately, always",
 				text: "Aggregated 'AI visibility' scores hide the thing you need to know. A brand can sit at 25% in ChatGPT and 8% in Google AI Mode at the same time. Averaging those produces a number that describes no engine and misleads every decision made from it.",
 			},
 		},
 		{
 			id: "what-works",
-			heading: "What Moves the Number in GEO",
+			heading: "What moves the number in GEO",
 			body: ["The tactics with evidence behind them are unglamorous and mostly not on your own domain."],
 			steps: [
 				{
-					name: "Get Onto the Sources That Already Get Cited",
+					name: "Get onto the sources that already get cited",
 					text: "For any given prompt, a small set of third-party pages (roundups, comparison articles, community threads) supplies most of the citations. Being listed accurately on those moves your mention rate faster than anything you can publish yourself.",
 				},
 				{
-					name: "Write Extractable Passages",
+					name: "Write extractable passages",
 					text: "Models lift passages, not pages. A self-contained answer in the first 40 to 60 words under a heading is quotable; the same point buried in paragraph six is not. This is the highest-impact change to content you already have.",
 				},
 				{
-					name: "Publish Original Data",
+					name: "Publish original data",
 					text: "Engines cite the source of a statistic more reliably than they cite commentary on it. First-party research is the one asset a competitor cannot replicate by writing a better article.",
 				},
 				{
-					name: "Make Your Site Machine-Readable",
+					name: "Make your site machine-readable",
 					text: "Clean structure, real headings, structured data where it fits, and no critical content that only exists after JavaScript runs. This is table stakes rather than an advantage, but failing it is disqualifying.",
 				},
 				{
-					name: "Fix What the Model Says as Well as Whether It Speaks",
+					name: "Fix what the model says as well as whether it speaks",
 					text: "Models confidently repeat outdated pricing, a discontinued feature, or a wrong category. Correcting the underlying sources is often a larger win than a new mention.",
 				},
 			],
 		},
 		{
 			id: "what-does-not-work",
-			heading: "What Does Not Work",
+			heading: "What does not work",
 			body: [
 				"Two things absorb a disproportionate share of GEO effort and have little evidence behind them.",
 				"The first is llms.txt. It is a sensible proposal and costs nothing to publish, but no major engine has committed to consuming it, and there is no measurable citation lift attributable to it. Publish one if you like; do not build a strategy on it.",
@@ -352,7 +352,7 @@ const GEO: Pillar = {
 		},
 		{
 			id: "measuring",
-			heading: "How to Measure GEO",
+			heading: "How to measure GEO",
 			body: [
 				"The measurement problem is the discipline. Because engines sample, a number from a single run is indistinguishable from chance, and most disagreements about AI visibility are really disagreements about run counts.",
 				"A defensible setup has four properties: a prompt set written the way buyers ask; enough repeated runs per prompt that the rate is stable; engines reported separately rather than averaged; and access to the raw answers, so a surprising number can be explained rather than merely observed.",
@@ -361,14 +361,14 @@ const GEO: Pillar = {
 		},
 		{
 			id: "tools",
-			heading: "GEO Tools",
+			heading: "GEO tools",
 			body: [
 				"The category is crowded and young. Most tools do the same core job (schedule prompts, run them across engines, log what came back) and differ in engine coverage, sampling depth, and how much of the raw data they let you see.",
 				"Two questions cut through the marketing. How many times is each prompt run, and can you read the answer behind the score? A tool that samples thinly will report movement that is not there, and a tool that hides the raw output cannot be checked when it does.",
 				"CiteRank.com runs each prompt up to four times a day for exactly this reason. Read the answer behind any score, and verify the methodology rather than trusting it.",
 			],
 			callout: {
-				heading: "Compare the Options",
+				heading: "Compare the options",
 				text: "CiteRank.com maintains a public directory of every GEO and AI visibility tool in the category, from trackers to full SEO suites, with an honest account of what each does.",
 			},
 		},
@@ -412,32 +412,32 @@ const GEO: Pillar = {
 	],
 	related: [
 		{
-			label: "Answer Engine Optimization",
+			label: "Answer engine optimization",
 			href: "/answer-engine-optimization",
 			description: "The same discipline under its other common name, with the full guide.",
 		},
 		{
-			label: "GEO and AI Visibility Tools",
+			label: "GEO and AI visibility tools",
 			href: "/ai-visibility-tools",
 			description: "Every tool in the category, compared feature by feature.",
 		},
 		{
-			label: "What CiteRank.com Tracks",
+			label: "What CiteRank.com tracks",
 			href: "/features",
 			description: "Visibility, share of voice, sentiment, and citations, for each AI app.",
 		},
 		{
-			label: "AEO Glossary",
+			label: "AEO glossary",
 			href: "/glossary",
 			description: "Short definitions for every term in this guide.",
 		},
 		{
-			label: "Where AI Citations Come From",
+			label: "Where AI citations come from",
 			href: "/blog/where-ai-citations-come-from",
 			description: "Citation data on which sources each engine pulls from.",
 		},
 		{
-			label: "AI Search Engines",
+			label: "AI search engines",
 			href: "/ai-search",
 			description: "How each engine retrieves, cites, and differs from the others.",
 		},

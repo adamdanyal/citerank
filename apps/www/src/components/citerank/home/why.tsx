@@ -5,11 +5,11 @@ import { Container, Reveal, RevealItem } from "../ui";
 const RUNS_PER_DAY = Math.max(...Object.values(PLANS).map((plan) => plan.standardRunsPerDay));
 
 const INCLUDED: { icon: LucideIcon; title: string; body: string }[] = [
-	{ icon: MessageSquareText, title: "Every Answer, Kept", body: "With the brands it named and the sources it cited." },
-	{ icon: RefreshCw, title: `${RUNS_PER_DAY} Checks a Day`, body: "Enough to show the trend, not a snapshot." },
-	{ icon: ListOrdered, title: "Fixes, Ranked", body: "Which page to write, update or get listed on." },
-	{ icon: Users, title: "Unlimited Seats", body: "API and MCP included." },
-	{ icon: BadgeCheck, title: "Cancel Any Time", body: "No contract, no sales call." },
+	{ icon: MessageSquareText, title: "Every answer, kept", body: "With the brands it named and the sources it cited." },
+	{ icon: RefreshCw, title: `${RUNS_PER_DAY} checks a day`, body: "Enough to show the trend, not a snapshot." },
+	{ icon: ListOrdered, title: "Fixes, ranked", body: "Which page to write, update or get listed on." },
+	{ icon: Users, title: "Unlimited seats", body: "API and MCP included." },
+	{ icon: BadgeCheck, title: "Cancel any time", body: "No contract, no sales call." },
 ];
 
 /* One quiet row of what every plan includes. */
@@ -18,7 +18,7 @@ export function Why() {
 		<section className="bg-paper">
 			<Container className="py-16 lg:py-20">
 				<Reveal className="mx-auto max-w-3xl text-center">
-					<h2 className="heading-2 text-zinc-950">What Every Plan Includes</h2>
+					<h2 className="heading-2 text-zinc-950">What every plan includes</h2>
 				</Reveal>
 				<ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:mt-12 lg:grid-cols-5 lg:gap-6">
 					{INCLUDED.map((item, index) => {

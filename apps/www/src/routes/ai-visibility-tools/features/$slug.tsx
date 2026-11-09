@@ -73,7 +73,7 @@ function FeaturePage() {
 					title={`AI visibility tools with ${featurePhrase(featureKey)}`}
 					lead={getFeatureVerdict(featureKey, tools)}
 				/>
-				<DirectorySection title="Tools That Offer This Feature">
+				<DirectorySection title="Tools that offer this feature">
 					<ToolGrid competitors={tools} />
 				</DirectorySection>
 				<Faq items={getFeatureFaqs(featureKey, tools)} />

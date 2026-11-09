@@ -64,7 +64,7 @@ function FeatureHub() {
 			<main>
 				<DirectoryBackLink />
 				<DirectoryHero
-					title="Browse AI Visibility Tools by Feature"
+					title="Browse AI visibility tools by feature"
 					lead="Filter the field by capability. Pick a feature to see which AI visibility tools offer it and how they compare, including CiteRank.com, a tracker plus an AI search agency."
 				/>
 				{featureGroups().map((group) => (

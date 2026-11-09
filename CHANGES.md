@@ -8,6 +8,7 @@ CiteRank.com runs on Elmo (MIT licence, github.com/elmohq/elmo). This file lists
 - Keep our changes to as few files as possible: branding (app name, logo, colours, fonts), plans and prices, and public copy. Prefer environment variables and config over editing Elmo's code.
 - Customers never see the name Elmo: not on screens, in emails, page titles, share images or footers. The one exception, decided by Adam on 2026-11-09, is the About page, which credits Elmo as the open-source project underneath and links to its GitHub repository (in the key facts and the "Is CiteRank.com open source?" answer). LICENSE.md stays in the repo, as the MIT licence requires.
 - Leave Elmo's own CLAUDE.md, AGENTS.md and README.md untouched; edits there conflict on every update.
+- The marketing site (apps/www) writes headlines, section titles, card titles, labels and links in sentence case, as decided by Adam on 2026-11-09. Only names and acronyms keep their capitals (CiteRank.com, ChatGPT, Google AI Overviews, AEO, MCP). This overrides the title-case rule in AGENTS.md for apps/www only; the dashboard keeps Elmo's casing. Page titles in the browser tab and share images are unchanged.
 - GitHub Actions stay switched off for this repo. Elmo's workflows publish Elmo's packages and drafts, not ours.
 
 ## Updating to a new Elmo release
@@ -186,3 +187,4 @@ Crisp support chat runs on CiteRank.com's own workspace (`CRISP_WEBSITE_ID` in `
 | 2026-11-09 | Redesigned the features index and feature pages, the agency and pricing heroes, the support page and the industry, AI search, glossary and statistics hubs on the site's design system. Not deployed. |
 | 2026-11-09 | Changed the About headline to "We Track What AI Says About Brands, Then Do the Work to Change It": the tracker is Elmo, so the page no longer says we built it. Not deployed. |
 | 2026-11-09 | Replaced the About page's belief, offering, audience and working-with-us grids with a "Why We Started CiteRank.com" story in the founders' words, keeping Key Facts and the FAQ. Not deployed. |
+| 2026-11-09 | Put every marketing-site headline, section title, card title, label and link in sentence case, across 57 files. Dashboard, docs, blog posts and legal pages unchanged. Not deployed. |

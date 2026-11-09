@@ -141,7 +141,7 @@ function Steps({ feature }: { feature: ProductFeature }) {
 					<div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
 						<div className="lg:col-span-5">
 							<Reveal>
-								<h2 className="heading-2 text-zinc-950">What You Can Do</h2>
+								<h2 className="heading-2 text-zinc-950">What you can do</h2>
 							</Reveal>
 							{steps}
 						</div>
@@ -152,7 +152,7 @@ function Steps({ feature }: { feature: ProductFeature }) {
 				) : (
 					<>
 						<Reveal>
-							<h2 className="heading-2 text-zinc-950">What You Can Do</h2>
+							<h2 className="heading-2 text-zinc-950">What you can do</h2>
 						</Reveal>
 						{steps}
 					</>
@@ -167,7 +167,7 @@ function Metrics({ feature }: { feature: ProductFeature }) {
 		<section className="bg-paper-2">
 			<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
 				<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
-					<h2 className="heading-2 text-zinc-950">Data You Can Act On</h2>
+					<h2 className="heading-2 text-zinc-950">Data you can act on</h2>
 				</Reveal>
 				<Reveal delay={100} className="lg:col-span-8">
 					<dl className="grid gap-x-10 sm:grid-cols-2">
@@ -189,7 +189,7 @@ function UseCasesAndWhy({ feature }: { feature: ProductFeature }) {
 		<section className="bg-white">
 			<Container className="grid gap-5 py-20 lg:grid-cols-2 lg:py-24">
 				<Reveal className={`${CARD} p-6 md:p-8`}>
-					<h2 className="heading-5 text-zinc-950">Use Cases</h2>
+					<h2 className="heading-5 text-zinc-950">Use cases</h2>
 					<ul className="mt-6 space-y-4">
 						{feature.useCases.map((u) => (
 							<li key={u} className="body-6 flex gap-3 text-zinc-700">
@@ -220,7 +220,7 @@ function LearnMore({ links }: { links: FeatureLink[] }) {
 		<section className="bg-paper">
 			<Container className="py-20 lg:py-24">
 				<Reveal>
-					<h2 className="heading-3 text-zinc-950">Related Guides</h2>
+					<h2 className="heading-3 text-zinc-950">Related guides</h2>
 				</Reveal>
 				<ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					{links.map((l, i) => (
@@ -242,7 +242,7 @@ function RelatedFeatures({ related }: { related: ProductFeature[] }) {
 		<section className="bg-white">
 			<Container className="py-20 lg:py-24">
 				<Reveal className="flex flex-wrap items-center justify-between gap-4">
-					<h2 className="heading-3 text-zinc-950">Related Features</h2>
+					<h2 className="heading-3 text-zinc-950">Related features</h2>
 					<Link to="/features" className={TEXT_LINK}>
 						All features
 						<LinkArrow />

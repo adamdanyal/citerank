@@ -9,19 +9,19 @@ interface Step {
 
 const STEPS: Step[] = [
 	{
-		title: "Add Your Brand",
+		title: "Add your brand",
 		body: "Point CiteRank.com at your site. It suggests the prompts your buyers ask and the competitors to track against.",
 		src: "/screenshots/prompt-settings.webp",
 		alt: "CiteRank.com prompts settings listing the buyer prompts tracked for a demo brand, each tagged by topic",
 	},
 	{
-		title: "See Where You Stand",
+		title: "See where you stand",
 		body: "Visibility, share of voice, and the sources AI cites, sampled up to 4× daily from the real apps.",
 		src: "/screenshots/visibility.webp",
 		alt: "CiteRank.com visibility page showing per-prompt visibility over time against competitors",
 	},
 	{
-		title: "Know What to Fix",
+		title: "Know what to fix",
 		body: "Opportunities ranked by impact. CiteRank.com keeps you updated, so you always know what to do next.",
 		src: "/screenshots/opportunities.webp",
 		alt: "CiteRank.com opportunities page with prioritized recommendations for content and sources",

@@ -71,7 +71,7 @@ function AlternativesPage() {
 				/>
 
 				{competitor.switching ? (
-					<DirectorySection title={`Why Teams Leave ${competitor.name}`}>
+					<DirectorySection title={`Why teams leave ${competitor.name}`}>
 						<p className="mb-8 max-w-3xl leading-relaxed text-zinc-600">
 							What people say when they leave {competitor.name}, and what CiteRank.com does differently.{" "}
 							{competitor.name} is a capable product with real customers, so take this as the case for a different set

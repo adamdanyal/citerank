@@ -207,7 +207,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 			{/* Feature comparison table */}
 			<section className="border-b border-zinc-200 bg-white py-12">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
-					<h2 className="font-heading mb-8 text-2xl text-zinc-950">Feature Comparison</h2>
+					<h2 className="font-heading mb-8 text-2xl text-zinc-950">Feature comparison</h2>
 					<div className="overflow-x-auto">
 						<table className="w-full text-sm">
 							<thead>
@@ -245,7 +245,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 			{/* Key Differences */}
 			<section className="border-b border-zinc-200 bg-white py-12">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
-					<h2 className="font-heading mb-8 text-2xl text-zinc-950">Key Differences</h2>
+					<h2 className="font-heading mb-8 text-2xl text-zinc-950">Key differences</h2>
 					<div className="grid gap-6 md:grid-cols-3">
 						{citeRankOnlyFeatures.length > 0 && (
 							<div className="rounded-md border border-zinc-200 bg-zinc-50 p-5">
@@ -265,7 +265,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 						{sharedFeatures.length > 0 && (
 							<div className="rounded-md border border-zinc-200 bg-zinc-50 p-5">
 								<h3 className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
-									Both Offer
+									Both offer
 								</h3>
 								<ul className="space-y-2">
 									{sharedFeatures.map((f) => (
@@ -302,28 +302,28 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 					<h2 className="font-heading mb-4 text-2xl text-zinc-950">Why Choose CiteRank.com Over {competitor.name}?</h2>
 					<div className="grid gap-6 sm:grid-cols-2">
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
-							<h3 className="font-semibold text-zinc-950">Every Answer Kept in Full</h3>
+							<h3 className="font-semibold text-zinc-950">Every answer kept in full</h3>
 							<p className="mt-2 text-sm text-zinc-600">
 								Every AI answer is kept in full. You can verify exactly how your visibility data is collected,
 								calculated, and presented.
 							</p>
 						</div>
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
-							<h3 className="font-semibold text-zinc-950">Hosted for You, Month to Month</h3>
+							<h3 className="font-semibold text-zinc-950">Hosted for you, month to month</h3>
 							<p className="mt-2 text-sm text-zinc-600">
 								Run CiteRank.com without your own infrastructure or a sales call. Plans run from {PLAN_RANGE}, billed
 								month to month, and you can cancel any time from your billing settings.
 							</p>
 						</div>
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
-							<h3 className="font-semibold text-zinc-950">Your Data, in Your Stack</h3>
+							<h3 className="font-semibold text-zinc-950">Your data, in your stack</h3>
 							<p className="mt-2 text-sm text-zinc-600">
 								Pull every metric, sentiment included, into your own code with the REST API, or ask Claude Code and
 								Cursor about it over MCP. Both come with every plan, and you can export or migrate at any time.
 							</p>
 						</div>
 						<div className="rounded-md border border-zinc-200 bg-white p-5">
-							<h3 className="font-semibold text-zinc-950">We Do the Work</h3>
+							<h3 className="font-semibold text-zinc-950">We do the work</h3>
 							<p className="mt-2 text-sm text-zinc-600">
 								The tracker ranks what to do next. Our AI search agency does that work each month and reports the AI
 								answers before and after.

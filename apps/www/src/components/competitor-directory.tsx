@@ -41,7 +41,7 @@ export function CompetitorDirectory() {
 				/>
 				<div className="relative mx-auto max-w-6xl px-4 md:px-6">
 					<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl lg:text-6xl">
-						AI Visibility Tools
+						AI visibility tools
 					</h1>
 					<p className="mt-6 max-w-3xl text-lg text-balance text-zinc-600 md:text-xl">
 						Every AI visibility tool, AEO platform, LLM visibility tracker and GEO tool in one place. Compare engine
@@ -82,7 +82,7 @@ export function CompetitorDirectory() {
 			{/* Feature Matrix */}
 			<section className="border-b border-zinc-200 bg-white py-12 lg:py-16">
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
-					<h2 className="mb-8 text-lg font-semibold text-zinc-950">{filteredCompetitors.length} Tools</h2>
+					<h2 className="mb-8 text-lg font-semibold text-zinc-950">{filteredCompetitors.length} tools</h2>
 					<FeatureMatrix competitors={filteredCompetitors} />
 				</div>
 			</section>
@@ -90,7 +90,7 @@ export function CompetitorDirectory() {
 			{/* Elmo CTA */}
 			<section className="border-b border-zinc-200 bg-white py-16 lg:py-24">
 				<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-					<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Why Consider CiteRank.com</h2>
+					<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Why consider CiteRank.com</h2>
 					<p className="mx-auto mt-4 max-w-xl text-lg text-balance text-zinc-600">
 						Hosted, self-serve, and transparent. Track AI visibility without a sales call or inflated pricing, from{" "}
 						{ENTRY_PRICE}.

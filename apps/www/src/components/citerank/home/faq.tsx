@@ -9,7 +9,7 @@ export function Faq({ items }: { items: FaqItem[] }) {
 		<section className="bg-paper-2">
 			<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
 				<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
-					<h2 className="heading-2 text-zinc-950">Frequently Asked Questions</h2>
+					<h2 className="heading-2 text-zinc-950">Frequently asked questions</h2>
 					<p className="body-6 mt-6 text-zinc-600">
 						Something we didn't cover? Email us at{" "}
 						<a href="mailto:team@citerank.com" className={`${QUIET_LINK} text-zinc-950`}>

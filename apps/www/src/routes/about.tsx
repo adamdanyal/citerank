@@ -130,7 +130,7 @@ function FounderCard({ founder, delay }: { founder: (typeof FOUNDERS)[number]; d
 
 function AboutPage() {
 	const keyFacts: { term: string; detail: ReactNode }[] = [
-		{ term: "Company Name", detail: "CiteRank.com, a trading name of Danx Digital Limited" },
+		{ term: "Company name", detail: "CiteRank.com, a trading name of Danx Digital Limited" },
 		{
 			term: "Type",
 			detail:
@@ -138,12 +138,12 @@ function AboutPage() {
 		},
 		{ term: "Founders", detail: "Adam Danyal and Julia Danyal" },
 		{
-			term: "Registered Company",
+			term: "Registered company",
 			detail: "Danx Digital Limited, registered in the United Kingdom, company number 13275434",
 		},
-		{ term: "Registered Address", detail: "86-90 Paul Street, London EC2A 4NE, United Kingdom" },
+		{ term: "Registered address", detail: "86-90 Paul Street, London EC2A 4NE, United Kingdom" },
 		{
-			term: "Trade Marks",
+			term: "Trade marks",
 			detail: (
 				<>
 					CiteRank (
@@ -160,7 +160,7 @@ function AboutPage() {
 		},
 		{ term: "Website", detail: <ExternalLink href="https://citerank.com">citerank.com</ExternalLink> },
 		{
-			term: "Built On",
+			term: "Built on",
 			detail: (
 				<>
 					<ExternalLink href="https://github.com/elmohq/elmo">Elmo</ExternalLink>, the open-source AI visibility
@@ -169,7 +169,7 @@ function AboutPage() {
 			),
 		},
 		{
-			term: "Core Offering",
+			term: "Core offering",
 			detail:
 				"Tracking how AI answer engines mention, cite and describe brands, with citation analysis and competitor share of voice",
 		},
@@ -178,7 +178,7 @@ function AboutPage() {
 			detail: `AI Visibility Tracker: Basic $${basic.monthlyPriceUsd}/mo, Pro $${pro.monthlyPriceUsd}/mo, Business $${business.monthlyPriceUsd}/mo, with unlimited seats on every plan. AI search agency and custom plans on request.`,
 		},
 		{
-			term: "Contract Terms",
+			term: "Contract terms",
 			detail: "Month to month, cancel any time; optional annual billing that saves two months",
 		},
 		{
@@ -186,9 +186,9 @@ function AboutPage() {
 			detail:
 				"AI visibility tracking, citation analysis, competitor benchmarking, ranked next steps, AI search agency work with a monthly report, REST API and MCP server",
 		},
-		{ term: "Contact Email", detail: <ExternalLink href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</ExternalLink> },
+		{ term: "Contact email", detail: <ExternalLink href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</ExternalLink> },
 		{
-			term: "Platforms Tracked",
+			term: "Platforms tracked",
 			detail:
 				"ChatGPT, Google AI Overviews, Google AI Mode, Gemini, Perplexity, Microsoft Copilot, Claude, Grok, Mistral, DeepSeek, Qwen, Kimi",
 		},
@@ -206,7 +206,7 @@ function AboutPage() {
 						<div className="lg:col-span-6">
 							<p className="caption-3 text-blue-800">About CiteRank.com</p>
 							<h1 className="heading-2 mt-6 text-zinc-950">
-								We Track What AI Says About Your Brand, Then Do the Work to Change It
+								We track what AI says about your brand, then do the work to change it
 							</h1>
 							<p className="body-8 mt-6 text-zinc-600">
 								CiteRank.com is the AI visibility tracker and AI search agency for AEO and GEO. We track how ChatGPT,
@@ -251,7 +251,7 @@ function AboutPage() {
 				<section className="bg-paper">
 					<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
 						<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
-							<h2 className="heading-2 text-zinc-950">Why We Started CiteRank.com</h2>
+							<h2 className="heading-2 text-zinc-950">Why we started CiteRank.com</h2>
 						</Reveal>
 						<Reveal delay={100} className="lg:col-span-8">
 							{STORY.map((paragraph, index) => (
@@ -281,7 +281,7 @@ function AboutPage() {
 					<Container className="py-20 lg:py-24">
 						<div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
 							<div className="lg:col-span-4">
-								<SectionHeading title="Key Facts" lede="The company on one page, for people and for AI engines." />
+								<SectionHeading title="Key facts" lede="The company on one page, for people and for AI engines." />
 							</div>
 							<Reveal delay={100} className={`${CARD} divide-y divide-zinc-200/80 px-6 lg:col-span-8 lg:px-8`}>
 								<dl>

@@ -47,17 +47,17 @@ export function featurePath(slug: string) {
 /** The features index, grouped by the question a buyer is asking. */
 export const FEATURE_GROUPS: { heading: string; lede: string; slugs: string[] }[] = [
 	{
-		heading: "See Where You Stand",
+		heading: "See where you stand",
 		lede: "How often AI answers mention you, how they describe you and which sources they trust.",
 		slugs: ["ai-visibility-tracking", "share-of-voice", "sentiment-analysis", "citation-tracking"],
 	},
 	{
-		heading: "Know What to Fix",
+		heading: "Know what to fix",
 		lede: "The prompts and web searches behind every answer, ranked into next steps.",
 		slugs: ["aeo-recommendations", "prompt-tracking", "query-fan-out"],
 	},
 	{
-		heading: "Take the Data Anywhere",
+		heading: "Take the data anywhere",
 		lede: "Reports, an API and an MCP server, fed by the real AI apps.",
 		slugs: ["ai-visibility-reporting", "api-and-mcp", "multi-engine-tracking"],
 	},

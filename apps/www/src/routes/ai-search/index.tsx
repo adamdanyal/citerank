@@ -41,8 +41,8 @@ function AiSearchIndex() {
 				<section className="-mt-16 bg-paper">
 					<Container className="pt-32 pb-16 lg:pt-40 lg:pb-20">
 						<div className="max-w-3xl">
-							<p className="caption-3 text-blue-800">AI Search Guides</p>
-							<h1 className="heading-1 mt-6 text-zinc-950">How to Show Up in AI Search</h1>
+							<p className="caption-3 text-blue-800">AI search guides</p>
+							<h1 className="heading-1 mt-6 text-zinc-950">How to show up in AI search</h1>
 							<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
 								Each AI engine chooses its sources a little differently. These guides show how the major ones decide
 								what to cite, and the steps to become one of their sources.
@@ -53,7 +53,7 @@ function AiSearchIndex() {
 
 				<section className="bg-white">
 					<Container className="py-20 lg:py-24">
-						<h2 className="sr-only">Guides by AI Engine</h2>
+						<h2 className="sr-only">Guides by AI engine</h2>
 						<ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 							{aiSearchEngines.map((engine, index) => (
 								<RevealItem key={engine.slug} delay={(index % 3) * 60} className="flex">

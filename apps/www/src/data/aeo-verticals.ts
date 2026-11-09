@@ -27,7 +27,7 @@ export const aeoVerticals: AeoVertical[] = [
 		audience: "agencies",
 		plan: "business",
 		technical: true,
-		headline: "AI Visibility Software for Agencies",
+		headline: "AI visibility software for agencies",
 		metaTitle: "AI Visibility & SEO Software for Agencies (Multi-Client) · CiteRank.com",
 		metaDescription:
 			"AI visibility software for agencies: track every client's presence in ChatGPT, Perplexity and AI Overviews, report it in your own decks, and add your whole team without per-seat fees.",
@@ -40,19 +40,19 @@ export const aeoVerticals: AeoVertical[] = [
 		examplePrompts: ["best [client category] companies", "[client] vs [competitor]", "is [client] worth it"],
 		plays: [
 			{
-				name: "Run a Prompt Set per Client",
+				name: "Run a prompt set per client",
 				text: "Build a focused list of the questions each client's buyers ask, and track it on a schedule so changes stand out.",
 			},
 			{
-				name: "Benchmark Against Named Competitors",
+				name: "Benchmark against named competitors",
 				text: "Share of voice against specific rivals is the metric clients understand. Show who gets cited instead of them, and on which prompts.",
 			},
 			{
-				name: "Turn Content Gaps Into Work",
+				name: "Turn content gaps into work",
 				text: "Every prompt where a client is missing is a concrete content brief, which turns reporting into billable work.",
 			},
 			{
-				name: "Put Charts in Client Reports",
+				name: "Put charts in client reports",
 				text: "Download any prompt's visibility chart as an image for the monthly report, with every number traceable to the AI answers behind it.",
 			},
 		],
@@ -92,19 +92,19 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track Comparison and Alternatives Prompts",
+				name: "Track comparison and alternatives prompts",
 				text: "These are where buyers shortlist. Monitor them across engines and watch which competitors get named alongside or instead of you.",
 			},
 			{
-				name: "Publish Honest Comparison Pages",
+				name: "Publish honest comparison pages",
 				text: "Well-structured, fair comparison and alternatives content gives engines a clean source to cite when buyers ask how you stack up.",
 			},
 			{
-				name: "Earn Third-Party Reviews",
+				name: "Earn third-party reviews",
 				text: "Reviews and mentions on sites the models trust shape how confidently they recommend you.",
 			},
 			{
-				name: "Catch Wrong Feature and Pricing Claims",
+				name: "Catch wrong feature and pricing claims",
 				text: "Models go stale. Monitor for outdated descriptions of your features or pricing and correct the underlying sources.",
 			},
 		],
@@ -130,7 +130,7 @@ export const aeoVerticals: AeoVertical[] = [
 		slug: "ecommerce",
 		audience: "e-commerce brands",
 		plan: "basic",
-		headline: "AEO for E-Commerce",
+		headline: "AEO for e-commerce",
 		short: "Make sure AI shopping answers and buying-guide queries name your products as well as your competitors'.",
 		intro: [
 			"Shoppers ask AI engines to compare products and recommend the best option, and some engines now have dedicated shopping features. Best running shoes for flat feet, cheapest option under a hundred dollars. The answer usually names a few brands and skips the rest.",
@@ -139,19 +139,19 @@ export const aeoVerticals: AeoVertical[] = [
 		examplePrompts: ["best [product] for [need]", "[product] under [price]", "[your brand] vs [competitor] [product]"],
 		plays: [
 			{
-				name: "Track Buying-Guide Prompts",
+				name: "Track buying-guide prompts",
 				text: "Monitor the comparison and recommendation queries for your top categories, and see which competitors the engines name.",
 			},
 			{
-				name: "Add Product and Review Schema",
+				name: "Add product and review schema",
 				text: "Structured data for products and reviews helps engines extract and trust your catalog details.",
 			},
 			{
-				name: "Earn Reviews Engines Cite",
+				name: "Earn reviews engines cite",
 				text: "Recommendations lean on third-party reviews. Presence on the sites engines pull from improves your odds of being named.",
 			},
 			{
-				name: "Keep Price and Availability Accurate",
+				name: "Keep price and availability accurate",
 				text: "Stale prices and stock invite wrong answers. Keep product data current so engines describe you correctly.",
 			},
 		],
@@ -185,19 +185,19 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track Category, Competitor, and Branded Prompts",
+				name: "Track category, competitor, and branded prompts",
 				text: "Cover the full research journey, from what a category is to whether you specifically are credible.",
 			},
 			{
-				name: "Build Authority Content",
+				name: "Build authority content",
 				text: "Thorough, well-structured content on your topic gives engines a confident source to cite for considered purchases.",
 			},
 			{
-				name: "Earn Analyst and Press Mentions",
+				name: "Earn analyst and press mentions",
 				text: "Corroboration on respected sources weighs heavily in how engines describe enterprise vendors.",
 			},
 			{
-				name: "Correct Inaccuracies Quickly",
+				name: "Correct inaccuracies quickly",
 				text: "An out-of-date claim about your product can sit in answers for months. Monitor and fix the sources behind it.",
 			},
 		],
@@ -220,7 +220,7 @@ export const aeoVerticals: AeoVertical[] = [
 		audience: "startups",
 		plan: "basic",
 		technical: true,
-		headline: "Startup SEO and AI Search Visibility",
+		headline: "Startup SEO and AI search visibility",
 		metaTitle: "Startup SEO in the AI Search Era: A Practical Guide · CiteRank.com",
 		metaDescription:
 			"Startup SEO when a growing share of searches end in an AI answer: which prompts to track first, what to publish, and how to measure visibility on a small budget.",
@@ -232,19 +232,19 @@ export const aeoVerticals: AeoVertical[] = [
 		examplePrompts: ["best [new category] tools", "alternatives to [incumbent]", "what is [your brand]"],
 		plays: [
 			{
-				name: "Define a Tight Prompt Set",
+				name: "Define a tight prompt set",
 				text: "A handful of high-intent prompts beats a broad, expensive list. Track the questions your earliest buyers ask.",
 			},
 			{
-				name: "Tell a Clear Category Story",
+				name: "Tell a clear category story",
 				text: "Help engines place you by explaining your category and product plainly, with consistent naming.",
 			},
 			{
-				name: "Earn Your First Reviews",
+				name: "Earn your first reviews",
 				text: "Early mentions on trusted sources give the models something to ground an answer about you in.",
 			},
 			{
-				name: "Track Weekly",
+				name: "Track weekly",
 				text: "Visibility moves as you publish and get covered. A weekly read shows whether it is working.",
 			},
 		],
@@ -266,7 +266,7 @@ export const aeoVerticals: AeoVertical[] = [
 		audience: "enterprises",
 		plan: "business",
 		technical: true,
-		headline: "Enterprise AI Visibility Platforms",
+		headline: "Enterprise AI visibility platforms",
 		metaTitle: "Enterprise AI Visibility & AEO Platform Requirements · CiteRank.com",
 		metaDescription:
 			"What an enterprise AEO platform has to do: multi-brand tracking, unlimited seats, API export, and numbers your analysts can trace back to the AI answers behind them.",
@@ -278,19 +278,19 @@ export const aeoVerticals: AeoVertical[] = [
 		examplePrompts: ["is [brand] trustworthy", "[brand] vs [competitor]", "best [category] for enterprise"],
 		plays: [
 			{
-				name: "Track Each Brand Separately",
+				name: "Track each brand separately",
 				text: "Give each brand or product line its own prompts and competitors, so results stay separate and comparable.",
 			},
 			{
-				name: "Standardize a Prompt Set",
+				name: "Standardize a prompt set",
 				text: "Use a consistent set of prompts across product lines and regions so results are comparable across the org.",
 			},
 			{
-				name: "Benchmark Named Competitors",
+				name: "Benchmark named competitors",
 				text: "Track share of voice against the specific rivals leadership cares about, on the prompts that matter.",
 			},
 			{
-				name: "Trace Scores to Answers",
+				name: "Trace scores to answers",
 				text: "Every answer is kept in full, so your team can check any number against the responses it was built from.",
 			},
 		],
@@ -320,19 +320,19 @@ export const aeoVerticals: AeoVertical[] = [
 		examplePrompts: ["is [treatment] safe", "best [specialty] near me", "what does [brand] treat"],
 		plays: [
 			{
-				name: "Publish Authoritative Content",
+				name: "Publish authoritative content",
 				text: "Well-sourced, expert-backed content is what cautious engines cite on health topics. Make yours the clear reference.",
 			},
 			{
-				name: "Monitor for Unsafe or Wrong Claims",
+				name: "Monitor for unsafe or wrong claims",
 				text: "Track how engines describe your brand and treatments so an inaccurate or unsafe statement does not go unnoticed.",
 			},
 			{
-				name: "Earn Trusted Health Citations",
+				name: "Earn trusted health citations",
 				text: "References from respected health sources carry extra weight in how engines ground their answers.",
 			},
 			{
-				name: "Trace Errors to the Source",
+				name: "Trace errors to the source",
 				text: "See which sites engines cite for your prompts, so you know where a wrong claim comes from.",
 			},
 		],
@@ -363,19 +363,19 @@ export const aeoVerticals: AeoVertical[] = [
 		examplePrompts: ["best [product] for [need]", "is [brand] legit", "[brand] vs [competitor] fees"],
 		plays: [
 			{
-				name: "Publish Clear, Accurate Product Content",
+				name: "Publish clear, accurate product content",
 				text: "Precise content on your products and terms gives engines a reliable, compliant source to quote.",
 			},
 			{
-				name: "Monitor for Inaccurate Claims",
+				name: "Monitor for inaccurate claims",
 				text: "Track how engines state your rates, fees, and eligibility so a wrong claim does not sit in answers unnoticed.",
 			},
 			{
-				name: "Earn Trusted Citations",
+				name: "Earn trusted citations",
 				text: "References from respected financial sources weigh heavily in what engines repeat about you.",
 			},
 			{
-				name: "Keep a Record of Answers",
+				name: "Keep a record of answers",
 				text: "Every answer is stored in full with its date, so you can show what an engine said about your products and when.",
 			},
 		],
@@ -411,19 +411,19 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track by Practice Area and Jurisdiction, Not by Firm Name",
+				name: "Track by practice area and jurisdiction, not by firm name",
 				text: "Nobody asks an engine about your firm before they know they need one. Build the prompt set around the situations clients describe (the injury, the dispute, the filing deadline) in each city you practise in.",
 			},
 			{
-				name: "Publish Jurisdiction-Specific Answers, Not National Boilerplate",
+				name: "Publish jurisdiction-specific answers, not national boilerplate",
 				text: "Statutes of limitation, filing rules, and damage caps differ by state. A page that answers the question for your jurisdiction gives an engine something specific to cite; a national overview gives it nothing it cannot already generate.",
 			},
 			{
-				name: "Attach Real Attorney Credentials to Every Page",
+				name: "Attach real attorney credentials to every page",
 				text: "Bar admissions, practice years, and case types on the page and in Person schema are the evidence engines lean on for legal answers. An unsigned article is the easiest thing in the world for a model to skip.",
 			},
 			{
-				name: "Watch How Engines Describe Your Firm as Well as Whether They Name It",
+				name: "Watch how engines describe your firm as well as whether they name it",
 				text: "A citation that describes your practice areas wrongly, or attributes another firm's outcome to you, is worse than being absent. Sentiment and description accuracy matter more in legal than in most categories.",
 			},
 		],
@@ -464,19 +464,19 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Run the Prompt Set per Location",
+				name: "Run the prompt set per location",
 				text: "AI answers to local questions are location-conditioned. Track each city or metro separately, because one strong market can mask several where you are invisible.",
 			},
 			{
-				name: "Keep the Business Profile Factually Clean",
+				name: "Keep the business profile factually clean",
 				text: "Hours, service areas, and categories propagate into AI answers through the same feeds that power maps. Contradictions between your site and your profile give an engine a reason to prefer a competitor it can state confidently.",
 			},
 			{
-				name: "Earn Mentions in Local Publications",
+				name: "Earn mentions in local publications",
 				text: "City guides, neighbourhood blogs, and regional press are disproportionately cited in local AI answers because they read as independent. One good local roundup often outperforms a dozen generic directory listings.",
 			},
 			{
-				name: "Answer the Operational Questions on the Site",
+				name: "Answer the operational questions on the site",
 				text: "Pricing ranges, response times, service radius, and what happens on a first visit are exactly what people ask assistants. Publishing them plainly gives the engine something concrete to quote.",
 			},
 		],
@@ -512,19 +512,19 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Own the Neighbourhood Question",
+				name: "Own the neighbourhood question",
 				text: "Portals cover cities; almost nobody covers neighbourhoods well. Publishing current, specific analysis at that level makes you the citable source for questions the portals answer vaguely.",
 			},
 			{
-				name: "Answer the Commission Question Directly",
+				name: "Answer the commission question directly",
 				text: "Fee structure is one of the most-asked and least-answered questions in the category. A clear, current explanation of what you charge and what it covers gets cited precisely because so few brokerages state it plainly.",
 			},
 			{
-				name: "Date and Refresh Your Market Data",
+				name: "Date and refresh your market data",
 				text: "Engines discount stale market claims heavily, and real estate data ages in weeks. Visible publication dates and a real refresh cadence are what keep a page in the answer set.",
 			},
 			{
-				name: "Track Agent-Level and Brokerage-Level Prompts Separately",
+				name: "Track agent-level and brokerage-level prompts separately",
 				text: "'Best agent in [city]' and 'best brokerage in [city]' produce different answers from different sources. Both matter, and improving one does not move the other.",
 			},
 		],
@@ -560,19 +560,19 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track Programme-Level Prompts, Not Institutional Ones",
+				name: "Track programme-level prompts, not institutional ones",
 				text: "Students ask about programmes and outcomes, not about the institution in the abstract. Build the prompt set around subjects, credentials, and career outcomes.",
 			},
 			{
-				name: "Publish Outcomes as Data, Not Adjectives",
+				name: "Publish outcomes as data, not adjectives",
 				text: "Completion rates, employment outcomes, and total cost of attendance are what engines quote. 'World-class faculty' is unquotable and gets skipped.",
 			},
 			{
-				name: "Make Accreditation Explicit and Machine-Readable",
+				name: "Make accreditation explicit and machine-readable",
 				text: "Accreditation is the trust marker that decides whether an engine will recommend a programme at all. State it on the programme page and mark it up, rather than burying it in a policy PDF.",
 			},
 			{
-				name: "Answer the Sceptical Question Openly",
+				name: "Answer the sceptical question openly",
 				text: "'Is this degree worth it' is asked constantly. An institution that addresses it with real numbers, including the cases where the answer is nuanced, earns citations that promotional copy never will.",
 			},
 		],
@@ -608,19 +608,19 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track Itinerary Prompts Alongside Brand Prompts",
+				name: "Track itinerary prompts alongside brand prompts",
 				text: "The recommendation that matters is 'where should I stay in [city]', not 'tell me about [hotel]'. Build the prompt set around the planning questions travellers ask.",
 			},
 			{
-				name: "Compete on Traveller Segment, Not on Adjectives",
+				name: "Compete on traveller segment, not on adjectives",
 				text: "Engines answer segmented questions, for families, for solo travellers, for a first visit. Content organised around who the trip is for is far more citable than a generic property description.",
 			},
 			{
-				name: "Get Into the Independent Guides",
+				name: "Get into the independent guides",
 				text: "Editorial guides and destination publications are cited disproportionately in travel answers. Earning a place in them moves visibility more than any amount of on-site copy.",
 			},
 			{
-				name: "Keep the Practical Details Current",
+				name: "Keep the practical details current",
 				text: "Seasonality, transit times, what is walkable, what is closed in winter. Practical specifics are what assistants quote when building an itinerary, and they are what most brand sites omit.",
 			},
 		],
@@ -655,19 +655,19 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Publish Specifications as HTML, Not Gated PDFs",
+				name: "Publish specifications as HTML, not gated PDFs",
 				text: "A spec sheet locked behind a form or trapped in a scanned PDF is invisible to the crawlers that feed AI answers. The same data as structured on-page content is directly quotable.",
 			},
 			{
-				name: "Answer the Specification Question, Not the Brand Question",
+				name: "Answer the specification question, not the brand question",
 				text: "Buyers ask who makes a part with given properties. Pages organised by application and specification get cited; pages organised by product family do not.",
 			},
 			{
-				name: "Make Certifications and Compliance Explicit",
+				name: "Make certifications and compliance explicit",
 				text: "ISO, RoHS, REACH, industry-specific approvals. These are frequently the filter that decides whether a supplier is named at all, and they belong on the product page in plain text.",
 			},
 			{
-				name: "Cover Cross-Reference and Substitution Queries",
+				name: "Cover cross-reference and substitution queries",
 				text: "'Alternatives to [competitor part]' is high-intent and poorly served. A clear cross-reference table is one of the most citable assets a manufacturer can publish.",
 			},
 		],
@@ -702,19 +702,19 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track Coverage Questions Alongside Carrier Comparisons",
+				name: "Track coverage questions alongside carrier comparisons",
 				text: "'Does X cover Y' is the highest-volume question shape in insurance and the one most likely to be answered wrongly. It is also where clear published answers win citations easily.",
 			},
 			{
-				name: "Publish Plain-Language Coverage Explanations",
+				name: "Publish plain-language coverage explanations",
 				text: "Policy documents are precise and unquotable. A plain-language explanation that is still accurate gives engines something to cite without inventing a paraphrase of its own.",
 			},
 			{
-				name: "Monitor Accuracy as Well as Presence",
+				name: "Monitor accuracy as well as presence",
 				text: "A wrong description of your coverage is a compliance and service problem as well as a marketing one. Track how engines characterise your products and correct the sources behind bad answers.",
 			},
 			{
-				name: "Address the Price Question With Real Ranges",
+				name: "Address the price question with real ranges",
 				text: "Cost is the most-asked and most-evaded question in the category. Honest ranges with the factors that move them get cited over pages that route straight to a quote form.",
 			},
 		],
@@ -750,19 +750,19 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track Use-Case Prompts, Not Model-Name Prompts",
+				name: "Track use-case prompts, not model-name prompts",
 				text: "Buyers ask for the best vehicle for a commute, a family, or towing. Those questions decide the shortlist; model-name queries happen after the decision is largely made.",
 			},
 			{
-				name: "Publish Total Cost of Ownership Openly",
+				name: "Publish total cost of ownership openly",
 				text: "Fuel, insurance, maintenance, and depreciation over five years is what buyers ask about and what brand sites almost never state. It is one of the most citable things an automotive brand can publish.",
 			},
 			{
-				name: "Address Reliability Directly",
+				name: "Address reliability directly",
 				text: "Reliability questions get answered from forums and third-party data whether you participate or not. Publishing real service intervals, common issues, and warranty terms gives engines a first-party source to weigh.",
 			},
 			{
-				name: "Separate Brand, Model, and Dealer Visibility",
+				name: "Separate brand, model, and dealer visibility",
 				text: "These behave differently. A strong model can sit inside a brand that engines describe poorly, and dealer-level answers are local and driven by entirely different sources.",
 			},
 		],
@@ -798,19 +798,19 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track Cause-Area Prompts, Not Organisation Names",
+				name: "Track cause-area prompts, not organisation names",
 				text: "Donors ask about causes first. 'Best charities for clean water' decides the shortlist; your organisation name is searched only after it is on the list.",
 			},
 			{
-				name: "Publish Financials and Impact Data as HTML",
+				name: "Publish financials and impact data as HTML",
 				text: "Annual reports as PDF downloads are close to invisible to AI crawlers. The same programme ratios and outcome figures as on-page content are directly quotable and answer the question donors ask.",
 			},
 			{
-				name: "Make Third-Party Ratings Easy to Find",
+				name: "Make third-party ratings easy to find",
 				text: "Charity evaluator ratings and regulatory registration numbers are the trust markers engines reach for on legitimacy questions. Stating them on the site makes the answer easy.",
 			},
 			{
-				name: "Answer the Efficiency Question Head On",
+				name: "Answer the efficiency question head on",
 				text: "'How much goes to the programme' is the most common donor question and the most commonly dodged. A clear, current answer earns citations precisely because it is rare.",
 			},
 		],
@@ -847,19 +847,19 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Track Category and Control Prompts",
+				name: "Track category and control prompts",
 				text: "Buyers ask by category and by control, not by vendor. Track the categories you claim to compete in and see whether engines place you in them.",
 			},
 			{
-				name: "Turn Security Research Into Citable Content",
+				name: "Turn security research into citable content",
 				text: "Threat research, detection writeups, and vulnerability analysis are the most citable assets in this category because they are verifiable and specific. Most vendors publish them as PDFs and lose the benefit.",
 			},
 			{
-				name: "Answer Compliance Mapping Questions",
+				name: "Answer compliance mapping questions",
 				text: "'How do I meet SOC 2 / ISO 27001 / NIS2' generates enormous assistant traffic. A control-by-control mapping page is high-intent, well-defined, and rarely done well.",
 			},
 			{
-				name: "Document Architecture Openly, Including Limits",
+				name: "Document architecture openly, including limits",
 				text: "Engines reward sources that state constraints. Saying what your product does not cover makes the rest of the description more credible and more quotable.",
 			},
 		],
@@ -894,19 +894,19 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Specialise the Prompt Set by Role and Region",
+				name: "Specialise the prompt set by role and region",
 				text: "Nobody asks for the best recruiting agency in general. They ask for engineering recruiters in Berlin or healthcare staffing in Texas. Track the specific combinations you serve.",
 			},
 			{
-				name: "Publish Fee Structures and Timelines",
+				name: "Publish fee structures and timelines",
 				text: "Placement fees, guarantee periods, and typical time-to-fill are what employers ask about and what almost no agency site states. Publishing them is an unusually cheap way to become the citable source.",
 			},
 			{
-				name: "Cover the Platform Comparison Queries",
+				name: "Cover the platform comparison queries",
 				text: "For HR tech, 'X vs Y' and 'best ATS for [company size]' carry the buying intent. Honest comparison content earns the citation that a feature page will not.",
 			},
 			{
-				name: "Track Employer Brand Prompts Separately",
+				name: "Track employer brand prompts separately",
 				text: "How engines describe you to candidates is a different question from how they describe you to employers, driven by different sources, review platforms rather than industry press.",
 			},
 		],
@@ -943,19 +943,19 @@ export const aeoVerticals: AeoVertical[] = [
 		],
 		plays: [
 			{
-				name: "Make Documentation Server-Rendered and Crawlable",
+				name: "Make documentation server-rendered and crawlable",
 				text: "AI crawlers generally do not execute JavaScript. Documentation that renders client-side is invisible to them no matter how good it is, a surprisingly common and entirely fixable failure.",
 			},
 			{
-				name: "Publish Runnable Examples for Real Tasks",
+				name: "Publish runnable examples for real tasks",
 				text: "Assistants quote code. Complete, copy-pasteable examples organised by task are what get cited; API reference tables alone rarely are.",
 			},
 			{
-				name: "Write the Migration and Comparison Pages",
+				name: "Write the migration and comparison pages",
 				text: "'Alternatives to X' and 'migrating from X to Y' are high-intent developer queries and are usually only answered by whoever is being migrated away from.",
 			},
 			{
-				name: "Publish an llms.txt and Keep Docs Available as Markdown",
+				name: "Publish an llms.txt and keep docs available as Markdown",
 				text: "Serving plain markdown alongside the rendered docs gives models a clean, unambiguous source and removes any dependence on their HTML parsing.",
 			},
 		],
@@ -983,16 +983,9 @@ export const aeoVerticals: AeoVertical[] = [
 const MINOR_WORDS = new Set(["a", "an", "and", "for", "in", "of", "on", "or", "the", "to", "vs"]);
 
 /** Capitalises each word and each hyphenated part, leaving minor words and existing capitals (SaaS, HR) alone. */
-export function titleCase(text: string) {
-	return text
-		.split(" ")
-		.map((word, i) => (i > 0 && MINOR_WORDS.has(word) ? word : word.replace(/(^|-)(\w)/g, (m) => m.toUpperCase())))
-		.join(" ");
-}
-
 /** The page's title, as its <h1> and wherever the page is listed. */
 export function aeoHeadline(v: AeoVertical): string {
-	return v.headline ?? titleCase(`AEO for ${v.audience}`);
+	return v.headline ?? `AEO for ${v.audience}`;
 }
 
 export function getAeoVertical(slug: string): AeoVertical | undefined {

@@ -236,13 +236,13 @@ export const CATEGORY_SLUGS: Partial<Record<CompetitorCategory, string>> = {
 
 /** Reader-friendly H1/title phrasing per category (better than the bare label). */
 export const CATEGORY_HEADINGS: Record<CompetitorCategory, string> = {
-	tracking: "AI Visibility Tracking Tools",
-	content: "AI Content Optimization Tools",
-	"api-developer": "AI Visibility APIs for Developers",
-	ecommerce: "AI Visibility Tools for E-Commerce",
-	"seo-traditional": "SEO Platforms With AI Search Tracking",
-	"open-source": "Open-Source AI Visibility Tools",
-	other: "AI Visibility Tools",
+	tracking: "AI visibility tracking tools",
+	content: "AI content optimization tools",
+	"api-developer": "AI visibility APIs for developers",
+	ecommerce: "AI visibility tools for e-commerce",
+	"seo-traditional": "SEO platforms with AI search tracking",
+	"open-source": "Open-source AI visibility tools",
+	other: "AI visibility tools",
 };
 
 const categoryBySlug = new Map<string, CompetitorCategory>(

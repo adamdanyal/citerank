@@ -58,7 +58,7 @@ function FeaturesPage() {
 					<Container className="pt-32 pb-16 lg:pt-40 lg:pb-20">
 						<div className="max-w-3xl">
 							<p className="caption-3 text-blue-800">Features</p>
-							<h1 className="heading-1 mt-6 text-zinc-950">All You Need to Grow AI Visibility</h1>
+							<h1 className="heading-1 mt-6 text-zinc-950">All you need to grow AI visibility</h1>
 							<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
 								CiteRank.com tracks whether ChatGPT, Google AI Overviews, Perplexity, Gemini and eight other AI apps
 								mention you, how they describe you, who they name instead and which sources they cite. Then it tells you

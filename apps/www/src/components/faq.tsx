@@ -5,7 +5,7 @@ import type { FaqItem } from "@/lib/faqs";
  * in the route head, passing the same `items`, so the visible Q&A and the
  * FAQPage structured data stay in sync.
  */
-export function Faq({ items, title = "Frequently Asked Questions" }: { items: FaqItem[]; title?: string }) {
+export function Faq({ items, title = "Frequently asked questions" }: { items: FaqItem[]; title?: string }) {
 	if (items.length === 0) return null;
 
 	return (

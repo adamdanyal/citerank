@@ -120,7 +120,7 @@ export function Story() {
 		<section className="bg-paper-2">
 			<Container className="py-20 lg:py-24">
 				<Reveal className="mx-auto max-w-3xl text-center">
-					<h2 className="heading-2 text-zinc-950">What a Buyer Sees</h2>
+					<h2 className="heading-2 text-zinc-950">What a buyer sees</h2>
 					<p className="body-8 mt-6 text-zinc-700">Here is the kind of answer your buyers get.</p>
 				</Reveal>
 				<Reveal delay={100} className="mx-auto mt-12 max-w-3xl">
@@ -137,7 +137,7 @@ export function HowItWorks() {
 		<section className="bg-white">
 			<Container className="py-20 lg:py-24">
 				<Reveal className="mx-auto max-w-3xl text-center">
-					<h2 className="heading-2 text-zinc-950">How CiteRank.com Works</h2>
+					<h2 className="heading-2 text-zinc-950">How CiteRank.com works</h2>
 					<p className="body-8 mt-6 text-zinc-700">Three steps, every day.</p>
 				</Reveal>
 				<ol className="mt-12 space-y-16 lg:mt-20 lg:space-y-24">

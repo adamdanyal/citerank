@@ -51,23 +51,23 @@ const FATE_LABEL: Record<GraveyardFate, string> = {
 
 const STEPS: { title: string; body: string }[] = [
 	{
-		title: "Export Everything While You Still Can",
+		title: "Export everything while you still can",
 		body: "Shutdown notices often give a few weeks. Pull your prompts, competitor list, and as much history as the tool will export: CSV, API, or screenshots of the charts if that's all there is.",
 	},
 	{
-		title: "Write Down How Your Numbers Were Made",
+		title: "Write down how your numbers were made",
 		body: "Note which engines you tracked, how often, and in which countries. Visibility scores are not portable between tools, so you need this to explain the jump when you switch.",
 	},
 	{
-		title: "Re-Baseline Instead of Stitching",
+		title: "Re-baseline instead of stitching",
 		body: "Start the new tool on the same prompts and treat its first few weeks as a fresh baseline. Grafting one vendor's numbers onto another's makes the trend line meaningless.",
 	},
 	{
-		title: "Plan Your Exit Before You Commit",
+		title: "Plan your exit before you commit",
 		body: "Check whether your data leaves through an API, whether the code is open source and under which license, and whether you can self-host it. A permissive license means the software outlives the company.",
 	},
 	{
-		title: "Move Your Prompts Over",
+		title: "Move your prompts over",
 		body: "In CiteRank.com you can paste a list of prompts in one go, add your competitors, and pick the engines to track. The first runs land within minutes.",
 	},
 ];
@@ -201,7 +201,7 @@ function GraveyardPage() {
 			<Navbar />
 			<main>
 				<DirectoryBackLink />
-				<DirectoryHero title="The AEO Graveyard" lead={lead()}>
+				<DirectoryHero title="The AEO graveyard" lead={lead()}>
 					<div className="max-w-3xl border-l-2 border-blue-600 pl-4 text-sm text-zinc-600">
 						<p className="font-medium text-zinc-950">Keep a Copy of Your History</p>
 						<p className="mt-1">
@@ -236,7 +236,7 @@ function GraveyardPage() {
 						announced, or the month the site was found offline.
 					</p>
 				</DirectorySection>
-				<DirectorySection title="Your AI Visibility Tool Shut Down. Now What?">
+				<DirectorySection title="Your AI visibility tool shut down. Now what?">
 					<ol className="grid gap-6 md:grid-cols-2">
 						{STEPS.map((step, i) => (
 							<li key={step.title} className="rounded-md border border-zinc-200 bg-white p-5">

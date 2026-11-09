@@ -107,37 +107,37 @@ export interface Competitor {
 
 export const FEATURE_CATEGORIES: Record<string, FeatureCategory> = {
 	core: {
-		label: "Core Tracking",
+		label: "Core tracking",
 		features: {
 			multiLlmTracking: {
-				label: "Multi-LLM Tracking",
+				label: "Multi-LLM tracking",
 				description: "Track across ChatGPT, Claude, Gemini, Perplexity, and more",
 				searchTerm: "LLM Trackers",
 			},
 			visibilityScore: {
-				label: "AI Visibility Score",
+				label: "AI visibility score",
 				description: "Aggregate score showing brand presence across AI responses",
 				searchTerm: "AI Visibility Score Tools",
 			},
 			citationAnalytics: {
-				label: "Citation Analytics",
+				label: "Citation analytics",
 				description: "Track which websites and sources are cited in AI responses",
 				searchTerm: "AI Citation Tracking Tools",
 			},
 			competitorBenchmarking: {
-				label: "Competitor Benchmarking",
+				label: "Competitor benchmarking",
 				description: "Compare visibility against competitors for each prompt",
 				searchTerm: "AI Share of Voice Tools",
 			},
 			brandMentionTracking: {
-				label: "Brand Mention Tracking",
+				label: "Brand mention tracking",
 				description: "Monitor when and how AI platforms mention your brand",
 				searchTerm: "AI Search Monitoring Tools",
 			},
 		},
 	},
 	engines: {
-		label: "AI Engines",
+		label: "AI engines",
 		features: {
 			chatgpt: {
 				label: "ChatGPT",
@@ -200,17 +200,17 @@ export const FEATURE_CATEGORIES: Record<string, FeatureCategory> = {
 				phrase: "Meta AI tracking",
 			},
 			anyModel: {
-				label: "Any Model",
+				label: "Any model",
 				description: "Add models beyond a fixed list, such as any model available through OpenRouter",
 				phrase: "tracking for any model",
 			},
 			uiCapture: {
-				label: "Real UI Answers",
+				label: "Real UI answers",
 				description: "Capture answers from the consumer apps people use, not only from model APIs",
 				phrase: "answers captured from the real consumer apps",
 			},
 			byoKeys: {
-				label: "Bring Your Own Keys",
+				label: "Bring your own keys",
 				description: "Plug in your own scraper and model API accounts and pay providers directly",
 				phrase: "bring-your-own-key support",
 			},
@@ -220,92 +220,92 @@ export const FEATURE_CATEGORIES: Record<string, FeatureCategory> = {
 		label: "Platform",
 		features: {
 			whiteLabelAgency: {
-				label: "White-Label / Agency",
+				label: "White-label / agency",
 				description: "Multi-client dashboards and custom branding",
 				searchTerm: "White-Label AI Visibility Tools",
 			},
 			openSource: {
-				label: "Open Source",
+				label: "Open source",
 				description: "Source code available for self-hosting",
 				searchTerm: "Open Source AI Visibility Tools",
 			},
 			contentGeneration: {
-				label: "Content Generation",
+				label: "Content generation",
 				description: "AI-powered content creation and optimization",
 			},
 		},
 	},
 	advanced: {
-		label: "Advanced Analytics",
+		label: "Advanced analytics",
 		features: {
 			promptVolumeEstimates: {
-				label: "Prompt Volume Estimates",
+				label: "Prompt volume estimates",
 				description: "Estimated search volumes for tracked queries",
 			},
 			sentimentAnalysis: {
-				label: "Sentiment Analysis",
+				label: "Sentiment analysis",
 				description: "Track brand perception across AI platforms",
 				searchTerm: "AI Brand Sentiment Tools",
 			},
 			queryFanOut: {
-				label: "Query Fan-Out",
+				label: "Query fan-out",
 				description: "See the web searches AI engines run behind each answer",
 				searchTerm: "Query Fan-Out Tools",
 			},
 			crawlerAnalytics: {
-				label: "AI Crawler Analytics",
+				label: "AI crawler analytics",
 				description: "Track AI bot visits to your website",
 				searchTerm: "AI Crawler Analytics Tools",
 			},
 			geographicTracking: {
-				label: "Geographic Tracking",
+				label: "Geographic tracking",
 				description: "Track AI visibility by region or country",
 			},
 			socialMediaTracking: {
-				label: "Social Media Tracking",
+				label: "Social media tracking",
 				description: "Monitor brand mentions on Reddit and social platforms",
 			},
 			shoppingTracking: {
-				label: "Shopping Tracking",
+				label: "Shopping tracking",
 				description: "Monitor product visibility in AI shopping features",
 			},
 			multiLanguage: {
-				label: "Multi-Language",
+				label: "Multi-language",
 				description: "Track visibility across multiple languages",
 			},
 		},
 	},
 	insights: {
-		label: "Actionable Insights",
+		label: "Actionable insights",
 		features: {
 			actionRecommendations: {
-				label: "Action Recommendations",
+				label: "Action recommendations",
 				description: "Prioritized action items based on visibility gaps",
 			},
 			contentGapAnalysis: {
-				label: "Content Gap Analysis",
+				label: "Content gap analysis",
 				description: "Detect content gaps where competitors are cited but you aren't",
 			},
 			siteAudits: {
-				label: "AI Site Audits",
+				label: "AI site audits",
 				description: "Assess how AI-friendly your site content is",
 			},
 			keywordResearch: {
-				label: "AI Keyword Research",
+				label: "AI keyword research",
 				description: "Discover conversational prompts users ask on AI platforms",
 				searchTerm: "AI Keyword Research Tools",
 			},
 		},
 	},
 	reporting: {
-		label: "Reporting & Integration",
+		label: "Reporting & integration",
 		features: {
 			emailAlerts: {
-				label: "Email Alerts",
+				label: "Email alerts",
 				description: "Automated alerts and summary emails",
 			},
 			dataExportApi: {
-				label: "API Access",
+				label: "API access",
 				description: "Export data to CSV or access via API",
 				searchTerm: "AI Visibility APIs",
 			},
@@ -318,12 +318,12 @@ export const FEATURE_CATEGORIES: Record<string, FeatureCategory> = {
 				description: "Official Python client for the API",
 			},
 			mcpServer: {
-				label: "MCP Access",
+				label: "MCP access",
 				description: "Query visibility data from AI assistants like Claude, ChatGPT, and Cursor",
 				searchTerm: "AI Visibility MCP Servers",
 			},
 			biConnectors: {
-				label: "BI Connectors",
+				label: "BI connectors",
 				description: "Native connectors to Looker Studio, NinjaCat, and other BI tools",
 			},
 		},
@@ -401,12 +401,12 @@ export const ELMO_FEATURES: Record<FeatureKey, boolean> = {
 };
 
 export const CATEGORY_LABELS: Record<CompetitorCategory, string> = {
-	tracking: "AI Visibility Tracking",
-	content: "Content Generation",
+	tracking: "AI visibility tracking",
+	content: "Content generation",
 	"api-developer": "API",
 	ecommerce: "E-commerce",
 	"seo-traditional": "Traditional SEO",
-	"open-source": "Open Source",
+	"open-source": "Open source",
 	other: "Other",
 };
 

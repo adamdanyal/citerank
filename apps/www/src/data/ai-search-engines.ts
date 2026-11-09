@@ -26,23 +26,23 @@ export const aiSearchEngines: AiSearchEngine[] = [
 		],
 		steps: [
 			{
-				name: "Be a Clear Source on Your Topic",
+				name: "Be a clear source on your topic",
 				text: "Publish content that answers the questions in your category directly and in plain language, so a model can lift a clean, correct statement about you.",
 			},
 			{
-				name: "Earn Mentions on Sources ChatGPT Trusts",
+				name: "Earn mentions on sources ChatGPT trusts",
 				text: "Coverage, reviews, and references on reputable third-party sites shape how the trained model describes your brand. Independent corroboration matters more than your own claims.",
 			},
 			{
-				name: "Structure Pages for Extraction",
+				name: "Structure pages for extraction",
 				text: "Use descriptive headings, short direct answers near the top, and schema markup so the key facts are easy to parse and quote.",
 			},
 			{
-				name: "Keep Important Pages Current",
+				name: "Keep important pages current",
 				text: "Browsing favors fresh, accurate pages. Stale prices, dates, or feature lists invite wrong answers, so keep your core pages up to date.",
 			},
 			{
-				name: "Track Both Modes Over Time",
+				name: "Track both modes over time",
 				text: "Check how ChatGPT describes you with and without browsing, on a consistent set of prompts, because answers vary between runs.",
 			},
 		],
@@ -61,23 +61,23 @@ export const aiSearchEngines: AiSearchEngine[] = [
 		],
 		steps: [
 			{
-				name: "Answer the Specific Question",
+				name: "Answer the specific question",
 				text: "Perplexity rewards pages that address a precise query head-on. Match the questions your buyers ask and answer them in the first paragraph.",
 			},
 			{
-				name: "Make the Answer Easy to Extract",
+				name: "Make the answer easy to extract",
 				text: "Lead with the direct answer, then expand. Clear headings, short paragraphs, and lists give the engine a clean span to quote.",
 			},
 			{
-				name: "Build Domain Trust",
+				name: "Build domain trust",
 				text: "Citations skew toward sources the engine considers authoritative. Depth on your topic and references from respected sites both help.",
 			},
 			{
-				name: "Keep Content Fresh",
+				name: "Keep content fresh",
 				text: "Perplexity leans current. Updating cornerstone pages and publishing on live topics improves your odds of being pulled in.",
 			},
 			{
-				name: "Measure Which Prompts Cite You",
+				name: "Measure which prompts cite you",
 				text: "Track a consistent prompt set and watch which queries cite you and which cite a competitor. The queries where a competitor wins are where to focus.",
 			},
 		],
@@ -96,23 +96,23 @@ export const aiSearchEngines: AiSearchEngine[] = [
 		],
 		steps: [
 			{
-				name: "Answer the Query Directly",
+				name: "Answer the query directly",
 				text: "Put a clear, self-contained answer near the top of the page. Overviews favor content that resolves the question without hedging.",
 			},
 			{
-				name: "Earn Topical Authority",
+				name: "Earn topical authority",
 				text: "Google still leans on its existing ranking factors. Depth across a topic and a trusted domain make you a likelier source for the summary.",
 			},
 			{
-				name: "Add Structured Data",
+				name: "Add structured data",
 				text: "Schema for FAQs, articles, products, and your organization helps Google extract and trust the facts on your page.",
 			},
 			{
-				name: "Keep Technical SEO Sound",
+				name: "Keep technical SEO sound",
 				text: "If Google cannot crawl, render, or index a page well, it cannot summarize it, so the basics still come first.",
 			},
 			{
-				name: "Refresh on a Cadence",
+				name: "Refresh on a cadence",
 				text: "Overviews favor current information. Revisit cornerstone pages so prices, dates, and claims stay accurate.",
 			},
 		],
@@ -131,23 +131,23 @@ export const aiSearchEngines: AiSearchEngine[] = [
 		],
 		steps: [
 			{
-				name: "Get the SEO Foundation Right",
+				name: "Get the SEO foundation right",
 				text: "Crawlable, well-structured pages with clear topical focus are the base. Gemini products lean on the ranking factors Google already uses.",
 			},
 			{
-				name: "Provide Direct, Quotable Answers",
+				name: "Provide direct, quotable answers",
 				text: "Lead each page with a concise answer to the question it targets, then add the supporting depth beneath it.",
 			},
 			{
-				name: "Demonstrate Authority and Depth",
+				name: "Demonstrate authority and depth",
 				text: "Cover your topic thoroughly and earn references from trusted sources, so the model is confident citing you.",
 			},
 			{
-				name: "Keep Content Current",
+				name: "Keep content current",
 				text: "Conversational search pulls in fresh information. Maintain your cornerstone pages so answers about you stay accurate.",
 			},
 			{
-				name: "Track Across Products",
+				name: "Track across products",
 				text: "Monitor the Gemini app, AI Mode, and AI Overviews separately, since the same query can return different answers on each.",
 			},
 		],
@@ -166,23 +166,23 @@ export const aiSearchEngines: AiSearchEngine[] = [
 		],
 		steps: [
 			{
-				name: "Publish Accurate, Specific Content",
+				name: "Publish accurate, specific content",
 				text: "Claude leans toward well-supported statements. Precise, correct pages about your brand and category give it a reliable basis to quote.",
 			},
 			{
-				name: "Structure for Clean Extraction",
+				name: "Structure for clean extraction",
 				text: "Descriptive headings, direct answers, and schema make the important facts easy to lift without ambiguity.",
 			},
 			{
-				name: "Earn Trusted Third-Party Mentions",
+				name: "Earn trusted third-party mentions",
 				text: "Corroboration on reputable sources shapes how Claude characterizes you, the same way it does with other models.",
 			},
 			{
-				name: "Keep Key Pages Current",
+				name: "Keep key pages current",
 				text: "When Claude searches, fresh and accurate pages are likelier to be used and cited. Avoid stale facts on cornerstone pages.",
 			},
 			{
-				name: "Monitor How It Describes You",
+				name: "Monitor how it describes you",
 				text: "Track Claude on a consistent prompt set to catch inaccurate or out-of-date descriptions before buyers see them.",
 			},
 		],
@@ -201,23 +201,23 @@ export const aiSearchEngines: AiSearchEngine[] = [
 		],
 		steps: [
 			{
-				name: "Make Sure Bing Indexes You Well",
+				name: "Make sure Bing indexes you well",
 				text: "Verify your site in Bing Webmaster Tools and confirm your important pages are crawled and indexed, since Copilot retrieves from Bing.",
 			},
 			{
-				name: "Answer Questions Directly",
+				name: "Answer questions directly",
 				text: "Lead with a clear answer to the query, then add support. Copilot favors extractable, self-contained responses.",
 			},
 			{
-				name: "Add Structured Data",
+				name: "Add structured data",
 				text: "Schema markup helps Bing and Copilot parse and trust the facts on your page.",
 			},
 			{
-				name: "Build Authority and Freshness",
+				name: "Build authority and freshness",
 				text: "Depth on your topic and current content improve both your Bing ranking and your odds of being cited in Copilot.",
 			},
 			{
-				name: "Track Copilot Answers",
+				name: "Track Copilot answers",
 				text: "Monitor how Copilot mentions and cites your brand on a consistent set of prompts to find weak spots.",
 			},
 		],
@@ -236,23 +236,23 @@ export const aiSearchEngines: AiSearchEngine[] = [
 		],
 		steps: [
 			{
-				name: "Maintain an Active, Accurate Presence on X",
+				name: "Maintain an active, accurate presence on X",
 				text: "Because Grok leans on X, an up-to-date profile and accurate conversation about your brand there feed directly into its answers.",
 			},
 			{
-				name: "Publish Clear, Current Web Content",
+				name: "Publish clear, current web content",
 				text: "Grok favors real-time information. Keep your cornerstone pages accurate and lead with direct answers.",
 			},
 			{
-				name: "Earn Trusted Mentions",
+				name: "Earn trusted mentions",
 				text: "References on reputable sources and credible discussion shape how Grok characterizes your brand.",
 			},
 			{
-				name: "Structure for Extraction",
+				name: "Structure for extraction",
 				text: "Headings, concise answers, and schema make your facts easy to quote correctly.",
 			},
 			{
-				name: "Monitor for Accuracy",
+				name: "Monitor for accuracy",
 				text: "Real-time engines can amplify whatever is loudest. Track Grok so you can correct an inaccurate take quickly.",
 			},
 		],

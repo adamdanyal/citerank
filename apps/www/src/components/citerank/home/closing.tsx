@@ -17,7 +17,7 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 			/>
 			<Container className="relative py-20 lg:py-24">
 				<Reveal className="mx-auto flex max-w-3xl flex-col items-center text-center">
-					<h2 className="heading-2 text-zinc-950">Know Where You Stand in AI Search</h2>
+					<h2 className="heading-2 text-zinc-950">Know where you stand in AI search</h2>
 					<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
 						Set up takes minutes. Plans from ${CLOUD_ENTRY_PRICE_USD} a month, cancel any time.
 					</p>

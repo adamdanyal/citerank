@@ -52,10 +52,10 @@ function CompareHub() {
 			<main>
 				<DirectoryBackLink />
 				<DirectoryHero
-					title="AI Visibility Tools, Head-to-Head"
+					title="AI visibility tools, head-to-head"
 					lead="Weighing the AI visibility tools against each other? These side-by-side breakdowns compare tracking, analytics, and pricing across the funded AEO platforms and the SEO suites that added AI search monitoring, and show where CiteRank.com fits in."
 				/>
-				<DirectorySection title="Compare Several at Once">
+				<DirectorySection title="Compare several at once">
 					<ul className="grid gap-3 sm:grid-cols-2">
 						{setItems().map((item) => (
 							<li key={item.path}>
@@ -69,7 +69,7 @@ function CompareHub() {
 						))}
 					</ul>
 				</DirectorySection>
-				<DirectorySection title="Pick a Matchup">
+				<DirectorySection title="Pick a matchup">
 					<ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
 						{pairItems().map((item) => (
 							<li key={item.path}>

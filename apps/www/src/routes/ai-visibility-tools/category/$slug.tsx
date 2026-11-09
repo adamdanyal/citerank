@@ -71,7 +71,7 @@ function CategoryPage() {
 						name: tools[0].name,
 					}}
 				/>
-				<DirectorySection title="Tools in This Category">
+				<DirectorySection title="Tools in this category">
 					<ToolGrid competitors={tools} />
 				</DirectorySection>
 				<Faq items={getCategoryFaqs(category, tools)} />

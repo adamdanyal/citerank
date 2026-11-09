@@ -63,51 +63,51 @@ export const Route = createFileRoute("/agency")({
 const WORK: { icon: LucideIcon; title: string; body: string }[] = [
 	{
 		icon: FileText,
-		title: "Pages Your Site Is Missing",
+		title: "Pages your site is missing",
 		body: "The comparison, alternatives and guide pages buyers ask about, where AI names competitors instead of you.",
 	},
 	{
 		icon: RefreshCw,
-		title: "Pages AI Stopped Citing",
+		title: "Pages AI stopped citing",
 		body: "We update old pages AI no longer cites, so they answer the questions buyers ask today.",
 	},
 	{
 		icon: Star,
-		title: "Review Sites and Best-Of Lists",
+		title: "Review sites and best-of lists",
 		body: "We get you onto the review sites and lists AI cites when it names competitors and leaves you out.",
 	},
 	{
 		icon: MessagesSquare,
-		title: "Forums and Communities",
+		title: "Forums and communities",
 		body: "We answer buyers' questions in the forums and communities where they ask about your field.",
 	},
 	{
 		icon: Newspaper,
-		title: "Guest Articles",
+		title: "Guest articles",
 		body: "Articles on sites AI already cites, each aimed at a question where a competitor is named instead.",
 	},
 	{
 		icon: Wrench,
-		title: "Crawler Fixes",
+		title: "Crawler fixes",
 		body: "We fix anything that stops AI crawlers reading your site.",
 	},
 ];
 
 const STEPS = [
 	{
-		title: "The Tracker Ranks the Work",
+		title: "The tracker ranks the work",
 		body: "About once a week it lists what to change: missing pages, pages AI stopped citing, and the sites and threads that leave you out.",
 	},
 	{
-		title: "We Do It Every Month",
+		title: "We do it every month",
 		body: "We write and update the pages, get you listed, answer buyers in forums, publish guest articles and fix crawler problems.",
 	},
 	{
-		title: "You See Before and After",
+		title: "You see before and after",
 		body: "A monthly report lists every piece of work, the question it targets, and the AI answers before and after.",
 	},
 	{
-		title: "The Cycle Repeats",
+		title: "The cycle repeats",
 		body: "The tracker measures the new answers, and the next month's work follows from them.",
 	},
 ];
@@ -150,7 +150,7 @@ function FoundingRate() {
 	return (
 		<Reveal className="flex flex-col gap-5 rounded-2xl bg-blue-50 p-6 ring-1 ring-blue-200 md:flex-row md:items-center md:justify-between lg:p-8">
 			<div>
-				<p className="caption-1 text-blue-700">Founding-Client Rate</p>
+				<p className="caption-1 text-blue-700">Founding-client rate</p>
 				<p className="title-1 mt-2 text-zinc-950">{FOUNDING_DISCOUNT * 100}% Off Your First Six Months</p>
 				<p className="body-6 mt-1 max-w-[60ch] text-zinc-600">
 					For our first five agency clients. In return, we write up your results as a public case study, and you approve
@@ -215,8 +215,8 @@ function AgencyPage() {
 				<section className="-mt-16 bg-paper">
 					<Container className="grid gap-12 pt-32 pb-20 lg:grid-cols-12 lg:items-center lg:gap-16 lg:pt-40 lg:pb-24">
 						<div className="lg:col-span-6">
-							<p className="caption-3 text-blue-800">AI Search Agency</p>
-							<h1 className="heading-1 mt-6 text-zinc-950">We Do the Work That Gets You Named</h1>
+							<p className="caption-3 text-blue-800">AI search agency</p>
+							<h1 className="heading-1 mt-6 text-zinc-950">We do the work that gets you named</h1>
 							<p className="body-8 mt-6 text-zinc-600">
 								The tracker shows what AI says about your business and ranks what to change. We make those changes every
 								month and show you the AI answers before and after.
@@ -236,7 +236,7 @@ function AgencyPage() {
 							</p>
 						</div>
 						<Reveal delay={100} className={`${CARD} p-6 lg:col-span-6 lg:p-8`}>
-							<h2 className="caption-1 text-zinc-500">How a Month Runs</h2>
+							<h2 className="caption-1 text-zinc-500">How a month runs</h2>
 							<ol className="mt-4 divide-y divide-zinc-200/80">
 								{STEPS.map((step, index) => (
 									<li key={step.title} className="flex gap-5 py-4 first:pt-0 last:pb-0">
@@ -255,7 +255,7 @@ function AgencyPage() {
 				<section className="bg-white">
 					<Container className="py-20 lg:py-24">
 						<Reveal className="mx-auto max-w-3xl text-center">
-							<h2 className="heading-2 text-zinc-950">What the Agency Does</h2>
+							<h2 className="heading-2 text-zinc-950">What the agency does</h2>
 							<p className="body-8 mt-6 text-zinc-700">Every month, from the list the tracker ranks.</p>
 						</Reveal>
 						<ul className="mt-12 grid gap-5 md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
@@ -278,7 +278,7 @@ function AgencyPage() {
 				<section className="bg-white">
 					<Container className="py-20 lg:py-24">
 						<Reveal className="mx-auto max-w-3xl text-center">
-							<h2 className="heading-2 text-zinc-950">Agency Plans</h2>
+							<h2 className="heading-2 text-zinc-950">Agency plans</h2>
 							<p className="body-8 mt-6 text-zinc-700">
 								Each plan includes a tracker plan, so your dashboard and the monthly report show the same data.
 							</p>
@@ -304,7 +304,7 @@ function AgencyPage() {
 				<section id="book" className="scroll-mt-20 bg-paper">
 					<Container className="py-20 lg:py-24">
 						<Reveal className="mx-auto max-w-3xl text-center">
-							<h2 className="heading-2 text-zinc-950">Book a Call</h2>
+							<h2 className="heading-2 text-zinc-950">Book a call</h2>
 							<p className="body-8 mt-6 text-zinc-700">
 								We look at what AI says about your business today and the work that would change it.
 							</p>

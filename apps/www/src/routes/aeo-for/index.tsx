@@ -48,8 +48,8 @@ function AeoForIndex() {
 				<section className="-mt-16 bg-paper">
 					<Container className="pt-32 pb-16 lg:pt-40 lg:pb-20">
 						<div className="max-w-3xl">
-							<p className="caption-3 text-blue-800">AEO by Industry</p>
-							<h1 className="heading-1 mt-6 text-zinc-950">Answer Engine Optimization, by Industry</h1>
+							<p className="caption-3 text-blue-800">AEO by industry</p>
+							<h1 className="heading-1 mt-6 text-zinc-950">Answer engine optimization, by industry</h1>
 							<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
 								The fundamentals of AEO are the same everywhere, but the prompts that matter and the stakes are not.
 								Pick your world.
@@ -60,7 +60,7 @@ function AeoForIndex() {
 
 				<section className="bg-white">
 					<Container className="py-20 lg:py-24">
-						<h2 className="sr-only">Guides by Industry</h2>
+						<h2 className="sr-only">Guides by industry</h2>
 						<ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 							{aeoVerticals.map((vertical, index) => (
 								<RevealItem key={vertical.slug} delay={(index % 3) * 60} className="flex">
@@ -83,7 +83,7 @@ function AeoForIndex() {
 				<section className="bg-paper-2">
 					<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
 						<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
-							<h2 className="heading-2 text-zinc-950">Why AEO Differs by Industry</h2>
+							<h2 className="heading-2 text-zinc-950">Why AEO differs by industry</h2>
 						</Reveal>
 						<Reveal delay={100} className="space-y-6 lg:col-span-8">
 							{WHY.map((paragraph) => (

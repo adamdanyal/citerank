@@ -51,7 +51,7 @@ export const Route = createFileRoute("/")({
 
 function aiReferralHero(assistant: string): ComponentProps<typeof Hero> {
 	return {
-		title: `Get Customers from ${assistant}`,
+		title: `Get customers from ${assistant}`,
 		lede: `You found us through ${assistant}. CiteRank.com shows how AI search engines talk about your brand, which sources they trust, and what to change so they recommend you too.`,
 		from: "marketing-ai-referral",
 	};

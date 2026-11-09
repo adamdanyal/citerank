@@ -48,7 +48,7 @@ function PricingPage() {
 				<section className="-mt-16 bg-paper">
 					<Container className="pt-32 lg:pt-40">
 						<div className="mx-auto max-w-3xl text-center">
-							<h1 className="heading-1 text-zinc-950">AI Visibility Tracker Pricing</h1>
+							<h1 className="heading-1 text-zinc-950">AI visibility tracker pricing</h1>
 							<p className="body-8 mt-6 text-zinc-600">
 								Every plan includes your whole team and API access. Pay monthly or yearly, and cancel any time.
 							</p>
@@ -57,7 +57,7 @@ function PricingPage() {
 				</section>
 				<section className="bg-paper">
 					<Container className="py-12 lg:py-16">
-						<h2 className="sr-only">Tracker Plans</h2>
+						<h2 className="sr-only">Tracker plans</h2>
 						<PlanCards />
 						<OtherPlans className="mt-10" />
 					</Container>

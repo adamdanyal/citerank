@@ -78,7 +78,7 @@ export function OtherPlans({ className = "" }: { className?: string }) {
 	return (
 		<Reveal className={`grid gap-4 md:grid-cols-2 ${className}`}>
 			<OtherOption
-				name="Our Agency"
+				name="Our agency"
 				body="We do the work the tracker ranks: new pages, page updates, review sites and forums."
 				action={
 					<Link to="/agency" className={TEXT_LINK}>
@@ -106,7 +106,7 @@ export function Pricing() {
 		<section id="pricing" className="bg-paper">
 			<Container className="py-20 lg:py-24">
 				<Reveal className="mx-auto max-w-3xl text-center">
-					<h2 className="heading-2 text-zinc-950">Simple Pricing</h2>
+					<h2 className="heading-2 text-zinc-950">Simple pricing</h2>
 					<p className="body-7 mt-6 text-zinc-600">Every plan includes your whole team and API access.</p>
 				</Reveal>
 

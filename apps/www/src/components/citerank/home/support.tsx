@@ -6,7 +6,7 @@ export function Support() {
 		<section className="bg-white">
 			<Container className="py-20 lg:py-24">
 				<Reveal className="mx-auto max-w-3xl text-center">
-					<h2 className="heading-2 text-zinc-950">Questions Answered by the People Who Built It</h2>
+					<h2 className="heading-2 text-zinc-950">Questions answered by the people who built it</h2>
 					<p className="body-8 mt-6 text-zinc-700">
 						The team that runs CiteRank.com answers your questions by email or chat. There are no support tiers.
 					</p>

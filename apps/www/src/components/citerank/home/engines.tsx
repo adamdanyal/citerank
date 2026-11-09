@@ -21,7 +21,7 @@ export function EngineCoverage() {
 		<section className="bg-white">
 			<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:items-center lg:gap-16 lg:py-24">
 				<Reveal className="lg:col-span-5">
-					<h2 className="heading-2 text-zinc-950">12 Answer Engines Your Buyers Use</h2>
+					<h2 className="heading-2 text-zinc-950">12 answer engines your buyers use</h2>
 					<p className="body-7 mt-6 text-zinc-600">
 						Six are checked the way a real user sees them, and six directly through each company's API.
 					</p>

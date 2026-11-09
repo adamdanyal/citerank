@@ -11,7 +11,7 @@ const DEFAULT_LEDE =
 	"CiteRank.com is the AI visibility tracker and AI search agency for AEO and GEO. See how ChatGPT, Claude, Gemini and nine other AI apps talk about your brand and what to fix. Do it yourself, or have our agency do it every month.";
 
 export function Hero({
-	title = "Track Your Brand in AI Search",
+	title = "Track your brand in AI search",
 	lede = DEFAULT_LEDE,
 	from = "marketing-hero",
 }: {
@@ -32,7 +32,7 @@ export function Hero({
 			<Container className="relative pt-32 lg:pt-40">
 				<div className="mx-auto flex max-w-3xl flex-col items-center text-center">
 					<p className="caption-3 rounded-md bg-blue-50 px-3 py-1 text-blue-800">
-						AI Visibility Tracker + AI Search Agency
+						AI visibility tracker + AI search agency
 					</p>
 					<h1 className="heading-1 cr-gradient-text mt-8">{title}</h1>
 					<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">{lede}</p>

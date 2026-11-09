@@ -9,7 +9,7 @@ export function CiteRankCta() {
 	return (
 		<section className="border-b border-zinc-200 bg-white py-16 lg:py-24">
 			<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-				<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Ready to Track Your AI Visibility?</h2>
+				<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Ready to track your AI visibility?</h2>
 				<p className="mx-auto mt-4 max-w-xl text-lg text-balance text-zinc-600">
 					Set up CiteRank.com in minutes and start monitoring how ChatGPT, Claude, and Google AI Overviews talk about
 					your brand. Plans start at ${CLOUD_ENTRY_PRICE_USD}/mo.

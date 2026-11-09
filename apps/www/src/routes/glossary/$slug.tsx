@@ -76,7 +76,7 @@ function GlossaryTermPage() {
 
 						{term.seeAlso && term.seeAlso.length > 0 && (
 							<div className="mt-8 rounded-md border border-zinc-200 bg-zinc-50 p-5">
-								<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Go Deeper</h2>
+								<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Go deeper</h2>
 								<ul className="mt-3 space-y-2">
 									{term.seeAlso.map((link) => (
 										<li key={link.href}>
@@ -95,7 +95,7 @@ function GlossaryTermPage() {
 
 						{related.length > 0 && (
 							<div className="mt-8">
-								<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Related Terms</h2>
+								<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Related terms</h2>
 								<div className="mt-3 flex flex-wrap gap-2">
 									{related.map((r) => (
 										<a
@@ -114,7 +114,7 @@ function GlossaryTermPage() {
 
 				<section className="border-t border-zinc-200 bg-zinc-50 py-12">
 					<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-						<h2 className="font-heading text-2xl text-zinc-950">See It in Your Own Data</h2>
+						<h2 className="font-heading text-2xl text-zinc-950">See it in your own data</h2>
 						<p className="mx-auto mt-3 max-w-xl text-zinc-600">
 							CiteRank.com is an AI visibility tracker and AI search agency. Sign up and track how AI answer engines
 							mention and cite your brand.

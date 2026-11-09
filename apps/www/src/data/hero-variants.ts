@@ -14,50 +14,50 @@ export interface HeroVariant {
  */
 export const heroVariants: Record<string, HeroVariant> = {
 	"ai-visibility": {
-		title: "Track Your Brand's AI Visibility",
+		title: "Track your brand's AI visibility",
 		lede: "See how often ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews mention your brand, how they describe it, and which competitors they recommend instead.",
 	},
 	chatgpt: {
-		title: "Is ChatGPT Mentioning You?",
+		title: "Is ChatGPT mentioning you?",
 		lede: "CiteRank.com asks ChatGPT and 11 other AI apps the questions your buyers ask, then shows whether you're in the answer, who's there instead, and what to fix.",
 	},
 	"see-what-ai-says": {
-		title: "See What AI Says About Your Brand",
+		title: "See what AI says about your brand",
 		lede: "Track every answer ChatGPT, Claude, Gemini, and Perplexity give about your brand: whether you're mentioned, how you're described, and which sources they cite.",
 	},
 	"stop-checking": {
-		title: "Stop Checking ChatGPT by Hand",
+		title: "Stop checking ChatGPT by hand",
 		lede: "CiteRank.com runs your buyers' prompts across AI models on a schedule and tracks every answer, so you see trends instead of one-off screenshots.",
 	},
 	"aeo-tool": {
-		title: "The AEO Tool That Tells You What to Fix",
+		title: "The AEO tool that tells you what to fix",
 		lede: "CiteRank.com tracks your visibility across AI answer engines and turns it into a ranked list of fixes, from the pages to update to the sources AI trusts.",
 	},
 	geo: {
-		title: "Generative Engine Optimization, Measured",
+		title: "Generative engine optimization, measured",
 		lede: "Track how generative AI engines mention and cite your brand, benchmark against competitors, and see which changes move your visibility.",
 	},
 	"share-of-voice": {
-		title: "Own Your AI Share of Voice",
+		title: "Own your AI share of voice",
 		lede: "See how often AI models recommend you versus your competitors, prompt by prompt and model by model, and track it as it changes.",
 	},
 	citations: {
-		title: "Know Which Sources AI Cites",
+		title: "Know which sources AI cites",
 		lede: "CiteRank.com shows which pages and domains ChatGPT, Perplexity, and Google AI Overviews cite when they answer your buyers, so you know where to show up.",
 	},
 	"ai-overviews": {
-		title: "Track Your Brand in AI Overviews",
+		title: "Track your brand in AI Overviews",
 		lede: "See when Google AI Overviews, AI Mode, ChatGPT, and Perplexity mention your brand, and which sources they pull from when they don't.",
 	},
 	price: {
-		title: `AI Visibility Tracking From $${CLOUD_ENTRY_PRICE_USD}/mo`,
+		title: `AI visibility tracking from $${CLOUD_ENTRY_PRICE_USD}/mo`,
 		lede: "Track how AI models talk about your brand without an enterprise contract. Unlimited seats on every plan, no sales call, and you can start in minutes.",
 	},
 	"win-ai-search": {
-		title: "Win AI Search",
+		title: "Win AI search",
 	},
 	agency: {
-		title: "Get Your Business Named in ChatGPT",
+		title: "Get your business named in ChatGPT",
 		lede: "CiteRank.com's AI search agency writes the pages, gets you onto the lists and publishes the guest articles AI reads when buyers ask it who to choose.",
 	},
 };
