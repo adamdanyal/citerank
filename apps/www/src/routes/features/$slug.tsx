@@ -1,21 +1,35 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { cloudSignupUrl } from "@workspace/config/referrals";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { Closing } from "@/components/citerank/home/closing";
+import { Faq } from "@/components/citerank/home/faq";
+import {
+	CARD,
+	Container,
+	EASE_CLASS,
+	LINK_CARD,
+	LinkArrow,
+	PRIMARY_BUTTON_LG,
+	QUIET_LINK,
+	Reveal,
+	RevealItem,
+	SECONDARY_BUTTON_LG,
+	TEXT_LINK,
+} from "@/components/citerank/ui";
 import { FeatureGraphic, featurePath } from "@/components/features";
 import { Footer } from "@/components/footer";
-import { Closing } from "@/components/home/closing";
-import { Faq } from "@/components/home/faq";
-import { HOME_FONT_CLASS, HomeStyles } from "@/components/home/styles";
-import { CARD, SectionHeading } from "@/components/home/ui";
 import { Navbar } from "@/components/navbar";
 import { type FeatureLink, getProductFeature, type ProductFeature } from "@/data/features";
 import { FEATURE_SLUGS, getFeatureLabel, indexableFeatureKeys } from "@/lib/competitors";
+import { trackEvent } from "@/lib/posthog";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
 const FROM = "marketing-features-hero";
 
-const BUTTON =
-	"inline-flex h-11 items-center justify-center gap-2 rounded-lg px-5 text-[15px] font-medium leading-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600";
+/* Lower-cases a feature label for mid-sentence use, keeping the acronyms. */
+function lowerLabel(label: string) {
+	return label.toLowerCase().replace(/\b(ai|llm|api|mcp|seo|aeo|geo)\b/g, (m) => m.toUpperCase());
+}
 
 export const Route = createFileRoute("/features/$slug")({
 	loader: ({ params }) => {
@@ -30,7 +44,7 @@ export const Route = createFileRoute("/features/$slug")({
 			.filter((key) => indexable.has(key))
 			.map((key) => ({
 				kind: "Tool directory",
-				title: `AI visibility tools with ${getFeatureLabel(key).toLowerCase()}`,
+				title: `AI visibility tools with ${lowerLabel(getFeatureLabel(key))}`,
 				href: `/ai-visibility-tools/features/${FEATURE_SLUGS[key]}`,
 			}));
 		return { feature, related, directory };
@@ -62,188 +76,195 @@ export const Route = createFileRoute("/features/$slug")({
 function FeatureHero({ feature }: { feature: ProductFeature }) {
 	const signupUrl = cloudSignupUrl(FROM);
 	return (
-		<section className="relative overflow-hidden bg-white">
-			<div
-				aria-hidden="true"
-				className="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,rgb(0_0_0/0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgb(0_0_0/0.04)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
-			/>
-			<div className="relative mx-auto max-w-6xl px-4 pb-16 pt-8 md:px-6 lg:pb-24">
-				<a
-					href="/features"
-					className="inline-flex items-center gap-1 text-sm text-zinc-500 transition-colors hover:text-zinc-950"
+		<section className="-mt-16 bg-paper">
+			<Container className="pt-28 pb-16 lg:pt-32 lg:pb-24">
+				<Link
+					to="/features"
+					className={`caption-2 inline-flex items-center gap-1 rounded-sm text-zinc-500 transition-colors duration-300 ${EASE_CLASS} hover:text-zinc-950`}
 				>
 					<ArrowLeft className="size-3" aria-hidden="true" />
 					All features
-				</a>
-				<div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
+				</Link>
+				<div className="mt-8 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
 					<div className="lg:col-span-5">
-						<h1 className="text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.04em] text-balance text-zinc-950 sm:text-5xl">
-							{feature.title}
-						</h1>
-						<p className="mt-6 text-pretty text-[17px]/7 text-zinc-600">{feature.lede}</p>
+						<h1 className="heading-1 text-zinc-950">{feature.title}</h1>
+						<p className="body-8 mt-6 text-zinc-600">{feature.lede}</p>
 						<div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-							<a href={signupUrl} className={`${BUTTON} bg-blue-600 text-white hover:bg-blue-700`}>
+							<a
+								href={signupUrl}
+								onClick={() => trackEvent("signup_click", { from: FROM })}
+								className={PRIMARY_BUTTON_LG}
+							>
 								Start tracking
 								<ArrowRight className="size-4" aria-hidden="true" />
 							</a>
-							<Link
-								to="/agency"
-								className={`${BUTTON} bg-white text-zinc-950 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50 hover:ring-zinc-300`}
-							>
+							<Link to="/agency" className={SECONDARY_BUTTON_LG}>
 								Have us do the work
 							</Link>
 						</div>
-						<p className="mt-5 text-sm text-zinc-500">
-							<a
-								href={feature.docs.href}
-								className="font-medium text-zinc-600 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-950 hover:decoration-zinc-500"
-							>
-								{feature.docs.title}
+						<p className="body-6 mt-6 text-zinc-600">
+							Read the{" "}
+							<a href={feature.docs.href} className={`${QUIET_LINK} text-zinc-950`}>
+								{feature.docs.title.toLowerCase()}
 							</a>
+							.
 						</p>
 					</div>
 					<div className="lg:col-span-7">
 						<FeatureGraphic graphic={feature.graphic} />
 					</div>
 				</div>
-			</div>
+			</Container>
 		</section>
 	);
 }
 
 function Steps({ feature }: { feature: ProductFeature }) {
 	const secondary = feature.secondaryGraphic;
+	const steps = (
+		<ol className={secondary ? "mt-10 space-y-8" : "mt-10 grid gap-8 md:grid-cols-3"}>
+			{feature.steps.map((step, i) => (
+				<RevealItem key={step.name} delay={i * 80} className="flex gap-5">
+					<span className="caption-1 mt-1 font-mono text-blue-700 tabular-nums">0{i + 1}</span>
+					<div>
+						<h3 className="title-2 text-zinc-950">{step.name}</h3>
+						<p className="body-6 mt-2 text-zinc-600">{step.text}</p>
+					</div>
+				</RevealItem>
+			))}
+		</ol>
+	);
 	return (
-		<section className="border-t border-zinc-200/80 bg-zinc-50/70">
-			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-24">
-				<SectionHeading title="What You Can Do" />
-				<div className={`mt-10 grid gap-10 ${secondary ? "lg:grid-cols-12 lg:items-center lg:gap-12" : ""}`}>
-					<ol className={`grid gap-4 ${secondary ? "lg:col-span-5" : "md:grid-cols-3"}`}>
-						{feature.steps.map((step, i) => (
-							<li key={step.name} className={`p-6 ${CARD}`}>
-								<p className="flex items-center gap-2.5 text-lg font-semibold tracking-[-0.015em] text-zinc-950">
-									<span className="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-white tabular-nums">
-										{i + 1}
-									</span>
-									{step.name}
-								</p>
-								<p className="mt-2 text-pretty text-[15px]/6 text-zinc-600">{step.text}</p>
-							</li>
-						))}
-					</ol>
-					{secondary ? (
-						<div className="lg:col-span-7">
-							<FeatureGraphic graphic={secondary} />
+		<section className="bg-white">
+			<Container className="py-20 lg:py-24">
+				{secondary ? (
+					<div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
+						<div className="lg:col-span-5">
+							<Reveal>
+								<h2 className="heading-2 text-zinc-950">What You Can Do</h2>
+							</Reveal>
+							{steps}
 						</div>
-					) : null}
-				</div>
-			</div>
+						<Reveal delay={100} className="lg:col-span-7">
+							<FeatureGraphic graphic={secondary} />
+						</Reveal>
+					</div>
+				) : (
+					<>
+						<Reveal>
+							<h2 className="heading-2 text-zinc-950">What You Can Do</h2>
+						</Reveal>
+						{steps}
+					</>
+				)}
+			</Container>
 		</section>
 	);
 }
 
 function Metrics({ feature }: { feature: ProductFeature }) {
 	return (
-		<section className="border-t border-zinc-200/80 bg-white">
-			<div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 md:px-6 lg:grid-cols-12 lg:gap-12 lg:py-24">
-				<div className="lg:col-span-4">
-					<SectionHeading title="Data You Can Act On" />
-				</div>
-				<dl className="grid gap-x-10 sm:grid-cols-2 lg:col-span-8">
-					{feature.metrics.map((m) => (
-						<div key={m.term} className="border-t border-zinc-200 py-5">
-							<dt className="font-semibold text-zinc-950">{m.term}</dt>
-							<dd className="mt-1.5 text-pretty text-[15px]/6 text-zinc-600">{m.definition}</dd>
-						</div>
-					))}
-				</dl>
-			</div>
+		<section className="bg-paper-2">
+			<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
+				<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
+					<h2 className="heading-2 text-zinc-950">Data You Can Act On</h2>
+				</Reveal>
+				<Reveal delay={100} className="lg:col-span-8">
+					<dl className="grid gap-x-10 sm:grid-cols-2">
+						{feature.metrics.map((m) => (
+							<div key={m.term} className="border-zinc-200 border-t py-5">
+								<dt className="title-3 text-zinc-950">{m.term}</dt>
+								<dd className="body-6 mt-1.5 text-zinc-600">{m.definition}</dd>
+							</div>
+						))}
+					</dl>
+				</Reveal>
+			</Container>
 		</section>
 	);
 }
 
 function UseCasesAndWhy({ feature }: { feature: ProductFeature }) {
 	return (
-		<section className="border-t border-zinc-200/80 bg-white">
-			<div className="mx-auto grid max-w-6xl gap-5 px-4 py-20 md:px-6 lg:grid-cols-2 lg:py-24">
-				<div className={`p-6 md:p-8 ${CARD}`}>
-					<h2 className="text-2xl font-semibold tracking-[-0.02em] text-zinc-950">Use Cases</h2>
+		<section className="bg-white">
+			<Container className="grid gap-5 py-20 lg:grid-cols-2 lg:py-24">
+				<Reveal className={`${CARD} p-6 md:p-8`}>
+					<h2 className="heading-5 text-zinc-950">Use Cases</h2>
 					<ul className="mt-6 space-y-4">
 						{feature.useCases.map((u) => (
-							<li key={u} className="flex gap-3 text-pretty text-[15px]/6 text-zinc-700">
-								<Check className="mt-0.5 size-4 shrink-0 text-blue-600" strokeWidth={2.5} aria-hidden="true" />
+							<li key={u} className="body-6 flex gap-3 text-zinc-700">
+								<Check className="mt-1 size-4 shrink-0 text-blue-700" strokeWidth={2.5} aria-hidden="true" />
 								{u}
 							</li>
 						))}
 					</ul>
-				</div>
-				<div className={`p-6 md:p-8 ${CARD}`}>
-					<h2 className="text-2xl font-semibold tracking-[-0.02em] text-zinc-950">Why CiteRank.com</h2>
+				</Reveal>
+				<Reveal delay={100} className={`${CARD} p-6 md:p-8`}>
+					<h2 className="heading-5 text-zinc-950">Why CiteRank.com</h2>
 					<ul className="mt-6 space-y-5">
 						{feature.why.map((w) => (
 							<li key={w.name}>
-								<p className="font-semibold text-zinc-950">{w.name}</p>
-								<p className="mt-1 text-pretty text-[15px]/6 text-zinc-600">{w.text}</p>
+								<h3 className="title-3 text-zinc-950">{w.name}</h3>
+								<p className="body-6 mt-1 text-zinc-600">{w.text}</p>
 							</li>
 						))}
 					</ul>
-				</div>
-			</div>
+				</Reveal>
+			</Container>
 		</section>
 	);
 }
 
 function LearnMore({ links }: { links: FeatureLink[] }) {
 	return (
-		<section className="border-t border-zinc-200/80 bg-zinc-50/70">
-			<div className="mx-auto max-w-6xl px-4 py-16 md:px-6 lg:py-20">
-				<h2 className="text-2xl font-semibold tracking-[-0.02em] text-zinc-950">Related Guides</h2>
-				<ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-					{links.map((l) => (
-						<li key={l.href} className="flex">
-							<a
-								href={l.href}
-								className="flex w-full flex-col rounded-md border border-zinc-200 bg-white p-4 transition-colors hover:border-zinc-300"
-							>
-								<span className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">{l.kind}</span>
-								<span className="mt-1.5 text-pretty text-[15px]/6 font-medium text-zinc-950">{l.title}</span>
+		<section className="bg-paper">
+			<Container className="py-20 lg:py-24">
+				<Reveal>
+					<h2 className="heading-3 text-zinc-950">Related Guides</h2>
+				</Reveal>
+				<ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					{links.map((l, i) => (
+						<RevealItem key={l.href} delay={(i % 3) * 80} className="flex">
+							<a href={l.href} className={LINK_CARD}>
+								<span className="caption-3 text-zinc-500">{l.kind}</span>
+								<span className="title-3 mt-2 text-zinc-950">{l.title}</span>
 							</a>
-						</li>
+						</RevealItem>
 					))}
 				</ul>
-			</div>
+			</Container>
 		</section>
 	);
 }
 
 function RelatedFeatures({ related }: { related: ProductFeature[] }) {
 	return (
-		<section className="border-t border-zinc-200/80 bg-white">
-			<div className="mx-auto max-w-6xl px-4 py-16 md:px-6 lg:py-20">
-				<div className="flex flex-wrap items-baseline justify-between gap-4">
-					<h2 className="text-2xl font-semibold tracking-[-0.02em] text-zinc-950">Related Features</h2>
-					<a href="/features" className="text-sm font-medium text-blue-600 hover:text-blue-700">
+		<section className="bg-white">
+			<Container className="py-20 lg:py-24">
+				<Reveal className="flex flex-wrap items-center justify-between gap-4">
+					<h2 className="heading-3 text-zinc-950">Related Features</h2>
+					<Link to="/features" className={TEXT_LINK}>
 						All features
-					</a>
-				</div>
-				<ul className="mt-6 grid gap-3 md:grid-cols-3">
-					{related.map((f) => (
-						<li key={f.slug} className="flex">
-							<a
-								href={featurePath(f.slug)}
-								className="group flex w-full flex-col rounded-md border border-zinc-200 bg-white p-5 transition-colors hover:border-zinc-300"
-							>
-								<span className="font-semibold text-zinc-950">{f.name}</span>
-								<span className="mt-1.5 flex-1 text-pretty text-sm/6 text-zinc-600">{f.summary}</span>
-								<ArrowRight
-									className="mt-3 size-4 text-blue-600 transition-transform group-hover:translate-x-0.5"
-									aria-hidden="true"
-								/>
+						<LinkArrow />
+					</Link>
+				</Reveal>
+				<ul className="mt-8 grid gap-4 md:grid-cols-3">
+					{related.map((f, i) => (
+						<RevealItem key={f.slug} delay={i * 80} className="flex">
+							<a href={featurePath(f.slug)} className={LINK_CARD}>
+								<span className="title-2 flex items-start justify-between gap-3 text-zinc-950">
+									{f.name}
+									<ArrowRight
+										className={`mt-1 size-4 shrink-0 text-blue-700 transition-transform duration-300 ${EASE_CLASS} group-hover:translate-x-0.5`}
+										aria-hidden="true"
+									/>
+								</span>
+								<span className="body-6 mt-2 text-zinc-600">{f.summary}</span>
 							</a>
-						</li>
+						</RevealItem>
 					))}
 				</ul>
-			</div>
+			</Container>
 		</section>
 	);
 }
@@ -256,8 +277,7 @@ function FeaturePage() {
 	};
 	const links: FeatureLink[] = [{ kind: "Docs", ...feature.docs }, ...feature.guides, ...directory];
 	return (
-		<div className={`${HOME_FONT_CLASS} min-h-screen bg-white antialiased`}>
-			<HomeStyles />
+		<div className="min-h-screen bg-white antialiased">
 			<Navbar />
 			<main>
 				<FeatureHero feature={feature} />

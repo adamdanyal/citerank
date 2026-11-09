@@ -25,12 +25,23 @@ export function DirectoryBackLink({ label = "AI Visibility Tool Directory" }: { 
  * Page hero with an H1 and a lead "answer block" written to be
  * lifted verbatim into an AI answer. Mirrors the comparison page hero.
  */
-export function DirectoryHero({ title, lead, children }: { title: string; lead: string; children?: ReactNode }) {
+export function DirectoryHero({
+	title,
+	lead,
+	eyebrow,
+	children,
+}: {
+	title: string;
+	lead: string;
+	eyebrow?: string;
+	children?: ReactNode;
+}) {
 	return (
-		<section className="border-b border-zinc-200 bg-white py-12 lg:py-20">
-			<div className="mx-auto max-w-6xl px-4 md:px-6">
-				<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl">{title}</h1>
-				<p className="mt-4 max-w-3xl text-lg text-balance text-zinc-600">{lead}</p>
+		<section className="-mt-16 bg-paper">
+			<div className="mx-auto max-w-6xl px-4 pt-32 pb-16 md:px-6 lg:pt-40 lg:pb-20">
+				{eyebrow ? <p className="caption-3 text-blue-800">{eyebrow}</p> : null}
+				<h1 className={`heading-1 max-w-3xl text-zinc-950 ${eyebrow ? "mt-6" : ""}`}>{title}</h1>
+				<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">{lead}</p>
 				{children ? <div className="mt-8">{children}</div> : null}
 			</div>
 		</section>

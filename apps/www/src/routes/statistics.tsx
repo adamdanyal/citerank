@@ -73,20 +73,22 @@ export const Route = createFileRoute("/statistics")({
 function StatisticsPage() {
 	const { resolved, supporting } = Route.useLoaderData();
 	return (
-		<div className="min-h-screen">
+		<div className="min-h-screen bg-white antialiased">
 			<Navbar />
 			<main>
 				<DirectoryHero title="AI Search Statistics" lead={lead} />
 
-				<section className="border-b border-zinc-200 bg-white py-12">
+				<section className="bg-white py-16 lg:py-20">
 					<div className="mx-auto max-w-6xl px-4 md:px-6">
-						<div className="max-w-3xl space-y-5 text-lg leading-relaxed text-zinc-700">
-							<p>
+						<div className="max-w-3xl space-y-5">
+							<p className="body-7 text-zinc-700">
 								Most numbers quoted about AI search come without a denominator. These do. Each figure names its source
 								and links to the piece that works through how it was measured and where it disagrees with the next
 								study.
 							</p>
-							<p>Free to cite, with attribution to the original source rather than to us where the two differ.</p>
+							<p className="body-7 text-zinc-700">
+								Free to cite, with attribution to the original source rather than to us where the two differ.
+							</p>
 						</div>
 
 						{STAT_GROUPS.map((group) => {
@@ -94,19 +96,17 @@ function StatisticsPage() {
 							const extras = supporting.filter((post) => post.group === group);
 							if (inGroup.length === 0 && extras.length === 0) return null;
 							return (
-								<div key={group} className="mt-14">
-									<h2 className="font-heading text-2xl text-zinc-950">{group}</h2>
-									<p className="mt-2 max-w-3xl leading-relaxed text-zinc-600">{GROUP_BLURBS[group]}</p>
-									<ul className="mt-6 divide-y divide-zinc-200 border-t border-zinc-200">
+								<div key={group} className="mt-16">
+									<h2 className="heading-4 text-zinc-950">{group}</h2>
+									<p className="body-6 mt-3 max-w-3xl text-zinc-600">{GROUP_BLURBS[group]}</p>
+									<ul className="mt-8 divide-y divide-zinc-200 border-zinc-200 border-t">
 										{inGroup.map((stat) => (
 											<li key={stat.slug} className="py-5">
 												<div className="flex flex-col gap-1.5 sm:flex-row sm:gap-6">
-													<span className="font-heading shrink-0 text-2xl text-blue-700 tabular-nums sm:w-44">
-														{stat.value}
-													</span>
+													<span className="heading-5 shrink-0 text-blue-700 tabular-nums sm:w-44">{stat.value}</span>
 													<div className="max-w-3xl">
-														<p className="leading-relaxed text-zinc-700">{stat.claim}</p>
-														<p className="mt-1.5 text-sm text-zinc-500">
+														<p className="body-1 text-zinc-700">{stat.claim}</p>
+														<p className="caption-2 mt-1.5 text-zinc-500">
 															{stat.source}.{" "}
 															<a
 																href={stat.url}
@@ -123,11 +123,11 @@ function StatisticsPage() {
 										{extras.map((post) => (
 											<li key={post.url} className="py-5">
 												<a href={post.url} className="group flex flex-col gap-1">
-													<span className="flex items-start gap-1.5 font-semibold text-zinc-950">
+													<span className="title-3 flex items-start gap-1.5 text-zinc-950">
 														{post.title}
 														<ArrowUpRight className="mt-1 h-3.5 w-3.5 shrink-0 text-zinc-400 transition-transform group-hover:-translate-y-0.5" />
 													</span>
-													<span className="max-w-3xl text-sm leading-relaxed text-zinc-600">{post.description}</span>
+													<span className="body-6 max-w-3xl text-zinc-600">{post.description}</span>
 												</a>
 											</li>
 										))}

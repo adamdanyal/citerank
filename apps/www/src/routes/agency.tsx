@@ -212,20 +212,16 @@ function AgencyPage() {
 			</a>
 			<Navbar />
 			<main id="content">
-				<section className="relative overflow-hidden bg-paper">
-					<div
-						aria-hidden="true"
-						className="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,rgb(0_0_0/0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgb(0_0_0/0.04)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
-					/>
-					<Container className="relative pb-20 pt-16 lg:pb-24 lg:pt-24">
-						<div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-							<p className="caption-3 rounded-md bg-blue-50 px-3 py-1 text-blue-800">AI Search Agency</p>
-							<h1 className="heading-1 cr-gradient-text mt-8">We Do the Work That Gets You Named</h1>
-							<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
+				<section className="-mt-16 bg-paper">
+					<Container className="grid gap-12 pt-32 pb-20 lg:grid-cols-12 lg:items-center lg:gap-16 lg:pt-40 lg:pb-24">
+						<div className="lg:col-span-6">
+							<p className="caption-3 text-blue-800">AI Search Agency</p>
+							<h1 className="heading-1 mt-6 text-zinc-950">We Do the Work That Gets You Named</h1>
+							<p className="body-8 mt-6 text-zinc-600">
 								The tracker shows what AI says about your business and ranks what to change. We make those changes every
 								month and show you the AI answers before and after.
 							</p>
-							<div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">
+							<div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
 								<a href="#book" className={PRIMARY_BUTTON_LG}>
 									Book a call
 									<ArrowRight className="size-4" aria-hidden="true" />
@@ -239,6 +235,20 @@ function AgencyPage() {
 								month.
 							</p>
 						</div>
+						<Reveal delay={100} className={`${CARD} p-6 lg:col-span-6 lg:p-8`}>
+							<h2 className="caption-1 text-zinc-500">How a Month Runs</h2>
+							<ol className="mt-4 divide-y divide-zinc-200/80">
+								{STEPS.map((step, index) => (
+									<li key={step.title} className="flex gap-5 py-4 first:pt-0 last:pb-0">
+										<span className="caption-1 mt-1 font-mono text-blue-700 tabular-nums">0{index + 1}</span>
+										<div>
+											<h3 className="title-3 text-zinc-950">{step.title}</h3>
+											<p className="body-6 mt-1 text-zinc-600">{step.body}</p>
+										</div>
+									</li>
+								))}
+							</ol>
+						</Reveal>
 					</Container>
 				</section>
 
@@ -262,23 +272,6 @@ function AgencyPage() {
 								);
 							})}
 						</ul>
-					</Container>
-				</section>
-
-				<section className="bg-paper">
-					<Container className="py-20 lg:py-24">
-						<Reveal className="mx-auto max-w-3xl text-center">
-							<h2 className="heading-2 text-zinc-950">How a Month Runs</h2>
-						</Reveal>
-						<ol className="mt-12 grid gap-5 md:grid-cols-2 lg:mt-16 lg:grid-cols-4">
-							{STEPS.map((step, index) => (
-								<RevealItem key={step.title} delay={index * 60} className={`${CARD} p-6`}>
-									<p className="caption-1 font-mono text-blue-700 tabular-nums">0{index + 1}</p>
-									<h3 className="title-1 mt-4 text-zinc-950">{step.title}</h3>
-									<p className="body-6 mt-2 text-zinc-600">{step.body}</p>
-								</RevealItem>
-							))}
-						</ol>
 					</Container>
 				</section>
 

@@ -32,7 +32,7 @@ function Frame({
 			className={`relative w-full overflow-hidden rounded-md border border-zinc-200 bg-white ${aspect} ${className}`}
 		>
 			<Grid />
-			<div className="relative z-10 size-full">{children}</div>
+			<div className="@container relative z-10 size-full">{children}</div>
 		</div>
 	);
 }
@@ -240,7 +240,7 @@ export function VisibilityTrendGraphic() {
 
 	return (
 		<Frame>
-			<div className="flex size-full flex-col gap-3 p-5 md:p-6">
+			<div className="flex size-full flex-col gap-3 p-5 @[30rem]:p-6">
 				<div className="flex items-center justify-between">
 					<div className="flex flex-col gap-0.5">
 						<Mono>BRAND VISIBILITY · 12M</Mono>
@@ -343,11 +343,11 @@ export function VisibilityTrendGraphic() {
 // ---------------------------------------------------------------------------
 
 const CODE_PANEL =
-	"overflow-hidden rounded-md bg-zinc-950 p-4 font-mono text-[11px] leading-relaxed text-zinc-100 md:text-xs";
+	"overflow-hidden whitespace-pre-wrap [overflow-wrap:anywhere] rounded-md bg-zinc-950 p-4 font-mono text-[11px] leading-relaxed text-zinc-100 @[30rem]:text-xs";
 
 export function ApiGraphic() {
 	return (
-		<Frame>
+		<Frame aspect="@[30rem]:aspect-[5/3]">
 			<div className="flex size-full flex-col gap-3 p-5 md:p-6">
 				<Mono>CONNECT · MCP</Mono>
 				<pre className={CODE_PANEL}>
@@ -390,7 +390,7 @@ const API_ENGINES = [
 
 function EngineChip({ name, iconId }: { name: string; iconId: string }) {
 	return (
-		<li className="flex h-10 items-center gap-2 rounded-md border border-zinc-200 bg-white px-3 text-sm font-medium text-zinc-900">
+		<li className="flex h-9 items-center gap-2 rounded-md border border-zinc-200 bg-white px-3 text-xs font-medium text-zinc-900 @[30rem]:h-10 @[30rem]:text-sm">
 			<EngineIcon iconId={iconId} className="size-4 shrink-0" />
 			<span className="truncate">{name}</span>
 		</li>
@@ -399,11 +399,11 @@ function EngineChip({ name, iconId }: { name: string; iconId: string }) {
 
 export function EnginesGraphic() {
 	return (
-		<Frame>
-			<div className="flex size-full flex-col justify-center gap-5 p-5 md:p-8">
+		<Frame aspect="@[30rem]:aspect-[5/3]">
+			<div className="flex size-full flex-col justify-center gap-5 p-5 @[30rem]:p-8">
 				<div>
 					<Mono>SCRAPED FROM THE REAL APPS</Mono>
-					<ul className="mt-2.5 grid grid-cols-2 gap-2 sm:grid-cols-3">
+					<ul className="mt-2.5 grid grid-cols-2 gap-2 @[30rem]:grid-cols-3">
 						{SCRAPED_ENGINES.map((e) => (
 							<EngineChip key={e.name} {...e} />
 						))}
@@ -411,7 +411,7 @@ export function EnginesGraphic() {
 				</div>
 				<div>
 					<Mono>CALLED THROUGH DIRECT APIS</Mono>
-					<ul className="mt-2.5 grid grid-cols-2 gap-2 sm:grid-cols-3">
+					<ul className="mt-2.5 grid grid-cols-2 gap-2 @[30rem]:grid-cols-3">
 						{API_ENGINES.map((e) => (
 							<EngineChip key={e.name} {...e} />
 						))}

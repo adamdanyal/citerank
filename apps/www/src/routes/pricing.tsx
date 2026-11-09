@@ -45,8 +45,8 @@ function PricingPage() {
 			</a>
 			<Navbar />
 			<main id="content">
-				<section className="bg-paper">
-					<Container className="pt-16 lg:pt-24">
+				<section className="-mt-16 bg-paper">
+					<Container className="pt-32 lg:pt-40">
 						<div className="mx-auto max-w-3xl text-center">
 							<h1 className="heading-1 text-zinc-950">AI Visibility Tracker Pricing</h1>
 							<p className="body-8 mt-6 text-zinc-600">

@@ -1,4 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
+import { Closing } from "@/components/citerank/home/closing";
+import { Container, EASE_CLASS, LINK_CARD, RevealItem } from "@/components/citerank/ui";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { aiSearchEngines } from "@/data/ai-search-engines";
@@ -32,40 +35,49 @@ export const Route = createFileRoute("/ai-search/")({
 
 function AiSearchIndex() {
 	return (
-		<div className="min-h-screen">
+		<div className="min-h-screen bg-white antialiased">
 			<Navbar />
 			<main>
-				<section className="border-b border-zinc-200 bg-white py-12 lg:py-20">
-					<div className="mx-auto max-w-6xl px-4 md:px-6">
-						<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl">
-							How to Show Up in AI Search
-						</h1>
-						<p className="mt-4 max-w-3xl text-lg text-balance text-zinc-600">
-							Each AI engine chooses its sources a little differently. These guides break down how the major ones decide
-							what to cite, and the practical steps to become one of them.
-						</p>
-					</div>
+				<section className="-mt-16 bg-paper">
+					<Container className="pt-32 pb-16 lg:pt-40 lg:pb-20">
+						<div className="max-w-3xl">
+							<p className="caption-3 text-blue-800">AI Search Guides</p>
+							<h1 className="heading-1 mt-6 text-zinc-950">How to Show Up in AI Search</h1>
+							<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
+								Each AI engine chooses its sources a little differently. These guides show how the major ones decide
+								what to cite, and the steps to become one of their sources.
+							</p>
+						</div>
+					</Container>
 				</section>
 
-				<section className="bg-white py-10">
-					<div className="mx-auto max-w-6xl px-4 md:px-6">
-						<div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-							{aiSearchEngines.map((e) => (
-								<a
-									key={e.slug}
-									href={`/ai-search/${e.slug}`}
-									className="flex flex-col rounded-md border border-zinc-200 bg-white p-5 transition-colors hover:border-zinc-300"
-								>
-									<div className="flex items-baseline justify-between gap-2">
-										<h2 className="font-semibold text-zinc-950">{e.name}</h2>
-										<span className="text-xs text-zinc-400">{e.vendor}</span>
-									</div>
-									<p className="mt-2 text-sm leading-relaxed text-zinc-600">{e.short}</p>
-								</a>
+				<section className="bg-white">
+					<Container className="py-20 lg:py-24">
+						<h2 className="sr-only">Guides by AI Engine</h2>
+						<ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+							{aiSearchEngines.map((engine, index) => (
+								<RevealItem key={engine.slug} delay={(index % 3) * 60} className="flex">
+									<a href={`/ai-search/${engine.slug}`} className={LINK_CARD}>
+										<span className="flex items-baseline justify-between gap-3">
+											<span className="title-2 text-zinc-950">{engine.name}</span>
+											<span className="caption-2 shrink-0 text-zinc-500">{engine.vendor}</span>
+										</span>
+										<span className="body-6 mt-2 flex-1 text-zinc-600">{engine.short}</span>
+										<span className="title-4 mt-5 inline-flex items-center gap-1 text-blue-700">
+											How to appear in {engine.name}
+											<ArrowRight
+												className={`size-4 transition-transform duration-300 ${EASE_CLASS} group-hover:translate-x-0.5`}
+												aria-hidden="true"
+											/>
+										</span>
+									</a>
+								</RevealItem>
 							))}
-						</div>
-					</div>
+						</ul>
+					</Container>
 				</section>
+
+				<Closing from="marketing-page-cta" />
 			</main>
 			<Footer />
 		</div>
