@@ -104,7 +104,7 @@ export function PlanCards() {
 					</button>
 				))}
 			</fieldset>
-			<ul className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+			<ul className="mt-10 grid gap-5 md:grid-cols-3">
 				{PLAN_KEYS.map((key, index) => (
 					<PlanCard key={key} plan={PLANS[key]} billing={billing} delay={index * 60} />
 				))}

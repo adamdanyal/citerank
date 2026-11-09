@@ -110,7 +110,7 @@ export function Pricing() {
 					<p className="body-7 mt-6 text-zinc-600">Every plan includes your whole team and API access.</p>
 				</Reveal>
 
-				<ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+				<ul className="mt-12 grid gap-4 md:grid-cols-3">
 					{PLAN_KEYS.map((key, index) => (
 						<Tier key={key} planKey={key} delay={index * 80} />
 					))}

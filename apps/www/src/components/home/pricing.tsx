@@ -75,7 +75,7 @@ export function OtherPlans({ className = "" }: { className?: string }) {
 	return (
 		<div className={`grid gap-4 md:grid-cols-2 ${className}`}>
 			<OtherOption
-				name="Our Agency"
+				name="Our agency"
 				body="We do the work the tracker ranks: new pages, page updates, review sites and forums."
 				action={
 					<Link to="/agency" className={LINK}>
@@ -111,7 +111,7 @@ export function Pricing({
 			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
 				<SectionHeading align="center" title="Simple, self-serve pricing." lede={lede} />
 
-				<div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+				<div className="mt-12 grid gap-4 md:grid-cols-3">
 					{PLAN_KEYS.map((key) => (
 						<TierCard key={key} planKey={key} badge={recommended?.plan === key ? recommended.label : undefined} />
 					))}
