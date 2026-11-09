@@ -121,7 +121,8 @@ export const ABOUT_FAQS: FaqItem[] = [
 	},
 	{
 		question: "Is CiteRank.com open source?",
-		answer: `No. CiteRank.com is a closed-source, hosted product, so there is no public code and nothing to self-host. You sign up and use it in your browser, with plans from $${CLOUD_ENTRY_PRICE_USD}/mo.`,
+		answer: `No. CiteRank.com is a hosted product built on Elmo, an open-source AI visibility tracker. The CiteRank.com service itself is not open source and there is nothing to self-host: you sign up and use it in your browser, with plans from $${CLOUD_ENTRY_PRICE_USD}/mo.`,
+		links: [{ text: "Elmo", href: "https://github.com/elmohq/elmo" }],
 	},
 	{
 		question: "Does CiteRank.com require an annual contract?",

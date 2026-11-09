@@ -172,6 +172,15 @@ function AboutPage() {
 		{ term: "Trade Mark", detail: "CiteRank.com, UK registered trade mark UK00004399266" },
 		{ term: "Website", detail: <ExternalLink href="https://citerank.com">citerank.com</ExternalLink> },
 		{
+			term: "Built On",
+			detail: (
+				<>
+					<ExternalLink href="https://github.com/elmohq/elmo">Elmo</ExternalLink>, the open-source AI visibility
+					tracker, which CiteRank.com hosts and extends
+				</>
+			),
+		},
+		{
 			term: "Core Offering",
 			detail:
 				"Tracking how AI answer engines mention, cite, and describe brands, with citation analysis and competitor share of voice",

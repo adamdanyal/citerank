@@ -6,7 +6,7 @@ CiteRank.com runs on Elmo (MIT licence, github.com/elmohq/elmo). This file lists
 
 - Merge only Elmo's tagged releases (vX.Y.Z), never its main branch.
 - Keep our changes to as few files as possible: branding (app name, logo, colours, fonts), plans and prices, and public copy. Prefer environment variables and config over editing Elmo's code.
-- Customers never see the name Elmo: not on screens, in emails, page titles, share images or footers. LICENSE.md stays in the repo, as the MIT licence requires.
+- Customers never see the name Elmo: not on screens, in emails, page titles, share images or footers. The one exception, decided by Adam on 2026-11-09, is the About page, which credits Elmo as the open-source project underneath and links to its GitHub repository (in the key facts and the "Is CiteRank.com open source?" answer). LICENSE.md stays in the repo, as the MIT licence requires.
 - Leave Elmo's own CLAUDE.md, AGENTS.md and README.md untouched; edits there conflict on every update.
 - GitHub Actions stay switched off for this repo. Elmo's workflows publish Elmo's packages and drafts, not ours.
 

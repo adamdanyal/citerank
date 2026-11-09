@@ -46,6 +46,8 @@ const ALLOWED_NAMES = [
 const ALLOWED_WORDS = [/model\s?monitor/gi];
 
 const ALLOWED_TEXT = [
+	{ file: "apps/www/src/routes/about.tsx", text: /\bElmo\b|elmohq\/elmo/g, why: "the About page credits Elmo with a link to its repository" },
+	{ file: "apps/www/src/lib/faqs.ts", text: /\bElmo\b|elmohq\/elmo/g, why: "the About FAQ names Elmo as the open-source project underneath" },
 	{ file: "packages/config/src/env-registry.ts", text: /`elmo init`|Elmo </g, why: "operator-only env descriptions" },
 	{ file: "packages/api-spec/src/openapi.json", text: /"x-elmo-[a-z-]+"/g, why: "machine-read spec extension keys" },
 ];
