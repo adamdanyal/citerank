@@ -125,7 +125,7 @@ export function Pricing() {
 					</Link>
 				</p>
 				<p className="caption-2 mt-6 text-center text-zinc-600">
-					Pay monthly or yearly. Payments by Stripe, cancel from your account.
+					Pay monthly or yearly by card. Cancel any time from your account.
 				</p>
 			</Container>
 		</section>
