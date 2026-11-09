@@ -1,6 +1,7 @@
 import { CLOUD_ENTRY_PRICE_USD, PLANS } from "@workspace/config/plans";
 import { AGENCY_PLANS } from "./agency-plans";
 import { getMarketingOgImage } from "./og";
+import { SOCIAL_URLS } from "./socials";
 
 export const SITE_URL = "https://citerank.com";
 export const SITE_NAME = "CiteRank.com";
@@ -83,12 +84,7 @@ export function organizationJsonLd() {
 		url: SITE_URL,
 		logo: SITE_LOGO_URL,
 		email: "team@citerank.com",
-		sameAs: [
-			"https://www.linkedin.com/company/citerank",
-			"https://www.youtube.com/@citerank",
-			"https://www.facebook.com/citerank",
-			"https://x.com/tryciterank",
-		],
+		sameAs: SOCIAL_URLS,
 		founder: [
 			{ "@type": "Person", name: "Adam Danyal", sameAs: ["https://www.linkedin.com/in/adamdanyal/"] },
 			{ "@type": "Person", name: "Julia Danyal" },

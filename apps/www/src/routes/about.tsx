@@ -1,15 +1,27 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CLOUD_ENTRY_PRICE_USD, PLANS } from "@workspace/config/plans";
 import { cloudSignupUrl } from "@workspace/config/referrals";
-import { buttonVariants } from "@workspace/ui/components/button";
 import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { Closing } from "@/components/citerank/home/closing";
 import { Faq } from "@/components/citerank/home/faq";
+import { SocialIcons } from "@/components/citerank/socials";
+import {
+	CARD,
+	Container,
+	PRIMARY_BUTTON_LG,
+	QUIET_LINK,
+	Reveal,
+	RevealItem,
+	SECONDARY_BUTTON,
+	SECONDARY_BUTTON_LG,
+	TEXT_LINK,
+} from "@/components/citerank/ui";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { externalRel } from "@/lib/external-link";
 import { ABOUT_FAQS } from "@/lib/faqs";
+import { trackEvent } from "@/lib/posthog";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
 const SIGN_UP_URL = cloudSignupUrl("marketing-about");
@@ -36,122 +48,156 @@ export const Route = createFileRoute("/about")({
 
 const { basic, pro, business } = PLANS;
 
-const SOCIAL_LINKS = [
-	{ label: "LinkedIn", href: "https://www.linkedin.com/company/citerank" },
-	{ label: "YouTube", href: "https://www.youtube.com/@citerank" },
-	{ label: "X", href: "https://x.com/tryciterank" },
+const FOUNDERS = [
+	{
+		name: "Adam Danyal",
+		role: "Co-founder",
+		proof: "Trusted by 2M+ on LinkedIn",
+		href: "https://www.linkedin.com/in/adamdanyal/",
+		photo: "/founder.jpg",
+	},
+	{
+		name: "Julia Danyal",
+		role: "Co-founder",
+		proof: "360K+ on LinkedIn",
+	},
 ];
 
-const offerings = [
+const OFFERINGS = [
 	{
 		title: "AI Search Visibility Tracking",
-		body: "CiteRank.com runs the prompts your buyers ask across ChatGPT, Google AI Overviews, Google AI Mode, Perplexity, Gemini, Copilot, Claude, and more on a schedule. Each prompt gets a visibility score for how often your brand appears, so you can see where you show up and where you don't.",
+		body: "Your buyers' questions across 12 AI apps, scored for how often you appear.",
 	},
-	{
-		title: "Citation Analysis",
-		body: "Every answer is broken down into the domains and URLs the model cited and the web searches it ran to find them. That shows which pages answer engines trust in your category and where a mention would move your visibility.",
-	},
+	{ title: "Citation Analysis", body: "The domains and pages each answer cites, and the web searches behind it." },
 	{
 		title: "Competitor Benchmarking",
-		body: "CiteRank.com records which competitors appear alongside you and calculates share of voice across every engine you track. You see who AI recommends instead of you, and on which questions.",
-	},
-	{
-		title: "Self-Serve Plans",
-		body: `Monthly tracker plans for teams that would rather skip the sales call, from $${CLOUD_ENTRY_PRICE_USD}/mo. Every plan includes unlimited seats plus REST API and MCP server access.`,
+		body: "Who AI recommends instead of you, and your share of voice on every engine.",
 	},
 	{
 		title: "Ranked Next Steps",
-		body: "About once a week, CiteRank.com ranks what to do next: a missing comparison page, a page AI no longer cites, a review site or best-of list that names competitors but not you, or a forum thread where buyers ask about your field.",
+		body: "About once a week: what to publish, update or get listed on, biggest win first.",
 	},
 	{
-		title: "AI Search Agency",
-		body: "A done-for-you service that does the work the tracker ranks, from new pages to articles on sites AI answer engines already cite. It runs monthly, with a report listing each piece of work and the prompt it targets.",
+		title: "Self-Serve Plans",
+		body: `From $${CLOUD_ENTRY_PRICE_USD} a month, with unlimited seats, a REST API and an MCP server.`,
 	},
+	{ title: "AI Search Agency", body: "We do the work the tracker ranks and report the AI answers before and after." },
 ];
 
-const principles = [
+const PRINCIPLES = [
 	{
 		title: "Every Answer Kept, Word for Word",
-		body: "Each number traces back to the words an AI wrote, so you can open any score and read the answers behind it. Every answer is stored in full, along with the pages it cited and the web searches it ran before answering, so nothing is lost to a summary.",
+		body: "Open any score and read the answers behind it, with the pages they cited and the searches they ran.",
 	},
 	{
-		title: `Public, Self-Serve Pricing From $${CLOUD_ENTRY_PRICE_USD}/mo`,
-		body: `CiteRank.com plans are listed publicly at $${basic.monthlyPriceUsd}, $${pro.monthlyPriceUsd}, and $${business.monthlyPriceUsd} a month, and you can sign up without a sales call. Profound has no public entry tier and quotes its Enterprise plan through sales.`,
+		title: `Public Pricing From $${CLOUD_ENTRY_PRICE_USD} a Month`,
+		body: `Plans are listed at $${basic.monthlyPriceUsd}, $${pro.monthlyPriceUsd} and $${business.monthlyPriceUsd} a month. You sign up without a sales call.`,
 	},
 	{
-		title: "Month-to-Month Billing",
-		body: "CiteRank.com bills month to month with no minimum term, and annual billing is optional and saves two months. Many enterprise AEO platforms push you into an annual contract before you can see your data.",
+		title: "Month to Month",
+		body: "No minimum term. Annual billing is optional and saves two months.",
 	},
 	{
 		title: `Prompts Checked ${basic.standardRunsPerDay}× a Day`,
-		body: `On every plan, every prompt runs ${basic.standardRunsPerDay} times a day on each platform you track. AI answers vary from run to run, so more samples means trends you can trust instead of one-off snapshots.`,
+		body: "AI answers vary from run to run. More samples mean trends you can trust, not snapshots.",
 	},
 	{
-		title: "The Same Interfaces Your Buyers Use",
-		body: "Consumer products like ChatGPT, Google AI Mode, and Perplexity are scraped from the same interface your buyers use. API-only tools measure a different model configuration than the one people see.",
+		title: "The Interfaces Your Buyers Use",
+		body: "ChatGPT, Google AI Mode and Perplexity are checked from the real interface, not approximated through an API.",
 	},
 	{
-		title: "Unlimited Seats, API, and MCP on Every Plan",
-		body: "Every CiteRank.com plan includes unlimited team members, the REST API, and an MCP server for Claude Code, Cursor, and other AI assistants. Your whole team and your own tools get the data without per-seat fees or an enterprise upgrade.",
+		title: "Unlimited Seats, API and MCP",
+		body: "Your whole team and your own tools get the data on every plan, with no per-seat fees.",
 	},
 ];
 
-const audiences = [
-	"In-house SEO and content marketing teams at B2B SaaS companies extending their SEO strategy to AI search",
-	"E-commerce and DTC brands monitoring product recommendations in ChatGPT and Google AI Overviews",
-	"SEO, AEO, and GEO agencies managing AI visibility for multiple client brands, including shareable reports",
-	"Founders and marketing leads who want the AI search agency to do the work",
-	"Professional services firms, such as law and accounting firms, whose clients ask ChatGPT and Gemini who to hire",
-	"Local and hospitality businesses checking how AI assistants describe and recommend them",
+const AUDIENCES = [
+	"B2B SaaS marketing teams extending SEO to AI search",
+	"E-commerce brands watching product recommendations in ChatGPT and AI Overviews",
+	"SEO, AEO and GEO agencies managing several client brands",
+	"Founders who want the agency to do the work",
+	"Law, accounting and other firms whose clients ask AI who to hire",
+	"Local and hospitality businesses checking how AI describes them",
 ];
 
-function Section({ heading, tinted, children }: { heading: string; tinted?: boolean; children: ReactNode }) {
-	return (
-		<section className={`border-b border-zinc-200 py-12 lg:py-20 ${tinted ? "bg-zinc-50" : "bg-white"}`}>
-			<div className="mx-auto max-w-6xl px-4 md:px-6">
-				<h2 className="font-heading max-w-3xl text-3xl text-zinc-950 md:text-4xl">{heading}</h2>
-				<div className="mt-8">{children}</div>
-			</div>
-		</section>
-	);
-}
-
-function CardGrid({ items, tinted }: { items: { title: string; body: string }[]; tinted?: boolean }) {
-	return (
-		<div className="grid gap-px overflow-hidden rounded-lg border border-zinc-200 bg-zinc-200 md:grid-cols-2 lg:grid-cols-3">
-			{items.map((item) => (
-				<div key={item.title} className={`p-6 ${tinted ? "bg-zinc-50" : "bg-white"}`}>
-					<h3 className="text-lg font-semibold tracking-tight text-zinc-950">{item.title}</h3>
-					<p className="mt-2 text-pretty text-sm leading-relaxed text-zinc-600">{item.body}</p>
-				</div>
-			))}
-		</div>
-	);
-}
+const WORKING = [
+	{ title: "Who You Work With", body: "The team behind the product, by email or a booked call." },
+	{
+		title: "Onboarding",
+		body: "Sign up and add your website. The Prompt Wizard suggests your buyers' questions and tracking starts right away.",
+	},
+	{
+		title: "Turnaround",
+		body: "First results in minutes. Ranked next steps after a few days of data, refreshed weekly.",
+	},
+	{
+		title: "Reporting",
+		body: "Agency clients get a monthly report of every piece of work and the AI answers before and after.",
+	},
+];
 
 function ExternalLink({ href, children }: { href: string; children: ReactNode }) {
 	return (
-		<a
-			href={href}
-			target="_blank"
-			rel={externalRel(href)}
-			className="font-medium text-blue-600 underline-offset-4 hover:underline"
-		>
+		<a href={href} target="_blank" rel={externalRel(href)} className={`${QUIET_LINK} text-zinc-950`}>
 			{children}
 		</a>
 	);
 }
 
-function LinkList({ links }: { links: { label: string; href: string }[] }) {
+function SectionHeading({ title, lede }: { title: string; lede?: string }) {
 	return (
+		<Reveal className="mx-auto max-w-3xl text-center">
+			<h2 className="heading-2 text-zinc-950">{title}</h2>
+			{lede ? <p className="body-8 mt-6 text-zinc-700">{lede}</p> : null}
+		</Reveal>
+	);
+}
+
+function FounderCard({ founder, delay }: { founder: (typeof FOUNDERS)[number]; delay: number }) {
+	const initials = founder.name
+		.split(" ")
+		.map((part) => part[0])
+		.join("");
+	const proof = (
 		<>
-			{links.map((link, i) => (
-				<span key={link.href}>
-					{i > 0 ? <span className="text-zinc-300"> · </span> : null}
-					<ExternalLink href={link.href}>{link.label}</ExternalLink>
-				</span>
-			))}
+			<svg viewBox="0 0 24 24" aria-hidden="true" className="size-3.5 fill-current">
+				<path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+			</svg>
+			{founder.proof}
 		</>
+	);
+	const pill = "caption-1 mt-5 inline-flex w-fit items-center gap-2 rounded-md bg-blue-50 px-3 py-1 text-blue-800";
+	return (
+		<RevealItem delay={delay} className={`${CARD} flex items-start gap-5 p-6 lg:p-8`}>
+			{founder.photo ? (
+				<img
+					src={founder.photo}
+					alt={founder.name}
+					width={256}
+					height={256}
+					loading="lazy"
+					className="size-20 shrink-0 rounded-xl object-cover"
+				/>
+			) : (
+				<span
+					aria-hidden="true"
+					className="heading-5 inline-flex size-20 shrink-0 items-center justify-center rounded-xl bg-paper-2 text-zinc-600"
+				>
+					{initials}
+				</span>
+			)}
+			<div className="flex min-w-0 flex-col">
+				<h3 className="heading-5 text-zinc-950">{founder.name}</h3>
+				<p className="body-6 mt-1 text-zinc-600">{founder.role}</p>
+				{founder.href ? (
+					<a href={founder.href} target="_blank" rel="noopener noreferrer" className={`${pill} hover:bg-blue-100`}>
+						{proof}
+					</a>
+				) : (
+					<p className={pill}>{proof}</p>
+				)}
+			</div>
+		</RevealItem>
 	);
 }
 
@@ -161,7 +207,7 @@ function AboutPage() {
 		{
 			term: "Type",
 			detail:
-				"AI visibility tracker and AI search agency for answer engine optimization (AEO), generative engine optimization (GEO), and AI SEO",
+				"AI visibility tracker and AI search agency for answer engine optimization (AEO), generative engine optimization (GEO) and AI SEO",
 		},
 		{ term: "Founders", detail: "Adam Danyal and Julia Danyal" },
 		{
@@ -198,7 +244,7 @@ function AboutPage() {
 		{
 			term: "Core Offering",
 			detail:
-				"Tracking how AI answer engines mention, cite, and describe brands, with citation analysis and competitor share of voice",
+				"Tracking how AI answer engines mention, cite and describe brands, with citation analysis and competitor share of voice",
 		},
 		{
 			term: "Pricing",
@@ -213,185 +259,156 @@ function AboutPage() {
 			detail:
 				"AI visibility tracking, citation analysis, competitor benchmarking, ranked next steps, AI search agency work with a monthly report, REST API and MCP server",
 		},
-		{
-			term: "Contact Email",
-			detail: <ExternalLink href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</ExternalLink>,
-		},
+		{ term: "Contact Email", detail: <ExternalLink href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</ExternalLink> },
 		{
 			term: "Platforms Tracked",
 			detail:
 				"ChatGPT, Google AI Overviews, Google AI Mode, Gemini, Perplexity, Microsoft Copilot, Claude, Grok, Mistral, DeepSeek, Qwen, Kimi",
 		},
 		{ term: "Competitors", detail: "Profound, Peec AI, Otterly.AI, Scrunch, Semrush AI Toolkit" },
-		{ term: "Social", detail: <LinkList links={SOCIAL_LINKS} /> },
+		{ term: "Social", detail: <SocialIcons linkClassName="text-zinc-500 hover:text-zinc-950" /> },
 	];
 
 	return (
 		<div className="min-h-screen bg-white antialiased">
 			<Navbar />
 			<main>
-				<section className="relative overflow-hidden border-b border-zinc-200 bg-white py-16 lg:py-28">
+				<section className="relative -mt-16 overflow-hidden bg-paper">
 					<div
 						aria-hidden="true"
 						className="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,rgb(0_0_0/0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgb(0_0_0/0.04)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
 					/>
-					<div className="relative mx-auto max-w-6xl px-4 md:px-6">
-						<div className="max-w-3xl">
-							<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl lg:text-6xl">
-								About CiteRank.com
-							</h1>
-							<p className="mt-6 max-w-2xl text-lg text-pretty text-zinc-600 md:text-xl">
-								CiteRank.com is an AI visibility tracker and AI search agency for answer engine optimization (AEO). It
-								tracks how ChatGPT, Google AI Overviews, Perplexity, Gemini, Claude, and other AI answer engines
-								mention, cite, and describe brands, for marketing teams, agencies, and software companies.
+					<Container className="relative pt-32 pb-20 lg:pt-40 lg:pb-24">
+						<div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+							<p className="caption-3 rounded-md bg-blue-50 px-3 py-1 text-blue-800">The Company</p>
+							<h1 className="heading-1 cr-gradient-text mt-8">About CiteRank.com</h1>
+							<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
+								CiteRank.com is the AI visibility tracker and AI search agency for AEO and GEO. We track how ChatGPT,
+								Gemini, Perplexity and nine other AI apps describe brands, and our agency does the work that changes
+								those answers.
 							</p>
-							<p className="mt-4 max-w-2xl text-lg text-pretty text-zinc-600">
-								Teams use CiteRank.com for{" "}
-								<Link
-									to="/answer-engine-optimization"
-									className="font-medium text-blue-600 underline-offset-4 hover:underline"
+							<div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">
+								<a
+									href={SIGN_UP_URL}
+									onClick={() => trackEvent("signup_click", { from: "marketing-about" })}
+									className={PRIMARY_BUTTON_LG}
 								>
-									answer engine optimization (AEO)
-								</Link>
-								, also called{" "}
-								<Link
-									to="/generative-engine-optimization"
-									className="font-medium text-blue-600 underline-offset-4 hover:underline"
-								>
-									generative engine optimization (GEO)
-								</Link>{" "}
-								or AI SEO: measuring and improving how their brand shows up in AI search.
-							</p>
-							<p className="mt-4 max-w-2xl text-lg text-pretty text-zinc-600">
-								The name CiteRank.com joins two words: cite, what an AI does when it names a source in an answer, and
-								rank, where a business stands against its competitors in those answers.
-							</p>
-							<div className="mt-8 flex flex-wrap gap-3">
-								<a href={SIGN_UP_URL} className={buttonVariants({ size: "lg" })}>
 									Start tracking
-									<ArrowRight className="size-4" />
+									<ArrowRight className="size-4" aria-hidden="true" />
 								</a>
-								<Link to="/agency" className={buttonVariants({ size: "lg", variant: "outline" })}>
+								<Link to="/agency" className={SECONDARY_BUTTON_LG}>
 									Book an agency call
 								</Link>
 							</div>
+							<p className="caption-2 mt-6 max-w-[60ch] text-zinc-500">
+								Cite is what an AI does when it names a source. Rank is where you stand against competitors in those
+								answers. Hence the name.
+							</p>
 						</div>
-					</div>
+					</Container>
 				</section>
 
-				<Section heading="Key Facts About CiteRank.com" tinted>
-					<dl className="divide-y divide-zinc-200 overflow-hidden rounded-lg border border-zinc-200 bg-white">
-						{keyFacts.map((fact) => (
-							<div key={fact.term} className="grid gap-1 px-5 py-4 md:grid-cols-[14rem_1fr] md:gap-6">
-								<dt className="text-sm font-semibold text-zinc-950">{fact.term}</dt>
-								<dd className="text-sm leading-relaxed text-zinc-600">{fact.detail}</dd>
-							</div>
-						))}
-					</dl>
-				</Section>
-
-				<Section heading="What CiteRank.com Does">
-					<CardGrid items={offerings} />
-				</Section>
-
-				<Section heading="What Makes CiteRank.com Different" tinted>
-					<CardGrid items={principles} tinted />
-				</Section>
-
-				<Section heading="Who CiteRank.com Is For">
-					<p className="max-w-3xl text-pretty text-zinc-600">
-						Founders and marketing leads at companies whose buyers ask AI who to choose.
-					</p>
-					<ul className="mt-6 grid gap-3 md:grid-cols-2">
-						{audiences.map((audience) => (
-							<li key={audience} className="rounded-lg border border-zinc-200 bg-white p-4 text-sm text-zinc-700">
-								{audience}
-							</li>
-						))}
-					</ul>
-				</Section>
-
-				<Section heading="Founders" tinted>
-					<div className="max-w-3xl space-y-4 text-pretty text-zinc-600">
-						<p>
-							CiteRank.com was founded by{" "}
-							<ExternalLink href="https://www.linkedin.com/in/adamdanyal/">Adam Danyal</ExternalLink>, who has more than
-							2 million LinkedIn followers, and Julia Danyal, who has more than 360,000.
-						</p>
-						<p>
-							They also run Chief AI Leader, an exam-based AI certification for leaders, and AI For Leaders, a daily AI
-							newsletter read by more than 50,000 leaders.
-						</p>
-					</div>
-				</Section>
-
-				<Section heading="How CiteRank.com Works">
-					<div className="grid gap-px overflow-hidden rounded-lg border border-zinc-200 bg-zinc-200 md:grid-cols-2">
-						<div className="bg-white p-6">
-							<h3 className="text-lg font-semibold tracking-tight text-zinc-950">Who You Work With</h3>
-							<p className="mt-2 text-sm leading-relaxed text-zinc-600">
-								You work directly with the team behind CiteRank.com, by email or a booked call. Questions about your
-								setup, data, or results are answered by people who know the product inside out.
-							</p>
+				<section className="bg-white">
+					<Container className="py-20 lg:py-24">
+						<SectionHeading title="Founders" />
+						<div className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-2">
+							{FOUNDERS.map((founder, index) => (
+								<FounderCard key={founder.name} founder={founder} delay={index * 80} />
+							))}
 						</div>
-						<div className="bg-white p-6">
-							<h3 className="text-lg font-semibold tracking-tight text-zinc-950">Communication Channels</h3>
-							<p className="mt-2 text-sm leading-relaxed text-zinc-600">
-								Email at{" "}
-								<a
-									href={`mailto:${CONTACT_EMAIL}`}
-									className="font-medium text-blue-600 underline-offset-4 hover:underline"
-								>
-									{CONTACT_EMAIL}
-								</a>
-								,{" "}
-								<Link to="/agency" className="font-medium text-blue-600 underline-offset-4 hover:underline">
-									a booked call
-								</Link>
-								, and the{" "}
-								<ExternalLink href="https://www.linkedin.com/company/citerank">LinkedIn community</ExternalLink>. Agency
-								clients also get a monthly report of every piece of work, the prompt it targets, and the AI answers
-								before and after.
+						<Reveal delay={160} className="mx-auto mt-8 max-w-3xl text-center">
+							<p className="body-6 text-zinc-600">
+								Together they run Chief AI Leader, an exam-based AI certification for leaders, and AI For Leaders, a
+								daily newsletter read by more than 50,000 leaders.
 							</p>
-						</div>
-						<div className="bg-white p-6">
-							<h3 className="text-lg font-semibold tracking-tight text-zinc-950">Onboarding</h3>
-							<p className="mt-2 text-sm leading-relaxed text-zinc-600">
-								Sign up for CiteRank.com and add your website. The Prompt Wizard suggests the questions your buyers ask
-								based on your products and competitors, and tracking starts right away. No demo or sales call required.
-							</p>
-						</div>
-						<div className="bg-white p-6">
-							<h3 className="text-lg font-semibold tracking-tight text-zinc-950">Turnaround</h3>
-							<p className="mt-2 text-sm leading-relaxed text-zinc-600">
-								The first check starts right away, and results usually appear within a few minutes. The ranked list of
-								what to do next needs a few days of data, then refreshes weekly, and agency work runs every month.
-							</p>
-						</div>
-					</div>
-				</Section>
+						</Reveal>
+					</Container>
+				</section>
+
+				<section className="bg-paper">
+					<Container className="py-20 lg:py-24">
+						<SectionHeading title="What Makes CiteRank.com Different" />
+						<ul className="mt-12 grid gap-5 md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+							{PRINCIPLES.map((item, index) => (
+								<RevealItem key={item.title} delay={index * 60} className={`${CARD} p-6`}>
+									<h3 className="title-1 text-zinc-950">{item.title}</h3>
+									<p className="body-6 mt-2 text-zinc-600">{item.body}</p>
+								</RevealItem>
+							))}
+						</ul>
+					</Container>
+				</section>
+
+				<section className="bg-white">
+					<Container className="py-20 lg:py-24">
+						<SectionHeading title="What CiteRank.com Does" />
+						<ul className="mx-auto mt-12 grid max-w-5xl gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+							{OFFERINGS.map((item, index) => (
+								<RevealItem key={item.title} delay={index * 60}>
+									<h3 className="title-2 text-zinc-950">{item.title}</h3>
+									<p className="body-6 mt-1 text-zinc-600">{item.body}</p>
+								</RevealItem>
+							))}
+						</ul>
+						<Reveal delay={200} className="mt-10 text-center">
+							<Link to="/features" className={TEXT_LINK}>
+								See every feature
+								<ArrowRight className="size-4" aria-hidden="true" />
+							</Link>
+						</Reveal>
+					</Container>
+				</section>
+
+				<section className="bg-paper-2">
+					<Container className="py-20 lg:py-24">
+						<SectionHeading title="Who CiteRank.com Is For" lede="Companies whose buyers ask AI who to choose." />
+						<ul className="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+							{AUDIENCES.map((audience, index) => (
+								<RevealItem key={audience} delay={index * 50} className={`${CARD} p-5 body-6 text-zinc-800`}>
+									{audience}
+								</RevealItem>
+							))}
+						</ul>
+					</Container>
+				</section>
+
+				<section className="bg-white">
+					<Container className="py-20 lg:py-24">
+						<SectionHeading title="Working With Us" />
+						<ul className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-2">
+							{WORKING.map((item, index) => (
+								<RevealItem key={item.title} delay={index * 60} className={`${CARD} p-6`}>
+									<h3 className="title-1 text-zinc-950">{item.title}</h3>
+									<p className="body-6 mt-2 text-zinc-600">{item.body}</p>
+								</RevealItem>
+							))}
+						</ul>
+						<Reveal delay={240} className="mt-8 text-center">
+							<a href={`mailto:${CONTACT_EMAIL}`} className={SECONDARY_BUTTON}>
+								Email {CONTACT_EMAIL}
+							</a>
+						</Reveal>
+					</Container>
+				</section>
+
+				<section className="bg-paper">
+					<Container className="py-20 lg:py-24">
+						<SectionHeading title="Key Facts" />
+						<Reveal delay={100} className={`${CARD} mx-auto mt-12 max-w-5xl divide-y divide-zinc-200/80 px-6 lg:px-8`}>
+							<dl>
+								{keyFacts.map((fact) => (
+									<div key={fact.term} className="grid gap-1 py-4 md:grid-cols-[12rem_1fr] md:gap-6">
+										<dt className="title-4 text-zinc-950">{fact.term}</dt>
+										<dd className="body-6 text-zinc-600">{fact.detail}</dd>
+									</div>
+								))}
+							</dl>
+						</Reveal>
+					</Container>
+				</section>
 
 				<Faq items={ABOUT_FAQS} />
 				<Closing from="marketing-about" />
-
-				<section className="border-y border-zinc-200 bg-white py-16 lg:py-24">
-					<div className="mx-auto max-w-6xl px-4 text-center md:px-6">
-						<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">See How AI Talks About Your Brand</h2>
-						<p className="mx-auto mt-4 max-w-xl text-lg text-balance text-zinc-600">
-							Start on CiteRank.com from ${CLOUD_ENTRY_PRICE_USD}/mo, month to month, or have our AI search agency do
-							the work.
-						</p>
-						<div className="mt-8 flex flex-wrap justify-center gap-3">
-							<a href={SIGN_UP_URL} className={buttonVariants({ size: "sm" })}>
-								Start tracking
-								<ArrowRight className="size-3.5" />
-							</a>
-							<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
-								Book a call
-							</Link>
-						</div>
-					</div>
-				</section>
 			</main>
 			<Footer />
 		</div>
