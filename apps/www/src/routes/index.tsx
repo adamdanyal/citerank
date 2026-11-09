@@ -26,7 +26,7 @@ const title = `${SITE_NAME} · AI Visibility Tracker and AI Search Agency`;
 // The shared SITE_DESCRIPTION is a terse fallback for pages without their own
 // copy. The homepage takes the largest share of search clicks and is the page
 // answer engines cite most, so it gets a full-width description of its own.
-const description = `CiteRank.com is answer engine optimization (AEO): track your brand's AI visibility in ChatGPT, Perplexity, and Gemini. Plans from $${CLOUD_ENTRY_PRICE_USD}/mo, or hire our AI search agency.`;
+const description = `CiteRank.com is an AEO platform: track your brand in ChatGPT, Perplexity and Gemini and see what to fix. Plans from $${CLOUD_ENTRY_PRICE_USD}/mo, or hire our AI search agency.`;
 
 export const Route = createFileRoute("/")({
 	// Passes every other param through untouched: ad clicks carry gclid and UTM

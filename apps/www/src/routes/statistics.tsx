@@ -8,9 +8,9 @@ import { CiteRankCta } from "@/components/pillar";
 import { GROUP_BLURBS, STAT_GROUPS, type Stat, type StatGroup, stats, supportingPosts } from "@/data/statistics";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
-const title = "AI Search Statistics: 22 Findings on Citations & Visibility · CiteRank.com";
+const title = "AI Search Statistics: 22 Sourced Findings · CiteRank.com";
 const description =
-	"Statistics on AI search, answer engine optimization and AI citations: what share of searches carry an AI Overview, which domains get cited, and which GEO tactics measurably work. Every figure sourced.";
+	"Sourced statistics on AI search and AI citations: what share of searches carry an AI Overview, which domains get cited, and which GEO tactics work.";
 
 const lead =
 	"Twenty-two figures on how AI answer engines cite, drawn from published studies and AI answer tracking data. Every one links to the working behind it, including the ones that contradict each other.";

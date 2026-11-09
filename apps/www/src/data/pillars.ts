@@ -30,9 +30,9 @@ export interface Pillar {
 const AEO: Pillar = {
 	slug: "answer-engine-optimization",
 	h1: "Answer Engine Optimization (AEO)",
-	metaTitle: "Answer Engine Optimization (AEO): The Complete Guide · CiteRank.com",
+	metaTitle: "Answer Engine Optimization (AEO): A Guide · CiteRank.com",
 	description:
-		"What answer engine optimization is, how AEO differs from SEO, how AI answer engines decide what to cite, what to measure, and how to run it, in a practical guide from an AI visibility tracker.",
+		"What answer engine optimization is, how AEO differs from SEO, how AI answer engines decide what to cite, what to measure and how to run it.",
 	lead: "SEO got you ranked. AEO gets you quoted. Here is what answer engine optimization is, how it works, and how to run it without guessing.",
 	definition:
 		"Answer engine optimization (AEO) is the practice of measuring and improving how often AI answer engines (ChatGPT, Google AI Overviews, Perplexity, Gemini, Copilot) mention and cite your brand. Where SEO competes for a position in a list of links, AEO competes to be the source a model quotes inside a written answer.",
@@ -252,9 +252,9 @@ const AEO: Pillar = {
 const GEO: Pillar = {
 	slug: "generative-engine-optimization",
 	h1: "Generative Engine Optimization (GEO)",
-	metaTitle: "Generative Engine Optimization (GEO): The Complete Guide · CiteRank.com",
+	metaTitle: "Generative Engine Optimization (GEO): A Guide · CiteRank.com",
 	description:
-		"What generative engine optimization means, how GEO differs from SEO and AEO, what the research says works, and how to measure it, in a practical guide from an AI visibility tracker.",
+		"What generative engine optimization means, how GEO differs from SEO and AEO, what the research says works and how to measure it.",
 	lead: "Generative engines write the answer instead of listing the links. GEO is the work of being in that answer, and of knowing, with numbers, whether you are.",
 	definition:
 		"Generative engine optimization (GEO) is the practice of getting your brand mentioned and cited inside AI-generated answers (ChatGPT, Google AI Overviews and AI Mode, Perplexity, Gemini, Copilot). It is the same discipline as answer engine optimization (AEO); the two terms emerged in parallel and are used interchangeably.",

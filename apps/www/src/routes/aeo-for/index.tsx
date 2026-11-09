@@ -10,7 +10,7 @@ import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/se
 
 const title = "Answer Engine Optimization by Industry · CiteRank.com";
 const description =
-	"How answer engine optimization applies to your industry, in 20 guides covering the prompts that matter, what to publish, and how AI engines pick sources in each one.";
+	"How answer engine optimization applies to your industry: 20 guides on the prompts that matter, what to publish, and how AI engines pick sources.";
 
 export const Route = createFileRoute("/aeo-for/")({
 	loader: () => ({

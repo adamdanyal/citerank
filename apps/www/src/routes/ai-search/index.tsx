@@ -6,7 +6,7 @@ import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/se
 
 const title = "How to Show Up in AI Search Engines · CiteRank.com";
 const description =
-	"Practical guides to appearing in AI search: how engines like ChatGPT, Perplexity, and Google AI Overviews choose what to cite, and how to become one of their sources.";
+	"Guides to appearing in AI search: how ChatGPT, Perplexity and Google AI Overviews choose what to cite, and how to become one of their sources.";
 
 export const Route = createFileRoute("/ai-search/")({
 	loader: () => ({

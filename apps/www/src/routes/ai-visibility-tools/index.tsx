@@ -8,9 +8,9 @@ import { competitors, getComparisonSlug, isLowDR, isRetired } from "@/lib/compet
 import { DIRECTORY_FAQS } from "@/lib/faqs";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, itemListJsonLd, ogMeta } from "@/lib/seo";
 
-const title = "AI Visibility Tools: Compare Every AEO & GEO Platform · CiteRank.com";
+const title = "Compare 100+ AI Visibility Tools · CiteRank.com";
 const description =
-	"Compare 100+ AI visibility tools, AEO software, LLM visibility trackers and GEO platforms side by side on engine coverage, pricing, and features, each head-to-head with CiteRank.com.";
+	"Compare 100+ AI visibility tools, AEO software and GEO platforms on engine coverage, pricing and features, each head-to-head with CiteRank.com.";
 
 // Indexed comparison pages (mirrors the sitemap filter), surfaced as ItemList
 // structured data so AI engines can extract the full directory of tools.

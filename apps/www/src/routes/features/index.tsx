@@ -6,9 +6,9 @@ import { Navbar } from "@/components/navbar";
 import { productFeatures } from "@/data/features";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
-const title = "Features: AI Visibility, Citation & Competitor Tracking · CiteRank.com";
+const title = "Features: AI Visibility & Citation Tracking · CiteRank.com";
 const description =
-	"Everything CiteRank.com's tracker does: AI visibility tracking across 12 AI apps, share of voice, sentiment, citations, query fan-out, prompt tracking, recommendations, reporting, and an API and MCP server.";
+	"What the CiteRank.com tracker does: AI visibility across 12 AI apps, share of voice, sentiment, citations, query fan-out, opportunities, API and MCP.";
 
 export const Route = createFileRoute("/features/")({
 	/* The head reads loader data so the feature catalog stays out of the client entry bundle. */

@@ -17,7 +17,7 @@ const CONTACT_EMAIL = "team@citerank.com";
 
 const title = "About CiteRank.com · AI Visibility Tracker and Agency";
 const description =
-	"CiteRank.com is an AEO and GEO platform for tracking brand visibility in AI search, plus an AI search agency, founded by Adam Danyal and Julia Danyal. Company facts, team, pricing, and how to reach us.";
+	"CiteRank.com tracks brand visibility in AI search and runs an AI search agency. Founded by Adam and Julia Danyal. Company facts, team, pricing and contact.";
 
 export const Route = createFileRoute("/about")({
 	head: () => ({

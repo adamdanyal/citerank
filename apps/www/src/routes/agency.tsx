@@ -38,7 +38,7 @@ const CONTACT_EMAIL = "team@citerank.com";
 
 const title = "AI Search Agency · CiteRank.com";
 const description =
-	"CiteRank.com's AI search agency does the work that gets your business named in ChatGPT and Google AI answers: new pages, page updates, review sites, forums and guest articles, with a monthly before-and-after report.";
+	"The CiteRank.com agency does the work that gets you named in AI answers: new pages, updates, review sites and forums, with a before-and-after report.";
 
 export const Route = createFileRoute("/agency")({
 	head: () => ({

@@ -11,7 +11,7 @@ import { Navbar } from "@/components/navbar";
 import { PRICING_FAQS } from "@/lib/faqs";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
-const title = "Pricing: Self-Serve, Agency & Custom AI Visibility · CiteRank.com";
+const title = "Pricing: AI Visibility Tracker Plans · CiteRank.com";
 const description = `CiteRank.com is a self-serve AI visibility tracker from $${CLOUD_ENTRY_PRICE_USD}/mo, with an AI search agency and custom plans on request.`;
 
 export const Route = createFileRoute("/pricing")({
