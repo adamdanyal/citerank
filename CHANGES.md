@@ -188,3 +188,5 @@ Crisp support chat runs on CiteRank.com's own workspace (`CRISP_WEBSITE_ID` in `
 | 2026-11-09 | Changed the About headline to "We Track What AI Says About Brands, Then Do the Work to Change It": the tracker is Elmo, so the page no longer says we built it. Not deployed. |
 | 2026-11-09 | Replaced the About page's belief, offering, audience and working-with-us grids with a "Why We Started CiteRank.com" story in the founders' words, keeping Key Facts and the FAQ. Not deployed. |
 | 2026-11-09 | Put every marketing-site headline, section title, card title, label and link in sentence case, across 57 files. Dashboard, docs, blog posts and legal pages unchanged. Not deployed. |
+| 2026-11-09 | Added a Resources menu to the navigation (desktop dropdown and phone menu) and set up Adam and Julia Danyal as blog authors with Person schema. Not deployed. |
+| 2026-11-09 | Bylined the 57 blog posts to Adam Danyal and Julia Danyal, alternating by publication date, at Adam's instruction; each post now carries a Person author in its schema. Not deployed. |
