@@ -41,14 +41,14 @@ const FOUNDERS = [
 	{
 		name: "Adam Danyal",
 		role: "Co-founder",
-		proof: "2M+ followers on LinkedIn",
+		proof: "2M+ followers",
 		href: "https://www.linkedin.com/in/adamdanyal/",
 		photo: "/founder-adam.jpg",
 	},
 	{
 		name: "Julia Danyal",
 		role: "Co-founder",
-		proof: "360K+ followers on LinkedIn",
+		proof: "360K+ followers",
 		photo: "/founder-julia.jpg",
 	},
 ];
@@ -95,7 +95,8 @@ function LinkedInMark() {
 }
 
 function FounderCard({ founder, delay }: { founder: (typeof FOUNDERS)[number]; delay: number }) {
-	const pill = "caption-1 mt-4 inline-flex w-fit items-center gap-2 rounded-md bg-blue-50 px-3 py-1 text-blue-800";
+	const pill =
+		"caption-1 mt-4 inline-flex w-fit items-center gap-2 whitespace-nowrap rounded-md bg-blue-50 px-3 py-1 text-blue-800";
 	return (
 		<RevealItem delay={delay} className={`${CARD} overflow-hidden`}>
 			<img
@@ -106,18 +107,20 @@ function FounderCard({ founder, delay }: { founder: (typeof FOUNDERS)[number]; d
 				loading="eager"
 				className="aspect-square w-full object-cover"
 			/>
-			<div className="flex flex-col p-5">
+			<div className="flex flex-col p-4 sm:p-5">
 				<h2 className="heading-6 text-zinc-950">{founder.name}</h2>
 				<p className="body-6 mt-0.5 text-zinc-600">{founder.role}</p>
 				{founder.href ? (
 					<a href={founder.href} target="_blank" rel="noopener noreferrer" className={`${pill} hover:bg-blue-100`}>
 						<LinkedInMark />
 						{founder.proof}
+						<span className="sr-only"> on LinkedIn</span>
 					</a>
 				) : (
 					<p className={pill}>
 						<LinkedInMark />
 						{founder.proof}
+						<span className="sr-only"> on LinkedIn</span>
 					</p>
 				)}
 			</div>
@@ -224,7 +227,7 @@ function AboutPage() {
 								</Link>
 							</div>
 						</div>
-						<div className="grid gap-5 sm:grid-cols-2 lg:col-span-6">
+						<div className="grid grid-cols-2 gap-4 sm:gap-5 lg:col-span-6">
 							{FOUNDERS.map((founder, index) => (
 								<FounderCard key={founder.name} founder={founder} delay={index * 80} />
 							))}
