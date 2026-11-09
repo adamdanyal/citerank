@@ -266,7 +266,7 @@ function AboutPage() {
 					<Container className="grid gap-12 pt-32 pb-20 lg:grid-cols-12 lg:items-center lg:gap-16 lg:pt-40 lg:pb-24">
 						<div className="lg:col-span-6">
 							<p className="caption-3 text-blue-800">About CiteRank.com</p>
-							<h1 className="heading-1 mt-6 text-zinc-950">We Built the Tracker We Wanted to Buy</h1>
+							<h1 className="heading-2 mt-6 text-zinc-950">We Track What AI Says About Brands, Then Do the Work to Change It</h1>
 							<p className="body-8 mt-6 text-zinc-600">
 								CiteRank.com is the AI visibility tracker and AI search agency for AEO and GEO. We track how ChatGPT,
 								Gemini, Perplexity and nine other AI apps describe brands, and our agency does the work that changes
