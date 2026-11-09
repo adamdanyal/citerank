@@ -215,15 +215,15 @@ export function blogPostingJsonLd({
 	path,
 	datePublished,
 	dateModified,
-	authorName,
+	author,
 }: {
 	title: string;
 	description: string;
 	path: string;
 	datePublished: string;
 	dateModified?: string;
-	/** A real person's name. Omit for AI-generated posts — the org is credited. */
-	authorName?: string;
+	/** A real person. Omit for AI-generated posts — the org is credited. */
+	author?: { name: string; jobTitle?: string; image?: string; url?: string };
 }) {
 	return jsonLd({
 		"@type": "BlogPosting",
@@ -232,8 +232,15 @@ export function blogPostingJsonLd({
 		url: canonicalUrl(path),
 		datePublished,
 		...(dateModified ? { dateModified } : {}),
-		author: authorName
-			? { "@type": "Person", name: authorName }
+		author: author
+			? {
+					"@type": "Person",
+					name: author.name,
+					...(author.jobTitle ? { jobTitle: author.jobTitle } : {}),
+					...(author.image ? { image: canonicalUrl(author.image) } : {}),
+					...(author.url ? { url: author.url, sameAs: [author.url] } : {}),
+					worksFor: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+				}
 			: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
 		publisher: {
 			"@type": "Organization",

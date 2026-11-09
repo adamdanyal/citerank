@@ -8,6 +8,8 @@ export interface TeamAuthor {
 	avatar?: string;
 	/** Optional external profile link (personal site, X, etc.). */
 	url?: string;
+	/** Schema.org jobTitle for the Person entity on posts; falls back to `role`. */
+	jobTitle?: string;
 }
 
 /**
@@ -17,9 +19,22 @@ export interface TeamAuthor {
  * apps/www/public/authors/<key>.png and set `avatar`.
  */
 const teamAuthors = {
+	adam: {
+		name: "Adam Danyal",
+		role: "Co-founder, CiteRank.com",
+		jobTitle: "Co-founder",
+		avatar: "/founder-adam.jpg",
+		url: "https://www.linkedin.com/in/adamdanyal/",
+	},
+	julia: {
+		name: "Julia Danyal",
+		role: "Co-founder, CiteRank.com",
+		jobTitle: "Co-founder",
+		avatar: "/founder-julia.jpg",
+	},
 	citerank: {
-		name: "CiteRank.com Team",
-		role: "AI Search Research",
+		name: "CiteRank.com team",
+		role: "AI search research",
 	},
 } satisfies Record<string, TeamAuthor>;
 

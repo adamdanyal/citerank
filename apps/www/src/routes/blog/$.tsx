@@ -52,8 +52,17 @@ export const Route = createFileRoute("/blog/$")({
 		const pageDescription = description || `${title}, from the ${SITE_NAME} blog.`;
 		const path = `/blog/${slugs.join("/")}`;
 		const resolved = resolveAuthor(author);
-		const authorName =
-			resolved.kind === "team" ? resolved.author.name : resolved.kind === "unknown" ? resolved.name : undefined;
+		const person =
+			resolved.kind === "team"
+				? {
+						name: resolved.author.name,
+						jobTitle: resolved.author.jobTitle ?? resolved.author.role,
+						image: resolved.author.avatar,
+						url: resolved.author.url,
+					}
+				: resolved.kind === "unknown"
+					? { name: resolved.name }
+					: undefined;
 
 		return {
 			meta: [
@@ -77,7 +86,7 @@ export const Route = createFileRoute("/blog/$")({
 					path,
 					datePublished: date,
 					dateModified: updated,
-					authorName,
+					author: person,
 				}),
 				breadcrumbJsonLd([
 					{ name: "Home", path: "/" },

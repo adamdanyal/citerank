@@ -1,7 +1,7 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { cloudAppUrl, cloudSignupUrl } from "@workspace/config/referrals";
-import { ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ArrowRight, ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/logo";
 import { EASE_CLASS, PRIMARY_BUTTON, SMALL_BUTTON, SMALL_BUTTON_BASE } from "./ui";
 
@@ -14,7 +14,39 @@ const LINKS = [
 	{ href: "/agency", label: "Agency" },
 ];
 
+const RESOURCE_GROUPS = [
+	{
+		heading: "Learn",
+		links: [
+			{ href: "/answer-engine-optimization", label: "What is AEO?" },
+			{ href: "/generative-engine-optimization", label: "What is GEO?" },
+			{ href: "/ai-search", label: "AI search guides" },
+			{ href: "/aeo-for", label: "AEO by industry" },
+			{ href: "/glossary", label: "Glossary" },
+			{ href: "/statistics", label: "AI search statistics" },
+		],
+	},
+	{
+		heading: "Resources",
+		links: [
+			{ href: "/blog", label: "Blog" },
+			{ href: "/docs", label: "Documentation" },
+			{ href: "/docs/api", label: "API reference" },
+			{ href: "/ai-visibility-tools", label: "Tool directory" },
+			{ href: "/ai-visibility-tools/compare", label: "Compare tools" },
+			{ href: "/support", label: "Support" },
+		],
+	},
+];
+
+const RESOURCE_PATHS = RESOURCE_GROUPS.flatMap((group) => group.links.map((link) => link.href));
+
 const FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600";
+const NAV_ITEM = `inline-flex h-8 items-center gap-1 rounded-md px-3 title-4 text-zinc-600 transition-colors duration-300 ${EASE_CLASS} hover:bg-paper-2 hover:text-zinc-950 aria-[current=page]:bg-paper-2 aria-[current=page]:text-zinc-950 ${FOCUS}`;
+
+function isUnder(pathname: string, href: string) {
+	return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 function MenuIcon({ open }: { open: boolean }) {
 	const line = `absolute left-0 top-1/2 -mt-px h-0.5 w-4 rounded-full bg-current transition-transform duration-300 ${EASE_CLASS}`;
@@ -23,6 +55,83 @@ function MenuIcon({ open }: { open: boolean }) {
 			<span className={`${line} ${open ? "rotate-45" : "-translate-y-1"}`} />
 			<span className={`${line} ${open ? "-rotate-45" : "translate-y-1"}`} />
 		</span>
+	);
+}
+
+/* Opens on hover or click, closes on Escape, on a click outside, or when focus leaves it. */
+function ResourcesMenu({ pathname }: { pathname: string }) {
+	const [open, setOpen] = useState(false);
+	const root = useRef<HTMLLIElement>(null);
+
+	useEffect(() => {
+		if (!open) return;
+		const onKey = (event: KeyboardEvent) => {
+			if (event.key === "Escape") setOpen(false);
+		};
+		const onPointer = (event: PointerEvent) => {
+			if (root.current && !root.current.contains(event.target as Node)) setOpen(false);
+		};
+		window.addEventListener("keydown", onKey);
+		document.addEventListener("pointerdown", onPointer);
+		return () => {
+			window.removeEventListener("keydown", onKey);
+			document.removeEventListener("pointerdown", onPointer);
+		};
+	}, [open]);
+
+	const current = RESOURCE_PATHS.some((href) => isUnder(pathname, href)) ? "page" : undefined;
+
+	return (
+		<li
+			ref={root}
+			className="relative"
+			onMouseEnter={() => setOpen(true)}
+			onMouseLeave={() => setOpen(false)}
+			onBlur={(event) => {
+				if (!root.current?.contains(event.relatedTarget as Node)) setOpen(false);
+			}}
+		>
+			<button
+				type="button"
+				aria-expanded={open}
+				aria-controls="resources-menu"
+				aria-current={current}
+				onClick={() => setOpen((value) => !value)}
+				className={NAV_ITEM}
+			>
+				Resources
+				<ChevronDown
+					className={`size-3.5 transition-transform duration-300 ${EASE_CLASS} ${open ? "rotate-180" : ""}`}
+					aria-hidden="true"
+				/>
+			</button>
+			<div
+				id="resources-menu"
+				inert={!open}
+				className={`absolute left-0 top-full z-50 pt-3 transition-[opacity,transform] duration-200 ${EASE_CLASS} ${open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-1 opacity-0"}`}
+			>
+				<div className="grid w-[30rem] grid-cols-2 gap-6 rounded-xl bg-paper p-5 shadow-[0_1px_2px_rgb(26_25_23/0.05),0_24px_48px_-24px_rgb(26_25_23/0.3)] ring-1 ring-zinc-950/5">
+					{RESOURCE_GROUPS.map((group) => (
+						<div key={group.heading}>
+							<p className="caption-3 px-2 text-zinc-500">{group.heading}</p>
+							<ul className="mt-2">
+								{group.links.map((link) => (
+									<li key={link.href}>
+										<a
+											href={link.href}
+											aria-current={isUnder(pathname, link.href) ? "page" : undefined}
+											className={`title-4 block rounded-md px-2 py-1.5 text-zinc-700 transition-colors duration-300 ${EASE_CLASS} hover:bg-paper-2 hover:text-zinc-950 aria-[current=page]:text-blue-700 ${FOCUS}`}
+										>
+											{link.label}
+										</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					))}
+				</div>
+			</div>
+		</li>
 	);
 }
 
@@ -44,7 +153,7 @@ export function Navbar() {
 		};
 	}, [open]);
 
-	const current = (href: string) => (pathname === href || pathname.startsWith(`${href}/`) ? "page" : undefined);
+	const current = (href: string) => (isUnder(pathname, href) ? "page" : undefined);
 
 	return (
 		<>
@@ -59,15 +168,12 @@ export function Navbar() {
 					<ul className="hidden items-center gap-1 md:flex md:flex-1 md:pl-6">
 						{LINKS.map((link) => (
 							<li key={link.href}>
-								<a
-									href={link.href}
-									aria-current={current(link.href)}
-									className={`inline-flex h-8 items-center rounded-md px-3 title-4 text-zinc-600 transition-colors duration-300 ${EASE_CLASS} hover:bg-paper-2 hover:text-zinc-950 aria-[current=page]:bg-paper-2 aria-[current=page]:text-zinc-950 ${FOCUS}`}
-								>
+								<a href={link.href} aria-current={current(link.href)} className={NAV_ITEM}>
 									{link.label}
 								</a>
 							</li>
 						))}
+						<ResourcesMenu pathname={pathname} />
 					</ul>
 					<div className="flex items-center gap-1">
 						<a
@@ -99,9 +205,9 @@ export function Navbar() {
 				id="site-menu"
 				data-menu={open ? "open" : "closed"}
 				inert={!open}
-				className={`fixed inset-0 z-50 flex flex-col bg-paper/95 backdrop-blur-xl transition-opacity duration-300 ${EASE_CLASS} md:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
+				className={`fixed inset-0 z-50 flex flex-col overflow-y-auto bg-paper/95 backdrop-blur-xl transition-opacity duration-300 ${EASE_CLASS} md:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
 			>
-				<div className="mx-4 mt-4 flex h-12 items-center justify-between pl-4 pr-2">
+				<div className="mx-4 mt-4 flex h-12 shrink-0 items-center justify-between pl-4 pr-2">
 					<Link to="/" className={`flex items-center rounded-md ${FOCUS}`}>
 						<Logo className="text-xl" />
 					</Link>
@@ -114,20 +220,49 @@ export function Navbar() {
 						<MenuIcon open />
 					</button>
 				</div>
-				<ul className="flex flex-1 flex-col justify-center gap-2 px-6">
-					{[...LINKS, { href: SIGN_IN_URL, label: "Sign in" }].map((link, index) => (
-						<li key={link.href} className="cr-menu-link" style={{ transitionDelay: open ? `${index * 60}ms` : "0ms" }}>
-							<a
-								href={link.href}
-								aria-current={current(link.href)}
-								className={`heading-4 block rounded-lg px-2 py-2 text-zinc-950 transition-colors duration-300 ${EASE_CLASS} hover:text-blue-700 aria-[current=page]:text-blue-700 ${FOCUS}`}
+				<div className="flex flex-1 flex-col justify-center gap-8 px-6 py-8">
+					<ul className="flex flex-col gap-1">
+						{[...LINKS, { href: SIGN_IN_URL, label: "Sign in" }].map((link, index) => (
+							<li
+								key={link.href}
+								className="cr-menu-link"
+								style={{ transitionDelay: open ? `${index * 60}ms` : "0ms" }}
 							>
-								{link.label}
-							</a>
-						</li>
-					))}
-				</ul>
-				<div className="px-6 pb-8">
+								<a
+									href={link.href}
+									aria-current={current(link.href)}
+									className={`heading-4 block rounded-lg px-2 py-1.5 text-zinc-950 transition-colors duration-300 ${EASE_CLASS} hover:text-blue-700 aria-[current=page]:text-blue-700 ${FOCUS}`}
+								>
+									{link.label}
+								</a>
+							</li>
+						))}
+					</ul>
+					<div
+						className="cr-menu-link grid grid-cols-2 gap-6"
+						style={{ transitionDelay: open ? `${(LINKS.length + 1) * 60}ms` : "0ms" }}
+					>
+						{RESOURCE_GROUPS.map((group) => (
+							<div key={group.heading}>
+								<p className="caption-3 px-2 text-zinc-500">{group.heading}</p>
+								<ul className="mt-2 flex flex-col">
+									{group.links.map((link) => (
+										<li key={link.href}>
+											<a
+												href={link.href}
+												aria-current={current(link.href)}
+												className={`title-3 block rounded-md px-2 py-1.5 text-zinc-700 transition-colors duration-300 ${EASE_CLASS} hover:text-blue-700 aria-[current=page]:text-blue-700 ${FOCUS}`}
+											>
+												{link.label}
+											</a>
+										</li>
+									))}
+								</ul>
+							</div>
+						))}
+					</div>
+				</div>
+				<div className="shrink-0 px-6 pb-8">
 					<a href={SIGN_UP_URL} className={`${PRIMARY_BUTTON} w-full`}>
 						Sign up
 						<ArrowRight className="size-4" aria-hidden="true" />
