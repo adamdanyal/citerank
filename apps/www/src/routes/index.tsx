@@ -4,6 +4,7 @@ import type { ComponentProps } from "react";
 import { AgencySection } from "@/components/citerank/home/agency";
 import { Closing } from "@/components/citerank/home/closing";
 import { Demo } from "@/components/citerank/home/demo";
+import { EngineCoverage } from "@/components/citerank/home/engines";
 import { Faq } from "@/components/citerank/home/faq";
 import { Hero } from "@/components/citerank/home/hero";
 import { Letter } from "@/components/citerank/home/letter";
@@ -82,6 +83,7 @@ function HomePage() {
 				<Story />
 				<HowItWorks />
 				<Why />
+				<EngineCoverage />
 				<Reviews />
 				<Letter />
 				<Demo />
