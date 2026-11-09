@@ -169,14 +169,29 @@ function AboutPage() {
 			detail: "Danx Digital Limited, registered in the United Kingdom, company number 13275434",
 		},
 		{ term: "Registered Address", detail: "86-90 Paul Street, London EC2A 4NE, United Kingdom" },
-		{ term: "Trade Mark", detail: "CiteRank.com, UK registered trade mark UK00004399266" },
+		{
+			term: "Trade Marks",
+			detail: (
+				<>
+					CiteRank (
+					<ExternalLink href="https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00004430998">
+						UK00004430998
+					</ExternalLink>
+					) and CiteRank.com (
+					<ExternalLink href="https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00004399266">
+						UK00004399266
+					</ExternalLink>
+					), registered UK trade marks of Danx Digital Limited
+				</>
+			),
+		},
 		{ term: "Website", detail: <ExternalLink href="https://citerank.com">citerank.com</ExternalLink> },
 		{
 			term: "Built On",
 			detail: (
 				<>
 					<ExternalLink href="https://github.com/elmohq/elmo">Elmo</ExternalLink>, the open-source AI visibility
-					tracker, which CiteRank.com hosts and extends
+					tracker, which CiteRank.com hosts and extends with our in-house AI search agency
 				</>
 			),
 		},

@@ -14,7 +14,7 @@ const WORK = [
 
 export function AgencySection() {
 	return (
-		<section className="cr-grain relative bg-paper-2">
+		<section className="cr-grain relative bg-white">
 			<Container className="relative grid gap-12 py-20 lg:grid-cols-12 lg:items-center lg:gap-16 lg:py-24">
 				<Reveal className="lg:col-span-5">
 					<h2 className="heading-2 text-zinc-950">We Do the Work for You</h2>

@@ -103,7 +103,7 @@ export function OtherPlans({ className = "" }: { className?: string }) {
 
 export function Pricing() {
 	return (
-		<section id="pricing" className="bg-white">
+		<section id="pricing" className="bg-paper">
 			<Container className="py-20 lg:py-24">
 				<Reveal className="mx-auto max-w-3xl text-center">
 					<h2 className="heading-2 text-zinc-950">Simple Pricing</h2>

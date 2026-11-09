@@ -9,7 +9,7 @@ import { DEMO_BRAND_PATH } from "./product-demo";
 export function Demo() {
 	const demoUrl = demoSiteUrl("marketing-page-cta", DEMO_BRAND_PATH);
 	return (
-		<section className="bg-paper-2">
+		<section className="bg-white">
 			<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:items-center lg:gap-16 lg:py-24">
 				<Reveal className="lg:col-span-5">
 					<h2 className="heading-2 text-zinc-950">Try the Real Product</h2>
