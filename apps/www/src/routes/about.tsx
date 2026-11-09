@@ -206,7 +206,7 @@ function AboutPage() {
 						<div className="lg:col-span-6">
 							<p className="caption-3 text-blue-800">About CiteRank.com</p>
 							<h1 className="heading-2 mt-6 text-zinc-950">
-								We Track What AI Says About Brands, Then Do the Work to Change It
+								We Track What AI Says About Your Brand, Then Do the Work to Change It
 							</h1>
 							<p className="body-8 mt-6 text-zinc-600">
 								CiteRank.com is the AI visibility tracker and AI search agency for AEO and GEO. We track how ChatGPT,
