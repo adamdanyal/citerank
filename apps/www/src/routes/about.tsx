@@ -60,77 +60,13 @@ const NUMBERS = [
 	{ value: "London", label: "where the company is registered" },
 ];
 
-const PRINCIPLES = [
-	{
-		title: "Every answer kept, word for word",
-		body: "Open any score and read the answers behind it, with the pages they cited and the searches they ran.",
-	},
-	{
-		title: `Public pricing from $${CLOUD_ENTRY_PRICE_USD} a month`,
-		body: `Plans are listed at $${basic.monthlyPriceUsd}, $${pro.monthlyPriceUsd} and $${business.monthlyPriceUsd} a month. You sign up without a sales call.`,
-	},
-	{
-		title: "Month to month",
-		body: "No minimum term. Annual billing is optional and saves two months.",
-	},
-	{
-		title: `Prompts checked ${basic.standardRunsPerDay} times a day`,
-		body: "AI answers vary from run to run. More samples mean trends you can trust, not snapshots.",
-	},
-	{
-		title: "The interfaces your buyers use",
-		body: "ChatGPT, Google AI Mode and Perplexity are checked from the real interface, not approximated through an API.",
-	},
-	{
-		title: "Unlimited seats, API and MCP",
-		body: "Your whole team and your own tools get the data on every plan, with no per-seat fees.",
-	},
-];
-
-const OFFERINGS = [
-	{
-		title: "AI Search Visibility Tracking",
-		body: "Your buyers' questions across 12 AI apps, scored for how often you appear.",
-	},
-	{ title: "Citation Analysis", body: "The domains and pages each answer cites, and the web searches behind it." },
-	{
-		title: "Competitor Benchmarking",
-		body: "Who AI recommends instead of you, and your share of voice on every engine.",
-	},
-	{
-		title: "Ranked Next Steps",
-		body: "About once a week: what to publish, update or get listed on, biggest win first.",
-	},
-	{
-		title: "Self-Serve Plans",
-		body: `From $${CLOUD_ENTRY_PRICE_USD} a month, with unlimited seats, a REST API and an MCP server.`,
-	},
-	{ title: "AI Search Agency", body: "We do the work the tracker ranks and report the AI answers before and after." },
-];
-
-const AUDIENCES = [
-	"B2B SaaS marketing teams extending SEO to AI search",
-	"E-commerce brands watching product recommendations in ChatGPT and AI Overviews",
-	"SEO, AEO and GEO agencies managing several client brands",
-	"Founders who want the agency to do the work",
-	"Law, accounting and other firms whose clients ask AI who to hire",
-	"Local and hospitality businesses checking how AI describes them",
-];
-
-const WORKING = [
-	{ title: "Who You Work With", body: "The team behind the product, by email or a booked call." },
-	{
-		title: "Onboarding",
-		body: "Sign up and add your website. The Prompt Wizard suggests your buyers' questions and tracking starts right away.",
-	},
-	{
-		title: "Turnaround",
-		body: "First results in minutes. Ranked next steps after a few days of data, refreshed weekly.",
-	},
-	{
-		title: "Reporting",
-		body: "Agency clients get a monthly report of every piece of work and the AI answers before and after.",
-	},
+/* Written in the founders' voice; every claim is also in the key facts or the FAQ below. */
+const STORY = [
+	"When a buyer asks ChatGPT, Gemini or Perplexity who to choose, the answer names a few brands and cites a few pages. If you cannot say whether yours is one of them, that is the gap we started CiteRank.com to close.",
+	"We are Adam and Julia Danyal. We have more than 2.3 million LinkedIn followers between us, run Chief AI Leader, an exam-based AI certification for leaders, and write AI For Leaders, a daily newsletter read by more than 50,000 leaders. CiteRank.com is our product. It shows what AI says about your brand, and our agency does the work the tracker ranks, every month.",
+	`The tracker is built on Elmo, the open-source AI visibility tracker, which we host and extend. It asks your buyers' questions across ${ENGINE_COUNT} AI apps, ${basic.standardRunsPerDay} times a day, and keeps every answer word for word, so any score can be traced to the exact responses behind it. Plans start at $${CLOUD_ENTRY_PRICE_USD} a month, run month to month, and include your whole team, the API and the MCP server.`,
+	"Tracking alone does not change an answer, so we also run the agency. Each month we write the pages your site is missing, update the ones AI stopped citing, pitch you to the review sites and lists it cites, answer buyers in forums, and report the AI answers before and after.",
+	"It is for any company whose buyers ask AI who to choose: B2B software, e-commerce, agencies with several client brands, law and accounting firms, local and hospitality businesses. Sign up, add your website, and the Prompt Wizard suggests your buyers' questions so tracking starts right away. For the agency, book a call.",
 ];
 
 function ExternalLink({ href, children }: { href: string; children: ReactNode }) {
@@ -310,93 +246,35 @@ function AboutPage() {
 				</section>
 
 				<section className="bg-paper">
-					<Container className="py-20 lg:py-24">
-						<div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-							<div className="lg:col-span-4">
-								<SectionHeading title="What We Believe" lede="Six things every plan is built on." />
+					<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
+						<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
+							<h2 className="heading-2 text-zinc-950">Why We Started CiteRank.com</h2>
+						</Reveal>
+						<Reveal delay={100} className="lg:col-span-8">
+							{STORY.map((paragraph, index) => (
+								<p
+									key={paragraph.slice(0, 24)}
+									className={
+										index === 0 ? "body-8 max-w-[60ch] text-zinc-950" : "body-7 mt-6 max-w-[65ch] text-zinc-700"
+									}
+								>
+									{paragraph}
+								</p>
+							))}
+							<div className="mt-10 flex flex-wrap items-center gap-4">
+								<a href={`mailto:${CONTACT_EMAIL}`} className={SECONDARY_BUTTON}>
+									Email {CONTACT_EMAIL}
+								</a>
+								<Link to="/features" className={TEXT_LINK}>
+									See every feature
+									<ArrowRight className="size-4" aria-hidden="true" />
+								</Link>
 							</div>
-							<ol className="grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:col-span-8">
-								{PRINCIPLES.map((item, index) => (
-									<RevealItem key={item.title} delay={index * 60} className="flex gap-5">
-										<span className="caption-1 mt-1 font-mono text-blue-700 tabular-nums">
-											{String(index + 1).padStart(2, "0")}
-										</span>
-										<div>
-											<h3 className="title-1 text-zinc-950">{item.title}</h3>
-											<p className="body-6 mt-2 text-zinc-600">{item.body}</p>
-										</div>
-									</RevealItem>
-								))}
-							</ol>
-						</div>
+						</Reveal>
 					</Container>
 				</section>
 
 				<section className="bg-white">
-					<Container className="py-20 lg:py-24">
-						<div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-							<div className="lg:col-span-4">
-								<SectionHeading title="What CiteRank.com Does" />
-								<Reveal delay={120} className="mt-6">
-									<Link to="/features" className={TEXT_LINK}>
-										See every feature
-										<ArrowRight className="size-4" aria-hidden="true" />
-									</Link>
-								</Reveal>
-							</div>
-							<ul className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:col-span-8">
-								{OFFERINGS.map((item, index) => (
-									<RevealItem key={item.title} delay={index * 60}>
-										<h3 className="title-2 text-zinc-950">{item.title}</h3>
-										<p className="body-6 mt-1 text-zinc-600">{item.body}</p>
-									</RevealItem>
-								))}
-							</ul>
-						</div>
-					</Container>
-				</section>
-
-				<section className="bg-paper-2">
-					<Container className="py-20 lg:py-24">
-						<div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-							<div className="lg:col-span-4">
-								<SectionHeading title="Who It Is For" lede="Companies whose buyers ask AI who to choose." />
-							</div>
-							<ul className="grid gap-4 sm:grid-cols-2 lg:col-span-8">
-								{AUDIENCES.map((audience, index) => (
-									<RevealItem key={audience} delay={index * 50} className={`${CARD} p-5 body-6 text-zinc-800`}>
-										{audience}
-									</RevealItem>
-								))}
-							</ul>
-						</div>
-					</Container>
-				</section>
-
-				<section className="bg-white">
-					<Container className="py-20 lg:py-24">
-						<div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-							<div className="lg:col-span-4">
-								<SectionHeading title="Working With Us" />
-								<Reveal delay={120} className="mt-6">
-									<a href={`mailto:${CONTACT_EMAIL}`} className={SECONDARY_BUTTON}>
-										Email {CONTACT_EMAIL}
-									</a>
-								</Reveal>
-							</div>
-							<ul className="grid gap-5 sm:grid-cols-2 lg:col-span-8">
-								{WORKING.map((item, index) => (
-									<RevealItem key={item.title} delay={index * 60} className={`${CARD} p-6`}>
-										<h3 className="title-1 text-zinc-950">{item.title}</h3>
-										<p className="body-6 mt-2 text-zinc-600">{item.body}</p>
-									</RevealItem>
-								))}
-							</ul>
-						</div>
-					</Container>
-				</section>
-
-				<section className="bg-paper">
 					<Container className="py-20 lg:py-24">
 						<div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
 							<div className="lg:col-span-4">

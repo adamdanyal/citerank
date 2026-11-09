@@ -185,3 +185,4 @@ Crisp support chat runs on CiteRank.com's own workspace (`CRISP_WEBSITE_ID` in `
 | 2026-11-05 | Rebuilt the pricing and agency pages in the site's design and aligned the features, about and support pages with it. Not deployed. |
 | 2026-11-09 | Redesigned the features index and feature pages, the agency and pricing heroes, the support page and the industry, AI search, glossary and statistics hubs on the site's design system. Not deployed. |
 | 2026-11-09 | Changed the About headline to "We Track What AI Says About Brands, Then Do the Work to Change It": the tracker is Elmo, so the page no longer says we built it. Not deployed. |
+| 2026-11-09 | Replaced the About page's belief, offering, audience and working-with-us grids with a "Why We Started CiteRank.com" story in the founders' words, keeping Key Facts and the FAQ. Not deployed. |
