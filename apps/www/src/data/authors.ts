@@ -21,8 +21,8 @@ export interface TeamAuthor {
 const teamAuthors = {
 	adam: {
 		name: "Adam Danyal",
-		role: "Co-founder, CiteRank.com",
-		jobTitle: "Co-founder",
+		role: "Founder, CiteRank.com",
+		jobTitle: "Founder",
 		avatar: "/founder-adam.jpg",
 		url: "https://www.linkedin.com/in/adamdanyal/",
 	},
@@ -31,6 +31,7 @@ const teamAuthors = {
 		role: "Co-founder, CiteRank.com",
 		jobTitle: "Co-founder",
 		avatar: "/founder-julia.jpg",
+		url: "https://www.linkedin.com/in/juliadanyal/",
 	},
 	citerank: {
 		name: "CiteRank.com team",

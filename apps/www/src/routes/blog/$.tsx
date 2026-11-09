@@ -41,6 +41,21 @@ export interface BlogPostLoaderData {
 	howTo?: { name?: string; description?: string; steps: { name: string; text: string }[] };
 }
 
+/* The post's author as the Person for its BlogPosting schema; AI-generated posts credit the company instead. */
+function schemaAuthor(author: string) {
+	const resolved = resolveAuthor(author);
+	if (resolved.kind === "team") {
+		return {
+			name: resolved.author.name,
+			jobTitle: resolved.author.jobTitle ?? resolved.author.role,
+			image: resolved.author.avatar,
+			url: resolved.author.url,
+		};
+	}
+	if (resolved.kind === "unknown") return { name: resolved.name };
+	return undefined;
+}
+
 export const Route = createFileRoute("/blog/$")({
 	component: Page,
 	head: ({ loaderData }) => {
@@ -51,18 +66,7 @@ export const Route = createFileRoute("/blog/$")({
 		const pageTitle = metaTitle ?? `${title} · ${SITE_NAME}`;
 		const pageDescription = description || `${title}, from the ${SITE_NAME} blog.`;
 		const path = `/blog/${slugs.join("/")}`;
-		const resolved = resolveAuthor(author);
-		const person =
-			resolved.kind === "team"
-				? {
-						name: resolved.author.name,
-						jobTitle: resolved.author.jobTitle ?? resolved.author.role,
-						image: resolved.author.avatar,
-						url: resolved.author.url,
-					}
-				: resolved.kind === "unknown"
-					? { name: resolved.name }
-					: undefined;
+		const person = schemaAuthor(author);
 
 		return {
 			meta: [

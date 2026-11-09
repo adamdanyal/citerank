@@ -49,7 +49,7 @@ const ENGINE_COUNT = 12;
 const FOUNDERS = [
 	{
 		name: "Adam Danyal",
-		role: "Co-founder",
+		role: "Founder",
 		proof: "2M+ followers",
 		href: "https://www.linkedin.com/in/adamdanyal/",
 		photo: "/founder-adam.jpg",
@@ -58,6 +58,7 @@ const FOUNDERS = [
 		name: "Julia Danyal",
 		role: "Co-founder",
 		proof: "360K+ followers",
+		href: "https://www.linkedin.com/in/juliadanyal/",
 		photo: "/founder-julia.jpg",
 	},
 ];

@@ -87,7 +87,7 @@ export function organizationJsonLd() {
 		sameAs: SOCIAL_URLS,
 		founder: [
 			{ "@type": "Person", name: "Adam Danyal", sameAs: ["https://www.linkedin.com/in/adamdanyal/"] },
-			{ "@type": "Person", name: "Julia Danyal" },
+			{ "@type": "Person", name: "Julia Danyal", sameAs: ["https://www.linkedin.com/in/juliadanyal/"] },
 		],
 		address: {
 			"@type": "PostalAddress",
