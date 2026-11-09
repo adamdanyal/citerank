@@ -10,7 +10,7 @@ import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { externalRel } from "@/lib/external-link";
 import { ABOUT_FAQS } from "@/lib/faqs";
-import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
+import { aboutPageJsonLd, breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
 const CONTACT_EMAIL = "team@citerank.com";
 
@@ -28,6 +28,15 @@ export const Route = createFileRoute("/about")({
 				{ name: "About", path: "/about" },
 			]),
 			faqJsonLd(ABOUT_FAQS),
+			aboutPageJsonLd({
+				path: "/about",
+				founders: FOUNDERS.map((founder) => ({
+					name: founder.name,
+					jobTitle: founder.role,
+					image: founder.photo,
+					sameAs: founder.href ? [founder.href] : undefined,
+				})),
+			}),
 		],
 	}),
 	component: AboutPage,
@@ -108,7 +117,7 @@ function FounderCard({ founder, delay }: { founder: (typeof FOUNDERS)[number]; d
 				className="aspect-square w-full object-cover"
 			/>
 			<div className="flex flex-col p-4 sm:p-5">
-				<h2 className="heading-6 text-zinc-950">{founder.name}</h2>
+				<p className="heading-6 text-zinc-950">{founder.name}</p>
 				<p className="body-6 mt-0.5 text-zinc-600">{founder.role}</p>
 				{founder.href ? (
 					<a href={founder.href} target="_blank" rel="noopener noreferrer" className={`${pill} hover:bg-blue-100`}>
@@ -209,9 +218,16 @@ function AboutPage() {
 								We track what AI says about your brand, then do the work to change it
 							</h1>
 							<p className="body-8 mt-6 text-zinc-600">
-								CiteRank.com is the AI visibility tracker and AI search agency for AEO and GEO. We track how ChatGPT,
-								Gemini, Perplexity and nine other AI apps describe brands, and our agency does the work that changes
-								those answers.
+								CiteRank.com is the AI visibility tracker and AI search agency for{" "}
+								<Link to="/answer-engine-optimization" className={`${QUIET_LINK} text-zinc-950`}>
+									AEO
+								</Link>{" "}
+								and{" "}
+								<Link to="/generative-engine-optimization" className={`${QUIET_LINK} text-zinc-950`}>
+									GEO
+								</Link>
+								. We track how ChatGPT, Gemini, Perplexity and nine other AI apps describe brands, and our agency does
+								the work that changes those answers.
 							</p>
 							<p className="body-6 mt-6 text-zinc-600">
 								Cite is what an AI does when it names a source. Rank is where you stand against competitors in those

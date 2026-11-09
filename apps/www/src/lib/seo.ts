@@ -165,6 +165,36 @@ export function agencyServiceJsonLd() {
 	});
 }
 
+/** The About page as an AboutPage whose subject is the company, with each founder as a Person. */
+export function aboutPageJsonLd({
+	path,
+	founders,
+}: {
+	path: string;
+	founders: { name: string; jobTitle: string; image: string; sameAs?: string[] }[];
+}) {
+	return jsonLd({
+		"@type": "AboutPage",
+		name: `About ${SITE_NAME}`,
+		url: canonicalUrl(path),
+		mainEntity: {
+			"@type": "Organization",
+			name: SITE_NAME,
+			legalName: "Danx Digital Limited",
+			url: SITE_URL,
+			logo: SITE_LOGO_URL,
+			founder: founders.map((founder) => ({
+				"@type": "Person",
+				name: founder.name,
+				jobTitle: founder.jobTitle,
+				image: canonicalUrl(founder.image),
+				worksFor: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+				...(founder.sameAs?.length ? { sameAs: founder.sameAs } : {}),
+			})),
+		},
+	});
+}
+
 export function articleJsonLd({ title, description, path }: { title: string; description: string; path: string }) {
 	return jsonLd({
 		"@type": "TechArticle",
