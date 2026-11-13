@@ -28,17 +28,15 @@ function planLines(plan: PlanDefinition): { text: string; included: boolean }[] 
 	];
 }
 
-/* The plans are columns of one table, divided by rules rather than boxed as cards. */
+/* The plans are columns of one table. The rule over each column carries the recommendation. */
 function Column({ planKey }: { planKey: PlanKey }) {
 	const plan = PLANS[planKey];
 	const recommended = planKey === RECOMMENDED;
 	return (
-		<div className="flex flex-col border-zinc-200 pt-8 md:border-t-0 md:border-l md:pt-0 md:pl-8 md:first:border-l-0 md:first:pl-0">
-			<div className="flex items-baseline justify-between gap-3">
-				<h3 className={`${SUBHEAD} text-ink`}>{plan.name}</h3>
-				{recommended ? <span className={MONO}>most chosen</span> : null}
-			</div>
-			<p className="mt-5 flex items-baseline gap-1.5">
+		<div className={`flex flex-col border-t-2 pt-7 ${recommended ? "border-rust" : "border-zinc-200"}`}>
+			<h3 className={`${SUBHEAD} text-ink`}>{plan.name}</h3>
+			<p className={`${MONO} mt-1 ${recommended ? "text-rust" : "invisible"}`}>most chosen</p>
+			<p className="mt-4 flex items-baseline gap-1.5">
 				<span className="font-heading text-[2.75rem] leading-none font-semibold tracking-[-0.03em] text-ink tabular-nums">
 					${plan.monthlyPriceUsd}
 				</span>
@@ -64,7 +62,7 @@ function Column({ planKey }: { planKey: PlanKey }) {
 
 export function Pricing() {
 	return (
-		<section id="pricing" className={`${SECTION} bg-paper`}>
+		<section id="pricing" className={`${SECTION} bg-white`}>
 			<Page>
 				<div className="flex flex-wrap items-end justify-between gap-6">
 					<h2 className={`${HEADING} text-ink`}>Simple pricing</h2>
@@ -80,7 +78,7 @@ export function Pricing() {
 					))}
 				</ul>
 
-				<div className="mt-14 grid gap-10 divide-y divide-zinc-200 md:grid-cols-3 md:gap-0 md:divide-y-0">
+				<div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
 					{PLAN_KEYS.map((key) => (
 						<Column key={key} planKey={key} />
 					))}

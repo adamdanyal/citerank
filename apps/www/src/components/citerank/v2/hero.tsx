@@ -3,7 +3,7 @@ import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
-import { ACTION, ACTION_QUIET, AnswerSheet, DISPLAY, LEAD, Mono, Page, SMALL } from "./kit";
+import { ACTION, ACTION_QUIET_ON_INK, AnswerSheet, DISPLAY, LEAD, MONO_ON_INK, Page, SMALL } from "./kit";
 
 const FROM = "marketing-hero";
 
@@ -28,12 +28,12 @@ export function Hero() {
 	const demoUrl = demoSiteUrl(FROM, DEMO_BRAND_PATH);
 
 	return (
-		<section className="-mt-16 bg-paper pt-32 pb-20 md:pt-40 md:pb-28">
-			<Page className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+		<section className="-mt-16 bg-ink pt-28 pb-20 md:pt-36 md:pb-24">
+			<Page className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
 				<div className="lg:col-span-6">
-					<h1 className={`${DISPLAY} text-ink`}>Track your brand in AI search</h1>
-					<div className="mt-7 h-px w-16 bg-rust" />
-					<p className={`${LEAD} mt-7 max-w-[46ch] text-zinc-600`}>
+					<h1 className={`${DISPLAY} text-paper`}>Track your brand in AI search</h1>
+					<div className="mt-7 h-0.5 w-16 bg-rust" />
+					<p className={`${LEAD} mt-7 max-w-[42ch] text-zinc-400`}>
 						CiteRank.com is the AI visibility tracker and AI search agency for AEO and GEO. See how ChatGPT, Claude,
 						Gemini and ten other AI apps talk about your brand and what to fix. Do it yourself, or have our agency do it
 						every month.
@@ -47,12 +47,12 @@ export function Hero() {
 							target="_blank"
 							rel={externalRel(demoUrl)}
 							onClick={() => trackEvent("demo_open", { from: FROM })}
-							className={ACTION_QUIET}
+							className={ACTION_QUIET_ON_INK}
 						>
 							Try the live demo
 						</a>
 					</div>
-					<p className={`${SMALL} mt-6 text-zinc-500`}>
+					<p className={`${SMALL} mt-6 text-zinc-400`}>
 						Tracker plans from ${CLOUD_ENTRY_PRICE_USD} a month. No contract, cancel any time.
 					</p>
 				</div>
@@ -63,8 +63,11 @@ export function Hero() {
 						question={DEMO_ANSWER.question}
 						lines={DEMO_ANSWER.lines}
 						sources={DEMO_ANSWER.sources}
+						size="lg"
 					/>
-					<Mono className="mt-4">An answer from the live demo, kept in full with every source it cited.</Mono>
+					<p className={`${MONO_ON_INK} mt-4`}>
+						An answer from the live demo, kept in full with every source it cited.
+					</p>
 				</div>
 			</Page>
 		</section>

@@ -6,7 +6,7 @@ import { BODY, HEADING, LINK, Page, SECTION, SUBHEAD } from "./kit";
 /** Answers stay open: nothing to click, and the same text crawlers and the FAQPage JSON-LD read. */
 export function Faq({ items }: { items: FaqItem[] }) {
 	return (
-		<section className={`${SECTION} bg-paper`}>
+		<section className={`${SECTION} bg-white`}>
 			<Page className="grid gap-12 lg:grid-cols-12 lg:gap-16">
 				<div className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
 					<h2 className={`${HEADING} text-ink`}>Frequently asked questions</h2>

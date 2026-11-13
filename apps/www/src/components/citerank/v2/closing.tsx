@@ -3,7 +3,7 @@ import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
-import { ACTION, ACTION_QUIET, HEADING, LEAD, Page } from "./kit";
+import { ACTION, ACTION_QUIET_ON_INK, HEADING, LEAD, Page } from "./kit";
 
 const FROM = "marketing-closing";
 
@@ -11,11 +11,11 @@ export function Closing() {
 	const signupUrl = cloudSignupUrl(FROM);
 	const demoUrl = demoSiteUrl(FROM, DEMO_BRAND_PATH);
 	return (
-		<section className="border-t border-zinc-200 bg-paper py-20 md:py-28">
+		<section className="bg-ink py-20 md:py-28">
 			<Page className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-16">
 				<div className="lg:col-span-7">
-					<h2 className={`${HEADING} max-w-[18ch] text-ink`}>Know where you stand in AI search</h2>
-					<p className={`${LEAD} mt-6 max-w-[46ch] text-zinc-600`}>
+					<h2 className={`${HEADING} max-w-[18ch] text-paper`}>Know where you stand in AI search</h2>
+					<p className={`${LEAD} mt-6 max-w-[46ch] text-zinc-400`}>
 						Set up takes minutes. Plans from ${CLOUD_ENTRY_PRICE_USD} a month, cancel any time.
 					</p>
 				</div>
@@ -28,7 +28,7 @@ export function Closing() {
 						target="_blank"
 						rel={externalRel(demoUrl)}
 						onClick={() => trackEvent("demo_open", { from: FROM })}
-						className={ACTION_QUIET}
+						className={ACTION_QUIET_ON_INK}
 					>
 						Try the live demo
 					</a>
