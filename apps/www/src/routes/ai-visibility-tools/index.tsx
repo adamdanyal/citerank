@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AiVisibilitySoftwareHub } from "@/components/ai-visibility-software-hub";
+import { PANEL, PANEL_PAD, Page } from "@/components/citerank/v2/kit";
+import { PageShell } from "@/components/citerank/v2/shell";
 import { CompetitorDirectory } from "@/components/competitor-directory";
 import { Faq } from "@/components/faq";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
 import { competitors, getComparisonSlug, isLowDR, isRetired } from "@/lib/competitors";
 import { DIRECTORY_FAQS } from "@/lib/faqs";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, itemListJsonLd, ogMeta } from "@/lib/seo";
@@ -79,35 +79,31 @@ const browseLinks = [
 
 function AiVisibilitySoftwarePage() {
 	return (
-		<div className="min-h-screen">
-			<Navbar />
-			<main>
-				<CompetitorDirectory />
-				<AiVisibilitySoftwareHub />
-				<section className="border-b border-zinc-200 bg-zinc-50 py-12 lg:py-20">
-					<div className="mx-auto max-w-6xl px-4 md:px-6">
-						<h2 className="font-heading text-2xl text-zinc-950 md:text-3xl">Browse the directory</h2>
-						<p className="mt-3 max-w-3xl text-zinc-600">
-							Compare tools head-to-head, find alternatives to one you're evaluating, or filter the field by feature and
-							category. Tools that didn't make it are in the AEO Graveyard.
-						</p>
-						<div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-							{browseLinks.map((link) => (
-								<a
-									key={link.href}
-									href={link.href}
-									className="flex flex-col rounded-md border border-zinc-200 bg-white p-5 transition-colors hover:border-zinc-300"
-								>
-									<h3 className="font-semibold text-zinc-950">{link.title}</h3>
-									<p className="mt-2 text-sm leading-relaxed text-zinc-600">{link.description}</p>
-								</a>
-							))}
-						</div>
+		<PageShell>
+			<CompetitorDirectory />
+			<AiVisibilitySoftwareHub />
+			<section className={`${PANEL} ${PANEL_PAD}`}>
+				<div className="mx-auto max-w-6xl px-4 md:px-6">
+					<h2 className="font-heading text-2xl text-zinc-950 md:text-3xl">Browse the directory</h2>
+					<p className="mt-3 max-w-3xl text-zinc-600">
+						Compare tools head-to-head, find alternatives to one you're evaluating, or filter the field by feature and
+						category. Tools that didn't make it are in the AEO Graveyard.
+					</p>
+					<div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+						{browseLinks.map((link) => (
+							<a
+								key={link.href}
+								href={link.href}
+								className="flex flex-col rounded-md border border-zinc-200 bg-white p-5 transition-colors hover:border-zinc-300"
+							>
+								<h3 className="font-semibold text-zinc-950">{link.title}</h3>
+								<p className="mt-2 text-sm leading-relaxed text-zinc-600">{link.description}</p>
+							</a>
+						))}
 					</div>
-				</section>
-				<Faq items={DIRECTORY_FAQS} />
-			</main>
-			<Footer />
-		</div>
+				</div>
+			</section>
+			<Faq items={DIRECTORY_FAQS} />
+		</PageShell>
 	);
 }

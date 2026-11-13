@@ -9,8 +9,8 @@ const BUTTON = `inline-flex h-10 items-center justify-center gap-2 whitespace-no
 export const PRIMARY_BUTTON = `${BUTTON} bg-blue-600 text-white hover:bg-blue-700`;
 const BUTTON_LG = `inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-lg px-6 button-md transition-[background-color,color,transform] duration-300 ${EASE_CLASS} active:scale-[0.98] ${FOCUS}`;
 export const PRIMARY_BUTTON_LG = `${BUTTON_LG} bg-blue-600 text-white hover:bg-blue-700`;
-export const SECONDARY_BUTTON_LG = `${BUTTON_LG} bg-white text-zinc-950 ring-1 ring-inset ring-zinc-300 hover:bg-zinc-50`;
-export const SECONDARY_BUTTON = `${BUTTON} bg-white text-zinc-950 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50`;
+export const SECONDARY_BUTTON_LG = `${BUTTON_LG} bg-transparent text-ink ring-1 ring-inset ring-zinc-300 hover:ring-zinc-500`;
+export const SECONDARY_BUTTON = `${BUTTON} bg-transparent text-ink ring-1 ring-inset ring-zinc-300 hover:ring-zinc-500`;
 export const SMALL_BUTTON_BASE = `h-8 items-center justify-center gap-1 whitespace-nowrap rounded-md px-3 button-sm transition-[background-color,color,transform] duration-300 ${EASE_CLASS} active:scale-[0.98] ${FOCUS}`;
 export const SMALL_BUTTON = `inline-flex ${SMALL_BUTTON_BASE}`;
 export const TEXT_LINK = `group inline-flex h-10 items-center gap-1 rounded-md px-1 button-md text-zinc-950 transition-colors duration-300 ${EASE_CLASS} hover:text-blue-700 ${FOCUS}`;
@@ -34,8 +34,7 @@ export const ICON_BOX = "inline-flex size-10 shrink-0 items-center justify-cente
 /** A whole card as one link: its edge darkens on hover, rather than every card lifting the same way. */
 export const LINK_CARD = `group flex h-full w-full flex-col p-5 ${CARD} transition-[box-shadow] duration-200 hover:ring-zinc-400 ${FOCUS}`;
 
-export const WINDOW_FRAME =
-	"rounded-2xl bg-white p-2 shadow-[0_1px_2px_rgb(26_25_23/0.05),0_40px_80px_-40px_rgb(26_25_23/0.35)]";
+export const WINDOW_FRAME = "rounded-2xl bg-paper p-2 ring-1 ring-zinc-200";
 
 /** The three dots of a browser window, so a screenshot reads as the app running rather than a picture. */
 export function WindowBar() {

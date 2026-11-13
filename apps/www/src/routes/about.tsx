@@ -7,8 +7,8 @@ import { Closing } from "@/components/citerank/home/closing";
 import { Faq } from "@/components/citerank/home/faq";
 import { SocialIcons } from "@/components/citerank/socials";
 import { CARD, Container, QUIET_LINK, Reveal, RevealItem, SECONDARY_BUTTON, TEXT_LINK } from "@/components/citerank/ui";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
+import { PANEL, PANEL_PAD, Page } from "@/components/citerank/v2/kit";
+import { PageShell } from "@/components/citerank/v2/shell";
 import { externalRel } from "@/lib/external-link";
 import { ABOUT_FAQS } from "@/lib/faqs";
 import { aboutPageJsonLd, breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
@@ -208,117 +208,111 @@ function AboutPage() {
 	];
 
 	return (
-		<div className="min-h-screen bg-white antialiased">
-			<Navbar />
-			<main>
-				{/* An editorial opening rather than the homepage hero: the statement on the left, the founders on the right. */}
-				<section className="-mt-16 bg-paper">
-					<Container className="grid gap-12 pt-32 pb-20 lg:grid-cols-12 lg:items-center lg:gap-16 lg:pt-40 lg:pb-24">
-						<div className="lg:col-span-6">
-							<p className="caption-3 text-blue-800">About CiteRank.com</p>
-							<h1 className="heading-2 mt-6 text-zinc-950">
-								We track what AI says about your brand, then do the work to change it
-							</h1>
-							<p className="body-8 mt-6 text-zinc-600">
-								CiteRank.com is the AI visibility tracker and AI search agency for{" "}
-								<Link to="/answer-engine-optimization" className={`${QUIET_LINK} text-zinc-950`}>
-									AEO
-								</Link>{" "}
-								and{" "}
-								<Link to="/generative-engine-optimization" className={`${QUIET_LINK} text-zinc-950`}>
-									GEO
-								</Link>
-								. We track how ChatGPT, Gemini, Perplexity and ten other AI apps describe brands, and our agency does
-								the work that changes those answers.
+		<PageShell>
+			{/* An editorial opening rather than the homepage hero: the statement on the left, the founders on the right. */}
+			<section className={`${PANEL} ${PANEL_PAD}`}>
+				<Page className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16 lg: lg:">
+					<div className="lg:col-span-6">
+						<p className="caption-3 text-blue-800">About CiteRank.com</p>
+						<h1 className="heading-2 mt-6 text-zinc-950">
+							We track what AI says about your brand, then do the work to change it
+						</h1>
+						<p className="body-8 mt-6 text-zinc-600">
+							CiteRank.com is the AI visibility tracker and AI search agency for{" "}
+							<Link to="/answer-engine-optimization" className={`${QUIET_LINK} text-zinc-950`}>
+								AEO
+							</Link>{" "}
+							and{" "}
+							<Link to="/generative-engine-optimization" className={`${QUIET_LINK} text-zinc-950`}>
+								GEO
+							</Link>
+							. We track how ChatGPT, Gemini, Perplexity and ten other AI apps describe brands, and our agency does the
+							work that changes those answers.
+						</p>
+						<p className="body-6 mt-6 text-zinc-600">
+							Cite is what an AI does when it names a source. Rank is where you stand against competitors in those
+							answers. Hence the name.
+						</p>
+						<div className="mt-8 flex flex-wrap items-center gap-4">
+							<Link to="/agency" className={SECONDARY_BUTTON}>
+								Book an agency call
+							</Link>
+							<Link to="/pricing" className={TEXT_LINK}>
+								See tracker plans
+								<ArrowRight className="size-4" aria-hidden="true" />
+							</Link>
+						</div>
+					</div>
+					<div className="grid grid-cols-2 gap-4 sm:gap-5 lg:col-span-6">
+						{FOUNDERS.map((founder, index) => (
+							<FounderCard key={founder.name} founder={founder} delay={index * 80} />
+						))}
+					</div>
+				</Page>
+			</section>
+
+			<section className={`${PANEL} ${PANEL_PAD}`}>
+				<Page className="lg:">
+					<dl className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+						{NUMBERS.map((item, index) => (
+							<RevealItem key={item.label} delay={index * 60} className="flex flex-col">
+								<dd className="heading-3 order-1 text-zinc-950">{item.value}</dd>
+								<dt className="caption-2 order-2 mt-2 text-zinc-600">{item.label}</dt>
+							</RevealItem>
+						))}
+					</dl>
+				</Page>
+			</section>
+
+			<section className={`${PANEL} ${PANEL_PAD}`}>
+				<Page className="grid gap-10 lg:grid-cols-12 lg:gap-16 lg:">
+					<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
+						<h2 className="heading-2 text-zinc-950">Why we started CiteRank.com</h2>
+					</Reveal>
+					<Reveal delay={100} className="lg:col-span-8">
+						{STORY.map((paragraph, index) => (
+							<p
+								key={paragraph.slice(0, 24)}
+								className={index === 0 ? "body-8 max-w-[60ch] text-zinc-950" : "body-7 mt-6 max-w-[65ch] text-zinc-700"}
+							>
+								{paragraph}
 							</p>
-							<p className="body-6 mt-6 text-zinc-600">
-								Cite is what an AI does when it names a source. Rank is where you stand against competitors in those
-								answers. Hence the name.
-							</p>
-							<div className="mt-8 flex flex-wrap items-center gap-4">
-								<Link to="/agency" className={SECONDARY_BUTTON}>
-									Book an agency call
-								</Link>
-								<Link to="/pricing" className={TEXT_LINK}>
-									See tracker plans
-									<ArrowRight className="size-4" aria-hidden="true" />
-								</Link>
-							</div>
+						))}
+						<div className="mt-10 flex flex-wrap items-center gap-4">
+							<a href={`mailto:${CONTACT_EMAIL}`} className={SECONDARY_BUTTON}>
+								Email {CONTACT_EMAIL}
+							</a>
+							<Link to="/features" className={TEXT_LINK}>
+								See every feature
+								<ArrowRight className="size-4" aria-hidden="true" />
+							</Link>
 						</div>
-						<div className="grid grid-cols-2 gap-4 sm:gap-5 lg:col-span-6">
-							{FOUNDERS.map((founder, index) => (
-								<FounderCard key={founder.name} founder={founder} delay={index * 80} />
-							))}
+					</Reveal>
+				</Page>
+			</section>
+
+			<section className={`${PANEL} ${PANEL_PAD}`}>
+				<Page className="lg:">
+					<div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+						<div className="lg:col-span-4">
+							<SectionHeading title="Key facts" lede="The company on one page, for people and for AI engines." />
 						</div>
-					</Container>
-				</section>
-
-				<section className="border-zinc-200/80 border-y bg-white">
-					<Container className="py-10 lg:py-12">
-						<dl className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-							{NUMBERS.map((item, index) => (
-								<RevealItem key={item.label} delay={index * 60} className="flex flex-col">
-									<dd className="heading-3 order-1 text-zinc-950">{item.value}</dd>
-									<dt className="caption-2 order-2 mt-2 text-zinc-600">{item.label}</dt>
-								</RevealItem>
-							))}
-						</dl>
-					</Container>
-				</section>
-
-				<section className="bg-paper">
-					<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
-						<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
-							<h2 className="heading-2 text-zinc-950">Why we started CiteRank.com</h2>
+						<Reveal delay={100} className={`${CARD} divide-y divide-zinc-200/80 px-6 lg:col-span-8 lg:px-8`}>
+							<dl>
+								{keyFacts.map((fact) => (
+									<div key={fact.term} className="grid gap-1 py-4 md:grid-cols-[11rem_1fr] md:gap-6">
+										<dt className="title-4 text-zinc-950">{fact.term}</dt>
+										<dd className="body-6 text-zinc-600">{fact.detail}</dd>
+									</div>
+								))}
+							</dl>
 						</Reveal>
-						<Reveal delay={100} className="lg:col-span-8">
-							{STORY.map((paragraph, index) => (
-								<p
-									key={paragraph.slice(0, 24)}
-									className={
-										index === 0 ? "body-8 max-w-[60ch] text-zinc-950" : "body-7 mt-6 max-w-[65ch] text-zinc-700"
-									}
-								>
-									{paragraph}
-								</p>
-							))}
-							<div className="mt-10 flex flex-wrap items-center gap-4">
-								<a href={`mailto:${CONTACT_EMAIL}`} className={SECONDARY_BUTTON}>
-									Email {CONTACT_EMAIL}
-								</a>
-								<Link to="/features" className={TEXT_LINK}>
-									See every feature
-									<ArrowRight className="size-4" aria-hidden="true" />
-								</Link>
-							</div>
-						</Reveal>
-					</Container>
-				</section>
+					</div>
+				</Page>
+			</section>
 
-				<section className="bg-white">
-					<Container className="py-20 lg:py-24">
-						<div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-							<div className="lg:col-span-4">
-								<SectionHeading title="Key facts" lede="The company on one page, for people and for AI engines." />
-							</div>
-							<Reveal delay={100} className={`${CARD} divide-y divide-zinc-200/80 px-6 lg:col-span-8 lg:px-8`}>
-								<dl>
-									{keyFacts.map((fact) => (
-										<div key={fact.term} className="grid gap-1 py-4 md:grid-cols-[11rem_1fr] md:gap-6">
-											<dt className="title-4 text-zinc-950">{fact.term}</dt>
-											<dd className="body-6 text-zinc-600">{fact.detail}</dd>
-										</div>
-									))}
-								</dl>
-							</Reveal>
-						</div>
-					</Container>
-				</section>
-
-				<Faq items={ABOUT_FAQS} />
-				<Closing from="marketing-about" />
-			</main>
-			<Footer />
-		</div>
+			<Faq items={ABOUT_FAQS} />
+			<Closing from="marketing-about" />
+		</PageShell>
 	);
 }

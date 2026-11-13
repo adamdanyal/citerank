@@ -1,9 +1,9 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { cloudSignupUrl } from "@workspace/config/referrals";
 import { ArrowLeft } from "lucide-react";
+import { PANEL, PANEL_PAD, Page } from "@/components/citerank/v2/kit";
+import { PageShell } from "@/components/citerank/v2/shell";
 import { Faq } from "@/components/faq";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
 import { CiteRankCta } from "@/components/pillar";
 import { type AiSearchEngine, aiSearchEngines, getAiSearchEngine } from "@/data/ai-search-engines";
 import type { FaqItem } from "@/lib/faqs";
@@ -64,82 +64,78 @@ function EnginePage() {
 		related: AiSearchEngine[];
 	};
 	return (
-		<div className="min-h-screen">
-			<Navbar />
-			<main>
-				<div className="mx-auto max-w-6xl px-4 pt-8 md:px-6">
-					<a
-						href="/ai-search"
-						className="inline-flex items-center gap-1 text-sm text-zinc-500 transition-colors hover:text-zinc-950"
-					>
-						<ArrowLeft className="h-3 w-3" />
-						AI search guides
-					</a>
-				</div>
+		<PageShell>
+			<div className="mx-auto max-w-6xl px-4 pt-8 md:px-6">
+				<a
+					href="/ai-search"
+					className="inline-flex items-center gap-1 text-sm text-zinc-500 transition-colors hover:text-zinc-950"
+				>
+					<ArrowLeft className="h-3 w-3" />
+					AI search guides
+				</a>
+			</div>
 
-				<article className="mx-auto max-w-6xl px-4 py-10 md:px-6">
-					<div className="max-w-3xl">
-						<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl">
-							How to Appear in {engine.name}
-						</h1>
-						<p className="mt-4 text-xl leading-snug text-balance text-zinc-600">{engine.short}</p>
-						<div className="mt-8 space-y-5 text-lg leading-relaxed text-zinc-700">
-							{engine.intro.map((p) => (
-								<p key={p.slice(0, 32)}>{p}</p>
-							))}
-						</div>
-
-						<h2 className="font-heading mt-12 text-2xl text-zinc-950">How to improve your odds</h2>
-						<ol className="mt-6 space-y-5">
-							{engine.steps.map((step, i) => (
-								<li key={step.name} className="flex gap-4">
-									<span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-600 font-mono text-xs text-white tabular-nums">
-										{i + 1}
-									</span>
-									<div>
-										<h3 className="font-semibold text-zinc-950">{step.name}</h3>
-										<p className="mt-1 leading-relaxed text-zinc-600">{step.text}</p>
-									</div>
-								</li>
-							))}
-						</ol>
-
-						<div className="mt-12 rounded-md border border-zinc-200 bg-zinc-50 p-6">
-							<h2 className="font-heading text-xl text-zinc-950">Tracking Your Visibility in {engine.name}</h2>
-							<p className="mt-2 leading-relaxed text-zinc-600">{engine.tracking}</p>
-							<div className="mt-4">
-								<a
-									href={cloudSignupUrl("marketing-page-cta")}
-									className="inline-flex h-9 items-center rounded-md bg-blue-600 px-4 text-sm font-medium text-white hover:bg-blue-700"
-								>
-									Start tracking with CiteRank.com
-								</a>
-							</div>
-						</div>
-
-						{related.length > 0 && (
-							<div className="mt-10">
-								<h2 className="font-mono text-[11px] leading-[1.4] text-zinc-500">Other engines</h2>
-								<div className="mt-3 flex flex-wrap gap-2">
-									{related.map((r) => (
-										<a
-											key={r.slug}
-											href={`/ai-search/${r.slug}`}
-											className="rounded-full border border-zinc-200 bg-white px-3 py-1 text-sm text-zinc-700 transition-colors hover:border-zinc-300 hover:text-zinc-950"
-										>
-											{r.name}
-										</a>
-									))}
-								</div>
-							</div>
-						)}
+			<article className="mx-auto max-w-6xl px-4 py-10 md:px-6">
+				<div className="max-w-3xl">
+					<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl">
+						How to Appear in {engine.name}
+					</h1>
+					<p className="mt-4 text-xl leading-snug text-balance text-zinc-600">{engine.short}</p>
+					<div className="mt-8 space-y-5 text-lg leading-relaxed text-zinc-700">
+						{engine.intro.map((p) => (
+							<p key={p.slice(0, 32)}>{p}</p>
+						))}
 					</div>
-				</article>
 
-				<Faq items={engineFaqs(engine)} />
-				<CiteRankCta />
-			</main>
-			<Footer />
-		</div>
+					<h2 className="font-heading mt-12 text-2xl text-zinc-950">How to improve your odds</h2>
+					<ol className="mt-6 space-y-5">
+						{engine.steps.map((step, i) => (
+							<li key={step.name} className="flex gap-4">
+								<span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-600 font-mono text-xs text-white tabular-nums">
+									{i + 1}
+								</span>
+								<div>
+									<h3 className="font-semibold text-zinc-950">{step.name}</h3>
+									<p className="mt-1 leading-relaxed text-zinc-600">{step.text}</p>
+								</div>
+							</li>
+						))}
+					</ol>
+
+					<div className="mt-12 rounded-md border border-zinc-200 bg-zinc-50 p-6">
+						<h2 className="font-heading text-xl text-zinc-950">Tracking Your Visibility in {engine.name}</h2>
+						<p className="mt-2 leading-relaxed text-zinc-600">{engine.tracking}</p>
+						<div className="mt-4">
+							<a
+								href={cloudSignupUrl("marketing-page-cta")}
+								className="inline-flex h-9 items-center rounded-md bg-blue-600 px-4 text-sm font-medium text-white hover:bg-blue-700"
+							>
+								Start tracking with CiteRank.com
+							</a>
+						</div>
+					</div>
+
+					{related.length > 0 && (
+						<div className="mt-10">
+							<h2 className="font-mono text-[11px] leading-[1.4] text-zinc-500">Other engines</h2>
+							<div className="mt-3 flex flex-wrap gap-2">
+								{related.map((r) => (
+									<a
+										key={r.slug}
+										href={`/ai-search/${r.slug}`}
+										className="rounded-full border border-zinc-200 bg-white px-3 py-1 text-sm text-zinc-700 transition-colors hover:border-zinc-300 hover:text-zinc-950"
+									>
+										{r.name}
+									</a>
+								))}
+							</div>
+						</div>
+					)}
+				</div>
+			</article>
+
+			<Faq items={engineFaqs(engine)} />
+			<CiteRankCta />
+		</PageShell>
 	);
 }

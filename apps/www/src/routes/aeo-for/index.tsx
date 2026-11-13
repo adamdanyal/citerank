@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Closing } from "@/components/citerank/home/closing";
 import { Container, EASE_CLASS, LINK_CARD, Reveal, RevealItem } from "@/components/citerank/ui";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
+import { PANEL, PANEL_PAD, Page } from "@/components/citerank/v2/kit";
+import { PageShell } from "@/components/citerank/v2/shell";
 import { aeoHeadline, aeoVerticals } from "@/data/aeo-verticals";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -42,62 +42,58 @@ const WHY = [
 
 function AeoForIndex() {
 	return (
-		<div className="min-h-screen bg-white antialiased">
-			<Navbar />
-			<main>
-				<section className="-mt-16 bg-paper">
-					<Container className="pt-32 pb-16 lg:pt-40 lg:pb-20">
-						<div className="max-w-3xl">
-							<p className="caption-3 text-blue-800">AEO by industry</p>
-							<h1 className="heading-1 mt-6 text-zinc-950">Answer engine optimization, by industry</h1>
-							<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
-								The fundamentals of AEO are the same everywhere, but the prompts that matter and the stakes are not.
-								Pick your world.
+		<PageShell>
+			<section className={`${PANEL} ${PANEL_PAD}`}>
+				<Page className="lg: lg:">
+					<div className="max-w-3xl">
+						<p className="caption-3 text-blue-800">AEO by industry</p>
+						<h1 className="heading-1 mt-6 text-zinc-950">Answer engine optimization, by industry</h1>
+						<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
+							The fundamentals of AEO are the same everywhere, but the prompts that matter and the stakes are not. Pick
+							your world.
+						</p>
+					</div>
+				</Page>
+			</section>
+
+			<section className={`${PANEL} ${PANEL_PAD}`}>
+				<Page className="lg:">
+					<h2 className="sr-only">Guides by industry</h2>
+					<ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+						{aeoVerticals.map((vertical, index) => (
+							<RevealItem key={vertical.slug} delay={(index % 3) * 60} className="flex">
+								<a href={`/aeo-for/${vertical.slug}`} className={LINK_CARD}>
+									<span className="title-2 flex items-start justify-between gap-3 text-zinc-950">
+										{aeoHeadline(vertical)}
+										<ArrowRight
+											className={`mt-1 size-4 shrink-0 text-blue-700 transition-transform duration-300 ${EASE_CLASS} group-hover:translate-x-0.5`}
+											aria-hidden="true"
+										/>
+									</span>
+									<span className="body-6 mt-2 text-zinc-600">{vertical.short}</span>
+								</a>
+							</RevealItem>
+						))}
+					</ul>
+				</Page>
+			</section>
+
+			<section className={`${PANEL} ${PANEL_PAD}`}>
+				<Page className="grid gap-10 lg:grid-cols-12 lg:gap-16 lg:">
+					<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
+						<h2 className="heading-2 text-zinc-950">Why AEO differs by industry</h2>
+					</Reveal>
+					<Reveal delay={100} className="space-y-6 lg:col-span-8">
+						{WHY.map((paragraph) => (
+							<p key={paragraph.slice(0, 32)} className="body-7 max-w-[65ch] text-zinc-700">
+								{paragraph}
 							</p>
-						</div>
-					</Container>
-				</section>
+						))}
+					</Reveal>
+				</Page>
+			</section>
 
-				<section className="bg-white">
-					<Container className="py-20 lg:py-24">
-						<h2 className="sr-only">Guides by industry</h2>
-						<ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-							{aeoVerticals.map((vertical, index) => (
-								<RevealItem key={vertical.slug} delay={(index % 3) * 60} className="flex">
-									<a href={`/aeo-for/${vertical.slug}`} className={LINK_CARD}>
-										<span className="title-2 flex items-start justify-between gap-3 text-zinc-950">
-											{aeoHeadline(vertical)}
-											<ArrowRight
-												className={`mt-1 size-4 shrink-0 text-blue-700 transition-transform duration-300 ${EASE_CLASS} group-hover:translate-x-0.5`}
-												aria-hidden="true"
-											/>
-										</span>
-										<span className="body-6 mt-2 text-zinc-600">{vertical.short}</span>
-									</a>
-								</RevealItem>
-							))}
-						</ul>
-					</Container>
-				</section>
-
-				<section className="bg-paper-2">
-					<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
-						<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
-							<h2 className="heading-2 text-zinc-950">Why AEO differs by industry</h2>
-						</Reveal>
-						<Reveal delay={100} className="space-y-6 lg:col-span-8">
-							{WHY.map((paragraph) => (
-								<p key={paragraph.slice(0, 32)} className="body-7 max-w-[65ch] text-zinc-700">
-									{paragraph}
-								</p>
-							))}
-						</Reveal>
-					</Container>
-				</section>
-
-				<Closing from="marketing-aeo-for-closing" />
-			</main>
-			<Footer />
-		</div>
+			<Closing from="marketing-aeo-for-closing" />
+		</PageShell>
 	);
 }

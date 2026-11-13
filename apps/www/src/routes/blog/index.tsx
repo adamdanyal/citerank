@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import { ArrowUpRight } from "lucide-react";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
+import { PANEL, PANEL_PAD, Page } from "@/components/citerank/v2/kit";
+import { PageShell } from "@/components/citerank/v2/shell";
 import { authorDisplayName, isAiAuthor } from "@/data/authors";
 import { formatPostDate } from "@/lib/format";
 import { breadcrumbJsonLd, canonicalUrl, ogMeta, SITE_NAME } from "@/lib/seo";
@@ -65,48 +65,44 @@ function ResourcesPage() {
 	const { posts } = Route.useLoaderData();
 
 	return (
-		<div className="min-h-screen">
-			<Navbar />
-			<main className="mx-auto max-w-4xl px-4 py-12 md:px-6 lg:py-20">
-				<header className="mb-12 max-w-3xl">
-					<h1 className="text-4xl font-semibold tracking-tight text-zinc-950 lg:text-5xl">Blog</h1>
-					<p className="mt-5 max-w-[58ch] text-pretty text-lg text-zinc-600">{description}</p>
-				</header>
+		<PageShell>
+			<header className="mb-12 max-w-3xl">
+				<h1 className="text-4xl font-semibold tracking-tight text-zinc-950 lg:text-5xl">Blog</h1>
+				<p className="mt-5 max-w-[58ch] text-pretty text-lg text-zinc-600">{description}</p>
+			</header>
 
-				{posts.length === 0 ? (
-					<p className="text-zinc-600">No posts yet. Check back soon.</p>
-				) : (
-					<ul className="space-y-4">
-						{posts.map((post) => (
-							<li key={post.url}>
-								<a
-									href={post.url}
-									className="group block rounded-md border border-zinc-200 bg-white p-6 transition-colors hover:bg-zinc-50 lg:p-8"
-								>
-									<div className="flex flex-wrap items-center gap-2 font-mono text-[11px] leading-[1.4] text-zinc-500">
-										<time dateTime={post.date}>{formatPostDate(post.date)}</time>
-										{!isAiAuthor(post.author) && (
-											<>
-												<span className="text-zinc-300">·</span>
-												<span>{authorDisplayName(post.author)}</span>
-											</>
-										)}
-									</div>
-									<h2 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-950 group-hover:text-blue-700">
-										{post.title}
-									</h2>
-									{post.description && <p className="mt-2 text-pretty text-zinc-600">{post.description}</p>}
-									<span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
-										Read More
-										<ArrowUpRight className="size-3.5" />
-									</span>
-								</a>
-							</li>
-						))}
-					</ul>
-				)}
-			</main>
-			<Footer />
-		</div>
+			{posts.length === 0 ? (
+				<p className="text-zinc-600">No posts yet. Check back soon.</p>
+			) : (
+				<ul className="space-y-4">
+					{posts.map((post) => (
+						<li key={post.url}>
+							<a
+								href={post.url}
+								className="group block rounded-md border border-zinc-200 bg-white p-6 transition-colors hover:bg-zinc-50 lg:p-8"
+							>
+								<div className="flex flex-wrap items-center gap-2 font-mono text-[11px] leading-[1.4] text-zinc-500">
+									<time dateTime={post.date}>{formatPostDate(post.date)}</time>
+									{!isAiAuthor(post.author) && (
+										<>
+											<span className="text-zinc-300">·</span>
+											<span>{authorDisplayName(post.author)}</span>
+										</>
+									)}
+								</div>
+								<h2 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-950 group-hover:text-blue-700">
+									{post.title}
+								</h2>
+								{post.description && <p className="mt-2 text-pretty text-zinc-600">{post.description}</p>}
+								<span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+									Read More
+									<ArrowUpRight className="size-3.5" />
+								</span>
+							</a>
+						</li>
+					))}
+				</ul>
+			)}
+		</PageShell>
 	);
 }

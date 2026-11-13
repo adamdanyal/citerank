@@ -1,7 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
+import { PANEL, PANEL_PAD, Page } from "@/components/citerank/v2/kit";
+import { PageShell } from "@/components/citerank/v2/shell";
 import { CompetitorComparison } from "@/components/competitor-comparison";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
 import {
 	type Competitor,
 	competitors,
@@ -57,12 +57,8 @@ export const Route = createFileRoute("/ai-visibility-tools/$slug")({
 function ComparisonPage() {
 	const { competitor } = Route.useLoaderData() as { competitor: Competitor };
 	return (
-		<div className="min-h-screen">
-			<Navbar />
-			<main>
-				<CompetitorComparison competitor={competitor} />
-			</main>
-			<Footer />
-		</div>
+		<PageShell>
+			<CompetitorComparison competitor={competitor} />
+		</PageShell>
 	);
 }
