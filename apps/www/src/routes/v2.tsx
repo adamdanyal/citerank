@@ -6,6 +6,7 @@ import { Engines } from "@/components/citerank/v2/engines";
 import { Faq } from "@/components/citerank/v2/faq";
 import { Hero } from "@/components/citerank/v2/hero";
 import { HowItWorks } from "@/components/citerank/v2/how-it-works";
+import { Includes } from "@/components/citerank/v2/includes";
 import { Letter } from "@/components/citerank/v2/letter";
 import { Logos } from "@/components/citerank/v2/logos";
 import { Pricing } from "@/components/citerank/v2/pricing";
@@ -30,6 +31,7 @@ function V2Preview() {
 			<main className="mx-auto w-full max-w-[1288px] space-y-3 px-3 pt-3 pb-3 sm:px-4 sm:pt-4 sm:pb-4 md:space-y-4 md:px-5 md:pt-5 md:pb-5">
 				<Hero />
 				<Logos />
+				<Includes />
 				<Engines />
 				<HowItWorks />
 				<Letter />

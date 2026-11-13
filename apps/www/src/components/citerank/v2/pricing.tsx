@@ -20,16 +20,6 @@ import {
 
 const RECOMMENDED: PlanKey = "pro";
 
-const RUNS_PER_DAY = Math.max(...Object.values(PLANS).map((plan) => plan.standardRunsPerDay));
-
-const INCLUDED = [
-	{ title: "Every answer, kept", body: "With the brands it named and the sources it cited." },
-	{ title: `${RUNS_PER_DAY} checks a day`, body: "Enough to show the trend, not a snapshot." },
-	{ title: "Fixes, ranked", body: "Which page to write, update or get listed on." },
-	{ title: "Unlimited seats", body: "API and MCP included." },
-	{ title: "Cancel any time", body: "No contract, no sales call." },
-];
-
 function planLines(plan: PlanDefinition): { text: string; included: boolean }[] {
 	const platforms = plan.platformMenu.length === 1 ? "ChatGPT only" : `Any ${plan.platformPicks} AI platforms`;
 	return [
@@ -92,16 +82,7 @@ export function Pricing() {
 					<p className={`${LEAD} text-zinc-600`}>Every plan includes your whole team and API access.</p>
 				</PanelHead>
 
-				<ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-					{INCLUDED.map((item) => (
-						<li key={item.title} className="rounded-2xl bg-paper-2 p-5 ring-1 ring-zinc-200">
-							<p className="font-heading text-[1rem] font-semibold text-ink">{item.title}</p>
-							<p className={`${SMALL} mt-1.5 text-zinc-600`}>{item.body}</p>
-						</li>
-					))}
-				</ul>
-
-				<div className="mt-10 grid gap-5 md:grid-cols-3">
+				<div className="mt-12 grid gap-5 md:grid-cols-3">
 					{PLAN_KEYS.map((key) => (
 						<PlanCard key={key} planKey={key} />
 					))}

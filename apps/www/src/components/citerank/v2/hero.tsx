@@ -1,8 +1,9 @@
-import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS, PLANS } from "@workspace/config/plans";
+import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
+import { INCLUDED } from "./included";
 import {
 	ACTION,
 	ACTION_QUIET_ON_INK,
@@ -20,11 +21,8 @@ import {
 
 const FROM = "marketing-hero";
 
-const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
-const RUNS_PER_DAY = Math.max(...Object.values(PLANS).map((plan) => plan.standardRunsPerDay));
-
-/* The three facts a visitor needs before the first click, as capsules rather than a paragraph. */
-const PROOF = [`${ENGINE_COUNT} AI apps`, `${RUNS_PER_DAY} checks a day`, "No contract"];
+/* What the money buys, named before the first click; the panel below gives each one its line. */
+const PROOF = INCLUDED.map((item) => item.title);
 
 /* The fictional brand the live demo tracks, so the answer on the page is one a visitor can go and read. */
 const DEMO_ANSWER = {
