@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { trackEvent } from "@/lib/posthog";
-import { ACTION, BODY, CARD_INK, InkGlow, LEAD, PANEL_INK, PANEL_PAD, Page, PanelHead, PILL_INK } from "./kit";
+import { ACTION, InkGlow, LEAD, PANEL_INK, PANEL_PAD, Page, PanelHead, RuledRow } from "./kit";
 
 const WORK = [
 	{ tag: "Content", text: "Writes the comparison, alternatives and guide pages your site is missing" },
@@ -28,14 +28,11 @@ export function Agency() {
 					</Link>
 				</div>
 
-				<ul className="mt-12 grid gap-4 md:grid-cols-2">
+				<ul className="mt-12 border-b border-white/15">
 					{WORK.map((item) => (
-						<li key={item.text} className={CARD_INK}>
-							<p>
-								<span className={PILL_INK}>{item.tag}</span>
-							</p>
-							<p className={`${BODY} mt-4 text-zinc-300`}>{item.text}</p>
-						</li>
+						<RuledRow key={item.text} title={item.tag} onInk>
+							{item.text}
+						</RuledRow>
 					))}
 				</ul>
 			</Page>

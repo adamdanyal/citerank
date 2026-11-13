@@ -4,6 +4,7 @@ import { Closing } from "@/components/citerank/v2/closing";
 import { Demo } from "@/components/citerank/v2/demo";
 import { Engines } from "@/components/citerank/v2/engines";
 import { Faq } from "@/components/citerank/v2/faq";
+import { Figures } from "@/components/citerank/v2/figures";
 import { Hero } from "@/components/citerank/v2/hero";
 import { HowItWorks } from "@/components/citerank/v2/how-it-works";
 import { Includes } from "@/components/citerank/v2/includes";
@@ -34,6 +35,7 @@ function V2Preview() {
 				<Includes />
 				<Engines />
 				<HowItWorks />
+				<Figures />
 				<Letter />
 				<Demo />
 				<Reviews />

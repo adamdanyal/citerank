@@ -81,7 +81,10 @@ export const ACTION_QUIET = `${BUTTON} bg-transparent text-ink ring-1 ring-inset
 export const ACTION_QUIET_ON_INK = `${BUTTON} bg-transparent text-paper ring-1 ring-inset ring-white/25 hover:ring-white/60`;
 export const LINK = `rounded-sm underline decoration-zinc-300 underline-offset-[5px] transition-colors duration-200 hover:decoration-rust ${FOCUS}`;
 
-/** A section's heading and its opening line. The heading stands on its own, with nothing above it. */
+/**
+ * A section opens on a heavy rust rule with the head set flush beneath it. The
+ * rule carries no words, so it marks the section without announcing the heading.
+ */
 export function PanelHead({
 	title,
 	children,
@@ -95,9 +98,34 @@ export function PanelHead({
 }) {
 	return (
 		<div className={className}>
-			<h2 className={`${HEADING} ${onInk ? "text-paper" : "text-ink"}`}>{title}</h2>
+			<div aria-hidden="true" className="h-[3px] w-14 bg-rust" />
+			<h2 className={`${HEADING} mt-7 ${onInk ? "text-paper" : "text-ink"}`}>{title}</h2>
 			{children ? <div className="mt-6">{children}</div> : null}
 		</div>
+	);
+}
+
+/** Rows divided by hairlines, never boxed: the title carries the weight and the line carries the detail. */
+export function RuledRow({
+	title,
+	children,
+	onInk = false,
+}: {
+	title: ReactNode;
+	children: ReactNode;
+	onInk?: boolean;
+}) {
+	return (
+		<li
+			className={`grid gap-2 border-t py-6 sm:grid-cols-12 sm:gap-8 sm:py-7 ${onInk ? "border-white/15" : "border-zinc-200"}`}
+		>
+			<h3
+				className={`font-heading text-[1.375rem] leading-[1.25] font-semibold tracking-[-0.02em] sm:col-span-5 sm:text-[1.5rem] ${SAFE_HEAD} ${onInk ? "text-paper" : "text-ink"}`}
+			>
+				{title}
+			</h3>
+			<div className={`${BODY} sm:col-span-7 ${onInk ? "text-zinc-400" : "text-zinc-600"}`}>{children}</div>
+		</li>
 	);
 }
 

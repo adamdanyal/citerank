@@ -18,9 +18,8 @@ const STEPS = [
 		title: "We ask AI your buyers' questions",
 		body: (
 			<>
-				{ENGINE_COUNT} AI apps, up to four times a day. Every answer is saved with the brands it named and the sources
-				it cited. On the Basic plan that is{" "}
-				<Figure>up to {BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day</Figure>.
+				{ENGINE_COUNT} AI apps, four times a day, every answer kept with the brands it named and the sources it cited.
+				On Basic that is <Figure>up to {BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day</Figure>.
 			</>
 		),
 		shot: {

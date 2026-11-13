@@ -19,11 +19,15 @@ export function Faq({ items }: { items: FaqItem[] }) {
 						</p>
 					</PanelHead>
 				</div>
-				<dl className="space-y-4 lg:col-span-8">
+				<dl className="border-b border-zinc-200 lg:col-span-8">
 					{items.map((item) => (
-						<div key={item.question} className="rounded-2xl bg-paper-2 p-6 sm:p-7">
-							<dt className={`${SUBHEAD} text-ink`}>{item.question}</dt>
-							<dd className={`${BODY} mt-3 max-w-[66ch] text-zinc-600`}>
+						<div key={item.question} className="border-t border-zinc-200 py-7 sm:py-8">
+							<dt
+								className={`font-heading text-[1.375rem] leading-[1.25] font-semibold tracking-[-0.02em] text-ink [overflow-wrap:break-word] min-w-0 sm:text-[1.5rem]`}
+							>
+								{item.question}
+							</dt>
+							<dd className={`${BODY} mt-4 max-w-[66ch] text-zinc-600`}>
 								<Answer item={item} />
 							</dd>
 						</div>

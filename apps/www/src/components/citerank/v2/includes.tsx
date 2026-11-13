@@ -1,5 +1,5 @@
 import { INCLUDED } from "./included";
-import { BODY, PANEL, PANEL_PAD, Page, PanelHead, SUBHEAD } from "./kit";
+import { PANEL, PANEL_PAD, Page, PanelHead, RuledRow } from "./kit";
 
 /* The hero names these; here each one gets its line, before a visitor reaches a price. */
 export function Includes() {
@@ -7,12 +7,11 @@ export function Includes() {
 		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page>
 				<PanelHead title="What every plan includes" className="max-w-[46rem]" />
-				<ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+				<ul className="mt-12 border-b border-zinc-200">
 					{INCLUDED.map((item) => (
-						<li key={item.title} className="rounded-2xl bg-paper-2 p-6 ring-1 ring-zinc-200">
-							<h3 className={`${SUBHEAD} text-ink`}>{item.title}</h3>
-							<p className={`${BODY} mt-2 text-zinc-600`}>{item.body}</p>
-						</li>
+						<RuledRow key={item.title} title={item.title}>
+							{item.body}
+						</RuledRow>
 					))}
 				</ul>
 			</Page>

@@ -50,9 +50,8 @@ export function Hero() {
 				<div className="min-w-0 lg:col-span-6">
 					<h1 className={`${DISPLAY} text-paper`}>Track your brand in AI search</h1>
 					<p className={`${LEAD} mt-6 max-w-[42ch] text-zinc-400`}>
-						CiteRank.com is the AI visibility tracker and AI search agency for AEO and GEO. See how ChatGPT, Claude,
-						Gemini and ten other AI apps talk about your brand and what to fix. Do it yourself, or have our agency do it
-						every month.
+						See how ChatGPT, Claude, Gemini and ten other AI apps talk about your brand, and what to fix. Do it
+						yourself, or have our agency do it every month.
 					</p>
 					<div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
 						<a href={signupUrl} onClick={() => trackEvent("signup_click", { from: FROM })} className={ACTION}>
