@@ -7,7 +7,9 @@ import { Faq } from "@/components/citerank/v2/faq";
 import { Hero } from "@/components/citerank/v2/hero";
 import { HowItWorks } from "@/components/citerank/v2/how-it-works";
 import { Letter } from "@/components/citerank/v2/letter";
+import { Logos } from "@/components/citerank/v2/logos";
 import { Pricing } from "@/components/citerank/v2/pricing";
+import { Reviews } from "@/components/citerank/v2/reviews";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { HOME_FAQS } from "@/lib/faqs";
@@ -24,12 +26,15 @@ function V2Preview() {
 	return (
 		<div className="min-h-screen bg-paper-2 antialiased">
 			<Navbar />
-			<main className="mx-auto w-full max-w-[1288px] space-y-3 px-3 pb-3 sm:px-4 sm:pb-4 md:space-y-4 md:px-5 md:pb-5">
+			{/* The nav is a floating pill, so the first panel keeps the same gap below it as the panels keep from each other. */}
+			<main className="mx-auto w-full max-w-[1288px] space-y-3 px-3 pt-3 pb-3 sm:px-4 sm:pt-4 sm:pb-4 md:space-y-4 md:px-5 md:pt-5 md:pb-5">
 				<Hero />
+				<Logos />
 				<Engines />
 				<HowItWorks />
 				<Letter />
 				<Demo />
+				<Reviews />
 				<Pricing />
 				<Agency />
 				<Faq items={HOME_FAQS} />

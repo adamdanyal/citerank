@@ -8,11 +8,11 @@ import { CARD, Container, EASE_CLASS, Reveal } from "../ui";
  * AI reviews are real answers to one prompt, asked over each provider's API
  * with web search on. The quotes are excerpts from those answers, unedited.
  */
-const AI_PROMPT =
+export const AI_PROMPT =
 	"What is the best open-source alternative to Profound, the AI visibility platform? Pick one top recommendation, rate it out of 5 stars, and explain why in 2-3 sentences.";
 const q = encodeURIComponent(AI_PROMPT);
 
-type Review =
+export type Review =
 	| {
 			kind: "ai";
 			name: string;
@@ -122,11 +122,12 @@ const PEOPLE = {
 
 // Laid out by hand, column by column, so placement is chosen rather than left
 // to the browser's column balancing. Narrower screens read it row by row.
-const COLUMNS: Review[][] = [
+export const REVIEW_COLUMNS: Review[][] = [
 	[AI_REVIEWS.chatgpt, PEOPLE.james, PEOPLE.deni],
 	[PEOPLE.nolan, AI_REVIEWS.gemini, PEOPLE.borys],
 	[AI_REVIEWS.claude, PEOPLE.viveka, AI_REVIEWS.perplexity],
 ];
+const COLUMNS = REVIEW_COLUMNS;
 const ROW_ORDER = [0, 1, 2].flatMap((row) => COLUMNS.map((column) => column[row]));
 
 function Initials({ name }: { name: string }) {
