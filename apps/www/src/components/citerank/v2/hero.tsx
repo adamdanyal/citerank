@@ -49,7 +49,7 @@ export function Hero() {
 			<Page className="relative grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
 				<div className="min-w-0 lg:col-span-6">
 					<h1 className={`${DISPLAY} text-paper`}>Track your brand in AI search</h1>
-					<p className={`${LEAD} mt-6 max-w-[42ch] text-zinc-400`}>
+					<p data-speakable className={`${LEAD} mt-6 max-w-[42ch] text-zinc-400`}>
 						See how ChatGPT, Claude, Gemini and ten other AI apps talk about your brand, and what to fix. Do it
 						yourself, or have our agency do it every month.
 					</p>

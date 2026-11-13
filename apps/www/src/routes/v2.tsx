@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { getModelMeta } from "@workspace/config/models";
+import { CLOUD_PLATFORMS } from "@workspace/config/plans";
 import { Agency } from "@/components/citerank/v2/agency";
 import { Closing } from "@/components/citerank/v2/closing";
 import { Demo } from "@/components/citerank/v2/demo";
@@ -11,14 +13,36 @@ import { Letter } from "@/components/citerank/v2/letter";
 import { Logos } from "@/components/citerank/v2/logos";
 import { Pricing } from "@/components/citerank/v2/pricing";
 import { Reviews } from "@/components/citerank/v2/reviews";
+import { STEP_SCHEMA } from "@/components/citerank/v2/steps";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { HOME_FAQS } from "@/lib/faqs";
+import {
+	faqJsonLd,
+	homePageJsonLd,
+	howToJsonLd,
+	SITE_NAME,
+	softwareApplicationJsonLd,
+	trackedEnginesJsonLd,
+} from "@/lib/seo";
+
+const ENGINES = Object.keys(CLOUD_PLATFORMS).map((model) => ({ model, label: getModelMeta(model).label }));
 
 /* A preview of the v2 design, kept out of search until it replaces the home page. */
 export const Route = createFileRoute("/v2")({
 	head: () => ({
 		meta: [{ title: "CiteRank.com · v2 preview" }, { name: "robots", content: "noindex, nofollow" }],
+		scripts: [
+			homePageJsonLd(ENGINES),
+			softwareApplicationJsonLd(),
+			trackedEnginesJsonLd(ENGINES),
+			howToJsonLd({
+				name: `How ${SITE_NAME} tracks a brand in AI search`,
+				description: `The three steps ${SITE_NAME} runs every day, from asking the engines to ranking what to fix.`,
+				steps: STEP_SCHEMA,
+			}),
+			faqJsonLd(HOME_FAQS),
+		],
 	}),
 	component: V2Preview,
 });

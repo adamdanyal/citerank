@@ -65,18 +65,23 @@ function jsonLd(data: Record<string, unknown>): {
 	};
 }
 
+/* The @id on these two is what every other entity points at, so the graph resolves to one site and one company. */
 export function websiteJsonLd() {
 	return jsonLd({
 		"@type": "WebSite",
+		"@id": `${SITE_URL}/#website`,
 		name: SITE_NAME,
 		url: SITE_URL,
 		description: SITE_DESCRIPTION,
+		inLanguage: "en",
+		publisher: { "@id": `${SITE_URL}/#organization` },
 	});
 }
 
 export function organizationJsonLd() {
 	return jsonLd({
 		"@type": "Organization",
+		"@id": `${SITE_URL}/#organization`,
 		name: SITE_NAME,
 		alternateName: ["CiteRank"],
 		legalName: "Danx Digital Limited",
@@ -379,5 +384,83 @@ export function howToJsonLd({
 			name: step.name,
 			text: step.text,
 		})),
+	});
+}
+
+/*
+ * The engines we track, as linked entities.
+ *
+ * Naming a product in prose tells a crawler nothing about which product it is.
+ * A sameAs to the canonical home page resolves the name to a real entity, which
+ * is what lets an answer engine connect this page to a question about that
+ * engine. Only engines whose canonical URL is unambiguous carry sameAs; the
+ * rest are still named, which is better than leaving them out.
+ */
+const ENGINE_HOMEPAGES: Record<string, string> = {
+	chatgpt: "https://chatgpt.com",
+	claude: "https://claude.ai",
+	gemini: "https://gemini.google.com",
+	perplexity: "https://www.perplexity.ai",
+	grok: "https://grok.com",
+	mistral: "https://mistral.ai",
+	deepseek: "https://www.deepseek.com",
+	meta: "https://www.meta.ai",
+	"google-ai-mode": "https://www.google.com",
+	"google-ai-overview": "https://www.google.com",
+	"bing-ai-mode": "https://www.bing.com",
+};
+
+/** The tracked engines as an ItemList, so "which AI engines does CiteRank.com track" has a machine answer. */
+export function trackedEnginesJsonLd(engines: { model: string; label: string }[]) {
+	return jsonLd({
+		"@type": "ItemList",
+		name: `AI answer engines ${SITE_NAME} tracks`,
+		description: `The ${engines.length} AI answer engines ${SITE_NAME} checks for brand mentions and citations.`,
+		numberOfItems: engines.length,
+		itemListElement: engines.map((engine, index) => ({
+			"@type": "ListItem",
+			position: index + 1,
+			item: {
+				"@type": "SoftwareApplication",
+				name: engine.label,
+				applicationCategory: "AI answer engine",
+				...(ENGINE_HOMEPAGES[engine.model] ? { sameAs: ENGINE_HOMEPAGES[engine.model] } : {}),
+			},
+		})),
+	});
+}
+
+/**
+ * The home page as a WebPage that states its subject and the entities it covers.
+ * `mentions` is the part an answer engine reads when deciding whether this page
+ * is about the thing someone asked about, and `speakable` marks the sentences
+ * worth reading aloud or quoting back.
+ */
+export function homePageJsonLd(engines: { model: string; label: string }[]) {
+	return jsonLd({
+		"@type": "WebPage",
+		"@id": `${SITE_URL}/#webpage`,
+		url: SITE_URL,
+		name: `${SITE_NAME}: AI visibility tracker and AI search agency`,
+		description: SITE_DESCRIPTION,
+		inLanguage: "en",
+		isPartOf: { "@id": `${SITE_URL}/#website` },
+		about: {
+			"@type": "Thing",
+			name: "Answer engine optimization",
+			alternateName: ["AEO", "Generative engine optimization", "GEO", "AI visibility"],
+			description:
+				"Answer engine optimization is the practice of getting a brand mentioned and cited in the answers AI assistants give, rather than ranked in a list of blue links.",
+		},
+		mentions: engines.map((engine) => ({
+			"@type": "SoftwareApplication",
+			name: engine.label,
+			applicationCategory: "AI answer engine",
+			...(ENGINE_HOMEPAGES[engine.model] ? { sameAs: ENGINE_HOMEPAGES[engine.model] } : {}),
+		})),
+		speakable: {
+			"@type": "SpeakableSpecification",
+			cssSelector: ["h1", "[data-speakable]"],
+		},
 	});
 }
