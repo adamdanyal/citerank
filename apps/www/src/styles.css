@@ -17,6 +17,12 @@
 	menu {
 		list-style-type: "";
 	}
+
+	/* clip, not hidden: hidden on these two would turn body into a scroll container and break position: sticky. */
+	html,
+	body {
+		overflow-x: clip;
+	}
 }
 
 @theme inline {

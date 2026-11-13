@@ -3,7 +3,7 @@ import { cloudSignupUrl } from "@workspace/config/referrals";
 import type { ReactNode } from "react";
 import { trackEvent } from "@/lib/posthog";
 import { screenshotSet } from "@/lib/screenshots";
-import { ACTION, BODY, Go, PANEL, PANEL_PAD, Page, PanelHead, PILL_RUST, SUBHEAD } from "./kit";
+import { ACTION, BODY, PANEL, PANEL_PAD_WIDE, Page, PanelHead, PILL_RUST, SUBHEAD } from "./kit";
 
 const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
 const BASIC_ANSWERS_PER_DAY = PLANS.basic.maxPrompts * PLANS.basic.platformPicks * PLANS.basic.standardRunsPerDay;
@@ -58,9 +58,9 @@ const STEPS = [
 
 export function HowItWorks() {
 	return (
-		<section className={`${PANEL} ${PANEL_PAD}`}>
+		<section className={`${PANEL} ${PANEL_PAD_WIDE}`}>
 			<Page>
-				<PanelHead label="How it works" title="How CiteRank.com works" className="max-w-[46rem]" />
+				<PanelHead title="How CiteRank.com works" className="max-w-[46rem]" />
 
 				<div className="mt-12 space-y-5">
 					{STEPS.map((step, index) => (
@@ -80,7 +80,7 @@ export function HowItWorks() {
 								loading="lazy"
 								decoding="async"
 								sizes="(min-width: 1180px) 1010px, 100vw"
-								className="mt-6 w-full rounded-xl bg-white ring-1 ring-zinc-200"
+								className="mt-6 w-full rounded-xl bg-paper ring-1 ring-zinc-200"
 							/>
 						</article>
 					))}
@@ -93,7 +93,6 @@ export function HowItWorks() {
 						className={ACTION}
 					>
 						Start tracking
-						<Go />
 					</a>
 				</p>
 			</Page>

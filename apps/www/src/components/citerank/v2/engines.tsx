@@ -19,10 +19,8 @@ const iconId = (model: string) => ICON_OVERRIDES[model] ?? getModelMeta(model).i
 /** Each engine is a capsule carrying its own mark, so the lineup reads as faces rather than a list. */
 function Chip({ model }: { model: string }) {
 	return (
-		<li className="inline-flex items-center gap-2.5 rounded-full bg-paper-2 py-1.5 pr-5 pl-1.5 ring-1 ring-zinc-200">
-			<span className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-zinc-200">
-				<EngineIcon iconId={iconId(model)} className="size-4" />
-			</span>
+		<li className="inline-flex items-center gap-2.5 rounded-full bg-paper-2 px-4 py-2.5 ring-1 ring-zinc-200">
+			<EngineIcon iconId={iconId(model)} className="size-4 shrink-0" />
 			<span className={`${BODY} font-medium text-ink`}>{label(model)}</span>
 		</li>
 	);
@@ -48,7 +46,7 @@ export function Engines() {
 	return (
 		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page>
-				<PanelHead label="Coverage" title={`${MODELS.length} answer engines your buyers use`} className="max-w-[46rem]">
+				<PanelHead title={`${MODELS.length} answer engines your buyers use`} className="max-w-[46rem]">
 					<p className={`${LEAD} text-zinc-600`}>
 						{list.format(SCRAPED.map(label))} are checked the way a real user sees them. The rest we read through each
 						company's API.

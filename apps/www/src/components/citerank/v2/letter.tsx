@@ -1,4 +1,4 @@
-import { BODY, HEADING, MONO, PANEL, PANEL_PAD, Page, PILL_QUIET } from "./kit";
+import { BODY, HEADING, MONO, PANEL, PANEL_PAD_WIDE, Page, PILL_QUIET } from "./kit";
 
 const PARAGRAPHS = [
 	"Your buyers ask ChatGPT, Perplexity or Gemini which product to pick. The answer names two or three brands. There is no page two, and nothing tells you whether you were in it.",
@@ -10,14 +10,10 @@ const PARAGRAPHS = [
 /* A letter, set as one: narrow measure, the opening line large, the signature at the end. */
 export function Letter() {
 	return (
-		<section className={`${PANEL} ${PANEL_PAD}`}>
+		<section className={`${PANEL} ${PANEL_PAD_WIDE}`}>
 			<Page>
 				<div className="mx-auto max-w-[46rem]">
-					<p>
-						<span className={PILL_QUIET}>From the founder</span>
-					</p>
-
-					<div className="mt-8 flex items-center gap-4 border-b border-zinc-200 pb-6">
+					<div className="flex flex-wrap items-center gap-x-4 gap-y-3 border-b border-zinc-200 pb-6">
 						<img
 							src="/founder.jpg"
 							alt="Adam Danyal"
@@ -35,7 +31,7 @@ export function Letter() {
 							href="https://www.linkedin.com/in/adamdanyal/"
 							target="_blank"
 							rel="noopener noreferrer"
-							className={`${MONO} ml-auto rounded-sm underline decoration-zinc-300 underline-offset-4 hover:decoration-rust focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust`}
+							className={`${MONO} w-full shrink-0 rounded-sm whitespace-nowrap underline decoration-zinc-300 underline-offset-4 hover:decoration-rust focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust sm:ml-auto sm:w-auto`}
 						>
 							Trusted by 2M+ on LinkedIn
 						</a>

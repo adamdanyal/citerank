@@ -3,7 +3,7 @@ import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
-import { ACTION, ACTION_QUIET_ON_INK, Go, HEADING, InkGlow, LEAD, PANEL_INK, PANEL_PAD, Page } from "./kit";
+import { ACTION, ACTION_QUIET_ON_INK, HEADING, InkGlow, LEAD, PANEL_INK, PANEL_PAD, Page } from "./kit";
 
 const FROM = "marketing-closing";
 
@@ -23,7 +23,6 @@ export function Closing() {
 				<div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center lg:col-span-5 lg:justify-end">
 					<a href={signupUrl} onClick={() => trackEvent("signup_click", { from: FROM })} className={ACTION}>
 						Start tracking
-						<Go />
 					</a>
 					<a
 						href={demoUrl}

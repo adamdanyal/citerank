@@ -6,7 +6,7 @@ export function Includes() {
 	return (
 		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page>
-				<PanelHead label="What you get" title="What every plan includes" className="max-w-[46rem]" />
+				<PanelHead title="What every plan includes" className="max-w-[46rem]" />
 				<ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
 					{INCLUDED.map((item) => (
 						<li key={item.title} className="rounded-2xl bg-paper-2 p-6 ring-1 ring-zinc-200">

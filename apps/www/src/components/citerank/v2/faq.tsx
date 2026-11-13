@@ -9,7 +9,7 @@ export function Faq({ items }: { items: FaqItem[] }) {
 		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page className="grid gap-12 lg:grid-cols-12 lg:gap-16">
 				<div className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
-					<PanelHead label="Questions" title="Frequently asked questions">
+					<PanelHead title="Frequently asked questions">
 						<p className={`${BODY} text-zinc-600`}>
 							Something we didn't cover? Email us at{" "}
 							<a href="mailto:team@citerank.com" className={`${LINK} text-ink`}>

@@ -6,14 +6,13 @@ import {
 	ACTION,
 	ACTION_QUIET,
 	BODY,
-	Go,
 	LEAD,
 	LINK,
 	PANEL,
-	PANEL_PAD,
+	PANEL_PAD_WIDE,
 	Page,
 	PanelHead,
-	PILL_RUST,
+	PILL_ACCENT,
 	SMALL,
 	SUBHEAD,
 } from "./kit";
@@ -42,7 +41,7 @@ function PlanCard({ planKey }: { planKey: PlanKey }) {
 		>
 			<div className="flex items-center justify-between gap-3">
 				<h3 className={`${SUBHEAD} ${recommended ? "text-paper" : "text-ink"}`}>{plan.name}</h3>
-				{recommended ? <span className={PILL_RUST}>Most chosen</span> : null}
+				{recommended ? <span className={PILL_ACCENT}>Most chosen</span> : null}
 			</div>
 			<p className="mt-5 flex items-baseline gap-1.5">
 				<span
@@ -56,7 +55,7 @@ function PlanCard({ planKey }: { planKey: PlanKey }) {
 				{planLines(plan).map((line) => (
 					<li
 						key={line.text}
-						className={`${BODY} ${recommended ? (line.included ? "text-zinc-300" : "text-zinc-500") : line.included ? "text-zinc-700" : "text-zinc-400"}`}
+						className={`${BODY} ${recommended ? (line.included ? "text-zinc-300" : "text-zinc-400") : line.included ? "text-zinc-700" : "text-zinc-500"}`}
 					>
 						{line.text}
 					</li>
@@ -68,7 +67,6 @@ function PlanCard({ planKey }: { planKey: PlanKey }) {
 				className={`mt-8 ${recommended ? ACTION : ACTION_QUIET}`}
 			>
 				Get {plan.name}
-				{recommended ? <Go /> : null}
 			</a>
 		</div>
 	);
@@ -76,9 +74,9 @@ function PlanCard({ planKey }: { planKey: PlanKey }) {
 
 export function Pricing() {
 	return (
-		<section id="pricing" className={`${PANEL} ${PANEL_PAD}`}>
+		<section id="pricing" className={`${PANEL} ${PANEL_PAD_WIDE}`}>
 			<Page>
-				<PanelHead label="Pricing" title="Simple pricing" className="max-w-[46rem]">
+				<PanelHead title="Simple pricing" className="max-w-[46rem]">
 					<p className={`${LEAD} text-zinc-600`}>Every plan includes your whole team and API access.</p>
 				</PanelHead>
 

@@ -3,7 +3,7 @@ import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { screenshotSet } from "@/lib/screenshots";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
-import { ACTION, Go, LEAD, PANEL, PANEL_PAD, Page, PanelHead } from "./kit";
+import { ACTION, LEAD, PANEL, PANEL_PAD, Page, PanelHead } from "./kit";
 
 export function Demo() {
 	const demoUrl = demoSiteUrl("marketing-page-cta", DEMO_BRAND_PATH);
@@ -11,7 +11,7 @@ export function Demo() {
 		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page>
 				<div className="flex flex-wrap items-end justify-between gap-8">
-					<PanelHead label="Live demo" title="Try the real product">
+					<PanelHead title="Try the real product">
 						<p className={`${LEAD} max-w-[46ch] text-zinc-600`}>
 							No slides and no sales call. Click through every page of the real product before you pay.
 						</p>
@@ -24,7 +24,6 @@ export function Demo() {
 						className={ACTION}
 					>
 						Open the live demo
-						<Go />
 					</a>
 				</div>
 				<a

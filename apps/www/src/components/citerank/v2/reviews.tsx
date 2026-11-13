@@ -1,8 +1,7 @@
 import { Popover, PopoverContent, PopoverTrigger } from "@workspace/ui/components/popover";
-import { ArrowUpRight } from "lucide-react";
 import { EngineIcon } from "@/components/home/engines";
 import { AI_PROMPT, REVIEW_COLUMNS, type Review } from "../home/reviews";
-import { BODY, MONO, PANEL, PANEL_PAD, Page, PanelHead, PILL_RUST, SMALL } from "./kit";
+import { BODY, LINK, MONO, PANEL, PANEL_PAD, Page, PanelHead, PILL_RUST, SMALL } from "./kit";
 
 const ROW_ORDER = [0, 1, 2].flatMap((row) => REVIEW_COLUMNS.map((column) => column[row]));
 
@@ -16,7 +15,7 @@ function Initials({ name }: { name: string }) {
 		.slice(0, 2);
 	return (
 		<span
-			className={`${MONO} inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-zinc-200`}
+			className={`${MONO} inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-paper ring-1 ring-zinc-200`}
 		>
 			{letters}
 		</span>
@@ -65,7 +64,7 @@ function ReviewCard({ review }: { review: Review }) {
 					{review.kind === "ai" ? (
 						<AnswerDetails review={review} />
 					) : review.role ? (
-						<p className={`${MONO} truncate`}>{review.role}</p>
+						<p className={`${SMALL} truncate text-zinc-600`}>{review.role}</p>
 					) : null}
 				</div>
 				{isAi ? (
@@ -73,10 +72,9 @@ function ReviewCard({ review }: { review: Review }) {
 						href={review.askUrl}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="group inline-flex shrink-0 items-center gap-0.5 rounded-sm text-[0.8125rem] font-medium text-rust transition-colors duration-200 hover:text-[#9c3f1e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust"
+						className={`${LINK} shrink-0 text-[0.9375rem] font-medium text-blue-800`}
 					>
 						Ask it<span className="sr-only"> ({review.name})</span>
-						<ArrowUpRight aria-hidden="true" className="size-3.5" />
 					</a>
 				) : null}
 			</figcaption>
@@ -115,7 +113,7 @@ export function Reviews() {
 	return (
 		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page>
-				<PanelHead label="Reviews" title="Loved by marketers. Recommended by AI." className="max-w-[46rem]" />
+				<PanelHead title="Loved by marketers. Recommended by AI." className="max-w-[46rem]" />
 
 				<div className="mt-12 grid gap-4 md:grid-cols-2 lg:hidden">
 					{ROW_ORDER.map((review) => (

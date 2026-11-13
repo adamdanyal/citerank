@@ -6,7 +6,10 @@ export function Logos() {
 	return (
 		<section aria-labelledby="customers" className={`${PANEL} ${PANEL_PAD_TIGHT}`}>
 			<Page className="flex flex-col items-center gap-8 lg:flex-row lg:gap-12">
-				<h2 id="customers" className={`${SMALL} shrink-0 text-center text-zinc-500 lg:max-w-[16rem] lg:text-left`}>
+				<h2
+					id="customers"
+					className={`${SMALL} [overflow-wrap:break-word] min-w-0 shrink-0 text-center text-zinc-600 lg:max-w-[16rem] lg:text-left`}
+				>
 					Built on an open-source platform trusted by 200+ brands
 				</h2>
 				<ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 lg:flex-1 lg:justify-between lg:gap-x-8">

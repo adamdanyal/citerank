@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { trackEvent } from "@/lib/posthog";
-import { ACTION, BODY, CARD_INK, Go, InkGlow, LEAD, PANEL_INK, PANEL_PAD, Page, PanelHead, PILL_INK } from "./kit";
+import { ACTION, BODY, CARD_INK, InkGlow, LEAD, PANEL_INK, PANEL_PAD, Page, PanelHead, PILL_INK } from "./kit";
 
 const WORK = [
 	{ tag: "Content", text: "Writes the comparison, alternatives and guide pages your site is missing" },
@@ -17,7 +17,7 @@ export function Agency() {
 			<InkGlow />
 			<Page className="relative">
 				<div className="flex flex-wrap items-end justify-between gap-8">
-					<PanelHead label="Agency" title="We do the work for you" onInk>
+					<PanelHead title="We do the work for you" onInk>
 						<p className={`${LEAD} max-w-[44ch] text-zinc-400`}>
 							The tracker ranks what to do next. Our agency does it every month and reports the AI answers before and
 							after.
@@ -25,7 +25,6 @@ export function Agency() {
 					</PanelHead>
 					<Link to="/agency" onClick={() => trackEvent("agency_call_click", { from: "home" })} className={ACTION}>
 						Book a call
-						<Go />
 					</Link>
 				</div>
 
