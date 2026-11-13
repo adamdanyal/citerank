@@ -77,6 +77,7 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | File | Why |
 | --- | --- |
 | `apps/web/vite.config.ts` | Excludes linkedom from the dev pre-bundle; without it a fresh `pnpm dev` crashes. |
+| `apps/worker/tsconfig.json` | Type-checks the worker with the bundler module settings the CLI and the shared packages use. Node's CommonJS rules reject the `import.meta.env` read in `referrals.ts`, and the worker emits nothing, so only the check changes. |
 | `packages/config/src/constants.ts` | Product name, icon path, brand colour and font, docs URLs. CiteRank.com's own Crisp ID. New API keys start with `citerank_` (`API_KEY_PREFIX`). |
 | `packages/config/src/referrals.ts` | Links go to citerank.com, app.citerank.com and demo.citerank.com. Demo-booking links go to /agency. Vite builds can point the hosts elsewhere with `VITE_MARKETING_SITE_URL`, `VITE_CLOUD_APP_URL` and `VITE_DEMO_SITE_URL`. |
 | `packages/config/src/fanout-support.test.ts` | Drops the check that the providers docs page carries the per-scraper fan-out table; the customer page no longer has it. |
@@ -193,3 +194,4 @@ Crisp support chat runs on CiteRank.com's own workspace (`CRISP_WEBSITE_ID` in `
 | 2026-11-09 | Added a Resources menu to the navigation (desktop dropdown and phone menu) and set up Adam and Julia Danyal as blog authors with Person schema. Not deployed. |
 | 2026-11-09 | Bylined the 57 blog posts to Adam Danyal and Julia Danyal, alternating by publication date, at Adam's instruction; each post now carries a Person author in its schema. Not deployed. |
 | 2026-11-13 | Merged Elmo 0.7.11 (from 0.7.7): Bing AI Mode replaces Copilot, Perplexity is read through its Sonar API as a premium model, Meta AI (Muse Spark 1.3) and Grok 4.7 are premium models, with Elmo's fixes to scheduled-run charging, reports, the API and MCP. The marketing site, blog and docs stay exactly as they were, at Adam's instruction, so their copy still names Copilot and 12 AI apps; the pricing page lists the new engines because it reads the plan catalog. Migration 0033 applied to both local databases. Not deployed. |
+| 2026-11-13 | Fixed the worker's type check and build, which had failed since the Vite host override went into `referrals.ts`. All 13 packages type-check and build. Not deployed. |
