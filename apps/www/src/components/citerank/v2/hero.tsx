@@ -1,5 +1,7 @@
 import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
+import type { ReferralSource } from "@workspace/config/referrals";
 import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
+import type { ReactNode } from "react";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
@@ -18,7 +20,8 @@ import {
 	PILL_INK,
 } from "./kit";
 
-const FROM = "marketing-hero";
+const DEFAULT_LEDE =
+	"See how ChatGPT, Claude, Gemini and ten other AI apps talk about your brand, and what to fix. Do it yourself, or have our agency do it every month.";
 
 /* What the money buys, named before the first click; the panel below gives each one its line. */
 const PROOF = INCLUDED.map((item) => item.title);
@@ -39,29 +42,37 @@ const DEMO_ANSWER = {
 	sources: ["quaildesk.com/pricing", "g2.com", "reddit.com/r/saas"],
 };
 
-export function Hero() {
-	const signupUrl = cloudSignupUrl(FROM);
-	const demoUrl = demoSiteUrl(FROM, DEMO_BRAND_PATH);
+/* Title, lede and source are overridden when a visitor arrives from an AI assistant, or on a tested variant. */
+export function Hero({
+	title = "Track your brand in AI search",
+	lede = DEFAULT_LEDE,
+	from = "marketing-hero",
+}: {
+	title?: string;
+	lede?: ReactNode;
+	from?: ReferralSource;
+} = {}) {
+	const signupUrl = cloudSignupUrl(from);
+	const demoUrl = demoSiteUrl(from, DEMO_BRAND_PATH);
 
 	return (
 		<section className={`${PANEL_INK} ${PANEL_PAD}`}>
 			<InkGlow />
 			<Page className="relative grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
 				<div className="min-w-0 lg:col-span-6">
-					<h1 className={`${DISPLAY} text-paper`}>Track your brand in AI search</h1>
+					<h1 className={`${DISPLAY} text-paper`}>{title}</h1>
 					<p data-speakable className={`${LEAD} mt-6 max-w-[42ch] text-zinc-400`}>
-						See how ChatGPT, Claude, Gemini and ten other AI apps talk about your brand, and what to fix. Do it
-						yourself, or have our agency do it every month.
+						{lede}
 					</p>
 					<div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-						<a href={signupUrl} onClick={() => trackEvent("signup_click", { from: FROM })} className={ACTION}>
+						<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={ACTION}>
 							Start tracking
 						</a>
 						<a
 							href={demoUrl}
 							target="_blank"
 							rel={externalRel(demoUrl)}
-							onClick={() => trackEvent("demo_open", { from: FROM })}
+							onClick={() => trackEvent("demo_open", { from })}
 							className={ACTION_QUIET_ON_INK}
 						>
 							Try the live demo

@@ -141,10 +141,13 @@ async function openSession(browser: Browser) {
 	await page.goto("/auth/login");
 	// Typing before hydration is lost when React takes over the form.
 	await page.waitForLoadState("networkidle");
-	await page.locator("#email").fill(DEMO_LOGIN.email);
-	await page.locator("#password").fill(DEMO_LOGIN.password);
-	await page.locator("#password").press("Enter");
-	await page.waitForURL((url) => !url.pathname.startsWith("/auth"));
+	// A dashboard in demo mode signs itself in, so the form is only there when it has not.
+	if (new URL(page.url()).pathname.startsWith("/auth")) {
+		await page.locator("#email").fill(DEMO_LOGIN.email);
+		await page.locator("#password").fill(DEMO_LOGIN.password);
+		await page.locator("#password").press("Enter");
+		await page.waitForURL((url) => !url.pathname.startsWith("/auth"));
+	}
 	return { context, page };
 }
 
