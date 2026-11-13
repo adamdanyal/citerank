@@ -6,17 +6,9 @@ import { EngineIcon } from "./home/engines";
 //
 // Most sit next to their feature as a real product screenshot (see the
 // Screenshot helper below); the rest are schematic. All share one language:
-// zinc + blue palette, dotted grid backdrop, mono labels, sharp corners.
+// the site's paper and rust tokens, mono labels in sentence case, and no
+// outline of their own, because the card around them already carries one.
 // ---------------------------------------------------------------------------
-
-function Grid() {
-	return (
-		<div
-			aria-hidden="true"
-			className="pointer-events-none absolute inset-0 [background-image:radial-gradient(circle,rgb(0_0_0/0.06)_1px,transparent_1px)] [background-size:18px_18px]"
-		/>
-	);
-}
 
 function Frame({
 	children,
@@ -28,19 +20,14 @@ function Frame({
 	className?: string;
 }) {
 	return (
-		<div
-			className={`relative w-full overflow-hidden rounded-md border border-zinc-200 bg-white ${aspect} ${className}`}
-		>
-			<Grid />
+		<div className={`relative w-full overflow-hidden rounded-xl bg-paper-2 ${aspect} ${className}`}>
 			<div className="@container relative z-10 size-full">{children}</div>
 		</div>
 	);
 }
 
 function Mono({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-	return (
-		<span className={`font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500 ${className}`}>{children}</span>
-	);
+	return <span className={`font-mono text-[11px] leading-[1.4] text-zinc-500 ${className}`}>{children}</span>;
 }
 
 // ---------------------------------------------------------------------------
@@ -217,7 +204,7 @@ export function ResponsesGraphic() {
 // ---------------------------------------------------------------------------
 
 export function VisibilityTrendGraphic() {
-	const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+	const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 	const brand = [40, 44, 48, 52, 50, 56, 60, 64, 62, 68, 71, 72];
 	const comp = [55, 52, 50, 48, 51, 49, 47, 44, 46, 43, 42, 40];
 	const w = 240;
@@ -243,20 +230,20 @@ export function VisibilityTrendGraphic() {
 			<div className="flex size-full flex-col gap-3 p-5 @[30rem]:p-6">
 				<div className="flex items-center justify-between">
 					<div className="flex flex-col gap-0.5">
-						<Mono>BRAND VISIBILITY · 12M</Mono>
+						<Mono>Brand visibility over twelve months</Mono>
 						<div className="flex items-baseline gap-2">
-							<span className="text-3xl font-medium tracking-tight text-zinc-950 tabular-nums">72%</span>
-							<span className="font-mono text-[10px] tabular-nums text-emerald-600">↑ 32 PT YoY</span>
+							<span className="font-heading text-3xl font-semibold tracking-[-0.03em] text-ink tabular-nums">72%</span>
+							<span className="font-mono text-[11px] tabular-nums text-blue-800">up 32 points</span>
 						</div>
 					</div>
-					<div className="flex flex-col items-end gap-1 font-mono text-[9px] uppercase tracking-[0.15em]">
-						<span className="inline-flex items-center gap-1 text-blue-700">
-							<span className="inline-block h-0.5 w-3 rounded-full bg-blue-600" />
-							YOUR BRAND
+					<div className="flex flex-col items-end gap-1 font-mono text-[11px] leading-[1.4]">
+						<span className="inline-flex items-center gap-1.5 text-blue-800">
+							<span className="inline-block h-0.5 w-3 rounded-full bg-rust" />
+							Your brand
 						</span>
-						<span className="inline-flex items-center gap-1 text-zinc-500">
+						<span className="inline-flex items-center gap-1.5 text-zinc-500">
 							<span className="inline-block h-px w-3 border-t border-dashed border-zinc-400" />
-							COMPETITOR
+							Competitor
 						</span>
 					</div>
 				</div>
@@ -270,8 +257,8 @@ export function VisibilityTrendGraphic() {
 					>
 						<defs>
 							<linearGradient id="trend-fill" x1="0" y1="0" x2="0" y2="1">
-								<stop offset="0%" stopColor="#2563eb" stopOpacity="0.22" />
-								<stop offset="100%" stopColor="#2563eb" stopOpacity="0" />
+								<stop offset="0%" stopColor="var(--color-rust)" stopOpacity="0.22" />
+								<stop offset="100%" stopColor="var(--color-rust)" stopOpacity="0" />
 							</linearGradient>
 						</defs>
 						{[0, 1, 2, 3].map((i) => (
@@ -281,7 +268,7 @@ export function VisibilityTrendGraphic() {
 								y1={(i * h) / 3}
 								x2={w}
 								y2={(i * h) / 3}
-								stroke="rgb(228 228 231)"
+								stroke="var(--color-zinc-200)"
 								strokeWidth="0.5"
 								vectorEffect="non-scaling-stroke"
 							/>
@@ -290,7 +277,7 @@ export function VisibilityTrendGraphic() {
 						<path
 							d={c.line}
 							fill="none"
-							stroke="rgb(161 161 170)"
+							stroke="var(--color-zinc-400)"
 							strokeWidth="1.25"
 							strokeDasharray="3 3"
 							strokeLinecap="round"
@@ -299,7 +286,7 @@ export function VisibilityTrendGraphic() {
 						<path
 							d={b.line}
 							fill="none"
-							stroke="#2563eb"
+							stroke="var(--color-rust)"
 							strokeWidth="1.5"
 							strokeLinecap="round"
 							strokeLinejoin="round"
@@ -310,7 +297,7 @@ export function VisibilityTrendGraphic() {
 							y1={last.y}
 							x2={last.x}
 							y2={h}
-							stroke="#2563eb"
+							stroke="var(--color-rust)"
 							strokeWidth="0.75"
 							strokeDasharray="2 2"
 							opacity="0.5"
@@ -320,15 +307,15 @@ export function VisibilityTrendGraphic() {
 							cx={last.x}
 							cy={last.y}
 							r="3.5"
-							fill="#2563eb"
-							stroke="white"
+							fill="var(--color-rust)"
+							stroke="var(--color-paper)"
 							strokeWidth="1.5"
 							vectorEffect="non-scaling-stroke"
 						/>
 					</svg>
 				</div>
 
-				<div className="flex items-center justify-between font-mono text-[8px] uppercase tracking-[0.15em] text-zinc-400 tabular-nums">
+				<div className="flex items-center justify-between font-mono text-[11px] text-zinc-500 tabular-nums">
 					{months.map((m) => (
 						<span key={m}>{m}</span>
 					))}
@@ -343,23 +330,23 @@ export function VisibilityTrendGraphic() {
 // ---------------------------------------------------------------------------
 
 const CODE_PANEL =
-	"overflow-hidden whitespace-pre-wrap [overflow-wrap:anywhere] rounded-md bg-zinc-950 p-4 font-mono text-[11px] leading-relaxed text-zinc-100 @[30rem]:text-xs";
+	"overflow-hidden whitespace-pre-wrap [overflow-wrap:anywhere] rounded-xl bg-ink p-4 font-mono text-[11px] leading-relaxed text-paper @[30rem]:text-xs";
 
 export function ApiGraphic() {
 	return (
 		<Frame aspect="@[30rem]:aspect-[5/3]">
 			<div className="flex size-full flex-col gap-3 p-5 md:p-6">
-				<Mono>CONNECT · MCP</Mono>
+				<Mono>Connect the MCP server</Mono>
 				<pre className={CODE_PANEL}>
-					<span className="select-none text-zinc-500">$ </span>claude mcp add --transport http citerank{"\n"}
+					<span className="select-none text-zinc-400">$ </span>claude mcp add --transport http citerank{"\n"}
 					{"  "}
 					<span className="text-blue-300">https://app.citerank.com/api/mcp</span>
 				</pre>
-				<Mono className="mt-1">QUERY · REST API · CURL</Mono>
+				<Mono className="mt-1">Query the REST API</Mono>
 				<pre className={`flex-1 ${CODE_PANEL}`}>
-					<span className="select-none text-zinc-500">$ </span>curl{" "}
+					<span className="select-none text-zinc-400">$ </span>curl{" "}
 					<span className="text-blue-300">https://app.citerank.com/api/v1/brands</span> \{"\n"}
-					{"  "}-H <span className="text-emerald-300">"Authorization: Bearer $CITERANK_API_KEY"</span>
+					{"  "}-H <span className="text-blue-200">"Authorization: Bearer $CITERANK_API_KEY"</span>
 				</pre>
 			</div>
 		</Frame>
@@ -391,7 +378,7 @@ const API_ENGINES = [
 
 function EngineChip({ name, iconId }: { name: string; iconId: string }) {
 	return (
-		<li className="flex h-9 items-center gap-2 rounded-md border border-zinc-200 bg-white px-3 text-xs font-medium text-zinc-900 @[30rem]:h-10 @[30rem]:text-sm">
+		<li className="flex h-9 items-center gap-2 rounded-full bg-paper px-3.5 text-[13px] font-medium text-ink @[30rem]:h-10 @[30rem]:text-sm">
 			<EngineIcon iconId={iconId} className="size-4 shrink-0" />
 			<span className="truncate">{name}</span>
 		</li>
@@ -403,7 +390,7 @@ export function EnginesGraphic() {
 		<Frame aspect="@[30rem]:aspect-[5/3]">
 			<div className="flex size-full flex-col justify-center gap-5 p-5 @[30rem]:p-8">
 				<div>
-					<Mono>SCRAPED FROM THE REAL APPS</Mono>
+					<Mono>Read in the app, as a user sees them</Mono>
 					<ul className="mt-2.5 grid grid-cols-2 gap-2 @[30rem]:grid-cols-3">
 						{SCRAPED_ENGINES.map((e) => (
 							<EngineChip key={e.name} {...e} />
@@ -411,7 +398,7 @@ export function EnginesGraphic() {
 					</ul>
 				</div>
 				<div>
-					<Mono>CALLED THROUGH DIRECT APIS</Mono>
+					<Mono>Read through each company&apos;s API</Mono>
 					<ul className="mt-2.5 grid grid-cols-2 gap-2 @[30rem]:grid-cols-3">
 						{API_ENGINES.map((e) => (
 							<EngineChip key={e.name} {...e} />
