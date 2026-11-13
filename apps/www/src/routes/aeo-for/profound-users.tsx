@@ -1,16 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CLOUD_ENTRY_PRICE_USD, PLANS } from "@workspace/config/plans";
 import { cloudSignupUrl } from "@workspace/config/referrals";
-import { ArrowRight, Check, Minus } from "lucide-react";
-import { Footer } from "@/components/footer";
-import { Closing } from "@/components/home/closing";
-import { Faq } from "@/components/home/faq";
-import { Hero } from "@/components/home/hero";
-import { ModelCoverage } from "@/components/home/models";
-import { Pricing } from "@/components/home/pricing";
-import { HOME_FONT_CLASS, HomeStyles } from "@/components/home/styles";
-import { CARD, SectionHeading } from "@/components/home/ui";
-import { Navbar } from "@/components/navbar";
+import { Check, Minus } from "lucide-react";
+import { Closing } from "@/components/citerank/v2/closing";
+import { Engines } from "@/components/citerank/v2/engines";
+import { Faq } from "@/components/citerank/v2/faq";
+import { Hero } from "@/components/citerank/v2/hero";
+import {
+	ACTION,
+	BODY,
+	LEAD,
+	MONO,
+	PANEL,
+	PANEL_PAD,
+	Page,
+	PanelHead,
+	RuledRow,
+	SMALL,
+	SUBHEAD,
+} from "@/components/citerank/v2/kit";
+import { Pricing } from "@/components/citerank/v2/pricing";
+import { PageShell } from "@/components/citerank/v2/shell";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
 const PATH = "/aeo-for/profound-users";
@@ -18,9 +28,6 @@ const TITLE = "The simpler Profound alternative";
 const META_TITLE = "Profound Alternative: Simpler, Self-Serve AI Visibility · CiteRank.com";
 const META_DESCRIPTION = `Switching from Profound? CiteRank.com tracks your brand in ChatGPT, Perplexity, Gemini and AI Overviews up to 4× daily, with no sales call, no credit packs, and API access on every plan. From $${CLOUD_ENTRY_PRICE_USD}/mo.`;
 const FROM = "marketing-profound-users-hero";
-
-const BUTTON =
-	"inline-flex h-11 items-center justify-center gap-2 rounded-lg px-5 text-[15px] font-medium leading-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600";
 
 const RECOMMENDED = PLANS.pro;
 const FOUR_TIMES_DAILY_FROM = PLANS.basic;
@@ -136,93 +143,82 @@ export const Route = createFileRoute("/aeo-for/profound-users")({
 	component: ProfoundUsersPage,
 });
 
-function Badge() {
-	return (
-		<span className="inline-flex h-7 items-center gap-2 rounded-full bg-white/80 px-3 text-xs font-medium text-zinc-600 shadow-sm ring-1 ring-zinc-200">
-			<span className="size-1.5 rounded-full bg-blue-600" />
-			For Profound users
-		</span>
-	);
-}
-
 function Reasons() {
 	const signupUrl = cloudSignupUrl(FROM);
 	return (
-		<section className="border-t border-zinc-200/80 bg-zinc-50/70">
-			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
-				<SectionHeading
-					title="Everything you check in Profound, without the rest"
-					lede="Switch to CiteRank.com when the tool you bought for a weekly visibility number turns into a suite, a sales process, and a credit balance."
-				/>
-				<ul className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+		<section className={`${PANEL} ${PANEL_PAD}`}>
+			<Page>
+				<PanelHead title="Everything you check in Profound, without the rest" className="max-w-[46rem]">
+					<p className={`${LEAD} text-zinc-600`}>
+						Switch to CiteRank.com when the tool you bought for a weekly visibility number turns into a suite, a sales
+						process, and a credit balance.
+					</p>
+				</PanelHead>
+				<ul className="mt-12 border-b border-zinc-200">
 					{REASONS.map((r) => (
-						<li key={r.name} className={`p-6 ${CARD}`}>
-							<p className="text-lg font-semibold tracking-[-0.015em] text-zinc-950">{r.name}</p>
-							<p className="mt-2 text-pretty text-[15px]/6 text-zinc-600">{r.text}</p>
-						</li>
+						<RuledRow key={r.name} title={r.name}>
+							{r.text}
+						</RuledRow>
 					))}
-					<li className="flex flex-col justify-between gap-6 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 p-6 text-white md:col-span-2 md:flex-row md:items-center lg:col-span-3">
-						<div>
-							<p className="text-lg font-semibold tracking-[-0.015em]">Try It on Your Own Brand</p>
-							<p className="mt-2 text-pretty text-[15px]/6 text-blue-50">
-								Plans start at ${CLOUD_ENTRY_PRICE_USD}/mo. You can be tracking your Profound prompt set in minutes.
-							</p>
-						</div>
-						<a
-							href={signupUrl}
-							className={`${BUTTON} shrink-0 self-start bg-white text-blue-700 hover:bg-blue-50 md:self-center`}
-						>
-							Start tracking
-							<ArrowRight className="size-4" aria-hidden="true" />
-						</a>
-					</li>
 				</ul>
-			</div>
+				<div className="mt-10 flex flex-col gap-6 rounded-2xl bg-ink p-7 md:flex-row md:items-center md:justify-between md:p-8">
+					<div>
+						<h3 className={`${SUBHEAD} text-paper`}>Try it on your own brand</h3>
+						<p className={`${BODY} mt-2 text-zinc-400`}>
+							Plans start at ${CLOUD_ENTRY_PRICE_USD}/mo. You can be tracking your Profound prompt set in minutes.
+						</p>
+					</div>
+					<a href={signupUrl} className={`${ACTION} shrink-0 self-start md:self-center`}>
+						Start tracking
+					</a>
+				</div>
+			</Page>
 		</section>
 	);
 }
 
 function Comparison() {
 	return (
-		<section className="border-t border-zinc-200/80 bg-white">
-			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
-				<SectionHeading
-					title="CiteRank.com and Profound, side by side"
-					lede="How the two compare on the things that decide what you pay and how quickly you get going."
-				/>
-				<div className={`mt-12 overflow-x-auto ${CARD}`}>
-					<table className="w-full min-w-[40rem] text-left text-[15px]">
+		<section className={`${PANEL} ${PANEL_PAD}`}>
+			<Page>
+				<PanelHead title="CiteRank.com and Profound, side by side" className="max-w-[46rem]">
+					<p className={`${LEAD} text-zinc-600`}>
+						How the two compare on the things that decide what you pay and how quickly you get going.
+					</p>
+				</PanelHead>
+				<div className="mt-12 overflow-x-auto">
+					<table className={`${BODY} w-full min-w-[40rem] text-left`}>
 						<thead>
-							<tr className="border-b border-zinc-100 text-[13px] font-medium text-zinc-500">
-								<th scope="col" className="px-6 py-4 font-medium">
+							<tr className="border-b-2 border-ink">
+								<th scope="col" className="py-4 pr-6 font-medium">
 									<span className="sr-only">Feature</span>
 								</th>
-								<th scope="col" className="px-6 py-4 font-semibold text-blue-600">
+								<th scope="col" className="px-6 py-4 font-heading font-semibold text-ink">
 									CiteRank.com
 								</th>
-								<th scope="col" className="px-6 py-4 font-medium">
+								<th scope="col" className="py-4 pl-6 font-medium text-zinc-600">
 									Profound
 								</th>
 							</tr>
 						</thead>
 						<tbody>
 							{COMPARISON.map((row) => (
-								<tr key={row.label} className="border-b border-zinc-100 last:border-0">
-									<th scope="row" className="px-6 py-4 font-medium text-zinc-950">
+								<tr key={row.label} className="border-b border-zinc-200">
+									<th scope="row" className="py-4 pr-6 font-medium text-ink">
 										{row.label}
 									</th>
-									<td className="px-6 py-4 text-zinc-900">
+									<td className="px-6 py-4 text-ink">
 										<span className="flex items-start gap-2">
-											<Check className="mt-0.5 size-4 shrink-0 text-blue-600" strokeWidth={2.5} aria-hidden="true" />
+											<Check className="mt-1 size-4 shrink-0 text-rust" strokeWidth={2.5} aria-hidden="true" />
 											{row.ours}
 										</span>
 									</td>
-									<td className="px-6 py-4 text-zinc-600">
+									<td className="py-4 pl-6 text-zinc-600">
 										<span className="flex items-start gap-2">
 											{row.profoundHas ? (
-												<Check className="mt-0.5 size-4 shrink-0 text-zinc-400" strokeWidth={2.5} aria-hidden="true" />
+												<Check className="mt-1 size-4 shrink-0 text-zinc-500" strokeWidth={2.5} aria-hidden="true" />
 											) : (
-												<Minus className="mt-0.5 size-4 shrink-0 text-zinc-300" strokeWidth={2.5} aria-hidden="true" />
+												<Minus className="mt-1 size-4 shrink-0 text-zinc-400" strokeWidth={2.5} aria-hidden="true" />
 											)}
 											{row.profound}
 										</span>
@@ -232,10 +228,10 @@ function Comparison() {
 						</tbody>
 					</table>
 				</div>
-				<p className="mt-4 text-[13px] text-zinc-500">
+				<p className={`${SMALL} mt-5 text-zinc-500`}>
 					Profound details are from its public pricing page as of October 2026 and may have changed since.
 				</p>
-			</div>
+			</Page>
 		</section>
 	);
 }
@@ -243,60 +239,53 @@ function Comparison() {
 function Switching() {
 	const signupUrl = cloudSignupUrl(FROM);
 	return (
-		<section className="border-t border-zinc-200/80 bg-zinc-50/70">
-			<div className="mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
-				<SectionHeading
-					title="Switch in an afternoon"
-					lede={`Bring the prompts you already track, and CiteRank.com starts checking them up to ${FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× a day across the engines you pick.`}
-				/>
-				<ol className="mt-12 grid gap-4 md:grid-cols-3">
+		<section className={`${PANEL} ${PANEL_PAD}`}>
+			<Page>
+				<PanelHead title="Switch in an afternoon" className="max-w-[46rem]">
+					<p className={`${LEAD} text-zinc-600`}>
+						Bring the prompts you already track, and CiteRank.com starts checking them up to{" "}
+						{FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× a day across the engines you pick.
+					</p>
+				</PanelHead>
+				<ol className="mt-12 border-b border-zinc-200">
 					{STEPS.map((step, i) => (
-						<li key={step.name} className={`p-6 ${CARD}`}>
-							<p className="flex items-center gap-2.5 text-lg font-semibold tracking-[-0.015em] text-zinc-950">
-								<span className="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-white tabular-nums">
-									{i + 1}
-								</span>
+						<li key={step.name} className="grid gap-2 border-t border-zinc-200 py-6 sm:grid-cols-12 sm:gap-8 sm:py-7">
+							<h3 className="flex min-w-0 items-baseline gap-3 font-heading text-[1.375rem] leading-[1.25] font-semibold tracking-[-0.02em] text-ink [overflow-wrap:break-word] sm:col-span-5 sm:text-[1.5rem]">
+								<span className={`${MONO} shrink-0 tabular-nums`}>{String(i + 1).padStart(2, "0")}</span>
 								{step.name}
-							</p>
-							<p className="mt-2 text-pretty text-[15px]/6 text-zinc-600">{step.text}</p>
+							</h3>
+							<p className={`${BODY} text-zinc-600 sm:col-span-7`}>{step.text}</p>
 						</li>
 					))}
 				</ol>
-				<div className="mt-8 flex flex-col gap-3 sm:flex-row">
-					<a href={signupUrl} className={`${BUTTON} bg-blue-600 text-white hover:bg-blue-700`}>
+				<p className="mt-10">
+					<a href={signupUrl} className={ACTION}>
 						Start tracking
-						<ArrowRight className="size-4" aria-hidden="true" />
 					</a>
-				</div>
-			</div>
+				</p>
+			</Page>
 		</section>
 	);
 }
 
 function ProfoundUsersPage() {
 	return (
-		<div className={`${HOME_FONT_CLASS} min-h-screen bg-white antialiased`}>
-			<HomeStyles />
-			<Navbar />
-			<main>
-				<Hero
-					badge={<Badge />}
-					title={TITLE}
-					lede={`Everything you check in Profound, sampled up to ${FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× as often, at a price you can see and pay by card today. No sales call, no credit packs, and nothing held back for Enterprise.`}
-					from={FROM}
-				/>
-				<Reasons />
-				<Comparison />
-				<Switching />
-				<ModelCoverage />
-				<Pricing
-					lede={`We recommend ${RECOMMENDED.name} for teams coming from Profound: ${RECOMMENDED.maxPrompts} prompts across ${RECOMMENDED.platformPicks} AI platforms, checked ${RECOMMENDED.standardRunsPerDay}× daily, for $${RECOMMENDED.monthlyPriceUsd}/mo. Unlimited seats on every plan.`}
-					recommended={{ plan: RECOMMENDED.key, label: "Best for Profound users" }}
-				/>
-				<Faq items={FAQS} />
-				<Closing from="marketing-profound-users-closing" />
-			</main>
-			<Footer />
-		</div>
+		<PageShell>
+			<Hero
+				title={TITLE}
+				lede={`Everything you check in Profound, sampled up to ${FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× as often, at a price you can see and pay by card today. No sales call, no credit packs, and nothing held back for Enterprise.`}
+				from={FROM}
+			/>
+			<Reasons />
+			<Comparison />
+			<Switching />
+			<Engines />
+			<Pricing
+				lede={`We recommend ${RECOMMENDED.name} for teams coming from Profound: ${RECOMMENDED.maxPrompts} prompts across ${RECOMMENDED.platformPicks} AI platforms, checked ${RECOMMENDED.standardRunsPerDay}× daily, for $${RECOMMENDED.monthlyPriceUsd}/mo. Unlimited seats on every plan.`}
+				recommended={{ plan: RECOMMENDED.key, label: "Best for Profound users" }}
+			/>
+			<Faq items={FAQS} />
+			<Closing from="marketing-profound-users-closing" />
+		</PageShell>
 	);
 }

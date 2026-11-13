@@ -71,9 +71,6 @@ export const Route = createFileRoute("/aeo-for/$slug")({
 
 const FROM = "marketing-aeo-for-hero";
 
-const BUTTON =
-	"inline-flex h-11 items-center justify-center gap-2 rounded-lg px-5 text-[15px] font-medium leading-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600";
-
 const PROMPT_ENGINES = [
 	{ name: "ChatGPT", iconId: "openai" },
 	{ name: "Claude", iconId: "anthropic" },
@@ -121,15 +118,6 @@ function WithPrompts({ text }: { text: string }) {
 	return replaceMatches(text, /(?<=^|\s)'([^']+)'(?=[\s.,;]|$)/g, (prompt, key) => (
 		<InlinePrompt key={key} text={prompt} />
 	));
-}
-
-function AudienceBadge({ audience }: { audience: string }) {
-	return (
-		<span className="inline-flex h-7 items-center gap-2 rounded-full bg-white/80 px-3 text-xs font-medium text-zinc-600 shadow-sm ring-1 ring-zinc-200">
-			<span className="size-1.5 rounded-full bg-blue-600" />
-			CiteRank.com for {audience}
-		</span>
-	);
 }
 
 function Prompts({ vertical }: { vertical: AeoVertical }) {
