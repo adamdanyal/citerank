@@ -4,10 +4,11 @@ import { cloudSignupUrl } from "@workspace/config/referrals";
 import { buttonVariants } from "@workspace/ui/components/button";
 import { ArrowRight } from "lucide-react";
 import type { Pillar } from "@/data/pillars";
+import { MONO, PANEL, PANEL_PAD } from "./citerank/v2/kit";
 
 export function CiteRankCta() {
 	return (
-		<section className="border-b border-zinc-200 bg-white py-16 lg:py-24">
+		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
 				<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Ready to track your AI visibility?</h2>
 				<p className="mx-auto mt-4 max-w-xl text-lg text-balance text-zinc-600">
@@ -29,16 +30,16 @@ export function CiteRankCta() {
 
 export function PillarBody({ pillar }: { pillar: Pillar }) {
 	return (
-		<section className="border-b border-zinc-200 bg-white py-12">
+		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<div className="mx-auto max-w-6xl px-4 md:px-6">
 				<div className="max-w-3xl">
-					<div className="rounded-md border border-blue-200 bg-blue-50/40 p-6">
-						<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">In short</h2>
+					<div className="rounded-2xl bg-rust/10 p-6 sm:p-7">
+						<h2 className="font-mono text-[11px] leading-[1.4] text-blue-900">In short</h2>
 						<p className="mt-3 text-lg leading-relaxed text-zinc-800">{pillar.definition}</p>
 					</div>
 
-					<nav aria-label="On this page" className="mt-10 rounded-md border border-zinc-200 bg-zinc-50 p-6">
-						<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">On this page</h2>
+					<nav aria-label="On this page" className="mt-10 rounded-2xl bg-paper-2 p-6 ring-1 ring-zinc-200 sm:p-7">
+						<h2 className="font-mono text-[11px] leading-[1.4] text-zinc-500">On this page</h2>
 						<ol className="mt-4 space-y-2">
 							{pillar.sections.map((section, i) => (
 								<li key={section.id} className="flex gap-3 text-sm">
@@ -64,7 +65,7 @@ export function PillarBody({ pillar }: { pillar: Pillar }) {
 								<ol className="mt-6 space-y-5">
 									{section.steps.map((step, i) => (
 										<li key={step.name} className="flex gap-4">
-											<span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-600 font-mono text-xs text-white tabular-nums">
+											<span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-rust font-mono text-xs text-paper tabular-nums">
 												{i + 1}
 											</span>
 											<div>
@@ -88,7 +89,7 @@ export function PillarBody({ pillar }: { pillar: Pillar }) {
 							) : null}
 
 							{section.callout ? (
-								<div className="mt-8 rounded-md border border-zinc-200 bg-zinc-50 p-6">
+								<div className="mt-8 rounded-2xl bg-paper-2 p-6 ring-1 ring-zinc-200 sm:p-7">
 									<h3 className="font-semibold text-zinc-950">{section.callout.heading}</h3>
 									<p className="mt-2 leading-relaxed text-zinc-600">{section.callout.text}</p>
 								</div>
@@ -97,13 +98,13 @@ export function PillarBody({ pillar }: { pillar: Pillar }) {
 					))}
 
 					<div className="mt-14 border-t border-zinc-200 pt-8">
-						<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Keep reading</h2>
+						<h2 className="font-mono text-[11px] leading-[1.4] text-zinc-500">Keep reading</h2>
 						<div className="mt-4 grid gap-3 sm:grid-cols-2">
 							{pillar.related.map((link) => (
 								<a
 									key={link.href}
 									href={link.href}
-									className="group rounded-md border border-zinc-200 bg-white p-4 transition-colors hover:border-zinc-300"
+									className="group rounded-2xl bg-paper-2 p-5 ring-1 ring-zinc-200 transition-[box-shadow] duration-200 hover:ring-zinc-400"
 								>
 									<span className="flex items-center gap-1.5 font-semibold text-zinc-950">
 										{link.label}

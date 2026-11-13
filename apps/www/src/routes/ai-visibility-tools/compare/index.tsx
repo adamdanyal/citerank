@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { PageShell } from "@/components/citerank/v2/shell";
 import { CiteRankCta, DirectoryBackLink, DirectoryHero, DirectorySection } from "@/components/directory-shell";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
 import { comparePairSlug, comparePairs, compareSetSlug, compareSets } from "@/lib/competitors";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -47,45 +46,41 @@ export const Route = createFileRoute("/ai-visibility-tools/compare/")({
 
 function CompareHub() {
 	return (
-		<div className="min-h-screen">
-			<Navbar />
-			<main>
-				<DirectoryBackLink />
-				<DirectoryHero
-					title="AI visibility tools, head-to-head"
-					lead="Weighing the AI visibility tools against each other? These side-by-side breakdowns compare tracking, analytics, and pricing across the funded AEO platforms and the SEO suites that added AI search monitoring, and show where CiteRank.com fits in."
-				/>
-				<DirectorySection title="Compare several at once">
-					<ul className="grid gap-3 sm:grid-cols-2">
-						{setItems().map((item) => (
-							<li key={item.path}>
-								<a
-									href={item.path}
-									className="block rounded-md border border-zinc-200 bg-white px-4 py-3 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-300 hover:text-zinc-950"
-								>
-									{item.name}
-								</a>
-							</li>
-						))}
-					</ul>
-				</DirectorySection>
-				<DirectorySection title="Pick a matchup">
-					<ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-						{pairItems().map((item) => (
-							<li key={item.path}>
-								<a
-									href={item.path}
-									className="block rounded-md border border-zinc-200 bg-white px-4 py-3 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-300 hover:text-zinc-950"
-								>
-									{item.name}
-								</a>
-							</li>
-						))}
-					</ul>
-				</DirectorySection>
-				<CiteRankCta />
-			</main>
-			<Footer />
-		</div>
+		<PageShell>
+			<DirectoryBackLink />
+			<DirectoryHero
+				title="AI visibility tools, head-to-head"
+				lead="Weighing the AI visibility tools against each other? These side-by-side breakdowns compare tracking, analytics, and pricing across the funded AEO platforms and the SEO suites that added AI search monitoring, and show where CiteRank.com fits in."
+			/>
+			<DirectorySection title="Compare several at once">
+				<ul className="grid gap-3 sm:grid-cols-2">
+					{setItems().map((item) => (
+						<li key={item.path}>
+							<a
+								href={item.path}
+								className="block rounded-md border border-zinc-200 bg-white px-4 py-3 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-300 hover:text-zinc-950"
+							>
+								{item.name}
+							</a>
+						</li>
+					))}
+				</ul>
+			</DirectorySection>
+			<DirectorySection title="Pick a matchup">
+				<ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+					{pairItems().map((item) => (
+						<li key={item.path}>
+							<a
+								href={item.path}
+								className="block rounded-md border border-zinc-200 bg-white px-4 py-3 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-300 hover:text-zinc-950"
+							>
+								{item.name}
+							</a>
+						</li>
+					))}
+				</ul>
+			</DirectorySection>
+			<CiteRankCta />
+		</PageShell>
 	);
 }

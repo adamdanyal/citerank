@@ -58,7 +58,7 @@ function LegalIndex() {
 										</a>
 									</dt>
 									<dd className="mt-1.5 text-sm leading-relaxed text-zinc-600">{page.description}</dd>
-									<dd className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-400">
+									<dd className="mt-3 font-mono text-[11px] leading-[1.4] text-zinc-400">
 										Updated {formatPostDate(page.updated)}
 									</dd>
 								</div>

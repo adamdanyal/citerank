@@ -26,7 +26,7 @@ function SiblingPolicies({ pages, currentSlug }: { pages: LegalPageSummary[]; cu
 
 	return (
 		<nav aria-label="Other policies" className="not-prose mt-16 border-t border-zinc-200 pt-8">
-			<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Other policies</h2>
+			<h2 className="font-mono text-[11px] leading-[1.4] text-zinc-500">Other policies</h2>
 			<ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
 				{others.map((page) => (
 					<li key={page.slug}>
@@ -46,15 +46,12 @@ export function LegalPageLayout({ data }: { data: LegalLoaderData }) {
 			<div className="min-h-screen">
 				<Navbar />
 				<main className="mx-auto max-w-3xl px-4 py-12 md:px-6 lg:py-16">
-					<a
-						href="/legal"
-						className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500 hover:text-zinc-950"
-					>
+					<a href="/legal" className="font-mono text-[11px] leading-[1.4] text-zinc-500 hover:text-zinc-950">
 						/ LEGAL
 					</a>
 					<article className="prose prose-zinc mt-6 max-w-none">
 						<h1 className="mb-3 text-balance">{data.title}</h1>
-						<p className="not-prose font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">
+						<p className="not-prose font-mono text-[11px] leading-[1.4] text-zinc-500">
 							Last updated {formatPostDate(data.updated)}
 						</p>
 						<div className="mt-8">

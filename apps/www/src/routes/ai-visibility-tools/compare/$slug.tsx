@@ -1,9 +1,8 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
+import { PageShell } from "@/components/citerank/v2/shell";
 import { CiteRankCta, DirectoryBackLink, DirectoryHero } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
-import { Footer } from "@/components/footer";
 import { MultiComparison } from "@/components/multi-comparison";
-import { Navbar } from "@/components/navbar";
 import { PairComparison } from "@/components/pair-comparison";
 import { type Competitor, getCompareEntry, getCompareFaqs, getCompareVerdict } from "@/lib/competitors";
 import {
@@ -55,16 +54,12 @@ function ComparePage() {
 	const names = tools.map((t) => t.name).join(" vs ");
 	const [a, b] = tools;
 	return (
-		<div className="min-h-screen">
-			<Navbar />
-			<main>
-				<DirectoryBackLink />
-				<DirectoryHero title={names} lead={getCompareVerdict(tools)} />
-				{a && b && tools.length === 2 ? <PairComparison a={a} b={b} /> : <MultiComparison tools={tools} />}
-				<Faq items={getCompareFaqs(tools)} />
-				<CiteRankCta />
-			</main>
-			<Footer />
-		</div>
+		<PageShell>
+			<DirectoryBackLink />
+			<DirectoryHero title={names} lead={getCompareVerdict(tools)} />
+			{a && b && tools.length === 2 ? <PairComparison a={a} b={b} /> : <MultiComparison tools={tools} />}
+			<Faq items={getCompareFaqs(tools)} />
+			<CiteRankCta />
+		</PageShell>
 	);
 }

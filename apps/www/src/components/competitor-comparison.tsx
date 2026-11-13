@@ -111,7 +111,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 					</h1>
 					<p className="mt-4 max-w-3xl text-lg text-balance text-zinc-600">{getComparisonVerdict(competitor)}</p>
 					<div className="mt-6 max-w-3xl border-l-2 border-blue-600 pl-4">
-						<p className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">The Short Version</p>
+						<p className="font-mono text-[11px] leading-[1.4] text-zinc-500">The Short Version</p>
 						<p className="mt-1 text-lg font-medium text-balance text-zinc-950">{getSoundbite(competitor)}</p>
 					</div>
 					<FateNotice competitor={competitor} />
@@ -220,10 +220,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 							<tbody>
 								{Object.entries(FEATURE_CATEGORIES).flatMap(([catKey, cat]) => [
 									<tr key={`cat-${catKey}`}>
-										<td
-											colSpan={3}
-											className="bg-zinc-50 px-0 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500"
-										>
+										<td colSpan={3} className="bg-zinc-50 px-0 py-2 font-mono text-[11px] leading-[1.4] text-zinc-500">
 											{cat.label}
 										</td>
 									</tr>,

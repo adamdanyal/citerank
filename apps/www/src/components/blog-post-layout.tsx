@@ -89,7 +89,7 @@ export function BlogPostLayout({ data }: { data: BlogPostLoaderData }) {
 				<main className="mx-auto max-w-3xl px-4 py-12 md:px-6 lg:py-16">
 					<a
 						href="/blog"
-						className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500 hover:text-zinc-950"
+						className="inline-flex items-center gap-1.5 font-mono text-[11px] leading-[1.4] text-zinc-500 hover:text-zinc-950"
 					>
 						<ArrowLeft className="size-3" />
 						Blog

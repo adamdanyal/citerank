@@ -114,10 +114,7 @@ export function PairComparison({ a, b }: { a: Competitor; b: Competitor }) {
 							<tbody>
 								{Object.entries(FEATURE_CATEGORIES).flatMap(([catKey, cat]) => [
 									<tr key={`cat-${catKey}`}>
-										<td
-											colSpan={4}
-											className="bg-zinc-50 px-0 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500"
-										>
+										<td colSpan={4} className="bg-zinc-50 px-0 py-2 font-mono text-[11px] leading-[1.4] text-zinc-500">
 											{cat.label}
 										</td>
 									</tr>,

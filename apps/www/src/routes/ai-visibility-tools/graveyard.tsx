@@ -1,8 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { PageShell } from "@/components/citerank/v2/shell";
 import { CiteRankCta, DirectoryBackLink, DirectoryHero, DirectorySection } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
 import {
 	type Competitor,
 	formatFateDate,
@@ -197,60 +196,56 @@ function TombstoneDivider() {
 
 function GraveyardPage() {
 	return (
-		<div className="min-h-screen">
-			<Navbar />
-			<main>
-				<DirectoryBackLink />
-				<DirectoryHero title="The AEO graveyard" lead={lead()}>
-					<div className="max-w-3xl border-l-2 border-blue-600 pl-4 text-sm text-zinc-600">
-						<p className="font-medium text-zinc-950">Keep a Copy of Your History</p>
-						<p className="mt-1">
-							When a hosted tracker goes under, your history goes with it. CiteRank.com's API lets you keep your own
-							copy of every answer and score.{" "}
-							<Link
-								to="/"
-								className="text-zinc-950 underline decoration-zinc-400 underline-offset-4 hover:decoration-zinc-950"
-							>
-								Learn more about CiteRank.com →
-							</Link>
-						</p>
-					</div>
-				</DirectoryHero>
-				<DirectorySection>
-					<ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-						{graveyardTools
-							.filter((c) => !c.noScreenshot)
-							.map((c) => (
-								<Tombstone key={c.slug} competitor={c} />
-							))}
-					</ul>
-					<ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-						{graveyardTools
-							.filter((c) => c.noScreenshot)
-							.map((c) => (
-								<Tombstone key={c.slug} competitor={c} />
-							))}
-					</ul>
-					<p className="mt-6 text-xs text-zinc-500">
-						Screenshots were taken while each tool was live. Dates are when the shutdown, pivot, or acquisition was
-						announced, or the month the site was found offline.
+		<PageShell>
+			<DirectoryBackLink />
+			<DirectoryHero title="The AEO graveyard" lead={lead()}>
+				<div className="max-w-3xl border-l-2 border-blue-600 pl-4 text-sm text-zinc-600">
+					<p className="font-medium text-zinc-950">Keep a Copy of Your History</p>
+					<p className="mt-1">
+						When a hosted tracker goes under, your history goes with it. CiteRank.com's API lets you keep your own copy
+						of every answer and score.{" "}
+						<Link
+							to="/"
+							className="text-zinc-950 underline decoration-zinc-400 underline-offset-4 hover:decoration-zinc-950"
+						>
+							Learn more about CiteRank.com →
+						</Link>
 					</p>
-				</DirectorySection>
-				<DirectorySection title="Your AI visibility tool shut down. Now what?">
-					<ol className="grid gap-6 md:grid-cols-2">
-						{STEPS.map((step, i) => (
-							<li key={step.title} className="rounded-md border border-zinc-200 bg-white p-5">
-								<p className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Step {i + 1}</p>
-								<h3 className="mt-1 font-semibold text-zinc-950">{step.title}</h3>
-								<p className="mt-2 text-sm text-zinc-600">{step.body}</p>
-							</li>
+				</div>
+			</DirectoryHero>
+			<DirectorySection>
+				<ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+					{graveyardTools
+						.filter((c) => !c.noScreenshot)
+						.map((c) => (
+							<Tombstone key={c.slug} competitor={c} />
 						))}
-					</ol>
-				</DirectorySection>
-				<Faq items={FAQS} />
-				<CiteRankCta />
-			</main>
-			<Footer />
-		</div>
+				</ul>
+				<ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+					{graveyardTools
+						.filter((c) => c.noScreenshot)
+						.map((c) => (
+							<Tombstone key={c.slug} competitor={c} />
+						))}
+				</ul>
+				<p className="mt-6 text-xs text-zinc-500">
+					Screenshots were taken while each tool was live. Dates are when the shutdown, pivot, or acquisition was
+					announced, or the month the site was found offline.
+				</p>
+			</DirectorySection>
+			<DirectorySection title="Your AI visibility tool shut down. Now what?">
+				<ol className="grid gap-6 md:grid-cols-2">
+					{STEPS.map((step, i) => (
+						<li key={step.title} className="rounded-md border border-zinc-200 bg-white p-5">
+							<p className="font-mono text-[11px] leading-[1.4] text-zinc-500">Step {i + 1}</p>
+							<h3 className="mt-1 font-semibold text-zinc-950">{step.title}</h3>
+							<p className="mt-2 text-sm text-zinc-600">{step.body}</p>
+						</li>
+					))}
+				</ol>
+			</DirectorySection>
+			<Faq items={FAQS} />
+			<CiteRankCta />
+		</PageShell>
 	);
 }

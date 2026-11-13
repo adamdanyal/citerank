@@ -16,6 +16,7 @@ import {
 	isRetired,
 	sortedCompetitors,
 } from "@/lib/competitors";
+import { PANEL, PANEL_PAD } from "./citerank/v2/kit";
 import { FeatureMark } from "./feature-mark";
 
 const SIGN_UP_URL = cloudSignupUrl("marketing-page-cta");
@@ -80,7 +81,7 @@ export function CompetitorDirectory() {
 			</section>
 
 			{/* Feature Matrix */}
-			<section className="border-b border-zinc-200 bg-white py-12 lg:py-16">
+			<section className={`${PANEL} ${PANEL_PAD}`}>
 				<div className="mx-auto max-w-6xl px-4 md:px-6">
 					<h2 className="mb-8 text-lg font-semibold text-zinc-950">{filteredCompetitors.length} tools</h2>
 					<FeatureMatrix competitors={filteredCompetitors} />
@@ -145,9 +146,7 @@ function FeatureMatrix({ competitors: items }: { competitors: Competitor[] }) {
 				<tbody>
 					{Object.entries(FEATURE_CATEGORIES).flatMap(([catKey, cat]) => [
 						<tr key={`cat-${catKey}`}>
-							<td
-								className={`${stickyCell} bg-zinc-50! py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500`}
-							>
+							<td className={`${stickyCell} bg-zinc-50! py-2 font-mono text-[11px] leading-[1.4] text-zinc-500`}>
 								{cat.label}
 							</td>
 							<td colSpan={1 + items.length} className="bg-zinc-50 px-0 py-2" />

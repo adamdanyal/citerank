@@ -93,7 +93,7 @@ export function MultiComparison({ tools }: { tools: Competitor[] }) {
 									<tr key={`cat-${catKey}`}>
 										<td
 											colSpan={columnCount}
-											className="bg-zinc-50 px-0 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500"
+											className="bg-zinc-50 px-0 py-2 font-mono text-[11px] leading-[1.4] text-zinc-500"
 										>
 											{cat.label}
 										</td>

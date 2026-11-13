@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { PageShell } from "@/components/citerank/v2/shell";
 import { CiteRankCta, DirectoryBackLink, DirectoryHero, DirectorySection } from "@/components/directory-shell";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
 import { CATEGORY_HEADINGS, CATEGORY_SLUGS, indexableCategories, toolsInCategory } from "@/lib/competitors";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -40,32 +39,28 @@ export const Route = createFileRoute("/ai-visibility-tools/category/")({
 
 function CategoryHub() {
 	return (
-		<div className="min-h-screen">
-			<Navbar />
-			<main>
-				<DirectoryBackLink />
-				<DirectoryHero
-					title="Browse AI visibility tools by category"
-					lead="The market splits into a few distinct groups. Pick the type of tool you're after to compare the options in that category side by side."
-				/>
-				<DirectorySection>
-					<ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-						{indexableCategories.map((category) => (
-							<li key={category}>
-								<a
-									href={`/ai-visibility-tools/category/${CATEGORY_SLUGS[category]}`}
-									className="flex items-center justify-between rounded-md border border-zinc-200 bg-white px-4 py-3 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-300 hover:text-zinc-950"
-								>
-									<span>{CATEGORY_HEADINGS[category]}</span>
-									<span className="font-mono text-[11px] text-zinc-400">{toolsInCategory(category).length}</span>
-								</a>
-							</li>
-						))}
-					</ul>
-				</DirectorySection>
-				<CiteRankCta />
-			</main>
-			<Footer />
-		</div>
+		<PageShell>
+			<DirectoryBackLink />
+			<DirectoryHero
+				title="Browse AI visibility tools by category"
+				lead="The market splits into a few distinct groups. Pick the type of tool you're after to compare the options in that category side by side."
+			/>
+			<DirectorySection>
+				<ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+					{indexableCategories.map((category) => (
+						<li key={category}>
+							<a
+								href={`/ai-visibility-tools/category/${CATEGORY_SLUGS[category]}`}
+								className="flex items-center justify-between rounded-md border border-zinc-200 bg-white px-4 py-3 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-300 hover:text-zinc-950"
+							>
+								<span>{CATEGORY_HEADINGS[category]}</span>
+								<span className="font-mono text-[11px] text-zinc-400">{toolsInCategory(category).length}</span>
+							</a>
+						</li>
+					))}
+				</ul>
+			</DirectorySection>
+			<CiteRankCta />
+		</PageShell>
 	);
 }

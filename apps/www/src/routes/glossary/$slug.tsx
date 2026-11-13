@@ -76,7 +76,7 @@ function GlossaryTermPage() {
 
 						{term.seeAlso && term.seeAlso.length > 0 && (
 							<div className="mt-8 rounded-md border border-zinc-200 bg-zinc-50 p-5">
-								<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Go deeper</h2>
+								<h2 className="font-mono text-[11px] leading-[1.4] text-zinc-500">Go deeper</h2>
 								<ul className="mt-3 space-y-2">
 									{term.seeAlso.map((link) => (
 										<li key={link.href}>
@@ -95,7 +95,7 @@ function GlossaryTermPage() {
 
 						{related.length > 0 && (
 							<div className="mt-8">
-								<h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Related terms</h2>
+								<h2 className="font-mono text-[11px] leading-[1.4] text-zinc-500">Related terms</h2>
 								<div className="mt-3 flex flex-wrap gap-2">
 									{related.map((r) => (
 										<a

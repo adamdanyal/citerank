@@ -1,4 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
+import { PageShell } from "@/components/citerank/v2/shell";
 import {
 	CiteRankCta,
 	DirectoryBackLink,
@@ -7,8 +8,6 @@ import {
 	DirectorySection,
 } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
 import { ToolGrid } from "@/components/tool-list";
 import {
 	CATEGORY_HEADINGS,
@@ -59,25 +58,21 @@ function CategoryPage() {
 		tools: Competitor[];
 	};
 	return (
-		<div className="min-h-screen">
-			<Navbar />
-			<main>
-				<DirectoryBackLink />
-				<DirectoryHero title={CATEGORY_HEADINGS[category]} lead={getCategoryVerdict(category, tools)} />
-				<DirectoryCiteRankBanner
-					pitch={getCategoryCiteRankPitch(category)}
-					comparison={{
-						slug: getComparisonSlug(tools[0]),
-						name: tools[0].name,
-					}}
-				/>
-				<DirectorySection title="Tools in this category">
-					<ToolGrid competitors={tools} />
-				</DirectorySection>
-				<Faq items={getCategoryFaqs(category, tools)} />
-				<CiteRankCta />
-			</main>
-			<Footer />
-		</div>
+		<PageShell>
+			<DirectoryBackLink />
+			<DirectoryHero title={CATEGORY_HEADINGS[category]} lead={getCategoryVerdict(category, tools)} />
+			<DirectoryCiteRankBanner
+				pitch={getCategoryCiteRankPitch(category)}
+				comparison={{
+					slug: getComparisonSlug(tools[0]),
+					name: tools[0].name,
+				}}
+			/>
+			<DirectorySection title="Tools in this category">
+				<ToolGrid competitors={tools} />
+			</DirectorySection>
+			<Faq items={getCategoryFaqs(category, tools)} />
+			<CiteRankCta />
+		</PageShell>
 	);
 }

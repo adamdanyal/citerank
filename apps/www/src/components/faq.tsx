@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/lib/faqs";
+import { PANEL, PANEL_PAD } from "./citerank/v2/kit";
 
 /**
  * Renders an FAQ as a semantic definition list. Pair it with `faqJsonLd(items)`
@@ -9,7 +10,7 @@ export function Faq({ items, title = "Frequently asked questions" }: { items: Fa
 	if (items.length === 0) return null;
 
 	return (
-		<section className="border-b border-zinc-200 bg-white py-12 lg:py-16">
+		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<div className="mx-auto max-w-6xl px-4 md:px-6">
 				<h2 className="font-heading text-2xl text-zinc-950 md:text-3xl">{title}</h2>
 				<dl className="mt-8 divide-y divide-zinc-200 border-t border-zinc-200">

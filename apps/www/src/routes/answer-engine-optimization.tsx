@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { PageShell } from "@/components/citerank/v2/shell";
 import { DirectoryHero } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
 import { CiteRankCta, PillarBody } from "@/components/pillar";
 import { getPillar } from "@/data/pillars";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
@@ -41,15 +40,11 @@ export const Route = createFileRoute("/answer-engine-optimization")({
 function PillarPage() {
 	if (!pillar) return null;
 	return (
-		<div className="min-h-screen">
-			<Navbar />
-			<main>
-				<DirectoryHero title={pillar.h1} lead={pillar.lead} />
-				<PillarBody pillar={pillar} />
-				<Faq items={pillar.faqs} />
-				<CiteRankCta />
-			</main>
-			<Footer />
-		</div>
+		<PageShell>
+			<DirectoryHero title={pillar.h1} lead={pillar.lead} />
+			<PillarBody pillar={pillar} />
+			<Faq items={pillar.faqs} />
+			<CiteRankCta />
+		</PageShell>
 	);
 }

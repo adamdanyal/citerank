@@ -1,8 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
+import { PageShell } from "@/components/citerank/v2/shell";
 import { CiteRankCta, DirectoryBackLink, DirectoryHero, DirectorySection } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
 import { ToolGrid } from "@/components/tool-list";
 import {
 	type Competitor,
@@ -65,21 +64,17 @@ function FeaturePage() {
 		tools: Competitor[];
 	};
 	return (
-		<div className="min-h-screen">
-			<Navbar />
-			<main>
-				<DirectoryBackLink />
-				<DirectoryHero
-					title={`AI visibility tools with ${featurePhrase(featureKey)}`}
-					lead={getFeatureVerdict(featureKey, tools)}
-				/>
-				<DirectorySection title="Tools that offer this feature">
-					<ToolGrid competitors={tools} />
-				</DirectorySection>
-				<Faq items={getFeatureFaqs(featureKey, tools)} />
-				<CiteRankCta />
-			</main>
-			<Footer />
-		</div>
+		<PageShell>
+			<DirectoryBackLink />
+			<DirectoryHero
+				title={`AI visibility tools with ${featurePhrase(featureKey)}`}
+				lead={getFeatureVerdict(featureKey, tools)}
+			/>
+			<DirectorySection title="Tools that offer this feature">
+				<ToolGrid competitors={tools} />
+			</DirectorySection>
+			<Faq items={getFeatureFaqs(featureKey, tools)} />
+			<CiteRankCta />
+		</PageShell>
 	);
 }

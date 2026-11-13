@@ -83,7 +83,7 @@ function ResourcesPage() {
 									href={post.url}
 									className="group block rounded-md border border-zinc-200 bg-white p-6 transition-colors hover:bg-zinc-50 lg:p-8"
 								>
-									<div className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">
+									<div className="flex flex-wrap items-center gap-2 font-mono text-[11px] leading-[1.4] text-zinc-500">
 										<time dateTime={post.date}>{formatPostDate(post.date)}</time>
 										{!isAiAuthor(post.author) && (
 											<>

@@ -9,9 +9,7 @@ function ToolCard({ competitor }: { competitor: Competitor }) {
 		<div className="flex flex-col rounded-md border border-zinc-200 bg-white p-5">
 			<div className="flex items-start justify-between gap-3">
 				<h3 className="font-semibold text-zinc-950">{competitor.name}</h3>
-				{grade !== "N/A" && (
-					<span className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-400">{grade}</span>
-				)}
+				{grade !== "N/A" && <span className="font-mono text-[11px] leading-[1.4] text-zinc-400">{grade}</span>}
 			</div>
 			<div className="mt-2 flex flex-wrap gap-1.5">
 				<Badge variant="secondary">{CATEGORY_LABELS[competitor.category]}</Badge>
