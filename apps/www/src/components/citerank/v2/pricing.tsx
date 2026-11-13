@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { PLAN_KEYS, PLANS, type PlanDefinition, type PlanKey } from "@workspace/config/plans";
 import { cloudAppUrl } from "@workspace/config/referrals";
+import type { ReactNode } from "react";
 import { trackEvent } from "@/lib/posthog";
 import {
 	ACTION,
@@ -17,7 +18,7 @@ import {
 	SUBHEAD,
 } from "./kit";
 
-const RECOMMENDED: PlanKey = "pro";
+const DEFAULT_RECOMMENDED: PlanKey = "pro";
 
 function planLines(plan: PlanDefinition): { text: string; included: boolean }[] {
 	const platforms = plan.platformMenu.length === 1 ? "ChatGPT only" : `Any ${plan.platformPicks} AI platforms`;
@@ -32,16 +33,26 @@ function planLines(plan: PlanDefinition): { text: string; included: boolean }[] 
 }
 
 /* Each plan is a card. The recommended one is the single dark object in a light panel. */
-export function PlanCard({ planKey, from = "home" }: { planKey: PlanKey; from?: string }) {
+export function PlanCard({
+	planKey,
+	from = "home",
+	recommendedKey = DEFAULT_RECOMMENDED,
+	recommendedLabel = "Most chosen",
+}: {
+	planKey: PlanKey;
+	from?: string;
+	recommendedKey?: PlanKey;
+	recommendedLabel?: string;
+}) {
 	const plan = PLANS[planKey];
-	const recommended = planKey === RECOMMENDED;
+	const recommended = planKey === recommendedKey;
 	return (
 		<div
 			className={`flex flex-col rounded-2xl p-7 ${recommended ? "bg-ink ring-1 ring-ink" : "bg-paper-2 ring-1 ring-zinc-200"}`}
 		>
 			<div className="flex items-center justify-between gap-3">
 				<h3 className={`${SUBHEAD} ${recommended ? "text-paper" : "text-ink"}`}>{plan.name}</h3>
-				{recommended ? <span className={PILL_ACCENT}>Most chosen</span> : null}
+				{recommended ? <span className={PILL_ACCENT}>{recommendedLabel}</span> : null}
 			</div>
 			<p className="mt-5 flex items-baseline gap-1.5">
 				<span
@@ -72,18 +83,29 @@ export function PlanCard({ planKey, from = "home" }: { planKey: PlanKey; from?: 
 	);
 }
 
-export function Pricing() {
+export function Pricing({
+	lede = "Every plan includes your whole team and API access.",
+	recommended,
+}: {
+	lede?: ReactNode;
+	recommended?: { plan: PlanKey; label: string };
+} = {}) {
 	return (
 		<section id="pricing" className={`${PANEL} ${PANEL_PAD_WIDE}`}>
 			<Page>
 				<PanelHead title="Simple pricing" className="max-w-[46rem]">
-					<p className={`${LEAD} text-zinc-600`}>Every plan includes your whole team and API access.</p>
+					<p className={`${LEAD} text-zinc-600`}>{lede}</p>
 				</PanelHead>
 
 				{/* The hero already names what every plan includes; here the plans only show what differs. */}
 				<div className="mt-12 grid gap-5 md:grid-cols-3">
 					{PLAN_KEYS.map((key) => (
-						<PlanCard key={key} planKey={key} />
+						<PlanCard
+							key={key}
+							planKey={key}
+							recommendedKey={recommended?.plan}
+							recommendedLabel={recommended?.label}
+						/>
 					))}
 				</div>
 

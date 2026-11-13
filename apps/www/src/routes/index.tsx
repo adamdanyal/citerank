@@ -12,6 +12,7 @@ import { Faq } from "@/components/citerank/v2/faq";
 import { Figures } from "@/components/citerank/v2/figures";
 import { Hero } from "@/components/citerank/v2/hero";
 import { HowItWorks } from "@/components/citerank/v2/how-it-works";
+import { Includes } from "@/components/citerank/v2/includes";
 import { Letter } from "@/components/citerank/v2/letter";
 import { Logos } from "@/components/citerank/v2/logos";
 import { Pricing } from "@/components/citerank/v2/pricing";
@@ -109,6 +110,7 @@ function HomePage() {
 			>
 				<Hero {...variant} />
 				<Logos />
+				<Includes />
 				<Engines />
 				<HowItWorks />
 				<Figures />

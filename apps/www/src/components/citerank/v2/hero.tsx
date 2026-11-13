@@ -5,7 +5,6 @@ import type { ReactNode } from "react";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
-import { INCLUDED } from "./included";
 import {
 	ACTION,
 	ACTION_QUIET_ON_INK,
@@ -17,14 +16,11 @@ import {
 	PANEL_INK,
 	PANEL_PAD,
 	Page,
-	PILL_INK,
+	SMALL,
 } from "./kit";
 
 const DEFAULT_LEDE =
 	"See how ChatGPT, Claude, Gemini and ten other AI apps talk about your brand, and what to fix. Do it yourself, or have our agency do it every month.";
-
-/* What the money buys, named before the first click; the panel below gives each one its line. */
-const PROOF = INCLUDED.map((item) => item.title);
 
 /* The fictional brand the live demo tracks, so the answer on the page is one a visitor can go and read. */
 const DEMO_ANSWER = {
@@ -78,14 +74,10 @@ export function Hero({
 							Try the live demo
 						</a>
 					</div>
-					<ul className="mt-7 flex flex-wrap gap-2">
-						{PROOF.map((fact) => (
-							<li key={fact} className={PILL_INK}>
-								{fact}
-							</li>
-						))}
-						<li className={PILL_INK}>From ${CLOUD_ENTRY_PRICE_USD} a month</li>
-					</ul>
+					{/* A chip strips a promise of the words that explain it, so the detail stays as a sentence. */}
+					<p className={`${SMALL} mt-7 text-zinc-400`}>
+						Plans from ${CLOUD_ENTRY_PRICE_USD} a month. No contract, cancel any time.
+					</p>
 				</div>
 
 				<div className="min-w-0 lg:col-span-6">
