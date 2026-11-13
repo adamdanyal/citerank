@@ -1,13 +1,13 @@
 import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
+import type { ReferralSource } from "@workspace/config/referrals";
 import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
 import { ACTION, ACTION_QUIET_ON_INK, HEADING, InkGlow, LEAD, PANEL_INK, PANEL_PAD, Page } from "./kit";
 
-const FROM = "marketing-closing";
-
-export function Closing() {
+export function Closing({ from = "marketing-closing" }: { from?: ReferralSource } = {}) {
+	const FROM = from;
 	const signupUrl = cloudSignupUrl(FROM);
 	const demoUrl = demoSiteUrl(FROM, DEMO_BRAND_PATH);
 	return (

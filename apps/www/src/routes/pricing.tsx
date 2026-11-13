@@ -1,13 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
-import { Closing } from "@/components/citerank/home/closing";
-import { Faq } from "@/components/citerank/home/faq";
-import { OtherPlans } from "@/components/citerank/home/pricing";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { CLOUD_ENTRY_PRICE_USD, PLAN_KEYS } from "@workspace/config/plans";
 import { Compare } from "@/components/citerank/pricing/compare";
-import { PlanCards } from "@/components/citerank/pricing/plan-cards";
-import { Container, PRIMARY_BUTTON } from "@/components/citerank/ui";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
+import { Closing } from "@/components/citerank/v2/closing";
+import { Faq } from "@/components/citerank/v2/faq";
+import { INCLUDED } from "@/components/citerank/v2/included";
+import { BODY, CARD, HEADING, LINK, PanelHead, RuledRow, SUBHEAD } from "@/components/citerank/v2/kit";
+import { PlanCard } from "@/components/citerank/v2/pricing";
+import { PageHead, PageShell, PanelSection } from "@/components/citerank/v2/shell";
 import { PRICING_FAQS } from "@/lib/faqs";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
@@ -33,40 +32,70 @@ export const Route = createFileRoute("/pricing")({
 	component: PricingPage,
 });
 
-/* The plans first with one button each, then the two other ways to buy, then the detail, the objections and the offer again. */
+/* The plans first with one button each, then what every plan includes, the detail, the objections and the offer again. */
 function PricingPage() {
 	return (
-		<div className="min-h-screen bg-white antialiased">
-			<a
-				href="#content"
-				className={`${PRIMARY_BUTTON} sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50`}
+		<PageShell>
+			<PageHead
+				title="AI visibility tracker pricing"
+				lede="Every plan includes your whole team and API access. Pay monthly or yearly, and cancel any time."
 			>
-				Skip to content
-			</a>
-			<Navbar />
-			<main id="content">
-				<section className="-mt-16 bg-paper">
-					<Container className="pt-32 lg:pt-40">
-						<div className="mx-auto max-w-3xl text-center">
-							<h1 className="heading-1 text-zinc-950">AI visibility tracker pricing</h1>
-							<p className="body-8 mt-6 text-zinc-600">
-								Every plan includes your whole team and API access. Pay monthly or yearly, and cancel any time.
-							</p>
-						</div>
-					</Container>
-				</section>
-				<section className="bg-paper">
-					<Container className="py-12 lg:py-16">
-						<h2 className="sr-only">Tracker plans</h2>
-						<PlanCards />
-						<OtherPlans className="mt-10" />
-					</Container>
-				</section>
+				<div className="grid gap-5 md:grid-cols-3">
+					{PLAN_KEYS.map((key) => (
+						<PlanCard key={key} planKey={key} from="pricing" />
+					))}
+				</div>
+				<div className="mt-5 grid gap-5 md:grid-cols-2">
+					<div className={CARD}>
+						<h2 className={`${SUBHEAD} text-ink`}>Our agency</h2>
+						<p className={`${BODY} mt-3 max-w-[44ch] text-zinc-600`}>
+							We do the work the tracker ranks: new pages, page updates, review sites and forums.
+						</p>
+						<p className={`${BODY} mt-4`}>
+							<Link to="/agency" className={`${LINK} text-ink`}>
+								Book an agency call
+							</Link>
+						</p>
+					</div>
+					<div className={CARD}>
+						<h2 className={`${SUBHEAD} text-ink`}>Custom</h2>
+						<p className={`${BODY} mt-3 max-w-[44ch] text-zinc-600`}>
+							More brands, custom prompt limits, higher sampling rates, and more models.
+						</p>
+						<p className={`${BODY} mt-4`}>
+							<a href="mailto:team@citerank.com?subject=Custom%20plan" className={`${LINK} text-ink`}>
+								Email us
+							</a>
+						</p>
+					</div>
+				</div>
+			</PageHead>
+
+			<PanelSection>
+				<PanelHead title="What every plan includes" className="max-w-[46rem]" />
+				<ul className="mt-12 border-b border-zinc-200">
+					{INCLUDED.map((item) => (
+						<RuledRow key={item.title} title={item.title}>
+							{item.body}
+						</RuledRow>
+					))}
+				</ul>
+				<p className={`${BODY} mt-10 text-zinc-600`}>
+					Not sure which plan?{" "}
+					<Link to="/agency" className={`${LINK} text-ink`}>
+						Our agency
+					</Link>{" "}
+					does the work the tracker ranks, on any plan.
+				</p>
+			</PanelSection>
+
+			<PanelSection>
+				<h2 className={`${HEADING} sr-only`}>Compare every plan</h2>
 				<Compare />
-				<Faq items={PRICING_FAQS} />
-				<Closing from="marketing-pricing-closing" />
-			</main>
-			<Footer />
-		</div>
+			</PanelSection>
+
+			<Faq items={PRICING_FAQS} />
+			<Closing from="marketing-pricing-closing" />
+		</PageShell>
 	);
 }

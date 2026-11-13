@@ -32,7 +32,7 @@ function planLines(plan: PlanDefinition): { text: string; included: boolean }[] 
 }
 
 /* Each plan is a card. The recommended one is the single dark object in a light panel. */
-function PlanCard({ planKey }: { planKey: PlanKey }) {
+export function PlanCard({ planKey, from = "home" }: { planKey: PlanKey; from?: string }) {
 	const plan = PLANS[planKey];
 	const recommended = planKey === RECOMMENDED;
 	return (
@@ -63,7 +63,7 @@ function PlanCard({ planKey }: { planKey: PlanKey }) {
 			</ul>
 			<a
 				href={cloudAppUrl(`marketing-plan-${planKey}`)}
-				onClick={() => trackEvent("plan_click", { plan: planKey, from: "home" })}
+				onClick={() => trackEvent("plan_click", { plan: planKey, from })}
 				className={`mt-8 ${recommended ? ACTION : ACTION_QUIET}`}
 			>
 				Get {plan.name}
