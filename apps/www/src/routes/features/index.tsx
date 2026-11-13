@@ -22,7 +22,7 @@ import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/se
 const FROM = "marketing-features-hero";
 const title = "Features: AI Visibility & Citation Tracking · CiteRank.com";
 const description =
-	"What the CiteRank.com tracker does: AI visibility across 12 AI apps, share of voice, sentiment, citations, query fan-out, opportunities, API and MCP.";
+	"What the CiteRank.com tracker does: AI visibility across 13 AI apps, share of voice, sentiment, citations, query fan-out, opportunities, API and MCP.";
 
 export const Route = createFileRoute("/features/")({
 	/* The head reads loader data so the feature catalog stays out of the client entry bundle. */
@@ -60,7 +60,7 @@ function FeaturesPage() {
 							<p className="caption-3 text-blue-800">Features</p>
 							<h1 className="heading-1 mt-6 text-zinc-950">All you need to grow AI visibility</h1>
 							<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
-								CiteRank.com tracks whether ChatGPT, Google AI Overviews, Perplexity, Gemini and eight other AI apps
+								CiteRank.com tracks whether ChatGPT, Google AI Overviews, Perplexity, Gemini and nine other AI apps
 								mention you, how they describe you, who they name instead and which sources they cite. Then it tells you
 								what to fix, and our{" "}
 								<Link to="/agency" className={`${QUIET_LINK} text-zinc-950`}>

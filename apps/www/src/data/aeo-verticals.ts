@@ -108,7 +108,7 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "Models go stale. Monitor for outdated descriptions of your features or pricing and correct the underlying sources.",
 			},
 		],
-		fit: "CiteRank.com tracks exactly these prompts across 12 AI apps, shows which competitors get named with or instead of you, and keeps every answer, so you see when a model gets your features or pricing wrong.",
+		fit: "CiteRank.com tracks exactly these prompts across 13 AI apps, shows which competitors get named with or instead of you, and keeps every answer, so you see when a model gets your features or pricing wrong.",
 		faqs: [
 			{
 				question: "What is the best AEO tool for B2B SaaS?",
@@ -252,7 +252,7 @@ export const aeoVerticals: AeoVertical[] = [
 		faqs: [
 			{
 				question: "What does AI visibility tracking cost a startup?",
-				answer: `CiteRank.com's ${PLANS.basic.name} plan costs $${PLANS.basic.monthlyPriceUsd}/mo for ${PLANS.basic.maxPrompts} prompts checked ${PLANS.basic.standardRunsPerDay}× daily on any ${PLANS.basic.platformPicks} of 12 AI apps, with unlimited seats. Move up a plan when you need more brands, more prompts or premium models.`,
+				answer: `CiteRank.com's ${PLANS.basic.name} plan costs $${PLANS.basic.monthlyPriceUsd}/mo for ${PLANS.basic.maxPrompts} prompts checked ${PLANS.basic.standardRunsPerDay}× daily on any ${PLANS.basic.platformPicks} of ${PLANS.basic.platformMenu.length} AI apps, with unlimited seats. Move up a plan when you need more brands, more prompts or premium models.`,
 			},
 			{
 				question: "When should a startup start doing AEO?",
@@ -427,7 +427,7 @@ export const aeoVerticals: AeoVertical[] = [
 				text: "A citation that describes your practice areas wrongly, or attributes another firm's outcome to you, is worse than being absent. Sentiment and description accuracy matter more in legal than in most categories.",
 			},
 		],
-		fit: "CiteRank.com tracks practice-area and city-level prompts across 12 AI apps and keeps every answer in full, so you can see when one describes your firm inaccurately. It also shows which competing firms get named in each city, and which directories the engines cite.",
+		fit: "CiteRank.com tracks practice-area and city-level prompts across 13 AI apps and keeps every answer in full, so you can see when one describes your firm inaccurately. It also shows which competing firms get named in each city, and which directories the engines cite.",
 		faqs: [
 			{
 				question: "Is AEO different for law firms than for other businesses?",

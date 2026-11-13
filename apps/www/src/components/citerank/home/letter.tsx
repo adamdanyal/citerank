@@ -21,7 +21,7 @@ const PARAGRAPHS = [
 	},
 	{
 		id: "tracker",
-		text: "CiteRank.com is the tracker we wanted instead. It asks 12 AI apps your buyers' questions up to four times a day, keeps every answer and ranks what to fix. If nobody has time for the fixes, our agency does them.",
+		text: "CiteRank.com is the tracker we wanted instead. It asks 13 AI apps your buyers' questions up to four times a day, keeps every answer and ranks what to fix. If nobody has time for the fixes, our agency does them.",
 	},
 	{
 		id: "invite",

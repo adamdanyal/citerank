@@ -8,12 +8,13 @@ const ENGINES = [
 	{ name: "Perplexity", iconId: "perplexity" },
 	{ name: "AI Overviews", iconId: "google" },
 	{ name: "AI Mode", iconId: "google" },
-	{ name: "Copilot", iconId: "microsoft" },
+	{ name: "Bing AI Mode", iconId: "microsoft" },
 	{ name: "Grok", iconId: "x" },
 	{ name: "DeepSeek", iconId: "deepseek" },
 	{ name: "Mistral", iconId: "mistral" },
 	{ name: "Qwen", iconId: "qwen" },
 	{ name: "Kimi", iconId: "moonshotai" },
+	{ name: "Meta", iconId: "meta" },
 ];
 
 function Tile({ name, iconId }: { name: string; iconId: string }) {
@@ -33,8 +34,8 @@ export function ModelCoverage() {
 			<div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:px-6 lg:grid-cols-12 lg:items-center lg:gap-12 lg:py-20">
 				<div className="lg:col-span-5">
 					<SectionHeading
-						title="12 answer engines your buyers use."
-						lede="CiteRank.com both scrapes what real users see in popular AI search tools and captures the other six models with direct API calls."
+						title="13 answer engines your buyers use."
+						lede="CiteRank.com both scrapes what real users see in popular AI search tools and captures the other eight models with direct API calls."
 					/>
 				</div>
 				<div className="lg:col-span-7">

@@ -14,7 +14,7 @@ export interface FaqItem {
 export const HOME_FAQS: FaqItem[] = [
 	{
 		question: "What is CiteRank.com?",
-		answer: `CiteRank.com is an AI visibility tracker and AI search agency for answer engine optimization (AEO), an alternative to tools like Profound, Peec, and Otterly, with plans from $${CLOUD_ENTRY_PRICE_USD}/mo. It tracks how AI answer engines, including ChatGPT, Google AI Overviews, Perplexity, Gemini, Claude, and Copilot, mention and describe your brand, which competitors appear alongside you, and which sources each model cites.`,
+		answer: `CiteRank.com is an AI visibility tracker and AI search agency for answer engine optimization (AEO), an alternative to tools like Profound, Peec, and Otterly, with plans from $${CLOUD_ENTRY_PRICE_USD}/mo. It tracks how AI answer engines, including ChatGPT, Google AI Overviews, Bing AI Mode, Gemini, Claude, and Perplexity, mention and describe your brand, which competitors appear alongside you, and which sources each model cites.`,
 	},
 	{
 		question: "What is answer engine optimization (AEO)?",
@@ -29,7 +29,7 @@ export const HOME_FAQS: FaqItem[] = [
 	{
 		question: "Which AI models does CiteRank.com track?",
 		answer:
-			"CiteRank.com tracks ChatGPT, Google AI Mode, Google AI Overviews, Gemini, Perplexity, Copilot, and Claude, plus models like Grok, Mistral, DeepSeek, Qwen, and Kimi. Consumer products like ChatGPT and Google AI Mode are scraped from the real interface your customers see, not approximated through an API. For each answer, CiteRank.com records whether your brand appears, which competitors show up alongside it, and which sources the model cites.",
+			"CiteRank.com tracks ChatGPT, Google AI Mode, Google AI Overviews, Bing AI Mode, Gemini, and Claude, plus models like Perplexity, Grok, Meta, Mistral, DeepSeek, Qwen, and Kimi. Consumer products like ChatGPT and Google AI Mode are scraped from the real interface your customers see, not approximated through an API. For each answer, CiteRank.com records whether your brand appears, which competitors show up alongside it, and which sources the model cites.",
 	},
 	{
 		question: "How is AI visibility measured?",
@@ -197,12 +197,12 @@ export const DIRECTORY_FAQS: FaqItem[] = [
 	},
 	{
 		question: "How do I choose the best AI visibility tool?",
-		answer: `The right tool depends on which AI engines you need to track, whether you want self-hosting and data ownership, your budget, and any agency or white-label needs. This directory compares 100+ tools feature-by-feature. If you want 12 AI apps and every answer kept in full, CiteRank.com starts at $${CLOUD_ENTRY_PRICE_USD}/mo, and its AI search agency can do the work.`,
+		answer: `The right tool depends on which AI engines you need to track, whether you want self-hosting and data ownership, your budget, and any agency or white-label needs. This directory compares 100+ tools feature-by-feature. If you want 13 AI apps and every answer kept in full, CiteRank.com starts at $${CLOUD_ENTRY_PRICE_USD}/mo, and its AI search agency can do the work.`,
 	},
 	{
 		question: "Is there an AI visibility tool with an agency?",
 		answer:
-			"Yes. CiteRank.com is an AI visibility tracker with an AI search agency. You can track 12 AI apps yourself, read every answer in full, and have the agency do the work every month, from new pages to review-site listings.",
+			"Yes. CiteRank.com is an AI visibility tracker with an AI search agency. You can track 13 AI apps yourself, read every answer in full, and have the agency do the work every month, from new pages to review-site listings.",
 	},
 	{
 		question: "How does AI visibility tracking work?",

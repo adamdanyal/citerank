@@ -9,7 +9,7 @@ const LINK = "font-medium text-blue-700 underline underline-offset-2 hover:text-
 const FEATURES = [
 	{
 		title: "Cross-platform tracking",
-		body: "Monitors your brand across the engines that matter: ChatGPT, Perplexity, Gemini, Copilot, and Google AI Overviews, all at once.",
+		body: "Monitors your brand across the engines that matter: ChatGPT, Perplexity, Gemini, Bing AI Mode, and Google AI Overviews, all at once.",
 	},
 	{
 		title: "Mention & citation analysis",
@@ -121,8 +121,8 @@ export function AiVisibilitySoftwareHub() {
 						<div className="mt-8 space-y-6 text-[1.0625rem] leading-relaxed text-zinc-600">
 							<p>
 								CiteRank.com is an AI visibility tracker and AI search agency. It tracks mentions, citations, and
-								competitor share across ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, and Google AI Mode and AI
-								Overviews, and because it keeps every answer in full, you can read exactly what every metric is based
+								competitor share across ChatGPT, Claude, Gemini, Grok, Perplexity, Bing AI Mode, and Google AI Mode and
+								AI Overviews, and because it keeps every answer in full, you can read exactly what every metric is based
 								on.
 							</p>
 							<p>

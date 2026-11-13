@@ -116,7 +116,7 @@ export const productFeatures: ProductFeature[] = [
 		why: [
 			{
 				name: "The real apps, plus APIs",
-				text: "ChatGPT, Google AI Overviews, AI Mode, Gemini, Perplexity, and Copilot are scraped from the interfaces your customers use, with direct APIs for everything else.",
+				text: "ChatGPT, Google AI Overviews, AI Mode, Bing AI Mode, and Gemini are scraped from the interfaces your customers use, with direct APIs for everything else.",
 			},
 			{
 				name: "Open methodology",
@@ -960,13 +960,13 @@ export const productFeatures: ProductFeature[] = [
 	{
 		slug: "multi-engine-tracking",
 		name: "AI engines",
-		title: "Track your brand across 12 AI engines",
+		title: "Track your brand across 13 AI engines",
 		metaTitle: "Multi-Engine AI Visibility Tracking: ChatGPT, AI Overviews, Gemini & More · CiteRank.com",
 		metaDescription:
-			"Track your brand in ChatGPT, Google AI Overviews, AI Mode, Gemini, Perplexity, and Copilot from the real apps, plus Claude, Grok, DeepSeek, Mistral, Qwen, and Kimi.",
-		lede: "Most AI search happens in ChatGPT and Google, and neither offers a public API for its consumer answers. CiteRank.com scrapes ChatGPT, Google AI Overviews, AI Mode, Gemini, Perplexity, and Copilot from the interfaces your customers use, and calls Claude, Grok, DeepSeek, Mistral, Qwen, and Kimi directly.",
+			"Track your brand in ChatGPT, Google AI Overviews, AI Mode, Bing AI Mode, and Gemini from the real apps, plus Claude, Grok, Perplexity, Meta, DeepSeek, Mistral, Qwen, and Kimi.",
+		lede: "Most AI search happens in ChatGPT and Google, and neither offers a public API for its consumer answers. CiteRank.com scrapes ChatGPT, Google AI Overviews, AI Mode, Bing AI Mode, and Gemini from the interfaces your customers use, and calls Claude, Grok, Perplexity, Meta, DeepSeek, Mistral, Qwen, and Kimi directly.",
 		summary:
-			"ChatGPT, Google AI Overviews, AI Mode, Gemini, Perplexity, and Copilot from the real apps, plus six more by API.",
+			"ChatGPT, Google AI Overviews, AI Mode, Bing AI Mode, and Gemini from the real apps, plus eight more by API.",
 		graphic: "engines",
 		steps: [
 			{
@@ -985,17 +985,17 @@ export const productFeatures: ProductFeature[] = [
 		metrics: [
 			{
 				term: "Scraped from the real interface",
-				definition: "ChatGPT, Google AI Overviews, Google AI Mode, Gemini, Perplexity, and Copilot.",
+				definition: "ChatGPT, Google AI Overviews, Google AI Mode, Bing AI Mode, and Gemini.",
 			},
 			{
 				term: "Direct model APIs",
 				definition:
-					"Claude, DeepSeek, Mistral, Qwen, and Kimi without web search, and Claude, Grok, and GPT Search with web search on Pro and Business.",
+					"Claude, DeepSeek, Mistral, Qwen, and Kimi without web search, and GPT Search, Claude (web), Grok (web), Meta (web), and Perplexity Sonar with web search on Pro and Business.",
 			},
 		],
 		useCases: [
 			"Compare how ChatGPT and Google AI Overviews treat your brand, since they often disagree.",
-			"Add an engine your audience uses, like Copilot for enterprise buyers, without switching tools.",
+			"Add an engine your audience uses, like Bing AI Mode for buyers who search in Microsoft's tools, without switching tools.",
 			"Track GPT Search alongside the ChatGPT consumer app to see how much they differ.",
 		],
 		why: [
@@ -1004,8 +1004,8 @@ export const productFeatures: ProductFeature[] = [
 				text: "A model's API isn't the consumer product. Scraping the real ChatGPT and Google apps is closer to the answers your buyers get.",
 			},
 			{
-				name: "12 AI apps in one place",
-				text: "Six AI apps scraped from their real interfaces and six more by API, from one account and one set of prompts.",
+				name: "13 AI apps in one place",
+				text: "Five AI apps scraped from their real interfaces and eight more by API, from one account and one set of prompts.",
 			},
 			{
 				name: "Every answer kept",
@@ -1028,7 +1028,7 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "Which AI engines does CiteRank.com track?",
 				answer:
-					"ChatGPT, Google AI Overviews, Google AI Mode, Gemini, Perplexity, and Copilot are scraped from their real interfaces. Claude, DeepSeek, Mistral, Qwen, and Kimi are called through their APIs, and Claude, Grok, and GPT Search can be tracked with web search on Pro and Business.",
+					"ChatGPT, Google AI Overviews, Google AI Mode, Bing AI Mode, and Gemini are scraped from their real interfaces. Claude, DeepSeek, Mistral, Qwen, and Kimi are called through their APIs, and GPT Search, Claude (web), Grok (web), Meta (web), and Perplexity Sonar can be tracked with web search on Pro and Business.",
 			},
 			{
 				question: "Why scrape instead of using the API?",

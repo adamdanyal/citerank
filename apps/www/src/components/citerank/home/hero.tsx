@@ -8,7 +8,7 @@ import { Container, PRIMARY_BUTTON_LG, SECONDARY_BUTTON_LG } from "../ui";
 import { DEMO_BRAND_PATH, ProductDemo } from "./product-demo";
 
 const DEFAULT_LEDE =
-	"CiteRank.com is the AI visibility tracker and AI search agency for AEO and GEO. See how ChatGPT, Claude, Gemini and nine other AI apps talk about your brand and what to fix. Do it yourself, or have our agency do it every month.";
+	"CiteRank.com is the AI visibility tracker and AI search agency for AEO and GEO. See how ChatGPT, Claude, Gemini and ten other AI apps talk about your brand and what to fix. Do it yourself, or have our agency do it every month.";
 
 export function Hero({
 	title = "Track your brand in AI search",

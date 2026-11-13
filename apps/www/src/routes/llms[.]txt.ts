@@ -13,13 +13,13 @@ const featureLinks = productFeatures
 // annotated links. The full text of the documentation lives at /llms-full.txt.
 const llmsTxt = `# CiteRank.com
 
-> CiteRank.com is an AI visibility tracker and AI search agency. Track how AI answer engines like ChatGPT, Google AI Overviews, Perplexity, Gemini, Copilot, and Grok talk about your brand: monitor mentions and sentiment, analyze citations, and benchmark competitors. Because CiteRank.com keeps every answer in full and bills month to month, you can check every number and you're never locked in.
+> CiteRank.com is an AI visibility tracker and AI search agency. Track how AI answer engines like ChatGPT, Google AI Overviews, Perplexity, Gemini, Bing AI Mode, and Grok talk about your brand: monitor mentions and sentiment, analyze citations, and benchmark competitors. Because CiteRank.com keeps every answer in full and bills month to month, you can check every number and you're never locked in.
 
 CiteRank.com is answer engine optimization (AEO), also called generative engine optimization (GEO), without the black box. On a schedule, it runs your prompts across the AI apps you choose, then measures how often your brand appears, how the answers describe it, which competitors show up alongside it, and which sources the models cite. The methodology is documented and every answer is kept in full, so each number is something you can independently verify. About once a week it ranks what to do next, and the AI search agency does that work every month: new and updated pages, review sites and best-of lists, forum answers, guest articles on sites AI already cites, and crawler fixes, with a monthly report of the AI answers before and after. CiteRank.com is a trading name of Danx Digital Limited, registered in the United Kingdom, and was founded by Adam Danyal and Julia Danyal. Sign up for tracker plans from $${CLOUD_ENTRY_PRICE_USD}/month (Basic $${PLANS.basic.monthlyPriceUsd}, Pro $${PLANS.pro.monthlyPriceUsd}, Business $${PLANS.business.monthlyPriceUsd}, billed monthly, cancel any time), or book a call about the AI search agency, whose plans are ${AGENCY_PLANS.map((plan) => `${plan.name} ${formatUsd(plan.monthlyPriceUsd)}`).join(", ")} a month with a three-month minimum.
 
 ## Product
 
-- [CiteRank.com](${SITE_URL}/): Know how AI talks about your brand: track visibility across 12 AI apps, monitor mentions, analyze citations, and benchmark competitors.
+- [CiteRank.com](${SITE_URL}/): Know how AI talks about your brand: track visibility across 13 AI apps, monitor mentions, analyze citations, and benchmark competitors.
 - [Features](${SITE_URL}/features): Visibility dashboard, per-prompt and per-model tracking, share of voice, sentiment analysis, query fan-out, citation analysis, ranked opportunities, prompt management, full responses, and long-term trends.
 ${featureLinks}
 - [Pricing](${SITE_URL}/pricing): Self-serve tracker plans from $${CLOUD_ENTRY_PRICE_USD}/month, an AI search agency, and custom plans on request.

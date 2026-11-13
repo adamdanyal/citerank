@@ -197,7 +197,7 @@ export const aiSearchEngines: AiSearchEngine[] = [
 		short: "Appear in Microsoft Copilot, which pairs OpenAI models with Bing's web index to answer and cite.",
 		intro: [
 			"Copilot is Microsoft's assistant, built on OpenAI models and grounded in Bing's search index. When it answers a question that needs live information, it retrieves from Bing and cites sources, so your presence in Bing's index feeds directly into Copilot.",
-			"That makes Bing fundamentals unusually relevant here. The general AEO advice applies, but making sure Bing can crawl, index, and trust your pages is the specific lever that pays off in Copilot.",
+			"Microsoft shows the same kind of answer inside Bing itself, as Bing AI Mode, drawn from the same index. That makes Bing fundamentals unusually relevant here. The general AEO advice applies, but making sure Bing can crawl, index, and trust your pages is the specific lever that pays off across both.",
 		],
 		steps: [
 			{
@@ -217,12 +217,12 @@ export const aiSearchEngines: AiSearchEngine[] = [
 				text: "Depth on your topic and current content improve both your Bing ranking and your odds of being cited in Copilot.",
 			},
 			{
-				name: "Track Copilot answers",
-				text: "Monitor how Copilot mentions and cites your brand on a consistent set of prompts to find weak spots.",
+				name: "Track Microsoft's AI answers",
+				text: "Monitor how Bing AI Mode mentions and cites your brand on a consistent set of prompts to find weak spots.",
 			},
 		],
 		tracking:
-			"CiteRank.com tracks how Microsoft Copilot mentions and cites your brand across your prompts, so you can see the payoff from Bing-side improvements over time.",
+			"The Copilot app now asks visitors to sign in, so CiteRank.com tracks Bing AI Mode instead: Microsoft's AI answer in Bing, built on the same index. You see how it mentions and cites your brand across your prompts, and the payoff from Bing-side improvements over time.",
 		related: ["chatgpt", "google-ai-overviews"],
 	},
 	{

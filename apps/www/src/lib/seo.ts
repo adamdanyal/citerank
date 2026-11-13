@@ -131,7 +131,7 @@ export function softwareApplicationJsonLd() {
 		image: SITE_LOGO_URL,
 		screenshot: `${SITE_URL}/screenshots/overview.webp`,
 		featureList: [
-			"Tracks brand mentions in ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews, AI Mode, Copilot, Grok, DeepSeek, Mistral, Qwen and Kimi",
+			"Tracks brand mentions in ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews, AI Mode, Bing AI Mode, Grok, Meta, DeepSeek, Mistral, Qwen and Kimi",
 			"Checks every prompt up to 4 times a day and keeps every answer in full",
 			"Share of voice, sentiment and position against competitors",
 			"Citation analysis: which domains and pages each AI engine cites",

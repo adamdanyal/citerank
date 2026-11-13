@@ -374,9 +374,8 @@ const SCRAPED_ENGINES = [
 	{ name: "ChatGPT", iconId: "openai" },
 	{ name: "AI Overviews", iconId: "google" },
 	{ name: "AI Mode", iconId: "google" },
+	{ name: "Bing AI Mode", iconId: "microsoft" },
 	{ name: "Gemini", iconId: "gemini" },
-	{ name: "Perplexity", iconId: "perplexity" },
-	{ name: "Copilot", iconId: "microsoft" },
 ];
 
 const API_ENGINES = [
@@ -386,6 +385,8 @@ const API_ENGINES = [
 	{ name: "DeepSeek", iconId: "deepseek" },
 	{ name: "Qwen", iconId: "qwen" },
 	{ name: "Kimi", iconId: "moonshotai" },
+	{ name: "Meta", iconId: "meta" },
+	{ name: "Perplexity", iconId: "perplexity" },
 ];
 
 function EngineChip({ name, iconId }: { name: string; iconId: string }) {

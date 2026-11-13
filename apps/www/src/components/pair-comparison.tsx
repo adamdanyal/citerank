@@ -84,11 +84,11 @@ export function PairComparison({ a, b }: { a: Competitor; b: Competitor }) {
 						<h3 className="mb-1 text-lg font-semibold text-zinc-950">CiteRank.com</h3>
 						<div className="mt-2 flex flex-wrap gap-2">
 							<Badge variant="secondary">Search Agency</Badge>
-							<Badge variant="secondary">12 AI Apps</Badge>
+							<Badge variant="secondary">13 AI apps</Badge>
 							<Badge variant="secondary">{ENTRY_PRICE}</Badge>
 						</div>
 						<p className="mt-3 text-sm text-zinc-600">
-							AI visibility tracker and AI search agency for AEO, covering 12 AI apps with every answer kept in full.
+							AI visibility tracker and AI search agency for AEO, covering 13 AI apps with every answer kept in full.
 							Plans run from {PLAN_RANGE}.
 						</p>
 					</div>

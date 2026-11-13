@@ -131,7 +131,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 						<h3 className="mb-1 text-lg font-semibold text-zinc-950">CiteRank.com</h3>
 						<div className="mt-2 flex flex-wrap gap-2">
 							<Badge variant="secondary">Search Agency</Badge>
-							<Badge variant="secondary">12 AI Apps</Badge>
+							<Badge variant="secondary">13 AI apps</Badge>
 							<Badge variant="secondary">From {ENTRY_PRICE}</Badge>
 						</div>
 						<p className="mt-3 text-sm text-zinc-600">

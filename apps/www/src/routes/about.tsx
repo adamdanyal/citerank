@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CLOUD_ENTRY_PRICE_USD, PLANS } from "@workspace/config/plans";
+import { getModelMeta } from "@workspace/config/models";
+import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS, PLANS } from "@workspace/config/plans";
 import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { Closing } from "@/components/citerank/home/closing";
@@ -43,7 +44,8 @@ export const Route = createFileRoute("/about")({
 });
 
 const { basic, pro, business } = PLANS;
-const ENGINE_COUNT = 12;
+const ENGINE_NAMES = Object.keys(CLOUD_PLATFORMS).map((model) => getModelMeta(model).label);
+const ENGINE_COUNT = ENGINE_NAMES.length;
 
 /* Portraits are apps/www/public/founder-adam.jpg and founder-julia.jpg, 512px squares. */
 const FOUNDERS = [
@@ -199,8 +201,7 @@ function AboutPage() {
 		{ term: "Contact email", detail: <ExternalLink href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</ExternalLink> },
 		{
 			term: "Platforms tracked",
-			detail:
-				"ChatGPT, Google AI Overviews, Google AI Mode, Gemini, Perplexity, Microsoft Copilot, Claude, Grok, Mistral, DeepSeek, Qwen, Kimi",
+			detail: ENGINE_NAMES.join(", "),
 		},
 		{ term: "Competitors", detail: "Profound, Peec AI, Otterly.AI, Scrunch, Semrush AI Toolkit" },
 		{ term: "Social", detail: <SocialIcons linkClassName="text-zinc-500 hover:text-zinc-950" /> },
@@ -227,7 +228,7 @@ function AboutPage() {
 								<Link to="/generative-engine-optimization" className={`${QUIET_LINK} text-zinc-950`}>
 									GEO
 								</Link>
-								. We track how ChatGPT, Gemini, Perplexity and nine other AI apps describe brands, and our agency does
+								. We track how ChatGPT, Gemini, Perplexity and ten other AI apps describe brands, and our agency does
 								the work that changes those answers.
 							</p>
 							<p className="body-6 mt-6 text-zinc-600">

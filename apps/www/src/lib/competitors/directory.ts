@@ -337,7 +337,7 @@ export function getAlternativesFaqs(c: Competitor, alts: Competitor[]): FaqItem[
 	return [
 		{
 			question: `What are the best alternatives to ${c.name}?`,
-			answer: `The closest alternatives to ${c.name} are other ${CATEGORY_NOUN[c.category]} tools such as ${formatList(names)}. CiteRank.com also has an AI search agency: sign up for the tracker from ${ENTRY_PRICE} and track how 12 AI apps mention and cite your brand.`,
+			answer: `The closest alternatives to ${c.name} are other ${CATEGORY_NOUN[c.category]} tools such as ${formatList(names)}. CiteRank.com also has an AI search agency: sign up for the tracker from ${ENTRY_PRICE} and track how 13 AI apps mention and cite your brand.`,
 		},
 		{
 			question: `What does it cost to switch from ${c.name}?`,
@@ -346,7 +346,7 @@ export function getAlternativesFaqs(c: Competitor, alts: Competitor[]): FaqItem[
 		{
 			question: `Is there an alternative to ${c.name} with an agency?`,
 			answer:
-				"Yes. CiteRank.com is an AI visibility tracker with an AI search agency. You can track 12 AI apps, read every answer in full, and have the agency do the work every month, with a report on the AI answers before and after.",
+				"Yes. CiteRank.com is an AI visibility tracker with an AI search agency. You can track 13 AI apps, read every answer in full, and have the agency do the work every month, with a report on the AI answers before and after.",
 		},
 		{
 			question: `Why switch from ${c.name} to CiteRank.com?`,

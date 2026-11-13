@@ -1,29 +1,40 @@
+import { getModelMeta } from "@workspace/config/models";
+import { CLOUD_PLATFORMS, PREMIUM_MODELS, premiumPlanNames, STANDARD_PLATFORM_MENU } from "@workspace/config/plans";
 import { EngineIcon } from "@/components/home/engines";
 import { CARD, Container, Reveal, RevealItem } from "../ui";
 
-const ENGINES = [
-	{ name: "ChatGPT", iconId: "openai" },
-	{ name: "Claude", iconId: "anthropic" },
-	{ name: "Gemini", iconId: "gemini" },
-	{ name: "Perplexity", iconId: "perplexity" },
-	{ name: "AI Overviews", iconId: "google" },
-	{ name: "AI Mode", iconId: "google" },
-	{ name: "Copilot", iconId: "microsoft" },
-	{ name: "Grok", iconId: "x" },
-	{ name: "DeepSeek", iconId: "deepseek" },
-	{ name: "Mistral", iconId: "mistral" },
-	{ name: "Qwen", iconId: "qwen" },
-	{ name: "Kimi", iconId: "moonshotai" },
-];
+const list = new Intl.ListFormat("en", { type: "conjunction" });
+
+/** Gemini shares Google's mark in the catalog, which would make it indistinguishable from AI Overviews here. */
+const ICON_OVERRIDES: Record<string, string> = { gemini: "gemini" };
+
+/** The tiles are too narrow for the catalog's full names, and Google is already the icon. */
+const TILE_LABELS: Record<string, string> = {
+	"google-ai-mode": "AI Mode",
+	"google-ai-overview": "AI Overviews",
+};
+
+const ENGINES = Object.keys(CLOUD_PLATFORMS).map((model) => {
+	const meta = getModelMeta(model);
+	return { model, name: TILE_LABELS[model] ?? meta.label, iconId: ICON_OVERRIDES[model] ?? meta.iconId };
+});
+
+const SCRAPED = ENGINES.filter(({ model }) => CLOUD_PLATFORMS[model].access === "scraped");
+const GROUNDED_ONLY = PREMIUM_MODELS.filter((model) => !STANDARD_PLATFORM_MENU.includes(model));
 
 export function EngineCoverage() {
 	return (
 		<section className="bg-white">
 			<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:items-center lg:gap-16 lg:py-24">
 				<Reveal className="lg:col-span-5">
-					<h2 className="heading-2 text-zinc-950">12 answer engines your buyers use</h2>
+					<h2 className="heading-2 text-zinc-950">{ENGINES.length} answer engines your buyers use</h2>
 					<p className="body-7 mt-6 text-zinc-600">
-						Six are checked the way a real user sees them, and six directly through each company's API.
+						{list.format(SCRAPED.map((engine) => getModelMeta(engine.model).label))} are checked the way a real user
+						sees them. The rest we read through each company's API.
+					</p>
+					<p className="body-7 mt-4 text-zinc-600">
+						{list.format(GROUNDED_ONLY.map((model) => getModelMeta(model).label))} answer with their own web search on,
+						included on {premiumPlanNames()}.
 					</p>
 				</Reveal>
 				<ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:col-span-7" aria-label="AI engines CiteRank.com tracks">

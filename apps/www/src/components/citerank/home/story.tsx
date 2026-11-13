@@ -1,10 +1,11 @@
-import { PLANS } from "@workspace/config/plans";
+import { CLOUD_PLATFORMS, PLANS } from "@workspace/config/plans";
 import type { ReactNode } from "react";
 import { ExampleTag } from "@/components/home/ui";
 import { screenshotSet } from "@/lib/screenshots";
 import { CARD, Container, Reveal, WINDOW_FRAME, WindowBar } from "../ui";
 
 const BASIC_ANSWERS_PER_DAY = PLANS.basic.maxPrompts * PLANS.basic.platformPicks * PLANS.basic.standardRunsPerDay;
+const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
 
 function Mark({ children }: { children: ReactNode }) {
 	return <mark className="rounded-sm bg-blue-100 px-1 text-zinc-950">{children}</mark>;
@@ -79,8 +80,9 @@ const STEPS = [
 		title: "We ask AI your buyers' questions",
 		body: (
 			<>
-				12 AI apps, up to four times a day. Every answer is saved with the brands it named and the sources it cited. On
-				the Basic plan that is <Mark>up to {BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day</Mark>.
+				{ENGINE_COUNT} AI apps, up to four times a day. Every answer is saved with the brands it named and the sources
+				it cited. On the Basic plan that is{" "}
+				<Mark>up to {BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day</Mark>.
 			</>
 		),
 		shot: {

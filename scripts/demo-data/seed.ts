@@ -97,7 +97,7 @@ const MODELS: ModelProfile[] = [
 	},
 	{
 		model: "perplexity",
-		provider: "olostep",
+		provider: "dataforseo",
 		version: "sonar",
 		reach: 1.04,
 		brandBias: 1.1,

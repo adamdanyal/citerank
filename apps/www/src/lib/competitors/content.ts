@@ -161,7 +161,7 @@ export function getComparisonVerdict(competitor: Competitor): string {
 	}
 
 	const noun = CATEGORY_NOUN[competitor.category];
-	return `CiteRank.com, an AI visibility tracker and AI search agency, is an alternative to ${name}, ${indefiniteArticle(noun)} ${noun} tool. Both measure how AI answer engines describe your brand, but CiteRank.com keeps every answer in full, covers 12 AI apps, and checks each prompt up to four times a day, so each metric traces back to the words an AI wrote.`;
+	return `CiteRank.com, an AI visibility tracker and AI search agency, is an alternative to ${name}, ${indefiniteArticle(noun)} ${noun} tool. Both measure how AI answer engines describe your brand, but CiteRank.com keeps every answer in full, covers 13 AI apps, and checks each prompt up to four times a day, so each metric traces back to the words an AI wrote.`;
 }
 
 /**
@@ -180,7 +180,7 @@ export function getComparisonFaqs(competitor: Competitor): FaqItem[] {
 	faqs.push({
 		question: `What is the difference between CiteRank.com and ${name}?`,
 		answer: openSource
-			? `${name} is open source, so you can self-host it and inspect the code, while CiteRank.com is hosted. CiteRank.com focuses specifically on transparent AI visibility tracking across 12 AI apps, with every answer kept in full, an AI search agency that does the work, and a fully documented methodology behind each number.`
+			? `${name} is open source, so you can self-host it and inspect the code, while CiteRank.com is hosted. CiteRank.com focuses specifically on transparent AI visibility tracking across 13 AI apps, with every answer kept in full, an AI search agency that does the work, and a fully documented methodology behind each number.`
 			: `CiteRank.com is an AI visibility tracker and AI search agency, while ${name} is ${indefiniteArticle(noun)} ${noun} tool. Both track how AI answer engines describe your brand, but CiteRank.com keeps every answer in full, so you can verify every metric against the words an AI wrote, and its agency can do the work.`,
 	});
 
