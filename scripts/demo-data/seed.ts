@@ -76,7 +76,7 @@ const MODELS: ModelProfile[] = [
 	{
 		model: "chatgpt",
 		provider: "olostep",
-		version: "gpt-5-5",
+		version: "gpt-6-luna",
 		reach: 1,
 		brandBias: 1.08,
 		maxListed: 6,
@@ -86,7 +86,7 @@ const MODELS: ModelProfile[] = [
 	},
 	{
 		model: "gemini",
-		provider: "dataforseo",
+		provider: "olostep",
 		version: "gemini-2.5-flash",
 		reach: 0.96,
 		brandBias: 0.94,
@@ -118,6 +118,17 @@ const MODELS: ModelProfile[] = [
 		style: "overview",
 	},
 	{
+		model: "bing-ai-mode",
+		provider: "cloro",
+		version: "bing-ai-mode",
+		reach: 0.88,
+		brandBias: 0.82,
+		maxListed: 5,
+		citations: [3, 6],
+		queries: [0, 0],
+		style: "overview",
+	},
+	{
 		model: "claude",
 		provider: "anthropic-api",
 		version: "claude-haiku-5-5",
@@ -132,7 +143,7 @@ const MODELS: ModelProfile[] = [
 
 /** Some assistants lean on some vendors more than others. */
 const MODEL_TILT: Record<string, Partial<Record<string, number>>> = {
-	Queueloft: { gemini: 1.12, "google-ai-overview": 1.16 },
+	Queueloft: { gemini: 1.12, "google-ai-overview": 1.16, "bing-ai-mode": 1.14 },
 	Northqueue: { claude: 1.18 },
 	Lumenreply: { perplexity: 1.12 },
 	Brookdesk: { "google-ai-overview": 1.1 },
