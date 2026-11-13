@@ -99,7 +99,8 @@
 				"properties": {
 					"brandId": {
 						"type": "string",
-						"description": "Brand identifier this prompt belongs to"
+						"description": "Brand identifier this prompt belongs to",
+						"minLength": 1
 					},
 					"value": {
 						"type": "string",
@@ -161,7 +162,7 @@
 						"description": "Stable machine-readable code. Deliberately not an enum: new values are added without a version bump, so treat an unrecognized one as its HTTP status implies. Currently: `unauthorized`, `insufficient_scope`, `forbidden`, `not_found`, `validation_error`, `conflict`, `rate_limited`, `method_not_allowed`, `read_only`, `no_active_plan`, `brand_limit`, `prompt_limit`, `model_not_in_plan`, `model_picks_exceeded`, `premium_not_in_plan`, `premium_pool_exhausted`, `cadence_faster_than_plan`, `internal_error`."
 					}
 				},
-				"required": ["error"]
+				"required": ["error", "message", "code"]
 			},
 			"CreateReportRequest": {
 				"type": "object",
@@ -444,12 +445,14 @@
 								},
 								"domains": {
 									"type": "array",
+									"default": [],
 									"items": {
 										"type": "string"
 									}
 								},
 								"aliases": {
 									"type": "array",
+									"default": [],
 									"items": {
 										"type": "string"
 									}
@@ -469,6 +472,7 @@
 								},
 								"tags": {
 									"type": "array",
+									"default": [],
 									"items": {
 										"type": "string"
 									}
@@ -483,7 +487,8 @@
 					},
 					"organizationId": {
 						"type": "string",
-						"description": "Organization to create the brand in.\n\n| | Omitted | Present |\n| --- | --- | --- |\n| **Organization key** | creates in the key's own organization | must name the key's own organization; any other value is a `400` |\n| **Admin key** | provisions a new organization named after the brand id | creates in the named organization, which must already exist (`404` if it does not) |\n\nAn admin key omitting this field is currently the only way to create an organization over the API."
+						"description": "Organization to create the brand in.\n\n| | Omitted | Present |\n| --- | --- | --- |\n| **Organization key** | creates in the key's own organization | must name the key's own organization; any other value is a `400` |\n| **Admin key** | provisions a new organization named after the brand id | creates in the named organization, which must already exist (`404` if it does not) |\n\nAn admin key omitting this field is currently the only way to create an organization over the API.",
+						"minLength": 1
 					}
 				},
 				"required": ["id", "name", "domains"]
@@ -1996,15 +2001,15 @@
 				"type": ["object", "null"],
 				"properties": {
 					"brand": {
-						"oneOf": [
+						"description": "Null when the answer never names the brand.",
+						"anyOf": [
 							{
 								"$ref": "#/components/schemas/MentionAssessment"
 							},
 							{
 								"type": "null"
 							}
-						],
-						"description": "Null when the answer never names the brand."
+						]
 					},
 					"competitors": {
 						"type": "object",
@@ -2188,24 +2193,7 @@
 				"headers": {
 					"Retry-After": {
 						"description": "Seconds until the limit resets.",
-						"schema": {
-							"type": "integer"
-						}
-					},
-					"X-RateLimit-Limit": {
-						"description": "Requests allowed per window.",
-						"schema": {
-							"type": "integer"
-						}
-					},
-					"X-RateLimit-Remaining": {
-						"description": "Requests left in the current window. Counted with a read-modify-write per request, so treat it as a guide and back off on 429 rather than riding it to zero. Sent only when the remainder is known.",
-						"schema": {
-							"type": "integer"
-						}
-					},
-					"X-RateLimit-Reset": {
-						"description": "Unix seconds at which the window resets.",
+						"required": true,
 						"schema": {
 							"type": "integer"
 						}
@@ -2244,7 +2232,6 @@
 				"name": "page",
 				"in": "query",
 				"description": "Page number, 1-based.",
-				"required": false,
 				"schema": {
 					"type": "integer",
 					"minimum": 1,
@@ -2255,7 +2242,6 @@
 				"name": "limit",
 				"in": "query",
 				"description": "Items per page. Values above the maximum are clamped, not rejected.",
-				"required": false,
 				"schema": {
 					"type": "integer",
 					"minimum": 1,
@@ -2287,7 +2273,6 @@
 				"name": "model",
 				"in": "query",
 				"description": "Restrict to one model, e.g. `chatgpt`. See `GET /models`.",
-				"required": false,
 				"schema": {
 					"type": "string"
 				}
@@ -2296,7 +2281,6 @@
 				"name": "tags",
 				"in": "query",
 				"description": "Comma-separated prompt tags. Only prompts carrying at least one of them are counted.",
-				"required": false,
 				"schema": {
 					"type": "string"
 				}
@@ -2305,7 +2289,6 @@
 				"name": "limit",
 				"in": "query",
 				"description": "Items per page. Values above the maximum are clamped, not rejected. The default is large enough that most windows fit on the first page.",
-				"required": false,
 				"schema": {
 					"type": "integer",
 					"minimum": 1,
@@ -2317,7 +2300,6 @@
 				"name": "category",
 				"in": "query",
 				"description": "Only rows in this category, as the dashboard classifies them for this brand: `brand`, `competitor`, `editorial`, `reviews`, `ecommerce`, `social`, `developer`, `pr`, `reference`, `institutional` or `other`.",
-				"required": false,
 				"schema": {
 					"type": "string"
 				}
@@ -2410,6 +2392,7 @@
 		"/brands": {
 			"get": {
 				"summary": "List brands",
+				"description": "The brands this key can reach, newest first.",
 				"operationId": "listBrands",
 				"tags": ["Brands"],
 				"parameters": [
@@ -2444,11 +2427,15 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": ["read"],
-				"description": ""
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				]
 			},
 			"post": {
 				"summary": "Create a brand",
+				"description": "A brand, its competitors and its prompts, created in one request. They are written together, so a request that fails leaves none of them behind, and the prompts are scheduled for execution as soon as the brand exists.\n\nBrand ids are chosen by the caller and unique across the instance: an id that is already taken answers `409`, without saying who holds it. A competitor with no domain other than the brand's own website is skipped.",
 				"operationId": "createBrand",
 				"tags": ["Brands"],
 				"requestBody": {
@@ -2490,13 +2477,17 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": ["write"],
-				"description": ""
+				"security": [
+					{
+						"BearerAuth": ["write"]
+					}
+				]
 			}
 		},
 		"/brands/{brandId}": {
 			"get": {
 				"summary": "Get a brand",
+				"description": "A brand outside the key's reach answers `404`, identically to one that does not exist.",
 				"operationId": "getBrand",
 				"tags": ["Brands"],
 				"parameters": [
@@ -2538,11 +2529,15 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": ["read"],
-				"description": ""
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				]
 			},
 			"patch": {
 				"summary": "Update a brand",
+				"description": "Change a brand's name, domains or aliases. A brand outside the key's reach answers `404`, identically to one that does not exist.",
 				"operationId": "updateBrand",
 				"tags": ["Brands"],
 				"parameters": [
@@ -2596,8 +2591,11 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": ["write"],
-				"description": ""
+				"security": [
+					{
+						"BearerAuth": ["write"]
+					}
+				]
 			}
 		},
 		"/brands/{brandId}/analytics": {
@@ -2606,7 +2604,11 @@
 				"description": "Visibility, share of voice, the per-model breakdown and the citation totals for one window, in one request.\n\nThe long lists (cited domains and URLs, sub-queries, per-prompt results) are endpoints of their own. Everything else is always included.",
 				"operationId": "getBrandAnalytics",
 				"tags": ["Analytics"],
-				"x-elmo-scopes": ["read"],
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				],
 				"parameters": [
 					{
 						"$ref": "#/components/parameters/BrandIdPath"
@@ -2662,7 +2664,11 @@
 				"description": "Domains the engines cited when answering this brand's prompts, categorized and compared against the equal-length window immediately before this one.",
 				"operationId": "listBrandCitationDomains",
 				"tags": ["Analytics"],
-				"x-elmo-scopes": ["read"],
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				],
 				"parameters": [
 					{
 						"$ref": "#/components/parameters/BrandIdPath"
@@ -2689,7 +2695,6 @@
 						"name": "q",
 						"in": "query",
 						"description": "Case-insensitive substring match on the domain, across every domain cited in the window.",
-						"required": false,
 						"schema": {
 							"type": "string"
 						}
@@ -2736,7 +2741,11 @@
 				"description": "Individual pages the engines cited, with their category and page type.",
 				"operationId": "listBrandCitationUrls",
 				"tags": ["Analytics"],
-				"x-elmo-scopes": ["read"],
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				],
 				"parameters": [
 					{
 						"$ref": "#/components/parameters/BrandIdPath"
@@ -2763,7 +2772,6 @@
 						"name": "q",
 						"in": "query",
 						"description": "Case-insensitive substring match on the URL or page title, across every URL cited in the window.",
-						"required": false,
 						"schema": {
 							"type": "string"
 						}
@@ -2775,7 +2783,6 @@
 						"name": "pageType",
 						"in": "query",
 						"description": "Only pages of this type, e.g. `article`, `review` or `product`.",
-						"required": false,
 						"schema": {
 							"type": "string"
 						}
@@ -2819,7 +2826,11 @@
 				"description": "**Experimental: the response shape may still change.**\n\nThe brand's Opportunities report: a prioritized set of ways to get cited more often, with the tracked prompts and cited pages behind each one. The same analysis the dashboard shows, from the same code.\n\nGeneration is inline and synchronous. A stored report is served while it is fresh and regenerated when it is not, so there is nothing to poll for and no way to be handed a stale one. A request that triggers a generation does wait for it. The freshness window bounds the cost: however many callers ask, one generation per brand per window. There is deliberately no `POST`, which would spend provider budget with nothing metering it per call.",
 				"operationId": "getBrandOpportunities",
 				"tags": ["Opportunities"],
-				"x-elmo-scopes": ["read"],
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				],
 				"parameters": [
 					{
 						"$ref": "#/components/parameters/BrandIdPath"
@@ -2861,7 +2872,11 @@
 				"description": "Per-prompt mention rates over the window. The analytics counterpart to `GET /prompts?brandId=`, which returns prompt configuration rather than results.\n\nA prompt the brand stopped tracking is not sampled, so it has no results over the window and does not appear here.",
 				"operationId": "listBrandPromptPerformance",
 				"tags": ["Analytics"],
-				"x-elmo-scopes": ["read"],
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				],
 				"parameters": [
 					{
 						"$ref": "#/components/parameters/BrandIdPath"
@@ -2917,7 +2932,11 @@
 				"description": "The searches engines ran while answering this brand's prompts. Engines that don't expose their searches still contribute runs, so `coverageRate` is the honest denominator.",
 				"operationId": "getBrandQueryFanout",
 				"tags": ["Analytics"],
-				"x-elmo-scopes": ["read"],
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				],
 				"parameters": [
 					{
 						"$ref": "#/components/parameters/BrandIdPath"
@@ -2944,7 +2963,6 @@
 						"name": "q",
 						"in": "query",
 						"description": "Case-insensitive substring match on the search, across every search run in the window.",
-						"required": false,
 						"schema": {
 							"type": "string"
 						}
@@ -2988,7 +3006,11 @@
 				"description": "Every tag in use on the brand's prompts, with how many carry each, enough to build the same filter the dashboard shows without paging the whole prompt list to derive it.\n\nTags are not a resource of their own: a tag exists exactly as long as some prompt carries it. `branded` and `unbranded` are computed by CiteRank.com and always listed.",
 				"operationId": "listBrandTags",
 				"tags": ["Tags"],
-				"x-elmo-scopes": ["read"],
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				],
 				"parameters": [
 					{
 						"$ref": "#/components/parameters/BrandIdPath"
@@ -3026,13 +3048,13 @@
 		"/competitors": {
 			"get": {
 				"summary": "List competitors",
+				"description": "The competitors of the brands this key can reach, newest first. Pass `brandId` for one brand's.",
 				"operationId": "listCompetitors",
 				"tags": ["Competitors"],
 				"parameters": [
 					{
 						"name": "brandId",
 						"in": "query",
-						"required": false,
 						"schema": {
 							"type": "string"
 						}
@@ -3068,11 +3090,15 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": ["read"],
-				"description": ""
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				]
 			},
 			"post": {
 				"summary": "Add a competitor",
+				"description": "A `brandId` outside the key's reach answers `400`, identically to one that does not exist. A brand tracks at most 500 competitors; adding one past that answers `409`.",
 				"operationId": "createCompetitor",
 				"tags": ["Competitors"],
 				"requestBody": {
@@ -3111,13 +3137,17 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": ["write"],
-				"description": ""
+				"security": [
+					{
+						"BearerAuth": ["write"]
+					}
+				]
 			}
 		},
 		"/competitors/{competitorId}": {
 			"get": {
 				"summary": "Get a competitor",
+				"description": "A competitor outside the key's reach answers `404`, identically to one that does not exist.",
 				"operationId": "getCompetitor",
 				"tags": ["Competitors"],
 				"parameters": [
@@ -3162,11 +3192,15 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": ["read"],
-				"description": ""
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				]
 			},
 			"patch": {
 				"summary": "Update a competitor",
+				"description": "Rename a competitor, or replace its domains or aliases. A competitor outside the key's reach answers `404`, identically to one that does not exist.",
 				"operationId": "updateCompetitor",
 				"tags": ["Competitors"],
 				"parameters": [
@@ -3220,11 +3254,15 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": ["write"],
-				"description": ""
+				"security": [
+					{
+						"BearerAuth": ["write"]
+					}
+				]
 			},
 			"delete": {
 				"summary": "Delete a competitor",
+				"description": "Permanently delete a competitor. The response is the deleted competitor.",
 				"operationId": "deleteCompetitor",
 				"tags": ["Competitors"],
 				"parameters": [
@@ -3275,8 +3313,11 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": ["write"],
-				"description": ""
+				"security": [
+					{
+						"BearerAuth": ["write"]
+					}
+				]
 			}
 		},
 		"/me": {
@@ -3285,7 +3326,6 @@
 				"description": "What this key is, which organization and brands it reaches, and which scopes it holds. Requires no scope, so it is always safe to call first when wiring up an integration.",
 				"operationId": "getMe",
 				"tags": ["Identity"],
-				"x-elmo-scopes": [],
 				"responses": {
 					"200": {
 						"description": "Describe the calling key",
@@ -3318,7 +3358,6 @@
 				"description": "The answer engines this deployment can track, so a client can build a model filter without hardcoding ids that differ between deployments.\n\nRequires no scope.",
 				"operationId": "listModels",
 				"tags": ["Models"],
-				"x-elmo-scopes": [],
 				"responses": {
 					"200": {
 						"description": "List trackable models",
@@ -3351,7 +3390,6 @@
 				"description": "One entry for an organization key: the one it acts inside. Every organization for an instance admin key. No scope required: a key can only ever see the organization it is already bound to.",
 				"operationId": "listOrganizations",
 				"tags": ["Organizations"],
-				"x-elmo-scopes": [],
 				"parameters": [
 					{
 						"$ref": "#/components/parameters/Page"
@@ -3392,7 +3430,6 @@
 				"description": "No scope required. An organization outside the key's reach answers `404`, identically to one that does not exist.",
 				"operationId": "getOrganization",
 				"tags": ["Organizations"],
-				"x-elmo-scopes": [],
 				"parameters": [
 					{
 						"name": "organizationId",
@@ -3438,7 +3475,11 @@
 				"description": "The organization's plan, its limits, and how much of each limit is already spent, enough for an integration to know a write will be rejected before attempting it.\n\nThis endpoint is read-only by construction. No API key of any kind can change a subscription, an add-on quantity, or a payment method; there is no billing write endpoint and no billing write scope. Stripe identifiers, invoices, and payment methods are never returned.\n\nDeployments without billing answer `200` with `billingEnabled: false`, a null plan, and null limits, so callers need no special case.",
 				"operationId": "getOrganizationBilling",
 				"tags": ["Organizations"],
-				"x-elmo-scopes": ["read"],
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				],
 				"parameters": [
 					{
 						"name": "organizationId",
@@ -3489,7 +3530,6 @@
 						"name": "brandId",
 						"in": "query",
 						"description": "Filter prompts by brand ID",
-						"required": false,
 						"schema": {
 							"type": "string"
 						}
@@ -3501,7 +3541,6 @@
 						"name": "limit",
 						"in": "query",
 						"description": "Items per page. Values above the maximum are clamped, not rejected. This list had no ceiling before, so the maximum is set to bound a runaway query rather than to change what an existing caller gets back.",
-						"required": false,
 						"schema": {
 							"type": "integer",
 							"minimum": 1,
@@ -3513,7 +3552,6 @@
 						"name": "enabled",
 						"in": "query",
 						"description": "Only prompts with this tracking state.",
-						"required": false,
 						"schema": {
 							"type": "boolean"
 						}
@@ -3522,7 +3560,6 @@
 						"name": "tags",
 						"in": "query",
 						"description": "Comma-separated tags. A prompt matches if it carries any of them.",
-						"required": false,
 						"schema": {
 							"type": "string"
 						}
@@ -3531,7 +3568,6 @@
 						"name": "q",
 						"in": "query",
 						"description": "Case-insensitive substring match on prompt text.",
-						"required": false,
 						"schema": {
 							"type": "string"
 						}
@@ -3597,7 +3633,11 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": ["read"]
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				]
 			},
 			"post": {
 				"summary": "Create a new prompt",
@@ -3640,7 +3680,11 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": ["write"]
+				"security": [
+					{
+						"BearerAuth": ["write"]
+					}
+				]
 			}
 		},
 		"/prompts/{promptId}": {
@@ -3691,7 +3735,11 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": ["read"]
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				]
 			},
 			"patch": {
 				"summary": "Update a prompt",
@@ -3749,7 +3797,11 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": ["write"]
+				"security": [
+					{
+						"BearerAuth": ["write"]
+					}
+				]
 			},
 			"delete": {
 				"summary": "Delete a prompt",
@@ -3818,7 +3870,6 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": [],
 				"x-elmo-admin-only": true
 			}
 		},
@@ -3828,7 +3879,11 @@
 				"description": "Individual model answers behind the aggregates, newest first, without their text, so the list stays small enough to page through. Fetch `GET /prompts/{promptId}/runs/{runId}` for the answer itself.",
 				"operationId": "listPromptRuns",
 				"tags": ["Runs"],
-				"x-elmo-scopes": ["read"],
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				],
 				"parameters": [
 					{
 						"name": "promptId",
@@ -3893,7 +3948,11 @@
 				"description": "One model answer, with its text normalized out of the provider’s response and its citations in the order the engine listed them. A run belonging to some other prompt answers `404`. The provider’s raw payload is deliberately not exposed, because its shape belongs to the provider.",
 				"operationId": "getRun",
 				"tags": ["Runs"],
-				"x-elmo-scopes": ["read"],
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				],
 				"parameters": [
 					{
 						"name": "promptId",
@@ -3988,7 +4047,6 @@
 					{
 						"name": "kMentions",
 						"in": "query",
-						"required": false,
 						"description": "Number of top competitor entities to return in mentionsTopK",
 						"schema": {
 							"type": "integer",
@@ -4000,7 +4058,6 @@
 					{
 						"name": "kCitations",
 						"in": "query",
-						"required": false,
 						"description": "Number of top cited URLs to return in citedUrlsTopK",
 						"schema": {
 							"type": "integer",
@@ -4093,7 +4150,11 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": ["read"]
+				"security": [
+					{
+						"BearerAuth": ["read"]
+					}
+				]
 			}
 		},
 		"/reports": {
@@ -4167,7 +4228,6 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": [],
 				"x-elmo-admin-only": true
 			},
 			"get": {
@@ -4243,7 +4303,6 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": [],
 				"x-elmo-admin-only": true
 			}
 		},
@@ -4267,7 +4326,6 @@
 					{
 						"name": "kMentions",
 						"in": "query",
-						"required": false,
 						"description": "Number of top competitor entities to return in each prompt's mentionsTopK",
 						"schema": {
 							"type": "integer",
@@ -4479,7 +4537,6 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": [],
 				"x-elmo-admin-only": true
 			}
 		},
@@ -4525,7 +4582,6 @@
 						"$ref": "#/components/responses/InternalServerError"
 					}
 				},
-				"x-elmo-scopes": [],
 				"x-elmo-admin-only": true
 			}
 		}

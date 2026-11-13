@@ -1,4 +1,3 @@
-import { CLOUD_SIGNUP_URL } from "@workspace/config/plans";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 // ../crisp is the module under test. It cannot be a top-level import: it latches
@@ -88,7 +87,10 @@ describe("the demo next steps", () => {
 
 		const [, nextSteps] = (shown[1]?.[2] ?? []) as [string, string];
 		const linked = [...String(nextSteps).matchAll(/\]\((https?:[^)]+)\)/g)].map((match) => match[1]);
-		expect(linked).toEqual([CLOUD_SIGNUP_URL, "https://citerank.com/agency?ref=demo-chat"]);
+		expect(linked).toEqual([
+			"https://app.citerank.com/auth/register?ref=demo-chat",
+			"https://citerank.com/agency?ref=demo-chat",
+		]);
 	});
 
 	it("is not offered on cloud, which shares the same chatbox", async () => {

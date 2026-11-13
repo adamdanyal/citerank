@@ -53,7 +53,7 @@ export function NavAppInfo() {
 							{isElmoHosted(mode) && (
 								<>
 									<DropdownMenuSeparator />
-									<DropdownMenuItem onClick={openCookiePreferences}>Cookie preferences</DropdownMenuItem>
+									<DropdownMenuItem onClick={openCookiePreferences}>Cookie Preferences</DropdownMenuItem>
 								</>
 							)}
 						</DropdownMenuContent>

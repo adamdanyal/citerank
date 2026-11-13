@@ -1,11 +1,4 @@
-/**
- * Links from the product and the CLI back to our own sites.
- *
- * Each one carries a `ref` naming the surface it was clicked from, so the
- * marketing site can tell a self-hosted operator who arrived from the sign-in
- * page apart from one who arrived from `elmo init` — the two want different
- * things and convert at very different rates.
- */
+/** Links back to our sites carry a `ref` naming the surface clicked, since each wants different things. */
 
 // Local and staging builds of the Vite apps point these elsewhere; the CLI runs outside Vite, where import.meta.env is undefined.
 const env = (import.meta as ImportMeta & { env?: Record<string, string | undefined> }).env;
@@ -14,11 +7,7 @@ export const MARKETING_SITE_URL = env?.VITE_MARKETING_SITE_URL || "https://citer
 export const CLOUD_APP_URL = env?.VITE_CLOUD_APP_URL || "https://app.citerank.com";
 const DEMO_SITE_URL = env?.VITE_DEMO_SITE_URL || "https://demo.citerank.com";
 
-/**
- * Where a link back to us was clicked. A closed set rather than free-form
- * strings: these end up in analytics, where a typo is indistinguishable from a
- * real source.
- */
+/** A closed set: in analytics a typo is indistinguishable from a real source. */
 export type ReferralSource =
 	| "cli"
 	| "self-hosted-signin"
@@ -42,7 +31,10 @@ export type ReferralSource =
 	| "marketing-vision"
 	| "marketing-about"
 	| "marketing-support"
+	| "marketing-webmcp"
 	| "demo-chat"
+	| "demo-header"
+	| "demo-read-only"
 	| "marketing-plan-basic"
 	| "marketing-plan-pro"
 	| "marketing-plan-business"
@@ -56,22 +48,19 @@ function tagged(url: string, ref: ReferralSource): string {
 	return link.toString();
 }
 
-/** A marketing-site page, tagged with where the click came from. */
 export function marketingUrl(path: string, ref: ReferralSource): string {
 	return tagged(new URL(path, MARKETING_SITE_URL).toString(), ref);
 }
 
-/** The cloud app itself, tagged with where the click came from. It routes new visitors to sign-up on its own. */
+/** Routes new visitors to sign-up on its own. */
 export function cloudAppUrl(ref: ReferralSource): string {
 	return tagged(`${CLOUD_APP_URL}/`, ref);
 }
 
-/** Cloud registration, tagged with where the click came from. */
 export function cloudSignupUrl(ref: ReferralSource): string {
 	return tagged(`${CLOUD_APP_URL}/auth/register`, ref);
 }
 
-/** The cloud pricing table, tagged with where the click came from. */
 export function cloudPricingUrl(ref: ReferralSource): string {
 	return marketingUrl("/pricing", ref);
 }
@@ -81,7 +70,6 @@ export function bookDemoUrl(ref: ReferralSource): string {
 	return marketingUrl("/agency", ref);
 }
 
-/** The live demo instance, tagged with where the click came from. */
 export function demoSiteUrl(ref: ReferralSource, path = "/"): string {
 	return tagged(new URL(path, DEMO_SITE_URL).toString(), ref);
 }

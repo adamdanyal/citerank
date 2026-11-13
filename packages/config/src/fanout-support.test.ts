@@ -19,6 +19,6 @@ describe("getFanoutSupport", () => {
 	});
 
 	it("doesn't guess for a target nobody has checked", () => {
-		expect(support("perplexity:searchapi:online").status).toBe("unknown");
+		expect(support("gemini:oxylabs:online").status).toBe("unknown");
 	});
 });
