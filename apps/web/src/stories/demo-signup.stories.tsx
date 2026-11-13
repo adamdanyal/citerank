@@ -43,7 +43,7 @@ export const HeaderCta: StoryObj = {
 	},
 	play: async ({ canvasElement }) => {
 		const link = await within(canvasElement).findByRole("link", { name: "Track Your Brand" });
-		await expect(link).toHaveAttribute("href", "https://app.elmohq.com/auth/register?ref=demo-header");
+		await expect(link).toHaveAttribute("href", "https://app.citerank.com/auth/register?ref=demo-header");
 		await expect(link).toHaveAttribute("target", "_blank");
 	},
 };
@@ -68,8 +68,8 @@ export const ReadOnlyRefusal: StoryObj = {
 	play: async ({ canvasElement }) => {
 		const alert = await within(canvasElement).findByRole("alert");
 		await expect(alert).toHaveTextContent("The demo is read-only");
-		const link = within(alert).getByRole("link", { name: "Elmo Cloud" });
-		await expect(link).toHaveAttribute("href", "https://app.elmohq.com/auth/register?ref=demo-read-only");
+		const link = within(alert).getByRole("link", { name: "CiteRank.com" });
+		await expect(link).toHaveAttribute("href", "https://app.citerank.com/auth/register?ref=demo-read-only");
 	},
 };
 

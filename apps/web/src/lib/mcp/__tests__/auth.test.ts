@@ -131,7 +131,7 @@ describe("principalLabel", () => {
 describe("resolveMcpAuth", () => {
 	it("accepts an API key without looking for a token", async () => {
 		resolveApiAuth.mockResolvedValue({ auth: orgKey });
-		await expect(resolveMcpAuth(bearer("elmo_live"))).resolves.toEqual({ auth: orgKey });
+		await expect(resolveMcpAuth(bearer("citerank_live"))).resolves.toEqual({ auth: orgKey });
 		expect(verifyMcpAccessToken).not.toHaveBeenCalled();
 	});
 
@@ -146,7 +146,7 @@ describe("resolveMcpAuth", () => {
 			},
 		};
 		resolveApiAuth.mockResolvedValue(rateLimited);
-		await expect(resolveMcpAuth(bearer("elmo_live"))).resolves.toEqual(rateLimited);
+		await expect(resolveMcpAuth(bearer("citerank_live"))).resolves.toEqual(rateLimited);
 		expect(verifyMcpAccessToken).not.toHaveBeenCalled();
 	});
 

@@ -19,7 +19,7 @@ vi.mock("@workspace/lib/db/db", () => {
 
 vi.mock("@workspace/lib/entitlements", () => ({
 	getOrgBillingState: async () => ({
-		entitlements: { planKey: "starter", standing: "active", trackingActive: true },
+		entitlements: { planKey: "basic", standing: "active", trackingActive: true },
 		subscription: { billingInterval: state.billingInterval, periodEnd: null, cancelAtPeriodEnd: false },
 	}),
 	countOrgBrands: async () => 0,

@@ -75,8 +75,8 @@ function RetiredTargetsAlert({ targets }: { targets: ModelPickerState["retiredTa
 			<AlertTitle>Some Scrape Targets No Longer Run</AlertTitle>
 			<AlertDescription>
 				<p>
-					Elmo skips these <code className="font-mono text-xs">SCRAPE_TARGETS</code> entries, so they collect no new
-					data. Update the variable and restart to track them again.
+					CiteRank.com skips these <code className="font-mono text-xs">SCRAPE_TARGETS</code> entries, so they collect no
+					new data. Update the variable and restart to track them again.
 				</p>
 				<ul className="list-disc space-y-1 pl-5">
 					{targets.map(({ target, reason, replacements }) => (
