@@ -22,6 +22,7 @@ A merge keeps every change below: where Elmo changed the same lines, git stops f
 
 1. Resolve conflicts in the files listed below. If `pnpm-lock.yaml` conflicts, take Elmo's version and run `pnpm install`; it adds our font packages back from the `package.json` files.
 2. If git says Elmo changed a file we deleted or renamed (see "Files we have removed"), keep it deleted (`git rm <file>`). New Elmo blog posts, docs pages or marketing pages arrive as new files with no conflict, so step 3 is what catches them.
+   To leave the marketing site, blog and docs exactly as they are, as Adam asked for 0.7.11, run `git checkout --no-overlay HEAD -- apps/www/src apps/www/public packages/docs/content` once those deleted files are removed. It drops every Elmo edit and new file under those three folders in one step; add the new files to "Files we have removed". `apps/www/package.json` still takes Elmo's dependency versions.
 3. Run `node scripts/citerank-brand-check.mjs`. It lists any customer-facing Elmo text the release added; rebrand each one and add the file to the table below.
 4. Test, deploy, then add a line to the log.
 
@@ -54,7 +55,7 @@ Everything runs in cloud mode (plans and billing) with no real keys.
 
 1. Once: create `citerank_demo` on port 5437 and run the migrations against it (`DATABASE_URL=postgres://postgres:postgres@127.0.0.1:5437/citerank_demo pnpm exec drizzle-kit migrate` from `packages/lib`).
 2. Seed it: `DATABASE_URL=<that URL> pnpm exec tsx scripts/demo-data/seed.ts`. Dates are relative to now, so seed just before capturing.
-3. Build the dashboard and start it on a spare port with `.env` pointing at `citerank_demo`, `DEPLOYMENT_MODE=local`, placeholder provider keys and the five AI apps the captures show: `SCRAPE_TARGETS=chatgpt:olostep:online,gemini:dataforseo:gemini-2.5-flash:online,perplexity:olostep:online,google-ai-overview:olostep:online,claude:anthropic-api:claude-haiku-5-5:online`. In `apps/web`: `pnpm exec vite build`, then `PORT=3100 node --env-file=.env .output/server/index.mjs`. A production build keeps the dev tools button out of the frame.
+3. Build the dashboard and start it on a spare port with `.env` pointing at `citerank_demo`, `DEPLOYMENT_MODE=local`, placeholder provider keys and the five AI apps the captures show: `SCRAPE_TARGETS=chatgpt:olostep:online,gemini:dataforseo:gemini-2.5-flash:online,perplexity:dataforseo:online,google-ai-overview:olostep:online,claude:anthropic-api:claude-haiku-5-5:online`. In `apps/web`: `pnpm exec vite build`, then `PORT=3100 node --env-file=.env .output/server/index.mjs`. A production build keeps the dev tools button out of the frame.
 4. Capture: `DATABASE_URL=<that URL> DASHBOARD_URL=http://localhost:3100 pnpm exec tsx scripts/demo-data/capture.ts` (or name the shots to retake). If Playwright's own browser isn't installed, set `CHROMIUM_PATH` to a cached one in `~/Library/Caches/ms-playwright`. It signs in as the demo user from `scripts/demo-data/content.ts` and draws the fictional companies' logos itself.
 5. Convert the captures to the WebP files the site uses (the PNGs stay as masters): from `apps/www`, `python3 -c "from PIL import Image; import glob; [Image.open(p).convert('RGB').resize((1600, 960), Image.LANCZOS).save(p[:-4] + '.webp', 'WEBP', quality=82, method=6) for p in glob.glob('public/screenshots/*.png')]"` (needs Pillow).
 6. If the dashboard sidebar moved, update the `y` fractions in `apps/www/src/components/home/product-demo.tsx`; `how-it-works.tsx` crops the left 17.5% of each capture.
@@ -76,7 +77,7 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | File | Why |
 | --- | --- |
 | `apps/web/vite.config.ts` | Excludes linkedom from the dev pre-bundle; without it a fresh `pnpm dev` crashes. |
-| `packages/config/src/constants.ts` | Product name, icon path, brand colour and font, docs URLs. CiteRank.com's own Crisp ID. |
+| `packages/config/src/constants.ts` | Product name, icon path, brand colour and font, docs URLs. CiteRank.com's own Crisp ID. New API keys start with `citerank_` (`API_KEY_PREFIX`). |
 | `packages/config/src/referrals.ts` | Links go to citerank.com, app.citerank.com and demo.citerank.com. Demo-booking links go to /agency. Vite builds can point the hosts elsewhere with `VITE_MARKETING_SITE_URL`, `VITE_CLOUD_APP_URL` and `VITE_DEMO_SITE_URL`. |
 | `packages/config/src/fanout-support.test.ts` | Drops the check that the providers docs page carries the per-scraper fan-out table; the customer page no longer has it. |
 | `packages/config/src/legal.ts` | Legal links go to the marketing site (`MARKETING_SITE_URL`). No cookie consent prompt while nothing sets analytics or ad cookies. |
@@ -89,16 +90,16 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | `apps/www/public/site.webmanifest`, `apps/www/src/lib/seo.ts`, `apps/www/src/lib/ai-catalog.ts`, `apps/www/src/routes/__root.tsx` | Name, colours and logo paths. |
 | `apps/web/src/components/auth/sales-panel.tsx` | Elmo's pitch with our name. The demo and GitHub links are gone, and a Book a Call link to /agency replaces the demo link. The customer quote and G2 stars are Elmo's, kept for the local demo (see "Before going live"). |
 | `apps/web/src/components/nav-app-info.tsx` | Website link goes to citerank.com; Elmo's GitHub and release links removed. |
-| `apps/web/src/components/legal-consent-notice.tsx`, `apps/web/src/components/chart-export-preview.tsx`, `apps/web/src/lib/route-head.ts`, `apps/web/src/routes/auth/login.tsx`, `apps/web/src/routes/auth/authorize.tsx`, `apps/web/src/routes/_authed/choose-plan.tsx`, `settings/billing.tsx`, `apps/web/src/routes/_authed/reports/render/$reportId.tsx` | Elmo's name, email address and domain replaced. |
+| `apps/web/src/components/legal-consent-notice.tsx`, `apps/web/src/components/chart-export-preview.tsx`, `apps/web/src/lib/route-head.ts`, `apps/web/src/routes/auth/login.tsx`, `apps/web/src/routes/auth/authorize.tsx`, `apps/web/src/routes/_authed/choose-plan.tsx`, `settings/billing.tsx`, `apps/web/src/routes/_authed/reports/render/$reportId.tsx`, `apps/web/src/components/write-error-message.tsx`, `apps/web/src/routes/_authed/app/org/$org/brand/$brand/settings/llms.tsx` | Elmo's name, email address and domain replaced. |
 | `apps/web/src/components/app-sidebar.tsx`, `settings/api.tsx` | Elmo's AEO skill and SDK snippets appear in local mode only. |
 | `apps/web/src/lib/mcp/server.ts`, `apps/web/src/lib/mcp/tools/analytics.ts` | MCP server name and instructions. |
-| `apps/web/src/server/api-keys.ts`, `packages/lib/src/auth/server.ts` | New API keys start with `citerank_`. |
 | `packages/deployment/src/email-templates.ts` | Email subjects, text and button colour. |
 | `packages/og/src/render.tsx`, `packages/og/src/fonts.ts`, `packages/og/src/vite-plugin.ts`, `packages/og/src/virtual.d.ts` | Share images: mark, wordmark, fonts, colours, tagline. |
 | `apps/web/src/server/config.ts`, `apps/web/src/lib/posthog.ts`, `apps/web/src/server.ts`, `apps/www/src/lib/posthog.ts`, `apps/www/src/lib/crisp.ts`, `apps/worker/src/telemetry.ts`, `packages/ui/src/lib/ad-tags.ts` | Elmo's analytics, chat and ad accounts switched off (see below). |
 | `packages/ui/src/consent/cookie-consent-banner.tsx` | Banner text. |
 | `apps/web/src/lib/crisp.ts` | The demo's chat greeting names CiteRank.com, and its next steps offer the tracker and the agency instead of Elmo Cloud, self-hosting and a 30-minute walkthrough. |
 | `apps/web/src/server/__tests__/config.test.ts`, `apps/web/src/lib/__tests__/crisp.test.ts` | Expect the new Crisp ID and URLs. |
+| `apps/web/src/lib/__tests__/route-head.test.ts`, `apps/web/src/lib/mcp/__tests__/auth.test.ts`, `apps/web/src/server/__tests__/billing-core.test.ts`, `apps/web/src/stories/demo-signup.stories.tsx` | Expect our name, sign-up address, key prefix and plans. |
 | `apps/web/package.json`, `apps/www/package.json`, `pnpm-lock.yaml` | Font packages. |
 | `packages/deployment/scripts/bootstrap-stripe.ts` | Stripe products are named CiteRank.com, since customers see them at checkout and on invoices. |
 | `scripts/citerank-brand-check.mjs` | New. Lists customer-facing Elmo text left after a merge. |
@@ -126,7 +127,7 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | `apps/www/src/routes/pricing.tsx`, `apps/www/src/components/pricing.tsx`, `apps/www/src/routes/about.tsx`, `apps/www/src/routes/support.tsx`, `apps/www/src/routes/legal/index.tsx` | Rewritten for CiteRank.com. |
 | `apps/www/src/routes/llms[.]txt.ts`, `apps/www/src/routes/sitemap[.]xml.ts`, `apps/www/src/routes/robots[.]txt.ts`, `apps/www/src/lib/ai-catalog.ts`, `apps/www/src/routes/[.]well-known/api-catalog.ts` | Discovery files point at citerank.com. |
 | `apps/www/src/server.ts` | CSP allows PostHog's own hosts instead of Elmo's; no Elmo status, licence or agent-skill discovery links. |
-| `apps/www/package.json` | Font packages; `dev` and `build` no longer publish Elmo's agent skill. |
+| `apps/www/package.json` | Font packages; `dev` and `build` no longer publish Elmo's agent skill or check its sitemap. No `test` script, and none of the packages Elmo added for files we do not carry (`rehype-parse`, `rehype-remark`, `remark-stringify`, `unified`, `yaml`, `@types/hast`, `vitest`). |
 | `apps/www/src/lib/openapi/index.ts` | Strips the spec's `x-elmo-*` keys from the docs pages (the app still reads them). |
 | `apps/www/src/lib/og.ts`, `apps/www/src/lib/external-link.ts`, `apps/www/src/lib/posthog.ts`, `apps/www/src/components/not-found.tsx`, `apps/www/src/components/ai-referral-banner.tsx`, `apps/www/src/components/feature-graphics.tsx`, `apps/www/src/components/cta.tsx`, `apps/www/src/components/cta-buttons.tsx`, `apps/www/src/components/docs-page-layout.tsx`, `apps/www/src/data/statistics.ts` | Elmo names, links and hosts replaced. |
 | `packages/ui/src/lib/cookie-consent.ts` | Consent storage key renamed to match the cookie policy. |
@@ -153,6 +154,7 @@ Keep these deleted when an Elmo merge reports changes to them.
 - Icons renamed: `apps/web/public/icons/elmo-icon*` and `apps/www/public/icons/elmo-icon*` became `citerank-icon*`.
 - Docs: `packages/docs/content/docs/developer-guide/`, `api/sdks.mdx`, `api/skill.mdx`.
 - Blog: `packages/docs/content/blog/getcito-vs-elmo.mdx` (renamed), `apps/www/public/authors/jared.png`.
+- Added by Elmo 0.7.11 and left out, because the marketing site stayed as it was: `apps/www/src/lib/` agent-discovery, api-catalog, auth-md, frontmatter, html-to-markdown, llms-txt, markdown-copy, page-dates, request-handler, webmcp and `__tests__/`; `apps/www/src/routes/` `auth[.]md.ts`, `[.]well-known/mcp/server-card[.]json.ts`, `[.]well-known/oauth-protected-resource.ts`, `[.]well-known/poppy[.]json.ts`; `apps/www/src/components/data-provenance.tsx`; `apps/www/vitest.config.ts`; `apps/www/scripts/check-sitemap.mjs`; blog posts `open-source-alternatives-to-profound-peec-otterly.mdx` and `verify-human-written-content.mdx`; docs pages `api/versioning.mdx`, `user-guide/agent-readiness-audit.mdx` and `user-guide/cli-lab.mdx`.
 - Open-source tools page: `apps/www/src/routes/ai-visibility-tools/category/open-source.tsx`, with its `open-source` entry in `CATEGORY_SLUGS` (`apps/www/src/lib/competitors/directory.ts`). CiteRank.com is not sold as open source.
 
 ## Elmo services switched off
@@ -190,3 +192,4 @@ Crisp support chat runs on CiteRank.com's own workspace (`CRISP_WEBSITE_ID` in `
 | 2026-11-09 | Put every marketing-site headline, section title, card title, label and link in sentence case, across 57 files. Dashboard, docs, blog posts and legal pages unchanged. Not deployed. |
 | 2026-11-09 | Added a Resources menu to the navigation (desktop dropdown and phone menu) and set up Adam and Julia Danyal as blog authors with Person schema. Not deployed. |
 | 2026-11-09 | Bylined the 57 blog posts to Adam Danyal and Julia Danyal, alternating by publication date, at Adam's instruction; each post now carries a Person author in its schema. Not deployed. |
+| 2026-11-13 | Merged Elmo 0.7.11 (from 0.7.7): Bing AI Mode replaces Copilot, Perplexity is read through its Sonar API as a premium model, Meta AI (Muse Spark 1.3) and Grok 4.7 are premium models, with Elmo's fixes to scheduled-run charging, reports, the API and MCP. The marketing site, blog and docs stay exactly as they were, at Adam's instruction, so their copy still names Copilot and 12 AI apps; the pricing page lists the new engines because it reads the plan catalog. Migration 0033 applied to both local databases. Not deployed. |
