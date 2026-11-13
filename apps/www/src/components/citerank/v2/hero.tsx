@@ -1,42 +1,22 @@
-import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
+import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS, PLANS } from "@workspace/config/plans";
 import type { ReferralSource } from "@workspace/config/referrals";
 import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import type { ReactNode } from "react";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
+import { screenshotSet } from "@/lib/screenshots";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
-import {
-	ACTION,
-	ACTION_QUIET_ON_INK,
-	AnswerSheet,
-	DISPLAY,
-	InkGlow,
-	LEAD,
-	MONO_ON_INK,
-	PANEL_INK,
-	PANEL_PAD,
-	Page,
-	SMALL,
-} from "./kit";
+import { ACTION, ACTION_QUIET_ON_INK, DISPLAY, InkGlow, LEAD, PANEL_INK, Page, SMALL } from "./kit";
 
-const DEFAULT_LEDE =
-	"See how ChatGPT, Claude, Gemini and ten other AI apps talk about your brand, and what to fix. Do it yourself, or have our agency do it every month.";
+const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
+const RUNS_PER_DAY = Math.max(...Object.values(PLANS).map((plan) => plan.standardRunsPerDay));
+const TIMES = ["", "once", "twice", "three times", "four times"][RUNS_PER_DAY] ?? `${RUNS_PER_DAY} times`;
 
-/* The fictional brand the live demo tracks, so the answer on the page is one a visitor can go and read. */
-const DEMO_ANSWER = {
-	engine: "ChatGPT",
-	question: "best help desk software for B2B SaaS",
-	lines: [
-		{ text: "For a B2B SaaS team of ten agents, most buyers end up comparing " },
-		{ text: "Quaildesk", mark: "brand" as const, cite: 1 },
-		{ text: ", which leads on shared inboxes and SLA rules, with " },
-		{ text: "Queueloft", mark: "rival" as const, cite: 2 },
-		{ text: " and " },
-		{ text: "Brookdesk", mark: "rival" as const, cite: 3 },
-		{ text: " close behind on price." },
-	],
-	sources: ["quaildesk.com/pricing", "g2.com", "reddit.com/r/saas"],
-};
+/*
+ * The first thing a stranger needs is what this is and what they get for it, in
+ * that order. So: what we do, then the two things they receive.
+ */
+const DEFAULT_LEDE = `We ask ChatGPT, Gemini and ${ENGINE_COUNT - 2} other AI apps the questions your buyers ask, ${TIMES} a day. You get a dashboard showing who they recommend, and a ranked list of what to fix.`;
 
 /* Title, lede and source are overridden when a visitor arrives from an AI assistant, or on a tested variant. */
 export function Hero({
@@ -50,48 +30,64 @@ export function Hero({
 } = {}) {
 	const signupUrl = cloudSignupUrl(from);
 	const demoUrl = demoSiteUrl(from, DEMO_BRAND_PATH);
+	const shot = screenshotSet("/screenshots/overview.webp");
 
 	return (
-		<section className={`${PANEL_INK} ${PANEL_PAD}`}>
+		<section className={`${PANEL_INK} px-6 pt-14 sm:px-10 sm:pt-16 md:px-14 md:pt-20`}>
 			<InkGlow />
-			<Page className="relative grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
-				<div className="min-w-0 lg:col-span-6">
-					<h1 className={`${DISPLAY} text-paper`}>{title}</h1>
-					<p data-speakable className={`${LEAD} mt-6 max-w-[42ch] text-zinc-400`}>
-						{lede}
-					</p>
-					<div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-						<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={ACTION}>
-							Start tracking
-						</a>
-						<a
-							href={demoUrl}
-							target="_blank"
-							rel={externalRel(demoUrl)}
-							onClick={() => trackEvent("demo_open", { from })}
-							className={ACTION_QUIET_ON_INK}
-						>
-							Try the live demo
-						</a>
+			<Page className="relative">
+				<div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-14">
+					<h1 className={`${DISPLAY} text-paper lg:col-span-7`}>{title}</h1>
+					<div className="min-w-0 lg:col-span-5">
+						<p data-speakable className={`${LEAD} text-zinc-300`}>
+							{lede}
+						</p>
+						<div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+							<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={ACTION}>
+								Start tracking
+							</a>
+							<a
+								href={demoUrl}
+								target="_blank"
+								rel={externalRel(demoUrl)}
+								onClick={() => trackEvent("demo_open", { from })}
+								className={ACTION_QUIET_ON_INK}
+							>
+								Try the live demo
+							</a>
+						</div>
+						<p className={`${SMALL} mt-5 text-zinc-400`}>
+							Plans from ${CLOUD_ENTRY_PRICE_USD} a month. No contract, cancel any time.
+						</p>
 					</div>
-					{/* A chip strips a promise of the words that explain it, so the detail stays as a sentence. */}
-					<p className={`${SMALL} mt-7 text-zinc-400`}>
-						Plans from ${CLOUD_ENTRY_PRICE_USD} a month. No contract, cancel any time.
-					</p>
 				</div>
 
-				<div className="min-w-0 lg:col-span-6">
-					<AnswerSheet
-						engine={DEMO_ANSWER.engine}
-						question={DEMO_ANSWER.question}
-						lines={DEMO_ANSWER.lines}
-						sources={DEMO_ANSWER.sources}
-						size="lg"
+				{/*
+				 * The product itself, not a drawing of it. This is the largest thing on
+				 * the first screen, so it loads eagerly and at high priority: left lazy
+				 * it would be the slowest paint on the page.
+				 */}
+				<a
+					href={demoUrl}
+					target="_blank"
+					rel={externalRel(demoUrl)}
+					onClick={() => trackEvent("demo_open", { from: "hero-screenshot" })}
+					aria-label="Open the live demo"
+					className="mt-12 block rounded-t-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust md:mt-14"
+				>
+					<img
+						src={shot.src}
+						srcSet={shot.srcSet}
+						sizes="(min-width: 1280px) 1200px, 100vw"
+						width={shot.width}
+						height={shot.height}
+						alt="The CiteRank.com dashboard: how often AI names your brand, your share of voice against competitors, sentiment, and a chart of each rival over the last 30 days"
+						loading="eager"
+						fetchPriority="high"
+						decoding="async"
+						className="w-full rounded-t-2xl bg-paper ring-1 ring-white/15"
 					/>
-					<p className={`${MONO_ON_INK} mt-4`}>
-						An answer from the live demo, kept in full with every source it cited.
-					</p>
-				</div>
+				</a>
 			</Page>
 		</section>
 	);
