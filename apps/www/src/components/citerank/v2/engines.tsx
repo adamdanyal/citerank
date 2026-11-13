@@ -1,8 +1,7 @@
 import { getModelMeta } from "@workspace/config/models";
 import { CLOUD_PLATFORMS, PREMIUM_MODELS, premiumPlanNames, STANDARD_PLATFORM_MENU } from "@workspace/config/plans";
-import type { ReactNode } from "react";
 import { EngineIcon } from "@/components/home/engines";
-import { BODY, HEADING, MONO, Page, SECTION, SMALL } from "./kit";
+import { BODY, LEAD, PANEL, PANEL_PAD, Page, PanelHead, PILL_QUIET, SMALL } from "./kit";
 
 const list = new Intl.ListFormat("en", { type: "conjunction" });
 
@@ -17,45 +16,56 @@ const GROUNDED_ONLY = PREMIUM_MODELS.filter((model) => !STANDARD_PLATFORM_MENU.i
 const label = (model: string) => getModelMeta(model).label;
 const iconId = (model: string) => ICON_OVERRIDES[model] ?? getModelMeta(model).iconId;
 
-function Column({ title, models, children }: { title: string; models: string[]; children?: ReactNode }) {
+/** Each engine is a capsule carrying its own mark, so the lineup reads as faces rather than a list. */
+function Chip({ model }: { model: string }) {
 	return (
-		<div className="flex flex-col">
-			<p className={MONO}>{title}</p>
-			<ul className="mt-4 border-t border-zinc-200">
+		<li className="inline-flex items-center gap-2.5 rounded-full bg-paper-2 py-1.5 pr-5 pl-1.5 ring-1 ring-zinc-200">
+			<span className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-zinc-200">
+				<EngineIcon iconId={iconId(model)} className="size-4" />
+			</span>
+			<span className={`${BODY} font-medium text-ink`}>{label(model)}</span>
+		</li>
+	);
+}
+
+function Group({ title, models, note }: { title: string; models: string[]; note?: string }) {
+	return (
+		<div>
+			<p>
+				<span className={PILL_QUIET}>{title}</span>
+			</p>
+			<ul className="mt-5 flex flex-wrap gap-2.5">
 				{models.map((model) => (
-					<li key={model} className="flex items-center gap-3 border-b border-zinc-200 py-3">
-						<span className="inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-paper-2">
-							<EngineIcon iconId={iconId(model)} className="size-4" />
-						</span>
-						<span className={`${BODY} text-ink`}>{label(model)}</span>
-					</li>
+					<Chip key={model} model={model} />
 				))}
 			</ul>
-			{children}
+			{note ? <p className={`${SMALL} mt-5 max-w-[52ch] text-zinc-500`}>{note}</p> : null}
 		</div>
 	);
 }
 
 export function Engines() {
 	return (
-		<section className={`${SECTION} bg-white`}>
+		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page>
-				<div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-16">
-					<h2 className={`${HEADING} text-ink lg:col-span-6`}>{MODELS.length} answer engines your buyers use</h2>
-					<p className={`${BODY} max-w-[52ch] text-zinc-600 lg:col-span-6`}>
+				<PanelHead label="Coverage" title={`${MODELS.length} answer engines your buyers use`} className="max-w-[46rem]">
+					<p className={`${LEAD} text-zinc-600`}>
 						{list.format(SCRAPED.map(label))} are checked the way a real user sees them. The rest we read through each
 						company's API.
 					</p>
-				</div>
+				</PanelHead>
 
-				<div className="mt-14 grid gap-10 sm:grid-cols-2 sm:gap-12">
-					<Column title="Read in the app" models={SCRAPED}>
-						<p className={`${SMALL} mt-6 max-w-[40ch] text-zinc-500`}>
-							{list.format(GROUNDED_ONLY.map(label))} answer with their own web search on, included on{" "}
-							{premiumPlanNames()}.
-						</p>
-					</Column>
-					<Column title="Read through the API" models={BY_API} />
+				<div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-12">
+					<Group
+						title="Read in the app"
+						models={SCRAPED}
+						note="Scraped from the real interface your customers see, not approximated through an API."
+					/>
+					<Group
+						title="Read through the API"
+						models={BY_API}
+						note={`${list.format(GROUNDED_ONLY.map(label))} answer with their own web search on, included on ${premiumPlanNames()}.`}
+					/>
 				</div>
 			</Page>
 		</section>

@@ -1,11 +1,30 @@
-import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
+import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS, PLANS } from "@workspace/config/plans";
 import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
-import { ACTION, ACTION_QUIET_ON_INK, AnswerSheet, DISPLAY, LEAD, MONO_ON_INK, Page, SMALL } from "./kit";
+import {
+	ACTION,
+	ACTION_QUIET_ON_INK,
+	AnswerSheet,
+	DISPLAY,
+	Go,
+	InkGlow,
+	LEAD,
+	MONO_ON_INK,
+	PANEL_INK,
+	PANEL_PAD,
+	Page,
+	PILL_INK,
+} from "./kit";
 
 const FROM = "marketing-hero";
+
+const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
+const RUNS_PER_DAY = Math.max(...Object.values(PLANS).map((plan) => plan.standardRunsPerDay));
+
+/* The three facts a visitor needs before the first click, as capsules rather than a paragraph. */
+const PROOF = [`${ENGINE_COUNT} AI apps`, `${RUNS_PER_DAY} checks a day`, "No contract"];
 
 /* The fictional brand the live demo tracks, so the answer on the page is one a visitor can go and read. */
 const DEMO_ANSWER = {
@@ -28,12 +47,15 @@ export function Hero() {
 	const demoUrl = demoSiteUrl(FROM, DEMO_BRAND_PATH);
 
 	return (
-		<section className="-mt-16 bg-ink pt-28 pb-20 md:pt-36 md:pb-24">
-			<Page className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
-				<div className="lg:col-span-6">
-					<h1 className={`${DISPLAY} text-paper`}>Track your brand in AI search</h1>
-					<div className="mt-7 h-0.5 w-16 bg-rust" />
-					<p className={`${LEAD} mt-7 max-w-[42ch] text-zinc-400`}>
+		<section className={`${PANEL_INK} ${PANEL_PAD}`}>
+			<InkGlow />
+			<Page className="relative grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
+				<div className="min-w-0 lg:col-span-6">
+					<p>
+						<span className={PILL_INK}>AI visibility tracking</span>
+					</p>
+					<h1 className={`${DISPLAY} mt-7 text-paper`}>Track your brand in AI search</h1>
+					<p className={`${LEAD} mt-6 max-w-[42ch] text-zinc-400`}>
 						CiteRank.com is the AI visibility tracker and AI search agency for AEO and GEO. See how ChatGPT, Claude,
 						Gemini and ten other AI apps talk about your brand and what to fix. Do it yourself, or have our agency do it
 						every month.
@@ -41,6 +63,7 @@ export function Hero() {
 					<div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
 						<a href={signupUrl} onClick={() => trackEvent("signup_click", { from: FROM })} className={ACTION}>
 							Start tracking
+							<Go />
 						</a>
 						<a
 							href={demoUrl}
@@ -52,12 +75,17 @@ export function Hero() {
 							Try the live demo
 						</a>
 					</div>
-					<p className={`${SMALL} mt-6 text-zinc-400`}>
-						Tracker plans from ${CLOUD_ENTRY_PRICE_USD} a month. No contract, cancel any time.
-					</p>
+					<ul className="mt-7 flex flex-wrap gap-2">
+						{PROOF.map((fact) => (
+							<li key={fact} className={PILL_INK}>
+								{fact}
+							</li>
+						))}
+						<li className={PILL_INK}>From ${CLOUD_ENTRY_PRICE_USD} a month</li>
+					</ul>
 				</div>
 
-				<div className="lg:col-span-6">
+				<div className="min-w-0 lg:col-span-6">
 					<AnswerSheet
 						engine={DEMO_ANSWER.engine}
 						question={DEMO_ANSWER.question}

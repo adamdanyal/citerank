@@ -1,7 +1,9 @@
 import { CLOUD_PLATFORMS, PLANS } from "@workspace/config/plans";
+import { cloudSignupUrl } from "@workspace/config/referrals";
 import type { ReactNode } from "react";
+import { trackEvent } from "@/lib/posthog";
 import { screenshotSet } from "@/lib/screenshots";
-import { BODY, HEADING, MONO, Page, SECTION, SUBHEAD } from "./kit";
+import { ACTION, BODY, Go, PANEL, PANEL_PAD, Page, PanelHead, PILL_RUST, SUBHEAD } from "./kit";
 
 const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
 const BASIC_ANSWERS_PER_DAY = PLANS.basic.maxPrompts * PLANS.basic.platformPicks * PLANS.basic.standardRunsPerDay;
@@ -56,30 +58,44 @@ const STEPS = [
 
 export function HowItWorks() {
 	return (
-		<section className={`${SECTION} bg-paper-2`}>
+		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page>
-				<h2 className={`${HEADING} max-w-[16ch] text-ink`}>How CiteRank.com works</h2>
-				<div className="mt-16 space-y-20 md:mt-20 md:space-y-28">
+				<PanelHead label="How it works" title="How CiteRank.com works" className="max-w-[46rem]" />
+
+				<div className="mt-12 space-y-5">
 					{STEPS.map((step, index) => (
-						<article key={step.title} className="grid items-center gap-8 md:grid-cols-12 md:gap-12">
-							<div className={`md:col-span-4 ${index % 2 === 1 ? "md:order-2" : ""}`}>
-								<p className={MONO}>{String(index + 1).padStart(2, "0")}</p>
-								<h3 className={`${SUBHEAD} mt-4 text-ink`}>{step.title}</h3>
-								<p className={`${BODY} mt-4 text-zinc-600`}>{step.body}</p>
+						<article key={step.title} className="rounded-2xl bg-paper-2 p-5 sm:p-7">
+							<div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-8">
+								<p className="shrink-0">
+									<span className={PILL_RUST}>Step {index + 1}</span>
+								</p>
+								<div>
+									<h3 className={`${SUBHEAD} text-ink`}>{step.title}</h3>
+									<p className={`${BODY} mt-3 max-w-[62ch] text-zinc-600`}>{step.body}</p>
+								</div>
 							</div>
-							<div className={`md:col-span-8 ${index % 2 === 1 ? "md:order-1" : ""}`}>
-								<img
-									{...screenshotSet(step.shot.src)}
-									alt={step.shot.alt}
-									loading="lazy"
-									decoding="async"
-									sizes="(min-width: 768px) 62vw, 100vw"
-									className="w-full rounded-xl ring-1 ring-zinc-200"
-								/>
-							</div>
+							<img
+								{...screenshotSet(step.shot.src)}
+								alt={step.shot.alt}
+								loading="lazy"
+								decoding="async"
+								sizes="(min-width: 1180px) 1010px, 100vw"
+								className="mt-6 w-full rounded-xl bg-white ring-1 ring-zinc-200"
+							/>
 						</article>
 					))}
 				</div>
+
+				<p className="mt-10">
+					<a
+						href={cloudSignupUrl("marketing-cta")}
+						onClick={() => trackEvent("signup_click", { from: "marketing-how-it-works" })}
+						className={ACTION}
+					>
+						Start tracking
+						<Go />
+					</a>
+				</p>
 			</Page>
 		</section>
 	);

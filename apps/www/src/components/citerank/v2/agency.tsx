@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { trackEvent } from "@/lib/posthog";
-import { ACTION, BODY, HEADING, MONO, Page, SECTION, SMALL } from "./kit";
+import { ACTION, BODY, CARD_INK, Go, InkGlow, LEAD, PANEL_INK, PANEL_PAD, Page, PanelHead, PILL_INK } from "./kit";
 
 const WORK = [
 	{ tag: "Content", text: "Writes the comparison, alternatives and guide pages your site is missing" },
@@ -13,34 +13,32 @@ const WORK = [
 
 export function Agency() {
 	return (
-		<section className={`${SECTION} bg-paper-2`}>
-			<Page className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-				<div className="lg:col-span-5">
-					<h2 className={`${HEADING} text-ink`}>We do the work for you</h2>
-					<p className={`${BODY} mt-6 max-w-[42ch] text-zinc-600`}>
-						The tracker ranks what to do next. Our agency does it every month and reports the AI answers before and
-						after.
-					</p>
-					<Link
-						to="/agency"
-						onClick={() => trackEvent("agency_call_click", { from: "home" })}
-						className={`${ACTION} mt-8`}
-					>
+		<section className={`${PANEL_INK} ${PANEL_PAD}`}>
+			<InkGlow />
+			<Page className="relative">
+				<div className="flex flex-wrap items-end justify-between gap-8">
+					<PanelHead label="Agency" title="We do the work for you" onInk>
+						<p className={`${LEAD} max-w-[44ch] text-zinc-400`}>
+							The tracker ranks what to do next. Our agency does it every month and reports the AI answers before and
+							after.
+						</p>
+					</PanelHead>
+					<Link to="/agency" onClick={() => trackEvent("agency_call_click", { from: "home" })} className={ACTION}>
 						Book a call
+						<Go />
 					</Link>
 				</div>
-				<div className="lg:col-span-7">
-					<p className={MONO}>What a month includes</p>
-					<ul className="mt-4 border-t border-zinc-200">
-						{WORK.map((item) => (
-							<li key={item.text} className="flex gap-6 border-b border-zinc-200 py-4">
-								<span className={`${MONO} w-24 shrink-0 pt-1`}>{item.tag}</span>
-								<span className={`${BODY} text-ink`}>{item.text}</span>
-							</li>
-						))}
-					</ul>
-					<p className={`${SMALL} mt-4 text-zinc-500`}>Reported with the AI answers before and after.</p>
-				</div>
+
+				<ul className="mt-12 grid gap-4 md:grid-cols-2">
+					{WORK.map((item) => (
+						<li key={item.text} className={CARD_INK}>
+							<p>
+								<span className={PILL_INK}>{item.tag}</span>
+							</p>
+							<p className={`${BODY} mt-4 text-zinc-300`}>{item.text}</p>
+						</li>
+					))}
+				</ul>
 			</Page>
 		</section>
 	);

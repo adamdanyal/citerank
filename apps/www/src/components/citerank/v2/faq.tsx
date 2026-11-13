@@ -1,26 +1,27 @@
 import type { ReactNode } from "react";
 import { externalRel } from "@/lib/external-link";
 import type { FaqItem } from "@/lib/faqs";
-import { BODY, HEADING, LINK, Page, SECTION, SUBHEAD } from "./kit";
+import { BODY, LINK, PANEL, PANEL_PAD, Page, PanelHead, SUBHEAD } from "./kit";
 
 /** Answers stay open: nothing to click, and the same text crawlers and the FAQPage JSON-LD read. */
 export function Faq({ items }: { items: FaqItem[] }) {
 	return (
-		<section className={`${SECTION} bg-white`}>
+		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page className="grid gap-12 lg:grid-cols-12 lg:gap-16">
 				<div className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
-					<h2 className={`${HEADING} text-ink`}>Frequently asked questions</h2>
-					<p className={`${BODY} mt-6 text-zinc-600`}>
-						Something we didn't cover? Email us at{" "}
-						<a href="mailto:team@citerank.com" className={`${LINK} text-ink`}>
-							team@citerank.com
-						</a>
-						.
-					</p>
+					<PanelHead label="Questions" title="Frequently asked questions">
+						<p className={`${BODY} text-zinc-600`}>
+							Something we didn't cover? Email us at{" "}
+							<a href="mailto:team@citerank.com" className={`${LINK} text-ink`}>
+								team@citerank.com
+							</a>
+							.
+						</p>
+					</PanelHead>
 				</div>
-				<dl className="border-t border-zinc-200 lg:col-span-8">
+				<dl className="space-y-4 lg:col-span-8">
 					{items.map((item) => (
-						<div key={item.question} className="border-b border-zinc-200 py-7">
+						<div key={item.question} className="rounded-2xl bg-paper-2 p-6 sm:p-7">
 							<dt className={`${SUBHEAD} text-ink`}>{item.question}</dt>
 							<dd className={`${BODY} mt-3 max-w-[66ch] text-zinc-600`}>
 								<Answer item={item} />

@@ -3,20 +3,19 @@ import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { screenshotSet } from "@/lib/screenshots";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
-import { ACTION, BODY, HEADING, Page, SECTION } from "./kit";
+import { ACTION, Go, LEAD, PANEL, PANEL_PAD, Page, PanelHead } from "./kit";
 
 export function Demo() {
 	const demoUrl = demoSiteUrl("marketing-page-cta", DEMO_BRAND_PATH);
 	return (
-		<section className={`${SECTION} bg-paper-2`}>
+		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page>
-				<div className="flex flex-wrap items-end justify-between gap-6">
-					<div>
-						<h2 className={`${HEADING} text-ink`}>Try the real product</h2>
-						<p className={`${BODY} mt-5 max-w-[46ch] text-zinc-600`}>
+				<div className="flex flex-wrap items-end justify-between gap-8">
+					<PanelHead label="Live demo" title="Try the real product">
+						<p className={`${LEAD} max-w-[46ch] text-zinc-600`}>
 							No slides and no sales call. Click through every page of the real product before you pay.
 						</p>
-					</div>
+					</PanelHead>
 					<a
 						href={demoUrl}
 						target="_blank"
@@ -25,6 +24,7 @@ export function Demo() {
 						className={ACTION}
 					>
 						Open the live demo
+						<Go />
 					</a>
 				</div>
 				<a
@@ -32,15 +32,15 @@ export function Demo() {
 					target="_blank"
 					rel={externalRel(demoUrl)}
 					aria-label="Open the live demo"
-					className="mt-12 block rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust"
+					className="mt-12 block rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust"
 				>
 					<img
 						{...screenshotSet("/screenshots/overview.webp")}
 						alt="The CiteRank.com overview page in the live demo"
 						loading="lazy"
 						decoding="async"
-						sizes="(min-width: 1180px) 1132px, 100vw"
-						className="w-full rounded-xl ring-1 ring-zinc-300"
+						sizes="(min-width: 1180px) 1120px, 100vw"
+						className="w-full rounded-2xl bg-paper-2 ring-1 ring-zinc-200"
 					/>
 				</a>
 			</Page>

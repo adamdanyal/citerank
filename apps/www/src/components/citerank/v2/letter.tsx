@@ -1,4 +1,4 @@
-import { BODY, HEADING, MONO, Page, SECTION } from "./kit";
+import { BODY, HEADING, MONO, PANEL, PANEL_PAD, Page, PILL_QUIET } from "./kit";
 
 const PARAGRAPHS = [
 	"Your buyers ask ChatGPT, Perplexity or Gemini which product to pick. The answer names two or three brands. There is no page two, and nothing tells you whether you were in it.",
@@ -10,10 +10,14 @@ const PARAGRAPHS = [
 /* A letter, set as one: narrow measure, the opening line large, the signature at the end. */
 export function Letter() {
 	return (
-		<section className={`${SECTION} bg-white`}>
+		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page>
 				<div className="mx-auto max-w-[46rem]">
-					<div className="flex items-center gap-4 border-b border-zinc-200 pb-6">
+					<p>
+						<span className={PILL_QUIET}>From the founder</span>
+					</p>
+
+					<div className="mt-8 flex items-center gap-4 border-b border-zinc-200 pb-6">
 						<img
 							src="/founder.jpg"
 							alt="Adam Danyal"

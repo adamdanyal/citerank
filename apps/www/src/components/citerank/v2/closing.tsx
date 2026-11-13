@@ -3,7 +3,7 @@ import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
-import { ACTION, ACTION_QUIET_ON_INK, HEADING, LEAD, Page } from "./kit";
+import { ACTION, ACTION_QUIET_ON_INK, Go, HEADING, InkGlow, LEAD, PANEL_INK, PANEL_PAD, Page } from "./kit";
 
 const FROM = "marketing-closing";
 
@@ -11,8 +11,9 @@ export function Closing() {
 	const signupUrl = cloudSignupUrl(FROM);
 	const demoUrl = demoSiteUrl(FROM, DEMO_BRAND_PATH);
 	return (
-		<section className="bg-ink py-20 md:py-28">
-			<Page className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-16">
+		<section className={`${PANEL_INK} ${PANEL_PAD}`}>
+			<InkGlow />
+			<Page className="relative grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-16">
 				<div className="lg:col-span-7">
 					<h2 className={`${HEADING} max-w-[18ch] text-paper`}>Know where you stand in AI search</h2>
 					<p className={`${LEAD} mt-6 max-w-[46ch] text-zinc-400`}>
@@ -22,6 +23,7 @@ export function Closing() {
 				<div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center lg:col-span-5 lg:justify-end">
 					<a href={signupUrl} onClick={() => trackEvent("signup_click", { from: FROM })} className={ACTION}>
 						Start tracking
+						<Go />
 					</a>
 					<a
 						href={demoUrl}

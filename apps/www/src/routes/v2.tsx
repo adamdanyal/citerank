@@ -22,9 +22,9 @@ export const Route = createFileRoute("/v2")({
 
 function V2Preview() {
 	return (
-		<div className="min-h-screen bg-paper antialiased">
+		<div className="min-h-screen bg-paper-2 antialiased">
 			<Navbar />
-			<main>
+			<main className="mx-auto w-full max-w-[1288px] space-y-3 px-3 pb-3 sm:px-4 sm:pb-4 md:space-y-4 md:px-5 md:pb-5">
 				<Hero />
 				<Engines />
 				<HowItWorks />
