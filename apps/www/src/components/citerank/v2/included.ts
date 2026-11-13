@@ -26,8 +26,8 @@ export const INCLUDED = [
 		body: "Not a dashboard to interpret. A list: write this page, update that one, get listed on this review site.",
 	},
 	{
-		title: "Everyone on your team can log in",
-		body: "We do not charge per person. If you want the numbers inside your own spreadsheets or software, you can have them there too.",
+		title: "Unlimited seats, a REST API and an MCP server",
+		body: "No per-person charge, and the data reaches your own tools and AI assistants rather than staying locked in a dashboard.",
 	},
 	{
 		title: "Cancel whenever you like",
