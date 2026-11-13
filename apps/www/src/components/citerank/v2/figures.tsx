@@ -1,4 +1,4 @@
-import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS, PLANS } from "@workspace/config/plans";
+import { CLOUD_PLATFORMS, PLANS } from "@workspace/config/plans";
 import { InkGlow, PANEL_INK, PANEL_PAD, Page, SMALL } from "./kit";
 
 const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
@@ -13,7 +13,7 @@ const FIGURES = [
 	{ value: `${RUNS_PER_DAY}×`, label: "a day, so you see the trend and not a snapshot" },
 	{
 		value: BASIC_ANSWERS_PER_DAY.toLocaleString("en-US"),
-		label: `answers a day on the $${CLOUD_ENTRY_PRICE_USD} plan`,
+		label: "answers a day, even on the entry plan",
 	},
 ];
 

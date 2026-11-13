@@ -25,6 +25,16 @@
 	}
 }
 
+/* Scoped to the v2 preview so the browser's own surfaces carry the brand there without changing the live pages. */
+.cr-v2 ::selection {
+	background-color: #f6e2d8;
+	color: #1a1917;
+}
+.cr-v2 {
+	caret-color: #b84d25;
+	scrollbar-color: #d6d0c6 #f4f3f0;
+}
+
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);

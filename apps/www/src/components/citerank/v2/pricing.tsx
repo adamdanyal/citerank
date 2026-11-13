@@ -80,6 +80,7 @@ export function Pricing() {
 					<p className={`${LEAD} text-zinc-600`}>Every plan includes your whole team and API access.</p>
 				</PanelHead>
 
+				{/* The hero already names what every plan includes; here the plans only show what differs. */}
 				<div className="mt-12 grid gap-5 md:grid-cols-3">
 					{PLAN_KEYS.map((key) => (
 						<PlanCard key={key} planKey={key} />
@@ -112,7 +113,7 @@ export function Pricing() {
 				</div>
 
 				<p className={`${SMALL} mt-8 text-zinc-500`}>
-					Pay monthly or yearly by card. Cancel any time from your account.{" "}
+					Pay monthly or yearly by card.{" "}
 					<Link to="/pricing" className={`${LINK} text-ink`}>
 						Compare every plan
 					</Link>

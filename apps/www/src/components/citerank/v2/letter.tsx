@@ -3,7 +3,7 @@ import { BODY, HEADING, MONO, PANEL, PANEL_PAD_WIDE, Page, PILL_QUIET } from "./
 const PARAGRAPHS = [
 	"Your buyers ask ChatGPT, Perplexity or Gemini which product to pick. The answer names two or three brands. There is no page two, and nothing tells you whether you were in it.",
 	"So you check by hand: one prompt, one app, one day. It says nothing about the trend or what to change. The big tools are sold with sales calls and yearly contracts.",
-	"CiteRank.com is the tracker we wanted instead. It asks 13 AI apps your buyers' questions up to four times a day, keeps every answer and ranks what to fix. If nobody has time for the fixes, our agency does them.",
+	"CiteRank.com is the tracker we wanted instead. If nobody on your side has time for the fixes it finds, our agency does them.",
 	"Try the live demo first. If it is useful, start tracking. We would be glad to have you.",
 ];
 

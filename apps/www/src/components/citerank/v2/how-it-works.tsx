@@ -18,8 +18,9 @@ const STEPS = [
 		title: "We ask AI your buyers' questions",
 		body: (
 			<>
-				{ENGINE_COUNT} AI apps, four times a day, every answer kept with the brands it named and the sources it cited.
-				On Basic that is <Figure>up to {BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day</Figure>.
+				We put your buyers&apos; questions to every engine and keep{" "}
+				<Figure>the answer whole, with the brands it named and the sources it cited</Figure>. Nothing is sampled or
+				summarised away.
 			</>
 		),
 		shot: {
@@ -44,8 +45,8 @@ const STEPS = [
 		title: "Know what to fix",
 		body: (
 			<>
-				Opportunities ranks the fixes, biggest win first: a page to write, a page to update, a review site to get on.{" "}
-				<Figure>Do them yourself, or hand them to our agency.</Figure>
+				Opportunities ranks the fixes, <Figure>biggest win first</Figure>: a page to write, a page to update, a review
+				site to get on.
 			</>
 		),
 		shot: {
