@@ -191,6 +191,41 @@ export const aiSearchEngines: AiSearchEngine[] = [
 		related: ["chatgpt", "perplexity"],
 	},
 	{
+		slug: "bing-ai-mode",
+		name: "Bing AI Mode",
+		vendor: "Microsoft",
+		short: "Get cited in the AI answer Bing writes above its results, the Microsoft surface anyone can see signed out.",
+		intro: [
+			"Bing AI Mode is the AI answer Microsoft shows inside Bing itself. It answers the question in a few lines, links the pages it used, and appears without a sign-in, which also makes it the Microsoft surface you can measure. The Copilot app now asks visitors to sign in, so it is no longer readable.",
+			"Every source comes from Bing's index, so this is the one engine where ordinary search hygiene is the direct lever. A page Bing cannot crawl, has not indexed, or does not trust cannot be cited here, whatever it does in Google.",
+		],
+		steps: [
+			{
+				name: "Get indexed in Bing, not only Google",
+				text: "Verify your site in Bing Webmaster Tools and check that your important pages are actually indexed there. Bing keeps its own index, and a page missing from it cannot be quoted.",
+			},
+			{
+				name: "Tell Bing when a page changes",
+				text: "Bing reads IndexNow, so submitting a URL when you publish or update it puts the new version in front of the crawler instead of waiting for the next visit.",
+			},
+			{
+				name: "Answer in the first lines",
+				text: "The answer is assembled from short, self-contained passages. Put a direct answer under a heading that matches the question, then the supporting detail beneath it.",
+			},
+			{
+				name: "Mark up the facts",
+				text: "Schema markup helps Bing read prices, availability, ratings and company details correctly, and those are the facts that end up quoted.",
+			},
+			{
+				name: "Read the sources it cites",
+				text: "Track the questions your buyers ask and look at which pages Bing picks. The cited set shows where to publish next, and whether your Bing-side fixes paid off.",
+			},
+		],
+		tracking:
+			"CiteRank.com asks your prompts in Bing's own interface and keeps each answer in full, with every source it cited. You see how often Bing AI Mode names your brand, which competitors it names instead, and which pages it draws on. It is one of the AI apps you can pick on every plan.",
+		related: ["copilot", "google-ai-overviews", "chatgpt"],
+	},
+	{
 		slug: "copilot",
 		name: "Microsoft Copilot",
 		vendor: "Microsoft",
@@ -223,7 +258,7 @@ export const aiSearchEngines: AiSearchEngine[] = [
 		],
 		tracking:
 			"The Copilot app now asks visitors to sign in, so CiteRank.com tracks Bing AI Mode instead: Microsoft's AI answer in Bing, built on the same index. You see how it mentions and cites your brand across your prompts, and the payoff from Bing-side improvements over time.",
-		related: ["chatgpt", "google-ai-overviews"],
+		related: ["bing-ai-mode", "chatgpt", "google-ai-overviews"],
 	},
 	{
 		slug: "grok",
