@@ -29,11 +29,10 @@ export function Container({ children, className = "" }: { children: ReactNode; c
 	return <div className={`mx-auto max-w-6xl px-4 md:px-6 ${className}`}>{children}</div>;
 }
 
-export const CARD =
-	"rounded-2xl bg-white ring-1 ring-zinc-200 shadow-[0_1px_2px_rgb(26_25_23/0.04),0_16px_40px_-24px_rgb(26_25_23/0.2)]";
-export const ICON_BOX = "inline-flex size-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-700";
-/** A whole card as one link: the surface lifts a little on hover. */
-export const LINK_CARD = `group flex h-full w-full flex-col p-5 ${CARD} transition-[box-shadow,transform] duration-300 ${EASE_CLASS} hover:-translate-y-0.5 hover:ring-zinc-300 ${FOCUS}`;
+export const CARD = "rounded-2xl bg-paper-2 ring-1 ring-zinc-200";
+export const ICON_BOX = "inline-flex size-10 shrink-0 items-center justify-center rounded-lg bg-rust/10 text-blue-800";
+/** A whole card as one link: its edge darkens on hover, rather than every card lifting the same way. */
+export const LINK_CARD = `group flex h-full w-full flex-col p-5 ${CARD} transition-[box-shadow] duration-200 hover:ring-zinc-400 ${FOCUS}`;
 
 export const WINDOW_FRAME =
 	"rounded-2xl bg-white p-2 shadow-[0_1px_2px_rgb(26_25_23/0.05),0_40px_80px_-40px_rgb(26_25_23/0.35)]";

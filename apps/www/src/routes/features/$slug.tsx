@@ -1,24 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { cloudSignupUrl } from "@workspace/config/referrals";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
-import { Closing } from "@/components/citerank/home/closing";
-import { Faq } from "@/components/citerank/home/faq";
-import {
-	CARD,
-	Container,
-	EASE_CLASS,
-	LINK_CARD,
-	LinkArrow,
-	PRIMARY_BUTTON_LG,
-	QUIET_LINK,
-	Reveal,
-	RevealItem,
-	SECONDARY_BUTTON_LG,
-	TEXT_LINK,
-} from "@/components/citerank/ui";
+import { Check } from "lucide-react";
+import { EASE_CLASS, LINK_CARD, QUIET_LINK, Reveal, RevealItem, TEXT_LINK } from "@/components/citerank/ui";
+import { Closing } from "@/components/citerank/v2/closing";
+import { Faq } from "@/components/citerank/v2/faq";
+import { ACTION, ACTION_QUIET, CARD, MONO, PANEL, PANEL_PAD, Page } from "@/components/citerank/v2/kit";
+import { PageShell } from "@/components/citerank/v2/shell";
 import { FeatureGraphic, featurePath } from "@/components/features";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
 import { type FeatureLink, getProductFeature, type ProductFeature } from "@/data/features";
 import { FEATURE_SLUGS, getFeatureLabel, indexableFeatureKeys } from "@/lib/competitors";
 import { trackEvent } from "@/lib/posthog";
@@ -76,13 +64,12 @@ export const Route = createFileRoute("/features/$slug")({
 function FeatureHero({ feature }: { feature: ProductFeature }) {
 	const signupUrl = cloudSignupUrl(FROM);
 	return (
-		<section className="-mt-16 bg-paper">
-			<Container className="pt-28 pb-16 lg:pt-32 lg:pb-24">
+		<section className={`${PANEL} ${PANEL_PAD}`}>
+			<Page className="lg: lg:">
 				<Link
 					to="/features"
 					className={`caption-2 inline-flex items-center gap-1 rounded-sm text-zinc-500 transition-colors duration-300 ${EASE_CLASS} hover:text-zinc-950`}
 				>
-					<ArrowLeft className="size-3" aria-hidden="true" />
 					All features
 				</Link>
 				<div className="mt-8 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
@@ -90,15 +77,10 @@ function FeatureHero({ feature }: { feature: ProductFeature }) {
 						<h1 className="heading-1 text-zinc-950">{feature.title}</h1>
 						<p className="body-8 mt-6 text-zinc-600">{feature.lede}</p>
 						<div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-							<a
-								href={signupUrl}
-								onClick={() => trackEvent("signup_click", { from: FROM })}
-								className={PRIMARY_BUTTON_LG}
-							>
+							<a href={signupUrl} onClick={() => trackEvent("signup_click", { from: FROM })} className={ACTION}>
 								Start tracking
-								<ArrowRight className="size-4" aria-hidden="true" />
 							</a>
-							<Link to="/agency" className={SECONDARY_BUTTON_LG}>
+							<Link to="/agency" className={ACTION_QUIET}>
 								Have us do the work
 							</Link>
 						</div>
@@ -114,7 +96,7 @@ function FeatureHero({ feature }: { feature: ProductFeature }) {
 						<FeatureGraphic graphic={feature.graphic} />
 					</div>
 				</div>
-			</Container>
+			</Page>
 		</section>
 	);
 }
@@ -135,8 +117,8 @@ function Steps({ feature }: { feature: ProductFeature }) {
 		</ol>
 	);
 	return (
-		<section className="bg-white">
-			<Container className="py-20 lg:py-24">
+		<section className={`${PANEL} ${PANEL_PAD}`}>
+			<Page className="lg:">
 				{secondary ? (
 					<div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
 						<div className="lg:col-span-5">
@@ -157,15 +139,15 @@ function Steps({ feature }: { feature: ProductFeature }) {
 						{steps}
 					</>
 				)}
-			</Container>
+			</Page>
 		</section>
 	);
 }
 
 function Metrics({ feature }: { feature: ProductFeature }) {
 	return (
-		<section className="bg-paper-2">
-			<Container className="grid gap-10 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
+		<section className={`${PANEL} ${PANEL_PAD}`}>
+			<Page className="grid gap-10 lg:grid-cols-12 lg:gap-16 lg:">
 				<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
 					<h2 className="heading-2 text-zinc-950">Data you can act on</h2>
 				</Reveal>
@@ -179,15 +161,15 @@ function Metrics({ feature }: { feature: ProductFeature }) {
 						))}
 					</dl>
 				</Reveal>
-			</Container>
+			</Page>
 		</section>
 	);
 }
 
 function UseCasesAndWhy({ feature }: { feature: ProductFeature }) {
 	return (
-		<section className="bg-white">
-			<Container className="grid gap-5 py-20 lg:grid-cols-2 lg:py-24">
+		<section className={`${PANEL} ${PANEL_PAD}`}>
+			<Page className="grid gap-5 lg:grid-cols-2 lg:">
 				<Reveal className={`${CARD} p-6 md:p-8`}>
 					<h2 className="heading-5 text-zinc-950">Use cases</h2>
 					<ul className="mt-6 space-y-4">
@@ -210,15 +192,15 @@ function UseCasesAndWhy({ feature }: { feature: ProductFeature }) {
 						))}
 					</ul>
 				</Reveal>
-			</Container>
+			</Page>
 		</section>
 	);
 }
 
 function LearnMore({ links }: { links: FeatureLink[] }) {
 	return (
-		<section className="bg-paper">
-			<Container className="py-20 lg:py-24">
+		<section className={`${PANEL} ${PANEL_PAD}`}>
+			<Page className="lg:">
 				<Reveal>
 					<h2 className="heading-3 text-zinc-950">Related guides</h2>
 				</Reveal>
@@ -226,45 +208,38 @@ function LearnMore({ links }: { links: FeatureLink[] }) {
 					{links.map((l, i) => (
 						<RevealItem key={l.href} delay={(i % 3) * 80} className="flex">
 							<a href={l.href} className={LINK_CARD}>
-								<span className="caption-3 text-zinc-500">{l.kind}</span>
+								<span className={MONO}>{l.kind}</span>
 								<span className="title-3 mt-2 text-zinc-950">{l.title}</span>
 							</a>
 						</RevealItem>
 					))}
 				</ul>
-			</Container>
+			</Page>
 		</section>
 	);
 }
 
 function RelatedFeatures({ related }: { related: ProductFeature[] }) {
 	return (
-		<section className="bg-white">
-			<Container className="py-20 lg:py-24">
+		<section className={`${PANEL} ${PANEL_PAD}`}>
+			<Page className="lg:">
 				<Reveal className="flex flex-wrap items-center justify-between gap-4">
 					<h2 className="heading-3 text-zinc-950">Related features</h2>
 					<Link to="/features" className={TEXT_LINK}>
 						All features
-						<LinkArrow />
 					</Link>
 				</Reveal>
 				<ul className="mt-8 grid gap-4 md:grid-cols-3">
 					{related.map((f, i) => (
 						<RevealItem key={f.slug} delay={i * 80} className="flex">
 							<a href={featurePath(f.slug)} className={LINK_CARD}>
-								<span className="title-2 flex items-start justify-between gap-3 text-zinc-950">
-									{f.name}
-									<ArrowRight
-										className={`mt-1 size-4 shrink-0 text-blue-700 transition-transform duration-300 ${EASE_CLASS} group-hover:translate-x-0.5`}
-										aria-hidden="true"
-									/>
-								</span>
+								<span className="title-2 flex items-start justify-between gap-3 text-zinc-950">{f.name}</span>
 								<span className="body-6 mt-2 text-zinc-600">{f.summary}</span>
 							</a>
 						</RevealItem>
 					))}
 				</ul>
-			</Container>
+			</Page>
 		</section>
 	);
 }
@@ -277,19 +252,15 @@ function FeaturePage() {
 	};
 	const links: FeatureLink[] = [{ kind: "Docs", ...feature.docs }, ...feature.guides, ...directory];
 	return (
-		<div className="min-h-screen bg-white antialiased">
-			<Navbar />
-			<main>
-				<FeatureHero feature={feature} />
-				<Steps feature={feature} />
-				<Metrics feature={feature} />
-				<UseCasesAndWhy feature={feature} />
-				<LearnMore links={links} />
-				<RelatedFeatures related={related} />
-				<Faq items={feature.faqs} />
-				<Closing from="marketing-features-closing" />
-			</main>
-			<Footer />
-		</div>
+		<PageShell>
+			<FeatureHero feature={feature} />
+			<Steps feature={feature} />
+			<Metrics feature={feature} />
+			<UseCasesAndWhy feature={feature} />
+			<LearnMore links={links} />
+			<RelatedFeatures related={related} />
+			<Faq items={feature.faqs} />
+			<Closing from="marketing-features-closing" />
+		</PageShell>
 	);
 }
