@@ -69,18 +69,14 @@ export function FeatureCard({ feature, wide = false }: { feature: ProductFeature
 		<a
 			id={feature.slug}
 			href={featurePath(feature.slug)}
-			className={`group flex h-full flex-col p-3 ${CARD} transition-[box-shadow,transform] duration-300 ${EASE_CLASS} hover:-translate-y-0.5 hover:ring-zinc-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600`}
+			className={`group flex h-full flex-col rounded-2xl bg-paper-2 p-3 ring-1 ring-zinc-200 transition-[box-shadow] duration-200 hover:ring-zinc-400 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rust`}
 		>
 			<FeatureGraphic graphic={feature.graphic} className={wide ? "[&>div]:aspect-[12/5]" : ""} />
 			<div className="flex flex-1 flex-col px-3 pt-5 pb-3">
-				<h3 className="title-2 flex items-start justify-between gap-3 text-zinc-950">
+				<h3 className="font-heading text-[1.25rem] leading-[1.3] font-semibold tracking-[-0.02em] text-ink [overflow-wrap:break-word] min-w-0 group-hover:underline group-hover:decoration-rust group-hover:underline-offset-4">
 					{feature.name}
-					<ArrowRight
-						className={`mt-1 size-4 shrink-0 text-blue-700 transition-transform duration-300 ${EASE_CLASS} group-hover:translate-x-0.5`}
-						aria-hidden="true"
-					/>
 				</h3>
-				<p className="body-6 mt-2 text-zinc-600">{feature.summary}</p>
+				<p className="mt-2 text-[1.0625rem] leading-[1.65] text-zinc-600">{feature.summary}</p>
 			</div>
 		</a>
 	);
