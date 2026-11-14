@@ -3,9 +3,20 @@ import { AGENCY_PLANS, formatUsd } from "@/lib/agency-plans";
 import { trackEvent } from "@/lib/posthog";
 import { ACTION, LEAD, PANEL_PAD, Page, PanelHead, SMALL, SUBHEAD, Tick } from "./kit";
 
-/* The plan the "from" price buys, and its work in its own lines. The tracker and the brand count are said beside the button. */
+/*
+ * The plan the "from" price buys, and its work a line a job. "A month" is in
+ * the price over the list, and the small print is on the agency page, so each
+ * job fits one line on a phone. The tracker and the brand count are said beside the button.
+ */
 const ENTRY = AGENCY_PLANS[0];
-const WORK = ENTRY.includes.filter((line) => !/tracker plan|brand/.test(line));
+const WORK = ENTRY.includes
+	.filter((line) => !/tracker plan|brand/.test(line))
+	.map((line) => line.replace(/ a month$| in the first month, then as found$|^Monthly /, ""))
+	.map((line) => line.charAt(0).toUpperCase() + line.slice(1));
+
+/* On a phone the type gives way before the line breaks: the divisor is the longest line's width in em. */
+const TWO_LINES = "max-sm:text-[length:min(var(--text-lead),calc((100vw_-_5rem)_/_16.5))]";
+const ONE_LINE = "whitespace-nowrap max-sm:text-[length:min(var(--text-lead),calc((100vw_-_7.75rem)_/_13.8))]";
 
 /*
  * The agency in one look: a month of work, every line ticked, because we do
@@ -19,9 +30,9 @@ export function Agency() {
 				<div className="grid grid-cols-[minmax(0,1fr)] gap-10 rounded-[1.5rem] bg-ink px-6 py-10 text-paper sm:px-10 sm:py-12 lg:grid-cols-12 lg:items-center lg:gap-x-16 lg:p-16">
 					<div className="min-w-0 lg:col-span-6">
 						<PanelHead title="We do the work for you" onInk>
-							<p className={`${LEAD} text-zinc-300`}>
-								The tracker ranks what to do next. Our agency does it every month and reports the AI answers before and
-								after.
+							<p className={`${LEAD} ${TWO_LINES} text-zinc-300`}>
+								<span className="block">The tracker ranks what to do next.</span>{" "}
+								<span className="block">Our agency does it every month.</span>
 							</p>
 						</PanelHead>
 						<p className="mt-8">
@@ -46,9 +57,9 @@ export function Agency() {
 							{WORK.map((line) => (
 								<li
 									key={line}
-									className="flex items-start gap-4 border-t border-ink-rule py-4 text-lead leading-snug font-medium text-paper last:pb-0"
+									className={`flex items-center gap-4 border-t border-ink-rule py-4 text-lead leading-snug text-paper last:pb-0 ${ONE_LINE}`}
 								>
-									<Tick className="mt-px size-7" />
+									<Tick className="size-7" />
 									{line}
 								</li>
 							))}
