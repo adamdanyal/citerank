@@ -39,7 +39,7 @@ function integrationSummary(competitor: Competitor): string {
 		items.length <= 2
 			? items.join(` ${conjunction} `)
 			: `${items.slice(0, -1).join(", ")}, ${conjunction} ${items[items.length - 1]}`;
-	if (lacks.length === 0) return `${competitor.name} offers all three as well.`;
+	if (lacks.length === 0) return `${competitor.name} offers all three as well: ${list(has, "and")}.`;
 	if (has.length === 0) return `${competitor.name} is not listed as offering ${list(lacks, "or")}.`;
 	return `${competitor.name} offers ${list(has, "and")}, but is not listed as offering ${list(lacks, "or")}.`;
 }
@@ -180,31 +180,30 @@ export function getComparisonFaqs(competitor: Competitor): FaqItem[] {
 	faqs.push({
 		question: `What is the difference between CiteRank.com and ${name}?`,
 		answer: openSource
-			? `${name} is open source, so you can self-host it and inspect the code, while CiteRank.com is hosted. CiteRank.com focuses specifically on transparent AI visibility tracking across 13 AI apps, with every answer kept in full, an AI search agency that does the work, and a fully documented methodology behind each number.`
-			: `CiteRank.com is an AI visibility tracker and AI search agency, while ${name} is ${indefiniteArticle(noun)} ${noun} tool. Both track how AI answer engines describe your brand, but CiteRank.com keeps every answer in full, so you can verify every metric against the words an AI wrote, and its agency can do the work.`,
+			? `${name} is open source, so you can self-host it and inspect the code, while CiteRank.com is hosted. CiteRank.com tracks 13 AI apps and keeps every answer in full. It also has an AI search agency that does the work for you.`
+			: `CiteRank.com is an AI visibility tracker and AI search agency, while ${name} is ${indefiniteArticle(noun)} ${noun} tool. Both track how AI answer engines describe your brand. CiteRank.com keeps the full answer behind every number.`,
 	});
 
 	faqs.push({
 		question: `How much does CiteRank.com cost compared with ${name}?`,
-		answer: `CiteRank.com plans run from ${PLAN_RANGE}, and annual billing saves two months. Every plan includes unlimited seats plus API and MCP access, and you can sign up and start tracking without a sales call, then cancel any time. ${price ? `The starting price listed for ${name} is ${price}.` : `No public starting price is listed for ${name}.`}`,
+		answer: `CiteRank.com plans run from ${PLAN_RANGE}, and annual billing saves two months. ${price ? `The starting price listed for ${name} is ${price}.` : `No public starting price is listed for ${name}.`} Every CiteRank.com plan has unlimited seats, with no sales call.`,
 	});
 
 	faqs.push({
 		question: `Is ${name} open source?`,
 		answer: openSource
-			? `Yes, ${name} is open source. CiteRank.com is closed source and hosted, built specifically for verifiable AI visibility tracking, so you can check each metric against the full answer behind it.`
-			: `No, ${name} is a closed-source, hosted product, and so is CiteRank.com. CiteRank.com keeps every answer in full, so you can check how each metric is calculated, read the passage behind each sentiment score, and export it all through the API.`,
+			? `Yes. ${name} is open source, and CiteRank.com is closed source and hosted. CiteRank.com is built specifically for AI visibility tracking you can verify. You can check each number against the full answer behind it.`
+			: `No. ${name} is a closed-source, hosted product, and so is CiteRank.com. CiteRank.com keeps every answer in full, so you can check each number. You can read the passage behind each score and export it all through the API.`,
 	});
 
 	faqs.push({
 		question: `How do CiteRank.com and ${name} compare on sentiment analysis, API access, and MCP?`,
-		answer: `CiteRank.com includes all three: a 0 to 100 sentiment score for every AI answer that mentions you, a REST API on every plan, and an MCP server so assistants like Claude Code and Cursor can query your data. ${integrationSummary(competitor)}`,
+		answer: `CiteRank.com includes all three, with a REST API on every plan. ${integrationSummary(competitor)} CiteRank.com scores the sentiment of each mention from 0 to 100.`,
 	});
 
 	faqs.push({
 		question: `Can my team use CiteRank.com instead of ${name}?`,
-		answer:
-			"Yes. CiteRank.com is designed to be self-serve: sign up and start tracking in minutes, with no sales call. You keep full access to your data and prompts through the API, with no per-seat pricing, so your whole team can log in.",
+		answer: `Yes. Your team can use CiteRank.com instead of ${name}. It is self-serve: you sign up and start tracking in minutes, with no sales call. There is no per-seat pricing, so your whole team can log in and use the API.`,
 	});
 
 	return faqs;

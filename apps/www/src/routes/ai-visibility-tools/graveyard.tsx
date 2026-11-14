@@ -76,27 +76,27 @@ const FAQS: FaqItem[] = [
 	{
 		question: "What happens to my data when an AI visibility tool shuts down?",
 		answer:
-			"Usually it goes with the tool. Hosted trackers keep your prompts, answers, and history on their servers, so once the service is switched off there is nothing left to export. That’s why it pays to export regularly, or to use a tool you can self-host so the data lives in your own database from day one.",
+			"When an AI visibility tool shuts down, your data usually goes with it. Hosted trackers keep your prompts, answers, and history on their servers. Once the service is switched off, nothing is left to export, so export regularly.",
 	},
 	{
 		question: "How does open source protect me if a tool shuts down?",
 		answer:
-			"With a permissive open-source license like MIT, the code stays available and usable whatever happens to the company behind it. You can keep running your own copy, fix it, or fork it, and because a self-hosted install stores data in your own database, your history doesn’t depend on anyone else’s servers. Copyleft licenses like AGPL and source-available licenses like FSL still protect you from a shutdown, but they add conditions on how you can modify or offer the software.",
+			"With a permissive open-source license like MIT, the code stays usable whatever happens to the company behind it. You can keep running your own copy, fix it, or fork it. A self-hosted install keeps your data in your own database.",
 	},
 	{
 		question: "Can an open-source tool go closed source?",
 		answer:
-			"Yes. A company can stop publishing new code, as Notra did in October 2026 when it took its AGPL repository private. What it can’t do is take back code already released under an open-source license: anyone who has a copy can keep using and forking that version. That’s another reason to prefer a permissive license and an active community over a single vendor’s goodwill.",
+			"Yes. A company can stop publishing new code, as Notra did in October 2026 when it took its AGPL repository private. It can’t take back code it has already released. Anyone with a copy can keep using and forking that version.",
 	},
 	{
 		question: "My AI visibility tool was acquired. Should I switch?",
 		answer:
-			"Not necessarily, but watch the roadmap. Acquired tools are often folded into the buyer’s product, repriced, or put on a waitlist, as happened when Hall joined Tracksuit. Export your data now so you have the option, and re-evaluate when the new owner announces its plans.",
+			"You don’t have to switch when your AI visibility tool is acquired, but watch the roadmap. Acquired tools are often folded into the buyer’s product, repriced, or put on a waitlist. Export your data now so you have the option.",
 	},
 	{
 		question: "Can I get my data out of CiteRank.com?",
 		answer:
-			"Yes. CiteRank.com keeps every answer in full, and its REST API returns each answer with its citations, plus your prompts, competitors, and visibility data. The MCP server lets Claude Code and Cursor read the same data.",
+			"Yes. You can get your data out of CiteRank.com through its REST API. It returns each answer in full with its citations, plus your prompts, competitors, and visibility data. The MCP server lets Claude Code and Cursor read it too.",
 	},
 ];
 

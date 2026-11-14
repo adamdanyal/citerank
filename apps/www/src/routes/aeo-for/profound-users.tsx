@@ -105,20 +105,20 @@ const FAQS = [
 	{
 		question: "Can I bring my prompts over from Profound?",
 		answer:
-			"Yes. Paste your existing prompt list into CiteRank.com, one prompt per line, and it is tracked from then on. Your Profound history stays in Profound, so you may want to run both for a short overlap before cancelling.",
+			"Yes. You can paste your Profound prompt list into CiteRank.com, one prompt per line, and it is tracked from then on. Your Profound history stays in Profound. You may want to run both for a short overlap before cancelling.",
 	},
 	{
 		question: "Is CiteRank.com’s data comparable to Profound’s?",
-		answer: `Both track how AI engines answer your buyers’ prompts. CiteRank.com checks each prompt up to ${FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× a day rather than once, which smooths out the run-to-run variation in AI answers, and keeps every answer in full, so each number traces back to the words an AI wrote.`,
+		answer: `CiteRank.com and Profound both track how AI engines answer your buyers’ prompts. CiteRank.com checks each prompt up to ${FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× a day, which smooths out run-to-run variation. It keeps every answer in full, so you can check each number.`,
 	},
 	{
 		question: "Which CiteRank.com plan matches a Profound setup?",
-		answer: `We recommend ${RECOMMENDED.name} for teams coming from Profound: ${RECOMMENDED.maxPrompts} prompts across ${RECOMMENDED.platformPicks} AI platforms, checked ${RECOMMENDED.standardRunsPerDay}× daily, with premium grounded models included, for $${RECOMMENDED.monthlyPriceUsd}/mo. Larger programs can step up to ${PLANS.business.name}, which adds more prompts and brands.`,
+		answer: `We recommend ${RECOMMENDED.name} for teams coming from Profound, at $${RECOMMENDED.monthlyPriceUsd}/mo. It covers ${RECOMMENDED.maxPrompts} prompts across ${RECOMMENDED.platformPicks} AI platforms, checked ${RECOMMENDED.standardRunsPerDay}× daily, with premium models included. Larger programs can step up to ${PLANS.business.name}, which adds more prompts and brands.`,
 	},
 	{
 		question: "Can CiteRank.com do the work as well as track it?",
 		answer:
-			"Yes. CiteRank.com’s AI search agency does the work every month for businesses that want it done. It writes the comparison and alternatives pages your site is missing, updates pages AI has stopped citing, gets you onto the review sites and best-of lists AI cites, and answers buyers’ questions in forums. Each month’s report lists every piece of work, the question it targets, and the AI answers before and after.",
+			"Yes. CiteRank.com’s AI search agency does the work every month. It writes the pages your site is missing and updates pages AI has stopped citing. Each month’s report lists every piece of work and the AI answers before and after.",
 		links: [{ text: "AI search agency", href: "/agency" }],
 	},
 ];

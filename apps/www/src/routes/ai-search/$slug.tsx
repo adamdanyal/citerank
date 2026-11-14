@@ -9,14 +9,20 @@ import type { FaqItem } from "@/lib/faqs";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, howToJsonLd, ogMeta } from "@/lib/seo";
 
 function engineFaqs(e: AiSearchEngine): FaqItem[] {
+	const [first, second, third] = e.steps.map((step) =>
+		step.name.replace(/^[A-Z](?=[a-z])/, (letter) => letter.toLowerCase()),
+	);
 	return [
 		{
 			question: `How do I get my brand mentioned in ${e.name}?`,
-			answer: `${e.short} ${e.steps[0].text} ${e.steps[1].text}`,
+			answer: `To get your brand mentioned in ${e.name}, the first of ${e.steps.length} steps is to ${first}. The second step is to ${second}. The third step is to ${third}.`,
 		},
 		{
 			question: `Does CiteRank.com track ${e.name}?`,
-			answer: e.tracking,
+			answer:
+				e.slug === "copilot"
+					? "No. The Copilot app now asks visitors to sign in, so CiteRank.com tracks Bing AI Mode instead. That is Microsoft's AI answer in Bing, built on the same index. You see how it mentions and cites your brand."
+					: `Yes. CiteRank.com tracks ${e.name} for the prompts you choose. It records whether each answer mentions your brand and whether it cites your website. You see where your brand appears and where it is missing.`,
 		},
 	];
 }
