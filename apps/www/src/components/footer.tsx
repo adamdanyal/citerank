@@ -78,8 +78,9 @@ export function Footer() {
 						<a href="/" aria-label="CiteRank.com home" className={`inline-flex ${FOCUS}`}>
 							<Logo className="text-[1.375rem] text-paper" />
 						</a>
-						<p className="mt-4 max-w-[26ch] text-[0.9375rem] leading-[1.5] text-zinc-400">
-							AI visibility tracker and AI search agency.
+						<p className="mt-4 max-w-[34ch] text-[0.9375rem] leading-[1.5] text-pretty text-zinc-400">
+							AI visibility tracker and AI search agency. See what AI says about your brand, fix it yourself, or hire
+							us.
 						</p>
 					</div>
 					<div className="grid grid-cols-[repeat(auto-fit,minmax(9.5rem,1fr))] gap-x-8 gap-y-10 lg:grid-cols-5 xl:col-span-9">
