@@ -52,6 +52,8 @@ Body is 16px and labels 14px. The container is 1440px with 64px gutters (24px un
 - Under a row of buttons that fills the width, the small line is centred. Beside a column of text it aligns with the buttons.
 - An FAQ answer is three short sentences of 205 to 232 characters, about forty words: the answer first, then two facts behind it. Every answer on a page is the same size (three lines from a tablet up), and they all stand open.
 - A person is credited under their portrait: name, role, then the LinkedIn mark with the follower count.
+- A page closes on a quote from each founder, on two cards of one size. The two quotes are the same length, name the company and state something a reader can check.
+- Where the AI apps are listed, each logo is drawn in its own colours (`--color-logo-*`). Those colours appear nowhere else.
 - hero: Stage on `/`, Banner on every other page · nav: three-part bar on ink · footer: index columns on ink
 
 ## The product
