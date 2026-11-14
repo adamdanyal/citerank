@@ -10,17 +10,18 @@ import {
 	ACTION,
 	BODY,
 	LEAD,
+	LIST_CARD,
 	PANEL,
 	PANEL_PAD,
 	Page,
 	PanelHead,
 	RuledRow,
 	SMALL,
+	StepRows,
 	SUBHEAD,
 } from "@/components/citerank/v2/kit";
 import { Pricing } from "@/components/citerank/v2/pricing";
 import { PageShell } from "@/components/citerank/v2/shell";
-import { ITEM_TITLE } from "@/components/pillar";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
 const PATH = "/aeo-for/profound-users";
@@ -154,7 +155,7 @@ function Reasons() {
 						process, and a credit balance.
 					</p>
 				</PanelHead>
-				<ul className="mt-12 border-b border-zinc-200">
+				<ul className={`${LIST_CARD} mt-12`}>
 					{REASONS.map((r) => (
 						<RuledRow key={r.name} title={r.name}>
 							{r.text}
@@ -247,21 +248,7 @@ function Switching() {
 						{FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× a day across the engines you pick.
 					</p>
 				</PanelHead>
-				<ol className="mt-12 border-b border-zinc-200 [counter-reset:step]">
-					{STEPS.map((step) => (
-						<li
-							key={step.name}
-							className="grid gap-2 border-t border-zinc-200 py-6 [counter-increment:step] lg:grid-cols-12 lg:gap-8 lg:py-8"
-						>
-							<h3
-								className={`${ITEM_TITLE} flex gap-4 text-ink before:shrink-0 before:text-rust before:tabular-nums before:content-[counter(step)] lg:col-span-5`}
-							>
-								{step.name}
-							</h3>
-							<p className={`${BODY} max-w-[60ch] text-zinc-600 lg:col-span-7`}>{step.text}</p>
-						</li>
-					))}
-				</ol>
+				<StepRows className="mt-12" steps={STEPS.map((step) => ({ title: step.name, body: step.text }))} />
 				<p className="mt-10">
 					<a href={signupUrl} className={ACTION}>
 						Start tracking

@@ -19,12 +19,13 @@ import {
 	Page,
 	PanelHead,
 	SMALL,
+	StepRows,
 	SUBHEAD,
 } from "@/components/citerank/v2/kit";
 import { Pricing } from "@/components/citerank/v2/pricing";
 import { PageShell } from "@/components/citerank/v2/shell";
 import { EngineIcon } from "@/components/home/engines";
-import { ITEM_TITLE, LABEL, PromptText, WithPrompts } from "@/components/pillar";
+import { LABEL, PromptText, WithPrompts } from "@/components/pillar";
 import { type AeoVertical, aeoHeadline, aeoVerticals, getAeoVertical } from "@/data/aeo-verticals";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, howToJsonLd, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -146,21 +147,7 @@ function Playbook({ vertical }: { vertical: AeoVertical }) {
 						What gets a brand named in AI answers in your category, and where CiteRank.com shows you the content gaps.
 					</p>
 				</PanelHead>
-				<ol className="mt-12 border-b border-zinc-200 [counter-reset:play]">
-					{vertical.plays.map((play) => (
-						<li
-							key={play.name}
-							className="grid gap-2 border-t border-zinc-200 py-6 [counter-increment:play] lg:grid-cols-12 lg:gap-8 lg:py-8"
-						>
-							<h3
-								className={`${ITEM_TITLE} flex gap-4 text-ink before:shrink-0 before:text-rust before:tabular-nums before:content-[counter(play)] lg:col-span-5`}
-							>
-								{play.name}
-							</h3>
-							<p className={`${BODY} max-w-[60ch] text-zinc-600 lg:col-span-7`}>{play.text}</p>
-						</li>
-					))}
-				</ol>
+				<StepRows className="mt-12" steps={vertical.plays.map((play) => ({ title: play.name, body: play.text }))} />
 
 				<div className="mt-10 flex flex-col gap-6 rounded-card bg-ink p-6 sm:p-8 md:flex-row md:items-center md:justify-between">
 					<div className="max-w-[60ch]">

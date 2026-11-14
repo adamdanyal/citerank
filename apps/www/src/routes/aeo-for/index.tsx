@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Closing } from "@/components/citerank/v2/closing";
-import { BODY, PANEL, PANEL_PAD, Page, PanelHead } from "@/components/citerank/v2/kit";
+import { LinkCards, PANEL, PANEL_PAD, Page, PanelHead } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
-import { INDEX_PAD, PROSE, ROW, ROW_LINK, ROW_TITLE, WithPrompts } from "@/components/pillar";
+import { INDEX_PAD, PROSE, WithPrompts } from "@/components/pillar";
 import { aeoHeadline, aeoVerticals } from "@/data/aeo-verticals";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -50,18 +50,14 @@ function AeoForIndex() {
 			<section className={`${PANEL} ${INDEX_PAD}`}>
 				<Page>
 					<h2 className="sr-only">Guides by industry</h2>
-					<ul className="grid gap-x-8 border-b border-zinc-200 lg:grid-cols-2">
-						{aeoVerticals.map((vertical) => (
-							<li key={vertical.slug} className={`${ROW} flex`}>
-								<a href={`/aeo-for/${vertical.slug}`} className={`${ROW_LINK} flex-1 py-6`}>
-									<h3 className={ROW_TITLE}>{aeoHeadline(vertical)}</h3>
-									<p className={`${BODY} mt-2 max-w-[56ch] text-zinc-600`}>
-										<WithPrompts text={vertical.short} />
-									</p>
-								</a>
-							</li>
-						))}
-					</ul>
+					<LinkCards
+						className="lg:grid-cols-2"
+						items={aeoVerticals.map((vertical) => ({
+							href: `/aeo-for/${vertical.slug}`,
+							title: aeoHeadline(vertical),
+							body: <WithPrompts text={vertical.short} />,
+						}))}
+					/>
 				</Page>
 			</section>
 
