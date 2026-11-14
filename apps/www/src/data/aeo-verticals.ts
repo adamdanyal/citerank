@@ -61,12 +61,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Can agencies put AI visibility charts in reports?",
 				answer:
-					"Yes. Any prompt's visibility chart downloads as a PNG for a slide or report, and every number traces back to the AI answers it came from. The REST API can also feed the same data into your own reporting tools.",
+					"Yes. Agencies can download any prompt's AI visibility chart as a PNG for a slide or report. Every number traces back to the AI answers it came from. The REST API can feed the same data into your own reporting tools.",
 			},
 			{
 				question: "How do agencies price AEO services?",
 				answer:
-					"Most agencies bill AEO as a monitoring retainer plus content work, since each prompt where a client is missing becomes a brief. With unlimited seats, the tooling cost stays the same as the team grows.",
+					"Most agencies price AEO services as a monitoring retainer plus content work. Each prompt where a client is missing becomes a content brief. With unlimited seats on CiteRank.com, the tooling cost stays the same as the team grows.",
 			},
 		],
 	},
@@ -112,17 +112,17 @@ export const aeoVerticals: AeoVertical[] = [
 		faqs: [
 			{
 				question: "What is the best AEO tool for B2B SaaS?",
-				answer: `There is no single answer, because SaaS teams buy for two different jobs. If you need enterprise reporting and a sales-led contract, the larger platforms cover it. If you want self-serve plans from $${CLOUD_ENTRY_PRICE_USD}/mo, every answer kept in full, and no per-seat pricing across a growing team, CiteRank.com fits better, and its AI search agency can do the content work. Whichever you pick, the requirement specific to SaaS is competitor benchmarking on comparison and alternatives prompts, since that is where buyers build shortlists. Compare the options in the AI visibility tool directory.`,
+				answer: `No single AEO tool is best for every B2B SaaS team. Whichever you pick, it must track competitors on comparison and alternatives prompts, where buyers build shortlists. CiteRank.com does it on self-serve plans from $${CLOUD_ENTRY_PRICE_USD}/mo.`,
 			},
 			{
 				question: "How do I show up when buyers ask AI for software recommendations?",
 				answer:
-					"Publish clear, current content for the comparison and alternatives queries in your category, earn reviews on trusted sources, and track those prompts so you can see where you appear and where a competitor does instead.",
+					"To show up in AI software recommendations, publish clear, current comparison and alternatives pages. Reviews on trusted sites shape how AI recommends you. Tracking those prompts shows where a competitor appears instead of you.",
 			},
 			{
 				question: "Can I see which competitors AI tools recommend?",
 				answer:
-					"Yes. CiteRank.com records which competitors get mentioned and cited alongside you on each prompt, so you can measure share of voice against your named rivals.",
+					"Yes. CiteRank.com records which competitors AI tools mention and cite alongside you on each prompt. You can measure share of voice against your named rivals. It also shows which competitors get named instead of you.",
 			},
 		],
 	},
@@ -160,12 +160,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Do AI engines recommend products?",
 				answer:
-					"Yes. Engines answer buying-guide and comparison questions with a shortlist of products, and some now have dedicated shopping features. Brands not named in those answers lose the recommendation.",
+					"Yes. AI engines recommend products when they answer buying-guide and comparison questions with a shortlist. Some engines now have dedicated shopping features. Brands that are not named in those answers lose the recommendation.",
 			},
 			{
 				question: "How do I get my products into AI shopping answers?",
 				answer:
-					"Publish clear product and category content, add product and review structured data, earn reviews on trusted sites, and keep price and availability accurate. Then track the prompts to measure progress.",
+					"To get products into AI shopping answers, publish clear product and category pages with product and review schema. Earn reviews on trusted sites and keep price and stock accurate. Then track the prompts to measure progress.",
 			},
 		],
 	},
@@ -206,12 +206,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Why does AEO matter for B2B?",
 				answer:
-					"B2B buyers research with AI engines before they talk to sales. If the model does not name you, or describes you inaccurately, you can lose a deal before it starts. AEO is how you measure and fix that.",
+					"AEO matters for B2B because buyers research with AI engines before they talk to sales. If the model does not name you, or describes you wrongly, you can lose a deal before it starts. AEO is how you measure and fix that.",
 			},
 			{
 				question: "How is AI visibility different from SEO for B2B?",
 				answer:
-					"SEO targets a ranking on a results page. AI visibility targets being named and cited inside a written answer. The fundamentals overlap, but the unit of success is the citation, not the position.",
+					"For B2B, SEO targets a ranking on a results page, while AI visibility targets being named and cited inside a written answer. The basics of the two overlap. In AI visibility, the unit of success is the citation.",
 			},
 		],
 	},
@@ -252,12 +252,12 @@ export const aeoVerticals: AeoVertical[] = [
 		faqs: [
 			{
 				question: "What does AI visibility tracking cost a startup?",
-				answer: `CiteRank.com's ${PLANS.basic.name} plan costs $${PLANS.basic.monthlyPriceUsd}/mo for ${PLANS.basic.maxPrompts} prompts checked ${PLANS.basic.standardRunsPerDay}× daily on any ${PLANS.basic.platformPicks} of ${PLANS.basic.platformMenu.length} AI apps, with unlimited seats. Move up a plan when you need more brands, more prompts or premium models.`,
+				answer: `AI visibility tracking costs a startup $${PLANS.basic.monthlyPriceUsd}/mo on CiteRank.com's ${PLANS.basic.name} plan. It checks ${PLANS.basic.maxPrompts} prompts ${PLANS.basic.standardRunsPerDay} times a day on any ${PLANS.basic.platformPicks} of ${PLANS.basic.platformMenu.length} AI apps, with unlimited seats. Move up a plan for more brands, more prompts or premium models.`,
 			},
 			{
 				question: "When should a startup start doing AEO?",
 				answer:
-					"As soon as buyers in your category ask AI engines for recommendations, which is early for most categories now. Starting sooner builds the trusted footprint that later answers draw on.",
+					"A startup should start doing AEO as soon as buyers in its category ask AI engines for recommendations. That is early for most categories now. Starting sooner builds the trusted footprint that later answers draw on.",
 			},
 		],
 	},
@@ -299,12 +299,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Can we export AI visibility data via API?",
 				answer:
-					"Yes. Every plan includes API access. The REST API covers brands, prompts, analytics, citations, and query fan-out, and an MCP server lets AI assistants read the same data.",
+					"Yes. Every CiteRank.com plan includes API access, so you can export your AI visibility data. The REST API covers brands, prompts, analytics, citations and query fan-out. An MCP server lets AI assistants read the same data.",
 			},
 			{
 				question: "Can analysts check how each metric is counted?",
 				answer:
-					"Yes. How each metric is counted is documented, and every answer is kept in full with the sources it cited, so any score can be traced back to the responses behind it.",
+					"Yes. Analysts can check how each metric is counted, because CiteRank.com documents it. Every AI answer is kept in full with the sources it cited. That means any score can be traced back to the answers behind it.",
 			},
 		],
 	},
@@ -341,12 +341,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Why does AEO matter in healthcare?",
 				answer:
-					"Patients ask AI engines about conditions, treatments, and providers. An inaccurate answer about your brand carries real risk, so monitoring and correcting how engines describe you matters more here than almost anywhere.",
+					"AEO matters in healthcare because patients ask AI about conditions, treatments and providers. A wrong answer about your brand carries real risk. Checking and fixing how AI describes you matters more here than almost anywhere.",
 			},
 			{
 				question: "How do I catch AI errors about my health brand?",
 				answer:
-					"Track a consistent set of prompts about your brand and services across engines, and watch for inaccurate or stale claims. CiteRank.com records how each engine describes you so you can spot errors quickly.",
+					"To catch AI errors about your health brand, track the same brand and service prompts across engines. Watch for wrong or stale claims. CiteRank.com records how each engine describes you, so you can spot errors quickly.",
 			},
 		],
 	},
@@ -384,12 +384,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Why does AEO matter for financial services?",
 				answer:
-					"Consumers ask AI engines to compare financial products and judge whether a brand is trustworthy. An inaccurate or absent answer affects both acquisition and compliance, so tracking it is essential.",
+					"AEO matters for financial services because consumers ask AI engines to compare financial products. They also ask them to judge whether a brand is trustworthy. A wrong or missing answer affects both acquisition and compliance.",
 			},
 			{
 				question: "Can we see exactly what an AI engine said about our products?",
 				answer:
-					"Yes. CiteRank.com keeps every answer in full, with the brands it named and the sources it cited, so you can review the exact wording an engine used about your rates, fees, or eligibility.",
+					"Yes. CiteRank.com keeps every answer in full, so you can see exactly what an AI engine said. Each answer lists the brands it named and the sources it cited. You can review the exact wording about your rates, fees or eligibility.",
 			},
 		],
 	},
@@ -432,17 +432,17 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Is AEO different for law firms than for other businesses?",
 				answer:
-					"Yes, in two ways. Legal queries are treated as Your Money or Your Life content, so engines weight author credentials and jurisdiction heavily, and the answers are hyper-local. The same question has a different correct answer in Texas than in New York. Effective legal AEO is practice-area and jurisdiction specific.",
+					"Yes. AEO for law firms must be specific to practice area and jurisdiction. Engines weigh author credentials and jurisdiction heavily on legal questions. The same question has a different correct answer in Texas than in New York.",
 			},
 			{
 				question: "Do AI answer engines recommend specific law firms?",
 				answer:
-					"Increasingly, yes. Asked for the best firm for a given matter in a given city, engines will name firms and cite the sources behind them, usually directories, review platforms, and firm pages that answer the question directly. Which firms get named is measurable and it changes over time.",
+					"Yes. AI answer engines increasingly name law firms when asked for the best firm for a matter in a city. They usually cite directories, review platforms and firm pages. Which firms get named is measurable and changes over time.",
 			},
 			{
 				question: "What should a law firm publish to get cited by AI engines?",
 				answer:
-					"Direct answers to the questions clients ask, written for a specific jurisdiction, signed by a named attorney with visible bar credentials. Process explanations, cost ranges, and deadline rules get cited far more often than practice-area landing pages.",
+					"A law firm should publish direct answers to client questions for its jurisdiction. A named attorney with visible bar credentials should sign them. Answers on process, costs and deadlines get cited far more than landing pages.",
 			},
 		],
 	},
@@ -485,12 +485,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Do AI assistants give local recommendations?",
 				answer:
-					"Yes. ChatGPT, Gemini, and Perplexity all answer near-me style questions with named businesses and reasons, drawing on business profiles, review platforms, and local publications. The named set differs by engine and by city.",
+					"Yes. ChatGPT, Gemini and Perplexity all answer near-me questions with named businesses and reasons. They draw on business profiles, review platforms and local publications. The businesses named differ by engine and by city.",
 			},
 			{
 				question: "How do multi-location businesses track AI visibility?",
 				answer:
-					"By treating each market as its own measurement. The same prompt returns different businesses in different cities, so visibility has to be tracked per location and compared across the portfolio rather than averaged into one score.",
+					"Multi-location businesses track AI visibility one location at a time and compare the results. The same prompt returns different businesses in different cities. One strong market can hide several where you are invisible.",
 			},
 		],
 	},
@@ -533,12 +533,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Can real estate brokerages outrank portals in AI answers?",
 				answer:
-					"On broad transactional queries, rarely. On neighbourhood-level and process questions, routinely. Portals publish at city scale and engines prefer the source that answers the specific question, which is where local brokerages have a genuine advantage.",
+					"On neighbourhood and process questions, real estate brokerages routinely outrank portals in AI answers. On broad transactional queries they rarely do. Portals publish at city scale, and engines prefer the most specific source.",
 			},
 			{
 				question: "How often does real estate AI visibility change?",
 				answer:
-					"Faster than most categories, because the underlying market data changes monthly and engines strongly prefer recent sources. Firms that refresh market analysis on a schedule tend to hold citations that one-off pages lose within a quarter.",
+					"Real estate AI visibility changes faster than in most categories, because market data changes monthly. Engines strongly prefer recent sources. Refreshed pages tend to hold citations that one-off pages lose within a quarter.",
 			},
 		],
 	},
@@ -581,12 +581,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Do students use AI to choose programmes?",
 				answer:
-					"Widely, for the research and shortlisting phase. Assistants are asked to compare programmes, explain credential value, and estimate cost and duration, the questions that determine which institutions get a closer look.",
+					"Yes. Students widely use AI to research and shortlist programmes. They ask assistants to compare programmes, explain credential value and estimate cost and duration. Those questions decide which institutions get a closer look.",
 			},
 			{
 				question: "What content gets an education institution cited by AI engines?",
 				answer:
-					"Specific, verifiable facts: accreditation status, cost of attendance, programme length, completion and outcome data, and honest answers to whether a credential fits a given career path. Promotional language is consistently passed over.",
+					"AI engines cite an education institution for specific facts that can be checked. These include accreditation status, cost of attendance, programme length and outcome data. Promotional language is consistently passed over.",
 			},
 		],
 	},
@@ -629,12 +629,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "How do AI assistants pick hotels and destinations to recommend?",
 				answer:
-					"Mostly from independent sources (editorial guides, review platforms, and forums) rather than from brand marketing. Properties that appear in credible third-party coverage get named far more often than those relying on their own site alone.",
+					"AI assistants pick hotels and destinations to recommend mostly from independent sources. These are editorial guides, review platforms and forums. Properties relying on their own site alone get named far less often.",
 			},
 			{
 				question: "Does AI trip planning affect direct bookings?",
 				answer:
-					"It shifts where the decision is made. If the assistant names your property while building the itinerary, the traveller arrives at a booking channel already decided. If it names a competitor, the comparison never happens.",
+					"Yes. AI trip planning affects direct bookings by shifting where the decision is made. If the assistant names your property, the traveller arrives already decided. If it names a competitor, the comparison never happens.",
 			},
 		],
 	},
@@ -676,12 +676,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Do B2B industrial buyers use AI search?",
 				answer:
-					"Engineers and procurement teams use it heavily for supplier discovery and specification research, the early stages where a shortlist forms. The purchase still runs through established channels, but which suppliers reach the shortlist is increasingly decided by an assistant.",
+					"Yes. B2B industrial buyers use AI search heavily to find suppliers and research specifications. These are the early stages where a shortlist forms. An assistant increasingly decides which suppliers reach the shortlist.",
 			},
 			{
 				question: "Why do gated PDFs hurt manufacturing AEO?",
 				answer:
-					"Because the crawlers behind AI answers cannot get past the form, and often cannot parse scanned documents at all. The technical detail that would make a manufacturer the obvious answer is the exact content most commonly locked away.",
+					"Gated PDFs hurt manufacturing AEO because the crawlers behind AI answers cannot get past the form. They often cannot read scanned documents at all. The detail that would make a manufacturer the obvious answer stays locked away.",
 			},
 		],
 	},
@@ -723,12 +723,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Why does answer accuracy matter more in insurance?",
 				answer:
-					"Because a misdescribed policy sets a false expectation that shows up at claim time. Insurance is also regulated content, so an inaccurate third-party description of coverage is a risk issue rather than only a marketing one.",
+					"Answer accuracy matters more in insurance because a misdescribed policy sets a false expectation that shows up at claim time. Insurance is also regulated content. A wrong third-party description of coverage is a risk issue too.",
 			},
 			{
 				question: "Can insurers influence how AI engines describe their policies?",
 				answer:
-					"Indirectly but reliably. Engines paraphrase the clearest available source, so publishing accurate plain-language coverage explanations and correcting inaccurate third-party pages changes what the model has to work with.",
+					"Yes. Insurers can influence how AI engines describe their policies, indirectly but reliably. Engines paraphrase the clearest available source. Accurate plain-language coverage explanations change what the model has to work with.",
 			},
 		],
 	},
@@ -771,12 +771,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Do car buyers use AI assistants for research?",
 				answer:
-					"Heavily, in the comparison phase. Assistants are asked to narrow options by use case, compare trims, and estimate ownership cost, the work that produces the shortlist a buyer eventually acts on.",
+					"Yes. Car buyers use AI assistants heavily in the comparison phase. Assistants are asked to narrow options by use case, compare trims and estimate ownership cost. That work produces the shortlist a buyer eventually acts on.",
 			},
 			{
 				question: "Why do independent reviewers matter so much for automotive AEO?",
 				answer:
-					"Because engines prefer sources that read as impartial, and automotive has an unusually deep body of independent review content. Manufacturer spec pages compete against that rather than replacing it.",
+					"Independent reviewers matter for automotive AEO because engines prefer sources that read as impartial. Automotive has an unusually deep body of independent review content. Manufacturer spec pages compete against that content.",
 			},
 		],
 	},
@@ -819,12 +819,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Do donors use AI to decide where to give?",
 				answer:
-					"For discovery and vetting, increasingly yes. Assistants are asked which organisations work on a cause, whether a given one is legitimate, and how efficiently donations are used, the questions that produce a donor's shortlist.",
+					"Yes. Donors increasingly use AI to find and check organisations before they give. They ask which ones work on a cause, whether one is legitimate and how well donations are used. Those questions produce a donor's shortlist.",
 			},
 			{
 				question: "What should a nonprofit publish to be cited by AI engines?",
 				answer:
-					"Programme expense ratios, outcome data, registration and tax status, and third-party evaluator ratings, published as readable web pages rather than PDF downloads. Transparency data is both what donors ask about and what engines can quote.",
+					"A nonprofit should publish programme expense ratios, outcome data and evaluator ratings as web pages. PDF downloads are close to invisible to AI crawlers. Transparency data is what donors ask about and what engines can quote.",
 			},
 		],
 	},
@@ -868,12 +868,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "Do security buyers really use AI assistants for vendor research?",
 				answer:
-					"For the early shortlist, consistently. Assistants are used to survey a category, compare vendors, and understand technology differences before analyst calls or RFPs begin, which means the shortlist is often set before a vendor knows the evaluation exists.",
+					"Yes. Security buyers consistently use AI assistants to build their early shortlist. They survey a category and compare vendors before analyst calls or RFPs. The shortlist is often set before a vendor knows the evaluation exists.",
 			},
 			{
 				question: "What content gets a security vendor cited?",
 				answer:
-					"Original research, detection methodology, compliance mappings, and honest architecture documentation. Generic capability marketing is close to invisible because every vendor in the category publishes the same claims.",
+					"A security vendor gets cited for original research, detection methods, compliance mappings and honest architecture documentation. Generic marketing is close to invisible. Every vendor in the category publishes the same claims.",
 			},
 		],
 	},
@@ -915,12 +915,12 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "How do employers use AI to choose a recruiting partner?",
 				answer:
-					"By asking for specialists (agencies that cover a given role, industry, or region) and by asking about fee structures and typical timelines. The assistant returns a short list, and that list is usually where the evaluation starts.",
+					"Employers use AI to choose a recruiting partner by asking for specialists in a role, industry or region. They also ask about fees and typical timelines. The short list AI returns is usually where the evaluation starts.",
 			},
 			{
 				question: "Should recruiting firms track candidate-facing AI visibility too?",
 				answer:
-					"Yes, and separately. Candidate-facing answers draw mainly on review platforms and forums rather than industry publications, so the two pictures can diverge sharply and need different work to fix.",
+					"Yes. Recruiting firms should track candidate-facing AI visibility too, and separately. Candidate-facing answers draw mainly on review platforms and forums. The two pictures can differ sharply and need separate work to fix.",
 			},
 		],
 	},
@@ -964,17 +964,17 @@ export const aeoVerticals: AeoVertical[] = [
 			{
 				question: "How do AI coding assistants decide which libraries to recommend?",
 				answer:
-					"Largely from public documentation, code examples, and community discussion. Tools with thorough, crawlable docs and plentiful runnable examples get recommended far more often than equally capable tools with sparse or client-rendered documentation.",
+					"AI coding assistants recommend libraries based largely on public docs, code examples and community discussion. Tools with thorough, crawlable docs get recommended far more often. So do tools with plenty of runnable examples.",
 			},
 			{
 				question: "Does client-side rendered documentation hurt AI visibility?",
 				answer:
-					"Significantly. Most AI crawlers do not execute JavaScript, so client-rendered docs return an effectively empty page. The content exists for human readers and not for the models developers ask for recommendations.",
+					"Yes. Client-side rendered documentation hurts AI visibility a lot. Most AI crawlers do not run JavaScript, so those docs return an effectively empty page. The models developers ask for recommendations never see the content.",
 			},
 			{
 				question: "What is llms.txt and should a developer tool publish one?",
 				answer:
-					"It is a plain-text file that points models at your most important documentation in a clean, parseable form. It is cheap to publish and removes any reliance on a model correctly parsing your rendered HTML.",
+					"An llms.txt is a plain-text file that points models at your most important documentation, and a developer tool should have one. It is cheap to publish. It removes any reliance on a model correctly parsing your rendered HTML.",
 			},
 		],
 	},
