@@ -1,5 +1,5 @@
 import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS, PLANS } from "@workspace/config/plans";
-import { AGENCY_FROM_USD, FOUNDING_DISCOUNT, FOUNDING_FROM_USD, formatUsd } from "@/lib/agency-plans";
+import { AGENCY_FROM_USD, formatUsd } from "@/lib/agency-plans";
 
 export interface FaqItem {
 	question: string;
@@ -160,10 +160,6 @@ export const AGENCY_FAQS: FaqItem[] = [
 	{
 		question: "How much does the AI search agency cost?",
 		answer: `The AI search agency starts from ${formatUsd(AGENCY_FROM_USD)} a month. The price depends on how much work you want each month and how many markets it covers for your brand. It includes a tracker plan and has a three-month minimum.`,
-	},
-	{
-		question: "What is the founding-client rate?",
-		answer: `The founding-client rate is ${FOUNDING_DISCOUNT * 100}% off the first six months, for our first five clients. The price then starts at ${formatUsd(FOUNDING_FROM_USD)} a month for those six months. In return we publish a case study of the results, once the client approves it.`,
 	},
 	{
 		question: "Why is there a three-month minimum?",

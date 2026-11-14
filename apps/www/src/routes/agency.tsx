@@ -10,7 +10,6 @@ import {
 	CARD_LIFT,
 	DISPLAY_S,
 	LEAD,
-	LINK,
 	LiftedRows,
 	PANEL_TINT,
 	Page,
@@ -21,14 +20,7 @@ import {
 	Tick,
 } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell, PanelSection } from "@/components/citerank/v2/shell";
-import {
-	AGENCY_DOES,
-	AGENCY_FROM_USD,
-	AGENCY_INCLUDES,
-	AGENCY_WORK,
-	FOUNDING_DISCOUNT,
-	formatUsd,
-} from "@/lib/agency-plans";
+import { AGENCY_DOES, AGENCY_FROM_USD, AGENCY_INCLUDES, AGENCY_WORK, formatUsd } from "@/lib/agency-plans";
 import { embedInlineBooking } from "@/lib/cal-embed";
 import { AGENCY_FAQS } from "@/lib/faqs";
 import { agencyServiceJsonLd, breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
@@ -193,25 +185,6 @@ function AgencyPage() {
 					</p>
 				</PanelHead>
 				<div className="mt-10 lg:mt-16">
-					<LiftedRows
-						ticked={false}
-						items={[
-							{
-								title: `${FOUNDING_DISCOUNT * 100}% off your first six months`,
-								body: (
-									<>
-										The founding-client rate, for our first five agency clients. In return, we write up your results as
-										a public case study, and you approve it before it goes live.{" "}
-										<a href="#book" className={`${LINK} whitespace-nowrap text-ink`}>
-											Claim a founding place
-										</a>
-									</>
-								),
-							},
-						]}
-					/>
-				</div>
-				<div className="mt-5 lg:mt-8">
 					<AgencyOffer />
 				</div>
 				<h3 className={`${SUBHEAD} mt-12 text-ink lg:mt-16`}>Always included</h3>

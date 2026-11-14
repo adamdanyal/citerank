@@ -6,7 +6,7 @@ import { ACTION, LEAD, PANEL_PAD, Page, PanelHead, SMALL, Tick } from "./kit";
 /* On a phone the type gives way before the line breaks: each divisor is the longest line's width in em. */
 const HEAD_ONE_LINE = "max-sm:text-[length:calc((100vw_-_5rem)_/_13)] max-sm:whitespace-nowrap";
 const TWO_LINES = "max-sm:text-[length:min(var(--text-lead),calc((100vw_-_5rem)_/_16.5))]";
-const ONE_LINE = "whitespace-nowrap max-sm:text-[length:min(var(--text-lead),calc((100vw_-_7.75rem)_/_13.2))]";
+const ONE_LINE = "whitespace-nowrap max-sm:text-[length:min(var(--text-lead),calc((100vw_-_7.75rem)_/_14.4))]";
 
 /*
  * The agency in one look: everything it does, every line ticked, because we

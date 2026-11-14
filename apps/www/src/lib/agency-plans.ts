@@ -39,6 +39,21 @@ export const AGENCY_WORK = [
 		title: "Crawler fixes",
 		body: "We fix anything that stops AI crawlers reading your site.",
 	},
+	{
+		name: "Schema and entity work",
+		title: "Schema and entities",
+		body: "We add the structured data that tells AI what your company, products and people are.",
+	},
+	{
+		name: "Technical SEO fixes",
+		title: "Technical SEO",
+		body: "We fix what makes your pages slow or hard for search engines and AI to read.",
+	},
+	{
+		name: "Digital PR and brand mentions",
+		title: "Digital PR and brand mentions",
+		body: "We pitch your story to the press and the sites AI reads. They decide whether to mention you.",
+	},
 ];
 
 /* Everything the agency does, as the list beside its price: the work, then the report that shows it worked. */
@@ -52,11 +67,6 @@ export const AGENCY_INCLUDES = [
 	"Work chosen from what the tracker ranks",
 ];
 
-export const FOUNDING_DISCOUNT = 0.25;
-
 export function formatUsd(amount: number): string {
 	return `$${amount.toLocaleString("en-US")}`;
 }
-
-/** Where the price starts for a founding client, in their first six months. */
-export const FOUNDING_FROM_USD = Math.round(AGENCY_FROM_USD * (1 - FOUNDING_DISCOUNT));
