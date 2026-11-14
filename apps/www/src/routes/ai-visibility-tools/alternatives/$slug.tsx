@@ -1,12 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
+import { BODY, SUBHEAD } from "@/components/citerank/v2/kit";
 import { PageShell } from "@/components/citerank/v2/shell";
-import {
-	CiteRankCta,
-	DirectoryBackLink,
-	DirectoryCiteRankBanner,
-	DirectoryHero,
-	DirectorySection,
-} from "@/components/directory-shell";
+import { CiteRankCta, DirectoryCiteRankBanner, DirectoryHero, DirectorySection } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
 import { ToolGrid } from "@/components/tool-list";
 import {
@@ -56,8 +51,7 @@ function AlternativesPage() {
 	};
 	return (
 		<PageShell>
-			<DirectoryBackLink />
-			<DirectoryHero title={`${competitor.name} Alternatives`} lead={getAlternativesVerdict(competitor)} />
+			<DirectoryHero back tight title={`${competitor.name} alternatives`} lead={getAlternativesVerdict(competitor)} />
 
 			<DirectoryCiteRankBanner
 				pitch="CiteRank.com tracks how ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews mention and cite your brand. It keeps every answer in full, so you can verify exactly how each metric is calculated, and its AI search agency can do the work. Every plan has unlimited seats, and you can cancel any time."
@@ -68,25 +62,32 @@ function AlternativesPage() {
 			/>
 
 			{competitor.switching ? (
-				<DirectorySection title={`Why teams leave ${competitor.name}`}>
-					<p className="mb-8 max-w-3xl leading-relaxed text-zinc-600">
-						What people say when they leave {competitor.name}, and what CiteRank.com does differently. {competitor.name}{" "}
-						is a capable product with real customers, so take this as the case for a different set of tradeoffs rather
-						than a verdict on the tool.
-					</p>
-					<div className="max-w-3xl space-y-8">
+				<DirectorySection
+					title={`Why teams leave ${competitor.name}`}
+					lede={
+						<p className={`${BODY} text-zinc-600`}>
+							What people say when they leave {competitor.name}, and what CiteRank.com does differently.{" "}
+							{competitor.name} is a capable product with real customers, so take this as the case for a different set
+							of tradeoffs rather than a verdict on the tool.
+						</p>
+					}
+				>
+					<ul className="border-b border-zinc-200">
 						{competitor.switching.reasons.map((reason) => (
-							<div key={reason.headline}>
-								<h3 className="font-heading mb-2 text-lg text-zinc-950">{reason.headline}</h3>
-								<p className="leading-relaxed text-zinc-600">{reason.detail}</p>
-								<p className="mt-3 border-l-2 border-zinc-200 pl-4 leading-relaxed text-zinc-700">{reason.citeRank}</p>
-							</div>
+							<li
+								key={reason.headline}
+								className="grid gap-x-8 gap-y-3 border-t border-zinc-200 py-6 lg:grid-cols-12 lg:py-8"
+							>
+								<h3 className={`${SUBHEAD} text-ink lg:col-span-4`}>{reason.headline}</h3>
+								<p className={`${BODY} text-zinc-600 lg:col-span-4`}>{reason.detail}</p>
+								<p className={`${BODY} text-ink lg:col-span-4`}>{reason.citeRank}</p>
+							</li>
 						))}
-					</div>
+					</ul>
 				</DirectorySection>
 			) : null}
 
-			<DirectorySection title={`Other ${competitor.name} Alternatives`}>
+			<DirectorySection title={`Other ${competitor.name} alternatives`}>
 				<ToolGrid competitors={alternatives} />
 			</DirectorySection>
 

@@ -1,6 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/citerank/v2/shell";
-import { CiteRankCta, DirectoryBackLink, DirectoryHero, DirectorySection } from "@/components/directory-shell";
+import {
+	CiteRankCta,
+	DirectoryHero,
+	DirectorySection,
+	IndexGroup,
+	ROW,
+	ROW_LINK,
+	ROW_LINK_LABEL,
+} from "@/components/directory-shell";
 import { CATEGORY_LABELS, indexableCategories, indexedCompetitors, toolsInCategory } from "@/lib/competitors";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -49,27 +57,26 @@ export const Route = createFileRoute("/ai-visibility-tools/alternatives/")({
 function AlternativesHub() {
 	return (
 		<PageShell>
-			<DirectoryBackLink />
 			<DirectoryHero
+				back
 				title="Alternatives to every AI visibility tool"
 				lead="Shopping for a replacement, or want to know your options? Pick a tool to see its closest alternatives, including CiteRank.com, a tracker plus an AI search agency."
 			/>
-			{indexableCategories.map((category) => (
-				<DirectorySection key={category} title={CATEGORY_LABELS[category]}>
-					<ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-						{toolsInCategory(category).map((c) => (
-							<li key={c.slug}>
-								<a
-									href={`/ai-visibility-tools/alternatives/${c.slug}`}
-									className="block rounded-md border border-zinc-200 bg-white px-4 py-3 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-300 hover:text-zinc-950"
-								>
-									{c.name} Alternatives
-								</a>
-							</li>
-						))}
-					</ul>
-				</DirectorySection>
-			))}
+			<DirectorySection>
+				<div className="space-y-16 lg:space-y-24">
+					{indexableCategories.map((category) => (
+						<IndexGroup key={category} title={CATEGORY_LABELS[category]} columns="four">
+							{toolsInCategory(category).map((c) => (
+								<li key={c.slug} className={`${ROW} break-inside-avoid`}>
+									<a href={`/ai-visibility-tools/alternatives/${c.slug}`} className={ROW_LINK}>
+										<span className={ROW_LINK_LABEL}>{c.name} alternatives</span>
+									</a>
+								</li>
+							))}
+						</IndexGroup>
+					))}
+				</div>
+			</DirectorySection>
 			<CiteRankCta />
 		</PageShell>
 	);

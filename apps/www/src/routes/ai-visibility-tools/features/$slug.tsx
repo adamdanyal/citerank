@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/citerank/v2/shell";
-import { CiteRankCta, DirectoryBackLink, DirectoryHero, DirectorySection } from "@/components/directory-shell";
+import { CiteRankCta, DirectoryHero, DirectorySection } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
 import { ToolGrid } from "@/components/tool-list";
 import {
@@ -65,8 +65,8 @@ function FeaturePage() {
 	};
 	return (
 		<PageShell>
-			<DirectoryBackLink />
 			<DirectoryHero
+				back
 				title={`AI visibility tools with ${featurePhrase(featureKey)}`}
 				lead={getFeatureVerdict(featureKey, tools)}
 			/>

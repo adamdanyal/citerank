@@ -1,6 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/citerank/v2/shell";
-import { CiteRankCta, DirectoryBackLink, DirectoryHero, DirectorySection } from "@/components/directory-shell";
+import {
+	CiteRankCta,
+	DirectoryHero,
+	DirectorySection,
+	IndexGroup,
+	ROW,
+	ROW_LINK,
+	ROW_LINK_COUNT,
+	ROW_LINK_LABEL,
+} from "@/components/directory-shell";
 import {
 	FEATURE_CATEGORIES,
 	FEATURE_SLUGS,
@@ -59,28 +68,27 @@ export const Route = createFileRoute("/ai-visibility-tools/features/")({
 function FeatureHub() {
 	return (
 		<PageShell>
-			<DirectoryBackLink />
 			<DirectoryHero
+				back
 				title="Browse AI visibility tools by feature"
 				lead="Filter the field by capability. Pick a feature to see which AI visibility tools offer it and how they compare, including CiteRank.com, a tracker plus an AI search agency."
 			/>
-			{featureGroups().map((group) => (
-				<DirectorySection key={group.label} title={group.label}>
-					<ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-						{group.keys.map((key) => (
-							<li key={key}>
-								<a
-									href={`/ai-visibility-tools/features/${FEATURE_SLUGS[key]}`}
-									className="flex items-center justify-between rounded-md border border-zinc-200 bg-white px-4 py-3 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-300 hover:text-zinc-950"
-								>
-									<span>{getFeatureLabel(key)}</span>
-									<span className="font-mono text-[11px] text-zinc-400">{toolsWithFeature(key).length}</span>
-								</a>
-							</li>
-						))}
-					</ul>
-				</DirectorySection>
-			))}
+			<DirectorySection>
+				<div className="space-y-16 lg:space-y-24">
+					{featureGroups().map((group) => (
+						<IndexGroup key={group.label} title={group.label}>
+							{group.keys.map((key) => (
+								<li key={key} className={`${ROW} break-inside-avoid`}>
+									<a href={`/ai-visibility-tools/features/${FEATURE_SLUGS[key]}`} className={ROW_LINK}>
+										<span className={ROW_LINK_LABEL}>{getFeatureLabel(key)}</span>
+										<span className={ROW_LINK_COUNT}>{toolsWithFeature(key).length} tools</span>
+									</a>
+								</li>
+							))}
+						</IndexGroup>
+					))}
+				</div>
+			</DirectorySection>
 			<CiteRankCta />
 		</PageShell>
 	);

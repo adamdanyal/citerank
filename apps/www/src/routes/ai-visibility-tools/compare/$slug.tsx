@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/citerank/v2/shell";
-import { CiteRankCta, DirectoryBackLink, DirectoryHero } from "@/components/directory-shell";
+import { CiteRankCta, DirectoryHero } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
 import { MultiComparison } from "@/components/multi-comparison";
 import { PairComparison } from "@/components/pair-comparison";
@@ -55,8 +55,7 @@ function ComparePage() {
 	const [a, b] = tools;
 	return (
 		<PageShell>
-			<DirectoryBackLink />
-			<DirectoryHero title={names} lead={getCompareVerdict(tools)} />
+			<DirectoryHero back tight title={names} lead={getCompareVerdict(tools)} />
 			{a && b && tools.length === 2 ? <PairComparison a={a} b={b} /> : <MultiComparison tools={tools} />}
 			<Faq items={getCompareFaqs(tools)} />
 			<CiteRankCta />

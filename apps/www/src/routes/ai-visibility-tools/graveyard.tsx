@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { BODY, LINK, PILL_QUIET, SMALL, SUBHEAD } from "@/components/citerank/v2/kit";
 import { PageShell } from "@/components/citerank/v2/shell";
-import { CiteRankCta, DirectoryBackLink, DirectoryHero, DirectorySection } from "@/components/directory-shell";
+import { CiteRankCta, DirectoryHero, DirectorySection } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
 import {
 	type Competitor,
@@ -43,7 +44,7 @@ function graveyardItems() {
 }
 
 const FATE_LABEL: Record<GraveyardFate, string> = {
-	"shut-down": "Shut Down",
+	"shut-down": "Shut down",
 	pivoted: "Pivoted",
 	acquired: "Acquired",
 };
@@ -51,7 +52,7 @@ const FATE_LABEL: Record<GraveyardFate, string> = {
 const STEPS: { title: string; body: string }[] = [
 	{
 		title: "Export everything while you still can",
-		body: "Shutdown notices often give a few weeks. Pull your prompts, competitor list, and as much history as the tool will export: CSV, API, or screenshots of the charts if that's all there is.",
+		body: "Shutdown notices often give a few weeks. Pull your prompts, competitor list, and as much history as the tool will export: CSV, API, or screenshots of the charts if that’s all there is.",
 	},
 	{
 		title: "Write down how your numbers were made",
@@ -59,7 +60,7 @@ const STEPS: { title: string; body: string }[] = [
 	},
 	{
 		title: "Re-baseline instead of stitching",
-		body: "Start the new tool on the same prompts and treat its first few weeks as a fresh baseline. Grafting one vendor's numbers onto another's makes the trend line meaningless.",
+		body: "Start the new tool on the same prompts and treat its first few weeks as a fresh baseline. Grafting one vendor’s numbers onto another’s makes the trend line meaningless.",
 	},
 	{
 		title: "Plan your exit before you commit",
@@ -75,22 +76,22 @@ const FAQS: FaqItem[] = [
 	{
 		question: "What happens to my data when an AI visibility tool shuts down?",
 		answer:
-			"Usually it goes with the tool. Hosted trackers keep your prompts, answers, and history on their servers, so once the service is switched off there is nothing left to export. That's why it pays to export regularly, or to use a tool you can self-host so the data lives in your own database from day one.",
+			"Usually it goes with the tool. Hosted trackers keep your prompts, answers, and history on their servers, so once the service is switched off there is nothing left to export. That’s why it pays to export regularly, or to use a tool you can self-host so the data lives in your own database from day one.",
 	},
 	{
 		question: "How does open source protect me if a tool shuts down?",
 		answer:
-			"With a permissive open-source license like MIT, the code stays available and usable whatever happens to the company behind it. You can keep running your own copy, fix it, or fork it, and because a self-hosted install stores data in your own database, your history doesn't depend on anyone else's servers. Copyleft licenses like AGPL and source-available licenses like FSL still protect you from a shutdown, but they add conditions on how you can modify or offer the software.",
+			"With a permissive open-source license like MIT, the code stays available and usable whatever happens to the company behind it. You can keep running your own copy, fix it, or fork it, and because a self-hosted install stores data in your own database, your history doesn’t depend on anyone else’s servers. Copyleft licenses like AGPL and source-available licenses like FSL still protect you from a shutdown, but they add conditions on how you can modify or offer the software.",
 	},
 	{
 		question: "Can an open-source tool go closed source?",
 		answer:
-			"Yes. A company can stop publishing new code, as Notra did in October 2026 when it took its AGPL repository private. What it can't do is take back code already released under an open-source license: anyone who has a copy can keep using and forking that version. That's another reason to prefer a permissive license and an active community over a single vendor's goodwill.",
+			"Yes. A company can stop publishing new code, as Notra did in October 2026 when it took its AGPL repository private. What it can’t do is take back code already released under an open-source license: anyone who has a copy can keep using and forking that version. That’s another reason to prefer a permissive license and an active community over a single vendor’s goodwill.",
 	},
 	{
 		question: "My AI visibility tool was acquired. Should I switch?",
 		answer:
-			"Not necessarily, but watch the roadmap. Acquired tools are often folded into the buyer's product, repriced, or put on a waitlist, as happened when Hall joined Tracksuit. Export your data now so you have the option, and re-evaluate when the new owner announces its plans.",
+			"Not necessarily, but watch the roadmap. Acquired tools are often folded into the buyer’s product, repriced, or put on a waitlist, as happened when Hall joined Tracksuit. Export your data now so you have the option, and re-evaluate when the new owner announces its plans.",
 	},
 	{
 		question: "Can I get my data out of CiteRank.com?",
@@ -117,129 +118,109 @@ export const Route = createFileRoute("/ai-visibility-tools/graveyard")({
 	component: GraveyardPage,
 });
 
-// Fine grain so the stone doesn't read as a flat gradient.
-const STONE_GRAIN =
-	"url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
+const PLOTS = "grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3";
 
-const stoneStyle = {
-	backgroundImage: `${STONE_GRAIN}, radial-gradient(ellipse at 30% 0%, #f5f5f4 0%, #d6d3d1 45%, #a8a29e 100%)`,
-	boxShadow:
-		"inset 0 2px 0 rgba(255,255,255,0.6), inset 0 -18px 30px rgba(68,64,60,0.18), 0 1px 0 #78716c, 0 14px 24px -12px rgba(41,37,36,0.45)",
-};
-
-// Light from above: a dark edge on top and a light one below reads as cut into the stone.
-const ENGRAVED = "[text-shadow:0_1px_0_rgba(255,255,255,0.55),0_-1px_0_rgba(41,37,36,0.25)]";
-
-function Tombstone({ competitor }: { competitor: Competitor }) {
+function Plot({ competitor }: { competitor: Competitor }) {
 	const fate = graveyardFate(competitor);
 	if (!fate || !competitor.fate) return null;
 	return (
-		<li
-			className="flex flex-col rounded-t-[999px] rounded-b-sm border border-stone-400/70 px-6 pt-12 pb-6"
-			style={stoneStyle}
-		>
-			<p className={`text-center font-mono text-[11px] uppercase tracking-[0.35em] text-stone-500 ${ENGRAVED}`}>
-				{fate === "acquired" ? "Absorbed" : "R.I.P."}
-			</p>
-			<h3 className={`font-heading mt-2 text-center text-3xl text-stone-700 ${ENGRAVED}`}>{competitor.name}</h3>
-			<p className={`mt-1 text-center text-xs text-stone-600 ${ENGRAVED}`}>
-				{FATE_LABEL[fate]} · {formatFateDate(competitor.fate.date)}
-			</p>
-			<TombstoneDivider />
+		<li className={`flex min-w-0 flex-col ${competitor.noScreenshot ? "border-t border-zinc-200 pt-6" : ""}`}>
 			{!competitor.noScreenshot && (
-				<>
-					<div className="overflow-hidden rounded-sm shadow-[inset_0_2px_6px_rgba(41,37,36,0.45),0_1px_0_rgba(255,255,255,0.5)]">
-						<img
-							src={getScreenshotUrl(competitor.slug)}
-							alt={`${competitor.name}'s homepage while it was live`}
-							width={1280}
-							height={800}
-							className={`aspect-[16/10] w-full object-cover object-top opacity-60 mix-blend-multiply contrast-125 grayscale ${competitor.darkScreenshot ? "invert" : ""}`}
-							loading="lazy"
-						/>
-					</div>
-					<TombstoneDivider />
-				</>
+				<div className="mb-6 overflow-hidden rounded-card bg-paper-2 ring-1 ring-zinc-200">
+					<img
+						src={getScreenshotUrl(competitor.slug)}
+						alt={`${competitor.name}’s homepage while it was live`}
+						width={1280}
+						height={800}
+						className={`block aspect-[16/10] h-auto w-full object-cover object-top opacity-80 grayscale ${competitor.darkScreenshot ? "invert" : ""}`}
+						loading="lazy"
+					/>
+				</div>
 			)}
-			<p className={`text-sm text-stone-600 ${ENGRAVED}`}>{competitor.tagline}</p>
-			<TombstoneDivider />
-			<p className={`flex-1 text-sm text-stone-800 ${ENGRAVED}`}>{competitor.fate.summary}</p>
-			<TombstoneDivider />
-			<div className={`flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs ${ENGRAVED}`}>
-				{hasComparisonPage(competitor) && (
-					<Link
-						to="/ai-visibility-tools/$slug"
-						params={{ slug: getComparisonSlug(competitor) }}
-						className="text-stone-900 underline decoration-stone-500 underline-offset-4 hover:decoration-stone-900"
-					>
-						CiteRank.com vs {competitor.name}
-					</Link>
-				)}
-				{competitor.fate.source && (
-					<a
-						href={competitor.fate.source}
-						target="_blank"
-						rel="noopener noreferrer nofollow"
-						className="text-stone-900 underline decoration-stone-500 underline-offset-4 hover:decoration-stone-900"
-					>
-						Source
-					</a>
-				)}
-			</div>
+			<h3 className={`${SUBHEAD} text-ink`}>{competitor.name}</h3>
+			<p className={`${SMALL} mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-zinc-600`}>
+				<span className={PILL_QUIET}>{FATE_LABEL[fate]}</span>
+				<time dateTime={competitor.fate.date}>{formatFateDate(competitor.fate.date)}</time>
+			</p>
+			<p className={`${SMALL} mt-4 text-zinc-600`}>{competitor.tagline}</p>
+			<p className={`${BODY} mt-3 flex-1 text-zinc-700`}>{competitor.fate.summary}</p>
+			{(hasComparisonPage(competitor) || competitor.fate.source) && (
+				<p className={`${SMALL} mt-4 flex flex-wrap gap-x-6 gap-y-2 font-medium`}>
+					{hasComparisonPage(competitor) && (
+						<Link
+							to="/ai-visibility-tools/$slug"
+							params={{ slug: getComparisonSlug(competitor) }}
+							className={`${LINK} text-ink`}
+						>
+							CiteRank.com vs {competitor.name}
+						</Link>
+					)}
+					{competitor.fate.source && (
+						<a
+							href={competitor.fate.source}
+							target="_blank"
+							rel="noopener noreferrer nofollow"
+							className={`${LINK} text-zinc-700`}
+						>
+							Source
+						</a>
+					)}
+				</p>
+			)}
 		</li>
 	);
-}
-
-function TombstoneDivider() {
-	return <hr className="my-4 border-t border-b border-t-stone-500/40 border-b-white/50" />;
 }
 
 function GraveyardPage() {
 	return (
 		<PageShell>
-			<DirectoryBackLink />
-			<DirectoryHero title="The AEO graveyard" lead={lead()}>
-				<div className="max-w-3xl border-l-2 border-blue-600 pl-4 text-sm text-zinc-600">
-					<p className="font-medium text-zinc-950">Keep a Copy of Your History</p>
-					<p className="mt-1">
-						When a hosted tracker goes under, your history goes with it. CiteRank.com's API lets you keep your own copy
-						of every answer and score.{" "}
-						<Link
-							to="/"
-							className="text-zinc-950 underline decoration-zinc-400 underline-offset-4 hover:decoration-zinc-950"
-						>
-							Learn more about CiteRank.com →
-						</Link>
-					</p>
-				</div>
-			</DirectoryHero>
+			<DirectoryHero
+				back
+				title="The AEO graveyard"
+				lead={lead()}
+				aside={
+					<div className="rounded-card bg-paper-2 p-6">
+						<p className="text-[1rem] leading-[1.4] font-medium text-ink">Keep a copy of your history</p>
+						<p className={`${SMALL} mt-2 text-zinc-700`}>
+							When a hosted tracker goes under, your history goes with it. CiteRank.com’s API lets you keep your own
+							copy of every answer and score.{" "}
+							<Link to="/" className={`${LINK} text-ink`}>
+								Learn more about CiteRank.com
+							</Link>
+						</p>
+					</div>
+				}
+			/>
 			<DirectorySection>
-				<ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				<h2 className="sr-only">AI visibility tools that shut down, pivoted, or were acquired</h2>
+				<ul className={PLOTS}>
 					{graveyardTools
 						.filter((c) => !c.noScreenshot)
 						.map((c) => (
-							<Tombstone key={c.slug} competitor={c} />
+							<Plot key={c.slug} competitor={c} />
 						))}
 				</ul>
-				<ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				<ul className={`${PLOTS} mt-14`}>
 					{graveyardTools
 						.filter((c) => c.noScreenshot)
 						.map((c) => (
-							<Tombstone key={c.slug} competitor={c} />
+							<Plot key={c.slug} competitor={c} />
 						))}
 				</ul>
-				<p className="mt-6 text-xs text-zinc-500">
+				<p className={`${SMALL} mt-10 max-w-[70ch] text-zinc-600`}>
 					Screenshots were taken while each tool was live. Dates are when the shutdown, pivot, or acquisition was
 					announced, or the month the site was found offline.
 				</p>
 			</DirectorySection>
-			<DirectorySection title="Your AI visibility tool shut down. Now what?">
-				<ol className="grid gap-6 md:grid-cols-2">
-					{STEPS.map((step, i) => (
-						<li key={step.title} className="rounded-md border border-zinc-200 bg-white p-5">
-							<p className="font-mono text-[11px] leading-[1.4] text-zinc-500">Step {i + 1}</p>
-							<h3 className="mt-1 font-semibold text-zinc-950">{step.title}</h3>
-							<p className="mt-2 text-sm text-zinc-600">{step.body}</p>
+			<DirectorySection title="Your AI visibility tool shut down. Now what?" pad="wide">
+				<ol className="border-b border-zinc-200 [counter-reset:step]">
+					{STEPS.map((step) => (
+						<li
+							key={step.title}
+							className="grid gap-x-8 gap-y-3 border-t border-zinc-200 py-6 [counter-increment:step] before:font-heading before:text-display-s before:leading-none before:font-bold before:tracking-[-0.03em] before:text-rust before:tabular-nums before:content-[counter(step)] lg:grid-cols-12 lg:items-baseline lg:py-8 lg:before:col-span-1"
+						>
+							<h3 className={`${SUBHEAD} text-ink lg:col-span-4`}>{step.title}</h3>
+							<p className={`${BODY} max-w-[60ch] text-zinc-600 lg:col-span-7`}>{step.body}</p>
 						</li>
 					))}
 				</ol>

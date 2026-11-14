@@ -1,121 +1,44 @@
-import { Badge } from "@workspace/ui/components/badge";
-import { ExternalLink } from "lucide-react";
-import {
-	CATEGORY_LABELS,
-	type Competitor,
-	ELMO_FEATURES,
-	ENTRY_PRICE,
-	FEATURE_CATEGORIES,
-	type FeatureKey,
-	PLAN_RANGE,
-} from "@/lib/competitors";
-import { FeatureMark } from "./feature-mark";
+import { type Competitor, PLAN_RANGE } from "@/lib/competitors";
+import { HEADING, PANEL, PANEL_PAD, PANEL_PAD_WIDE, Page } from "./citerank/v2/kit";
+import { CITERANK_COLUMN, FeatureTable, toolColumn } from "./feature-mark";
+import { CITERANK_FACTS, ToolSummary, toolFacts } from "./tool-list";
 
-function Cell({ on, highlight }: { on: boolean; highlight?: boolean }) {
-	return (
-		<td className={`px-3 py-3 text-center ${highlight ? "bg-blue-50" : ""}`}>
-			<FeatureMark has={on} />
-		</td>
-	);
-}
-
-function ToolSummary({ tool }: { tool: Competitor }) {
-	return (
-		<div>
-			<h3 className="mb-1 text-lg font-semibold text-zinc-950">{tool.name}</h3>
-			<div className="mt-2 flex flex-wrap gap-2">
-				<Badge variant="secondary">{CATEGORY_LABELS[tool.category]}</Badge>
-				{tool.pricing?.hasFree && <Badge variant="secondary">Free Tier</Badge>}
-				{tool.pricing?.startingPrice && <Badge variant="secondary">From {tool.pricing.startingPrice}</Badge>}
-			</div>
-			<p className="mt-3 text-sm text-zinc-600">{tool.tagline}</p>
-			{tool.url && tool.domain && (
-				<a
-					href={tool.url}
-					target="_blank"
-					rel="noopener noreferrer nofollow"
-					className="mt-2 inline-flex items-center gap-1 text-sm text-zinc-500 transition-colors hover:text-zinc-950"
-				>
-					Visit {tool.domain}
-					<ExternalLink className="h-3 w-3" />
-				</a>
-			)}
-		</div>
-	);
-}
+const SUMMARY = "border-t border-zinc-200 pt-6";
 
 export function MultiComparison({ tools }: { tools: Competitor[] }) {
 	const heading = `${tools.map((t) => t.name).join(" vs ")} vs CiteRank.com`;
-	const columnCount = tools.length + 2; // feature label + tools + Elmo
 
 	return (
 		<>
-			{/* Tool summaries, plus Elmo */}
-			<section className="border-b border-zinc-200 bg-zinc-50 py-8">
-				<div className="mx-auto grid max-w-6xl gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3 md:px-6">
-					{tools.map((tool) => (
-						<ToolSummary key={tool.slug} tool={tool} />
-					))}
-					<div>
-						<h3 className="mb-1 text-lg font-semibold text-zinc-950">CiteRank.com</h3>
-						<div className="mt-2 flex flex-wrap gap-2">
-							<Badge variant="secondary">Search Agency</Badge>
-							<Badge variant="secondary">13 AI apps</Badge>
-							<Badge variant="secondary">{ENTRY_PRICE}</Badge>
-						</div>
-						<p className="mt-3 text-sm text-zinc-600">
+			<section className={`${PANEL} ${PANEL_PAD}`}>
+				<Page>
+					<ul className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+						{tools.map((tool) => (
+							<ToolSummary
+								key={tool.slug}
+								name={tool.name}
+								facts={toolFacts(tool)}
+								site={tool.url && tool.domain ? { url: tool.url, domain: tool.domain } : undefined}
+								className={SUMMARY}
+							>
+								{tool.tagline}
+							</ToolSummary>
+						))}
+						<ToolSummary name="CiteRank.com" facts={CITERANK_FACTS} className={SUMMARY}>
 							AI visibility tracker and AI search agency for AEO, covering 13 AI apps with every answer kept in full.
 							Plans run from {PLAN_RANGE}.
-						</p>
-					</div>
-				</div>
+						</ToolSummary>
+					</ul>
+				</Page>
 			</section>
 
-			{/* N-way feature table */}
-			<section className="border-b border-zinc-200 bg-white py-12">
-				<div className="mx-auto max-w-6xl px-4 md:px-6">
-					<h2 className="font-heading mb-8 text-2xl text-zinc-950">{heading}</h2>
-					<div className="overflow-x-auto">
-						<table className="w-full text-sm">
-							<thead>
-								<tr className="border-b border-zinc-200">
-									<th className="py-3 pr-4 text-left font-semibold text-zinc-950">Feature</th>
-									{tools.map((tool) => (
-										<th key={tool.slug} className="w-28 px-3 py-3 text-center font-semibold text-zinc-950">
-											{tool.name}
-										</th>
-									))}
-									<th className="w-28 px-3 py-3 text-center font-semibold text-zinc-950">CiteRank.com</th>
-								</tr>
-							</thead>
-							<tbody>
-								{Object.entries(FEATURE_CATEGORIES).flatMap(([catKey, cat]) => [
-									<tr key={`cat-${catKey}`}>
-										<td
-											colSpan={columnCount}
-											className="bg-zinc-50 px-0 py-2 font-mono text-[11px] leading-[1.4] text-zinc-500"
-										>
-											{cat.label}
-										</td>
-									</tr>,
-									...Object.entries(cat.features).map(([featureKey, featureDef]) => {
-										const k = featureKey as FeatureKey;
-										const citeRank = ELMO_FEATURES[k] ?? false;
-										return (
-											<tr key={featureKey} className="border-b border-dashed border-zinc-200 last:border-solid">
-												<td className="py-3 pr-4 text-sm text-zinc-600">{featureDef.label}</td>
-												{tools.map((tool) => (
-													<Cell key={tool.slug} on={tool.features[k] ?? false} />
-												))}
-												<Cell on={citeRank} highlight={citeRank} />
-											</tr>
-										);
-									}),
-								])}
-							</tbody>
-						</table>
+			<section className={`${PANEL} ${PANEL_PAD_WIDE}`}>
+				<Page>
+					<h2 className={`${HEADING} max-w-[34ch] text-ink`}>{heading}</h2>
+					<div className="mt-10 lg:mt-16">
+						<FeatureTable columns={[...tools.map(toolColumn), CITERANK_COLUMN]} />
 					</div>
-				</div>
+				</Page>
 			</section>
 		</>
 	);

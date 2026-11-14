@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { cloudSignupUrl } from "@workspace/config/referrals";
-import { buttonVariants } from "@workspace/ui/components/button";
+import { Heart } from "lucide-react";
 import { useState } from "react";
 import {
 	CATEGORY_LABELS,
@@ -16,12 +16,29 @@ import {
 	isRetired,
 	sortedCompetitors,
 } from "@/lib/competitors";
-import { PANEL, PANEL_PAD } from "./citerank/v2/kit";
-import { FeatureMark } from "./feature-mark";
+import {
+	ACTION,
+	ACTION_QUIET,
+	BAND_PAD,
+	HEADING,
+	LEAD,
+	LINK,
+	PANEL,
+	PANEL_PAD,
+	PANEL_TINT,
+	Page,
+	SMALL,
+} from "./citerank/v2/kit";
+import { DirectoryHero, FOCUS } from "./directory-shell";
+import { FeatureMark, PINNED, PINNED_EDGE, RULE } from "./feature-mark";
 
 const SIGN_UP_URL = cloudSignupUrl("marketing-page-cta");
 
 const visibleCompetitors = sortedCompetitors.filter((c) => !isRetired(c) && c.category !== "other");
+
+const CHIP = `h-11 rounded-full px-4 text-[0.9375rem] font-medium whitespace-nowrap transition-colors duration-200 ${FOCUS}`;
+const CHIP_ON = "bg-ink text-paper";
+const CHIP_OFF = "bg-paper-2 text-zinc-700 hover:text-ink";
 
 export function CompetitorDirectory() {
 	const [selectedCategory, setSelectedCategory] = useState<CompetitorCategory | "all">("all");
@@ -34,33 +51,21 @@ export function CompetitorDirectory() {
 
 	return (
 		<>
-			{/* Hero */}
-			<section className="relative overflow-hidden border-b border-zinc-200 bg-white py-16 lg:py-28">
-				<div
-					aria-hidden="true"
-					className="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,rgb(0_0_0/0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgb(0_0_0/0.04)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
-				/>
-				<div className="relative mx-auto max-w-6xl px-4 md:px-6">
-					<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl lg:text-6xl">
-						AI visibility tools
-					</h1>
-					<p className="mt-6 max-w-3xl text-lg text-balance text-zinc-600 md:text-xl">
-						Every AI visibility tool, AEO platform, LLM visibility tracker and GEO tool in one place. Compare engine
-						coverage, features and pricing, and find the right platform for your team.
-					</p>
-				</div>
-			</section>
+			<DirectoryHero
+				title="AI visibility tools"
+				lead="Every AI visibility tool, AEO platform, LLM visibility tracker and GEO tool in one place. Compare engine coverage, features and pricing, and find the right platform for your team."
+			/>
 
-			{/* Category Filters */}
-			<section className="border-b border-zinc-200 bg-white pb-6 pt-6">
-				<div className="mx-auto max-w-6xl px-4 md:px-6">
-					<div className="flex flex-wrap gap-2">
+			<section className={`${PANEL} ${PANEL_PAD}`}>
+				<Page>
+					<h2 className={`${HEADING} text-ink tabular-nums`}>{filteredCompetitors.length} tools</h2>
+					<fieldset className="mt-6 flex flex-wrap gap-2">
+						<legend className="sr-only">Category</legend>
 						<button
 							type="button"
+							aria-pressed={selectedCategory === "all"}
 							onClick={() => setSelectedCategory("all")}
-							className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-								selectedCategory === "all" ? "bg-zinc-950 text-white" : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
-							}`}
+							className={`${CHIP} ${selectedCategory === "all" ? CHIP_ON : CHIP_OFF}`}
 						>
 							All
 						</button>
@@ -68,112 +73,121 @@ export function CompetitorDirectory() {
 							<button
 								type="button"
 								key={cat}
+								aria-pressed={selectedCategory === cat}
 								onClick={() => setSelectedCategory(cat)}
-								className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-									selectedCategory === cat ? "bg-zinc-950 text-white" : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
-								}`}
+								className={`${CHIP} ${selectedCategory === cat ? CHIP_ON : CHIP_OFF}`}
 							>
 								{CATEGORY_LABELS[cat]}
 							</button>
 						))}
+					</fieldset>
+					<div className="mt-10">
+						<FeatureMatrix competitors={filteredCompetitors} />
 					</div>
-				</div>
+				</Page>
 			</section>
 
-			{/* Feature Matrix */}
-			<section className={`${PANEL} ${PANEL_PAD}`}>
-				<div className="mx-auto max-w-6xl px-4 md:px-6">
-					<h2 className="mb-8 text-lg font-semibold text-zinc-950">{filteredCompetitors.length} tools</h2>
-					<FeatureMatrix competitors={filteredCompetitors} />
-				</div>
-			</section>
-
-			{/* Elmo CTA */}
-			<section className="border-b border-zinc-200 bg-white py-16 lg:py-24">
-				<div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-					<h2 className="font-heading text-3xl text-zinc-950 md:text-4xl">Why consider CiteRank.com</h2>
-					<p className="mx-auto mt-4 max-w-xl text-lg text-balance text-zinc-600">
-						Hosted, self-serve, and transparent. Track AI visibility without a sales call or inflated pricing, from{" "}
-						{ENTRY_PRICE}.
-					</p>
-					<div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-						<a href={SIGN_UP_URL} className={buttonVariants({ size: "sm" })}>
+			<section className={`${PANEL_TINT} ${BAND_PAD}`}>
+				<Page className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-8">
+					<div className="lg:col-span-7">
+						<h2 className={`${HEADING} text-ink`}>Why consider CiteRank.com</h2>
+						<p className={`${LEAD} mt-5 max-w-[52ch] text-zinc-700`}>
+							Hosted, self-serve, and transparent. Track AI visibility without a sales call or inflated pricing, from{" "}
+							{ENTRY_PRICE}.
+						</p>
+					</div>
+					<div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:col-span-5 lg:justify-end">
+						<a href={SIGN_UP_URL} className={ACTION}>
 							Start tracking
 						</a>
-						<Link to="/agency" className={buttonVariants({ variant: "outline", size: "sm" })}>
+						<Link to="/agency" className={ACTION_QUIET}>
 							Let us do the work
 						</Link>
 					</div>
-				</div>
+				</Page>
 			</section>
 		</>
 	);
 }
 
-function CompetitorHeader({ competitor }: { competitor: Competitor }) {
-	return (
-		<Link
-			to="/ai-visibility-tools/$slug"
-			params={{ slug: getComparisonSlug(competitor) }}
-			className="block text-[11px] leading-tight text-zinc-500 hover:text-zinc-950 hover:underline"
-		>
-			{competitor.name}
-		</Link>
-	);
-}
+const OURS = "bg-blue-50";
+const NAMES = `${PINNED} ${PINNED_EDGE} ${SMALL} pr-4 text-left`;
 
 function FeatureMatrix({ competitors: items }: { competitors: Competitor[] }) {
-	const stickyCell = "sticky left-0 z-10 bg-white shadow-[2px_0_4px_-2px_rgba(0,0,0,0.08)]";
-
 	return (
 		// relative: the cells' sr-only labels are absolutely positioned, and without a
 		// containing block here they stretch the whole page instead of this scroller.
 		<div className="relative overflow-x-auto">
-			<table className="w-full min-w-[800px] text-sm">
+			{/* The data cells take their rule and padding from the table: there are thousands of them, and a class on each would add hundreds of kilobytes to the page. */}
+			<table className="min-w-full border-separate border-spacing-0 [&_td]:border-t [&_td]:border-zinc-200 [&_td]:px-3 [&_td]:py-3">
 				<thead>
-					<tr className="border-b border-zinc-200">
-						<th className={`${stickyCell} py-3 pr-4 text-left font-semibold text-zinc-950`}>Feature</th>
-						<th className="border-x border-zinc-200 bg-blue-50 px-2 py-3 text-center font-semibold text-zinc-950">
+					<tr>
+						<th
+							scope="col"
+							className={`${NAMES} w-36 min-w-36 py-4 align-bottom font-medium text-ink sm:w-56 sm:min-w-56`}
+						>
+							Feature
+						</th>
+						<th
+							scope="col"
+							className={`${OURS} ${SMALL} px-4 py-4 text-center align-bottom font-medium whitespace-nowrap text-ink`}
+						>
 							CiteRank.com
 						</th>
 						{items.map((c) => (
-							<th key={c.slug} className="px-2 py-3 text-center font-normal">
-								<CompetitorHeader competitor={c} />
+							<th
+								key={c.slug}
+								scope="col"
+								className={`${SMALL} px-3 py-4 text-center align-bottom font-normal whitespace-nowrap`}
+							>
+								<Link
+									to="/ai-visibility-tools/$slug"
+									params={{ slug: getComparisonSlug(c) }}
+									className={`${LINK} text-zinc-700 hover:text-ink`}
+								>
+									{c.name}
+								</Link>
 							</th>
 						))}
 					</tr>
 				</thead>
-				<tbody>
-					{Object.entries(FEATURE_CATEGORIES).flatMap(([catKey, cat]) => [
-						<tr key={`cat-${catKey}`}>
-							<td className={`${stickyCell} bg-zinc-50! py-2 font-mono text-[11px] leading-[1.4] text-zinc-500`}>
+				{Object.entries(FEATURE_CATEGORIES).map(([catKey, cat]) => (
+					<tbody key={catKey}>
+						<tr>
+							<th scope="rowgroup" className={`${NAMES} ${RULE} pt-8 pb-3 font-medium text-ink`}>
 								{cat.label}
-							</td>
-							<td colSpan={1 + items.length} className="bg-zinc-50 px-0 py-2" />
-						</tr>,
-						...Object.keys(cat.features).map((featureKey) => (
-							<tr key={featureKey} className="border-b border-dashed border-zinc-200 last:border-solid">
-								<td className={`${stickyCell} py-2 pr-4 text-xs text-zinc-600`}>
-									{getFeatureLabel(featureKey as FeatureKey)}
-								</td>
-								<td className="border-x border-zinc-200 bg-blue-50 px-2 py-2">
-									<FeatureMark has={ELMO_FEATURES[featureKey as FeatureKey] ?? false} />
+							</th>
+							<td className={OURS} />
+							<td colSpan={items.length} />
+						</tr>
+						{(Object.keys(cat.features) as FeatureKey[]).map((featureKey) => (
+							<tr key={featureKey}>
+								<th scope="row" className={`${NAMES} ${RULE} py-3 font-normal text-zinc-700`}>
+									{getFeatureLabel(featureKey)}
+								</th>
+								<td className={OURS}>
+									<FeatureMark has={ELMO_FEATURES[featureKey] ?? false} />
 								</td>
 								{items.map((c) => (
-									<td key={c.slug} className="px-2 py-2">
-										<FeatureMark has={c.features[featureKey as FeatureKey] ?? false} />
+									<td key={c.slug}>
+										<FeatureMark has={c.features[featureKey] ?? false} />
 									</td>
 								))}
 							</tr>
-						)),
-					])}
-					<tr className="border-t-2 border-zinc-200">
-						<td className={`${stickyCell} py-2 pr-4 text-xs font-semibold text-zinc-950`}>Popularity</td>
-						<td className="border-x border-zinc-200 bg-blue-50 px-2 py-2 text-center text-xs text-blue-600">♥︎</td>
+						))}
+					</tbody>
+				))}
+				<tbody className={`${SMALL} text-center text-zinc-700 tabular-nums [&_td]:border-b`}>
+					<tr>
+						<th scope="row" className={`${NAMES} border-y border-zinc-200 py-3 font-medium text-ink`}>
+							Popularity grade
+						</th>
+						<td className={OURS}>
+							<Heart aria-hidden="true" className="mx-auto size-4 fill-rust text-rust" />
+							<span className="sr-only">Not graded</span>
+						</td>
 						{items.map((c) => (
-							<td key={c.slug} className="px-2 py-2 text-center text-xs tabular-nums text-zinc-600">
-								{getPopularityGrade(c)}
-							</td>
+							<td key={c.slug}>{getPopularityGrade(c)}</td>
 						))}
 					</tr>
 				</tbody>

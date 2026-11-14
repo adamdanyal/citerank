@@ -1,12 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/citerank/v2/shell";
-import {
-	CiteRankCta,
-	DirectoryBackLink,
-	DirectoryCiteRankBanner,
-	DirectoryHero,
-	DirectorySection,
-} from "@/components/directory-shell";
+import { CiteRankCta, DirectoryCiteRankBanner, DirectoryHero, DirectorySection } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
 import { ToolGrid } from "@/components/tool-list";
 import {
@@ -59,8 +53,7 @@ function CategoryPage() {
 	};
 	return (
 		<PageShell>
-			<DirectoryBackLink />
-			<DirectoryHero title={CATEGORY_HEADINGS[category]} lead={getCategoryVerdict(category, tools)} />
+			<DirectoryHero back tight title={CATEGORY_HEADINGS[category]} lead={getCategoryVerdict(category, tools)} />
 			<DirectoryCiteRankBanner
 				pitch={getCategoryCiteRankPitch(category)}
 				comparison={{
@@ -69,7 +62,7 @@ function CategoryPage() {
 				}}
 			/>
 			<DirectorySection title="Tools in this category">
-				<ToolGrid competitors={tools} />
+				<ToolGrid competitors={tools} showCategory={false} />
 			</DirectorySection>
 			<Faq items={getCategoryFaqs(category, tools)} />
 			<CiteRankCta />

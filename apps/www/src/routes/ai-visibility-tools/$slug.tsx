@@ -1,5 +1,4 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { PANEL, PANEL_PAD, Page } from "@/components/citerank/v2/kit";
 import { PageShell } from "@/components/citerank/v2/shell";
 import { CompetitorComparison } from "@/components/competitor-comparison";
 import {
