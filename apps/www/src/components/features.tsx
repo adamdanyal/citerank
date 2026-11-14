@@ -79,7 +79,7 @@ export const FEATURE_GROUPS: { heading: string; lede: string; slugs: string[] }[
 ];
 
 /*
- * A feature as one link: what it looks like, its name and a line. The three
+ * A feature as one link: its name, a line, then what it looks like. The three
  * parts sit on the rows of the grid around the tile, so the names of two tiles
  * side by side line up even when their graphics differ in height.
  */
@@ -93,11 +93,9 @@ export function FeatureCard({ feature, wide = false }: { feature: ProductFeature
 			href={featurePath(feature.slug)}
 			className={`group ${FEATURE_TILE} rounded-lg focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-rust`}
 		>
+			<h3 className={`${SUBHEAD} text-ink transition-colors duration-200 group-hover:text-rust`}>{feature.name}</h3>
+			<p className={`${BODY} mt-2 mb-5 max-w-[60ch] text-zinc-600`}>{feature.summary}</p>
 			<FeatureGraphic graphic={feature.graphic} tile={wide ? "wide" : "narrow"} />
-			<h3 className={`${SUBHEAD} mt-5 text-ink transition-colors duration-200 group-hover:text-rust`}>
-				{feature.name}
-			</h3>
-			<p className={`${BODY} mt-2 max-w-[60ch] text-zinc-600`}>{feature.summary}</p>
 		</a>
 	);
 }
