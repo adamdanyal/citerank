@@ -244,7 +244,7 @@ function AboutPage() {
 			<section className={`${PANEL} ${PANEL_PAD_WIDE}`}>
 				<Page className="grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-x-16">
 					<div className="lg:sticky lg:top-28 lg:self-start">
-						<PanelHead title="Why we started CiteRank.com" />
+						<PanelHead title="Why we built CiteRank.com" />
 						<ul className="mt-8 grid max-w-[34rem] grid-cols-2 gap-4 sm:gap-8 lg:mt-10">
 							{FOUNDERS.map((founder) => (
 								<Founder key={founder.name} founder={founder} />
