@@ -9,6 +9,7 @@ import { RootProvider } from "fumadocs-ui/provider/tanstack";
 import type { ComponentPropsWithoutRef } from "react";
 import { Suspense } from "react";
 import { AuthorByline } from "@/components/author-byline";
+import { Closing } from "@/components/citerank/v2/closing";
 import { LEAD, Page } from "@/components/citerank/v2/kit";
 import { PageShell } from "@/components/citerank/v2/shell";
 import { DOC_BODY, DOC_GRID, DOC_H2, DOC_H3, DOC_TEXT, DocumentHead, getDocumentComponents } from "@/components/mdx";
@@ -102,6 +103,7 @@ export function BlogPostLayout({ data }: { data: BlogPostLoaderData }) {
 						</Page>
 					</section>
 				</article>
+				<Closing from="marketing-page-cta" />
 			</PageShell>
 		</RootProvider>
 	);

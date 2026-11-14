@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
-import { BODY, HEADING, LEAD, PANEL, PANEL_PAD, Page, SMALL, SUBHEAD } from "@/components/citerank/v2/kit";
+import { Closing } from "@/components/citerank/v2/closing";
+import { BODY, HEADING, LEAD, LIST_CARD, PANEL, PANEL_PAD, Page, SMALL } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
+import { ITEM_TITLE } from "@/components/pillar";
 import { authorDisplayName, isAiAuthor } from "@/data/authors";
 import { formatPostDate } from "@/lib/format";
 import { breadcrumbJsonLd, canonicalUrl, ogMeta, SITE_NAME } from "@/lib/seo";
@@ -89,10 +91,10 @@ function ResourcesPage() {
 					) : (
 						<>
 							<h2 className="sr-only">All posts</h2>
-							<ul className="border-b border-zinc-200">
+							<ul className={LIST_CARD}>
 								{posts.map((post, index) =>
 									index === 0 ? (
-										<li key={post.url} className="group relative pb-10 lg:pb-16">
+										<li key={post.url} className="group relative pt-8 pb-10 lg:pt-12 lg:pb-14">
 											<h3 className={`${HEADING} max-w-[24ch] text-ink`}>
 												<a href={post.url} className={POST_LINK}>
 													{post.title}
@@ -108,7 +110,7 @@ function ResourcesPage() {
 											key={post.url}
 											className="group relative grid gap-2 border-t border-zinc-200 py-6 lg:grid-cols-12 lg:gap-8 lg:py-8"
 										>
-											<h3 className={`${SUBHEAD} text-ink lg:col-span-5`}>
+											<h3 className={`${ITEM_TITLE} text-ink lg:col-span-5`}>
 												<a href={post.url} className={POST_LINK}>
 													{post.title}
 												</a>
@@ -123,6 +125,7 @@ function ResourcesPage() {
 					)}
 				</Page>
 			</section>
+			<Closing from="marketing-page-cta" />
 		</PageShell>
 	);
 }
