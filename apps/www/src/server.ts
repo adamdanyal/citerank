@@ -33,6 +33,28 @@ function addSecurityHeaders(response: Response): Response {
 	return response;
 }
 
+const COMPRESSIBLE =
+	/^(text\/|application\/(json|ld\+json|linkset\+json|manifest\+json|xml|rss\+xml|atom\+xml|javascript)|image\/svg\+xml)/;
+
+/*
+ * The Node server sends a rendered page as it is, about four times the bytes it
+ * needs to be. A proxy in front may compress it, but nothing guarantees one is
+ * there. Static files are not touched here: the build writes theirs compressed.
+ */
+function compress(request: Request, response: Response): Response {
+	if (!response.body || response.status !== 200 || request.method !== "GET") return response;
+	if (response.headers.has("Content-Encoding")) return response;
+	if (!COMPRESSIBLE.test(response.headers.get("Content-Type") ?? "")) return response;
+	if (!/\bgzip\b/.test(request.headers.get("Accept-Encoding") ?? "")) return response;
+
+	const headers = new Headers(response.headers);
+	headers.set("Content-Encoding", "gzip");
+	headers.delete("Content-Length");
+	headers.append("Vary", "Accept-Encoding");
+	const body = response.body.pipeThrough(new CompressionStream("gzip") as ReadableWritablePair<Uint8Array, Uint8Array>);
+	return new Response(body, { status: response.status, statusText: response.statusText, headers });
+}
+
 const DISCOVERY_LINKS = [
 	`</.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"`,
 	`</.well-known/ard.json>; rel="ard"`,
@@ -146,6 +168,6 @@ export default createServerEntry({
 		const response = await handler.fetch(req);
 		if (negotiable) response.headers.set("Vary", "Accept");
 		addDiscoveryLinks(response, negotiable ? `${path}.md` : undefined);
-		return addSecurityHeaders(response);
+		return compress(request, addSecurityHeaders(response));
 	},
 });
