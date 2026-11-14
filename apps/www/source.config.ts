@@ -86,6 +86,17 @@ export const legal = defineDocs({
 
 export default defineConfig({
 	mdxOptions: {
-		remarkPlugins: [[remarkFeedbackBlock]],
+		remarkPlugins: [
+			[
+				remarkFeedbackBlock,
+				{
+					// The plugin's default also wraps each list item, and its wrapper is a div, which leaves a list with no items for a screen reader.
+					resolve: (node: { type: string }) => {
+						if (node.type === "mdxJsxFlowElement" || node.type === "listItem") return "skip";
+						return node.type === "paragraph" || node.type === "image";
+					},
+				},
+			],
+		],
 	},
 });
