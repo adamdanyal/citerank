@@ -9,6 +9,40 @@ import { ACTION, ACTION_QUIET_ON_INK, DISPLAY, SMALL } from "./kit";
 
 const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
 
+const WIDE = {
+	src: "/screens/overview-wide.webp",
+	srcSet: "/screens/overview-wide.webp 1000w, /screens/overview-wide-2x.webp 2000w",
+	sizes: "(min-width: 1024px) 1000px, 100vw",
+};
+const PHONE = {
+	src: "/screens/overview-phone.webp",
+	srcSet: "/screens/overview-phone.webp 390w, /screens/overview-phone-2x.webp 780w",
+	sizes: "100vw",
+	media: "(max-width: 639px)",
+};
+
+/* A browser cannot see inside a picture until it parses it, so the page that renders the hero preloads the right capture. */
+export const HERO_PRELOADS = [
+	{
+		rel: "preload",
+		as: "image",
+		href: PHONE.src,
+		imageSrcSet: PHONE.srcSet,
+		imageSizes: PHONE.sizes,
+		media: PHONE.media,
+		fetchPriority: "high",
+	},
+	{
+		rel: "preload",
+		as: "image",
+		href: WIDE.src,
+		imageSrcSet: WIDE.srcSet,
+		imageSizes: WIDE.sizes,
+		media: "(min-width: 640px)",
+		fetchPriority: "high",
+	},
+] as const;
+
 const DEFAULT_LEDE = `See who ChatGPT, Gemini and ${ENGINE_COUNT - 2} other AI apps recommend to your buyers, and what to fix.`;
 
 /* Title, lede and source are overridden when a visitor arrives from an AI assistant, or on a tested variant. */
@@ -74,17 +108,11 @@ export function Hero({
 					className="block min-w-0 rounded-card focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rust lg:col-start-4 lg:col-end-6"
 				>
 					<picture>
-						<source
-							media="(max-width: 639px)"
-							srcSet="/screens/overview-phone.webp 390w, /screens/overview-phone-2x.webp 780w"
-							sizes="100vw"
-							width={390}
-							height={348}
-						/>
+						<source media={PHONE.media} srcSet={PHONE.srcSet} sizes={PHONE.sizes} width={390} height={348} />
 						<img
-							src="/screens/overview-wide.webp"
-							srcSet="/screens/overview-wide.webp 1000w, /screens/overview-wide-2x.webp 2000w"
-							sizes="(min-width: 1024px) 1000px, 100vw"
+							src={WIDE.src}
+							srcSet={WIDE.srcSet}
+							sizes={WIDE.sizes}
 							width={1000}
 							height={673}
 							alt="The CiteRank.com overview: AI visibility, share of voice, sentiment and position for the tracked brand, above a chart and a table ranking it against its competitors in each AI app"

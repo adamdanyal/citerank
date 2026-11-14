@@ -4,7 +4,7 @@
 // in parallel with the CSS instead of after it (the H1 LCP element was being
 // held back by the HTML→CSS→font waterfall).
 import interFont from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
-import schibstedFont from "@fontsource/schibsted-grotesk/files/schibsted-grotesk-latin-600-normal.woff2?url";
+import schibstedFont from "@fontsource/schibsted-grotesk/files/schibsted-grotesk-latin-700-normal.woff2?url";
 import { Asset, createRootRoute, Outlet, Scripts, useLocation, useTags } from "@tanstack/react-router";
 import { initAdTags, trackAdPageView } from "@workspace/ui/lib/ad-tags";
 import { isConsentRequired } from "@workspace/ui/lib/cookie-consent";
