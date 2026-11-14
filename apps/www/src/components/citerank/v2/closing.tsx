@@ -6,7 +6,7 @@ import { FOUNDERS } from "@/lib/founders";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../product/data";
 import { LinkedInMark } from "../socials";
-import { ACTION, ACTION_QUIET_ON_INK, BAND_PAD, CARD_LIFT, DISPLAY_S, LEAD, LINK, Page, SMALL } from "./kit";
+import { ACTION, ACTION_QUIET_ON_INK, BAND_PAD, CARD_LIFT, DISPLAY_S, LEAD, LINK, Page, PanelHead, SMALL } from "./kit";
 
 /*
  * The page closes on the two founders: what each says, on two cards of one
@@ -19,8 +19,8 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 	return (
 		<section className={`relative bg-white ${BAND_PAD}`}>
 			<Page>
-				<h2 className="sr-only">From the founders of CiteRank.com</h2>
-				<div className="grid grid-cols-[minmax(0,1fr)] gap-5 lg:grid-cols-2 lg:gap-8">
+				<PanelHead title="Why we built CiteRank.com" />
+				<div className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-5 lg:mt-16 lg:grid-cols-2 lg:gap-8">
 					{FOUNDERS.map((founder) => (
 						<figure key={founder.name} className={`${CARD_LIFT} flex min-w-0 flex-col p-6 sm:p-8 lg:p-10`}>
 							<span
@@ -64,8 +64,8 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 					))}
 				</div>
 
-				{/* The last thing on the page: one head, one line and the two things a visitor can do, on ink like the hero. */}
-				<div className="mt-5 rounded-[1.5rem] bg-ink px-6 py-12 text-center text-paper sm:px-10 sm:py-16 lg:mt-8 lg:py-20">
+				{/* The last thing on the page: one head, one line and the two things a visitor can do, on ink like the hero. It stands as far under the quotes as the section's own padding stands over them. */}
+				<div className="mt-14 rounded-[1.5rem] bg-ink px-6 py-12 text-center text-paper sm:mt-20 sm:px-10 sm:py-16 lg:mt-30 lg:py-20">
 					{/* Two lines on any phone: the type gives way before a third. */}
 					<h2
 						className={`${DISPLAY_S} mx-auto max-w-[20ch] text-paper max-sm:text-[length:min(2.25rem,calc((100vw_-_5rem)_/_8.6))]`}
@@ -73,7 +73,7 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 						See what AI says about your brand
 					</h2>
 					<p className={`${LEAD} mx-auto mt-5 max-w-[44ch] text-zinc-300`}>
-						Try the live demo first: no slides, no sales call, every page of the real product.
+						Try the live demo first. No slides, no sales call.
 					</p>
 					<div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
 						<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={ACTION}>
