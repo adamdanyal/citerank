@@ -86,7 +86,7 @@ function Fixes() {
 						className={`grid size-6 shrink-0 place-items-center rounded-md ${index === 0 ? "bg-rust text-paper" : "ring-1 ring-inset ring-zinc-300"}`}
 					>
 						{index === 0 ? (
-							<svg viewBox="0 0 12 12" className="size-3.5">
+							<svg aria-hidden="true" viewBox="0 0 12 12" className="size-3.5">
 								<path
 									d="M2 6.5l2.5 2.5 5.5-6"
 									fill="none"

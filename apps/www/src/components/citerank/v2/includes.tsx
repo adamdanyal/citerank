@@ -38,7 +38,7 @@ export function Includes() {
 									aria-hidden="true"
 									className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-rust text-paper"
 								>
-									<svg viewBox="0 0 12 12" className="size-3.5">
+									<svg aria-hidden="true" viewBox="0 0 12 12" className="size-3.5">
 										<path
 											d="M2 6.5l2.5 2.5 5.5-6"
 											fill="none"
