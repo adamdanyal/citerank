@@ -61,9 +61,14 @@ export const PILL_ACCENT = `${PILL_BASE} bg-rust text-paper`;
 export const PILL_INK = `${PILL_BASE} bg-ink-well text-paper`;
 export const PILL_QUIET = `${PILL_BASE} bg-paper-2 text-zinc-700`;
 
-/** A tinted well, for content of another kind than the text around it. No outline: the tint is the edge. */
-export const CARD = "rounded-card bg-paper-2 p-6 sm:p-8";
-export const CARD_INK = "rounded-card bg-ink-well p-6 sm:p-8";
+/** A white card lifted off the page: the surface for a picture, a list or a plan. Its padding is the caller's. */
+export const CARD_LIFT = "rounded-card bg-white shadow-lift ring-1 ring-zinc-200";
+/** The same card with its usual padding, for content of another kind than the text around it. */
+export const CARD = `${CARD_LIFT} p-6 sm:p-8`;
+/** A list on one lifted card: the rows keep their own hairlines, and the first gives its up to the card's edge. */
+export const LIST_CARD = `${CARD_LIFT} px-6 sm:px-8 [&>li:first-child]:border-t-0`;
+/** A link index on one lifted card, its rows running down columns. No selector finds the row that opens each column, so a strip of the card's white covers their hairlines. */
+export const INDEX_CARD = `${CARD_LIFT} relative px-6 before:pointer-events-none before:absolute before:inset-x-6 before:top-0 before:h-px before:bg-white sm:px-8 sm:before:inset-x-8`;
 
 const BUTTON = `inline-flex h-13 items-center justify-center gap-2 whitespace-nowrap rounded-full px-7 text-[1rem] font-medium transition-colors duration-200 active:translate-y-px ${FOCUS}`;
 const BUTTON_SM = `inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 text-[0.9375rem] font-medium transition-colors duration-200 active:translate-y-px ${FOCUS}`;
@@ -98,9 +103,6 @@ export function Tick({ className = "size-7" }: { className?: string }) {
 	);
 }
 
-/** A white card lifted off the page: the surface for a picture, a list or a plan. Its padding is the caller's. */
-export const CARD_LIFT = "rounded-card bg-white shadow-lift ring-1 ring-zinc-200";
-
 /** The number of a step, on the disc that opens its head. The list already counts for a reader, so it is hidden from one. */
 export function StepDisc({ step }: { step: number }) {
 	return (
@@ -133,6 +135,84 @@ export function LiftedRows({
 						{item.title}
 					</h3>
 					<p className={`${BODY} text-zinc-600 lg:col-span-7 ${ticked ? "max-lg:pl-11" : ""}`}>{item.body}</p>
+				</li>
+			))}
+		</ul>
+	);
+}
+
+/** Steps in order, a row each, on one lifted card: the numbered disc opens the head, then the sentence. `stacked` keeps the sentence under the head where the card is narrow. */
+export function StepRows({
+	steps,
+	stacked = false,
+	className = "",
+}: {
+	steps: { title: string; body: ReactNode }[];
+	stacked?: boolean;
+	className?: string;
+}) {
+	return (
+		<ol className={`${LIST_CARD} ${className}`}>
+			{steps.map((step, index) => (
+				<li
+					key={step.title}
+					className={`grid gap-x-8 gap-y-2 border-t border-zinc-200 py-6 ${stacked ? "" : "lg:grid-cols-12 lg:items-start"}`}
+				>
+					<h3 className={`${SUBHEAD} flex items-start gap-3 text-ink ${stacked ? "" : "lg:col-span-5"}`}>
+						<StepDisc step={index + 1} />
+						{step.title}
+					</h3>
+					<p className={`${BODY} text-zinc-600 ${stacked ? "pl-11" : "max-w-[60ch] max-lg:pl-11 lg:col-span-7"}`}>
+						{step.body}
+					</p>
+				</li>
+			))}
+		</ol>
+	);
+}
+
+/** The same steps where each has room to stand alone: a lifted card each. The caller's `className` sets the columns. */
+export function StepCards({
+	steps,
+	className = "",
+}: {
+	steps: { title: string; body: ReactNode }[];
+	className?: string;
+}) {
+	return (
+		<ol className={`grid grid-cols-[minmax(0,1fr)] gap-5 lg:gap-8 ${className}`}>
+			{steps.map((step, index) => (
+				<li key={step.title} className={CARD}>
+					<h3 className={`${SUBHEAD} flex items-start gap-3 text-ink`}>
+						<StepDisc step={index + 1} />
+						{step.title}
+					</h3>
+					<p className={`${BODY} mt-3 text-zinc-600`}>{step.body}</p>
+				</li>
+			))}
+		</ol>
+	);
+}
+
+/** Places to go next, a lifted card each. The whole card is the link, and its title takes the accent on hover. The caller's `className` sets the columns. */
+export function LinkCards({
+	items,
+	className = "",
+}: {
+	items: { href: string; title: ReactNode; body?: ReactNode }[];
+	className?: string;
+}) {
+	return (
+		<ul className={`grid grid-cols-[minmax(0,1fr)] gap-5 lg:gap-8 ${className}`}>
+			{items.map((item) => (
+				<li key={item.href} className="flex min-w-0">
+					<a
+						href={item.href}
+						className={`${CARD} group block w-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rust`}
+					>
+						<h3 className={`${SUBHEAD} text-ink transition-colors duration-200 group-hover:text-rust`}>{item.title}</h3>
+						{item.body ? <p className={`${BODY} mt-2 max-w-[52ch] text-zinc-600`}>{item.body}</p> : null}
+					</a>
 				</li>
 			))}
 		</ul>
