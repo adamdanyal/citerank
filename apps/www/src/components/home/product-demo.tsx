@@ -200,7 +200,7 @@ export function ProductDemo() {
 					aria-hidden="true"
 					className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center bg-zinc-950/0 transition-colors duration-200 group-hover:bg-zinc-950/10 group-focus-visible:bg-zinc-950/10"
 				>
-					<span className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white opacity-0 shadow-card transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+					<span className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
 						View live demo
 						<ArrowUpRight className="size-4" />
 					</span>

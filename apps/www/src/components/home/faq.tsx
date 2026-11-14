@@ -12,7 +12,7 @@ export function Faq({ items }: { items: FaqItem[] }) {
 				<div className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
 					<SectionHeading title="Frequently asked questions" />
 					<p className="mt-4 text-pretty text-sm/6 text-zinc-600">
-						Something we didn't cover? Email us directly at{" "}
+						Something we didn’t cover? Email us directly at{" "}
 						<a
 							href="mailto:team@citerank.com"
 							className="font-medium text-zinc-950 underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-950"

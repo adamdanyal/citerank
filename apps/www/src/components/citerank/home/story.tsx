@@ -48,7 +48,7 @@ const ANSWER = {
 function AnswerCard() {
 	return (
 		<figure className={`${CARD} p-6 lg:p-8`}>
-			<ExampleTag>A buyer's question and an AI answer, with the demo brands</ExampleTag>
+			<ExampleTag>A buyer’s question and an AI answer, with the demo brands</ExampleTag>
 			<p className="title-1 mt-6 text-zinc-950">“{ANSWER.prompt}”</p>
 			<div className="mt-6 rounded-xl bg-paper-2 p-4">
 				<p className="body-6 text-zinc-700">{ANSWER.intro}</p>

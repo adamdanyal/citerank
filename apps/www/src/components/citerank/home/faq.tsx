@@ -11,7 +11,7 @@ export function Faq({ items }: { items: FaqItem[] }) {
 				<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
 					<h2 className="heading-2 text-zinc-950">Frequently asked questions</h2>
 					<p className="body-6 mt-6 text-zinc-600">
-						Something we didn't cover? Email us at{" "}
+						Something we didn’t cover? Email us at{" "}
 						<a href="mailto:team@citerank.com" className={`${QUIET_LINK} text-zinc-950`}>
 							team@citerank.com
 						</a>

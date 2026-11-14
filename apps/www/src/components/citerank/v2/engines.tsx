@@ -49,7 +49,7 @@ export function Engines() {
 				<PanelHead title={`${MODELS.length} answer engines your buyers use`} className="max-w-[46rem]">
 					<p className={`${LEAD} text-zinc-600`}>
 						{list.format(SCRAPED.map(label))} are checked the way a real user sees them. The rest we read through each
-						company's API.
+						company’s API.
 					</p>
 				</PanelHead>
 

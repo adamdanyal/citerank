@@ -30,7 +30,7 @@ export function EngineCoverage() {
 					<h2 className="heading-2 text-zinc-950">{ENGINES.length} answer engines your buyers use</h2>
 					<p className="body-7 mt-6 text-zinc-600">
 						{list.format(SCRAPED.map((engine) => getModelMeta(engine.model).label))} are checked the way a real user
-						sees them. The rest we read through each company's API.
+						sees them. The rest we read through each company’s API.
 					</p>
 					<p className="body-7 mt-4 text-zinc-600">
 						{list.format(GROUNDED_ONLY.map((model) => getModelMeta(model).label))} answer with their own web search on,
