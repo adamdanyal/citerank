@@ -76,20 +76,29 @@ function ReviewCard({ review }: { review: Review }) {
 	);
 }
 
+/* The card always names the month a visitor is reading in, so it only stays true while the answers are asked again each month. */
+function thisMonth() {
+	const now = new Date();
+	return `${now.toLocaleString("en-US", { month: "long", timeZone: "UTC" })} ${now.getUTCFullYear()}`;
+}
+
 /*
  * The whole answer opens in the browser's own popover: no script to load, and
  * it closes on a click outside or on Escape.
  */
 function AnswerDetails({ review }: { review: AiReview }) {
 	const id = `answer-${review.iconId}`;
+	const asked = thisMonth();
 	return (
 		<>
 			<button
 				type="button"
 				popoverTarget={id}
+				suppressHydrationWarning
 				className={`${LAST_LINE} text-zinc-600 underline decoration-zinc-500 decoration-dotted underline-offset-4`}
 			>
-				Asked Oct 31, 2026<span className="sr-only">: see the full answer from {review.name}</span>
+				Asked {asked}
+				<span className="sr-only">: see the full answer from {review.name}</span>
 			</button>
 			<div
 				id={id}
@@ -98,7 +107,9 @@ function AnswerDetails({ review }: { review: AiReview }) {
 			>
 				<p className={`${SMALL} text-zinc-600`}>We asked {review.name}</p>
 				<p className={`${MONO} mt-2 rounded-lg bg-paper-2 p-3 text-zinc-700`}>{AI_PROMPT}</p>
-				<p className={`${SMALL} mt-4 text-zinc-600`}>Its full answer, Oct 31, 2026</p>
+				<p suppressHydrationWarning className={`${SMALL} mt-4 text-zinc-600`}>
+					Its full answer, {asked}
+				</p>
 				<div className={`${SMALL} mt-2 space-y-2 rounded-lg bg-paper-2 p-3 text-zinc-700`}>
 					{review.response.map((paragraph) => (
 						<p key={paragraph}>{paragraph}</p>
