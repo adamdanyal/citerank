@@ -84,11 +84,11 @@ const WORK = [
 	},
 	{
 		title: "Review sites and best-of lists",
-		body: "We get you onto the review sites and lists AI cites when it names competitors and leaves you out.",
+		body: "We pitch you to the review sites and lists AI cites when it leaves you out. They decide whether to add you.",
 	},
 	{
 		title: "Forums and communities",
-		body: "We answer buyers’ questions in the forums and communities where they ask about your field.",
+		body: "We answer buyers’ questions, openly as your brand, in the forums and communities where they ask.",
 	},
 	{
 		title: "Guest articles",
@@ -222,10 +222,8 @@ function AgencyPage() {
 				<div className="mt-12 lg:mt-16">
 					<AgencyPlans />
 				</div>
-				<p className={`${SMALL} mt-8 max-w-[80ch] text-zinc-600`}>
-					Every plan has a three-month minimum, then runs month to month. Prices are in US dollars, plus VAT where it
-					applies. We pitch review sites and lists but can’t promise they’ll add you, and we post forum answers openly
-					as your brand.
+				<p className={`${SMALL} mt-8 text-zinc-600`}>
+					Three-month minimum, then month to month. Prices in US dollars, plus VAT where it applies.
 				</p>
 			</PanelSection>
 
