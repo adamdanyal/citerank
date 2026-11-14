@@ -1,16 +1,10 @@
 import { EngineIcon } from "@/components/home/engines";
 import { AI_PROMPT, REVIEW_COLUMNS, type Review } from "../home/reviews";
-import { BODY, LEAD, LINK, MONO, PANEL, PANEL_PAD, Page, PanelHead, SMALL } from "./kit";
+import { BODY, LINK, MONO, PANEL, PANEL_PAD, Page, PanelHead, SMALL } from "./kit";
+
+const REVIEWS = REVIEW_COLUMNS.flat();
 
 type AiReview = Extract<Review, { kind: "ai" }>;
-
-/* The head makes two claims, so the reviews stand in two groups: what customers said, then what the AI apps said. */
-const REVIEWS = REVIEW_COLUMNS.flat();
-/* Longest first: the three long quotes share the first row and the two short ones the second, so neither row has a hole in it. */
-const FROM_PEOPLE = REVIEWS.filter((review) => review.kind === "person").sort(
-	(a, b) => b.quote.length - a.quote.length,
-);
-const FROM_AI = REVIEWS.filter((review) => review.kind === "ai");
 
 function Initials({ name }: { name: string }) {
 	const letters = name
@@ -51,14 +45,12 @@ function Avatar({ review }: { review: Review }) {
 
 const TEXT_CONTROL = `${LINK} inline-flex min-h-11 items-center text-[0.9375rem] font-medium whitespace-nowrap text-blue-800`;
 
-/* An AI's review sits on rust-tinted paper, because it is the product reviewing itself, and is set a size up: it is a line, not a paragraph. */
+/* An AI's review sits on rust-tinted paper, because it is the product reviewing itself. */
 function ReviewCard({ review }: { review: Review }) {
 	const isAi = review.kind === "ai";
 	return (
-		<figure
-			className={`flex w-full flex-col rounded-card p-6 ${isAi ? "bg-blue-50 sm:p-8 lg:p-6" : "bg-paper-2 sm:p-8"}`}
-		>
-			<blockquote className={`${isAi ? LEAD : BODY} flex-1 text-ink`}>“{review.quote}”</blockquote>
+		<figure className={`flex w-full flex-col rounded-card p-6 sm:p-8 ${isAi ? "bg-blue-50" : "bg-paper-2"}`}>
+			<blockquote className={`${BODY} flex-1 text-ink`}>“{review.quote}”</blockquote>
 			<figcaption className="mt-6 flex items-center gap-3">
 				<Avatar review={review} />
 				<div className="min-w-0 flex-1">
@@ -71,7 +63,7 @@ function ReviewCard({ review }: { review: Review }) {
 				</div>
 			</figcaption>
 			{review.kind === "ai" ? (
-				<div className="mt-2 flex flex-wrap gap-x-5">
+				<div className="mt-2 flex flex-wrap gap-x-6">
 					<AnswerDetails review={review} />
 					<a href={review.askUrl} target="_blank" rel="noopener noreferrer" className={TEXT_CONTROL}>
 						Ask it yourself<span className="sr-only"> ({review.name})</span>
@@ -117,11 +109,11 @@ function AnswerDetails({ review }: { review: AiReview }) {
 	);
 }
 
-/* Below `lg` a group is a rail that runs past the edge, so the cut-off card is the cue that there are more; each card is as tall as its own quote. */
-const RAIL =
-	"flex snap-x snap-mandatory items-start gap-4 overflow-x-auto overscroll-x-contain scroll-px-4 px-4 pb-6 [scrollbar-width:thin] sm:scroll-px-6 sm:px-6 lg:mx-auto lg:max-w-[1440px] lg:overflow-visible lg:px-16 lg:pb-0";
-const RAIL_ITEM = "flex w-[19rem] shrink-0 snap-start sm:w-[24rem] lg:w-auto";
-
+/*
+ * One list, laid out twice. On a wide screen all nine are in view in three
+ * columns, each card as tall as its own quote. On a narrow one they are a rail
+ * that runs past the edge, so the cut-off card is the cue that there are more.
+ */
 export function Reviews() {
 	return (
 		<section className={`${PANEL} ${PANEL_PAD}`}>
@@ -129,21 +121,14 @@ export function Reviews() {
 				<PanelHead title="Loved by marketers. Recommended by AI." />
 			</Page>
 			<ul
-				aria-label="What customers say"
-				className={`${RAIL} mt-10 lg:mt-16 lg:grid lg:grid-cols-6 lg:items-stretch lg:gap-8`}
+				aria-label="Reviews"
+				className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-px-4 px-4 pb-6 [scrollbar-width:thin] sm:scroll-px-6 sm:px-6 lg:mx-auto lg:mt-16 lg:block lg:max-w-[1440px] lg:columns-3 lg:gap-8 lg:overflow-visible lg:px-16 lg:pb-0"
 			>
-				{FROM_PEOPLE.map((review, place) => (
-					<li key={review.name} className={`${RAIL_ITEM} ${place < 3 ? "lg:col-span-2" : "lg:col-span-3"}`}>
-						<ReviewCard review={review} />
-					</li>
-				))}
-			</ul>
-			<ul
-				aria-label="What AI apps say"
-				className={`${RAIL} mt-4 lg:mt-8 lg:grid lg:grid-cols-4 lg:items-stretch lg:gap-8`}
-			>
-				{FROM_AI.map((review) => (
-					<li key={review.name} className={RAIL_ITEM}>
+				{REVIEWS.map((review) => (
+					<li
+						key={review.name}
+						className="flex w-[19rem] shrink-0 snap-start sm:w-[24rem] lg:mb-8 lg:w-auto lg:break-inside-avoid"
+					>
 						<ReviewCard review={review} />
 					</li>
 				))}
