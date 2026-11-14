@@ -161,7 +161,7 @@ export const AGENCY_FAQS: FaqItem[] = [
 	},
 	{
 		question: "How much does the AI search agency cost?",
-		answer: `Agency plans cost ${AGENCY_PRICES} a month. The price depends on how much work you want each month and how many brands or markets it covers. Each plan includes a tracker plan and has a three-month minimum.`,
+		answer: `Agency plans cost ${AGENCY_PRICES} a month. The price depends on how much work you want each month and how many markets it covers for your brand. Each plan includes a tracker plan and has a three-month minimum.`,
 	},
 	{
 		question: "What is the founding-client rate?",

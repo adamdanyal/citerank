@@ -15,7 +15,7 @@ export const AGENCY_PLANS: AgencyPlan[] = [
 	{
 		name: "Growth",
 		monthlyPriceUsd: 4995,
-		summary: "For brands competing on every buyer question.",
+		summary: "For a brand competing on every buyer question.",
 		lines: [
 			"1 brand, up to 2 markets",
 			"4 new pages, 4 page updates",
@@ -28,10 +28,10 @@ export const AGENCY_PLANS: AgencyPlan[] = [
 	{
 		name: "Authority",
 		monthlyPriceUsd: 7995,
-		summary: "For several brands or markets.",
+		summary: "For one brand selling in several markets.",
 		recommended: true,
 		lines: [
-			"Up to 3 brands or markets",
+			"1 brand, up to 3 markets",
 			"8 new pages, 8 page updates",
 			"8 pitches, 16 forum answers",
 			"3 guest articles",
@@ -43,7 +43,7 @@ export const AGENCY_PLANS: AgencyPlan[] = [
 		name: "Enterprise",
 		monthlyPriceUsd: 14995,
 		from: true,
-		summary: "Custom scope for large brands.",
+		summary: "Custom scope for one large brand.",
 		lines: [
 			"Everything in Authority",
 			"Amounts set on a call",
