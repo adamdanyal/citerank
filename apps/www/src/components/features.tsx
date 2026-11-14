@@ -94,7 +94,7 @@ export function FeatureCard({ feature, wide = false }: { feature: ProductFeature
 			className={`group ${FEATURE_TILE} rounded-lg focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-rust`}
 		>
 			<FeatureGraphic graphic={feature.graphic} tile={wide ? "wide" : "narrow"} />
-			<h3 className={`${SUBHEAD} mt-5 text-ink underline-offset-4 group-hover:underline group-hover:decoration-rust`}>
+			<h3 className={`${SUBHEAD} mt-5 text-ink transition-colors duration-200 group-hover:text-rust`}>
 				{feature.name}
 			</h3>
 			<p className={`${BODY} mt-2 max-w-[60ch] text-zinc-600`}>{feature.summary}</p>

@@ -18,7 +18,7 @@ export const SECONDARY_BUTTON = `${BUTTON} ${OUTLINED}`;
 export const SMALL_BUTTON_BASE = `h-11 items-center justify-center gap-1 whitespace-nowrap rounded-full px-4 text-[0.9375rem] font-medium transition-colors duration-200 active:translate-y-px ${FOCUS}`;
 export const SMALL_BUTTON = `inline-flex ${SMALL_BUTTON_BASE}`;
 export const TEXT_LINK = `group inline-flex h-11 items-center gap-1 rounded-md px-1 text-[1rem] font-medium text-ink transition-colors duration-200 hover:text-blue-700 ${FOCUS}`;
-export const QUIET_LINK = `rounded-sm underline decoration-zinc-400 underline-offset-[5px] transition-colors duration-200 hover:decoration-rust ${FOCUS}`;
+export const QUIET_LINK = `rounded-sm underline decoration-dotted decoration-zinc-500 underline-offset-[5px] transition-colors duration-200 hover:text-rust hover:decoration-rust ${FOCUS}`;
 
 export function LinkArrow() {
 	return <ArrowRight className="size-4" aria-hidden="true" />;

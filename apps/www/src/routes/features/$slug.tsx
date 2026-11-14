@@ -77,7 +77,7 @@ export const Route = createFileRoute("/features/$slug")({
 });
 
 const FOCUS = "rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rust";
-const HOVER_TITLE = "underline-offset-4 group-hover:underline group-hover:decoration-rust";
+const HOVER_TITLE = "transition-colors duration-200 group-hover:text-rust";
 
 /* A numbered stage of a real sequence: the numeral is the list's own counter, never a label typed over the head. */
 const STEP_NUMERAL =

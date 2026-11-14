@@ -19,7 +19,7 @@ export function AiReferralBanner() {
 					{referral.assistant} sent you here. Want it to recommend you too?{" "}
 					<a
 						href={CLOUD_URL}
-						className="rounded-sm font-medium whitespace-nowrap underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper"
+						className="rounded-sm font-medium whitespace-nowrap underline decoration-dotted underline-offset-4 transition-colors duration-200 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper"
 					>
 						Start tracking
 					</a>

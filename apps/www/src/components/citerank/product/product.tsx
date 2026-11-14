@@ -109,7 +109,7 @@ export function Product({
 								target="_blank"
 								rel={externalRel(demoUrl)}
 								onClick={() => trackEvent("demo_open", { from: `product-${current}` })}
-								className={`rounded-sm font-medium text-ink underline decoration-zinc-300 underline-offset-4 hover:decoration-rust ${FOCUS}`}
+								className={`rounded-sm font-medium text-ink underline decoration-dotted decoration-zinc-500 underline-offset-4 transition-colors duration-200 hover:text-rust hover:decoration-rust ${FOCUS}`}
 							>
 								Open {shown.label} in the live demo
 							</a>

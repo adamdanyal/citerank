@@ -190,9 +190,7 @@ function SupportPage() {
 									href={resource.href}
 									className="group block rounded-sm py-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rust"
 								>
-									<h3
-										className={`${SUBHEAD} text-ink underline-offset-4 group-hover:underline group-hover:decoration-rust`}
-									>
+									<h3 className={`${SUBHEAD} text-ink transition-colors duration-200 group-hover:text-rust`}>
 										{resource.label}
 									</h3>
 									<p className={`${BODY} mt-2 max-w-[40ch] text-zinc-600`}>{resource.detail}</p>

@@ -31,7 +31,7 @@ export function Letter() {
 							href="https://www.linkedin.com/in/adamdanyal/"
 							target="_blank"
 							rel="noopener noreferrer"
-							className={`${MONO} w-full shrink-0 rounded-sm whitespace-nowrap underline decoration-zinc-300 underline-offset-4 hover:decoration-rust focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust sm:ml-auto sm:w-auto`}
+							className={`${MONO} w-full shrink-0 rounded-sm whitespace-nowrap underline decoration-dotted decoration-zinc-500 underline-offset-4 transition-colors duration-200 hover:text-rust hover:decoration-rust focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust sm:ml-auto sm:w-auto`}
 						>
 							Trusted by 2M+ on LinkedIn
 						</a>

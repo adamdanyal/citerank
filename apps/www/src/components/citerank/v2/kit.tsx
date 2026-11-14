@@ -74,8 +74,8 @@ export const ACTION = `${BUTTON} ${FILLED}`;
 export const ACTION_QUIET = `${BUTTON} ${OUTLINED}`;
 export const ACTION_QUIET_ON_INK = `${BUTTON} ${OUTLINED_ON_INK}`;
 export const ACTION_SM = `${BUTTON_SM} ${FILLED}`;
-export const LINK = `rounded-sm underline decoration-zinc-400 underline-offset-[5px] transition-colors duration-200 hover:decoration-rust ${FOCUS}`;
-export const LINK_ON_INK = `rounded-sm underline decoration-zinc-500 underline-offset-[5px] transition-colors duration-200 hover:decoration-paper ${FOCUS}`;
+export const LINK = `rounded-sm underline decoration-dotted decoration-zinc-500 underline-offset-[5px] transition-colors duration-200 hover:text-rust hover:decoration-rust ${FOCUS}`;
+export const LINK_ON_INK = `rounded-sm underline decoration-dotted decoration-zinc-400 underline-offset-[5px] transition-colors duration-200 hover:text-blue-300 hover:decoration-blue-300 ${FOCUS}`;
 
 /** The mark beside a thing you get. It says nothing a reader needs, so it is hidden from one. */
 export function Tick({ className = "size-7" }: { className?: string }) {

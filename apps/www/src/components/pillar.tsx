@@ -43,11 +43,11 @@ export const PROSE = `${BODY} text-zinc-700`;
 export const ITEM_TITLE =
 	"font-heading text-title leading-[1.3] font-bold tracking-[-0.01em] [overflow-wrap:break-word] min-w-0 text-balance";
 
-/* A whole row as one link: the row takes the click and its title takes the underline. The hairline sits on the list item, so the link's focus ring keeps its corners. */
+/* A whole row as one link: the row takes the click and its title takes the colour. The hairline sits on the list item, so the link's focus ring keeps its corners. */
 export const ROW = "border-t border-zinc-200";
 export const ROW_LINK = `group rounded-sm ${FOCUS}`;
-export const ROW_TITLE = `${ITEM_TITLE} text-ink decoration-rust decoration-2 underline-offset-4 group-hover:underline`;
-export const ROW_ACTION = `${BODY} font-medium text-ink underline decoration-zinc-400 underline-offset-[5px] transition-colors duration-200 group-hover:decoration-rust`;
+export const ROW_TITLE = `${ITEM_TITLE} text-ink transition-colors duration-200 group-hover:text-rust`;
+export const ROW_ACTION = `${BODY} font-medium text-ink underline decoration-dotted decoration-zinc-500 underline-offset-[5px] transition-colors duration-200 group-hover:text-rust group-hover:decoration-rust`;
 /** The list that opens a hub sits a step nearer the page head, because its first row brings its own space. */
 export const INDEX_PAD = "pt-6 pb-9 sm:pt-8 sm:pb-12 lg:pt-12 lg:pb-18";
 

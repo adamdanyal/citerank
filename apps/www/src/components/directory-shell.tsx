@@ -34,12 +34,12 @@ export const SPLIT_HEAD = "lg:sticky lg:top-28 lg:col-span-4 lg:self-start";
 export const SPLIT_BODY = "min-w-0 lg:col-span-8";
 
 /*
- * In an index the whole row is the link, and its label takes the underline.
+ * In an index the whole row is the link, and its label takes the colour.
  * The hairline sits on the list item, so the link's focus ring keeps its corners.
  */
 export const ROW = "border-t border-zinc-200";
 export const ROW_LINK = `group flex items-baseline justify-between gap-6 rounded-sm py-4 text-[1rem] leading-[1.5] font-medium text-ink ${FOCUS}`;
-export const ROW_LINK_LABEL = "min-w-0 decoration-rust decoration-2 underline-offset-4 group-hover:underline";
+export const ROW_LINK_LABEL = "min-w-0 transition-colors duration-200 group-hover:text-rust";
 export const ROW_LINK_COUNT = `${SMALL} shrink-0 font-normal whitespace-nowrap text-zinc-600 tabular-nums`;
 
 const PADS = { tight: PANEL_PAD_TIGHT, base: PANEL_PAD, wide: PANEL_PAD_WIDE };
