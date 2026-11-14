@@ -22,6 +22,7 @@ import {
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
 import { externalRel } from "@/lib/external-link";
 import { ABOUT_FAQS } from "@/lib/faqs";
+import { FOUNDERS } from "@/lib/founders";
 import { aboutPageJsonLd, breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
 const CONTACT_EMAIL = "team@citerank.com";
@@ -57,24 +58,6 @@ export const Route = createFileRoute("/about")({
 const { basic, pro, business } = PLANS;
 const ENGINE_NAMES = Object.keys(CLOUD_PLATFORMS).map((model) => getModelMeta(model).label);
 const ENGINE_COUNT = ENGINE_NAMES.length;
-
-/* Portraits are apps/www/public/founder-adam.jpg and founder-julia.jpg, 512px squares. */
-const FOUNDERS = [
-	{
-		name: "Adam Danyal",
-		role: "Founder",
-		proof: "2M+ followers",
-		href: "https://www.linkedin.com/in/adamdanyal/",
-		photo: "/founder-adam.jpg",
-	},
-	{
-		name: "Julia Danyal",
-		role: "Co-founder",
-		proof: "360K+ followers",
-		href: "https://www.linkedin.com/in/juliadanyal/",
-		photo: "/founder-julia.jpg",
-	},
-];
 
 const NUMBERS = [
 	{ value: String(ENGINE_COUNT), label: "AI apps tracked" },

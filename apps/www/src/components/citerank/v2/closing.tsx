@@ -2,14 +2,16 @@ import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import type { ReferralSource } from "@workspace/config/referrals";
 import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import { externalRel } from "@/lib/external-link";
+import { FOUNDERS } from "@/lib/founders";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../product/data";
 import { LinkedInMark } from "../socials";
-import { ACTION, ACTION_QUIET, BAND_PAD, DISPLAY_S, LEAD, LINK, Page, SMALL, SUBHEAD } from "./kit";
+import { ACTION, ACTION_QUIET, BAND_PAD, CARD_LIFT, LEAD, LINK, Page, SMALL, SUBHEAD } from "./kit";
 
 /*
- * The page closes on the founder saying why this exists, as a quote beside his
- * portrait, and then the two things a visitor can do about it.
+ * The page closes on the two founders: what each says, on two cards of one
+ * size, with the name under the portrait as on the about page. Then the two
+ * things a visitor can do about it.
  */
 export function Closing({ from = "marketing-closing" }: { from?: ReferralSource } = {}) {
 	const signupUrl = cloudSignupUrl(from);
@@ -17,49 +19,45 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 	return (
 		<section className={`relative bg-white ${BAND_PAD}`}>
 			<Page>
-				{/* His name stands under his portrait, as on the about page. On a laptop the two sit beside the quote; narrower, under it. */}
-				<figure className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-x-16">
-					<blockquote className="lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-center">
-						<span
-							aria-hidden="true"
-							className="block h-10 font-heading text-[6rem] leading-none font-bold text-rust lg:h-12 lg:text-[7.5rem]"
-						>
-							“
-						</span>
-						{/* A sentence to a line, so none of the three ends on a word of the next. */}
-						<h2 className={`${DISPLAY_S} mt-4 text-ink`}>
-							<span className="block">Ask AI which product to pick.</span>{" "}
-							<span className="block">It names two or three brands.</span>{" "}
-							<span className="block">There is no page two.</span>
-						</h2>
-						<p className={`${LEAD} mt-5 max-w-[52ch] text-zinc-600`}>
-							Nothing tells you whether you were in that answer.
-						</p>
-					</blockquote>
-					<img
-						src="/founder-adam.jpg"
-						alt=""
-						width={512}
-						height={512}
-						loading="lazy"
-						decoding="async"
-						className="mt-10 size-28 rounded-card object-cover lg:col-start-1 lg:row-start-1 lg:mt-0 lg:size-64"
-					/>
-					<figcaption className="mt-4 lg:col-start-1 lg:row-start-2">
-						<span className={`${SUBHEAD} block text-ink`}>Adam Danyal</span>
-						<span className={`${SMALL} mt-1 block text-zinc-600`}>Founder</span>
-						<a
-							href="https://www.linkedin.com/in/adamdanyal/"
-							target="_blank"
-							rel="noopener noreferrer"
-							className={`${LINK} ${SMALL} mt-2 inline-flex items-center gap-2 whitespace-nowrap text-zinc-700`}
-						>
-							<LinkedInMark />
-							2M+ followers
-							<span className="sr-only"> on LinkedIn</span>
-						</a>
-					</figcaption>
-				</figure>
+				<h2 className="sr-only">From the founders of CiteRank.com</h2>
+				<div className="grid grid-cols-[minmax(0,1fr)] gap-5 lg:grid-cols-2 lg:gap-8">
+					{FOUNDERS.map((founder) => (
+						<figure key={founder.name} className={`${CARD_LIFT} flex min-w-0 flex-col p-6 sm:p-8 lg:p-10`}>
+							<span
+								aria-hidden="true"
+								className="block h-9 font-heading text-[5.5rem] leading-none font-bold text-rust lg:h-10 lg:text-[6rem]"
+							>
+								“
+							</span>
+							<blockquote className="mt-4 flex-1 font-heading text-[clamp(1.375rem,1.1vw+1rem,1.875rem)] leading-[1.25] font-bold tracking-[-0.01em] text-pretty text-ink">
+								{founder.quote}
+							</blockquote>
+							<figcaption className="mt-8">
+								<img
+									src={founder.photo}
+									alt=""
+									width={512}
+									height={512}
+									loading="lazy"
+									decoding="async"
+									className="size-24 rounded-card object-cover"
+								/>
+								<span className={`${SUBHEAD} mt-4 block text-ink`}>{founder.name}</span>
+								<span className={`${SMALL} mt-1 block text-zinc-600`}>{founder.role}</span>
+								<a
+									href={founder.href}
+									target="_blank"
+									rel="noopener noreferrer"
+									className={`${LINK} ${SMALL} mt-2 inline-flex items-center gap-2 whitespace-nowrap text-zinc-700`}
+								>
+									<LinkedInMark />
+									{founder.proof}
+									<span className="sr-only"> on LinkedIn</span>
+								</a>
+							</figcaption>
+						</figure>
+					))}
+				</div>
 
 				<div className="mt-12 grid gap-8 border-t border-zinc-200 pt-10 lg:mt-16 lg:grid-cols-12 lg:items-center lg:gap-8">
 					<p className={`${LEAD} max-w-[52ch] text-zinc-700 lg:col-span-7`}>
