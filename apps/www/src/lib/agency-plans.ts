@@ -1,80 +1,13 @@
 import { PLANS } from "@workspace/config/plans";
 
-/* The tracker plan every agency plan includes. Its price and limits are part of what the agency's price pays for, so the cards say them. */
+/* The tracker plan the agency's price includes. Its price and limits are part of what that price pays for, so the page says them. */
 const TRACKER = PLANS.business;
-const TRACKER_LINE = `$${TRACKER.monthlyPriceUsd} tracker plan included`;
 const ANSWERS_A_DAY = TRACKER.maxPrompts * TRACKER.platformPicks * TRACKER.standardRunsPerDay;
 
-export interface AgencyPlan {
-	name: string;
-	monthlyPriceUsd: number;
-	/** Set on a plan whose price is where its scope starts, not what it costs. */
-	from?: boolean;
-	summary: string;
-	/** What sets the plan apart, a short line each. What every plan shares is in AGENCY_EVERY_PLAN. */
-	lines: string[];
-	/** What the plan leaves out, so the lists on the cards stay level. */
-	without?: string[];
-	recommended?: boolean;
-}
+/** Where the agency's price starts. The scope, and so the price above this, is agreed on a call. */
+export const AGENCY_FROM_USD = 4995;
 
-export const AGENCY_PLANS: AgencyPlan[] = [
-	{
-		name: "Growth",
-		monthlyPriceUsd: 4995,
-		summary: "For a brand competing on every buyer question.",
-		lines: [
-			TRACKER_LINE,
-			"1 brand, up to 2 markets",
-			"4 new pages, 4 page updates",
-			"4 pitches, 8 forum answers",
-			"1 guest article",
-			"A 30-minute call every month",
-		],
-		without: ["No named strategist"],
-	},
-	{
-		name: "Authority",
-		monthlyPriceUsd: 7995,
-		summary: "For one brand selling in several markets.",
-		recommended: true,
-		lines: [
-			TRACKER_LINE,
-			"1 brand, up to 3 markets",
-			"8 new pages, 8 page updates",
-			"8 pitches, 16 forum answers",
-			"3 guest articles",
-			"A call every two weeks",
-			"A named strategist",
-		],
-	},
-	{
-		name: "Enterprise",
-		monthlyPriceUsd: 14995,
-		from: true,
-		summary: "Custom scope for one large brand.",
-		lines: [
-			TRACKER_LINE,
-			"Everything in Authority",
-			"Amounts set on a call",
-			"Schema and entity work",
-			"Technical SEO fixes",
-			"Digital PR and brand mentions",
-			"A senior strategist",
-		],
-	},
-];
-
-/* What every plan includes, said once beside the cards. */
-export const AGENCY_EVERY_PLAN = [
-	`${TRACKER.maxPrompts} buyer questions asked ${TRACKER.standardRunsPerDay} times a day`,
-	`Up to ${ANSWERS_A_DAY.toLocaleString("en-US")} AI answers read a day`,
-	"Work chosen from what the tracker ranks",
-	"Ongoing crawler fixes",
-	"Monthly before-and-after report",
-];
-
-/* The kinds of work, once: the short name on the home page, the title and the sentence on the agency page. */
+/* The kinds of work, once: the short name where they are listed, the title and the sentence where they are explained. */
 export const AGENCY_WORK = [
 	{
 		name: "New pages",
@@ -108,17 +41,22 @@ export const AGENCY_WORK = [
 	},
 ];
 
+/* Everything the agency does, as the list beside its price: the work, then the report that shows it worked. */
+export const AGENCY_DOES = [...AGENCY_WORK.map((work) => work.name), "Before-and-after report"];
+
+/* What comes with it, whatever the scope. */
+export const AGENCY_INCLUDES = [
+	`$${TRACKER.monthlyPriceUsd} tracker plan included`,
+	`${TRACKER.maxPrompts} buyer questions asked ${TRACKER.standardRunsPerDay} times a day`,
+	`Up to ${ANSWERS_A_DAY.toLocaleString("en-US")} AI answers read a day`,
+	"Work chosen from what the tracker ranks",
+];
+
 export const FOUNDING_DISCOUNT = 0.25;
 
 export function formatUsd(amount: number): string {
 	return `$${amount.toLocaleString("en-US")}`;
 }
 
-export function foundingPriceUsd(plan: AgencyPlan): number {
-	return Math.round(plan.monthlyPriceUsd * (1 - FOUNDING_DISCOUNT));
-}
-
-/** A plan's price as a sentence would say it: a fixed plan's price, or where a scoped plan starts. */
-export function planPrice(plan: AgencyPlan): string {
-	return `${plan.from ? "from " : ""}${formatUsd(plan.monthlyPriceUsd)}`;
-}
+/** Where the price starts for a founding client, in their first six months. */
+export const FOUNDING_FROM_USD = Math.round(AGENCY_FROM_USD * (1 - FOUNDING_DISCOUNT));

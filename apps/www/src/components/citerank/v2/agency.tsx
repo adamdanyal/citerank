@@ -1,10 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { AGENCY_PLANS, AGENCY_WORK, formatUsd } from "@/lib/agency-plans";
+import { AGENCY_DOES, AGENCY_FROM_USD, formatUsd } from "@/lib/agency-plans";
 import { trackEvent } from "@/lib/posthog";
-import { ACTION, LEAD, LINK_ON_INK, PANEL_PAD, Page, PanelHead, SMALL, Tick } from "./kit";
-
-/* Every kind of work the agency does, then the report that shows it worked. What each plan buys of them is on the agency page. */
-const WORK = [...AGENCY_WORK.map((work) => work.name), "Before-and-after report"];
+import { ACTION, LEAD, PANEL_PAD, Page, PanelHead, SMALL, Tick } from "./kit";
 
 /* On a phone the type gives way before the line breaks: each divisor is the longest line's width in em. */
 const HEAD_ONE_LINE = "max-sm:text-[length:calc((100vw_-_5rem)_/_13)] max-sm:whitespace-nowrap";
@@ -13,7 +10,7 @@ const ONE_LINE = "whitespace-nowrap max-sm:text-[length:min(var(--text-lead),cal
 
 /*
  * The agency in one look: everything it does, every line ticked, because we
- * do it. The plans and what each buys are one click away on the agency page.
+ * do it. How much of each is agreed on a call, so the panel gives no amounts.
  */
 export function Agency() {
 	return (
@@ -33,16 +30,13 @@ export function Agency() {
 							</Link>
 						</p>
 						<p className={`${SMALL} mt-4 text-zinc-400`}>
-							<span className="inline-block">Plans from {formatUsd(AGENCY_PLANS[0].monthlyPriceUsd)} a month.</span>{" "}
-							<span className="inline-block">The tracker is included.</span>{" "}
-							<Link to="/agency" hash="plans" className={`${LINK_ON_INK} inline-block text-zinc-300`}>
-								See what each plan includes
-							</Link>
+							<span className="inline-block">From {formatUsd(AGENCY_FROM_USD)} a month, scoped to your brand.</span>{" "}
+							<span className="inline-block">The tracker is included.</span>
 						</p>
 					</div>
 
 					<ul aria-label="What the agency does" className="min-w-0 lg:col-span-6">
-						{WORK.map((line) => (
+						{AGENCY_DOES.map((line) => (
 							<li
 								key={line}
 								className={`flex items-center gap-4 border-t border-ink-rule py-4 text-lead leading-snug text-paper first:border-t-0 first:pt-0 last:pb-0 ${ONE_LINE}`}

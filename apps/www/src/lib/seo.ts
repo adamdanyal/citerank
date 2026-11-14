@@ -1,5 +1,5 @@
 import { CLOUD_ENTRY_PRICE_USD, PLANS } from "@workspace/config/plans";
-import { AGENCY_PLANS } from "./agency-plans";
+import { AGENCY_FROM_USD } from "./agency-plans";
 import { getMarketingOgImage } from "./og";
 import { SOCIAL_URLS } from "./socials";
 
@@ -165,7 +165,7 @@ export function agencyServiceJsonLd() {
 		url: canonicalUrl("/agency"),
 		provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
 		areaServed: "Worldwide",
-		offers: AGENCY_PLANS.map((plan) => monthlyOffer(`${plan.name} agency plan`, plan.monthlyPriceUsd, "/agency")),
+		offers: [monthlyOffer("AI search agency, starting price", AGENCY_FROM_USD, "/agency")],
 	});
 }
 

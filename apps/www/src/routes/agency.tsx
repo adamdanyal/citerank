@@ -20,9 +20,15 @@ import {
 	SUBHEAD,
 	Tick,
 } from "@/components/citerank/v2/kit";
-import { PLAN_GRID, PlanCard, PlanLine } from "@/components/citerank/v2/pricing";
 import { PageHead, PageShell, PanelSection } from "@/components/citerank/v2/shell";
-import { AGENCY_EVERY_PLAN, AGENCY_PLANS, AGENCY_WORK, FOUNDING_DISCOUNT, formatUsd } from "@/lib/agency-plans";
+import {
+	AGENCY_DOES,
+	AGENCY_FROM_USD,
+	AGENCY_INCLUDES,
+	AGENCY_WORK,
+	FOUNDING_DISCOUNT,
+	formatUsd,
+} from "@/lib/agency-plans";
 import { embedInlineBooking } from "@/lib/cal-embed";
 import { AGENCY_FAQS } from "@/lib/faqs";
 import { agencyServiceJsonLd, breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
@@ -74,34 +80,41 @@ const STEPS = [
 	},
 ];
 
-/* The three plans on the cards the tracker's plans use: a price, who it is for and what sets it apart. What they share is said once, under them. */
-function AgencyPlans() {
+/* One offer on one card: where the price starts, everything the work covers, and the call that sets the scope. */
+function AgencyOffer() {
 	return (
-		<div className={PLAN_GRID}>
-			{AGENCY_PLANS.map((plan) => (
-				<PlanCard
-					key={plan.name}
-					name={plan.name}
-					summary={plan.summary}
-					price={formatUsd(plan.monthlyPriceUsd)}
-					priceLead={plan.from ? "From" : ""}
-					band={plan.recommended ? "Recommended" : undefined}
-					action={
-						<a href="#book" className={`w-full ${plan.recommended ? ACTION : ACTION_QUIET}`}>
-							Book a call
-						</a>
-					}
-				>
-					{plan.lines.map((line) => (
-						<PlanLine key={line}>{line}</PlanLine>
-					))}
-					{plan.without?.map((line) => (
-						<PlanLine key={line} none>
-							{line}
-						</PlanLine>
-					))}
-				</PlanCard>
-			))}
+		<div
+			className={`${CARD_LIFT} grid grid-cols-[minmax(0,1fr)] gap-10 p-6 sm:p-8 lg:grid-cols-12 lg:items-center lg:gap-x-16 lg:p-12`}
+		>
+			<div className="min-w-0 lg:col-span-5">
+				<h3 className={`${SUBHEAD} text-ink`}>Custom scope</h3>
+				<p className="mt-5">
+					<span className={`${SMALL} block text-zinc-600`}>Starting from</span>
+					<span className="mt-1 block font-heading text-[clamp(2.75rem,2vw+2rem,3.75rem)] leading-none font-bold tracking-[-0.03em] text-ink">
+						{formatUsd(AGENCY_FROM_USD)}
+					</span>
+					<span className={`${BODY} mt-1 block text-zinc-600`}>a month</span>
+				</p>
+				<p className={`${BODY} mt-5 max-w-[38ch] text-zinc-600`}>
+					We agree how much of each on a call, from what the tracker finds for your brand.
+				</p>
+				<p className="mt-8">
+					<a href="#book" className={`${ACTION} w-full sm:w-auto`}>
+						Book a call
+					</a>
+				</p>
+			</div>
+			<ul aria-label="What the agency does" className="min-w-0 lg:col-span-7">
+				{AGENCY_DOES.map((line) => (
+					<li
+						key={line}
+						className="flex items-center gap-4 border-t border-zinc-200 py-3.5 text-lead leading-snug text-ink first:border-t-0 first:pt-0 last:pb-0"
+					>
+						<Tick className="size-7" />
+						{line}
+					</li>
+				))}
+			</ul>
 		</div>
 	);
 }
@@ -144,7 +157,7 @@ function AgencyPage() {
 					</Link>
 				</div>
 				<p className={`${SMALL} mt-4 text-zinc-600`}>
-					<span className="inline-block">Plans from {formatUsd(AGENCY_PLANS[0].monthlyPriceUsd)} a month.</span>{" "}
+					<span className="inline-block">From {formatUsd(AGENCY_FROM_USD)} a month.</span>{" "}
 					<span className="inline-block">Three-month minimum, then month to month.</span>
 				</p>
 			</PageHead>
@@ -173,10 +186,10 @@ function AgencyPage() {
 				</div>
 			</PanelSection>
 
-			<PanelSection id="plans">
-				<PanelHead title="Agency plans">
+			<PanelSection id="pricing">
+				<PanelHead title="What it costs">
 					<p className={`${LEAD} text-zinc-600`}>
-						Each plan includes a tracker plan, so your dashboard and the monthly report show the same data.
+						The price includes a tracker plan, so your dashboard and the monthly report show the same data.
 					</p>
 				</PanelHead>
 				<div className="mt-10 lg:mt-16">
@@ -198,12 +211,12 @@ function AgencyPage() {
 						]}
 					/>
 				</div>
-				<div className="mt-12 lg:mt-16">
-					<AgencyPlans />
+				<div className="mt-5 lg:mt-8">
+					<AgencyOffer />
 				</div>
-				<h3 className={`${SUBHEAD} mt-12 text-ink lg:mt-16`}>Every plan includes</h3>
-				<ul className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
-					{AGENCY_EVERY_PLAN.map((line) => (
+				<h3 className={`${SUBHEAD} mt-12 text-ink lg:mt-16`}>Always included</h3>
+				<ul className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
+					{AGENCY_INCLUDES.map((line) => (
 						<li key={line} className="flex items-start gap-3 text-[1.0625rem] leading-snug text-zinc-700">
 							<Tick className="mt-px size-6" />
 							{line}

@@ -1,5 +1,5 @@
 import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS, PLANS } from "@workspace/config/plans";
-import { AGENCY_PLANS, FOUNDING_DISCOUNT, formatUsd, foundingPriceUsd, planPrice } from "@/lib/agency-plans";
+import { AGENCY_FROM_USD, FOUNDING_DISCOUNT, FOUNDING_FROM_USD, formatUsd } from "@/lib/agency-plans";
 
 export interface FaqItem {
 	question: string;
@@ -150,8 +150,6 @@ export const ABOUT_FAQS: FaqItem[] = [
 
 // AI search agency FAQ. Rendered on "/agency" and emitted as FAQPage JSON-LD
 // from the same route.
-const AGENCY_PRICES = new Intl.ListFormat("en-GB", { type: "disjunction" }).format(AGENCY_PLANS.map(planPrice));
-const [ENTRY, , TOP] = AGENCY_PLANS;
 
 export const AGENCY_FAQS: FaqItem[] = [
 	{
@@ -161,16 +159,16 @@ export const AGENCY_FAQS: FaqItem[] = [
 	},
 	{
 		question: "How much does the AI search agency cost?",
-		answer: `Agency plans cost ${AGENCY_PRICES} a month. The price depends on how much work you want each month and how many markets it covers for your brand. Each plan includes a tracker plan and has a three-month minimum.`,
+		answer: `The AI search agency starts from ${formatUsd(AGENCY_FROM_USD)} a month. The price depends on how much work you want each month and how many markets it covers for your brand. It includes a tracker plan and has a three-month minimum.`,
 	},
 	{
 		question: "What is the founding-client rate?",
-		answer: `The founding-client rate is ${FOUNDING_DISCOUNT * 100}% off the first six months, for our first five agency clients. ${ENTRY.name} then costs ${formatUsd(foundingPriceUsd(ENTRY))} a month for those six months. In return we publish a case study of the results, once the client approves it.`,
+		answer: `The founding-client rate is ${FOUNDING_DISCOUNT * 100}% off the first six months, for our first five clients. The price then starts at ${formatUsd(FOUNDING_FROM_USD)} a month for those six months. In return we publish a case study of the results, once the client approves it.`,
 	},
 	{
 		question: "Why is there a three-month minimum?",
 		answer:
-			"AI answer engines take weeks to find new and updated pages and start citing them. A single month of work rarely shows a change in the answers. After the first three months, every agency plan runs month to month.",
+			"AI answer engines take weeks to find new and updated pages and start citing them. A single month of work rarely shows a change in the answers. After the first three months, the agency work runs month to month.",
 	},
 	{
 		question: "How does the agency decide what to work on?",
@@ -179,7 +177,7 @@ export const AGENCY_FAQS: FaqItem[] = [
 	},
 	{
 		question: "How do you report on the work?",
-		answer: `Each month a report lists every piece of work and the question it targets. It shows the AI answers before and after, so you can see what changed. Every plan includes a call to go through it, monthly or more often.`,
+		answer: `Each month a report lists every piece of work and the question it targets. It shows the AI answers before and after, so you can see what changed. A regular call to go through the report is part of the service.`,
 	},
 	{
 		question: "Can I use the tracker without the agency?",
