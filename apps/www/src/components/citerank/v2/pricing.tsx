@@ -1,12 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import {
-	PLAN_KEYS,
-	PLANS,
-	type PlanDefinition,
-	type PlanKey,
-	PREMIUM_MODELS,
-	premiumModelLabel,
-} from "@workspace/config/plans";
+import { PLAN_KEYS, PLANS, type PlanDefinition, type PlanKey } from "@workspace/config/plans";
 import { cloudAppUrl } from "@workspace/config/referrals";
 import { type ReactNode, useState } from "react";
 import { trackEvent } from "@/lib/posthog";
@@ -34,7 +27,6 @@ const BILLING: { value: Billing; label: string }[] = [
 	{ value: "annual", label: "Yearly, two months free" },
 ];
 
-const list = new Intl.ListFormat("en", { type: "conjunction" });
 const count = (amount: number) => amount.toLocaleString("en-US");
 const usd = (amount: number) => `$${count(amount)}`;
 
@@ -52,8 +44,6 @@ const LINES: ((plan: PlanDefinition) => { lead?: string; figure?: string; text: 
 			? { figure: String(plan.premiumIncluded), text: "premium prompts, asked daily" }
 			: { text: "No premium prompts" },
 ];
-
-const SHARED = PLANS.basic;
 
 function BillingSwitch({ billing, onChange }: { billing: Billing; onChange: (billing: Billing) => void }) {
 	return (
@@ -84,9 +74,12 @@ function BillingSwitch({ billing, onChange }: { billing: Billing; onChange: (bil
 export function PlanTable({
 	from = "home",
 	recommended,
+	children,
 }: {
 	from?: string;
 	recommended?: { plan: PlanKey; label: string };
+	/** More to say in the note under the cards, after the currency. */
+	children?: ReactNode;
 }) {
 	const [billing, setBilling] = useState<Billing>("monthly");
 	const recommendedKey = recommended?.plan ?? DEFAULT_RECOMMENDED;
@@ -165,11 +158,7 @@ export function PlanTable({
 					);
 				})}
 			</div>
-			<p className={`${SMALL} mt-8 max-w-[70ch] text-zinc-600`}>
-				On every plan a brand tracks any {SHARED.platformPicks} of {SHARED.platformMenu.length} AI apps,{" "}
-				{SHARED.standardRunsPerDay} times a day. Premium prompts are asked with web search on, in{" "}
-				{list.format(PREMIUM_MODELS.map(premiumModelLabel))}. Prices in US dollars.
-			</p>
+			<p className={`${SMALL} mt-8 text-zinc-600`}>Prices in US dollars.{children ? <> {children}</> : null}</p>
 		</div>
 	);
 }
@@ -189,20 +178,18 @@ export function Pricing({
 				</PanelHead>
 
 				<div className="mt-8 lg:mt-10">
-					<PlanTable recommended={recommended} />
+					<PlanTable recommended={recommended}>
+						Need more?{" "}
+						<a href="mailto:team@citerank.com?subject=Custom%20plan" className={`${LINK} text-ink`}>
+							Email us
+						</a>
+						, or{" "}
+						<Link to="/pricing" className={`${LINK} text-ink`}>
+							compare every plan
+						</Link>
+						.
+					</PlanTable>
 				</div>
-
-				<p className={`${SMALL} mt-3 text-zinc-600`}>
-					Need more brands, questions or models?{" "}
-					<a href="mailto:team@citerank.com?subject=Custom%20plan" className={`${LINK} text-ink`}>
-						Email us
-					</a>{" "}
-					for a custom plan, or{" "}
-					<Link to="/pricing" className={`${LINK} text-ink`}>
-						compare every plan
-					</Link>
-					.
-				</p>
 			</Page>
 		</section>
 	);
