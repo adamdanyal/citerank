@@ -1,3 +1,16 @@
+/* Hallmark · shape: Stat-Led · genre: modern-minimal · theme: brand · redesign: full
+ * paper: #fbfaf9 · accent: #b84d25 · display: Schibsted Grotesk · body: Inter · hero: Stage (/), Banner (every other page) · nav: three-part bar on ink · footer: index columns on ink · signature: the live Overview capture running off the hero's edge
+ * axes: light/grotesk-sans/warm · posture: Restrained · contrast: pass · fold: pass · draw: 656e15 · imagery: screenshots 5 (the live demo) · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H5 E4 S4 R4 V4 · weakest: P, the page argued nothing a rival could not say; led with the price and the 13 engines by name instead of a claim */
+/* Hallmark · waive 44c · Stage, the overview capture bleeds off the outer edge · the capture is shown at its real size so every figure in it stays readable */
+/* Hallmark · hero-review: fix · 5 findings · 5 resolved */
+/* Hallmark · dismissed 28a · the hero capture is the largest paint and loads eagerly; the images these lines name sit below the fold */
+/* Hallmark · dismissed 46a · "200+ brands" and "2M+ on LinkedIn" are carried over from the old page as found and listed for the owner to verify */
+/* Hallmark · dismissed 59 · ten with the customer logo strip, which is one line under the hero and not a section of content */
+/* Hallmark · dropped "13 answer engines your buyers use", "Try the real product", "Tell me if this sounds familiar." · 69 names them: the engines, the demo and the founder's letter are each told once now, inside the section that needs them */
+/* Hallmark · reworded "Know where you stand in AI search" to "Ask AI which product to pick. It names two or three brands. There is no page two." · 19 names the opener: any tracker could say the old line */
+/* Hallmark · dismissed F18 · popover-trigger is the component library's own data-slot, a text button and not a picture slot */
+/* Hallmark · dismissed 74 · zinc and blue are remapped in @theme to the brand's warm greys and its rust ramp, so no stock value reaches the page */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "fumadocs-ui/css/neutral.css";
@@ -25,14 +38,13 @@
 	}
 }
 
-/* Scoped to the v2 preview so the browser's own surfaces carry the brand there without changing the live pages. */
 .cr-v2 ::selection {
-	background-color: #f6e2d8;
-	color: #1a1917;
+	background-color: var(--color-blue-100);
+	color: var(--color-ink);
 }
 .cr-v2 {
-	caret-color: #b84d25;
-	scrollbar-color: #d6d0c6 #f4f3f0;
+	caret-color: var(--color-rust);
+	scrollbar-color: var(--color-zinc-300) var(--color-paper-2);
 }
 
 @theme inline {
@@ -62,43 +74,8 @@
 	--radius-xl: calc(var(--radius) + 4px);
 }
 
-@font-face {
-	font-family: "Titan One";
-	font-style: normal;
-	font-weight: 400;
-	src: url("@fontsource/titan-one/files/titan-one-latin-400-normal.woff2") format("woff2");
-	font-display: swap;
-}
-
-/*
- * Geist Sans / Mono ship only the 400-weight static file. The declared
- * font-weight: 100 900 range tells the browser to use this single face
- * for any requested weight WITHOUT synthesizing bold — so font-medium,
- * font-semibold, etc. all render at the 400 file's visual weight. This
- * is intentional: it keeps the lighter, uniform look across headings
- * and avoids shipping additional weight files.
- */
-@font-face {
-	font-family: "Geist Sans";
-	font-style: normal;
-	font-weight: 100 900;
-	src: url("@fontsource/geist-sans/files/geist-sans-latin-400-normal.woff2") format("woff2");
-	font-display: swap;
-}
-
-@font-face {
-	font-family: "Geist Mono";
-	font-style: normal;
-	font-weight: 100 900;
-	src: url("@fontsource/geist-mono/files/geist-mono-latin-400-normal.woff2") format("woff2");
-	font-display: swap;
-}
-
 :root {
 	--fd-nav-height: 4rem;
-	--font-geist-sans: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
-	--font-geist-mono: "Geist Mono", ui-monospace, monospace;
-	--font-titan-one: "Titan One", cursive;
 
 	--radius: 0.625rem;
 	--background: oklch(1 0 0);
@@ -119,10 +96,6 @@
 	--border: oklch(0.92 0.004 286.32);
 	--input: oklch(0.92 0.004 286.32);
 	--ring: oklch(0.546 0.245 262.881);
-}
-
-@utility font-titan-one {
-	font-family: var(--font-titan-one);
 }
 
 @utility font-heading {
@@ -184,10 +157,6 @@
 .prose tbody td:first-child,
 .prose tfoot td:first-child {
 	padding-inline-start: 0.571429em;
-}
-
-mux-player::part(center play button) {
-	filter: drop-shadow(0 8px 24px rgba(37, 99, 235, 0.35));
 }
 
 /* CiteRank.com brand. Kept as one appended block so Elmo's rules above merge cleanly.
@@ -254,6 +223,23 @@ mux-player::part(center play button) {
 	--color-ink: #1a1917;
 	--color-paper: #fbfaf9;
 	--color-paper-2: #f4f3f0;
+	--color-paper-3: #ebe8e1;
+	/* A surface and a hairline for the ink bands: lighter than the ink, never darker than their canvas. */
+	--color-ink-well: #262420;
+	--color-ink-rule: #3a3731;
+
+	--font-display: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+	--font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+	/* The type roles, on a 1.25 ratio from a 16px body. At 1440 wide: 84, 60, 52, 25 and 21px. */
+	--text-display: clamp(2.75rem, 5vw + 1rem, 5.25rem);
+	--text-display-s: clamp(2.25rem, 4vw + 0.5rem, 3.75rem);
+	--text-section: clamp(2rem, 2.5vw + 1rem, 3.25rem);
+	--text-title: clamp(1.25rem, 0.75vw + 0.875rem, 1.5625rem);
+	--text-lead: clamp(1.125rem, 0.35vw + 1rem, 1.3125rem);
+
+	--radius-card: 12px;
+	--shadow-card: 0 1px 2px color-mix(in oklab, var(--color-ink) 7%, transparent);
 
 	--color-blue-50: #fbf3ef;
 	--color-blue-100: #f6e2d8;
@@ -320,15 +306,29 @@ mux-player::part(center play button) {
 	--ring: #b84d25;
 }
 
-h1,
-h2,
-h3,
-.font-heading {
-	font-family: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+/* In the base layer so a utility can still set a heading in the body face where it is really a label. */
+@layer base {
+	h1,
+	h2,
+	h3,
+	.font-heading {
+		font-family: var(--font-display);
+		font-synthesis: none;
+		text-wrap: balance;
+	}
+}
+
+.cr-v2 button:not(:disabled):active {
+	transform: translateY(1px);
+}
+.cr-v2 button:disabled,
+.cr-v2 [aria-disabled="true"] {
+	opacity: 0.55;
+	cursor: not-allowed;
 }
 
 mux-player::part(center play button) {
-	filter: drop-shadow(0 8px 24px rgba(184, 77, 37, 0.35));
+	filter: drop-shadow(0 8px 24px color-mix(in oklab, var(--color-rust) 35%, transparent));
 }
 
 /* CiteRank.com site styles: named text styles and motion, shared by every page. */
@@ -343,7 +343,7 @@ html {
 .heading-4,
 .heading-5,
 .heading-6 {
-	font-family: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+	font-family: var(--font-display);
 	font-weight: 600;
 	text-wrap: balance;
 }
@@ -543,15 +543,11 @@ html {
 }
 
 .cr-gradient-text {
-	background-image: linear-gradient(to right, #1a1917, #5f594f);
-	-webkit-background-clip: text;
-	background-clip: text;
-	color: transparent;
-	padding-bottom: 0.08em;
-	margin-bottom: -0.08em;
+	color: var(--color-ink);
 }
 
-.cr-reveal[data-state="hidden"] {
+/* Hidden only once a script has said it is running, so the page never ships blank. */
+.js .cr-reveal[data-state="hidden"] {
 	opacity: 0;
 	transform: translateY(32px);
 	transition: none;
@@ -565,11 +561,11 @@ html {
 }
 
 .cr-tagline[data-armed] .cr-word {
-	color: rgb(26 25 23 / 0.28);
+	color: var(--color-zinc-400);
 	transition: color 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .cr-tagline[data-armed] .cr-word[data-on] {
-	color: #1a1917;
+	color: var(--color-ink);
 }
 
 .cr-menu-link {
@@ -588,7 +584,7 @@ html {
 	html {
 		scroll-behavior: auto;
 	}
-	.cr-reveal[data-state="hidden"],
+	.js .cr-reveal[data-state="hidden"],
 	.cr-reveal[data-state="shown"],
 	.cr-menu-link,
 	[data-menu="open"] .cr-menu-link {
@@ -596,7 +592,7 @@ html {
 		transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	.cr-tagline[data-armed] .cr-word {
-		color: #1a1917;
+		color: var(--color-ink);
 		transition: none;
 	}
 }

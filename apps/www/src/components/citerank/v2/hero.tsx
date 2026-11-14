@@ -1,22 +1,15 @@
-import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS, PLANS } from "@workspace/config/plans";
+import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS } from "@workspace/config/plans";
 import type { ReferralSource } from "@workspace/config/referrals";
 import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import type { ReactNode } from "react";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
-import { screenshotSet } from "@/lib/screenshots";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
-import { ACTION, ACTION_QUIET_ON_INK, DISPLAY, InkGlow, LEAD, PANEL_INK, Page, SMALL } from "./kit";
+import { ACTION, ACTION_QUIET_ON_INK, DISPLAY, SMALL } from "./kit";
 
 const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
-const RUNS_PER_DAY = Math.max(...Object.values(PLANS).map((plan) => plan.standardRunsPerDay));
-const TIMES = ["", "once", "twice", "three times", "four times"][RUNS_PER_DAY] ?? `${RUNS_PER_DAY} times`;
 
-/*
- * The first thing a stranger needs is what this is and what they get for it, in
- * that order. So: what we do, then the two things they receive.
- */
-const DEFAULT_LEDE = `We ask ChatGPT, Gemini and ${ENGINE_COUNT - 2} other AI apps the questions your buyers ask, ${TIMES} a day. You get a dashboard showing who they recommend, and a ranked list of what to fix.`;
+const DEFAULT_LEDE = `See who ChatGPT, Gemini and ${ENGINE_COUNT - 2} other AI apps recommend to your buyers, and what to fix.`;
 
 /* Title, lede and source are overridden when a visitor arrives from an AI assistant, or on a tested variant. */
 export function Hero({
@@ -30,42 +23,45 @@ export function Hero({
 } = {}) {
 	const signupUrl = cloudSignupUrl(from);
 	const demoUrl = demoSiteUrl(from, DEMO_BRAND_PATH);
-	const shot = screenshotSet("/screenshots/overview.webp");
 
 	return (
-		<section className={`${PANEL_INK} px-6 pt-14 sm:px-10 sm:pt-16 md:px-14 md:pt-20`}>
-			<InkGlow />
-			<Page className="relative">
-				<div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-14">
-					<h1 className={`${DISPLAY} text-paper lg:col-span-7`}>{title}</h1>
-					<div className="min-w-0 lg:col-span-5">
-						<p data-speakable className={`${LEAD} text-zinc-300`}>
-							{lede}
-						</p>
-						<div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-							<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={ACTION}>
-								Start tracking
-							</a>
-							<a
-								href={demoUrl}
-								target="_blank"
-								rel={externalRel(demoUrl)}
-								onClick={() => trackEvent("demo_open", { from })}
-								className={ACTION_QUIET_ON_INK}
-							>
-								Try the live demo
-							</a>
-						</div>
-						<p className={`${SMALL} mt-5 text-zinc-400`}>
-							Plans from ${CLOUD_ENTRY_PRICE_USD} a month. No contract, cancel any time.
-						</p>
+		<section className="relative overflow-x-clip bg-ink text-paper">
+			{/*
+			 * Five tracks: a gutter, the text, a gap, the capture, a gutter. The
+			 * capture spans its own track and the gutter after it, so it always
+			 * reaches the edge of the window, however wide that is.
+			 */}
+			<div className="grid items-center gap-y-10 px-4 py-10 sm:px-6 sm:py-12 lg:min-h-[min(calc(100svh-4.5rem),52rem)] lg:grid-cols-[minmax(4rem,1fr)_minmax(0,32.5rem)_4rem_minmax(0,45.5rem)_minmax(4rem,1fr)] lg:px-0">
+				<div className="min-w-0 lg:col-start-2">
+					<h1 className={`${DISPLAY} text-paper`}>{title}</h1>
+					<p data-speakable className="mt-6 max-w-[46ch] text-lead leading-[1.45] text-balance text-zinc-300">
+						{lede}
+					</p>
+					<div className="mt-8 flex flex-col gap-3 sm:flex-row">
+						<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={ACTION}>
+							Start tracking
+						</a>
+						<a
+							href={demoUrl}
+							target="_blank"
+							rel={externalRel(demoUrl)}
+							onClick={() => trackEvent("demo_open", { from })}
+							className={ACTION_QUIET_ON_INK}
+						>
+							Try the live demo
+						</a>
 					</div>
+					<p className={`${SMALL} mt-4 text-zinc-400`}>
+						<span className="inline-block">Plans from ${CLOUD_ENTRY_PRICE_USD} a month.</span>{" "}
+						<span className="inline-block">No contract, cancel any time.</span>
+					</p>
 				</div>
 
 				{/*
-				 * The product itself, not a drawing of it. This is the largest thing on
-				 * the first screen, so it loads eagerly and at high priority: left lazy
-				 * it would be the slowest paint on the page.
+				 * The product itself, captured from the live demo. On a wide screen it
+				 * is shown at its real size or larger and runs off the edge of the
+				 * window; on a phone it is the four figures alone, so they land on the
+				 * first screen. It is the largest paint there, so it loads eagerly.
 				 */}
 				<a
 					href={demoUrl}
@@ -73,22 +69,33 @@ export function Hero({
 					rel={externalRel(demoUrl)}
 					onClick={() => trackEvent("demo_open", { from: "hero-screenshot" })}
 					aria-label="Open the live demo"
-					className="mt-12 block rounded-t-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust md:mt-14"
+					data-slot="hero"
+					data-kind="product"
+					className="block min-w-0 rounded-card focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rust lg:col-start-4 lg:col-end-6"
 				>
-					<img
-						src={shot.src}
-						srcSet={shot.srcSet}
-						sizes="(min-width: 1280px) 1200px, 100vw"
-						width={shot.width}
-						height={shot.height}
-						alt="The CiteRank.com dashboard: how often AI names your brand, your share of voice against competitors, sentiment, and a chart of each rival over the last 30 days"
-						loading="eager"
-						fetchPriority="high"
-						decoding="async"
-						className="w-full rounded-t-2xl bg-paper ring-1 ring-white/15"
-					/>
+					<picture>
+						<source
+							media="(max-width: 639px)"
+							srcSet="/screens/overview-phone.webp 390w, /screens/overview-phone-2x.webp 780w"
+							sizes="100vw"
+							width={390}
+							height={348}
+						/>
+						<img
+							src="/screens/overview-wide.webp"
+							srcSet="/screens/overview-wide.webp 1000w, /screens/overview-wide-2x.webp 2000w"
+							sizes="(min-width: 1024px) 1000px, 100vw"
+							width={1000}
+							height={673}
+							alt="The CiteRank.com overview: AI visibility 70%, share of voice 23%, sentiment 88 and position 1.5, above a chart and a table ranking the brand against its competitors in each AI app"
+							loading="eager"
+							fetchPriority="high"
+							decoding="async"
+							className="block h-auto w-full rounded-card bg-paper ring-1 ring-ink-rule lg:w-[max(calc(100%+6rem),min(62.5rem,calc((100svh-10.5rem)*1.486)))] lg:max-w-none"
+						/>
+					</picture>
 				</a>
-			</Page>
+			</div>
 		</section>
 	);
 }

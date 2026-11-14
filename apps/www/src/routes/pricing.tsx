@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CLOUD_ENTRY_PRICE_USD, PLAN_KEYS } from "@workspace/config/plans";
+import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import { Compare } from "@/components/citerank/pricing/compare";
 import { Closing } from "@/components/citerank/v2/closing";
 import { Faq } from "@/components/citerank/v2/faq";
 import { INCLUDED } from "@/components/citerank/v2/included";
-import { BODY, CARD, HEADING, LINK, PanelHead, RuledRow, SUBHEAD } from "@/components/citerank/v2/kit";
-import { PlanCard } from "@/components/citerank/v2/pricing";
+import { BODY, HEADING, LINK, PanelHead, RuledRow } from "@/components/citerank/v2/kit";
+import { PlanTable } from "@/components/citerank/v2/pricing";
 import { PageHead, PageShell, PanelSection } from "@/components/citerank/v2/shell";
 import { PRICING_FAQS } from "@/lib/faqs";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
@@ -32,44 +32,33 @@ export const Route = createFileRoute("/pricing")({
 	component: PricingPage,
 });
 
-/* The plans first with one button each, then what every plan includes, the detail, the objections and the offer again. */
+/* The plans first, then what every plan includes, the detail, the objections and the offer again. */
 function PricingPage() {
 	return (
 		<PageShell>
 			<PageHead
 				title="AI visibility tracker pricing"
 				lede="Every plan includes your whole team and API access. Pay monthly or yearly, and cancel any time."
-			>
-				<div className="grid gap-5 md:grid-cols-3">
-					{PLAN_KEYS.map((key) => (
-						<PlanCard key={key} planKey={key} from="pricing" />
-					))}
-				</div>
-				<div className="mt-5 grid gap-5 md:grid-cols-2">
-					<div className={CARD}>
-						<h2 className={`${SUBHEAD} text-ink`}>Our agency</h2>
-						<p className={`${BODY} mt-3 max-w-[44ch] text-zinc-600`}>
-							We do the work the tracker ranks: new pages, page updates, review sites and forums.
-						</p>
-						<p className={`${BODY} mt-4`}>
-							<Link to="/agency" className={`${LINK} text-ink`}>
-								Book an agency call
-							</Link>
-						</p>
-					</div>
-					<div className={CARD}>
-						<h2 className={`${SUBHEAD} text-ink`}>Custom</h2>
-						<p className={`${BODY} mt-3 max-w-[44ch] text-zinc-600`}>
-							More brands, custom prompt limits, higher sampling rates, and more models.
-						</p>
-						<p className={`${BODY} mt-4`}>
-							<a href="mailto:team@citerank.com?subject=Custom%20plan" className={`${LINK} text-ink`}>
-								Email us
-							</a>
-						</p>
-					</div>
-				</div>
-			</PageHead>
+			/>
+
+			<PanelSection>
+				<h2 className="sr-only">Plans</h2>
+				<PlanTable from="pricing" />
+				<ul className="mt-12 border-b border-zinc-200">
+					<RuledRow title="Our agency">
+						We do the work the tracker ranks: new pages, page updates, review sites and forums.{" "}
+						<Link to="/agency" className={`${LINK} whitespace-nowrap text-ink`}>
+							Book an agency call
+						</Link>
+					</RuledRow>
+					<RuledRow title="Custom">
+						More brands, custom prompt limits, higher sampling rates, and more models.{" "}
+						<a href="mailto:team@citerank.com?subject=Custom%20plan" className={`${LINK} whitespace-nowrap text-ink`}>
+							Email us
+						</a>
+					</RuledRow>
+				</ul>
+			</PanelSection>
 
 			<PanelSection>
 				<PanelHead title="What every plan includes" className="max-w-[46rem]" />

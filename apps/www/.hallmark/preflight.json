@@ -1,0 +1,25 @@
+{
+	"scanned": "2026-11-14",
+	"findings": {
+		"fonts": "Schibsted Grotesk for display (src/styles.css L224, L231, the font-heading utility L128), Inter for body (L196 to L217), JetBrains Mono for machine text (L238, L245); all self-hosted through @fontsource (package.json L20 to L22)",
+		"palette": "Named brand tokens in the Tailwind @theme block: rust #b84d25, ink #1a1917, paper #fbfaf9, paper-2 #f4f3f0 (src/styles.css L253 to L256), a warm zinc scale and a blue scale remapped to the rust ramp",
+		"motion": "tw-animate-css only (package.json L51); no motion library",
+		"spacing": "Tailwind v4 default 4px scale",
+		"framework": "TanStack Start on Vite with Tailwind v4 (package.json L29, L49, L64); renders through the dev server on port 3001",
+		"product": "The product runs locally as a seeded demo and is captured from there with capture.mjs"
+	},
+	"preserve": [
+		"the brand: rust, ink and paper, Schibsted Grotesk, Inter and JetBrains Mono, read from the project's own tokens",
+		"the project's token names",
+		"every link, handler, route and JSON-LD block",
+		"the content: every fact, price and quote"
+	],
+	"introduce": [
+		"shape",
+		"hero discipline",
+		"a larger type scale",
+		"the gates",
+		"the stamp",
+		"product captures in slots"
+	]
+}

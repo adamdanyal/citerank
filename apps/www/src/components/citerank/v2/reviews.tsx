@@ -15,7 +15,7 @@ function Initials({ name }: { name: string }) {
 		.slice(0, 2);
 	return (
 		<span
-			className={`${MONO} inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-paper ring-1 ring-zinc-200`}
+			className={`${SMALL} inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-paper font-medium text-zinc-700`}
 		>
 			{letters}
 		</span>
@@ -48,15 +48,13 @@ function Avatar({ review }: { review: Review }) {
 function ReviewCard({ review }: { review: Review }) {
 	const isAi = review.kind === "ai";
 	return (
-		<figure
-			className={`rounded-2xl p-6 ring-1 sm:p-7 ${isAi ? "bg-blue-50 ring-rust/15" : "bg-paper-2 ring-zinc-200"}`}
-		>
+		<figure className={`flex w-full flex-col rounded-card p-6 sm:p-8 ${isAi ? "bg-blue-50" : "bg-paper-2"}`}>
 			{isAi ? (
 				<p className="mb-5">
 					<span className={PILL_RUST}>Asked {review.name}</span>
 				</p>
 			) : null}
-			<blockquote className={`${BODY} text-ink`}>“{review.quote}”</blockquote>
+			<blockquote className={`${BODY} flex-1 text-ink`}>“{review.quote}”</blockquote>
 			<figcaption className="mt-6 flex items-center gap-3">
 				<Avatar review={review} />
 				<div className="min-w-0 flex-1">
@@ -88,48 +86,47 @@ function AnswerDetails({ review }: { review: AiReview }) {
 			<PopoverTrigger
 				openOnHover
 				delay={150}
-				className={`${MONO} rounded-sm underline decoration-zinc-300 decoration-dotted underline-offset-4 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust`}
+				className={`${SMALL} rounded-sm whitespace-nowrap text-zinc-600 underline decoration-zinc-400 decoration-dotted underline-offset-4 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust`}
 			>
 				Asked Oct 31, 2026
 			</PopoverTrigger>
-			<PopoverContent align="start" className="w-[min(26rem,calc(100vw-2rem))] rounded-2xl border-zinc-200 p-5">
-				<p className={MONO}>We asked {review.name}</p>
-				<p className={`${SMALL} mt-2 rounded-xl bg-paper-2 p-3 text-zinc-700`}>{AI_PROMPT}</p>
-				<p className={`${MONO} mt-4`}>Its full answer, Oct 31, 2026</p>
+			<PopoverContent align="start" className="w-[min(26rem,92dvw)] rounded-card border-zinc-200 p-5">
+				<p className={`${SMALL} text-zinc-600`}>We asked {review.name}</p>
+				<p className={`${MONO} mt-2 rounded-lg bg-paper-2 p-3 text-zinc-700`}>{AI_PROMPT}</p>
+				<p className={`${SMALL} mt-4 text-zinc-600`}>Its full answer, Oct 31, 2026</p>
 				<div
-					className={`${SMALL} mt-2 max-h-44 space-y-2 overflow-y-auto overscroll-contain rounded-xl bg-paper-2 p-3 text-zinc-700`}
+					className={`${SMALL} mt-2 max-h-44 space-y-2 overflow-y-auto overscroll-contain rounded-lg bg-paper-2 p-3 text-zinc-700`}
 				>
 					{review.response.map((paragraph) => (
 						<p key={paragraph}>{paragraph}</p>
 					))}
 				</div>
-				<p className={`${MONO} mt-4`}>Asked over the {review.name} API with web search. Answers vary.</p>
+				<p className={`${SMALL} mt-4 text-zinc-600`}>Asked over the {review.name} API with web search. Answers vary.</p>
 			</PopoverContent>
 		</Popover>
 	);
 }
 
+/*
+ * A rail: the reviews run past the edge of the window, so the cut-off card is
+ * the cue that there are more.
+ */
 export function Reviews() {
 	return (
 		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page>
-				<PanelHead title="Loved by marketers. Recommended by AI." className="max-w-[46rem]" />
-
-				<div className="mt-12 grid gap-4 md:grid-cols-2 lg:hidden">
-					{ROW_ORDER.map((review) => (
-						<ReviewCard key={review.name} review={review} />
-					))}
-				</div>
-				<div className="mt-12 hidden grid-cols-3 items-start gap-4 lg:grid">
-					{REVIEW_COLUMNS.map((column) => (
-						<div key={column[0].name} className="flex flex-col gap-4">
-							{column.map((review) => (
-								<ReviewCard key={review.name} review={review} />
-							))}
-						</div>
-					))}
-				</div>
+				<PanelHead title="Loved by marketers. Recommended by AI." />
 			</Page>
+			<ul
+				aria-label="Reviews"
+				className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-px-4 px-4 pb-6 [scrollbar-width:thin] sm:scroll-px-6 sm:px-6 lg:mt-16 lg:gap-8 lg:scroll-px-[max(4rem,calc((100%-90rem)/2+4rem))] lg:px-[max(4rem,calc((100%-90rem)/2+4rem))]"
+			>
+				{ROW_ORDER.map((review) => (
+					<li key={review.name} className="flex w-[19rem] shrink-0 snap-start sm:w-[24rem]">
+						<ReviewCard review={review} />
+					</li>
+				))}
+			</ul>
 		</section>
 	);
 }

@@ -1,8 +1,7 @@
 import { cloudSignupUrl, type ReferralSource } from "@workspace/config/referrals";
-import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { trackEvent } from "@/lib/posthog";
-import { EASE_CLASS, PRIMARY_BUTTON } from "../ui";
+import { ACTION } from "../v2/kit";
 
 /** On phones, the main action follows the visitor once the hero has scrolled away. */
 export function StickyCta({ from = "marketing-cta" }: { from?: ReferralSource }) {
@@ -20,7 +19,7 @@ export function StickyCta({ from = "marketing-cta" }: { from?: ReferralSource })
 	return (
 		<div
 			aria-hidden={!shown}
-			className={`fixed inset-x-0 bottom-0 z-30 border-t border-zinc-200 bg-white/95 p-3 backdrop-blur-md transition-transform duration-300 ${EASE_CLASS} md:hidden ${
+			className={`fixed inset-x-0 bottom-0 z-30 border-t border-zinc-200 bg-paper p-3 transition-transform duration-200 ease-out md:hidden ${
 				shown ? "translate-y-0" : "translate-y-full"
 			}`}
 		>
@@ -28,10 +27,9 @@ export function StickyCta({ from = "marketing-cta" }: { from?: ReferralSource })
 				href={signupUrl}
 				tabIndex={shown ? 0 : -1}
 				onClick={() => trackEvent("signup_click", { from: "sticky" })}
-				className={`${PRIMARY_BUTTON} w-full`}
+				className={`${ACTION} w-full`}
 			>
 				Start tracking
-				<ArrowRight className="size-4" aria-hidden="true" />
 			</a>
 		</div>
 	);

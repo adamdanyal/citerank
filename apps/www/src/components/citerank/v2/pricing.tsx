@@ -1,84 +1,159 @@
 import { Link } from "@tanstack/react-router";
-import { PLAN_KEYS, PLANS, type PlanDefinition, type PlanKey } from "@workspace/config/plans";
-import { cloudAppUrl } from "@workspace/config/referrals";
-import type { ReactNode } from "react";
-import { trackEvent } from "@/lib/posthog";
 import {
-	ACTION,
-	ACTION_QUIET,
-	BODY,
-	LEAD,
-	LINK,
-	PANEL,
-	PANEL_PAD_WIDE,
-	Page,
-	PanelHead,
-	PILL_ACCENT,
-	SMALL,
-	SUBHEAD,
-} from "./kit";
+	PLAN_KEYS,
+	PLANS,
+	type PlanDefinition,
+	type PlanKey,
+	PREMIUM_MODELS,
+	premiumModelLabel,
+} from "@workspace/config/plans";
+import { cloudAppUrl } from "@workspace/config/referrals";
+import { type ReactNode, useState } from "react";
+import { trackEvent } from "@/lib/posthog";
+import { ACTION, ACTION_QUIET, LEAD, LINK, PANEL, PANEL_PAD_WIDE, Page, PanelHead, SMALL, SUBHEAD } from "./kit";
 
 const DEFAULT_RECOMMENDED: PlanKey = "pro";
 
-function planLines(plan: PlanDefinition): { text: string; included: boolean }[] {
-	const platforms = plan.platformMenu.length === 1 ? "ChatGPT only" : `Any ${plan.platformPicks} AI platforms`;
-	return [
-		{ text: `${plan.maxBrands} brand${plan.maxBrands === 1 ? "" : "s"}, ${plan.maxPrompts} prompts`, included: true },
-		{ text: platforms, included: true },
-		{ text: `Answers checked ${plan.standardRunsPerDay}× daily`, included: true },
-		plan.premiumIncluded > 0
-			? { text: `${plan.premiumIncluded} premium prompts 1× daily`, included: true }
-			: { text: "No premium models", included: false },
-	];
+type Billing = "monthly" | "annual";
+
+const BILLING: { value: Billing; label: string }[] = [
+	{ value: "monthly", label: "Monthly" },
+	{ value: "annual", label: "Yearly, two months free" },
+];
+
+const list = new Intl.ListFormat("en", { type: "conjunction" });
+
+/* Only what differs between plans. What every plan includes has a section of its own. */
+const ROWS: { label: string; value: (plan: PlanDefinition) => string }[] = [
+	{ label: "Brands", value: (plan) => String(plan.maxBrands) },
+	{ label: "Buyer questions tracked", value: (plan) => String(plan.maxPrompts) },
+	{
+		label: "AI apps",
+		value: (plan) =>
+			plan.platformMenu.length === 1 ? "ChatGPT only" : `Any ${plan.platformPicks} of ${plan.platformMenu.length}`,
+	},
+	{ label: "Checks a day", value: (plan) => String(plan.standardRunsPerDay) },
+	{
+		label: "Premium prompts",
+		value: (plan) => (plan.premiumIncluded > 0 ? `${plan.premiumIncluded}, asked daily` : "None"),
+	},
+];
+
+const usd = (amount: number) => `$${amount.toLocaleString("en-US")}`;
+
+const FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust";
+const CELL = "border-t border-zinc-200 py-4";
+
+function BillingSwitch({ billing, onChange }: { billing: Billing; onChange: (billing: Billing) => void }) {
+	return (
+		<fieldset className="inline-flex w-fit rounded-full bg-paper-2 p-1">
+			<legend className="sr-only">Billing period</legend>
+			{BILLING.map((option) => (
+				<button
+					key={option.value}
+					type="button"
+					aria-pressed={billing === option.value}
+					onClick={() => onChange(option.value)}
+					className={`h-11 rounded-full px-4 text-[0.9375rem] font-medium whitespace-nowrap transition-colors duration-200 ${FOCUS} ${
+						billing === option.value ? "bg-ink text-paper" : "text-zinc-700 hover:text-ink"
+					}`}
+				>
+					{option.label}
+				</button>
+			))}
+		</fieldset>
+	);
 }
 
-/* Each plan is a card. The recommended one is the single dark object in a light panel. */
-export function PlanCard({
-	planKey,
+/*
+ * The plans as one table. Each plan is a column that shares the table's rows,
+ * so a figure lines up with the same figure on the next plan. On a phone each
+ * plan is its own block and carries its own row labels. The plan to pick is
+ * marked by its filled button and one word, never by a different surface.
+ */
+export function PlanTable({
 	from = "home",
-	recommendedKey = DEFAULT_RECOMMENDED,
-	recommendedLabel = "Most chosen",
+	recommended,
 }: {
-	planKey: PlanKey;
 	from?: string;
-	recommendedKey?: PlanKey;
-	recommendedLabel?: string;
+	recommended?: { plan: PlanKey; label: string };
 }) {
-	const plan = PLANS[planKey];
-	const recommended = planKey === recommendedKey;
+	const [billing, setBilling] = useState<Billing>("monthly");
+	const recommendedKey = recommended?.plan ?? DEFAULT_RECOMMENDED;
+	const recommendedLabel = recommended?.label ?? "Most chosen";
+	const span = "md:row-span-7 md:grid md:grid-rows-subgrid";
+
 	return (
-		<div
-			className={`flex flex-col rounded-2xl p-7 ${recommended ? "bg-ink ring-1 ring-ink" : "bg-paper-2 ring-1 ring-zinc-200"}`}
-		>
-			<div className="flex items-center justify-between gap-3">
-				<h3 className={`${SUBHEAD} ${recommended ? "text-paper" : "text-ink"}`}>{plan.name}</h3>
-				{recommended ? <span className={PILL_ACCENT}>{recommendedLabel}</span> : null}
+		<div>
+			<div className="md:hidden">
+				<BillingSwitch billing={billing} onChange={setBilling} />
 			</div>
-			<p className="mt-5 flex items-baseline gap-1.5">
-				<span
-					className={`font-heading text-[2.75rem] leading-none font-semibold tracking-[-0.03em] tabular-nums ${recommended ? "text-paper" : "text-ink"}`}
-				>
-					${plan.monthlyPriceUsd}
-				</span>
-				<span className={`${SMALL} ${recommended ? "text-zinc-400" : "text-zinc-500"}`}>/mo</span>
+			<div className="mt-8 grid gap-10 md:mt-0 md:grid-cols-[minmax(0,1.15fr)_repeat(3,minmax(0,1fr))] md:gap-x-8 md:gap-y-0">
+				<div className={`hidden ${span}`}>
+					<div className="self-start pb-8">
+						<BillingSwitch billing={billing} onChange={setBilling} />
+					</div>
+					{ROWS.map((row) => (
+						<p key={row.label} aria-hidden="true" className={`${CELL} text-[1rem] text-zinc-600`}>
+							{row.label}
+						</p>
+					))}
+					<div className="border-t border-zinc-200" />
+				</div>
+
+				{PLAN_KEYS.map((key) => {
+					const plan = PLANS[key];
+					const isRecommended = key === recommendedKey;
+					const yearlyPerMonth = Math.round(plan.annualPriceUsd / 12);
+					const perMonth = billing === "monthly" ? plan.monthlyPriceUsd : yearlyPerMonth;
+					return (
+						<article key={key} className={span}>
+							<div className="pb-8">
+								<h3 className={`${SUBHEAD} flex flex-wrap items-baseline gap-x-3 text-ink`}>
+									{plan.name}
+									{isRecommended ? (
+										<span className="font-sans text-[0.875rem] font-medium tracking-normal text-blue-800">
+											{recommendedLabel}
+										</span>
+									) : null}
+								</h3>
+								<p className="mt-4 flex items-baseline gap-2">
+									<span className="font-heading text-[3rem] leading-none font-bold tracking-[-0.03em] text-ink tabular-nums">
+										{usd(perMonth)}
+									</span>
+									<span className={`${SMALL} text-zinc-600`}>a month</span>
+								</p>
+								<p className={`${SMALL} mt-2 text-zinc-600`}>
+									{billing === "annual"
+										? `Billed ${usd(plan.annualPriceUsd)} a year. Saves ${usd(plan.monthlyPriceUsd * 12 - plan.annualPriceUsd)}.`
+										: `Or ${usd(yearlyPerMonth)} a month, billed yearly.`}
+								</p>
+							</div>
+							<dl className="md:contents">
+								{ROWS.map((row) => (
+									<div key={row.label} className={`${CELL} flex items-baseline justify-between gap-4`}>
+										<dt className="text-[1rem] text-zinc-600 md:sr-only">{row.label}</dt>
+										<dd className="text-[1.0625rem] font-medium text-ink tabular-nums">{row.value(plan)}</dd>
+									</div>
+								))}
+							</dl>
+							<div className="border-t border-zinc-200 pt-6">
+								<a
+									href={cloudAppUrl(`marketing-plan-${key}`)}
+									onClick={() => trackEvent("plan_click", { plan: key, from })}
+									className={`w-full ${isRecommended ? ACTION : ACTION_QUIET}`}
+								>
+									Get {plan.name}
+								</a>
+							</div>
+						</article>
+					);
+				})}
+			</div>
+			<p className={`${SMALL} mt-8 max-w-[70ch] text-zinc-600`}>
+				Premium prompts are asked with web search on, in {list.format(PREMIUM_MODELS.map(premiumModelLabel))}. Prices in
+				US dollars.
 			</p>
-			<ul className={`mt-7 flex-1 space-y-3 border-t pt-6 ${recommended ? "border-white/15" : "border-zinc-200"}`}>
-				{planLines(plan).map((line) => (
-					<li
-						key={line.text}
-						className={`${BODY} ${recommended ? (line.included ? "text-zinc-300" : "text-zinc-400") : line.included ? "text-zinc-700" : "text-zinc-500"}`}
-					>
-						{line.text}
-					</li>
-				))}
-			</ul>
-			<a
-				href={cloudAppUrl(`marketing-plan-${planKey}`)}
-				onClick={() => trackEvent("plan_click", { plan: planKey, from })}
-				className={`mt-8 ${recommended ? ACTION : ACTION_QUIET}`}
-			>
-				Get {plan.name}
-			</a>
 		</div>
 	);
 }
@@ -93,51 +168,22 @@ export function Pricing({
 	return (
 		<section id="pricing" className={`${PANEL} ${PANEL_PAD_WIDE}`}>
 			<Page>
-				<PanelHead title="Simple pricing" className="max-w-[46rem]">
+				<PanelHead title="Simple pricing">
 					<p className={`${LEAD} text-zinc-600`}>{lede}</p>
 				</PanelHead>
 
-				{/* The hero already names what every plan includes; here the plans only show what differs. */}
-				<div className="mt-12 grid gap-5 md:grid-cols-3">
-					{PLAN_KEYS.map((key) => (
-						<PlanCard
-							key={key}
-							planKey={key}
-							recommendedKey={recommended?.plan}
-							recommendedLabel={recommended?.label}
-						/>
-					))}
+				<div className="mt-10 lg:mt-16">
+					<PlanTable recommended={recommended} />
 				</div>
 
-				<div className="mt-10 grid gap-5 md:grid-cols-2">
-					<div className="rounded-2xl bg-paper-2 p-7 ring-1 ring-zinc-200">
-						<h3 className={`${SUBHEAD} text-ink`}>Our agency</h3>
-						<p className={`${BODY} mt-3 max-w-[44ch] text-zinc-600`}>
-							We do the work the tracker ranks: new pages, page updates, review sites and forums.
-						</p>
-						<p className={`${BODY} mt-4`}>
-							<Link to="/agency" className={`${LINK} text-ink`}>
-								Book an agency call
-							</Link>
-						</p>
-					</div>
-					<div className="rounded-2xl bg-paper-2 p-7 ring-1 ring-zinc-200">
-						<h3 className={`${SUBHEAD} text-ink`}>Custom</h3>
-						<p className={`${BODY} mt-3 max-w-[44ch] text-zinc-600`}>
-							More brands, custom prompt limits, higher sampling rates, and more models.
-						</p>
-						<p className={`${BODY} mt-4`}>
-							<a href="mailto:team@citerank.com?subject=Custom%20plan" className={`${LINK} text-ink`}>
-								Email us
-							</a>
-						</p>
-					</div>
-				</div>
-
-				<p className={`${SMALL} mt-8 text-zinc-500`}>
-					Pay monthly or yearly by card.{" "}
+				<p className={`${SMALL} mt-3 text-zinc-600`}>
+					Need more brands, questions or models?{" "}
+					<a href="mailto:team@citerank.com?subject=Custom%20plan" className={`${LINK} text-ink`}>
+						Email us
+					</a>{" "}
+					for a custom plan, or{" "}
 					<Link to="/pricing" className={`${LINK} text-ink`}>
-						Compare every plan
+						compare every plan
 					</Link>
 					.
 				</p>

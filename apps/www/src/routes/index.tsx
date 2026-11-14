@@ -3,20 +3,16 @@ import { getModelMeta } from "@workspace/config/models";
 import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS } from "@workspace/config/plans";
 import type { ComponentProps } from "react";
 import { StickyCta } from "@/components/citerank/home/sticky-cta";
-import { PRIMARY_BUTTON } from "@/components/citerank/ui";
 import { Agency } from "@/components/citerank/v2/agency";
 import { Closing } from "@/components/citerank/v2/closing";
-import { Demo } from "@/components/citerank/v2/demo";
-import { Engines } from "@/components/citerank/v2/engines";
 import { Faq } from "@/components/citerank/v2/faq";
-import { Figures } from "@/components/citerank/v2/figures";
 import { Hero } from "@/components/citerank/v2/hero";
 import { HowItWorks } from "@/components/citerank/v2/how-it-works";
 import { Includes } from "@/components/citerank/v2/includes";
-import { Letter } from "@/components/citerank/v2/letter";
 import { Logos } from "@/components/citerank/v2/logos";
 import { Pricing } from "@/components/citerank/v2/pricing";
 import { Reviews } from "@/components/citerank/v2/reviews";
+import { SKIP_LINK } from "@/components/citerank/v2/shell";
 import { STEP_SCHEMA } from "@/components/citerank/v2/steps";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
@@ -85,37 +81,25 @@ function aiReferralHero(assistant: string): ComponentProps<typeof Hero> {
 }
 
 /*
- * In order: the offer and the product, who uses it, what it covers, how it
- * works, the numbers behind it, the pitch in the founder's words, a no-risk way
- * to try it, who vouches for it, the price, the done-for-you option, the
- * remaining objections, and the offer again.
+ * In order: the offer and the product, who uses it, the product at work, what
+ * the money buys, who vouches for it, the price, the done-for-you option, the
+ * remaining objections, and the founder's case with the offer again.
  */
 function HomePage() {
 	const explicit = getHeroVariant(Route.useSearch().v);
 	const [referral] = useAiReferral();
 	const variant = explicit ?? (referral ? aiReferralHero(referral.assistant) : undefined);
 	return (
-		<div className="cr-v2 min-h-screen bg-paper-2 antialiased">
-			<a
-				href="#content"
-				className={`${PRIMARY_BUTTON} sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50`}
-			>
+		<div className="cr-v2 min-h-screen bg-paper antialiased">
+			<a href="#content" className={SKIP_LINK}>
 				Skip to content
 			</a>
 			<Navbar />
-			{/* The nav is a floating pill, so the first panel keeps the same gap below it as the panels keep from each other. */}
-			<main
-				id="content"
-				className="mx-auto w-full max-w-[1400px] space-y-3 px-3 pt-3 pb-3 sm:px-4 sm:pt-4 sm:pb-4 md:space-y-4 md:px-5 md:pt-5 md:pb-5"
-			>
+			<main id="content">
 				<Hero {...variant} />
 				<Logos />
-				<Includes />
-				<Engines />
 				<HowItWorks />
-				<Figures />
-				<Letter />
-				<Demo />
+				<Includes />
 				<Reviews />
 				<Pricing />
 				<Agency />
