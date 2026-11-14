@@ -5,9 +5,9 @@ import type { FaqItem } from "@/lib/faqs";
 import { BODY, LINK, PANEL, PANEL_PAD, Page, PanelHead } from "./kit";
 
 /*
- * Each answer opens under its question. The answers are in the page from the
- * start, so a crawler and the FAQPage schema read the same text a visitor does,
- * and they open without script.
+ * Every answer stands open under its question from the start, and a visitor
+ * can fold one away. An answer engine that reads the page as a browser draws
+ * it, and not as its source, would miss an answer that began folded.
  */
 export function Faq({ items, title = "Frequently asked questions" }: { items: FaqItem[]; title?: string }) {
 	if (items.length === 0) return null;
@@ -27,7 +27,7 @@ export function Faq({ items, title = "Frequently asked questions" }: { items: Fa
 				</div>
 				<div className="border-b border-zinc-200 lg:col-span-8">
 					{items.map((item) => (
-						<details key={item.question} className="group border-t border-zinc-200">
+						<details key={item.question} open className="group border-t border-zinc-200">
 							<summary className="flex cursor-pointer list-none items-start justify-between gap-6 rounded-sm py-6 text-[1.125rem] leading-[1.4] font-medium text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust [&::-webkit-details-marker]:hidden">
 								{item.question}
 								<Plus
