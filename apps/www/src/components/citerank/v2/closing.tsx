@@ -18,11 +18,26 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 			<Page>
 				<figure>
 					<blockquote>
-						<h2 className={`${DISPLAY_S} max-w-[24ch] text-ink`}>
-							Ask AI which product to pick. It names two or three brands. There is no page two.
+						{/* A sentence to a line, so none of the three ends on a word of the next. */}
+						<h2 className={`${DISPLAY_S} text-ink`}>
+							<span className="block">Ask AI which product to pick.</span>{" "}
+							<span className="block">It names two or three brands.</span>{" "}
+							<span className="block">There is no page two.</span>
 						</h2>
+						<p className={`${LEAD} mt-6 max-w-[52ch] text-zinc-700`}>
+							Nothing tells you whether you were in that answer.
+						</p>
 					</blockquote>
-					<figcaption className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3">
+					<img
+						src="/signature.webp"
+						alt="Adam Danyal’s signature"
+						width={402}
+						height={132}
+						loading="lazy"
+						decoding="async"
+						className="mt-6 h-12 w-auto"
+					/>
+					<figcaption className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-3">
 						<img
 							src="/founder.jpg"
 							alt=""
@@ -36,15 +51,6 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 							<span className="block text-[1rem] leading-[1.4] font-medium text-ink">Adam Danyal</span>
 							<span className={`${SMALL} block text-zinc-600`}>Founder, CiteRank.com</span>
 						</span>
-						<img
-							src="/signature.webp"
-							alt="Adam Danyal’s signature"
-							width={402}
-							height={132}
-							loading="lazy"
-							decoding="async"
-							className="ml-2 h-11 w-auto"
-						/>
 						<a
 							href="https://www.linkedin.com/in/adamdanyal/"
 							target="_blank"
@@ -58,8 +64,8 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 
 				<div className="mt-12 grid gap-8 border-t border-zinc-300 pt-10 lg:grid-cols-12 lg:items-center lg:gap-8">
 					<p className={`${LEAD} max-w-[52ch] text-zinc-700 lg:col-span-7`}>
-						Nothing tells you whether you were in that answer. Try the live demo first: no slides, no sales call, every
-						page of the real product. If it is useful, start tracking.
+						Try the live demo first: no slides, no sales call, every page of the real product. If it is useful, start
+						tracking.
 					</p>
 					<div className="lg:col-span-5 lg:justify-self-end">
 						<div className="flex flex-col gap-3 sm:flex-row">
