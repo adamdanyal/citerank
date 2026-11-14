@@ -1,6 +1,5 @@
 import { getModelMeta } from "@workspace/config/models";
 import {
-	CLOUD_ENTRY_PRICE_USD,
 	CLOUD_PLATFORMS,
 	PLANS,
 	PREMIUM_MODELS,
@@ -10,17 +9,18 @@ import {
 import type { ReactNode } from "react";
 import { EngineIcon } from "@/components/home/engines";
 import { INCLUDED } from "./included";
-import { BODY, LEAD, PANEL, PANEL_PAD, Page, PanelHead, SMALL, SUBHEAD } from "./kit";
-
-const list = new Intl.ListFormat("en", { type: "conjunction" });
+import { BODY, PANEL, PANEL_PAD, Page, PanelHead, SMALL, SUBHEAD } from "./kit";
 
 /** Gemini shares Google's mark in the catalog, which would make it indistinguishable from AI Overviews here. */
 const ICON_OVERRIDES: Record<string, string> = { gemini: "gemini" };
 
 const MODELS = Object.keys(CLOUD_PLATFORMS);
-const SCRAPED = MODELS.filter((model) => CLOUD_PLATFORMS[model].access === "scraped");
-const BY_API = MODELS.filter((model) => CLOUD_PLATFORMS[model].access !== "scraped");
-const GROUNDED_ONLY = PREMIUM_MODELS.filter((model) => !STANDARD_PLATFORM_MENU.includes(model));
+/* The ten a brand picks from, by how we read them, then the three sold only with their web search on. */
+const STANDARD = STANDARD_PLATFORM_MENU;
+const SCRAPED = STANDARD.filter((model) => CLOUD_PLATFORMS[model].access === "scraped");
+const BY_API = STANDARD.filter((model) => CLOUD_PLATFORMS[model].access === "api");
+const GROUNDED_ONLY = PREMIUM_MODELS.filter((model) => !STANDARD.includes(model));
+const PICKS = PLANS.basic.platformPicks;
 const RUNS_PER_DAY = Math.max(...Object.values(PLANS).map((plan) => plan.standardRunsPerDay));
 const TIMES = ["", "once", "twice", "three times", "four times"][RUNS_PER_DAY] ?? `${RUNS_PER_DAY} times`;
 const BASIC_ANSWERS_PER_DAY = PLANS.basic.maxPrompts * PLANS.basic.platformPicks * PLANS.basic.standardRunsPerDay;
@@ -30,12 +30,12 @@ const iconId = (model: string) => ICON_OVERRIDES[model] ?? getModelMeta(model).i
 
 const [WHOLE_ANSWER, , TO_DO_LIST, SEATS_AND_API, CANCEL] = INCLUDED;
 
-function Engines({ title, models }: { title: string; models: string[] }) {
+function Engines({ title, models }: { title: string; models: readonly string[] }) {
 	return (
 		<div>
 			<dt className={`${SMALL} text-zinc-400`}>{title}</dt>
 			<dd className="mt-3">
-				<ul className={models.length > 6 ? "grid grid-cols-2 gap-2 sm:grid-cols-4" : "flex flex-wrap gap-2"}>
+				<ul className="flex flex-wrap gap-2">
 					{models.map((model) => (
 						<li
 							key={model}
@@ -69,11 +69,7 @@ export function Includes() {
 	return (
 		<section id="includes" className={`${PANEL} ${PANEL_PAD}`}>
 			<Page>
-				<PanelHead title="What every plan includes">
-					<p className={`${LEAD} text-zinc-600`}>
-						On every plan, from ${CLOUD_ENTRY_PRICE_USD} a month up. Nothing here is an add-on.
-					</p>
-				</PanelHead>
+				<PanelHead title="What every plan includes" />
 
 				<ul className="mt-10 grid gap-4 lg:mt-16 lg:grid-cols-12 lg:gap-8">
 					<li className="flex min-w-0 flex-col rounded-card bg-ink p-6 text-paper sm:p-8 lg:col-span-8 lg:row-span-3 lg:p-10">
@@ -81,20 +77,21 @@ export function Includes() {
 							<span className="block text-[clamp(6rem,11vw,10rem)] leading-[0.85] font-bold tracking-[-0.05em] tabular-nums">
 								{MODELS.length}
 							</span>
-							<span className={`${SUBHEAD} mt-5 block`}>AI apps, asked {TIMES} a day</span>
+							<span className={`${SUBHEAD} mt-5 block`}>AI apps to choose from</span>
 						</h3>
 						<p className={`${BODY} mt-3 max-w-[52ch] text-zinc-300`}>
-							Your customers’ questions go to every one of them, so you can tell whether you are being named more often
-							or less. On the entry plan that is up to {BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day.
+							Each brand tracks any {PICKS} of the {STANDARD.length} standard apps, and we ask them your customers’
+							questions {TIMES} a day, so you can tell whether you are being named more often or less. On the entry plan
+							that is up to {BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day.
 						</p>
 						<dl className="mt-8 grid gap-6 border-t border-ink-rule pt-8">
-							<Engines title="Read in the app, the way your customers see it" models={SCRAPED} />
-							<Engines title="Read through each company’s API" models={BY_API} />
+							<Engines title="Standard, read in the app the way your customers see it" models={SCRAPED} />
+							<Engines title="Standard, read through each company’s API" models={BY_API} />
+							<Engines
+								title={`Premium, asked with their own web search on (${premiumPlanNames()})`}
+								models={GROUNDED_ONLY}
+							/>
 						</dl>
-						<p className={`${SMALL} mt-6 max-w-[60ch] text-zinc-400`}>
-							{list.format(GROUNDED_ONLY.map(label))} answer with their own web search on, included on{" "}
-							{premiumPlanNames()}.
-						</p>
 					</li>
 
 					<Tile title={WHOLE_ANSWER.title} className="lg:col-span-4">
@@ -112,7 +109,7 @@ export function Includes() {
 							<h3 className={`${SUBHEAD} max-w-[22ch] text-ink`}>{SEATS_AND_API.title}</h3>
 							<p className={`${BODY} mt-3 max-w-[44ch] text-zinc-600`}>{SEATS_AND_API.body}</p>
 						</div>
-						<pre className="min-w-0 overflow-x-auto rounded-lg bg-ink p-5 font-mono text-[0.8125rem] leading-[1.9] text-paper lg:col-span-7">
+						<pre className="min-w-0 rounded-lg bg-ink p-5 font-mono text-[0.8125rem] leading-[1.9] whitespace-pre-wrap text-paper [overflow-wrap:anywhere] lg:col-span-7">
 							<code>
 								<span className="text-zinc-400 select-none">$ </span>claude mcp add --transport http citerank \{"\n"}
 								{"    "}

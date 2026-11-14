@@ -2,7 +2,7 @@ import { EngineIcon } from "@/components/home/engines";
 import { AI_PROMPT, REVIEW_COLUMNS, type Review } from "../home/reviews";
 import { BODY, LINK, MONO, PANEL, PANEL_PAD, Page, PanelHead, SMALL } from "./kit";
 
-const ROW_ORDER = [0, 1, 2].flatMap((row) => REVIEW_COLUMNS.map((column) => column[row]));
+const REVIEWS = REVIEW_COLUMNS.flat();
 
 type AiReview = Extract<Review, { kind: "ai" }>;
 
@@ -110,8 +110,9 @@ function AnswerDetails({ review }: { review: AiReview }) {
 }
 
 /*
- * A rail: the reviews run past the edge of the window, so the cut-off card is
- * the cue that there are more.
+ * One list, laid out twice. On a wide screen all nine are in view in three
+ * columns, each card as tall as its own quote. On a narrow one they are a rail
+ * that runs past the edge, so the cut-off card is the cue that there are more.
  */
 export function Reviews() {
 	return (
@@ -121,10 +122,13 @@ export function Reviews() {
 			</Page>
 			<ul
 				aria-label="Reviews"
-				className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-px-4 px-4 pb-6 [scrollbar-width:thin] sm:scroll-px-6 sm:px-6 lg:mt-16 lg:gap-8 lg:scroll-px-[max(4rem,calc((100%-90rem)/2+4rem))] lg:px-[max(4rem,calc((100%-90rem)/2+4rem))]"
+				className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-px-4 px-4 pb-6 [scrollbar-width:thin] sm:scroll-px-6 sm:px-6 lg:mx-auto lg:mt-16 lg:block lg:max-w-[1440px] lg:columns-3 lg:gap-8 lg:overflow-visible lg:px-16 lg:pb-0"
 			>
-				{ROW_ORDER.map((review) => (
-					<li key={review.name} className="flex w-[19rem] shrink-0 snap-start sm:w-[24rem]">
+				{REVIEWS.map((review) => (
+					<li
+						key={review.name}
+						className="flex w-[19rem] shrink-0 snap-start sm:w-[24rem] lg:mb-8 lg:w-auto lg:break-inside-avoid"
+					>
 						<ReviewCard review={review} />
 					</li>
 				))}

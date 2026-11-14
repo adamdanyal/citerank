@@ -23,21 +23,21 @@ const BILLING: { value: Billing; label: string }[] = [
 
 const list = new Intl.ListFormat("en", { type: "conjunction" });
 
-/* Only what differs between plans. What every plan includes has a section of its own. */
+/* Only what differs between plans. What they share is one line under the table and a section of its own. */
 const ROWS: { label: string; value: (plan: PlanDefinition) => string }[] = [
 	{ label: "Brands", value: (plan) => String(plan.maxBrands) },
 	{ label: "Buyer questions tracked", value: (plan) => String(plan.maxPrompts) },
 	{
-		label: "AI apps",
-		value: (plan) =>
-			plan.platformMenu.length === 1 ? "ChatGPT only" : `Any ${plan.platformPicks} of ${plan.platformMenu.length}`,
+		label: "Answers a day, up to",
+		value: (plan) => (plan.maxPrompts * plan.platformPicks * plan.standardRunsPerDay).toLocaleString("en-US"),
 	},
-	{ label: "Checks a day", value: (plan) => String(plan.standardRunsPerDay) },
 	{
 		label: "Premium prompts",
 		value: (plan) => (plan.premiumIncluded > 0 ? `${plan.premiumIncluded}, asked daily` : "None"),
 	},
 ];
+
+const SHARED = PLANS.basic;
 
 const usd = (amount: number) => `$${amount.toLocaleString("en-US")}`;
 
@@ -81,7 +81,7 @@ export function PlanTable({
 	const [billing, setBilling] = useState<Billing>("monthly");
 	const recommendedKey = recommended?.plan ?? DEFAULT_RECOMMENDED;
 	const recommendedLabel = recommended?.label ?? "Most chosen";
-	const span = "md:row-span-7 md:grid md:grid-rows-subgrid";
+	const span = "md:row-span-6 md:grid md:grid-rows-subgrid";
 
 	return (
 		<div>
@@ -151,8 +151,9 @@ export function PlanTable({
 				})}
 			</div>
 			<p className={`${SMALL} mt-8 max-w-[70ch] text-zinc-600`}>
-				Premium prompts are asked with web search on, in {list.format(PREMIUM_MODELS.map(premiumModelLabel))}. Prices in
-				US dollars.
+				On every plan a brand tracks any {SHARED.platformPicks} of {SHARED.platformMenu.length} AI apps,{" "}
+				{SHARED.standardRunsPerDay} times a day. Premium prompts are asked with web search on, in{" "}
+				{list.format(PREMIUM_MODELS.map(premiumModelLabel))}. Prices in US dollars.
 			</p>
 		</div>
 	);
