@@ -463,8 +463,10 @@ function AnswerFilter({ value, onChange }: { value: AnswerKind | null; onChange:
 	return (
 		<div className={`${BOX} p-4`}>
 			<p className="text-sm text-zinc-600">
-				<span className="font-mono font-medium text-ink">{percent(counts.positive / judged)} positive</span> across{" "}
-				{count(counts.all)} answers
+				<span className="font-medium text-ink">
+					<span className="font-mono">{percent(counts.positive / judged)}</span> positive
+				</span>{" "}
+				across {count(counts.all)} answers
 			</p>
 			<div aria-hidden="true" className="mt-3 flex h-2 gap-0.5 overflow-hidden rounded-full">
 				{TONES.map((tone) => (
