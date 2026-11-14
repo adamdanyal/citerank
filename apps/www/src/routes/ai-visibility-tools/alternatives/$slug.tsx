@@ -1,5 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { BODY, SUBHEAD } from "@/components/citerank/v2/kit";
+import { BODY, LIST_CARD, SUBHEAD } from "@/components/citerank/v2/kit";
 import { PageShell } from "@/components/citerank/v2/shell";
 import { CiteRankCta, DirectoryCiteRankBanner, DirectoryHero, DirectorySection } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
@@ -72,7 +72,7 @@ function AlternativesPage() {
 						</p>
 					}
 				>
-					<ul className="border-b border-zinc-200">
+					<ul className={LIST_CARD}>
 						{competitor.switching.reasons.map((reason) => (
 							<li
 								key={reason.headline}

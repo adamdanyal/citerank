@@ -1,16 +1,16 @@
 import { Link } from "@tanstack/react-router";
-import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import { cloudSignupUrl } from "@workspace/config/referrals";
 import { Fragment, type ReactNode } from "react";
+import { Closing } from "./citerank/v2/closing";
 import {
 	ACTION,
-	ACTION_QUIET,
 	ACTION_QUIET_ON_INK,
 	BAND_PAD,
 	BODY,
 	DISPLAY,
 	DISPLAY_S,
 	HEADING,
+	INDEX_CARD,
 	LEAD,
 	LINK,
 	PANEL,
@@ -18,7 +18,6 @@ import {
 	PANEL_PAD,
 	PANEL_PAD_TIGHT,
 	PANEL_PAD_WIDE,
-	PANEL_TINT,
 	Page,
 	PanelHead,
 	SMALL,
@@ -72,7 +71,7 @@ export function IndexGroup({
 	return (
 		<div>
 			<h2 className={`${HEADING} text-ink`}>{title}</h2>
-			<ul className={`mt-8 gap-x-8 lg:mt-10 ${COLUMNS[columns]}`}>{children}</ul>
+			<ul className={`${INDEX_CARD} mt-8 gap-x-8 lg:mt-10 ${COLUMNS[columns]}`}>{children}</ul>
 		</div>
 	);
 }
@@ -175,28 +174,9 @@ export function DirectoryCiteRankBanner({
 	);
 }
 
+/** A directory page ends as every page does: the founders' quotes, then the panel with the two actions. */
 export function CiteRankCta() {
-	return (
-		<section className={`${PANEL_TINT} ${BAND_PAD}`}>
-			<Page className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-8">
-				<div className="lg:col-span-7">
-					<h2 className={`${HEADING} max-w-[22ch] text-ink`}>Ready to track your AI visibility?</h2>
-					<p className={`${LEAD} mt-5 max-w-[52ch] text-zinc-700`}>
-						Sign up in minutes and start monitoring how ChatGPT, Claude, and Google AI Overviews talk about your brand.
-						Plans start at ${CLOUD_ENTRY_PRICE_USD}/mo, or have our agency do the work.
-					</p>
-				</div>
-				<div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:col-span-5 lg:justify-end">
-					<a href={SIGN_UP_URL} className={ACTION}>
-						Start tracking
-					</a>
-					<Link to="/agency" className={ACTION_QUIET}>
-						Let us do the work
-					</Link>
-				</div>
-			</Page>
-		</section>
-	);
+	return <Closing from="marketing-page-cta" />;
 }
 
 export function DirectorySection({

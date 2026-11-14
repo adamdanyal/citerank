@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SUBHEAD } from "@/components/citerank/v2/kit";
+import { LIST_CARD, SUBHEAD } from "@/components/citerank/v2/kit";
 import { PageShell } from "@/components/citerank/v2/shell";
 import {
 	CiteRankCta,
@@ -56,7 +56,7 @@ function CategoryHub() {
 				lead="The market splits into a few distinct groups. Pick the type of tool you’re after to compare the options in that category side by side."
 			/>
 			<DirectorySection>
-				<ul className="border-b border-zinc-200">
+				<ul className={LIST_CARD}>
 					{indexableCategories.map((category) => (
 						<li key={category} className={ROW}>
 							<a

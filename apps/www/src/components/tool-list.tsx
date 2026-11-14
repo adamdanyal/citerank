@@ -7,7 +7,7 @@ import {
 	getComparisonSlug,
 	getPopularityGrade,
 } from "@/lib/competitors";
-import { BODY, LINK, PILL_QUIET, SMALL, SUBHEAD } from "./citerank/v2/kit";
+import { BODY, CARD_LIFT, LINK, PILL_QUIET, SMALL, SUBHEAD } from "./citerank/v2/kit";
 
 export const CITERANK_FACTS = ["Search agency", "13 AI apps", `From ${ENTRY_PRICE}`];
 
@@ -96,7 +96,7 @@ function ToolRow({ competitor, showCategory }: { competitor: Competitor; showCat
 /** `showCategory` is off where every tool shares the category the page is about. */
 export function ToolGrid({ competitors, showCategory = true }: { competitors: Competitor[]; showCategory?: boolean }) {
 	return (
-		<ul className="border-b border-zinc-200">
+		<ul className={`${CARD_LIFT} px-6 sm:px-8 [&>li:first-child]:border-t-0`}>
 			{competitors.map((c) => (
 				<ToolRow key={c.slug} competitor={c} showCategory={showCategory} />
 			))}

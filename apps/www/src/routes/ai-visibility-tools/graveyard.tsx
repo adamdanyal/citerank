@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BODY, LINK, PILL_QUIET, SMALL, SUBHEAD } from "@/components/citerank/v2/kit";
+import { BODY, CARD_LIFT, LINK, PILL_QUIET, SMALL, StepRows, SUBHEAD } from "@/components/citerank/v2/kit";
 import { PageShell } from "@/components/citerank/v2/shell";
 import { CiteRankCta, DirectoryHero, DirectorySection } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
@@ -124,9 +124,9 @@ function Plot({ competitor }: { competitor: Competitor }) {
 	const fate = graveyardFate(competitor);
 	if (!fate || !competitor.fate) return null;
 	return (
-		<li className={`flex min-w-0 flex-col ${competitor.noScreenshot ? "border-t border-zinc-200 pt-6" : ""}`}>
+		<li className={`flex min-w-0 flex-col ${competitor.noScreenshot ? `${CARD_LIFT} p-6` : ""}`}>
 			{!competitor.noScreenshot && (
-				<div className="mb-6 overflow-hidden rounded-card bg-paper-2 ring-1 ring-zinc-200">
+				<div className={`${CARD_LIFT} mb-6 overflow-hidden`}>
 					<img
 						src={getScreenshotUrl(competitor.slug)}
 						alt={`${competitor.name}’s homepage while it was live`}
@@ -179,7 +179,7 @@ function GraveyardPage() {
 				title="The AEO graveyard"
 				lead={lead()}
 				aside={
-					<div className="rounded-card bg-paper-2 p-6">
+					<div className="rounded-card bg-white p-6 shadow-lift ring-1 ring-zinc-200">
 						<p className="text-[1rem] leading-[1.4] font-medium text-ink">Keep a copy of your history</p>
 						<p className={`${SMALL} mt-2 text-zinc-700`}>
 							When a hosted tracker goes under, your history goes with it. CiteRank.com’s API lets you keep your own
@@ -213,17 +213,7 @@ function GraveyardPage() {
 				</p>
 			</DirectorySection>
 			<DirectorySection title="Your AI visibility tool shut down. Now what?" pad="wide">
-				<ol className="border-b border-zinc-200 [counter-reset:step]">
-					{STEPS.map((step) => (
-						<li
-							key={step.title}
-							className="grid gap-x-8 gap-y-3 border-t border-zinc-200 py-6 [counter-increment:step] before:font-heading before:text-display-s before:leading-none before:font-bold before:tracking-[-0.03em] before:text-rust before:tabular-nums before:content-[counter(step)] lg:grid-cols-12 lg:items-baseline lg:py-8 lg:before:col-span-1"
-						>
-							<h3 className={`${SUBHEAD} text-ink lg:col-span-4`}>{step.title}</h3>
-							<p className={`${BODY} max-w-[60ch] text-zinc-600 lg:col-span-7`}>{step.body}</p>
-						</li>
-					))}
-				</ol>
+				<StepRows steps={STEPS} />
 			</DirectorySection>
 			<Faq items={FAQS} />
 			<CiteRankCta />

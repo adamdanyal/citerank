@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AiVisibilitySoftwareHub } from "@/components/ai-visibility-software-hub";
+import { Closing } from "@/components/citerank/v2/closing";
 import { BODY, PANEL, PANEL_PAD, Page, PanelHead, SUBHEAD } from "@/components/citerank/v2/kit";
 import { PageShell } from "@/components/citerank/v2/shell";
 import { CompetitorDirectory } from "@/components/competitor-directory";
@@ -94,9 +95,11 @@ function AiVisibilitySoftwarePage() {
 							>
 								<a
 									href={link.href}
-									className={`flex h-full min-w-0 flex-col rounded-card bg-paper-2 p-6 transition-colors duration-200 hover:bg-paper-3 sm:p-8 ${FOCUS}`}
+									className={`group flex h-full min-w-0 flex-col rounded-card bg-white p-6 shadow-lift ring-1 ring-zinc-200 sm:p-8 ${FOCUS}`}
 								>
-									<h3 className={`${SUBHEAD} text-ink`}>{link.title}</h3>
+									<h3 className={`${SUBHEAD} text-ink transition-colors duration-200 group-hover:text-rust`}>
+										{link.title}
+									</h3>
 									<p className={`${BODY} mt-3 max-w-[44ch] text-zinc-600`}>{link.description}</p>
 								</a>
 							</li>
@@ -105,6 +108,7 @@ function AiVisibilitySoftwarePage() {
 				</Page>
 			</section>
 			<Faq items={DIRECTORY_FAQS} />
+			<Closing from="marketing-page-cta" />
 		</PageShell>
 	);
 }

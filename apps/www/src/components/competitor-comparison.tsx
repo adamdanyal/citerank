@@ -17,16 +17,17 @@ import {
 } from "@/lib/competitors";
 import {
 	BODY,
+	CARD_LIFT,
 	HEADING,
 	LEAD,
 	LINK,
+	LiftedRows,
 	PANEL,
 	PANEL_PAD,
 	PANEL_PAD_TIGHT,
 	PANEL_PAD_WIDE,
 	Page,
 	PanelHead,
-	RuledRow,
 	SMALL,
 	SUBHEAD,
 } from "./citerank/v2/kit";
@@ -45,7 +46,7 @@ function FateNotice({ competitor }: { competitor: Competitor }) {
 				? `${competitor.name} has pivoted away from AI visibility`
 				: `${competitor.name} has been acquired`;
 	return (
-		<div className="max-w-[66ch] rounded-card bg-paper-2 p-6">
+		<div className="max-w-[66ch] rounded-card bg-white p-6 shadow-lift ring-1 ring-zinc-200">
 			<p className="text-[1rem] leading-[1.4] font-medium text-ink">
 				{heading} ({formatFateDate(competitor.fate.date)})
 			</p>
@@ -99,7 +100,9 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 		fate && competitor.fate ? (
 			<FateNotice competitor={competitor} />
 		) : isLowDR(competitor) && !fate ? (
-			<p className={`${SMALL} flex max-w-[66ch] items-start gap-2.5 rounded-card bg-paper-2 px-5 py-4 text-zinc-700`}>
+			<p
+				className={`${SMALL} flex max-w-[66ch] items-start gap-2.5 rounded-card bg-white px-5 py-4 text-zinc-700 shadow-lift ring-1 ring-zinc-200`}
+			>
 				<AlertTriangle aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-rust" />
 				{competitor.name} appears to be a very early-stage product with limited adoption.
 			</p>
@@ -117,7 +120,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 						<h2 className={`${HEADING} text-ink`}>The short version</h2>
 						<p className={`${LEAD} mt-5 text-zinc-700`}>{getSoundbite(competitor)}</p>
 					</div>
-					<ul className="border-y border-zinc-200 lg:col-span-6 lg:col-start-7 lg:self-start">
+					<ul className={`${CARD_LIFT} px-6 sm:px-8 lg:col-span-6 lg:col-start-7 lg:self-start`}>
 						<ToolSummary name="CiteRank.com" facts={CITERANK_FACTS} className="py-6">
 							AI visibility tracker and AI search agency for AEO. Track AI visibility across ChatGPT, Claude, and Google
 							AI Overviews, with every answer kept in full.
@@ -172,7 +175,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 							)}
 						</div>
 						{competitor.highlights && competitor.highlights.length > 0 && (
-							<ul className="border-b border-zinc-200 lg:col-span-6 lg:self-start">
+							<ul className={`${CARD_LIFT} px-6 sm:px-8 lg:col-span-6 lg:self-start [&>li:first-child]:border-t-0`}>
 								{competitor.highlights.map((h) => (
 									<li key={h} className={`${BODY} border-t border-zinc-200 py-4 text-zinc-700`}>
 										{h}
@@ -214,10 +217,10 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 				<Page>
 					<PanelHead title="Key differences" />
 					<div
-						className={`mt-10 grid gap-x-8 gap-y-10 lg:mt-16 ${differences.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}
+						className={`mt-10 grid gap-5 lg:mt-16 lg:gap-8 ${differences.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}
 					>
 						{differences.map((list) => (
-							<div key={list.title} className="border-t border-zinc-200 pt-6">
+							<div key={list.title} className={`${CARD_LIFT} p-6 sm:p-8`}>
 								<h3 className={`${SUBHEAD} text-ink`}>{list.title}</h3>
 								<ul className={`${BODY} mt-4 space-y-2 text-zinc-600`}>
 									{list.features.map((feature) => (
@@ -233,23 +236,28 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 			<section className={`${PANEL} ${PANEL_PAD}`}>
 				<Page>
 					<PanelHead title={`Why choose CiteRank.com over ${competitor.name}?`} />
-					<ul className="mt-10 border-b border-zinc-200 lg:mt-16">
-						<RuledRow title="Every answer kept in full">
-							You can verify exactly how your visibility data is collected, calculated, and presented.
-						</RuledRow>
-						<RuledRow title="Hosted for you, month to month">
-							Run CiteRank.com without your own infrastructure or a sales call. Plans run from {PLAN_RANGE}, billed
-							month to month, and you can cancel any time from your billing settings.
-						</RuledRow>
-						<RuledRow title="Your data, in your stack">
-							Pull every metric, sentiment included, into your own code with the REST API, or ask Claude Code and Cursor
-							about it over MCP. Both come with every plan, and you can export or migrate at any time.
-						</RuledRow>
-						<RuledRow title="We do the work">
-							The tracker ranks what to do next. Our AI search agency does that work each month and reports the AI
-							answers before and after.
-						</RuledRow>
-					</ul>
+					<div className="mt-10 lg:mt-16">
+						<LiftedRows
+							items={[
+								{
+									title: "Every answer kept in full",
+									body: "You can verify exactly how your visibility data is collected, calculated, and presented.",
+								},
+								{
+									title: "Hosted for you, month to month",
+									body: `Run CiteRank.com without your own infrastructure or a sales call. Plans run from ${PLAN_RANGE}, billed month to month, and you can cancel any time from your billing settings.`,
+								},
+								{
+									title: "Your data, in your stack",
+									body: "Pull every metric, sentiment included, into your own code with the REST API, or ask Claude Code and Cursor about it over MCP. Both come with every plan, and you can export or migrate at any time.",
+								},
+								{
+									title: "We do the work",
+									body: "The tracker ranks what to do next. Our AI search agency does that work each month and reports the AI answers before and after.",
+								},
+							]}
+						/>
+					</div>
 				</Page>
 			</section>
 

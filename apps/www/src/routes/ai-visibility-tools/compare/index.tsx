@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PANEL, PANEL_PAD, Page, PanelHead, SUBHEAD } from "@/components/citerank/v2/kit";
+import { INDEX_CARD, LIST_CARD, PANEL, PANEL_PAD, Page, PanelHead, SUBHEAD } from "@/components/citerank/v2/kit";
 import { PageShell } from "@/components/citerank/v2/shell";
 import {
 	CiteRankCta,
@@ -73,7 +73,7 @@ function CompareHub() {
 					<div className={SPLIT_HEAD}>
 						<PanelHead title="Compare several at once" />
 					</div>
-					<ul className={`${SPLIT_BODY} border-b border-zinc-200`}>
+					<ul className={`${SPLIT_BODY} ${LIST_CARD}`}>
 						{sets().map((set) => (
 							<li key={set.path} className={ROW}>
 								<a href={set.path} className={`${SUBHEAD} group block rounded-sm py-6 text-ink lg:py-8 ${FOCUS}`}>
@@ -85,7 +85,7 @@ function CompareHub() {
 				</Page>
 			</section>
 			<DirectorySection title="Pick a matchup" pad="wide">
-				<ul className="grid gap-x-8 border-b border-zinc-200 sm:grid-cols-2 lg:grid-cols-3">
+				<ul className={`${INDEX_CARD} grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3`}>
 					{pairs().map((pair) => (
 						<li key={pair.path} className={ROW}>
 							<a href={pair.path} className={ROW_LINK}>
