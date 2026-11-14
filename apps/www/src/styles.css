@@ -6,15 +6,15 @@
 /* Hallmark · waive 78 · the two guides, the blog posts and the policies are long documents and set their section heads at the title size · a post carries a dozen heads, and at the section size they would outweigh the text they head */
 /* Hallmark · waive 84 · the product is rebuilt in HTML though it could be captured · the owner ruled out screenshots and embeds anywhere on the site; the screens are fed by an export of the live demo's own sample data, so they say what it says */
 /* Hallmark · waive 47c · the product screens are HTML, not captures · same instruction; every one is labelled as sample data and links to the same screen in the live demo */
+/* Hallmark · waive 3 · how it works is three cards of one size, a picture over a numbered head · the owner's first rule is that a ten-year-old can follow the page, and three steps of the same size read as one, two, three */
 /* Hallmark · hero-review: fix · 4 findings · 3 resolved 1 partial · the amber tile is the product's own grade for a middling score and stays as the app shows it; the selected tile now takes an ink outline, so the two no longer read alike */
-/* Hallmark · finish-review: subagent · 8 findings · 7 resolved 1 partial · gap: the signature and the typed name both stay, the signature now as the sign-off above the byline; the section heads would pass on a rival's page and are the owner's wording */
+/* Hallmark · finish-review: subagent · 8 findings · 7 resolved 1 partial · gap: the section heads would pass on a rival's page and are the owner's wording; the signature has since gone, and the page closes on the founder's quote beside his portrait */
 /* Hallmark · dropped the two API commands from the home page and the four kinds of agency work as heads · 58 names them: the commands are on the API feature page, and each job now stands beside how many of it a plan buys */
 /* Hallmark · dismissed 28a · the hero holds no image; the images these lines name sit below the fold and load lazily on purpose */
 /* Hallmark · dismissed 46a · "200+ brands" and "2M+ on LinkedIn" are carried over from the old page as found and listed for the owner to verify */
 /* Hallmark · dismissed 59 · ten with the customer logo strip, which is one line under the hero and not a section of content */
 /* Hallmark · dropped "13 answer engines your buyers use", "Try the real product", "Tell me if this sounds familiar." · 69 names them: the engines, the demo and the founder's letter are each told once now, inside the section that needs them */
 /* Hallmark · reworded "Know where you stand in AI search" to "Ask AI which product to pick. It names two or three brands. There is no page two." · 19 names the opener: any tracker could say the old line */
-/* Hallmark · answered F20 · the founder row in the closing band is one line at 1440; its four parts sit at different heights, which the check reads as a wrap */
 /* Hallmark · dismissed F18 · popover-trigger is the component library's own data-slot, a text button and not a picture slot */
 /* Hallmark · dismissed 74 · zinc and blue are remapped in @theme to the brand's warm greys and its rust ramp, so no stock value reaches the page */
 @import "tailwindcss";
