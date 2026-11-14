@@ -1,3 +1,4 @@
+import { CARD_LIFT } from "./citerank/v2/kit";
 import { EngineIcon } from "./home/engines";
 
 // ---------------------------------------------------------------------------
@@ -40,7 +41,7 @@ export function VisibilityTrendGraphic() {
 		<figure
 			role="img"
 			aria-label={`Chart of brand visibility over twelve months: your brand climbs from ${first}% to ${last}% while a competitor falls`}
-			className="flex aspect-[4/3] w-full flex-col gap-3 rounded-card bg-paper-2 p-5 @[30rem]:aspect-[5/3] @[30rem]:p-8"
+			className={`${CARD_LIFT} flex aspect-[4/3] w-full flex-col gap-3 p-5 @[30rem]:aspect-[5/3] @[30rem]:p-8`}
 		>
 			<div className="flex items-start justify-between gap-4">
 				<div className="min-w-0">
@@ -227,7 +228,9 @@ function EngineList({
 
 export function EnginesGraphic() {
 	return (
-		<dl className="grid h-full grid-cols-2 content-center gap-x-5 rounded-card bg-paper-2 p-5 @[30rem]:gap-x-8 @[30rem]:p-8 @[56rem]:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] @[56rem]:gap-x-12 @[56rem]:p-12">
+		<dl
+			className={`${CARD_LIFT} grid h-full grid-cols-2 content-center gap-x-5 p-5 @[30rem]:gap-x-8 @[30rem]:p-8 @[56rem]:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] @[56rem]:gap-x-12 @[56rem]:p-12`}
+		>
 			<EngineList
 				title="Read in the app, as a user sees them"
 				engines={SCRAPED_ENGINES}

@@ -7,9 +7,12 @@ import {
 	ACTION_QUIET,
 	BAND_PAD,
 	BODY,
+	CARD,
 	HEADING,
 	LEAD,
 	LINK,
+	LIST_CARD,
+	LinkCards,
 	PANEL,
 	PANEL_PAD,
 	PANEL_PAD_TIGHT,
@@ -18,6 +21,8 @@ import {
 	PanelHead,
 	RuledRow,
 	SMALL,
+	StepCards,
+	StepRows,
 	SUBHEAD,
 } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
@@ -79,10 +84,6 @@ export const Route = createFileRoute("/features/$slug")({
 const FOCUS = "rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rust";
 const HOVER_TITLE = "transition-colors duration-200 group-hover:text-rust";
 
-/* A numbered stage of a real sequence: the numeral is the list's own counter, never a label typed over the head. */
-const STEP_NUMERAL =
-	"[counter-increment:step] before:font-heading before:font-bold before:text-rust before:content-[counter(step)]";
-
 function FeatureHero({ feature }: { feature: ProductFeature }) {
 	const signupUrl = cloudSignupUrl(FROM);
 	return (
@@ -114,6 +115,7 @@ function FeatureHero({ feature }: { feature: ProductFeature }) {
  */
 function Steps({ feature }: { feature: ProductFeature }) {
 	const secondary = feature.secondaryGraphic;
+	const steps = feature.steps.map((step) => ({ title: step.name, body: step.text }));
 	return (
 		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page>
@@ -122,37 +124,14 @@ function Steps({ feature }: { feature: ProductFeature }) {
 					<div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center lg:gap-x-16">
 						<div>
 							<PanelHead title="What you can do" />
-							<ol className="mt-8 border-b border-zinc-200 [counter-reset:step] lg:mt-10">
-								{feature.steps.map((step) => (
-									<li
-										key={step.name}
-										className={`grid grid-cols-[2.5rem_minmax(0,1fr)] border-t border-zinc-200 py-6 before:text-title before:leading-[1.2] ${STEP_NUMERAL}`}
-									>
-										<div>
-											<h3 className={`${SUBHEAD} text-ink`}>{step.name}</h3>
-											<p className={`${BODY} mt-2 text-zinc-600`}>{step.text}</p>
-										</div>
-									</li>
-								))}
-							</ol>
+							<StepRows stacked steps={steps} className="mt-8 lg:mt-10" />
 						</div>
 						<FeatureGraphic graphic={secondary} />
 					</div>
 				) : (
 					<>
 						<PanelHead title="What you can do" />
-						{/* The three parts of a step sit on shared rows: when one head wraps, the others drop to its last line and every body starts level. */}
-						<ol className="mt-10 grid gap-x-8 [counter-reset:step] md:grid-cols-3 lg:mt-16">
-							{feature.steps.map((step) => (
-								<li
-									key={step.name}
-									className={`row-span-3 grid grid-rows-subgrid gap-y-0 border-t border-zinc-200 pt-8 pb-10 before:text-display-s before:leading-none before:tracking-[-0.03em] last:pb-0 md:pb-0 ${STEP_NUMERAL}`}
-								>
-									<h3 className={`${SUBHEAD} mt-6 self-end text-ink`}>{step.name}</h3>
-									<p className={`${BODY} mt-3 max-w-[44ch] text-zinc-600`}>{step.text}</p>
-								</li>
-							))}
-						</ol>
+						<StepCards steps={steps} className="mt-10 lg:mt-16 lg:grid-cols-3" />
 					</>
 				)}
 			</Page>
@@ -168,7 +147,7 @@ function Metrics({ feature }: { feature: ProductFeature }) {
 				<Page className="grid gap-10 lg:grid-cols-3 lg:gap-8">
 					<PanelHead title="Data you can act on" />
 					{feature.metrics.map((metric) => (
-						<div key={metric.term} className="border-t border-zinc-200 pt-6">
+						<div key={metric.term} className={CARD}>
 							<h3 className={`${SUBHEAD} text-ink`}>{metric.term}</h3>
 							<p className={`${BODY} mt-3 max-w-[44ch] text-zinc-600`}>{metric.definition}</p>
 						</div>
@@ -181,7 +160,7 @@ function Metrics({ feature }: { feature: ProductFeature }) {
 		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page>
 				<PanelHead title="Data you can act on" />
-				<ul className="mt-10 border-b border-zinc-200 lg:mt-16">
+				<ul className={`${LIST_CARD} mt-10 lg:mt-16`}>
 					{feature.metrics.map((metric) => (
 						<RuledRow key={metric.term} title={metric.term}>
 							{metric.definition}
@@ -200,9 +179,9 @@ function UseCasesAndWhy({ feature }: { feature: ProductFeature }) {
 			<Page className="grid gap-14 lg:grid-cols-2 lg:gap-x-16">
 				<div>
 					<h2 className={`${HEADING} text-ink`}>Use cases</h2>
-					<ul className="mt-8 border-b border-zinc-300 lg:mt-10">
+					<ul className={`${LIST_CARD} mt-8 lg:mt-10`}>
 						{feature.useCases.map((useCase) => (
-							<li key={useCase} className={`${LEAD} border-t border-zinc-300 py-6 text-zinc-700`}>
+							<li key={useCase} className={`${LEAD} border-t border-zinc-200 py-6 text-zinc-700`}>
 								{useCase}
 							</li>
 						))}
@@ -210,9 +189,9 @@ function UseCasesAndWhy({ feature }: { feature: ProductFeature }) {
 				</div>
 				<div>
 					<h2 className={`${HEADING} text-ink`}>Why CiteRank.com</h2>
-					<ul className="mt-8 border-b border-zinc-300 lg:mt-10">
+					<ul className={`${LIST_CARD} mt-8 lg:mt-10`}>
 						{feature.why.map((reason) => (
-							<li key={reason.name} className="border-t border-zinc-300 py-6">
+							<li key={reason.name} className="border-t border-zinc-200 py-6">
 								<h3 className={`${SUBHEAD} text-ink`}>{reason.name}</h3>
 								<p className={`${BODY} mt-2 text-zinc-600`}>{reason.text}</p>
 							</li>
@@ -231,7 +210,7 @@ function LearnMore({ links }: { links: FeatureLink[] }) {
 				<div className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
 					<PanelHead title="Related guides" />
 				</div>
-				<ul className="border-b border-zinc-200 lg:col-span-8">
+				<ul className={`${LIST_CARD} lg:col-span-8`}>
 					{links.map((link) => (
 						<li key={link.href} className="border-t border-zinc-200">
 							<a href={link.href} className={`group flex items-baseline justify-between gap-6 py-5 ${FOCUS}`}>
@@ -258,16 +237,10 @@ function RelatedFeatures({ related }: { related: ProductFeature[] }) {
 						All features
 					</Link>
 				</div>
-				<ul className="mt-10 grid gap-x-8 md:grid-cols-3 lg:mt-16">
-					{related.map((f) => (
-						<li key={f.slug} className="border-t border-zinc-200">
-							<a href={featurePath(f.slug)} className={`group block py-6 ${FOCUS}`}>
-								<h3 className={`${SUBHEAD} text-ink ${HOVER_TITLE}`}>{f.name}</h3>
-								<p className={`${BODY} mt-2 max-w-[44ch] text-zinc-600`}>{f.summary}</p>
-							</a>
-						</li>
-					))}
-				</ul>
+				<LinkCards
+					className="mt-10 lg:mt-16 lg:grid-cols-3"
+					items={related.map((f) => ({ href: featurePath(f.slug), title: f.name, body: f.summary }))}
+				/>
 			</Page>
 		</section>
 	);
