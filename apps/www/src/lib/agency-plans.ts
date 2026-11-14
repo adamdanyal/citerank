@@ -1,3 +1,10 @@
+import { PLANS } from "@workspace/config/plans";
+
+/* The tracker plan every agency plan includes. Its price and limits are part of what the agency's price pays for, so the cards say them. */
+const TRACKER = PLANS.business;
+const TRACKER_LINE = `$${TRACKER.monthlyPriceUsd} tracker plan included`;
+const ANSWERS_A_DAY = TRACKER.maxPrompts * TRACKER.platformPicks * TRACKER.standardRunsPerDay;
+
 export interface AgencyPlan {
 	name: string;
 	monthlyPriceUsd: number;
@@ -17,6 +24,7 @@ export const AGENCY_PLANS: AgencyPlan[] = [
 		monthlyPriceUsd: 4995,
 		summary: "For a brand competing on every buyer question.",
 		lines: [
+			TRACKER_LINE,
 			"1 brand, up to 2 markets",
 			"4 new pages, 4 page updates",
 			"4 pitches, 8 forum answers",
@@ -31,6 +39,7 @@ export const AGENCY_PLANS: AgencyPlan[] = [
 		summary: "For one brand selling in several markets.",
 		recommended: true,
 		lines: [
+			TRACKER_LINE,
 			"1 brand, up to 3 markets",
 			"8 new pages, 8 page updates",
 			"8 pitches, 16 forum answers",
@@ -45,6 +54,7 @@ export const AGENCY_PLANS: AgencyPlan[] = [
 		from: true,
 		summary: "Custom scope for one large brand.",
 		lines: [
+			TRACKER_LINE,
 			"Everything in Authority",
 			"Amounts set on a call",
 			"Schema and entity work",
@@ -57,7 +67,8 @@ export const AGENCY_PLANS: AgencyPlan[] = [
 
 /* What every plan includes, said once beside the cards. */
 export const AGENCY_EVERY_PLAN = [
-	"Business tracker plan",
+	`${TRACKER.maxPrompts} buyer questions asked ${TRACKER.standardRunsPerDay} times a day`,
+	`Up to ${ANSWERS_A_DAY.toLocaleString("en-US")} AI answers read a day`,
 	"Work chosen from what the tracker ranks",
 	"Ongoing crawler fixes",
 	"Monthly before-and-after report",

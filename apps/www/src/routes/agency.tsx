@@ -202,7 +202,7 @@ function AgencyPage() {
 					<AgencyPlans />
 				</div>
 				<h3 className={`${SUBHEAD} mt-12 text-ink lg:mt-16`}>Every plan includes</h3>
-				<ul className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
+				<ul className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
 					{AGENCY_EVERY_PLAN.map((line) => (
 						<li key={line} className="flex items-start gap-3 text-[1.0625rem] leading-snug text-zinc-700">
 							<Tick className="mt-px size-6" />
