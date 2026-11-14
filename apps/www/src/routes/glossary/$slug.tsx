@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { Closing } from "@/components/citerank/v2/closing";
-import { PANEL, PANEL_PAD, Page, SMALL } from "@/components/citerank/v2/kit";
+import { CARD, PANEL, PANEL_PAD, Page, SMALL } from "@/components/citerank/v2/kit";
 import { PageShell } from "@/components/citerank/v2/shell";
 import { DOC, DOC_TEXT, GuideHead, LABEL, PROSE, RailNav, ROW_ACTION, ROW_LINK } from "@/components/pillar";
 import { type GlossaryTerm, getGlossaryTerm, glossaryTerms } from "@/data/glossary";
@@ -65,7 +65,7 @@ function GlossaryTermPage() {
 							))}
 
 							{term.seeAlso && term.seeAlso.length > 0 ? (
-								<div className="mt-10 border-t border-zinc-200 pt-6">
+								<div className={`${CARD} mt-10`}>
 									<h2 className={LABEL}>Go deeper</h2>
 									<ul className="mt-1.5">
 										{term.seeAlso.map((link) => (

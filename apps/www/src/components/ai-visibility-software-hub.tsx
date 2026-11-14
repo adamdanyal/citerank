@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import { cloudSignupUrl } from "@workspace/config/referrals";
 import type { ReactNode } from "react";
-import { ACTION, ACTION_QUIET, BODY, HEADING, LINK, PANEL, PANEL_PAD_WIDE, Page, SUBHEAD } from "./citerank/v2/kit";
+import { ACTION, ACTION_QUIET, BODY, LINK, LIST_CARD, PANEL, PANEL_PAD_WIDE, Page, SUBHEAD } from "./citerank/v2/kit";
 
 const INLINE_LINK = `${LINK} text-ink`;
 const PROSE = "max-w-[66ch]";
@@ -36,23 +36,23 @@ const FEATURES = [
 
 function Topic({ title, children }: { title: string; children: ReactNode }) {
 	return (
-		<div className="grid gap-6 py-12 first:pt-0 last:pb-0 lg:grid-cols-12 lg:gap-8 lg:py-16">
-			<h2 className={`${HEADING} text-ink lg:col-span-5`}>{title}</h2>
-			<div className={`${BODY} min-w-0 space-y-5 text-zinc-600 lg:col-span-7`}>{children}</div>
-		</div>
+		<li className="grid gap-4 border-t border-zinc-200 py-8 lg:grid-cols-12 lg:gap-8 lg:py-10">
+			<h2 className={`${SUBHEAD} text-ink lg:col-span-4`}>{title}</h2>
+			<div className={`${BODY} min-w-0 space-y-5 text-zinc-600 lg:col-span-8`}>{children}</div>
+		</li>
 	);
 }
 
 /*
  * The long read under the directory on /ai-visibility-tools, which provides the
- * page's hero and h1. One section of ruled topics: the head on the left, the
- * text at a reading measure on the right.
+ * page's hero and h1. Its topics are rows of one lifted card: the head on the
+ * left, the text at a reading measure on the right.
  */
 export function AiVisibilitySoftwareHub() {
 	return (
 		<section className={`${PANEL} ${PANEL_PAD_WIDE}`}>
 			<Page>
-				<div className="divide-y divide-zinc-200">
+				<ul className={LIST_CARD}>
 					<Topic title="What AI visibility software does">
 						<p className={PROSE}>
 							AI visibility software tracks how your brand appears in AI search: how often it’s mentioned, cited, and
@@ -96,11 +96,13 @@ export function AiVisibilitySoftwareHub() {
 							The category is young and tools vary widely. These are the capabilities that separate a genuine AI
 							visibility platform from a basic prompt checker.
 						</p>
-						<ul className="grid gap-x-8 gap-y-8 pt-5 sm:grid-cols-2">
+						<ul className="grid gap-x-8 gap-y-6 pt-3 sm:grid-cols-2">
 							{FEATURES.map((feature) => (
 								<li key={feature.title}>
-									<h3 className={`${SUBHEAD} text-ink`}>{feature.title}</h3>
-									<p className="mt-2">{feature.body}</p>
+									<h3 className="font-sans text-lead leading-snug font-medium tracking-normal text-ink">
+										{feature.title}
+									</h3>
+									<p className="mt-1.5">{feature.body}</p>
 								</li>
 							))}
 						</ul>
@@ -135,7 +137,7 @@ export function AiVisibilitySoftwareHub() {
 							</Link>
 						</div>
 					</Topic>
-				</div>
+				</ul>
 			</Page>
 		</section>
 	);
