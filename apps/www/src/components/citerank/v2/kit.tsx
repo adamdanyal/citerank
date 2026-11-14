@@ -98,6 +98,47 @@ export function Tick({ className = "size-7" }: { className?: string }) {
 	);
 }
 
+/** A white card lifted off the page: the surface for a picture, a list or a plan. Its padding is the caller's. */
+export const CARD_LIFT = "rounded-card bg-white shadow-lift ring-1 ring-zinc-200";
+
+/** The number of a step, on the disc that opens its head. The list already counts for a reader, so it is hidden from one. */
+export function StepDisc({ step }: { step: number }) {
+	return (
+		<span
+			aria-hidden="true"
+			className="grid size-8 shrink-0 place-items-center rounded-full bg-rust font-sans text-[1rem] leading-none font-medium tracking-normal text-paper"
+		>
+			{step}
+		</span>
+	);
+}
+
+/** Things you get, a row each, on one lifted card: the name beside its tick, then the sentence that explains it. */
+export function LiftedRows({
+	items,
+	ticked = true,
+}: {
+	items: { title: string; body: ReactNode }[];
+	ticked?: boolean;
+}) {
+	return (
+		<ul className={`${CARD_LIFT} px-6 sm:px-8`}>
+			{items.map((item) => (
+				<li
+					key={item.title}
+					className="grid gap-x-8 gap-y-2 border-t border-zinc-200 py-6 first:border-t-0 lg:grid-cols-12 lg:items-center"
+				>
+					<h3 className="flex items-start gap-4 font-sans text-lead leading-snug font-medium tracking-normal text-ink lg:col-span-5">
+						{ticked ? <Tick className="size-7" /> : null}
+						{item.title}
+					</h3>
+					<p className={`${BODY} text-zinc-600 lg:col-span-7 ${ticked ? "max-lg:pl-11" : ""}`}>{item.body}</p>
+				</li>
+			))}
+		</ul>
+	);
+}
+
 /** A section's head block: the head, and at most one line under it. */
 export function PanelHead({
 	title,

@@ -67,10 +67,75 @@ function BillingSwitch({ billing, onChange }: { billing: Billing; onChange: (bil
 }
 
 /*
- * Three plans, three cards: a name, a price, four lines and a button. The one
- * to pick stands a head taller under a band that says so. Nothing has to be
- * read across, so a visitor can choose from one card alone.
+ * A plan on a card: a name, a price, its lines and a button. The one to pick
+ * stands a head taller under a band that says so. Nothing has to be read
+ * across, so a visitor can choose from one card alone.
  */
+export function PlanCard({
+	name,
+	summary,
+	price,
+	note,
+	band,
+	action,
+	children,
+}: {
+	name: string;
+	summary?: string;
+	price: string;
+	note: ReactNode;
+	/** Set on the plan to pick: the words on the band over it. */
+	band?: string;
+	action: ReactNode;
+	children: ReactNode;
+}) {
+	return (
+		<article
+			className={`flex min-w-0 flex-col rounded-card bg-white shadow-lift ${
+				band ? "overflow-hidden ring-2 ring-rust" : "ring-1 ring-zinc-200 md:mt-10"
+			}`}
+		>
+			{band ? (
+				<p className="flex h-10 items-center justify-center bg-rust px-4 text-center text-[0.9375rem] leading-tight font-medium text-paper">
+					{band}
+				</p>
+			) : null}
+			<div className="flex flex-1 flex-col p-6 lg:p-8">
+				<h3 className={`${SUBHEAD} text-ink`}>{name}</h3>
+				{summary ? <p className={`${BODY} mt-2 text-zinc-600 md:min-h-13`}>{summary}</p> : null}
+				<p className="mt-5 flex flex-wrap items-baseline gap-x-2">
+					<span className="font-heading text-[clamp(2.75rem,2vw+2rem,3.75rem)] leading-none font-bold tracking-[-0.03em] text-ink">
+						{price}
+					</span>
+					<span className={`${BODY} text-zinc-600`}>a month</span>
+				</p>
+				<p className={`${SMALL} mt-3 text-zinc-600`}>{note}</p>
+				<ul className="mt-6 flex-1 space-y-4 border-t border-zinc-200 pt-6">{children}</ul>
+				<div className="mt-8">{action}</div>
+			</div>
+		</article>
+	);
+}
+
+/** One line of a plan. A plan with none of something says so with a dash, and the lists stay level. */
+export function PlanLine({ children, none = false }: { children: ReactNode; none?: boolean }) {
+	return (
+		<li className={`flex items-start gap-3 text-[1.0625rem] leading-snug ${none ? "text-zinc-500" : "text-zinc-700"}`}>
+			{none ? (
+				<span
+					aria-hidden="true"
+					className="mt-px grid size-6 shrink-0 place-items-center rounded-full bg-paper-2 before:h-0.5 before:w-2.5 before:rounded-full before:bg-zinc-400"
+				/>
+			) : (
+				<Tick className="mt-px size-6" />
+			)}
+			<span>{children}</span>
+		</li>
+	);
+}
+
+export const PLAN_GRID = "grid grid-cols-[minmax(0,1fr)] gap-5 md:grid-cols-3 lg:gap-8";
+
 export function PlanTable({
 	from = "home",
 	recommended,
@@ -89,72 +154,45 @@ export function PlanTable({
 		<div>
 			<BillingSwitch billing={billing} onChange={setBilling} />
 
-			<div className="mt-8 grid grid-cols-[minmax(0,1fr)] gap-5 md:grid-cols-3 lg:gap-8">
+			<div className={`mt-8 ${PLAN_GRID}`}>
 				{PLAN_KEYS.map((key) => {
 					const plan = PLANS[key];
 					const isRecommended = key === recommendedKey;
 					const yearlyPerMonth = Math.round(plan.annualPriceUsd / 12);
 					const perMonth = billing === "monthly" ? plan.monthlyPriceUsd : yearlyPerMonth;
 					return (
-						<article
+						<PlanCard
 							key={key}
-							className={`flex min-w-0 flex-col rounded-card bg-white shadow-lift ${
-								isRecommended ? "overflow-hidden ring-2 ring-rust" : "ring-1 ring-zinc-200 md:mt-10"
-							}`}
-						>
-							{isRecommended ? (
-								<p className="flex h-10 items-center justify-center bg-rust px-4 text-center text-[0.9375rem] leading-tight font-medium text-paper">
-									{recommendedLabel}
-								</p>
-							) : null}
-							<div className="flex flex-1 flex-col p-6 lg:p-8">
-								<h3 className={`${SUBHEAD} text-ink`}>{plan.name}</h3>
-								<p className="mt-5 flex flex-wrap items-baseline gap-x-2">
-									<span className="font-heading text-[clamp(2.75rem,2vw+2rem,3.75rem)] leading-none font-bold tracking-[-0.03em] text-ink tabular-nums">
-										{usd(perMonth)}
-									</span>
-									<span className={`${BODY} text-zinc-600`}>a month</span>
-								</p>
-								<p className={`${SMALL} mt-3 text-zinc-600`}>
-									{billing === "annual"
-										? `Billed ${usd(plan.annualPriceUsd)} a year. Saves ${usd(plan.monthlyPriceUsd * 12 - plan.annualPriceUsd)}.`
-										: `Or ${usd(yearlyPerMonth)} a month, billed yearly.`}
-								</p>
-								<ul className="mt-6 flex-1 space-y-4 border-t border-zinc-200 pt-6">
-									{LINES.map((line) => {
-										const { lead, figure, text } = line(plan);
-										return (
-											<li
-												key={text}
-												className={`flex items-start gap-3 text-[1.0625rem] leading-snug ${figure ? "text-zinc-700" : "text-zinc-500"}`}
-											>
-												{figure ? (
-													<Tick className="mt-px size-6" />
-												) : (
-													<span
-														aria-hidden="true"
-														className="mt-px grid size-6 shrink-0 place-items-center rounded-full bg-paper-2 before:h-0.5 before:w-2.5 before:rounded-full before:bg-zinc-400"
-													/>
-												)}
-												<span>
-													{lead ? `${lead} ` : null}
-													{figure ? <strong className="font-medium text-ink tabular-nums">{figure}</strong> : null}
-													{figure ? " " : null}
-													{text}
-												</span>
-											</li>
-										);
-									})}
-								</ul>
+							name={plan.name}
+							price={usd(perMonth)}
+							note={
+								billing === "annual"
+									? `Billed ${usd(plan.annualPriceUsd)} a year. Saves ${usd(plan.monthlyPriceUsd * 12 - plan.annualPriceUsd)}.`
+									: `Or ${usd(yearlyPerMonth)} a month, billed yearly.`
+							}
+							band={isRecommended ? recommendedLabel : undefined}
+							action={
 								<a
 									href={cloudAppUrl(`marketing-plan-${key}`)}
 									onClick={() => trackEvent("plan_click", { plan: key, from })}
-									className={`mt-8 w-full ${isRecommended ? ACTION : ACTION_QUIET}`}
+									className={`w-full ${isRecommended ? ACTION : ACTION_QUIET}`}
 								>
 									Get {plan.name}
 								</a>
-							</div>
-						</article>
+							}
+						>
+							{LINES.map((line) => {
+								const { lead, figure, text } = line(plan);
+								return (
+									<PlanLine key={text} none={!figure}>
+										{lead ? `${lead} ` : null}
+										{figure ? <strong className="font-medium text-ink tabular-nums">{figure}</strong> : null}
+										{figure ? " " : null}
+										{text}
+									</PlanLine>
+								);
+							})}
+						</PlanCard>
 					);
 				})}
 			</div>

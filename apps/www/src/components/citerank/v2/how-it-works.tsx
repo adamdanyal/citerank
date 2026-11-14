@@ -5,7 +5,7 @@ import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH, engineOf, PREVIEW, percent } from "../product/data";
 import { Mark } from "../product/parts";
-import { ACTION, ACTION_QUIET, BODY, PANEL_PAD_WIDE, Page, PanelHead, SMALL, SUBHEAD } from "./kit";
+import { ACTION, ACTION_QUIET, BODY, PANEL_PAD_WIDE, Page, PanelHead, SMALL, StepDisc, SUBHEAD } from "./kit";
 
 /* The pictures use the demo's own sample: the question it asked, the brands the answer named, and how they rank. */
 const ANSWER = PREVIEW.responses[0];
@@ -146,12 +146,7 @@ export function HowItWorks() {
 						>
 							<div className="min-w-0">
 								<h3 className={`${SUBHEAD} flex items-start gap-3 text-ink`}>
-									<span
-										aria-hidden="true"
-										className="grid size-8 shrink-0 place-items-center rounded-full bg-rust font-sans text-[1rem] leading-none font-medium tracking-normal text-paper"
-									>
-										{index + 1}
-									</span>
+									<StepDisc step={index + 1} />
 									{step.title}
 								</h3>
 								<p className={`${BODY} mt-3 text-zinc-600`}>{step.body}</p>

@@ -7,7 +7,7 @@ import {
 	planPlatformBreakdown,
 } from "@workspace/config/plans";
 import { EngineIcon } from "@/components/home/engines";
-import { BODY, CARD, HEADING, LEAD, SMALL, SUBHEAD } from "../v2/kit";
+import { BODY, CARD_LIFT, HEADING, LEAD, SMALL, SUBHEAD } from "../v2/kit";
 
 const GROUP_NAMES: Record<PlanPlatformGroupId, string> = {
 	scraped: "Checked as a user sees them",
@@ -40,7 +40,7 @@ function Models({ group }: { group: PlanPlatformGroup }) {
 /*
  * The menu of AI apps is the same on every plan, so it is shown once; only the
  * premium prompts differ by plan. The section's head is the rule itself, set
- * large, because the two wells under it are what the rule is about.
+ * large, because the two cards under it are what the rule is about.
  */
 export function Compare() {
 	const shared = planPlatformBreakdown(PLANS.business);
@@ -55,7 +55,7 @@ export function Compare() {
 			<p className={`${HEADING} max-w-[22ch] text-ink`}>{shared.pickHeading} per brand</p>
 			<p className={`${LEAD} mt-5 text-zinc-600`}>Same menu on every plan.</p>
 			<div className="mt-10 grid gap-4 lg:mt-16 lg:grid-cols-12 lg:gap-8">
-				<div className={`${CARD} grid gap-10 sm:grid-cols-2 sm:gap-8 lg:col-span-6 lg:p-10`}>
+				<div className={`${CARD_LIFT} grid gap-10 p-6 sm:grid-cols-2 sm:gap-8 sm:p-8 lg:col-span-6 lg:p-10`}>
 					{shared.pickGroups.map((group) => (
 						<div key={group.id} className="min-w-0">
 							<GroupHead group={group} className="max-w-[16ch]" />
@@ -66,16 +66,16 @@ export function Compare() {
 					))}
 				</div>
 				{premiumModels ? (
-					<div className={`${CARD} lg:col-span-6 lg:p-10`}>
+					<div className={`${CARD_LIFT} p-6 sm:p-8 lg:col-span-6 lg:p-10`}>
 						<GroupHead group={premiumModels} />
 						<div className="mt-5 grid gap-8 sm:grid-cols-2">
 							<Models group={premiumModels} />
 							<div className="min-w-0">
-								<dl className="border-b border-zinc-300">
+								<dl className="border-b border-zinc-200">
 									{premiumByPlan.map(({ plan, premium }) => (
 										<div
 											key={plan.key}
-											className="flex items-baseline justify-between gap-4 border-t border-zinc-300 py-3"
+											className="flex items-baseline justify-between gap-4 border-t border-zinc-200 py-3"
 										>
 											<dt className={`${BODY} font-medium text-ink`}>{plan.name}</dt>
 											<dd className={`${BODY} text-right text-zinc-600`}>

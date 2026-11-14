@@ -1,22 +1,25 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { trackAdConversion } from "@workspace/ui/lib/ad-tags";
-import { type CSSProperties, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Faq } from "@/components/citerank/v2/faq";
 import {
 	ACTION,
 	ACTION_QUIET,
 	BAND_PAD,
 	BODY,
+	CARD_LIFT,
 	DISPLAY_S,
 	LEAD,
 	LINK,
+	LiftedRows,
 	PANEL_TINT,
 	Page,
 	PanelHead,
-	RuledRow,
 	SMALL,
+	StepDisc,
 	SUBHEAD,
 } from "@/components/citerank/v2/kit";
+import { PLAN_GRID, PlanCard, PlanLine } from "@/components/citerank/v2/pricing";
 import { PageHead, PageShell, PanelSection } from "@/components/citerank/v2/shell";
 import { AGENCY_PLANS, FOUNDING_DISCOUNT, formatUsd, foundingPriceUsd } from "@/lib/agency-plans";
 import { embedInlineBooking } from "@/lib/cal-embed";
@@ -97,74 +100,28 @@ const WORK = [
 	},
 ];
 
-/*
- * A numbered stage of a real sequence. The numeral is the list's own counter,
- * never a label typed over the head. The three parts sit on shared rows: when
- * one head wraps, the others drop to its last line and every body starts level.
- */
-const STEP =
-	"row-span-3 grid grid-rows-subgrid gap-y-0 border-t border-zinc-200 pt-8 pb-10 [counter-increment:step] before:font-heading before:text-display-s before:leading-none before:font-bold before:tracking-[-0.03em] before:text-rust before:content-[counter(step)] last:pb-0 sm:[&:nth-last-child(-n+2)]:pb-0 lg:pb-0";
-
-const PLAN_ROWS = Math.max(...AGENCY_PLANS.map((plan) => plan.includes.length));
-/* Every plan closes on its crawler fixes and its report, so a shorter plan leaves the row above those two empty and they stay level across the plans. */
-const PLAN_TAIL = 2;
-const PLAN_CELL = "border-t border-zinc-200 py-3.5";
-
-function planRows(includes: string[]): { id: string; text?: string }[] {
-	const split = Math.max(0, includes.length - PLAN_TAIL);
-	const line = (text: string) => ({ id: text, text });
-	const gaps = Array.from({ length: PLAN_ROWS - includes.length }, (_, n) => ({ id: `gap-${n}` }));
-	return [...includes.slice(0, split).map(line), ...gaps, ...includes.slice(split).map(line)];
-}
-
-/*
- * The three plans as one ledger. Each plan is a column on the same rows, so
- * a line of one plan sits level with the same line of the next, and the plan
- * to pick is marked by its filled button and two words, never by another surface.
- */
+/* The three plans on the cards the tracker's plans use, so a visitor reads both prices the same way. */
 function AgencyPlans() {
 	return (
-		<div
-			style={{ "--plan-rows": PLAN_ROWS + 2 } as CSSProperties}
-			className="grid gap-12 md:grid-cols-3 md:gap-x-8 md:gap-y-0"
-		>
+		<div className={PLAN_GRID}>
 			{AGENCY_PLANS.map((plan) => (
-				<article key={plan.name} className="md:[grid-row:span_var(--plan-rows)] md:grid md:grid-rows-subgrid">
-					<div className="pb-8">
-						<h3 className={`${SUBHEAD} flex flex-wrap items-baseline gap-x-3 text-ink`}>
-							{plan.name}
-							{plan.recommended ? (
-								<span className="font-sans text-[0.875rem] font-medium tracking-normal text-blue-800">Most chosen</span>
-							) : null}
-						</h3>
-						<p className={`${BODY} mt-2 text-zinc-600`}>{plan.summary}</p>
-						<p className="mt-6 flex items-baseline gap-2">
-							<span className="font-heading text-[3rem] leading-none font-bold tracking-[-0.03em] text-ink">
-								{formatUsd(plan.monthlyPriceUsd)}
-							</span>
-							<span className={`${SMALL} text-zinc-600`}>a month</span>
-						</p>
-						<p className={`${SMALL} mt-2 text-zinc-600`}>
-							{formatUsd(foundingPriceUsd(plan))} a month for six months at the founding rate
-						</p>
-					</div>
-					<ul aria-label={`What ${plan.name} includes`} className="md:contents">
-						{planRows(plan.includes).map((row) =>
-							row.text ? (
-								<li key={row.id} className={`${PLAN_CELL} ${BODY} text-zinc-700`}>
-									{row.text}
-								</li>
-							) : (
-								<li key={row.id} aria-hidden="true" className={`${PLAN_CELL} hidden md:block`} />
-							),
-						)}
-					</ul>
-					<div className="border-t border-zinc-200 pt-6">
+				<PlanCard
+					key={plan.name}
+					name={plan.name}
+					summary={plan.summary}
+					price={formatUsd(plan.monthlyPriceUsd)}
+					note={`${formatUsd(foundingPriceUsd(plan))} a month for six months at the founding rate.`}
+					band={plan.recommended ? "Most chosen" : undefined}
+					action={
 						<a href="#book" className={`w-full ${plan.recommended ? ACTION : ACTION_QUIET}`}>
 							Book a call
 						</a>
-					</div>
-				</article>
+					}
+				>
+					{plan.includes.map((line) => (
+						<PlanLine key={line}>{line}</PlanLine>
+					))}
+				</PlanCard>
 			))}
 		</div>
 	);
@@ -215,10 +172,13 @@ function AgencyPage() {
 
 			<PanelSection>
 				<PanelHead title="How a month runs" />
-				<ol className="mt-10 grid gap-x-8 [counter-reset:step] sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
-					{STEPS.map((step) => (
-						<li key={step.title} className={STEP}>
-							<h3 className={`${SUBHEAD} mt-6 self-end text-ink`}>{step.title}</h3>
+				<ol className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-5 sm:grid-cols-2 lg:mt-16 lg:gap-8">
+					{STEPS.map((step, index) => (
+						<li key={step.title} className={`${CARD_LIFT} p-6 sm:p-8`}>
+							<h3 className={`${SUBHEAD} flex items-start gap-3 text-ink`}>
+								<StepDisc step={index + 1} />
+								{step.title}
+							</h3>
 							<p className={`${BODY} mt-3 text-zinc-600`}>{step.body}</p>
 						</li>
 					))}
@@ -229,13 +189,9 @@ function AgencyPage() {
 				<PanelHead title="What the agency does">
 					<p className={`${LEAD} text-zinc-600`}>Every month, from the list the tracker ranks.</p>
 				</PanelHead>
-				<ul className="mt-10 border-b border-zinc-200 lg:mt-16">
-					{WORK.map((item) => (
-						<RuledRow key={item.title} title={item.title}>
-							{item.body}
-						</RuledRow>
-					))}
-				</ul>
+				<div className="mt-10 lg:mt-16">
+					<LiftedRows items={WORK} />
+				</div>
 			</PanelSection>
 
 			<PanelSection>
@@ -244,15 +200,25 @@ function AgencyPage() {
 						Each plan includes a tracker plan, so your dashboard and the monthly report show the same data.
 					</p>
 				</PanelHead>
-				<ul className="mt-10 border-b border-zinc-200 lg:mt-16">
-					<RuledRow title={`${FOUNDING_DISCOUNT * 100}% off your first six months`}>
-						The founding-client rate, for our first five agency clients. In return, we write up your results as a public
-						case study, and you approve it before it goes live.{" "}
-						<a href="#book" className={`${LINK} whitespace-nowrap text-ink`}>
-							Claim a founding place
-						</a>
-					</RuledRow>
-				</ul>
+				<div className="mt-10 lg:mt-16">
+					<LiftedRows
+						ticked={false}
+						items={[
+							{
+								title: `${FOUNDING_DISCOUNT * 100}% off your first six months`,
+								body: (
+									<>
+										The founding-client rate, for our first five agency clients. In return, we write up your results as
+										a public case study, and you approve it before it goes live.{" "}
+										<a href="#book" className={`${LINK} whitespace-nowrap text-ink`}>
+											Claim a founding place
+										</a>
+									</>
+								),
+							},
+						]}
+					/>
+				</div>
 				<div className="mt-12 lg:mt-16">
 					<AgencyPlans />
 				</div>
