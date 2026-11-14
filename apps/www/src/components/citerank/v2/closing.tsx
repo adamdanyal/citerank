@@ -4,7 +4,8 @@ import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../product/data";
-import { ACTION, ACTION_QUIET, BAND_PAD, DISPLAY_S, LEAD, LINK, Page, SMALL } from "./kit";
+import { LinkedInMark } from "../socials";
+import { ACTION, ACTION_QUIET, BAND_PAD, DISPLAY_S, LEAD, LINK, Page, SMALL, SUBHEAD } from "./kit";
 
 /*
  * The page closes on the founder saying why this exists, as a quote beside his
@@ -16,18 +17,9 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 	return (
 		<section className={`relative bg-white ${BAND_PAD}`}>
 			<Page>
-				{/* On a phone the portrait is a small disc beside his name; from a laptop up it stands beside the whole quote. */}
-				<figure className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-4 gap-y-8 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-x-16 lg:gap-y-6">
-					<img
-						src="/founder-adam.jpg"
-						alt=""
-						width={512}
-						height={512}
-						loading="lazy"
-						decoding="async"
-						className="order-2 size-16 rounded-full object-cover lg:order-1 lg:row-span-2 lg:size-64 lg:rounded-card"
-					/>
-					<blockquote className="order-1 col-span-2 lg:order-2 lg:col-span-1 lg:self-end">
+				{/* His name stands under his portrait, as on the about page. On a laptop the two sit beside the quote; narrower, under it. */}
+				<figure className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-x-16">
+					<blockquote className="lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-center">
 						<span
 							aria-hidden="true"
 							className="block h-10 font-heading text-[6rem] leading-none font-bold text-rust lg:h-12 lg:text-[7.5rem]"
@@ -44,16 +36,27 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 							Nothing tells you whether you were in that answer.
 						</p>
 					</blockquote>
-					<figcaption className="order-3 lg:self-start">
-						<span className="block text-[1.0625rem] leading-[1.4] font-medium text-ink">Adam Danyal</span>
-						<span className={`${SMALL} block text-zinc-600`}>Founder, CiteRank.com</span>
+					<img
+						src="/founder-adam.jpg"
+						alt=""
+						width={512}
+						height={512}
+						loading="lazy"
+						decoding="async"
+						className="mt-10 size-28 rounded-card object-cover lg:col-start-1 lg:row-start-1 lg:mt-0 lg:size-64"
+					/>
+					<figcaption className="mt-4 lg:col-start-1 lg:row-start-2">
+						<span className={`${SUBHEAD} block text-ink`}>Adam Danyal</span>
+						<span className={`${SMALL} mt-1 block text-zinc-600`}>Founder</span>
 						<a
 							href="https://www.linkedin.com/in/adamdanyal/"
 							target="_blank"
 							rel="noopener noreferrer"
-							className={`${LINK} ${SMALL} mt-1 inline-block whitespace-nowrap text-zinc-700`}
+							className={`${LINK} ${SMALL} mt-2 inline-flex items-center gap-2 whitespace-nowrap text-zinc-700`}
 						>
-							Trusted by 2M+ on LinkedIn
+							<LinkedInMark />
+							2M+ followers
+							<span className="sr-only"> on LinkedIn</span>
 						</a>
 					</figcaption>
 				</figure>
