@@ -80,11 +80,56 @@ interface Crop {
 
 const CROPS: Crop[] = [
 	// 813 high so the competitor table ends on a whole row.
-	{ name: "overview-wide", path: "", viewport: { width: 1280, height: 813 }, clip: { x: 264, y: 80, width: 1000, height: 673 } },
-	{ name: "overview-phone", path: "", viewport: { width: 390, height: 844 }, clip: { x: 0, y: 280, width: 390, height: 348 } },
-	{ name: "step-ask", path: "/responses", viewport: { width: 1040, height: 900 }, clip: { x: 269, y: 433, width: 750, height: 540 } },
-	{ name: "step-see", path: "/share-of-voice", viewport: { width: 1040, height: 900 }, clip: { x: 269, y: 605, width: 750, height: 540 } },
-	{ name: "step-fix", path: "/opportunities", viewport: { width: 1040, height: 900 }, clip: { x: 269, y: 613, width: 750, height: 540 } },
+	{
+		name: "overview-wide",
+		path: "",
+		viewport: { width: 1280, height: 813 },
+		clip: { x: 264, y: 80, width: 1000, height: 673 },
+	},
+	{
+		name: "overview-phone",
+		path: "",
+		viewport: { width: 390, height: 844 },
+		clip: { x: 0, y: 280, width: 390, height: 348 },
+	},
+	// The three steps. Each is cut inside the dashboard's own card, so the page draws the only outline, and each ends on
+	// a whole block. They stack on the page, so no crop may be shorter than the one before it.
+	{
+		name: "step-ask",
+		path: "/responses",
+		viewport: { width: 1040, height: 900 },
+		clip: { x: 283, y: 459, width: 722, height: 327 },
+	},
+	{
+		name: "step-see",
+		path: "/share-of-voice",
+		viewport: { width: 1040, height: 900 },
+		clip: { x: 283, y: 631, width: 722, height: 477 },
+	},
+	{
+		name: "step-fix",
+		path: "/opportunities",
+		viewport: { width: 1040, height: 900 },
+		clip: { x: 271, y: 617, width: 746, height: 605 },
+	},
+	{
+		name: "step-ask-phone",
+		path: "/responses",
+		viewport: { width: 390, height: 844 },
+		clip: { x: 18, y: 538, width: 354, height: 562 },
+	},
+	{
+		name: "step-see-phone",
+		path: "/share-of-voice",
+		viewport: { width: 390, height: 844 },
+		clip: { x: 18, y: 1169, width: 354, height: 477 },
+	},
+	{
+		name: "step-fix-phone",
+		path: "/opportunities",
+		viewport: { width: 390, height: 844 },
+		clip: { x: 6, y: 840, width: 378, height: 676 },
+	},
 ];
 
 /** Simple marks for the fictional companies, so their rows don't show a blank globe. */

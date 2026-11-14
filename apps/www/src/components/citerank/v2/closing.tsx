@@ -1,10 +1,10 @@
 import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
 import type { ReferralSource } from "@workspace/config/referrals";
 import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
-import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
 import { ACTION, ACTION_QUIET, BAND_PAD, DISPLAY_S, LEAD, LINK, PANEL_TINT, Page, SMALL } from "./kit";
+import { LiveDemoLink } from "./live-demo";
 
 /*
  * The page closes on the founder's own argument and the two things a visitor
@@ -66,15 +66,9 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 							<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={ACTION}>
 								Start tracking
 							</a>
-							<a
-								href={demoUrl}
-								target="_blank"
-								rel={externalRel(demoUrl)}
-								onClick={() => trackEvent("demo_open", { from })}
-								className={ACTION_QUIET}
-							>
+							<LiveDemoLink href={demoUrl} onOpen={() => trackEvent("demo_open", { from })} className={ACTION_QUIET}>
 								Try the live demo
-							</a>
+							</LiveDemoLink>
 						</div>
 						<p className={`${SMALL} mt-4 text-zinc-600`}>
 							<span className="inline-block">Set up takes minutes.</span>{" "}

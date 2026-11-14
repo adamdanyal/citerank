@@ -2,10 +2,10 @@ import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS } from "@workspace/config/plans"
 import type { ReferralSource } from "@workspace/config/referrals";
 import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import type { ReactNode } from "react";
-import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
 import { ACTION, ACTION_QUIET_ON_INK, DISPLAY, SMALL } from "./kit";
+import { LiveDemoLink } from "./live-demo";
 
 const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
 
@@ -75,15 +75,13 @@ export function Hero({
 						<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={ACTION}>
 							Start tracking
 						</a>
-						<a
+						<LiveDemoLink
 							href={demoUrl}
-							target="_blank"
-							rel={externalRel(demoUrl)}
-							onClick={() => trackEvent("demo_open", { from })}
+							onOpen={() => trackEvent("demo_open", { from })}
 							className={ACTION_QUIET_ON_INK}
 						>
 							Try the live demo
-						</a>
+						</LiveDemoLink>
 					</div>
 					<p className={`${SMALL} mt-4 text-zinc-400`}>
 						<span className="inline-block">Plans from ${CLOUD_ENTRY_PRICE_USD} a month.</span>{" "}
@@ -92,16 +90,15 @@ export function Hero({
 				</div>
 
 				{/*
-				 * The product itself, captured from the live demo. On a wide screen it
-				 * is shown at its real size or larger and runs off the edge of the
-				 * window; on a phone it is the four figures alone, so they land on the
-				 * first screen. It is the largest paint there, so it loads eagerly.
+				 * The product itself, captured from the live demo, and the way into it:
+				 * a click opens the real thing. On a wide screen the capture is shown
+				 * at its real size or larger and runs off the edge of the window; on a
+				 * phone it is the four figures alone, so they land on the first screen.
+				 * It is the largest paint there, so it loads eagerly.
 				 */}
-				<a
+				<LiveDemoLink
 					href={demoUrl}
-					target="_blank"
-					rel={externalRel(demoUrl)}
-					onClick={() => trackEvent("demo_open", { from: "hero-screenshot" })}
+					onOpen={() => trackEvent("demo_open", { from: "hero-screenshot" })}
 					aria-label="Open the live demo"
 					data-slot="hero"
 					data-kind="product"
@@ -122,7 +119,7 @@ export function Hero({
 							className="block h-auto w-full rounded-card bg-paper ring-1 ring-ink-rule lg:w-[max(calc(100%+6rem),min(62.5rem,calc((100svh-10.5rem)*1.486)))] lg:max-w-none"
 						/>
 					</picture>
-				</a>
+				</LiveDemoLink>
 			</div>
 		</section>
 	);
