@@ -144,21 +144,21 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "How does CiteRank.com measure AI visibility?",
 				answer:
-					"CiteRank.com runs each of your prompts against the AI engines you track and records every answer. Your visibility is the share of those answers that mention your brand, counting each prompt's latest answers, so the overview's cards, chart, and table always agree.",
+					"CiteRank.com measures AI visibility as the share of AI answers that mention your brand. It runs each of your prompts on the AI engines you track and records every answer. The score counts each prompt's latest answers.",
 			},
 			{
 				question: "How does CiteRank.com decide whether an answer mentions my brand?",
 				answer:
-					"CiteRank.com finds every place an answer uses your brand's name, an alias, or one of its domains, then has a language model built for judging text confirm the answer is really about your brand. A name that means something else, or a different company with the same name, isn't counted.",
+					"CiteRank.com counts a mention when an answer uses your brand's name, alias or domain and is really about your brand. A language model built for judging text confirms each one. A name that means something else isn't counted.",
 			},
 			{
 				question: "Why does my visibility change from day to day?",
 				answer:
-					"AI answers vary from run to run, even for the same prompt. Running the same prompts repeatedly turns noisy one-off answers into a trend, which is why CiteRank.com tracks on a schedule rather than checking once.",
+					"Your visibility changes from day to day because AI answers vary from run to run, even for the same prompt. Running the same prompts repeatedly turns noisy one-off answers into a trend. That is why CiteRank.com tracks on a schedule.",
 			},
 			{
 				question: "How often does CiteRank.com check my prompts?",
-				answer: `Prompts run up to ${PLANS.basic.standardRunsPerDay}× a day on every plan. GPT Search, Claude (web), and Grok (web) run once a day on Pro and Business.`,
+				answer: `CiteRank.com checks your prompts up to ${PLANS.basic.standardRunsPerDay}× a day on every plan. Each prompt runs against every engine you track, on a schedule. GPT Search, Claude (web) and Grok (web) run once a day on the Pro and Business plans.`,
 			},
 		],
 	},
@@ -248,17 +248,17 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "What is AI share of voice?",
 				answer:
-					"AI share of voice is your brand's share of all the mentions of you and your tracked competitors in AI answers. If AI answers mention your brand 30 times and your competitors 70 times in total, your share of voice is 30%.",
+					"AI share of voice is your brand's share of every mention of you and your tracked competitors in AI answers. If AI names you 30 times and them 70, your share is 30%. CiteRank.com ranks every company on a live leaderboard.",
 			},
 			{
 				question: "How is share of voice different from visibility?",
 				answer:
-					"Visibility is the share of answers that mention you at all. Share of voice compares you with your competitors: it can fall even while your visibility holds steady, if competitors are mentioned more often.",
+					"Share of voice compares you with your competitors, and visibility is the share of answers that mention you at all. Share of voice can fall while your visibility holds steady. That happens when competitors are mentioned more often.",
 			},
 			{
 				question: "How many competitors can I track?",
 				answer:
-					"Up to 500 per brand. Because a raw share depends on how many competitors you track, CiteRank.com grades your share of voice by your rank among them rather than by the percentage alone.",
+					"You can track up to 500 competitors for each brand. CiteRank.com grades your share of voice by your rank among them, because a raw share depends on how many you track. You can add or edit competitors at any time.",
 			},
 		],
 	},
@@ -351,22 +351,22 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "How does CiteRank.com score AI sentiment?",
 				answer:
-					"Each answer that names your brand is read for its sentiment toward you: positive, neutral, mixed, or negative. Positive answers count 100, neutral and mixed ones 50, and negative ones 0, and the score is the average. Answers that don't mention you aren't counted.",
+					"CiteRank.com scores AI sentiment by reading each answer that names your brand as positive, neutral, mixed or negative. Positive answers count 100, neutral and mixed 50, and negative 0. The score is the average of those answers.",
 			},
 			{
 				question: "What does a sentiment score of 50 mean?",
 				answer:
-					"50 means AI is neutral about you on balance. Above 50, praise outweighs criticism; below it, criticism outweighs praise.",
+					"A sentiment score of 50 means AI is neutral about your brand on balance. Above 50, praise outweighs criticism, and below 50, criticism outweighs praise. A factual mention scores 50, so it never counts against you.",
 			},
 			{
 				question: "Does CiteRank.com track sentiment for competitors too?",
 				answer:
-					"Yes. Every tracked competitor gets the same sentiment reading, so you can compare scores side by side, overall and per AI engine.",
+					"Yes. CiteRank.com gives every tracked competitor the same sentiment reading as your brand. You can compare scores side by side, overall and per AI engine. Sentiment trends show your score over time beside your top competitors.",
 			},
 			{
 				question: "What counts as a brand mention?",
 				answer:
-					"An answer that talks about your brand, or cites a link containing your brand's name or domain. An answer that uses the name to mean something else, refers to a different company with the same name, or says it has no information about you isn't counted.",
+					"A brand mention is an answer that talks about your brand or cites a link with your brand's name or domain. A name that means something else isn't counted. A different company with the same name isn't counted either.",
 			},
 		],
 	},
@@ -467,17 +467,17 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "What is AI citation tracking?",
 				answer:
-					"AI citation tracking records the sources AI engines link to when they answer a question. It shows which websites shape the answers in your category, and whether your own pages are among them.",
+					"AI citation tracking records the sources AI engines link to when they answer a question. It shows which websites shape the answers in your category. It also shows whether your own pages are among the sources they cite.",
 			},
 			{
 				question: "Can I see which of my own pages AI engines cite?",
 				answer:
-					"Yes. Citations to your brand's domains are grouped as brand citations, and the top URLs list shows each of your cited pages and the prompts that cited them. Add extra domains, like a blog subdomain, in your brand settings.",
+					"Yes. CiteRank.com tracks which of your own pages AI engines cite. The top URLs list shows each of your cited pages and the prompts that cited them. You can add extra domains, like a blog subdomain, in your brand settings.",
 			},
 			{
 				question: "Which engines return citations?",
 				answer:
-					"Engines that search the web, like ChatGPT with search, Perplexity, Google AI Overviews, and AI Mode, cite their sources. A model called through an API without web search returns no citations.",
+					"Engines that search the web return citations, like ChatGPT with search, Perplexity, Google AI Overviews and AI Mode. A model called by API without web search has none. A consumer app can cite differently from the same model's API.",
 			},
 		],
 	},
@@ -564,17 +564,17 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "What is query fan-out?",
 				answer:
-					"Query fan-out is an AI engine breaking one question into several web searches, retrieving results for each, and writing a single answer from what it found. The searches it runs decide which pages it can cite.",
+					"Query fan-out is an AI engine breaking one question into several web searches. It gets results for each search and writes a single answer from what it found. The searches it runs decide which pages it can cite.",
 			},
 			{
 				question: "Which AI engines show their fan-out queries?",
 				answer:
-					"It depends on the engine and on the provider used to reach it. CiteRank.com shows the queries wherever they're exposed, and counts runs where an engine searched without revealing its queries separately.",
+					"Whether an AI engine shows its fan-out queries depends on the engine and the provider used to reach it. CiteRank.com shows them wherever they're exposed. Runs where an engine didn't reveal its searches are counted separately.",
 			},
 			{
 				question: "How do I use fan-out queries?",
 				answer:
-					"Treat them as the searches your content has to rank for. If an engine searches for 'best CRM for startups 2026' when answering your prompt, the pages that rank for that search are the ones it can cite.",
+					"Treat fan-out queries as the searches your content has to rank for. The pages that rank for a search an engine runs are the ones it can cite. Check whether your pages rank for the searches behind the prompts you're losing.",
 			},
 		],
 	},
@@ -659,21 +659,21 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "What is AI prompt tracking?",
 				answer:
-					"AI prompt tracking means asking AI engines the same set of questions on a schedule and recording how they answer: whether they mention your brand, how they describe it, and which sources they cite.",
+					"AI prompt tracking means asking AI engines the same set of questions on a schedule and recording how they answer. You see whether they mention your brand and how they describe it. You also see which sources they cite.",
 			},
 			{
 				question: "Where do the prompts come from?",
 				answer:
-					"When you add a brand, CiteRank.com analyzes your website and suggests starter prompts with tags. You can edit them, write your own, paste several at once, or ask for fresh suggestions later.",
+					"CiteRank.com analyzes your website when you add a brand and suggests starter prompts with tags. You can edit them, write your own or paste several at once. You can also ask CiteRank.com for fresh suggestions later.",
 			},
 			{
 				question: "How many prompts can I track?",
-				answer: `CiteRank.com plans include ${PLANS.basic.maxPrompts} to ${PLANS.business.maxPrompts} prompts, depending on the plan. The limit covers every brand in your organization, and only enabled prompts count toward it.`,
+				answer: `You can track ${PLANS.basic.maxPrompts} to ${PLANS.business.maxPrompts} prompts with CiteRank.com, depending on the plan you choose. The limit covers every brand in your organization. Only enabled prompts count toward it, and you can pause or remove any of them.`,
 			},
 			{
 				question: "What's the difference between branded and unbranded prompts?",
 				answer:
-					"A branded prompt names your brand, like 'Is Acme good for small teams?'. An unbranded prompt is a category question, like 'best CRM for small teams', where AI chooses which brands to mention. CiteRank.com tags each prompt automatically, and you can override it.",
+					"A branded prompt names your brand, and an unbranded prompt is a category question where AI chooses which brands to mention. CiteRank.com tags each prompt automatically. You can override it with a tag of your own.",
 			},
 		],
 	},
@@ -766,21 +766,22 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "How does CiteRank.com generate AEO recommendations?",
 				answer:
-					"CiteRank.com assembles a digest of your tracked data, including visibility per platform, each prompt's standing against the leading competitor over 7 and 30 days, and the citation landscape, and asks a language model to turn it into categorized opportunities. The prompts and cited pages behind each one are attached from your data.",
+					"CiteRank.com asks a language model to turn a summary of your tracked data into AEO recommendations. The summary covers your visibility, competitor standings and citations. The prompts and cited pages behind each one are attached.",
 			},
 			{
 				question: "How often are opportunities updated?",
-				answer: "About once a week. The page shows when the current list was generated.",
+				answer:
+					"CiteRank.com updates your opportunities about once a week, as new data comes in. The Opportunities page shows when the current list was generated. Each list uses your visibility and citations from the last 30 days.",
 			},
 			{
 				question: "Should I act on every recommendation?",
 				answer:
-					"No. They're generated by AI from your citation data and are a starting point. Each one shows its evidence so you can apply your own judgment first.",
+					"No. The recommendations are generated by AI from your citation data and are a starting point. Each one shows its evidence so you can apply your own judgment first. A reality check lists the risks and limits to keep in mind.",
 			},
 			{
 				question: "Can CiteRank.com do the work for me?",
 				answer:
-					"Yes. CiteRank.com's AI search agency does the work every month for businesses that want it done: it writes the pages a site is missing, updates pages AI has stopped citing, and gets you onto the review sites and best-of lists AI cites. Each month's report lists the work and the AI answers before and after.",
+					"Yes. CiteRank.com's AI search agency does the work for you every month. It writes the pages your site is missing and updates the pages AI has stopped citing. Each month's report lists the work and the AI answers before and after.",
 			},
 		],
 	},
@@ -865,16 +866,17 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "Can I export CiteRank.com data into my own dashboards?",
 				answer:
-					"Yes. The REST API returns visibility, share of voice, citations, per-model, prompt, and query fan-out metrics, with an OpenAPI spec describing every endpoint.",
+					"Yes. CiteRank.com's REST API lets you pull your data into your own dashboards and BI tools. It returns visibility, share of voice, citations, per-model, prompt and query fan-out metrics. An OpenAPI spec describes every endpoint.",
 			},
 			{
 				question: "Can I export charts?",
-				answer: "Yes. Prompt charts download as PNGs that include CiteRank.com's branding.",
+				answer:
+					"Yes. You can download any prompt's visibility chart as a PNG that includes CiteRank.com's branding. Each chart shows your brand and competitors over the time range you choose. The PNG is sized for slides and reports.",
 			},
 			{
 				question: "Does the AI search agency report on its work?",
 				answer:
-					"Yes. Each month's report lists every piece of work the agency did, from new pages and page updates to review sites, best-of lists, forum answers, guest articles, and crawler fixes, with the question each one targets and the AI answers before and after, so you can see what changed.",
+					"Yes. The AI search agency's monthly report lists every piece of work it did. The work runs from new pages and page updates to crawler fixes. The report gives the question each piece targets and the AI answers before and after.",
 			},
 		],
 	},
@@ -948,12 +950,12 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "Does CiteRank.com have an API?",
 				answer:
-					"Yes. CiteRank.com serves a REST API at https://app.citerank.com/api/v1, with Bearer-token authentication and an OpenAPI spec at /api/v1/openapi.json.",
+					"Yes. CiteRank.com serves a REST API at https://app.citerank.com/api/v1, with Bearer-token authentication. Its OpenAPI spec is at /api/v1/openapi.json. API access comes with every plan, so there's no separate API tier to buy.",
 			},
 			{
 				question: "Which AI clients work with CiteRank.com's MCP server?",
 				answer:
-					"Claude Code, Codex, Cursor, VS Code, and OpenCode have documented setup, and other clients that support remote MCP servers over HTTP work the same way. Sign in from the client, or send an API key as a bearer token.",
+					"CiteRank.com's MCP server works with Claude Code, Codex, Cursor, VS Code and OpenCode. Other clients that support remote MCP servers over HTTP work the same way. Sign in from the client, or send an API key as a bearer token.",
 			},
 		],
 	},
@@ -1028,12 +1030,12 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "Which AI engines does CiteRank.com track?",
 				answer:
-					"ChatGPT, Google AI Overviews, Google AI Mode, Bing AI Mode, and Gemini are scraped from their real interfaces. Claude, DeepSeek, Mistral, Qwen, and Kimi are called through their APIs, and GPT Search, Claude (web), Grok (web), Meta (web), and Perplexity Sonar can be tracked with web search on Pro and Business.",
+					"CiteRank.com tracks five AI engines from the real apps and eight by API. The five are ChatGPT, Google AI Overviews, AI Mode, Bing AI Mode and Gemini. The eight are Claude, Grok, Perplexity, Meta, DeepSeek, Mistral, Qwen and Kimi.",
 			},
 			{
 				question: "Why scrape instead of using the API?",
 				answer:
-					"ChatGPT and Google AI Mode drive most AI search traffic and neither exposes a public API for its consumer answers. Calling the underlying model with web search approximates them, but it isn't what your customers see.",
+					"CiteRank.com scrapes because ChatGPT and Google AI Mode offer no public API for their consumer answers. The two drive most AI search traffic. A model's API with web search only comes close to what your customers see.",
 			},
 		],
 	},

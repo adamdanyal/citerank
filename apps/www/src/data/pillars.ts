@@ -183,36 +183,36 @@ const AEO: Pillar = {
 		{
 			question: "What does AEO stand for in marketing?",
 			answer:
-				"AEO stands for answer engine optimization: the practice of measuring and improving how often AI answer engines like ChatGPT, Google AI Overviews, Perplexity, and Gemini mention and cite your brand in their written answers.",
+				"AEO stands for answer engine optimization. It is the work of measuring and improving how often AI answer engines mention and cite your brand. Answer engines include ChatGPT, Google AI Overviews, Perplexity and Gemini.",
 		},
 		{
 			question: "What is the difference between AEO and SEO?",
 			answer:
-				"SEO competes for a position in a ranked list of links. AEO competes to be a source the model quotes inside a synthesized answer. SEO fundamentals still matter, because most engines retrieve from the live web, but AEO adds three things: only three to six sources are named instead of ten, the model describes your brand as well as listing it, and results vary between runs, so measurement has to be repeated.",
+				"SEO competes for a position in a ranked list of links, and AEO competes to be a source quoted in an AI answer. That answer names only three to six sources. Results vary between runs, so measurement has to be repeated.",
 		},
 		{
 			question: "Is AEO the same as GEO?",
 			answer:
-				"Effectively yes. AEO (answer engine optimization), GEO (generative engine optimization), LLMO (large language model optimization), and generative SEO all describe the same work: getting mentioned and cited by AI answer engines. The terms emerged in parallel from different corners of the industry and no meaningful distinction has settled between them.",
+				"Yes. AEO (answer engine optimization) and GEO (generative engine optimization) describe the same work. That work is getting mentioned and cited by AI answer engines. LLMO and generative SEO are two more names for it.",
 		},
 		{
 			question: "Does AEO replace SEO?",
 			answer:
-				"No. Most answer engines ground their answers in live web search, so a page that cannot be found by a crawler cannot be cited. AEO is better understood as an extension of SEO that measures a different outcome, not a replacement for the technical and content work underneath.",
+				"No. AEO does not replace SEO, because most answer engines base their answers on live web search. A page that cannot be found by a crawler cannot be cited. AEO is an extension of SEO that measures a different outcome.",
 		},
 		{
 			question: "How do you measure AEO?",
 			answer:
-				"Four metrics: mention rate (how often your brand appears at all), citation rate (how often the engine links to a page you own), share of voice (your fraction of all brands named across your prompts), and sentiment or accuracy (what the model says about you). Each has to be measured across many repeated runs of the same prompt, because engines sample and a single check is noise.",
+				"You measure AEO with four metrics: mention rate, citation rate, share of voice, and sentiment or accuracy. Each has to be measured across many runs of the same prompt. Answers vary from run to run, so a single check is noise.",
 		},
 		{
 			question: "Can you do AEO for free?",
-			answer: `Yes, at small scale. You can run prompts manually and record the answers in a spreadsheet, which is enough to discover whether you are invisible on your category's central question. It stops working once you need repeated runs across several engines, because the volume required to see past sampling noise is more than a person will do by hand. Beyond that point you need an AI visibility tracker, and CiteRank.com plans start at $${CLOUD_ENTRY_PRICE_USD}/mo.`,
+			answer: `Yes. You can do AEO for free at small scale if you run prompts by hand and record the answers in a spreadsheet. It stops working once you need repeated runs across several engines. Beyond that, CiteRank.com plans start at $${CLOUD_ENTRY_PRICE_USD}/mo.`,
 		},
 		{
 			question: "How long does AEO take to work?",
 			answer:
-				"Prompts where the engine searches the live web can respond within weeks. Getting added to a roundup the model already cites is often the fastest lever. Prompts the model answers from its own training data move over quarters or years and cannot be accelerated by any tactic, because they reflect how widely a brand is discussed across the open web.",
+				"AEO can work within weeks on prompts where the engine searches the live web. Getting added to a roundup the model already cites is often the fastest way. Prompts the model answers from its training data move over quarters or years.",
 		},
 	],
 	related: [
@@ -377,37 +377,37 @@ const GEO: Pillar = {
 		{
 			question: "What is generative engine optimization?",
 			answer:
-				"Generative engine optimization (GEO) is the practice of getting your brand mentioned and cited inside AI-generated answers from engines like ChatGPT, Google AI Overviews, Perplexity, and Gemini. Instead of competing for a position in a list of links, you are competing to be one of the few sources a model names in the answer it writes.",
+				"Generative engine optimization (GEO) is the work of getting your brand mentioned and cited in AI answers. Engines like ChatGPT, Google AI Overviews and Perplexity write those answers. You compete to be one of the few sources named.",
 		},
 		{
 			question: "What does GEO stand for in marketing?",
 			answer:
-				"It depends on which conversation you are in. In AI search, GEO stands for generative engine optimization. In older marketing usage it is shorthand for geographic: geo-targeting, geo-fencing, geo-modified keywords. The two are unrelated, and the overlap is a common source of confusion.",
+				"In AI search, GEO stands for generative engine optimization. In older marketing usage it is short for geographic, as in geo-targeting and geo-fencing. The two are unrelated, and the overlap is a common source of confusion.",
 		},
 		{
 			question: "Is GEO the same as AEO?",
 			answer:
-				"Yes, in practice. Generative engine optimization and answer engine optimization describe identical work. GEO came out of academic research, AEO out of the SEO industry, and no meaningful distinction has settled between them. LLMO and generative SEO are two further names for the same thing.",
+				"Yes. Generative engine optimization (GEO) and answer engine optimization (AEO) describe the same work. GEO came out of academic research and AEO out of the SEO industry. LLMO and generative SEO are two more names for it.",
 		},
 		{
 			question: "What is GEO in SEO?",
 			answer:
-				"GEO is the part of SEO that deals with AI-generated answers rather than ranked links. The underlying work overlaps heavily (crawlability, structure, authority, credible external mentions), but the outcome measured is a mention and a citation inside an answer, not a position on a results page.",
+				"GEO is the part of SEO that deals with AI-generated answers. Much of the work is the same: crawlability, structure, authority and credible external mentions. What you measure is a mention and a citation inside an answer.",
 		},
 		{
 			question: "Does GEO actually work?",
 			answer:
-				"The tactics with evidence behind them do: being listed on the third-party pages that engines already cite, writing self-contained passages engines can extract, and publishing original data. The tactics without much evidence (llms.txt files, keyword density aimed at models) absorb a lot of effort for little measurable return.",
+				"The GEO tactics with evidence behind them work. They include getting listed on pages engines already cite, writing passages they can extract and publishing original data. Tactics like llms.txt files show little measurable return.",
 		},
 		{
 			question: "How is GEO measured?",
 			answer:
-				"By running a set of buyer-realistic prompts across each engine repeatedly and recording four things: how often your brand is mentioned, how often a page you own is cited, your share of voice against competitors named in the same answers, and what the model says about you. Engines must be reported separately, because visibility in ChatGPT and Google AI Mode routinely differ by a factor of three.",
+				"GEO is measured by running a set of realistic buyer prompts across each engine repeatedly. You record mentions, citations of your pages, share of voice and what the model says about you. Engines must be reported separately.",
 		},
 		{
 			question: "Do llms.txt files help with GEO?",
 			answer:
-				"There is no measurable evidence that they do. No major answer engine has committed to consuming llms.txt, and no citation lift has been convincingly attributed to publishing one. It costs almost nothing to add, so there is little harm in it, but it should not be mistaken for a strategy.",
+				"There is no measurable evidence that llms.txt files help with GEO. No major answer engine has committed to reading llms.txt files. Adding one costs almost nothing, but it should not be mistaken for a strategy.",
 		},
 	],
 	related: [
