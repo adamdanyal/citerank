@@ -75,6 +75,7 @@ export function PlanCard({
 	name,
 	summary,
 	price,
+	priceLead,
 	note,
 	band,
 	action,
@@ -83,7 +84,9 @@ export function PlanCard({
 	name: string;
 	summary?: string;
 	price: string;
-	note: ReactNode;
+	/** A word over the price, such as "From". Passing it, even empty, stands the price over "a month" so cards with and without the word stay level. */
+	priceLead?: string;
+	note?: ReactNode;
 	/** Set on the plan to pick: the words on the band over it. */
 	band?: string;
 	action: ReactNode;
@@ -103,13 +106,23 @@ export function PlanCard({
 			<div className="flex flex-1 flex-col p-6 lg:p-8">
 				<h3 className={`${SUBHEAD} text-ink`}>{name}</h3>
 				{summary ? <p className={`${BODY} mt-2 text-zinc-600 md:min-h-13`}>{summary}</p> : null}
-				<p className="mt-5 flex flex-wrap items-baseline gap-x-2">
-					<span className="font-heading text-[clamp(2.75rem,2vw+2rem,3.75rem)] leading-none font-bold tracking-[-0.03em] text-ink">
-						{price}
-					</span>
-					<span className={`${BODY} text-zinc-600`}>a month</span>
-				</p>
-				<p className={`${SMALL} mt-3 text-zinc-600`}>{note}</p>
+				{priceLead === undefined ? (
+					<p className="mt-5 flex flex-wrap items-baseline gap-x-2">
+						<span className="font-heading text-[clamp(2.75rem,2vw+2rem,3.75rem)] leading-none font-bold tracking-[-0.03em] text-ink">
+							{price}
+						</span>
+						<span className={`${BODY} text-zinc-600`}>a month</span>
+					</p>
+				) : (
+					<p className="mt-4">
+						<span className={`${SMALL} block h-5 text-zinc-600`}>{priceLead}</span>
+						<span className="mt-1 block font-heading text-[clamp(2.25rem,1.9vw+1.2rem,3.25rem)] leading-none font-bold tracking-[-0.03em] text-ink">
+							{price}
+						</span>
+						<span className={`${BODY} mt-1 block text-zinc-600`}>a month</span>
+					</p>
+				)}
+				{note ? <p className={`${SMALL} mt-3 text-zinc-600`}>{note}</p> : null}
 				<ul className="mt-6 flex-1 space-y-4 border-t border-zinc-200 pt-6">{children}</ul>
 				<div className="mt-8">{action}</div>
 			</div>

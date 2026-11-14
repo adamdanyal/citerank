@@ -18,10 +18,11 @@ import {
 	SMALL,
 	StepDisc,
 	SUBHEAD,
+	Tick,
 } from "@/components/citerank/v2/kit";
 import { PLAN_GRID, PlanCard, PlanLine } from "@/components/citerank/v2/pricing";
 import { PageHead, PageShell, PanelSection } from "@/components/citerank/v2/shell";
-import { AGENCY_PLANS, AGENCY_WORK, FOUNDING_DISCOUNT, formatUsd, foundingPriceUsd } from "@/lib/agency-plans";
+import { AGENCY_EVERY_PLAN, AGENCY_PLANS, AGENCY_WORK, FOUNDING_DISCOUNT, formatUsd } from "@/lib/agency-plans";
 import { embedInlineBooking } from "@/lib/cal-embed";
 import { AGENCY_FAQS } from "@/lib/faqs";
 import { agencyServiceJsonLd, breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
@@ -73,7 +74,7 @@ const STEPS = [
 	},
 ];
 
-/* The three plans on the cards the tracker's plans use, so a visitor reads both prices the same way. */
+/* The three plans on the cards the tracker's plans use: a price, who it is for and what sets it apart. What they share is said once, under them. */
 function AgencyPlans() {
 	return (
 		<div className={PLAN_GRID}>
@@ -83,16 +84,21 @@ function AgencyPlans() {
 					name={plan.name}
 					summary={plan.summary}
 					price={formatUsd(plan.monthlyPriceUsd)}
-					note={`${formatUsd(foundingPriceUsd(plan))} a month for six months at the founding rate.`}
-					band={plan.recommended ? "Most chosen" : undefined}
+					priceLead={plan.from ? "From" : ""}
+					band={plan.recommended ? "Recommended" : undefined}
 					action={
 						<a href="#book" className={`w-full ${plan.recommended ? ACTION : ACTION_QUIET}`}>
 							Book a call
 						</a>
 					}
 				>
-					{plan.includes.map((line) => (
+					{plan.lines.map((line) => (
 						<PlanLine key={line}>{line}</PlanLine>
+					))}
+					{plan.without?.map((line) => (
+						<PlanLine key={line} none>
+							{line}
+						</PlanLine>
 					))}
 				</PlanCard>
 			))}
@@ -195,6 +201,15 @@ function AgencyPage() {
 				<div className="mt-12 lg:mt-16">
 					<AgencyPlans />
 				</div>
+				<h3 className={`${SUBHEAD} mt-12 text-ink lg:mt-16`}>Every plan includes</h3>
+				<ul className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
+					{AGENCY_EVERY_PLAN.map((line) => (
+						<li key={line} className="flex items-start gap-3 text-[1.0625rem] leading-snug text-zinc-700">
+							<Tick className="mt-px size-6" />
+							{line}
+						</li>
+					))}
+				</ul>
 				<p className={`${SMALL} mt-8 text-zinc-600`}>
 					Three-month minimum, then month to month. Prices in US dollars, plus VAT where it applies.
 				</p>

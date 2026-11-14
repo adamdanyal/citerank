@@ -1,5 +1,5 @@
 import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS, PLANS } from "@workspace/config/plans";
-import { AGENCY_PLANS, FOUNDING_DISCOUNT, formatUsd, foundingPriceUsd } from "@/lib/agency-plans";
+import { AGENCY_PLANS, FOUNDING_DISCOUNT, formatUsd, foundingPriceUsd, planPrice } from "@/lib/agency-plans";
 
 export interface FaqItem {
 	question: string;
@@ -150,10 +150,8 @@ export const ABOUT_FAQS: FaqItem[] = [
 
 // AI search agency FAQ. Rendered on "/agency" and emitted as FAQPage JSON-LD
 // from the same route.
-const AGENCY_PRICES = new Intl.ListFormat("en-GB", { type: "disjunction" }).format(
-	AGENCY_PLANS.map((plan) => formatUsd(plan.monthlyPriceUsd)),
-);
-const [FOUNDATION, GROWTH, AUTHORITY] = AGENCY_PLANS;
+const AGENCY_PRICES = new Intl.ListFormat("en-GB", { type: "disjunction" }).format(AGENCY_PLANS.map(planPrice));
+const [ENTRY, , TOP] = AGENCY_PLANS;
 
 export const AGENCY_FAQS: FaqItem[] = [
 	{
@@ -167,7 +165,7 @@ export const AGENCY_FAQS: FaqItem[] = [
 	},
 	{
 		question: "What is the founding-client rate?",
-		answer: `The founding-client rate is ${FOUNDING_DISCOUNT * 100}% off the first six months, for our first five agency clients. ${FOUNDATION.name} then costs ${formatUsd(foundingPriceUsd(FOUNDATION))} a month for those six months. In return we publish a case study of the results, once the client approves it.`,
+		answer: `The founding-client rate is ${FOUNDING_DISCOUNT * 100}% off the first six months, for our first five agency clients. ${ENTRY.name} then costs ${formatUsd(foundingPriceUsd(ENTRY))} a month for those six months. In return we publish a case study of the results, once the client approves it.`,
 	},
 	{
 		question: "Why is there a three-month minimum?",
@@ -181,7 +179,7 @@ export const AGENCY_FAQS: FaqItem[] = [
 	},
 	{
 		question: "How do you report on the work?",
-		answer: `Each month a report lists every piece of work and the question it targets. It shows the AI answers before and after, so you can see what changed. The ${GROWTH.name} and ${AUTHORITY.name} plans also include a call to go through it.`,
+		answer: `Each month a report lists every piece of work and the question it targets. It shows the AI answers before and after, so you can see what changed. Every plan includes a call to go through it, monthly or more often.`,
 	},
 	{
 		question: "Can I use the tracker without the agency?",

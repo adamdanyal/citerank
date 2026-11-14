@@ -1,60 +1,66 @@
 export interface AgencyPlan {
 	name: string;
 	monthlyPriceUsd: number;
+	/** Set on a plan whose price is where its scope starts, not what it costs. */
+	from?: boolean;
 	summary: string;
-	includes: string[];
+	/** What sets the plan apart, a short line each. What every plan shares is in AGENCY_EVERY_PLAN. */
+	lines: string[];
+	/** What the plan leaves out, so the lists on the cards stay level. */
+	without?: string[];
 	recommended?: boolean;
 }
 
 export const AGENCY_PLANS: AgencyPlan[] = [
 	{
-		name: "Foundation",
-		monthlyPriceUsd: 1500,
-		summary: "For one brand starting on AI search.",
-		includes: [
-			"Pro tracker plan included",
-			"1 brand or market",
-			"2 new pages a month",
-			"2 page updates a month",
-			"2 review site and list pitches a month",
-			"4 forum answers a month",
-			"Crawler fixes in the first month, then as found",
-			"Monthly before-and-after report",
-		],
-	},
-	{
 		name: "Growth",
-		monthlyPriceUsd: 3500,
+		monthlyPriceUsd: 4995,
 		summary: "For brands competing on every buyer question.",
-		recommended: true,
-		includes: [
-			"Business tracker plan included",
+		lines: [
 			"1 brand, up to 2 markets",
-			"4 new pages a month",
-			"4 page updates a month",
-			"4 review site and list pitches a month",
-			"8 forum answers a month",
-			"1 guest article a month",
-			"Ongoing crawler fixes",
-			"Monthly report and a 30-minute call",
+			"4 new pages, 4 page updates",
+			"4 pitches, 8 forum answers",
+			"1 guest article",
+			"A 30-minute call every month",
 		],
+		without: ["No named strategist"],
 	},
 	{
 		name: "Authority",
-		monthlyPriceUsd: 7500,
+		monthlyPriceUsd: 7995,
 		summary: "For several brands or markets.",
-		includes: [
-			"Business tracker plan included",
+		recommended: true,
+		lines: [
 			"Up to 3 brands or markets",
-			"8 new pages a month",
-			"8 page updates a month",
-			"8 review site and list pitches a month",
-			"16 forum answers a month",
-			"3 guest articles a month",
-			"Ongoing crawler fixes",
-			"Monthly report, a call every two weeks and a named strategist",
+			"8 new pages, 8 page updates",
+			"8 pitches, 16 forum answers",
+			"3 guest articles",
+			"A call every two weeks",
+			"A named strategist",
 		],
 	},
+	{
+		name: "Enterprise",
+		monthlyPriceUsd: 14995,
+		from: true,
+		summary: "Custom scope for large brands.",
+		lines: [
+			"Everything in Authority",
+			"Amounts set on a call",
+			"Schema and entity work",
+			"Technical SEO fixes",
+			"Digital PR and brand mentions",
+			"A senior strategist",
+		],
+	},
+];
+
+/* What every plan includes, said once beside the cards. */
+export const AGENCY_EVERY_PLAN = [
+	"Business tracker plan",
+	"Work chosen from what the tracker ranks",
+	"Ongoing crawler fixes",
+	"Monthly before-and-after report",
 ];
 
 /* The kinds of work, once: the short name on the home page, the title and the sentence on the agency page. */
@@ -99,4 +105,9 @@ export function formatUsd(amount: number): string {
 
 export function foundingPriceUsd(plan: AgencyPlan): number {
 	return Math.round(plan.monthlyPriceUsd * (1 - FOUNDING_DISCOUNT));
+}
+
+/** A plan's price as a sentence would say it: a fixed plan's price, or where a scoped plan starts. */
+export function planPrice(plan: AgencyPlan): string {
+	return `${plan.from ? "from " : ""}${formatUsd(plan.monthlyPriceUsd)}`;
 }
