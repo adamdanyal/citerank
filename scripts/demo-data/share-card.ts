@@ -1,6 +1,6 @@
 // Draws the home page's share image, apps/www/public/og-home.png, from the
-// marketing site's own hero: its logo, its headline, its line and its product
-// screen, which is HTML. Nothing in the card is a picture of the dashboard, so
+// marketing site's own hero: its logo, its headline and its product screen,
+// which is HTML. Nothing in the card is a picture of the dashboard, so
 // run it again whenever the hero's words or the sample data change:
 //
 //   SITE_URL=http://localhost:3001 pnpm exec tsx scripts/demo-data/share-card.ts
@@ -30,24 +30,22 @@ async function main(): Promise<void> {
 			const product = document.querySelector<HTMLElement>('main figure[data-kind="product"]');
 			const logo = document.querySelector<HTMLElement>("header nav a span");
 			const title = document.querySelector("h1")?.textContent ?? "";
-			const line = document.querySelector("[data-speakable]")?.textContent ?? "";
 			if (!product || !logo || !title) throw new Error("The home page's hero has changed: no product, logo or headline found.");
 
 			const card = document.createElement("div");
 			card.style.cssText = `position:fixed;left:0;top:0;width:${width}px;height:${height}px;z-index:2147483647;overflow:hidden;background:var(--color-ink);color:var(--color-paper);`;
 
+			/* The logo stands level with the top of the screen and the headline with its foot. */
 			const text = document.createElement("div");
-			text.style.cssText = "position:absolute;left:64px;top:68px;width:500px;";
+			text.style.cssText =
+				"position:absolute;left:64px;top:68px;bottom:70px;width:500px;display:flex;flex-direction:column;justify-content:space-between;";
 			const mark = logo.cloneNode(true) as HTMLElement;
 			mark.style.cssText = "font-size:32px;color:var(--color-paper);";
 			const head = document.createElement("p");
 			head.textContent = title;
 			head.style.cssText =
-				"margin-top:52px;font-family:var(--font-display);font-weight:700;font-size:80px;line-height:1;letter-spacing:-0.02em;text-wrap:balance;";
-			const sub = document.createElement("p");
-			sub.textContent = line;
-			sub.style.cssText = "margin-top:28px;font-size:27px;line-height:1.36;color:var(--color-zinc-300);text-wrap:pretty;";
-			text.append(mark, head, sub);
+				"font-family:var(--font-display);font-weight:700;font-size:96px;line-height:0.98;letter-spacing:-0.025em;text-wrap:balance;";
+			text.append(mark, head);
 
 			/*
 			 * The screen at a phone's width lays its four figures out two by two, large
