@@ -32,9 +32,9 @@ export function Includes() {
 						{INCLUDED.map((promise) => (
 							<li
 								key={promise.title}
-								className={`${SUBHEAD} flex items-start gap-4 border-t border-zinc-200 py-5 text-ink first:border-t-0 first:pt-0 last:pb-0`}
+								className="flex items-start gap-4 border-t border-zinc-200 py-5 text-lead leading-snug font-medium text-ink first:border-t-0 first:pt-0 last:pb-0"
 							>
-								<Tick className="mt-0.5 size-7" />
+								<Tick className="size-7" />
 								{promise.title}
 							</li>
 						))}
