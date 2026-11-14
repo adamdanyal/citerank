@@ -9,12 +9,13 @@ import { BODY, LINK, PANEL, PANEL_PAD, Page, PanelHead } from "./kit";
  * start, so a crawler and the FAQPage schema read the same text a visitor does,
  * and they open without script.
  */
-export function Faq({ items }: { items: FaqItem[] }) {
+export function Faq({ items, title = "Frequently asked questions" }: { items: FaqItem[]; title?: string }) {
+	if (items.length === 0) return null;
 	return (
 		<section id="questions" className={`${PANEL} ${PANEL_PAD}`}>
 			<Page className="grid gap-10 lg:grid-cols-12 lg:gap-8">
 				<div className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
-					<PanelHead title="Frequently asked questions">
+					<PanelHead title={title}>
 						<p className={`${BODY} text-zinc-600`}>
 							Something we didn’t cover? Email us at{" "}
 							<a href="mailto:team@citerank.com" className={`${LINK} text-ink`}>
