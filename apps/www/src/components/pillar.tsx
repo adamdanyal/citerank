@@ -1,24 +1,20 @@
-import { Link } from "@tanstack/react-router";
-import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
-import { cloudSignupUrl } from "@workspace/config/referrals";
 import type { ReactNode } from "react";
 import type { Pillar } from "@/data/pillars";
+import { Closing } from "./citerank/v2/closing";
 import {
-	ACTION,
-	ACTION_QUIET,
-	BAND_PAD,
 	BODY,
 	CARD,
+	CARD_LIFT,
 	DISPLAY,
-	HEADING,
 	LEAD,
 	LINK,
+	LinkCards,
 	PANEL,
 	PANEL_PAD,
-	PANEL_TINT,
 	Page,
 	PanelHead,
 	SMALL,
+	StepDisc,
 	SUBHEAD,
 } from "./citerank/v2/kit";
 
@@ -101,15 +97,13 @@ export function RailNav({ label, links }: { label: string; links: { href: string
 	);
 }
 
-/** The numeral is the list's own counter, so a reader with styles off still gets one number a step, not two. */
+/** Steps on one lifted card, each behind its numbered disc. The disc is hidden from a reader, who gets the list's own numbers. */
 export function Steps({ steps }: { steps: { name: string; text: string }[] }) {
 	return (
-		<ol className="mt-6 border-b border-zinc-200 [counter-reset:step]">
-			{steps.map((step) => (
-				<li
-					key={step.name}
-					className="flex gap-4 border-t border-zinc-200 py-5 [counter-increment:step] before:w-4 before:shrink-0 before:font-display before:text-[1.125rem] before:leading-[1.35] before:font-bold before:text-rust before:tabular-nums before:content-[counter(step)]"
-				>
+		<ol className={`${CARD_LIFT} mt-6 px-6 sm:px-8`}>
+			{steps.map((step, index) => (
+				<li key={step.name} className="flex gap-4 border-t border-zinc-200 py-5 first:border-t-0">
+					<StepDisc step={index + 1} />
 					<div className="min-w-0">
 						<h3 className={DOC_SUBHEAD}>{step.name}</h3>
 						<p className={`${PROSE} mt-1.5`}>{step.text}</p>
@@ -120,34 +114,9 @@ export function Steps({ steps }: { steps: { name: string; text: string }[] }) {
 	);
 }
 
-export function CtaBand({ title, lede, children }: { title: string; lede: ReactNode; children: ReactNode }) {
-	return (
-		<section className={`${PANEL_TINT} ${BAND_PAD}`}>
-			<Page className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-8">
-				<div className="lg:col-span-7">
-					<h2 className={`${HEADING} max-w-[22ch] text-ink`}>{title}</h2>
-					<p className={`${LEAD} mt-5 max-w-[52ch] text-zinc-700`}>{lede}</p>
-				</div>
-				<div className="flex flex-col gap-3 sm:flex-row lg:col-span-5 lg:justify-self-end">{children}</div>
-			</Page>
-		</section>
-	);
-}
-
+/** A guide ends as every page does: the founders' quotes, then the panel with the two actions. */
 export function CiteRankCta() {
-	return (
-		<CtaBand
-			title="Ready to track your AI visibility?"
-			lede={`Set up CiteRank.com in minutes and see how ChatGPT, Claude and Google AI Overviews talk about your brand. Plans from $${CLOUD_ENTRY_PRICE_USD} a month.`}
-		>
-			<a href={cloudSignupUrl("marketing-page-cta")} className={ACTION}>
-				Start tracking
-			</a>
-			<Link to="/agency" className={ACTION_QUIET}>
-				Have us do the work
-			</Link>
-		</CtaBand>
-	);
+	return <Closing from="marketing-page-cta" />;
 }
 
 /** Renders each match of `pattern` (its first group) with `render`, keyed by where it sits in the text. */
@@ -251,16 +220,10 @@ export function PillarBody({ pillar }: { pillar: Pillar }) {
 			<section className={`${PANEL} ${PANEL_PAD}`}>
 				<Page>
 					<PanelHead title="Keep reading" />
-					<ul className="mt-10 grid gap-x-8 border-b border-zinc-200 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
-						{pillar.related.map((link) => (
-							<li key={link.href} className={`${ROW} flex`}>
-								<a href={link.href} className={`${ROW_LINK} flex-1 py-6`}>
-									<span className={`${ROW_TITLE} block`}>{link.label}</span>
-									<span className={`${BODY} mt-2 block max-w-[40ch] text-zinc-600`}>{link.description}</span>
-								</a>
-							</li>
-						))}
-					</ul>
+					<LinkCards
+						className="mt-10 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3"
+						items={pillar.related.map((link) => ({ href: link.href, title: link.label, body: link.description }))}
+					/>
 				</Page>
 			</section>
 		</>

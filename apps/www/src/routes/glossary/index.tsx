@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Closing } from "@/components/citerank/v2/closing";
-import { BODY, LEAD, PANEL, PANEL_PAD, Page, PanelHead, SMALL } from "@/components/citerank/v2/kit";
+import { BODY, LEAD, LIST_CARD, PANEL, PANEL_PAD, Page, PanelHead, SMALL } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
 import { ROW, ROW_LINK, ROW_TITLE } from "@/components/pillar";
 import { GLOSSARY_GROUPS, glossaryTerms } from "@/data/glossary";
@@ -58,7 +58,7 @@ function GlossaryIndex() {
 									</p>
 								</PanelHead>
 							</div>
-							<ul className="border-b border-zinc-200 lg:col-span-8">
+							<ul className={`${LIST_CARD} lg:col-span-8`}>
 								{terms.map((t) => (
 									<li key={t.slug} className={ROW}>
 										<a href={`/glossary/${t.slug}`} className={`${ROW_LINK} block py-6`}>

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Closing } from "@/components/citerank/v2/closing";
-import { BODY, PANEL, Page, SMALL, SUBHEAD } from "@/components/citerank/v2/kit";
+import { BODY, LIST_CARD, PANEL, Page, SMALL, SUBHEAD } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
 import { INDEX_PAD, ROW, ROW_ACTION, ROW_LINK } from "@/components/pillar";
 import { aiSearchEngines } from "@/data/ai-search-engines";
@@ -43,7 +43,7 @@ function AiSearchIndex() {
 			<section className={`${PANEL} ${INDEX_PAD}`}>
 				<Page>
 					<h2 className="sr-only">Guides by AI engine</h2>
-					<ul className="border-b border-zinc-200">
+					<ul className={LIST_CARD}>
 						{aiSearchEngines.map((engine) => (
 							<li key={engine.slug} className={ROW}>
 								<a

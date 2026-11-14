@@ -1,8 +1,8 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { cloudSignupUrl } from "@workspace/config/referrals";
-import { ACTION, ACTION_QUIET, PANEL, PANEL_PAD, Page, SMALL } from "@/components/citerank/v2/kit";
+import { createFileRoute, notFound } from "@tanstack/react-router";
+import { Closing } from "@/components/citerank/v2/closing";
+import { PANEL, PANEL_PAD, Page, SMALL } from "@/components/citerank/v2/kit";
 import { PageShell } from "@/components/citerank/v2/shell";
-import { CtaBand, DOC, DOC_TEXT, GuideHead, LABEL, PROSE, RailNav, ROW_ACTION, ROW_LINK } from "@/components/pillar";
+import { DOC, DOC_TEXT, GuideHead, LABEL, PROSE, RailNav, ROW_ACTION, ROW_LINK } from "@/components/pillar";
 import { type GlossaryTerm, getGlossaryTerm, glossaryTerms } from "@/data/glossary";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
@@ -88,17 +88,7 @@ function GlossaryTermPage() {
 				</section>
 			</article>
 
-			<CtaBand
-				title="See it in your own data"
-				lede="CiteRank.com is an AI visibility tracker and AI search agency. Sign up and track how AI answer engines mention and cite your brand."
-			>
-				<a href={cloudSignupUrl("marketing-page-cta")} className={ACTION}>
-					Start tracking
-				</a>
-				<Link to="/ai-visibility-tools" className={ACTION_QUIET}>
-					Compare tools
-				</Link>
-			</CtaBand>
+			<Closing from="marketing-page-cta" />
 		</PageShell>
 	);
 }

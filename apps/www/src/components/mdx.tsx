@@ -223,10 +223,10 @@ function DocumentCode({ ref: _ref, ...props }: ComponentProps<"pre">) {
 	);
 }
 
-/* A tinted well for a note set apart from the text. No outline: the tint is the edge. */
+/* A lifted card for a note set apart from the text. */
 function DocumentCallout({ title, children }: { title?: ReactNode; children?: ReactNode }) {
 	return (
-		<aside className="my-6 rounded-card bg-paper-2 px-6 py-5">
+		<aside className="my-6 rounded-card bg-white px-6 py-5 shadow-lift ring-1 ring-zinc-200">
 			{title ? <div className={`${SMALL} font-medium text-ink`}>{title}</div> : null}
 			<div className="mt-1 [&>:first-child]:mt-0 [&>:last-child]:mb-0">{children}</div>
 		</aside>

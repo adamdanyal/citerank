@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import {
 	BODY,
+	CARD_LIFT,
 	HEADING,
 	LEAD,
 	LINK,
@@ -99,7 +100,7 @@ function StatisticsPage() {
 							<PanelHead title={group}>
 								<p className={`${LEAD} text-zinc-600`}>{GROUP_BLURBS[group]}</p>
 							</PanelHead>
-							<ul className="mt-10 border-b border-zinc-200 lg:mt-16">
+							<ul className={`${CARD_LIFT} mt-10 px-6 sm:px-8 lg:mt-16 [&>li:first-child]:border-t-0`}>
 								{inGroup.map((stat) => (
 									<li key={stat.slug} className={`${ROW} ${ROW_GRID}`}>
 										<p className={`${FIGURE} lg:col-span-4`}>{stat.value}</p>
