@@ -5,9 +5,10 @@ import { EngineIcon } from "./home/engines";
 // Feature graphics
 //
 // Most sit next to their feature as a real product screenshot (see the
-// Screenshot helper below); the rest are schematic. All share one language:
-// the site's paper and rust tokens, mono labels in sentence case, and no
-// outline of their own, because the card around them already carries one.
+// Screenshot helper below); the rest are built from the feature's own
+// material: a chart, a terminal session, the list of engines. Those fill the
+// width they are given, so one graphic serves an index tile and a page's
+// full-width opening.
 // ---------------------------------------------------------------------------
 
 function Frame({
@@ -24,10 +25,6 @@ function Frame({
 			<div className="@container relative z-10 size-full">{children}</div>
 		</div>
 	);
-}
-
-function Mono({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-	return <span className={`font-mono text-[11px] leading-[1.4] text-zinc-500 ${className}`}>{children}</span>;
 }
 
 // ---------------------------------------------------------------------------
@@ -203,125 +200,123 @@ export function ResponsesGraphic() {
 // 10 — Trends: 12-month area chart
 // ---------------------------------------------------------------------------
 
+const LABEL = "text-[0.8125rem] leading-[1.4]";
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const BRAND_TREND = [40, 44, 48, 52, 50, 56, 60, 64, 62, 68, 71, 72];
+const COMPETITOR_TREND = [55, 52, 50, 48, 51, 49, 47, 44, 46, 43, 42, 40];
+const CHART_W = 240;
+const CHART_H = 100;
+
+function trendPath(data: number[]) {
+	const points = data.map((value, i) => ({
+		x: (i / (data.length - 1)) * CHART_W,
+		y: CHART_H - ((value - 30) / 50) * CHART_H,
+	}));
+	const line = points.map((p, i) => `${i === 0 ? "M" : "L"}${p.x},${p.y}`).join(" ");
+	return { line, area: `${line} L${CHART_W},${CHART_H} L0,${CHART_H} Z`, last: points[points.length - 1] };
+}
+
 export function VisibilityTrendGraphic() {
-	const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-	const brand = [40, 44, 48, 52, 50, 56, 60, 64, 62, 68, 71, 72];
-	const comp = [55, 52, 50, 48, 51, 49, 47, 44, 46, 43, 42, 40];
-	const w = 240;
-	const h = 100;
-
-	function path(data: number[]) {
-		const pts = data.map((v, i) => {
-			const x = (i / (data.length - 1)) * w;
-			const y = h - ((v - 30) / 50) * h;
-			return { x, y };
-		});
-		const line = pts.map((p, i) => `${i === 0 ? "M" : "L"}${p.x},${p.y}`).join(" ");
-		const area = `${line} L${w},${h} L0,${h} Z`;
-		return { line, area, pts };
-	}
-
-	const b = path(brand);
-	const c = path(comp);
-	const last = b.pts[b.pts.length - 1];
+	const brand = trendPath(BRAND_TREND);
+	const competitor = trendPath(COMPETITOR_TREND);
+	const first = BRAND_TREND[0];
+	const last = BRAND_TREND[BRAND_TREND.length - 1];
 
 	return (
-		<Frame>
-			<div className="flex size-full flex-col gap-3 p-5 @[30rem]:p-6">
-				<div className="flex items-center justify-between">
-					<div className="flex flex-col gap-0.5">
-						<Mono>Brand visibility over twelve months</Mono>
-						<div className="flex items-baseline gap-2">
-							<span className="font-heading text-3xl font-semibold tracking-[-0.03em] text-ink tabular-nums">72%</span>
-							<span className="font-mono text-[11px] tabular-nums text-blue-800">up 32 points</span>
-						</div>
-					</div>
-					<div className="flex flex-col items-end gap-1 font-mono text-[11px] leading-[1.4]">
-						<span className="inline-flex items-center gap-1.5 text-blue-800">
-							<span className="inline-block h-0.5 w-3 rounded-full bg-rust" />
-							Your brand
+		<figure
+			role="img"
+			aria-label={`Chart of brand visibility over twelve months: your brand climbs from ${first}% to ${last}% while a competitor falls`}
+			className="flex aspect-[4/3] w-full flex-col gap-3 rounded-card bg-paper-2 p-5 @[30rem]:aspect-[5/3] @[30rem]:p-8"
+		>
+			<div className="flex items-start justify-between gap-4">
+				<div className="min-w-0">
+					<p className={`${LABEL} text-zinc-600`}>Brand visibility over twelve months</p>
+					<p className="mt-1 flex items-baseline gap-2">
+						<span className="font-heading text-[2rem] leading-none font-bold tracking-[-0.03em] text-ink tabular-nums">
+							{last}%
 						</span>
-						<span className="inline-flex items-center gap-1.5 text-zinc-500">
-							<span className="inline-block h-px w-3 border-t border-dashed border-zinc-400" />
-							Competitor
-						</span>
-					</div>
+						<span className={`${LABEL} text-blue-800 tabular-nums`}>up {last - first} points</span>
+					</p>
 				</div>
-
-				<div className="relative flex-1">
-					<svg
-						aria-hidden="true"
-						viewBox={`0 0 ${w} ${h}`}
-						className="size-full overflow-visible"
-						preserveAspectRatio="none"
-					>
-						<defs>
-							<linearGradient id="trend-fill" x1="0" y1="0" x2="0" y2="1">
-								<stop offset="0%" stopColor="var(--color-rust)" stopOpacity="0.22" />
-								<stop offset="100%" stopColor="var(--color-rust)" stopOpacity="0" />
-							</linearGradient>
-						</defs>
-						{[0, 1, 2, 3].map((i) => (
-							<line
-								key={i}
-								x1="0"
-								y1={(i * h) / 3}
-								x2={w}
-								y2={(i * h) / 3}
-								stroke="var(--color-zinc-200)"
-								strokeWidth="0.5"
-								vectorEffect="non-scaling-stroke"
-							/>
-						))}
-						<path d={b.area} fill="url(#trend-fill)" />
-						<path
-							d={c.line}
-							fill="none"
-							stroke="var(--color-zinc-400)"
-							strokeWidth="1.25"
-							strokeDasharray="3 3"
-							strokeLinecap="round"
-							vectorEffect="non-scaling-stroke"
-						/>
-						<path
-							d={b.line}
-							fill="none"
-							stroke="var(--color-rust)"
-							strokeWidth="1.5"
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							vectorEffect="non-scaling-stroke"
-						/>
-						<line
-							x1={last.x}
-							y1={last.y}
-							x2={last.x}
-							y2={h}
-							stroke="var(--color-rust)"
-							strokeWidth="0.75"
-							strokeDasharray="2 2"
-							opacity="0.5"
-							vectorEffect="non-scaling-stroke"
-						/>
-						<circle
-							cx={last.x}
-							cy={last.y}
-							r="3.5"
-							fill="var(--color-rust)"
-							stroke="var(--color-paper)"
-							strokeWidth="1.5"
-							vectorEffect="non-scaling-stroke"
-						/>
-					</svg>
-				</div>
-
-				<div className="flex items-center justify-between font-mono text-[11px] text-zinc-500 tabular-nums">
-					{months.map((m) => (
-						<span key={m}>{m}</span>
-					))}
-				</div>
+				<ul className={`${LABEL} shrink-0 space-y-1 text-zinc-600`}>
+					<li className="flex items-center gap-2">
+						<span className="h-0.5 w-3 rounded-full bg-rust" />
+						Your brand
+					</li>
+					<li className="flex items-center gap-2">
+						<span className="w-3 border-t border-dashed border-zinc-500" />
+						Competitor
+					</li>
+				</ul>
 			</div>
-		</Frame>
+
+			<div className="relative min-h-0 flex-1">
+				<svg
+					aria-hidden="true"
+					viewBox={`0 0 ${CHART_W} ${CHART_H}`}
+					className="size-full overflow-visible"
+					preserveAspectRatio="none"
+				>
+					<defs>
+						<linearGradient id="trend-fill" x1="0" y1="0" x2="0" y2="1">
+							<stop offset="0%" stopColor="var(--color-rust)" stopOpacity="0.22" />
+							<stop offset="100%" stopColor="var(--color-rust)" stopOpacity="0" />
+						</linearGradient>
+					</defs>
+					{[0, 1, 2, 3].map((i) => (
+						<line
+							key={i}
+							x1="0"
+							y1={(i * CHART_H) / 3}
+							x2={CHART_W}
+							y2={(i * CHART_H) / 3}
+							stroke="var(--color-zinc-300)"
+							strokeWidth="0.5"
+							vectorEffect="non-scaling-stroke"
+						/>
+					))}
+					<path d={brand.area} fill="url(#trend-fill)" />
+					<path
+						d={competitor.line}
+						fill="none"
+						stroke="var(--color-zinc-500)"
+						strokeWidth="1.25"
+						strokeDasharray="3 3"
+						strokeLinecap="round"
+						vectorEffect="non-scaling-stroke"
+					/>
+					<path
+						d={brand.line}
+						fill="none"
+						stroke="var(--color-rust)"
+						strokeWidth="1.5"
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						vectorEffect="non-scaling-stroke"
+					/>
+					<line
+						x1={brand.last.x}
+						y1={brand.last.y}
+						x2={brand.last.x}
+						y2={CHART_H}
+						stroke="var(--color-rust)"
+						strokeWidth="0.75"
+						strokeDasharray="2 2"
+						opacity="0.5"
+						vectorEffect="non-scaling-stroke"
+					/>
+				</svg>
+			</div>
+
+			<div className="flex justify-between text-[0.75rem] leading-[1.4] text-zinc-600">
+				{MONTHS.map((month, i) => (
+					<span key={month} className={i % 2 === 1 ? "@max-[26rem]:hidden" : undefined}>
+						{month}
+					</span>
+				))}
+			</div>
+		</figure>
 	);
 }
 
@@ -329,27 +324,38 @@ export function VisibilityTrendGraphic() {
 // API and MCP: the two ways in, as terminal snippets
 // ---------------------------------------------------------------------------
 
-const CODE_PANEL =
-	"overflow-hidden whitespace-pre-wrap [overflow-wrap:anywhere] rounded-xl bg-ink p-4 font-mono text-[11px] leading-relaxed text-paper @[30rem]:text-xs";
+const COMMAND =
+	"mt-2 overflow-x-auto font-mono text-[0.75rem] leading-[1.8] text-paper @[30rem]:text-[0.8125rem] @[56rem]:text-[1.0625rem]";
+const COMMAND_LABEL = `${LABEL} text-zinc-400 @[56rem]:text-[0.9375rem]`;
 
 export function ApiGraphic() {
 	return (
-		<Frame aspect="@[30rem]:aspect-[5/3]">
-			<div className="flex size-full flex-col gap-3 p-5 md:p-6">
-				<Mono>Connect the MCP server</Mono>
-				<pre className={CODE_PANEL}>
-					<span className="select-none text-zinc-400">$ </span>claude mcp add --transport http citerank{"\n"}
-					{"  "}
-					<span className="text-blue-300">https://app.citerank.com/api/mcp</span>
-				</pre>
-				<Mono className="mt-1">Query the REST API</Mono>
-				<pre className={`flex-1 ${CODE_PANEL}`}>
-					<span className="select-none text-zinc-400">$ </span>curl{" "}
-					<span className="text-blue-300">https://app.citerank.com/api/v1/brands</span> \{"\n"}
-					{"  "}-H <span className="text-blue-200">"Authorization: Bearer $CITERANK_API_KEY"</span>
-				</pre>
+		<dl className="grid h-full content-center gap-6 rounded-card bg-ink p-5 @[30rem]:p-8 @[56rem]:grid-cols-2 @[56rem]:gap-12 @[56rem]:px-12 @[56rem]:py-16">
+			<div className="min-w-0">
+				<dt className={COMMAND_LABEL}>Connect the MCP server</dt>
+				<dd>
+					<pre className={COMMAND}>
+						<code>
+							<span className="text-zinc-400 select-none">$ </span>claude mcp add --transport http citerank \{"\n"}
+							{"    "}
+							<span className="text-blue-300">https://app.citerank.com/api/mcp</span>
+						</code>
+					</pre>
+				</dd>
 			</div>
-		</Frame>
+			<div className="min-w-0">
+				<dt className={COMMAND_LABEL}>Query the REST API</dt>
+				<dd>
+					<pre className={COMMAND}>
+						<code>
+							<span className="text-zinc-400 select-none">$ </span>curl{" "}
+							<span className="text-blue-300">https://app.citerank.com/api/v1/brands</span> \{"\n"}
+							{"    "}-H <span className="text-blue-200">&quot;Authorization: Bearer $CITERANK_API_KEY&quot;</span>
+						</code>
+					</pre>
+				</dd>
+			</div>
+		</dl>
 	);
 }
 
@@ -376,36 +382,45 @@ const API_ENGINES = [
 	{ name: "Perplexity", iconId: "perplexity" },
 ];
 
-function EngineChip({ name, iconId }: { name: string; iconId: string }) {
+/* A plain list in a tile, where two groups share a narrow well; capsules once the well is wide enough to hold a row of them. */
+function EngineList({
+	title,
+	engines,
+	columns,
+}: {
+	title: string;
+	engines: { name: string; iconId: string }[];
+	columns: string;
+}) {
 	return (
-		<li className="flex h-9 items-center gap-2 rounded-full bg-paper px-3.5 text-[13px] font-medium text-ink @[30rem]:h-10 @[30rem]:text-sm">
-			<EngineIcon iconId={iconId} className="size-4 shrink-0" />
-			<span className="truncate">{name}</span>
-		</li>
+		<div className="min-w-0">
+			<dt className={`${LABEL} text-zinc-600 @[56rem]:text-[0.9375rem]`}>{title}</dt>
+			<dd className="mt-3 @[56rem]:mt-5">
+				<ul className={`grid gap-2 @[56rem]:gap-2.5 ${columns}`}>
+					{engines.map((engine) => (
+						<li
+							key={engine.name}
+							className="flex min-w-0 items-center gap-2 text-[0.875rem] leading-[1.4] font-medium text-ink @[56rem]:h-11 @[56rem]:rounded-full @[56rem]:bg-paper @[56rem]:px-4 @[56rem]:text-[0.9375rem]"
+						>
+							<EngineIcon iconId={engine.iconId} className="size-4 shrink-0" />
+							<span className="truncate">{engine.name}</span>
+						</li>
+					))}
+				</ul>
+			</dd>
+		</div>
 	);
 }
 
 export function EnginesGraphic() {
 	return (
-		<Frame aspect="@[30rem]:aspect-[5/3]">
-			<div className="flex size-full flex-col justify-center gap-5 p-5 @[30rem]:p-8">
-				<div>
-					<Mono>Read in the app, as a user sees them</Mono>
-					<ul className="mt-2.5 grid grid-cols-2 gap-2 @[30rem]:grid-cols-3">
-						{SCRAPED_ENGINES.map((e) => (
-							<EngineChip key={e.name} {...e} />
-						))}
-					</ul>
-				</div>
-				<div>
-					<Mono>Read through each company&apos;s API</Mono>
-					<ul className="mt-2.5 grid grid-cols-2 gap-2 @[30rem]:grid-cols-3">
-						{API_ENGINES.map((e) => (
-							<EngineChip key={e.name} {...e} />
-						))}
-					</ul>
-				</div>
-			</div>
-		</Frame>
+		<dl className="grid h-full grid-cols-2 content-center gap-x-5 rounded-card bg-paper-2 p-5 @[30rem]:gap-x-8 @[30rem]:p-8 @[56rem]:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] @[56rem]:gap-x-12 @[56rem]:p-12">
+			<EngineList
+				title="Read in the app, as a user sees them"
+				engines={SCRAPED_ENGINES}
+				columns="@[56rem]:grid-cols-3"
+			/>
+			<EngineList title="Read through each company’s API" engines={API_ENGINES} columns="@[56rem]:grid-cols-4" />
+		</dl>
 	);
 }

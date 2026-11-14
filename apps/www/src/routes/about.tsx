@@ -1,14 +1,25 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { getModelMeta } from "@workspace/config/models";
 import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS, PLANS } from "@workspace/config/plans";
-import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
-import { Closing } from "@/components/citerank/home/closing";
-import { Faq } from "@/components/citerank/home/faq";
 import { SocialIcons } from "@/components/citerank/socials";
-import { CARD, Container, QUIET_LINK, Reveal, RevealItem, SECONDARY_BUTTON, TEXT_LINK } from "@/components/citerank/ui";
-import { PANEL, PANEL_PAD, Page } from "@/components/citerank/v2/kit";
-import { PageShell } from "@/components/citerank/v2/shell";
+import { Closing } from "@/components/citerank/v2/closing";
+import { Faq } from "@/components/citerank/v2/faq";
+import {
+	ACTION,
+	ACTION_QUIET,
+	BODY,
+	LEAD,
+	LINK,
+	PANEL,
+	PANEL_PAD,
+	PANEL_PAD_WIDE,
+	Page,
+	PanelHead,
+	SMALL,
+	SUBHEAD,
+} from "@/components/citerank/v2/kit";
+import { PageHead, PageShell } from "@/components/citerank/v2/shell";
 import { externalRel } from "@/lib/external-link";
 import { ABOUT_FAQS } from "@/lib/faqs";
 import { aboutPageJsonLd, breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
@@ -76,70 +87,62 @@ const NUMBERS = [
 const STORY = [
 	"When a buyer asks ChatGPT, Gemini or Perplexity who to choose, the answer names a few brands and cites a few pages. If you cannot say whether yours is one of them, that is the gap we started CiteRank.com to close.",
 	"We are Adam and Julia Danyal. We have more than 2.3 million LinkedIn followers between us, run Chief AI Leader, an exam-based AI certification for leaders, and write AI For Leaders, a daily newsletter read by more than 50,000 leaders. CiteRank.com is our product. It shows what AI says about your brand, and our agency does the work the tracker ranks, every month.",
-	`The tracker is built on Elmo, the open-source AI visibility tracker, which we host and extend. It asks your buyers' questions across ${ENGINE_COUNT} AI apps, ${basic.standardRunsPerDay} times a day, and keeps every answer word for word, so any score can be traced to the exact responses behind it. Plans start at $${CLOUD_ENTRY_PRICE_USD} a month, run month to month, and include your whole team, the API and the MCP server.`,
+	`The tracker is built on Elmo, the open-source AI visibility tracker, which we host and extend. It asks your buyers’ questions across ${ENGINE_COUNT} AI apps, ${basic.standardRunsPerDay} times a day, and keeps every answer word for word, so any score can be traced to the exact responses behind it. Plans start at $${CLOUD_ENTRY_PRICE_USD} a month, run month to month, and include your whole team, the API and the MCP server.`,
 	"Tracking alone does not change an answer, so we also run the agency. Each month we write the pages your site is missing, update the ones AI stopped citing, pitch you to the review sites and lists it cites, answer buyers in forums, and report the AI answers before and after.",
-	"It is for any company whose buyers ask AI who to choose: B2B software, e-commerce, agencies with several client brands, law and accounting firms, local and hospitality businesses. Sign up, add your website, and the Prompt Wizard suggests your buyers' questions so tracking starts right away. For the agency, book a call.",
+	"It is for any company whose buyers ask AI who to choose: B2B software, e-commerce, agencies with several client brands, law and accounting firms, local and hospitality businesses. Sign up, add your website, and the Prompt Wizard suggests your buyers’ questions so tracking starts right away. For the agency, book a call.",
 ];
 
 function ExternalLink({ href, children }: { href: string; children: ReactNode }) {
 	return (
-		<a href={href} target="_blank" rel={externalRel(href)} className={`${QUIET_LINK} text-zinc-950`}>
+		<a href={href} target="_blank" rel={externalRel(href)} className={`${LINK} text-ink`}>
 			{children}
 		</a>
 	);
 }
 
-function SectionHeading({ title, lede }: { title: string; lede?: string }) {
-	return (
-		<Reveal className="max-w-3xl">
-			<h2 className="heading-2 text-zinc-950">{title}</h2>
-			{lede ? <p className="body-8 mt-6 text-zinc-700">{lede}</p> : null}
-		</Reveal>
-	);
-}
-
 function LinkedInMark() {
 	return (
-		<svg viewBox="0 0 24 24" aria-hidden="true" className="size-3.5 fill-current">
+		<svg viewBox="0 0 24 24" aria-hidden="true" className="size-3.5 shrink-0 fill-current">
 			<path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
 		</svg>
 	);
 }
 
-function FounderCard({ founder, delay }: { founder: (typeof FOUNDERS)[number]; delay: number }) {
-	const pill =
-		"caption-1 mt-4 inline-flex w-fit items-center gap-2 whitespace-nowrap rounded-md bg-blue-50 px-3 py-1 text-blue-800";
+function Founder({ founder }: { founder: (typeof FOUNDERS)[number] }) {
 	return (
-		<RevealItem delay={delay} className={`${CARD} overflow-hidden`}>
-			<img
-				src={founder.photo}
-				alt={founder.name}
-				width={512}
-				height={512}
-				loading="eager"
-				className="aspect-square w-full object-cover"
-			/>
-			<div className="flex flex-col p-4 sm:p-5">
-				<p className="heading-6 text-zinc-950">{founder.name}</p>
-				<p className="body-6 mt-0.5 text-zinc-600">{founder.role}</p>
-				{founder.href ? (
-					<a href={founder.href} target="_blank" rel="noopener noreferrer" className={`${pill} hover:bg-blue-100`}>
-						<LinkedInMark />
-						{founder.proof}
-						<span className="sr-only"> on LinkedIn</span>
-					</a>
-				) : (
-					<p className={pill}>
-						<LinkedInMark />
-						{founder.proof}
-						<span className="sr-only"> on LinkedIn</span>
+		<li>
+			<figure>
+				<img
+					src={founder.photo}
+					alt={founder.name}
+					width={512}
+					height={512}
+					loading="lazy"
+					decoding="async"
+					className="aspect-square w-full rounded-card bg-paper-2 object-cover"
+				/>
+				<figcaption className="mt-4">
+					<p className={`${SUBHEAD} text-ink`}>{founder.name}</p>
+					<p className={`${SMALL} mt-1 text-zinc-600`}>{founder.role}</p>
+					<p className={`${SMALL} mt-2 text-zinc-700`}>
+						<a
+							href={founder.href}
+							target="_blank"
+							rel="noopener noreferrer"
+							className={`${LINK} inline-flex items-center gap-2 whitespace-nowrap`}
+						>
+							<LinkedInMark />
+							{founder.proof}
+							<span className="sr-only"> on LinkedIn</span>
+						</a>
 					</p>
-				)}
-			</div>
-		</RevealItem>
+				</figcaption>
+			</figure>
+		</li>
 	);
 }
 
+/* The statement, the company in four figures, the founders and their reasons, the facts on record, the objections. */
 function AboutPage() {
 	const keyFacts: { term: string; detail: ReactNode }[] = [
 		{ term: "Company name", detail: "CiteRank.com, a trading name of Danx Digital Limited" },
@@ -204,110 +207,113 @@ function AboutPage() {
 			detail: ENGINE_NAMES.join(", "),
 		},
 		{ term: "Competitors", detail: "Profound, Peec AI, Otterly.AI, Scrunch, Semrush AI Toolkit" },
-		{ term: "Social", detail: <SocialIcons linkClassName="text-zinc-500 hover:text-zinc-950" /> },
+		{
+			term: "Social",
+			detail: (
+				<SocialIcons className="gap-x-5 gap-y-3" linkClassName="text-zinc-600 hover:text-ink" iconClassName="size-5" />
+			),
+		},
 	];
 
 	return (
 		<PageShell>
-			{/* An editorial opening rather than the homepage hero: the statement on the left, the founders on the right. */}
-			<section className={`${PANEL} ${PANEL_PAD}`}>
-				<Page className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16 lg: lg:">
-					<div className="lg:col-span-6">
-						<p className="caption-3 text-blue-800">About CiteRank.com</p>
-						<h1 className="heading-2 mt-6 text-zinc-950">
-							We track what AI says about your brand, then do the work to change it
-						</h1>
-						<p className="body-8 mt-6 text-zinc-600">
-							CiteRank.com is the AI visibility tracker and AI search agency for{" "}
-							<Link to="/answer-engine-optimization" className={`${QUIET_LINK} text-zinc-950`}>
-								AEO
-							</Link>{" "}
-							and{" "}
-							<Link to="/generative-engine-optimization" className={`${QUIET_LINK} text-zinc-950`}>
-								GEO
-							</Link>
-							. We track how ChatGPT, Gemini, Perplexity and ten other AI apps describe brands, and our agency does the
-							work that changes those answers.
-						</p>
-						<p className="body-6 mt-6 text-zinc-600">
-							Cite is what an AI does when it names a source. Rank is where you stand against competitors in those
-							answers. Hence the name.
-						</p>
-						<div className="mt-8 flex flex-wrap items-center gap-4">
-							<Link to="/agency" className={SECONDARY_BUTTON}>
-								Book an agency call
-							</Link>
-							<Link to="/pricing" className={TEXT_LINK}>
-								See tracker plans
-								<ArrowRight className="size-4" aria-hidden="true" />
-							</Link>
-						</div>
-					</div>
-					<div className="grid grid-cols-2 gap-4 sm:gap-5 lg:col-span-6">
-						{FOUNDERS.map((founder, index) => (
-							<FounderCard key={founder.name} founder={founder} delay={index * 80} />
-						))}
-					</div>
-				</Page>
-			</section>
+			<PageHead
+				title="We track what AI says about your brand, then do the work to change it"
+				lede={
+					<>
+						CiteRank.com is the AI visibility tracker and AI search agency for{" "}
+						<Link to="/answer-engine-optimization" className={`${LINK} text-ink`}>
+							AEO
+						</Link>{" "}
+						and{" "}
+						<Link to="/generative-engine-optimization" className={`${LINK} text-ink`}>
+							GEO
+						</Link>
+						. We track how ChatGPT, Gemini, Perplexity and ten other AI apps describe brands, and our agency does the
+						work that changes those answers.
+					</>
+				}
+			>
+				<div className="flex flex-col gap-3 sm:flex-row">
+					<Link to="/agency" className={ACTION}>
+						Book an agency call
+					</Link>
+					<Link to="/pricing" className={ACTION_QUIET}>
+						See tracker plans
+					</Link>
+				</div>
+				<p className={`${SMALL} mt-4 max-w-[64ch] text-zinc-600`}>
+					Cite is what an AI does when it names a source. Rank is where you stand against competitors in those answers.
+					Hence the name.
+				</p>
+			</PageHead>
 
-			<section className={`${PANEL} ${PANEL_PAD}`}>
-				<Page className="lg:">
-					<dl className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-						{NUMBERS.map((item, index) => (
-							<RevealItem key={item.label} delay={index * 60} className="flex flex-col">
-								<dd className="heading-3 order-1 text-zinc-950">{item.value}</dd>
-								<dt className="caption-2 order-2 mt-2 text-zinc-600">{item.label}</dt>
-							</RevealItem>
+			{/* The figures close the opening rather than start a section: no padding above them but the opening's own. */}
+			<section className={`${PANEL} pb-7 sm:pb-10 lg:pb-15`}>
+				<Page>
+					<dl className="grid gap-y-10 border-t border-zinc-200 pt-10 sm:grid-cols-2 lg:grid-cols-4 lg:pt-12">
+						{NUMBERS.map((item) => (
+							<div
+								key={item.label}
+								className="flex flex-col-reverse justify-end border-zinc-200 sm:even:border-l sm:even:pl-8 lg:border-l lg:pl-8 lg:first:border-l-0 lg:first:pl-0"
+							>
+								<dt className={`${SMALL} mt-3 max-w-[24ch] text-zinc-600`}>{item.label}</dt>
+								<dd className="font-heading text-display-s leading-none font-bold tracking-[-0.03em] text-ink">
+									{item.value}
+								</dd>
+							</div>
 						))}
 					</dl>
 				</Page>
 			</section>
 
-			<section className={`${PANEL} ${PANEL_PAD}`}>
-				<Page className="grid gap-10 lg:grid-cols-12 lg:gap-16 lg:">
-					<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
-						<h2 className="heading-2 text-zinc-950">Why we started CiteRank.com</h2>
-					</Reveal>
-					<Reveal delay={100} className="lg:col-span-8">
+			<section className={`${PANEL} ${PANEL_PAD_WIDE}`}>
+				<Page className="grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-x-16">
+					<div className="lg:sticky lg:top-28 lg:self-start">
+						<PanelHead title="Why we started CiteRank.com" />
+						<ul className="mt-8 grid max-w-[34rem] grid-cols-2 gap-4 sm:gap-8 lg:mt-10">
+							{FOUNDERS.map((founder) => (
+								<Founder key={founder.name} founder={founder} />
+							))}
+						</ul>
+					</div>
+					<div>
 						{STORY.map((paragraph, index) => (
 							<p
 								key={paragraph.slice(0, 24)}
-								className={index === 0 ? "body-8 max-w-[60ch] text-zinc-950" : "body-7 mt-6 max-w-[65ch] text-zinc-700"}
+								className={index === 0 ? `${LEAD} max-w-[56ch] text-ink` : `${BODY} mt-6 max-w-[65ch] text-zinc-700`}
 							>
 								{paragraph}
 							</p>
 						))}
-						<div className="mt-10 flex flex-wrap items-center gap-4">
-							<a href={`mailto:${CONTACT_EMAIL}`} className={SECONDARY_BUTTON}>
+						<div className="mt-10 flex flex-col gap-x-6 gap-y-4 sm:flex-row sm:items-center">
+							<a href={`mailto:${CONTACT_EMAIL}`} className={ACTION_QUIET}>
 								Email {CONTACT_EMAIL}
 							</a>
-							<Link to="/features" className={TEXT_LINK}>
+							<Link to="/features" className={`${LINK} ${BODY} w-fit font-medium text-ink`}>
 								See every feature
-								<ArrowRight className="size-4" aria-hidden="true" />
 							</Link>
 						</div>
-					</Reveal>
+					</div>
 				</Page>
 			</section>
 
 			<section className={`${PANEL} ${PANEL_PAD}`}>
-				<Page className="lg:">
-					<div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-						<div className="lg:col-span-4">
-							<SectionHeading title="Key facts" lede="The company on one page, for people and for AI engines." />
-						</div>
-						<Reveal delay={100} className={`${CARD} divide-y divide-zinc-200/80 px-6 lg:col-span-8 lg:px-8`}>
-							<dl>
-								{keyFacts.map((fact) => (
-									<div key={fact.term} className="grid gap-1 py-4 md:grid-cols-[11rem_1fr] md:gap-6">
-										<dt className="title-4 text-zinc-950">{fact.term}</dt>
-										<dd className="body-6 text-zinc-600">{fact.detail}</dd>
-									</div>
-								))}
-							</dl>
-						</Reveal>
-					</div>
+				<Page>
+					<PanelHead title="Key facts">
+						<p className={`${LEAD} text-zinc-600`}>The company on one page, for people and for AI engines.</p>
+					</PanelHead>
+					<dl className="mt-10 border-b border-zinc-200 lg:mt-16">
+						{keyFacts.map((fact) => (
+							<div
+								key={fact.term}
+								className="grid gap-1 border-t border-zinc-200 py-4 lg:grid-cols-12 lg:gap-8 lg:py-5"
+							>
+								<dt className={`${BODY} font-medium text-ink lg:col-span-4`}>{fact.term}</dt>
+								<dd className={`${BODY} max-w-[72ch] text-zinc-600 lg:col-span-8`}>{fact.detail}</dd>
+							</div>
+						))}
+					</dl>
 				</Page>
 			</section>
 

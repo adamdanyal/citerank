@@ -1,29 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CRISP_WEBSITE_ID } from "@workspace/config/constants";
 import { Spinner } from "@workspace/ui/components/spinner";
-import {
-	ArrowUpRight,
-	Bug,
-	CalendarDays,
-	type LucideIcon,
-	Mail,
-	MessageCircle,
-	ShieldCheck,
-	Users,
-} from "lucide-react";
 import { type ReactNode, useState } from "react";
 import {
-	CARD,
-	Container,
-	ICON_BOX,
-	LINK_CARD,
-	PRIMARY_BUTTON,
-	Reveal,
-	RevealItem,
-	SECONDARY_BUTTON,
-} from "@/components/citerank/ui";
-import { PANEL, PANEL_PAD, Page } from "@/components/citerank/v2/kit";
-import { PageShell } from "@/components/citerank/v2/shell";
+	ACTION,
+	ACTION_QUIET,
+	BODY,
+	LEAD,
+	PANEL,
+	PANEL_PAD_WIDE,
+	Page,
+	PanelHead,
+	SUBHEAD,
+} from "@/components/citerank/v2/kit";
+import { PageHead, PageShell } from "@/components/citerank/v2/shell";
 import { openCrispChat } from "@/lib/crisp";
 import { externalRel } from "@/lib/external-link";
 import { breadcrumbJsonLd, canonicalUrl, ogMeta } from "@/lib/seo";
@@ -53,6 +43,9 @@ export const Route = createFileRoute("/support")({
 	component: SupportPage,
 });
 
+/* Every way in is the same width, so the six actions read as one column and the filled one is where to start. */
+const WAY_IN = "w-full sm:w-auto lg:w-full";
+
 // Stops a click that's still waiting on Crisp from spinning forever if the event never comes.
 const CHAT_OPEN_TIMEOUT_MS = 15_000;
 
@@ -71,42 +64,27 @@ function StartChatButton() {
 	// Crisp never loads without a website ID, so until one is set the button emails the team instead.
 	if (!CRISP_WEBSITE_ID) {
 		return (
-			<a href={`mailto:${SUPPORT_EMAIL}`} className={PRIMARY_BUTTON}>
+			<a href={`mailto:${SUPPORT_EMAIL}`} className={`${ACTION} ${WAY_IN}`}>
 				Start a chat
 			</a>
 		);
 	}
 
 	return (
-		<button type="button" onClick={start} disabled={opening} className={PRIMARY_BUTTON}>
+		<button type="button" onClick={start} disabled={opening} className={`${ACTION} ${WAY_IN}`}>
 			{opening && <Spinner />}
 			{opening ? "Opening chat…" : "Start a chat"}
 		</button>
 	);
 }
 
-function ContactCard({
-	icon: Icon,
-	heading,
-	body,
-	action,
-	delay,
-}: {
-	icon: LucideIcon;
-	heading: string;
-	body: string;
-	action: ReactNode;
-	delay: number;
-}) {
+function ContactRow({ title, children, action }: { title: string; children: ReactNode; action: ReactNode }) {
 	return (
-		<RevealItem delay={delay} className={`${CARD} flex flex-col p-6 lg:p-8`}>
-			<span className={ICON_BOX}>
-				<Icon className="size-5" aria-hidden="true" />
-			</span>
-			<h2 className="title-1 mt-6 text-zinc-950">{heading}</h2>
-			<p className="body-6 mt-2 flex-1 text-zinc-600">{body}</p>
-			<div className="mt-6">{action}</div>
-		</RevealItem>
+		<li className="grid gap-x-8 gap-y-2 border-t border-zinc-200 py-6 lg:grid-cols-12 lg:items-center lg:py-8">
+			<h3 className={`${SUBHEAD} text-ink lg:col-span-4`}>{title}</h3>
+			<p className={`${BODY} max-w-[52ch] text-zinc-600 lg:col-span-5`}>{children}</p>
+			<div className="mt-3 lg:col-span-3 lg:mt-0">{action}</div>
+		</li>
 	);
 }
 
@@ -120,108 +98,106 @@ const RESOURCES = [
 	{ href: "/docs/api", label: "API reference", detail: "Every endpoint, with examples." },
 ];
 
+/* The six ways to reach the team, then where the answer may already be written down. */
 function SupportPage() {
 	return (
 		<PageShell>
-			<section className={`${PANEL} ${PANEL_PAD}`}>
-				<Page className="lg: lg:">
-					<div className="max-w-3xl">
-						<p className="caption-3 text-blue-800">Support</p>
-						<h1 className="heading-1 mt-6 text-zinc-950">How can we help?</h1>
-						<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
-							For your account, billing, the MCP server or the AI search agency, here is how to reach the team.
-						</p>
-					</div>
-				</Page>
-			</section>
+			<PageHead
+				title="How can we help?"
+				lede="For your account, billing, the MCP server or the AI search agency, here is how to reach the team."
+			/>
 
-			<section className={`${PANEL} ${PANEL_PAD}`}>
-				<Page className="lg:">
-					<ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-						<ContactCard
-							icon={MessageCircle}
-							heading="Chat with us"
-							body="The fastest way to reach the team, for anything from sign-in trouble to questions about your data."
-							action={<StartChatButton />}
-							delay={0}
-						/>
-						<ContactCard
-							icon={Mail}
-							heading="Email"
-							body="For account, billing, data and anything that needs a longer answer. Include your organization name."
+			{/* The rows bring their own space above the first hairline, so the section adds less than a full gap. */}
+			<section className={`${PANEL} pt-3 pb-9 sm:pt-5 sm:pb-12 lg:pt-10 lg:pb-18`}>
+				<Page>
+					<h2 className="sr-only">How to reach the team</h2>
+					<ul className="border-b border-zinc-200">
+						<ContactRow title="Chat with us" action={<StartChatButton />}>
+							The fastest way to reach the team, for anything from sign-in trouble to questions about your data.
+						</ContactRow>
+						<ContactRow
+							title="Email"
 							action={
-								<a href={`mailto:${SUPPORT_EMAIL}`} className={SECONDARY_BUTTON}>
+								<a href={`mailto:${SUPPORT_EMAIL}`} className={`${ACTION_QUIET} ${WAY_IN}`}>
 									{SUPPORT_EMAIL}
 								</a>
 							}
-							delay={60}
-						/>
-						<ContactCard
-							icon={CalendarDays}
-							heading="Book a call"
-							body="Walk through your results, or the work our AI search agency would do, with someone from the team."
+						>
+							For account, billing, data and anything that needs a longer answer. Include your organization name.
+						</ContactRow>
+						<ContactRow
+							title="Book a call"
 							action={
-								<Link to="/agency" className={SECONDARY_BUTTON}>
+								<Link to="/agency" className={`${ACTION_QUIET} ${WAY_IN}`}>
 									Book a time
 								</Link>
 							}
-							delay={120}
-						/>
-						<ContactCard
-							icon={Users}
-							heading="Community"
-							body="Follow CiteRank.com on LinkedIn for product releases, AEO and GEO guides, and AI search news from the team."
+						>
+							Walk through your results, or the work our AI search agency would do, with someone from the team.
+						</ContactRow>
+						<ContactRow
+							title="Community"
 							action={
-								<a href={LINKEDIN_URL} target="_blank" rel={externalRel(LINKEDIN_URL)} className={SECONDARY_BUTTON}>
+								<a
+									href={LINKEDIN_URL}
+									target="_blank"
+									rel={externalRel(LINKEDIN_URL)}
+									className={`${ACTION_QUIET} ${WAY_IN}`}
+								>
 									Follow on LinkedIn
-									<ArrowUpRight className="size-4" aria-hidden="true" />
 								</a>
 							}
-							delay={0}
-						/>
-						<ContactCard
-							icon={Bug}
-							heading="Bugs and feature requests"
-							body="Report bugs and request features by email, and we'll follow up with you after a fix or release."
+						>
+							Follow CiteRank.com on LinkedIn for product releases, AEO and GEO guides, and AI search news from the
+							team.
+						</ContactRow>
+						<ContactRow
+							title="Bugs and feature requests"
 							action={
 								<a
 									href={`mailto:${SUPPORT_EMAIL}?subject=Bug%20report%20or%20feature%20request`}
-									className={SECONDARY_BUTTON}
+									className={`${ACTION_QUIET} ${WAY_IN}`}
 								>
 									Report an issue
 								</a>
 							}
-							delay={60}
-						/>
-						<ContactCard
-							icon={ShieldCheck}
-							heading="Security"
-							body="Report vulnerabilities privately by email rather than in a public post."
+						>
+							Report bugs and request features by email, and we’ll follow up with you after a fix or release.
+						</ContactRow>
+						<ContactRow
+							title="Security"
 							action={
-								<a href={`mailto:${SUPPORT_EMAIL}?subject=Security%20report`} className={SECONDARY_BUTTON}>
+								<a href={`mailto:${SUPPORT_EMAIL}?subject=Security%20report`} className={`${ACTION_QUIET} ${WAY_IN}`}>
 									Email your report
 								</a>
 							}
-							delay={120}
-						/>
+						>
+							Report vulnerabilities privately by email rather than in a public post.
+						</ContactRow>
 					</ul>
 				</Page>
 			</section>
 
-			<section className={`${PANEL} ${PANEL_PAD}`}>
-				<Page className="grid gap-10 lg:grid-cols-12 lg:gap-16 lg:">
-					<Reveal className="lg:col-span-4">
-						<h2 className="heading-3 text-zinc-950">Before you write</h2>
-						<p className="body-6 mt-4 text-zinc-600">Most setup and integration questions are answered here.</p>
-					</Reveal>
-					<ul className="grid gap-4 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-3">
-						{RESOURCES.map((resource, index) => (
-							<RevealItem key={resource.href} delay={index * 60} className="flex">
-								<a href={resource.href} className={LINK_CARD}>
-									<span className="title-3 text-zinc-950">{resource.label}</span>
-									<span className="body-6 mt-2 text-zinc-600">{resource.detail}</span>
+			<section className={`${PANEL} ${PANEL_PAD_WIDE}`}>
+				<Page>
+					<PanelHead title="Before you write">
+						<p className={`${LEAD} text-zinc-600`}>Most setup and integration questions are answered here.</p>
+					</PanelHead>
+					<ul className="mt-10 grid gap-x-8 md:grid-cols-3 lg:mt-16">
+						{RESOURCES.map((resource) => (
+							<li key={resource.href} className="border-t border-zinc-200">
+								<a
+									href={resource.href}
+									className="group block rounded-sm py-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rust"
+								>
+									<h3
+										className={`${SUBHEAD} text-ink underline-offset-4 group-hover:underline group-hover:decoration-rust`}
+									>
+										{resource.label}
+									</h3>
+									<p className={`${BODY} mt-2 max-w-[40ch] text-zinc-600`}>{resource.detail}</p>
 								</a>
-							</RevealItem>
+							</li>
 						))}
 					</ul>
 				</Page>

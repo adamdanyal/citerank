@@ -1,6 +1,5 @@
-import { ArrowRight } from "lucide-react";
 import type { FeatureGraphicKey, ProductFeature } from "@/data/features";
-import { CARD, EASE_CLASS } from "./citerank/ui";
+import { BODY, SUBHEAD } from "./citerank/v2/kit";
 import {
 	ApiGraphic,
 	CitationsPageGraphic,
@@ -63,21 +62,26 @@ export const FEATURE_GROUPS: { heading: string; lede: string; slugs: string[] }[
 	},
 ];
 
-/** A feature as one linked card: its visual on top, name and summary below. `wide` crops the visual to a banner. */
+/*
+ * A feature as one link: what it looks like, its name and a line. The three
+ * parts sit on the rows of the grid around the tile, so the names of two tiles
+ * side by side line up even when their graphics differ in height.
+ */
+export const FEATURE_TILE = "row-span-3 grid grid-rows-subgrid gap-y-0";
+
+/** `wide` crops the visual to a banner. */
 export function FeatureCard({ feature, wide = false }: { feature: ProductFeature; wide?: boolean }) {
 	return (
 		<a
 			id={feature.slug}
 			href={featurePath(feature.slug)}
-			className={`group flex h-full flex-col rounded-2xl bg-paper-2 p-3 ring-1 ring-zinc-200 transition-[box-shadow] duration-200 hover:ring-zinc-400 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rust`}
+			className={`group ${FEATURE_TILE} rounded-lg focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-rust`}
 		>
 			<FeatureGraphic graphic={feature.graphic} className={wide ? "[&>div]:aspect-[12/5]" : ""} />
-			<div className="flex flex-1 flex-col px-3 pt-5 pb-3">
-				<h3 className="font-heading text-[1.25rem] leading-[1.3] font-semibold tracking-[-0.02em] text-ink [overflow-wrap:break-word] min-w-0 group-hover:underline group-hover:decoration-rust group-hover:underline-offset-4">
-					{feature.name}
-				</h3>
-				<p className="mt-2 text-[1.0625rem] leading-[1.65] text-zinc-600">{feature.summary}</p>
-			</div>
+			<h3 className={`${SUBHEAD} mt-5 text-ink underline-offset-4 group-hover:underline group-hover:decoration-rust`}>
+				{feature.name}
+			</h3>
+			<p className={`${BODY} mt-2 max-w-[60ch] text-zinc-600`}>{feature.summary}</p>
 		</a>
 	);
 }

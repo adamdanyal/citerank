@@ -1,13 +1,13 @@
 import {
 	PLAN_KEYS,
 	PLANS,
+	type PlanPlatformGroup,
 	type PlanPlatformGroupId,
-	type PlanPlatformMember,
 	PREMIUM_ADDON_MONTHLY_USD,
 	planPlatformBreakdown,
 } from "@workspace/config/plans";
 import { EngineIcon } from "@/components/home/engines";
-import { BODY, CARD, MONO, SUBHEAD } from "../v2/kit";
+import { BODY, CARD, HEADING, LEAD, SMALL, SUBHEAD } from "../v2/kit";
 
 const GROUP_NAMES: Record<PlanPlatformGroupId, string> = {
 	scraped: "Checked as a user sees them",
@@ -15,11 +15,20 @@ const GROUP_NAMES: Record<PlanPlatformGroupId, string> = {
 	premium: "Premium: web search, with citations",
 };
 
-function Models({ models }: { models: PlanPlatformMember[] }) {
+function GroupHead({ group, className = "" }: { group: PlanPlatformGroup; className?: string }) {
 	return (
-		<ul className="mt-3 space-y-2">
-			{models.map((member) => (
-				<li key={member.model} className={`${BODY} flex items-center gap-2 text-ink`}>
+		<>
+			<h3 className={`${SUBHEAD} text-ink ${className}`}>{GROUP_NAMES[group.id]}</h3>
+			<p className={`${SMALL} mt-2 text-zinc-600`}>{group.runsPerDay}× a day</p>
+		</>
+	);
+}
+
+function Models({ group }: { group: PlanPlatformGroup }) {
+	return (
+		<ul className="space-y-2.5">
+			{group.models.map((member) => (
+				<li key={member.model} className={`${BODY} flex items-center gap-2.5 font-medium text-ink`}>
 					<EngineIcon iconId={member.iconId} className="size-4 shrink-0" />
 					{member.label}
 				</li>
@@ -28,7 +37,11 @@ function Models({ models }: { models: PlanPlatformMember[] }) {
 	);
 }
 
-/* The menu of AI apps is the same on every plan, so it is shown once; only the premium prompts differ by plan. */
+/*
+ * The menu of AI apps is the same on every plan, so it is shown once; only the
+ * premium prompts differ by plan. The section's head is the rule itself, set
+ * large, because the two wells under it are what the rule is about.
+ */
 export function Compare() {
 	const shared = planPlatformBreakdown(PLANS.business);
 	const premiumByPlan = PLAN_KEYS.map((key) => ({
@@ -39,33 +52,43 @@ export function Compare() {
 
 	return (
 		<div>
-			<p className={`${BODY} text-zinc-600`}>{shared.pickHeading} per brand. Same menu on every plan.</p>
-			<div className="mt-10 grid gap-5 lg:grid-cols-12">
-				<div className={`${CARD} grid gap-8 sm:grid-cols-2 lg:col-span-7`}>
+			<p className={`${HEADING} max-w-[22ch] text-ink`}>{shared.pickHeading} per brand</p>
+			<p className={`${LEAD} mt-5 text-zinc-600`}>Same menu on every plan.</p>
+			<div className="mt-10 grid gap-4 lg:mt-16 lg:grid-cols-12 lg:gap-8">
+				<div className={`${CARD} grid gap-10 sm:grid-cols-2 sm:gap-8 lg:col-span-6 lg:p-10`}>
 					{shared.pickGroups.map((group) => (
-						<div key={group.id}>
-							<p className={`${SUBHEAD} text-ink`}>{GROUP_NAMES[group.id]}</p>
-							<p className={`${MONO} mt-1`}>{group.runsPerDay}× a day</p>
-							<Models models={group.models} />
+						<div key={group.id} className="min-w-0">
+							<GroupHead group={group} className="max-w-[16ch]" />
+							<div className="mt-5">
+								<Models group={group} />
+							</div>
 						</div>
 					))}
 				</div>
 				{premiumModels ? (
-					<div className={`${CARD} lg:col-span-5`}>
-						<p className={`${SUBHEAD} text-ink`}>{GROUP_NAMES.premium}</p>
-						<p className={`${MONO} mt-1`}>{premiumModels.runsPerDay}× a day</p>
-						<Models models={premiumModels.models} />
-						<ul className="mt-6 divide-y divide-zinc-200/80 border-zinc-200/80 border-t">
-							{premiumByPlan.map(({ plan, premium }) => (
-								<li key={plan.key} className={`${BODY} flex items-center justify-between gap-4 py-3`}>
-									<span className="text-ink">{plan.name}</span>
-									<span className="text-zinc-600">
-										{premium ? `${premium.includedSlots} premium prompts included` : "Not included"}
-									</span>
-								</li>
-							))}
-						</ul>
-						<p className={`${MONO} mt-4`}>${PREMIUM_ADDON_MONTHLY_USD} a month for each extra premium prompt.</p>
+					<div className={`${CARD} lg:col-span-6 lg:p-10`}>
+						<GroupHead group={premiumModels} />
+						<div className="mt-5 grid gap-8 sm:grid-cols-2">
+							<Models group={premiumModels} />
+							<div className="min-w-0">
+								<dl className="border-b border-zinc-300">
+									{premiumByPlan.map(({ plan, premium }) => (
+										<div
+											key={plan.key}
+											className="flex items-baseline justify-between gap-4 border-t border-zinc-300 py-3"
+										>
+											<dt className={`${BODY} font-medium text-ink`}>{plan.name}</dt>
+											<dd className={`${BODY} text-right text-zinc-600`}>
+												{premium ? `${premium.includedSlots} prompts included` : "Not included"}
+											</dd>
+										</div>
+									))}
+								</dl>
+								<p className={`${SMALL} mt-4 text-zinc-600`}>
+									${PREMIUM_ADDON_MONTHLY_USD} a month for each extra premium prompt.
+								</p>
+							</div>
+						</div>
 					</div>
 				) : null}
 			</div>

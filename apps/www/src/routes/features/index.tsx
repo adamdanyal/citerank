@@ -4,7 +4,7 @@ import { DEMO_BRAND_PATH } from "@/components/citerank/home/product-demo";
 import { Closing } from "@/components/citerank/v2/closing";
 import { ACTION, ACTION_QUIET, BODY, LINK, PanelHead } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell, PanelSection } from "@/components/citerank/v2/shell";
-import { FEATURE_GROUPS, FeatureCard, featurePath } from "@/components/features";
+import { FEATURE_GROUPS, FEATURE_TILE, FeatureCard, featurePath } from "@/components/features";
 import { productFeatures } from "@/data/features";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
@@ -78,17 +78,17 @@ function FeaturesPage() {
 				const lead = features.length % 2 === 1;
 				return (
 					<PanelSection key={group.heading}>
-						<div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+						<div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
 							<div className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
 								<PanelHead title={group.heading}>
 									<p className={`${BODY} text-zinc-600`}>{group.lede}</p>
 								</PanelHead>
 							</div>
-							<ul className="grid gap-5 sm:grid-cols-2 lg:col-span-8">
+							<ul className="-mb-12 grid gap-x-8 sm:grid-cols-2 lg:col-span-8">
 								{features.map((feature, i) => {
 									const wide = lead && i === 0;
 									return (
-										<li key={feature.slug} className={wide ? "sm:col-span-2" : ""}>
+										<li key={feature.slug} className={`${FEATURE_TILE} pb-12 ${wide ? "sm:col-span-2" : ""}`}>
 											<FeatureCard feature={feature} wide={wide} />
 										</li>
 									);

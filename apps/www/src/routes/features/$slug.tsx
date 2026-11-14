@@ -1,11 +1,26 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { cloudSignupUrl } from "@workspace/config/referrals";
-import { Check } from "lucide-react";
-import { EASE_CLASS, LINK_CARD, QUIET_LINK, Reveal, RevealItem, TEXT_LINK } from "@/components/citerank/ui";
 import { Closing } from "@/components/citerank/v2/closing";
 import { Faq } from "@/components/citerank/v2/faq";
-import { ACTION, ACTION_QUIET, CARD, MONO, PANEL, PANEL_PAD, Page } from "@/components/citerank/v2/kit";
-import { PageShell } from "@/components/citerank/v2/shell";
+import {
+	ACTION,
+	ACTION_QUIET,
+	BAND_PAD,
+	BODY,
+	HEADING,
+	LEAD,
+	LINK,
+	PANEL,
+	PANEL_PAD,
+	PANEL_PAD_TIGHT,
+	PANEL_TINT,
+	Page,
+	PanelHead,
+	RuledRow,
+	SMALL,
+	SUBHEAD,
+} from "@/components/citerank/v2/kit";
+import { PageHead, PageShell } from "@/components/citerank/v2/shell";
 import { FeatureGraphic, featurePath } from "@/components/features";
 import { type FeatureLink, getProductFeature, type ProductFeature } from "@/data/features";
 import { FEATURE_SLUGS, getFeatureLabel, indexableFeatureKeys } from "@/lib/competitors";
@@ -61,82 +76,83 @@ export const Route = createFileRoute("/features/$slug")({
 	component: FeaturePage,
 });
 
+const FOCUS = "rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rust";
+const HOVER_TITLE = "underline-offset-4 group-hover:underline group-hover:decoration-rust";
+
+/* A numbered stage of a real sequence: the numeral is the list's own counter, never a label typed over the head. */
+const STEP_NUMERAL =
+	"[counter-increment:step] before:font-heading before:font-bold before:text-rust before:content-[counter(step)]";
+
 function FeatureHero({ feature }: { feature: ProductFeature }) {
 	const signupUrl = cloudSignupUrl(FROM);
 	return (
-		<section className={`${PANEL} ${PANEL_PAD}`}>
-			<Page className="lg: lg:">
-				<Link
-					to="/features"
-					className={`caption-2 inline-flex items-center gap-1 rounded-sm text-zinc-500 transition-colors duration-300 ${EASE_CLASS} hover:text-zinc-950`}
-				>
+		<PageHead title={feature.title} lede={feature.lede}>
+			<div className="flex flex-col gap-3 sm:flex-row">
+				<a href={signupUrl} onClick={() => trackEvent("signup_click", { from: FROM })} className={ACTION}>
+					Start tracking
+				</a>
+				<Link to="/agency" className={ACTION_QUIET}>
+					Have us do the work
+				</Link>
+			</div>
+			<p className={`${SMALL} mt-5 flex flex-wrap gap-x-6 gap-y-2 text-zinc-700`}>
+				<a href={feature.docs.href} className={LINK}>
+					{feature.docs.title}
+				</a>
+				<Link to="/features" className={LINK}>
 					All features
 				</Link>
-				<div className="mt-8 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
-					<div className="lg:col-span-5">
-						<h1 className="heading-1 text-zinc-950">{feature.title}</h1>
-						<p className="body-8 mt-6 text-zinc-600">{feature.lede}</p>
-						<div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-							<a href={signupUrl} onClick={() => trackEvent("signup_click", { from: FROM })} className={ACTION}>
-								Start tracking
-							</a>
-							<Link to="/agency" className={ACTION_QUIET}>
-								Have us do the work
-							</Link>
-						</div>
-						<p className="body-6 mt-6 text-zinc-600">
-							Read the{" "}
-							<a href={feature.docs.href} className={`${QUIET_LINK} text-zinc-950`}>
-								{feature.docs.title.toLowerCase()}
-							</a>
-							.
-						</p>
-					</div>
-					<div className="lg:col-span-7">
-						<FeatureGraphic graphic={feature.graphic} />
-					</div>
-				</div>
-			</Page>
-		</section>
+			</p>
+		</PageHead>
 	);
 }
 
+/*
+ * The product itself across the full width, then what a visitor does with it.
+ * The capture opens this section rather than closing the one above, so the
+ * page's opening still ends inside the first screen on a tall display.
+ */
 function Steps({ feature }: { feature: ProductFeature }) {
 	const secondary = feature.secondaryGraphic;
-	const steps = (
-		<ol className={secondary ? "mt-10 space-y-8" : "mt-10 grid gap-8 md:grid-cols-3"}>
-			{feature.steps.map((step, i) => (
-				<RevealItem key={step.name} delay={i * 80} className="flex gap-5">
-					<span className="caption-1 mt-1 font-mono text-blue-700 tabular-nums">0{i + 1}</span>
-					<div>
-						<h3 className="title-2 text-zinc-950">{step.name}</h3>
-						<p className="body-6 mt-2 text-zinc-600">{step.text}</p>
-					</div>
-				</RevealItem>
-			))}
-		</ol>
-	);
 	return (
 		<section className={`${PANEL} ${PANEL_PAD}`}>
-			<Page className="lg:">
+			<Page>
+				<FeatureGraphic graphic={feature.graphic} className="mb-16 lg:mb-24" />
 				{secondary ? (
-					<div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
-						<div className="lg:col-span-5">
-							<Reveal>
-								<h2 className="heading-2 text-zinc-950">What you can do</h2>
-							</Reveal>
-							{steps}
+					<div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center lg:gap-x-16">
+						<div>
+							<PanelHead title="What you can do" />
+							<ol className="mt-8 border-b border-zinc-200 [counter-reset:step] lg:mt-10">
+								{feature.steps.map((step) => (
+									<li
+										key={step.name}
+										className={`grid grid-cols-[2.5rem_minmax(0,1fr)] border-t border-zinc-200 py-6 before:text-title before:leading-[1.2] ${STEP_NUMERAL}`}
+									>
+										<div>
+											<h3 className={`${SUBHEAD} text-ink`}>{step.name}</h3>
+											<p className={`${BODY} mt-2 text-zinc-600`}>{step.text}</p>
+										</div>
+									</li>
+								))}
+							</ol>
 						</div>
-						<Reveal delay={100} className="lg:col-span-7">
-							<FeatureGraphic graphic={secondary} />
-						</Reveal>
+						<FeatureGraphic graphic={secondary} />
 					</div>
 				) : (
 					<>
-						<Reveal>
-							<h2 className="heading-2 text-zinc-950">What you can do</h2>
-						</Reveal>
-						{steps}
+						<PanelHead title="What you can do" />
+						{/* The three parts of a step sit on shared rows: when one head wraps, the others drop to its last line and every body starts level. */}
+						<ol className="mt-10 grid gap-x-8 [counter-reset:step] md:grid-cols-3 lg:mt-16">
+							{feature.steps.map((step) => (
+								<li
+									key={step.name}
+									className={`row-span-3 grid grid-rows-subgrid gap-y-0 border-t border-zinc-200 pt-8 pb-10 before:text-display-s before:leading-none before:tracking-[-0.03em] last:pb-0 md:pb-0 ${STEP_NUMERAL}`}
+								>
+									<h3 className={`${SUBHEAD} mt-6 self-end text-ink`}>{step.name}</h3>
+									<p className={`${BODY} mt-3 max-w-[44ch] text-zinc-600`}>{step.text}</p>
+								</li>
+							))}
+						</ol>
 					</>
 				)}
 			</Page>
@@ -144,54 +160,65 @@ function Steps({ feature }: { feature: ProductFeature }) {
 	);
 }
 
+/* Rows, unless there are too few to make a list: one or two measures sit beside the head instead, so the section still fills its width. */
 function Metrics({ feature }: { feature: ProductFeature }) {
+	if (feature.metrics.length < 3) {
+		return (
+			<section className={`${PANEL} ${PANEL_PAD}`}>
+				<Page className="grid gap-10 lg:grid-cols-3 lg:gap-8">
+					<PanelHead title="Data you can act on" />
+					{feature.metrics.map((metric) => (
+						<div key={metric.term} className="border-t border-zinc-200 pt-6">
+							<h3 className={`${SUBHEAD} text-ink`}>{metric.term}</h3>
+							<p className={`${BODY} mt-3 max-w-[44ch] text-zinc-600`}>{metric.definition}</p>
+						</div>
+					))}
+				</Page>
+			</section>
+		);
+	}
 	return (
 		<section className={`${PANEL} ${PANEL_PAD}`}>
-			<Page className="grid gap-10 lg:grid-cols-12 lg:gap-16 lg:">
-				<Reveal className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
-					<h2 className="heading-2 text-zinc-950">Data you can act on</h2>
-				</Reveal>
-				<Reveal delay={100} className="lg:col-span-8">
-					<dl className="grid gap-x-10 sm:grid-cols-2">
-						{feature.metrics.map((m) => (
-							<div key={m.term} className="border-zinc-200 border-t py-5">
-								<dt className="title-3 text-zinc-950">{m.term}</dt>
-								<dd className="body-6 mt-1.5 text-zinc-600">{m.definition}</dd>
-							</div>
-						))}
-					</dl>
-				</Reveal>
+			<Page>
+				<PanelHead title="Data you can act on" />
+				<ul className="mt-10 border-b border-zinc-200 lg:mt-16">
+					{feature.metrics.map((metric) => (
+						<RuledRow key={metric.term} title={metric.term}>
+							{metric.definition}
+						</RuledRow>
+					))}
+				</ul>
 			</Page>
 		</section>
 	);
 }
 
+/* Who it is for and why this tool, side by side on tinted paper: the page's one band before the close. */
 function UseCasesAndWhy({ feature }: { feature: ProductFeature }) {
 	return (
-		<section className={`${PANEL} ${PANEL_PAD}`}>
-			<Page className="grid gap-5 lg:grid-cols-2 lg:">
-				<Reveal className={`${CARD} p-6 md:p-8`}>
-					<h2 className="heading-5 text-zinc-950">Use cases</h2>
-					<ul className="mt-6 space-y-4">
-						{feature.useCases.map((u) => (
-							<li key={u} className="body-6 flex gap-3 text-zinc-700">
-								<Check className="mt-1 size-4 shrink-0 text-blue-700" strokeWidth={2.5} aria-hidden="true" />
-								{u}
+		<section className={`${PANEL_TINT} ${BAND_PAD}`}>
+			<Page className="grid gap-14 lg:grid-cols-2 lg:gap-x-16">
+				<div>
+					<h2 className={`${HEADING} text-ink`}>Use cases</h2>
+					<ul className="mt-8 border-b border-zinc-300 lg:mt-10">
+						{feature.useCases.map((useCase) => (
+							<li key={useCase} className={`${LEAD} border-t border-zinc-300 py-6 text-zinc-700`}>
+								{useCase}
 							</li>
 						))}
 					</ul>
-				</Reveal>
-				<Reveal delay={100} className={`${CARD} p-6 md:p-8`}>
-					<h2 className="heading-5 text-zinc-950">Why CiteRank.com</h2>
-					<ul className="mt-6 space-y-5">
-						{feature.why.map((w) => (
-							<li key={w.name}>
-								<h3 className="title-3 text-zinc-950">{w.name}</h3>
-								<p className="body-6 mt-1 text-zinc-600">{w.text}</p>
+				</div>
+				<div>
+					<h2 className={`${HEADING} text-ink`}>Why CiteRank.com</h2>
+					<ul className="mt-8 border-b border-zinc-300 lg:mt-10">
+						{feature.why.map((reason) => (
+							<li key={reason.name} className="border-t border-zinc-300 py-6">
+								<h3 className={`${SUBHEAD} text-ink`}>{reason.name}</h3>
+								<p className={`${BODY} mt-2 text-zinc-600`}>{reason.text}</p>
 							</li>
 						))}
 					</ul>
-				</Reveal>
+				</div>
 			</Page>
 		</section>
 	);
@@ -200,18 +227,20 @@ function UseCasesAndWhy({ feature }: { feature: ProductFeature }) {
 function LearnMore({ links }: { links: FeatureLink[] }) {
 	return (
 		<section className={`${PANEL} ${PANEL_PAD}`}>
-			<Page className="lg:">
-				<Reveal>
-					<h2 className="heading-3 text-zinc-950">Related guides</h2>
-				</Reveal>
-				<ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-					{links.map((l, i) => (
-						<RevealItem key={l.href} delay={(i % 3) * 80} className="flex">
-							<a href={l.href} className={LINK_CARD}>
-								<span className={MONO}>{l.kind}</span>
-								<span className="title-3 mt-2 text-zinc-950">{l.title}</span>
+			<Page className="grid gap-10 lg:grid-cols-12 lg:gap-8">
+				<div className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
+					<PanelHead title="Related guides" />
+				</div>
+				<ul className="border-b border-zinc-200 lg:col-span-8">
+					{links.map((link) => (
+						<li key={link.href} className="border-t border-zinc-200">
+							<a href={link.href} className={`group flex items-baseline justify-between gap-6 py-5 ${FOCUS}`}>
+								<span className={`text-[1.125rem] leading-[1.4] font-medium text-ink ${HOVER_TITLE}`}>
+									{link.title}
+								</span>
+								<span className={`${SMALL} shrink-0 text-zinc-600`}>{link.kind}</span>
 							</a>
-						</RevealItem>
+						</li>
 					))}
 				</ul>
 			</Page>
@@ -221,22 +250,22 @@ function LearnMore({ links }: { links: FeatureLink[] }) {
 
 function RelatedFeatures({ related }: { related: ProductFeature[] }) {
 	return (
-		<section className={`${PANEL} ${PANEL_PAD}`}>
-			<Page className="lg:">
-				<Reveal className="flex flex-wrap items-center justify-between gap-4">
-					<h2 className="heading-3 text-zinc-950">Related features</h2>
-					<Link to="/features" className={TEXT_LINK}>
+		<section className={`${PANEL} ${PANEL_PAD_TIGHT}`}>
+			<Page>
+				<div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
+					<PanelHead title="Related features" />
+					<Link to="/features" className={`${LINK} ${BODY} font-medium text-ink`}>
 						All features
 					</Link>
-				</Reveal>
-				<ul className="mt-8 grid gap-4 md:grid-cols-3">
-					{related.map((f, i) => (
-						<RevealItem key={f.slug} delay={i * 80} className="flex">
-							<a href={featurePath(f.slug)} className={LINK_CARD}>
-								<span className="title-2 flex items-start justify-between gap-3 text-zinc-950">{f.name}</span>
-								<span className="body-6 mt-2 text-zinc-600">{f.summary}</span>
+				</div>
+				<ul className="mt-10 grid gap-x-8 md:grid-cols-3 lg:mt-16">
+					{related.map((f) => (
+						<li key={f.slug} className="border-t border-zinc-200">
+							<a href={featurePath(f.slug)} className={`group block py-6 ${FOCUS}`}>
+								<h3 className={`${SUBHEAD} text-ink ${HOVER_TITLE}`}>{f.name}</h3>
+								<p className={`${BODY} mt-2 max-w-[44ch] text-zinc-600`}>{f.summary}</p>
 							</a>
-						</RevealItem>
+						</li>
 					))}
 				</ul>
 			</Page>
@@ -244,6 +273,7 @@ function RelatedFeatures({ related }: { related: ProductFeature[] }) {
 	);
 }
 
+/* The offer and the product, what you do with it, what it measures, who it is for, where to read on, the objections. */
 function FeaturePage() {
 	const { feature, related, directory } = Route.useLoaderData() as {
 		feature: ProductFeature;
