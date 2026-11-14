@@ -40,8 +40,6 @@ Have a solicitor check the legal pages (`packages/docs/content/legal/`). Points 
 
 Once five agency clients have the founding-client rate, take it off the site: the founding-rate row over the plan cards in `apps/www/src/routes/agency.tsx`, and the founding-rate FAQ in `apps/www/src/lib/faqs.ts`.
 
-The Enterprise agency plan (`apps/www/src/lib/agency-plans.ts`) lists schema and entity work, technical SEO fixes, digital PR and brand mentions, and a senior strategist. Adam asked for the top plan to cover advanced work of the kind AEO Engine sells; confirm the team can deliver each line before deploying.
-
 ## Running locally
 
 Everything runs in cloud mode (plans and billing) with no real keys.
