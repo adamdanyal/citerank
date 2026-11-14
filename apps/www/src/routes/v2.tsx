@@ -3,7 +3,6 @@ import { getModelMeta } from "@workspace/config/models";
 import { CLOUD_PLATFORMS } from "@workspace/config/plans";
 import { Agency } from "@/components/citerank/v2/agency";
 import { Closing } from "@/components/citerank/v2/closing";
-import { Demo } from "@/components/citerank/v2/demo";
 import { Engines } from "@/components/citerank/v2/engines";
 import { Faq } from "@/components/citerank/v2/faq";
 import { Figures } from "@/components/citerank/v2/figures";
@@ -59,7 +58,6 @@ function V2Preview() {
 				<HowItWorks />
 				<Figures />
 				<Letter />
-				<Demo />
 				<Reviews />
 				<Pricing />
 				<Agency />

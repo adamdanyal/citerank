@@ -134,7 +134,6 @@ export function softwareApplicationJsonLd() {
 		operatingSystem: "Web",
 		url: SITE_URL,
 		image: SITE_LOGO_URL,
-		screenshot: `${SITE_URL}/screenshots/overview.webp`,
 		featureList: [
 			"Tracks brand mentions in ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews, AI Mode, Bing AI Mode, Grok, Meta, DeepSeek, Mistral, Qwen and Kimi",
 			"Checks every prompt up to 4 times a day and keeps every answer in full",

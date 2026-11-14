@@ -47,7 +47,6 @@ export default defineConfig({
 			routeRules: {
 				"/assets/**": { headers: { "cache-control": "public, max-age=31536000, immutable" } },
 				"/screenshots/**": { headers: { "cache-control": "public, max-age=86400, stale-while-revalidate=604800" } },
-				"/screens/**": { headers: { "cache-control": "public, max-age=86400, stale-while-revalidate=604800" } },
 				"/icons/**": { headers: { "cache-control": "public, max-age=604800, stale-while-revalidate=2592000" } },
 			},
 			alias: {
