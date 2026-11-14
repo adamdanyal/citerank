@@ -8,7 +8,7 @@
 /* Hallmark · waive 47c · the product screens are HTML, not captures · same instruction; every one is labelled as sample data and links to the same screen in the live demo */
 /* Hallmark · waive 3 · how it works is three cards of one size, a numbered head over a picture · the owner's first rule is that a ten-year-old can follow the page, and three steps of the same size read as one, two, three */
 /* Hallmark · hero-review: fix · 4 findings · 3 resolved 1 partial · the amber tile is the product's own grade for a middling score and stays as the app shows it; the selected tile now takes an ink outline, so the two no longer read alike */
-/* Hallmark · finish-review: subagent · 8 findings · 7 resolved 1 partial · gap: the section heads would pass on a rival's page and are the owner's wording; the signature has since gone, and the page closes on the founder's quote beside his portrait */
+/* Hallmark · finish-review: subagent · 8 findings · 7 resolved 1 partial · gap: the section heads would pass on a rival's page and are the owner's wording; the signature has since gone, and the page closes on a quote from each founder, on two cards of one size */
 /* Hallmark · dropped the two API commands from the home page and the four kinds of agency work as heads · 58 names them: the commands are on the API feature page, and each job now stands beside how many of it a plan buys */
 /* Hallmark · dismissed 28a · the hero holds no image; the images these lines name sit below the fold and load lazily on purpose */
 /* Hallmark · dismissed 46a · "200+ brands" and "2M+ on LinkedIn" are carried over from the old page as found and listed for the owner to verify */
@@ -276,6 +276,20 @@
 	--color-warn: #a15c07;
 	--color-warn-tint: #fff5d6;
 	--color-bad: #c2410c;
+	/* The AI apps' own colours, used only on their logos where the apps are listed. */
+	--color-logo-claude: #d97757;
+	--color-logo-perplexity: #1fb8cd;
+	--color-logo-mistral: #fa520f;
+	--color-logo-deepseek: #4d6bfe;
+	--color-logo-qwen: #615ced;
+	--color-logo-meta: #0467df;
+	--color-logo-google-blue: #4285f4;
+	--color-logo-google-red: #ea4335;
+	--color-logo-google-yellow: #fbbc05;
+	--color-logo-google-green: #34a853;
+	--color-logo-gemini-1: #4285f4;
+	--color-logo-gemini-2: #9b72cb;
+	--color-logo-gemini-3: #d96570;
 
 	--color-blue-50: #fbf3ef;
 	--color-blue-100: #f6e2d8;
