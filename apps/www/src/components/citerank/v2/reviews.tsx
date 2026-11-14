@@ -1,6 +1,6 @@
 import { EngineIcon } from "@/components/home/engines";
 import { AI_PROMPT, REVIEW_COLUMNS, type Review } from "../home/reviews";
-import { BODY, LINK, MONO, PANEL, PANEL_PAD, Page, PanelHead, PILL_RUST, SMALL } from "./kit";
+import { BODY, LINK, MONO, PANEL, PANEL_PAD, Page, PanelHead, SMALL } from "./kit";
 
 const ROW_ORDER = [0, 1, 2].flatMap((row) => REVIEW_COLUMNS.map((column) => column[row]));
 
@@ -43,38 +43,33 @@ function Avatar({ review }: { review: Review }) {
 	);
 }
 
+const TEXT_CONTROL = `${LINK} inline-flex min-h-11 items-center text-[0.9375rem] font-medium whitespace-nowrap text-blue-800`;
+
 /* An AI's review sits on rust-tinted paper, because it is the product reviewing itself. */
 function ReviewCard({ review }: { review: Review }) {
 	const isAi = review.kind === "ai";
 	return (
 		<figure className={`flex w-full flex-col rounded-card p-6 sm:p-8 ${isAi ? "bg-blue-50" : "bg-paper-2"}`}>
-			{isAi ? (
-				<p className="mb-5">
-					<span className={PILL_RUST}>Asked {review.name}</span>
-				</p>
-			) : null}
 			<blockquote className={`${BODY} flex-1 text-ink`}>“{review.quote}”</blockquote>
 			<figcaption className="mt-6 flex items-center gap-3">
 				<Avatar review={review} />
 				<div className="min-w-0 flex-1">
 					<p className={`${SMALL} font-medium text-ink`}>{review.name}</p>
 					{review.kind === "ai" ? (
-						<AnswerDetails review={review} />
+						<p className={`${SMALL} text-zinc-600`}>Asked Oct 31, 2026</p>
 					) : review.role ? (
 						<p className={`${SMALL} truncate text-zinc-600`}>{review.role}</p>
 					) : null}
 				</div>
-				{isAi ? (
-					<a
-						href={review.askUrl}
-						target="_blank"
-						rel="noopener noreferrer"
-						className={`${LINK} shrink-0 text-[0.9375rem] font-medium text-blue-800`}
-					>
-						Ask it<span className="sr-only"> ({review.name})</span>
-					</a>
-				) : null}
 			</figcaption>
+			{review.kind === "ai" ? (
+				<div className="mt-2 flex flex-wrap gap-x-6">
+					<AnswerDetails review={review} />
+					<a href={review.askUrl} target="_blank" rel="noopener noreferrer" className={TEXT_CONTROL}>
+						Ask it yourself<span className="sr-only"> ({review.name})</span>
+					</a>
+				</div>
+			) : null}
 		</figure>
 	);
 }
@@ -87,12 +82,8 @@ function AnswerDetails({ review }: { review: AiReview }) {
 	const id = `answer-${review.iconId}`;
 	return (
 		<>
-			<button
-				type="button"
-				popoverTarget={id}
-				className={`${SMALL} rounded-sm whitespace-nowrap text-zinc-600 underline decoration-zinc-400 decoration-dotted underline-offset-4 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust`}
-			>
-				Asked Oct 31, 2026
+			<button type="button" popoverTarget={id} className={TEXT_CONTROL}>
+				See its full answer<span className="sr-only"> ({review.name})</span>
 			</button>
 			<div
 				id={id}
@@ -109,12 +100,7 @@ function AnswerDetails({ review }: { review: AiReview }) {
 				</div>
 				<p className={`${SMALL} mt-4 text-zinc-600`}>Asked over the {review.name} API with web search. Answers vary.</p>
 				<p className="mt-5">
-					<button
-						type="button"
-						popoverTarget={id}
-						popoverTargetAction="hide"
-						className={`${LINK} ${SMALL} font-medium text-ink`}
-					>
+					<button type="button" popoverTarget={id} popoverTargetAction="hide" className={TEXT_CONTROL}>
 						Close
 					</button>
 				</p>
