@@ -113,7 +113,7 @@ export function PanelHead({
 	return (
 		<div className={className}>
 			<h2 className={`${HEADING} max-w-[22ch] ${onInk ? "text-paper" : "text-ink"}`}>{title}</h2>
-			{children ? <div className="mt-5 max-w-[52ch]">{children}</div> : null}
+			{children ? <div className="mt-5 max-w-[52ch] text-lead">{children}</div> : null}
 		</div>
 	);
 }

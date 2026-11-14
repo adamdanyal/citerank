@@ -242,7 +242,7 @@
 	/* The type roles, on a 1.25 ratio from a 16px body. At 1440 wide: 84, 60, 52, 25 and 21px. */
 	--text-display: clamp(2.75rem, 5vw + 1rem, 5.25rem);
 	--text-display-s: clamp(2.25rem, 4vw + 0.5rem, 3.75rem);
-	--text-section: clamp(2rem, 2.5vw + 1rem, 3.25rem);
+	--text-section: min(clamp(2rem, 2.5vw + 1rem, 3.25rem), calc((100vw - 2rem) / 13.2));
 	--text-title: clamp(1.25rem, 0.75vw + 0.875rem, 1.5625rem);
 	--text-lead: clamp(1.125rem, 0.35vw + 1rem, 1.3125rem);
 
