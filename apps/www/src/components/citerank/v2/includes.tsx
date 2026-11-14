@@ -21,8 +21,11 @@ const ICON_OVERRIDES: Record<string, string> = { gemini: "gemini" };
 const MODELS = Object.keys(CLOUD_PLATFORMS);
 /* The ten a brand picks from, by how we read them. */
 const STANDARD = STANDARD_PLATFORM_MENU;
-const IN_APP = STANDARD.filter((model) => CLOUD_PLATFORMS[model].access === "scraped");
-const BY_API = STANDARD.filter((model) => CLOUD_PLATFORMS[model].access === "api");
+/* The apps we read as a customer sees them come first on the board, then the ones we read through an API. */
+const BOARD = [
+	...STANDARD.filter((model) => CLOUD_PLATFORMS[model].access === "scraped"),
+	...STANDARD.filter((model) => CLOUD_PLATFORMS[model].access !== "scraped"),
+];
 const ENTRY = PLANS.basic;
 const PICKS = ENTRY.platformPicks;
 /* What a visitor finds picked, so the sum below is whole before they touch anything. */
@@ -39,35 +42,36 @@ const KEY =
 const KEY_OFF = "bg-white text-ink ring-1 ring-inset ring-zinc-200 hover:ring-zinc-400";
 const KEY_ON = "bg-ink text-paper";
 
-function Keys({
-	title,
-	models,
-	picked,
-	onToggle,
-}: {
-	title: string;
-	models: readonly string[];
-	picked: string[];
-	onToggle: (model: string) => void;
-}) {
+function Keys({ picked, onToggle }: { picked: string[]; onToggle: (model: string) => void }) {
 	return (
-		<div className="mt-7">
-			<p className={`${SMALL} text-zinc-600`}>{title}</p>
-			<ul className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-5">
-				{models.map((model) => {
-					const on = picked.includes(model);
-					return (
-						<li key={model}>
-							<label className={`${KEY} ${on ? KEY_ON : KEY_OFF}`}>
-								<input type="checkbox" checked={on} onChange={() => onToggle(model)} className="sr-only" />
-								<EngineIcon iconId={iconId(model)} className="size-6 shrink-0" />
-								{label(model)}
-							</label>
-						</li>
-					);
-				})}
-			</ul>
-		</div>
+		<ul className="mt-7 grid grid-cols-3 gap-2 sm:grid-cols-5">
+			{BOARD.map((model) => {
+				const on = picked.includes(model);
+				return (
+					<li key={model}>
+						<label className={`${KEY} ${on ? KEY_ON : KEY_OFF}`}>
+							<input type="checkbox" checked={on} onChange={() => onToggle(model)} className="sr-only" />
+							<svg
+								aria-hidden="true"
+								viewBox="0 0 12 12"
+								className={`absolute top-2.5 right-2.5 size-3 ${on ? "" : "invisible"}`}
+							>
+								<path
+									d="M2 6.5l2.5 2.5 5.5-6"
+									fill="none"
+									stroke="currentColor"
+									strokeWidth="1.75"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+							<EngineIcon iconId={iconId(model)} className="size-6 shrink-0" />
+							{label(model)}
+						</label>
+					</li>
+				);
+			})}
+		</ul>
 	);
 }
 
@@ -122,24 +126,11 @@ export function Includes() {
 							<legend className="sr-only">
 								Pick any {PICKS} of the {STANDARD.length} standard AI apps
 							</legend>
-							<Keys
-								title="Standard, read in the app the way your customers see it"
-								models={IN_APP}
-								picked={picked}
-								onToggle={toggle}
-							/>
-							<Keys
-								title="Standard, read through each company’s API"
-								models={BY_API}
-								picked={picked}
-								onToggle={toggle}
-							/>
+							<Keys picked={picked} onToggle={toggle} />
 						</fieldset>
 
 						<div className="mt-7">
-							<p className={`${SMALL} text-zinc-600`}>
-								Premium, asked with their own web search on ({premiumPlanNames()})
-							</p>
+							<p className={`${SMALL} text-zinc-600`}>{premiumPlanNames()} add these, asked with web search on</p>
 							<ul className="mt-3 flex flex-wrap gap-2">
 								{PREMIUM_MODELS.map((model) => (
 									<li
