@@ -30,9 +30,9 @@ export function Hero({
 
 	return (
 		<section className="relative overflow-x-clip bg-ink text-paper">
-			{/* Five tracks: a gutter, the text, a gap, the product, a gutter. The gutters grow past 1440; the text and the product do not. */}
-			<div className="grid items-center gap-y-10 px-4 py-10 sm:px-6 sm:py-12 lg:min-h-[min(calc(100svh-4.5rem),52rem)] lg:grid-cols-[minmax(4rem,1fr)_minmax(0,30rem)_3rem_minmax(0,49rem)_minmax(4rem,1fr)] lg:px-0 lg:py-10">
-				<div className="min-w-0 lg:col-start-2">
+			{/* From 1280 wide, five tracks: a gutter, the text, a gap, the product, a gutter. The gutters grow past 1440; the text and the product do not. Narrower, the product sits under the text at full width. */}
+			<div className="grid items-center gap-y-10 px-4 py-10 sm:px-6 sm:py-12 lg:px-16 xl:min-h-[min(calc(100svh-4.5rem),52rem)] xl:grid-cols-[minmax(4rem,1fr)_minmax(0,30rem)_3rem_minmax(0,49rem)_minmax(4rem,1fr)] xl:px-0 xl:py-10">
+				<div className="min-w-0 xl:col-start-2">
 					<h1 className={`${DISPLAY} text-paper`}>{title}</h1>
 					<p data-speakable className="mt-6 max-w-[46ch] text-lead leading-[1.45] text-balance text-zinc-300">
 						{lede}
@@ -58,7 +58,7 @@ export function Hero({
 				</div>
 
 				{/* The product itself, in HTML: the overview first, and four more screens a tab away. */}
-				<Product screen="overview" tabs={HERO_TABS} from={from} className="lg:col-start-4" />
+				<Product screen="overview" tabs={HERO_TABS} from={from} className="xl:col-start-4" />
 			</div>
 		</section>
 	);
