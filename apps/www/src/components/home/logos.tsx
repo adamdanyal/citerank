@@ -41,6 +41,8 @@ export const CUSTOMERS: Customer[] = [
 				height={24}
 				alt=""
 				aria-hidden="true"
+				loading="lazy"
+				decoding="async"
 				className="block h-6 w-auto grayscale transition-[filter] duration-150 group-hover/rr:grayscale-0"
 			/>
 		),
@@ -51,11 +53,13 @@ export const CUSTOMERS: Customer[] = [
 		linkClass: "group/ah flex h-6 items-center",
 		render: () => (
 			<img
-				src="/askhotel-logo.png"
+				src="/askhotel-logo.webp"
 				width={95}
 				height={24}
 				alt=""
 				aria-hidden="true"
+				loading="lazy"
+				decoding="async"
 				className="block h-6 w-auto grayscale transition-[filter] duration-150 group-hover/ah:grayscale-0"
 			/>
 		),
@@ -66,11 +70,13 @@ export const CUSTOMERS: Customer[] = [
 		linkClass: "group/asg flex h-6 items-center",
 		render: () => (
 			<img
-				src="/aisearch-global-logo.svg"
+				src="/aisearch-global-logo.webp"
 				width={81}
 				height={24}
 				alt=""
 				aria-hidden="true"
+				loading="lazy"
+				decoding="async"
 				className="block h-6 w-auto opacity-60 grayscale transition-[filter,opacity] duration-150 group-hover/asg:opacity-100 group-hover/asg:grayscale-0"
 			/>
 		),

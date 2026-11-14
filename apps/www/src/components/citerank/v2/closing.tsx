@@ -37,10 +37,10 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 							<span className={`${SMALL} block text-zinc-600`}>Founder, CiteRank.com</span>
 						</span>
 						<img
-							src="/signature.png"
+							src="/signature.webp"
 							alt="Adam Danyal’s signature"
-							width={815}
-							height={267}
+							width={402}
+							height={132}
 							loading="lazy"
 							decoding="async"
 							className="ml-2 h-11 w-auto"
