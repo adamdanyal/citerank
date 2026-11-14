@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
-import { ACTION, ACTION_QUIET, BODY, PanelHead, SUBHEAD } from "./citerank/v2/kit";
+import { ACTION, ACTION_QUIET, BODY, LIST_CARD, PanelHead, SUBHEAD } from "./citerank/v2/kit";
 import { PageHead, PageShell, PanelSection } from "./citerank/v2/shell";
 
 const suggestedLinks = [
@@ -28,7 +28,7 @@ export function NotFound() {
 
 			<PanelSection>
 				<PanelHead title="Popular pages" />
-				<ul className="mt-10 border-b border-zinc-200 lg:mt-16">
+				<ul className={`${LIST_CARD} mt-10 lg:mt-16`}>
 					{suggestedLinks.map((link) => (
 						<li
 							key={link.href}

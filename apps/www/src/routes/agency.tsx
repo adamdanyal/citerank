@@ -15,7 +15,7 @@ import {
 	Page,
 	PanelHead,
 	SMALL,
-	StepDisc,
+	StepCards,
 	SUBHEAD,
 	Tick,
 } from "@/components/citerank/v2/kit";
@@ -156,17 +156,7 @@ function AgencyPage() {
 
 			<PanelSection>
 				<PanelHead title="How a month runs" />
-				<ol className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-5 sm:grid-cols-2 lg:mt-16 lg:gap-8">
-					{STEPS.map((step, index) => (
-						<li key={step.title} className={`${CARD_LIFT} p-6 sm:p-8`}>
-							<h3 className={`${SUBHEAD} flex items-start gap-3 text-ink`}>
-								<StepDisc step={index + 1} />
-								{step.title}
-							</h3>
-							<p className={`${BODY} mt-3 text-zinc-600`}>{step.body}</p>
-						</li>
-					))}
-				</ol>
+				<StepCards steps={STEPS} className="mt-10 sm:grid-cols-2 lg:mt-16" />
 			</PanelSection>
 
 			<PanelSection>

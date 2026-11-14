@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
-import { BODY, PANEL, Page, SMALL, SUBHEAD } from "@/components/citerank/v2/kit";
+import { BODY, CARD_LIFT, PANEL, Page, SMALL, SUBHEAD } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
 import { formatPostDate } from "@/lib/format";
 import type { LegalPageSummary } from "@/lib/legal";
@@ -40,14 +40,13 @@ function LegalIndex() {
 				lede="These policies cover the CiteRank.com tracker, the AI search agency, and our websites. CiteRank.com is a trading name of Danx Digital Limited."
 			/>
 
-			{/* The first rule opens the list, so the section brings less padding than usual to keep the usual gap to the first title. */}
 			<section className={`${PANEL} pt-3 pb-9 sm:pt-6 sm:pb-12 lg:pt-10 lg:pb-18`}>
 				<Page>
-					<dl className="border-b border-zinc-200">
+					<dl className={`${CARD_LIFT} px-6 sm:px-8`}>
 						{pages.map((page) => (
 							<div
 								key={page.slug}
-								className="group relative grid gap-2 border-t border-zinc-200 py-6 lg:grid-cols-12 lg:gap-8 lg:py-8"
+								className="group relative grid gap-2 border-t border-zinc-200 py-6 first:border-t-0 lg:grid-cols-12 lg:gap-8 lg:py-8"
 							>
 								<dt className={`${SUBHEAD} text-ink lg:col-span-5`}>
 									<a

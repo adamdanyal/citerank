@@ -8,11 +8,11 @@ import {
 	BODY,
 	CARD_LIFT,
 	LEAD,
+	LinkCards,
 	PANEL,
 	PANEL_PAD_WIDE,
 	Page,
 	PanelHead,
-	SUBHEAD,
 } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
 import { openCrispChat } from "@/lib/crisp";
@@ -183,21 +183,10 @@ function SupportPage() {
 					<PanelHead title="Before you write">
 						<p className={`${LEAD} text-zinc-600`}>Most setup and integration questions are answered here.</p>
 					</PanelHead>
-					<ul className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-5 md:grid-cols-3 lg:mt-16 lg:gap-8">
-						{RESOURCES.map((resource) => (
-							<li key={resource.href} className="flex">
-								<a
-									href={resource.href}
-									className={`${CARD_LIFT} group block w-full p-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rust sm:p-8`}
-								>
-									<h3 className={`${SUBHEAD} text-ink transition-colors duration-200 group-hover:text-rust`}>
-										{resource.label}
-									</h3>
-									<p className={`${BODY} mt-2 max-w-[40ch] text-zinc-600`}>{resource.detail}</p>
-								</a>
-							</li>
-						))}
-					</ul>
+					<LinkCards
+						className="mt-10 md:grid-cols-3 lg:mt-16"
+						items={RESOURCES.map((resource) => ({ href: resource.href, title: resource.label, body: resource.detail }))}
+					/>
 				</Page>
 			</section>
 		</PageShell>
