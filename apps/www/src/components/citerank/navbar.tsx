@@ -168,7 +168,7 @@ export function Navbar() {
 					<Link to="/" aria-label="CiteRank.com home" className={`flex items-center rounded-md ${FOCUS}`}>
 						<Logo className="text-[1.375rem] text-paper" />
 					</Link>
-					<ul className="hidden items-center md:flex md:flex-1 md:pl-4">
+					<ul className="hidden items-center lg:flex lg:flex-1 lg:pl-4">
 						{LINKS.map((link) => (
 							<li key={link.href}>
 								<a href={link.href} aria-current={current(link.href)} className={NAV_ITEM}>
@@ -178,7 +178,7 @@ export function Navbar() {
 						))}
 						<ResourcesMenu pathname={pathname} />
 					</ul>
-					<div className="ml-auto flex items-center gap-1 md:ml-0">
+					<div className="ml-auto flex items-center gap-1 lg:ml-0">
 						<a href={SIGN_IN_URL} className={`${NAV_ITEM} max-sm:hidden`}>
 							Sign in
 						</a>
@@ -195,7 +195,7 @@ export function Navbar() {
 							aria-expanded={open}
 							aria-controls="site-menu"
 							aria-label={open ? "Close menu" : "Open menu"}
-							className={`${ICON_BUTTON} text-paper hover:bg-ink-well md:hidden`}
+							className={`${ICON_BUTTON} text-paper hover:bg-ink-well lg:hidden`}
 						>
 							<MenuIcon open={open} />
 						</button>
@@ -207,7 +207,7 @@ export function Navbar() {
 				id="site-menu"
 				data-menu={open ? "open" : "closed"}
 				inert={!open}
-				className={`fixed inset-0 z-50 flex flex-col overflow-y-auto bg-paper transition-opacity duration-200 ease-out md:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
+				className={`fixed inset-0 z-50 flex flex-col overflow-y-auto bg-paper transition-opacity duration-200 ease-out lg:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
 			>
 				<div className={`${WRAP} flex h-18 shrink-0 items-center justify-between`}>
 					<Link to="/" aria-label="CiteRank.com home" className={`flex items-center rounded-md ${FOCUS}`}>
