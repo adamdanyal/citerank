@@ -1,177 +1,76 @@
 import { getModelMeta } from "@workspace/config/models";
-import {
-	CLOUD_ENTRY_PRICE_USD,
-	CLOUD_PLATFORMS,
-	PLANS,
-	PREMIUM_MODELS,
-	premiumModelLabel,
-	premiumPlanNames,
-	STANDARD_PLATFORM_MENU,
-} from "@workspace/config/plans";
-import { cloudSignupUrl } from "@workspace/config/referrals";
-import { type ReactNode, useState } from "react";
+import { CLOUD_PLATFORMS, PLANS, premiumPlanNames, STANDARD_PLATFORM_MENU } from "@workspace/config/plans";
 import { EngineIcon } from "@/components/home/engines";
-import { trackEvent } from "@/lib/posthog";
 import { INCLUDED } from "./included";
-import { ACTION, BAND_PAD, BODY, PANEL_TINT, Page, PanelHead, SMALL, SUBHEAD } from "./kit";
+import { BAND_PAD, BODY, PANEL_TINT, Page, PanelHead, SMALL, SUBHEAD } from "./kit";
 
 /** Gemini shares Google's mark in the catalog, which would make it indistinguishable from AI Overviews here. */
 const ICON_OVERRIDES: Record<string, string> = { gemini: "gemini" };
 
 const MODELS = Object.keys(CLOUD_PLATFORMS);
-/* The ten a brand picks from, by how we read them. */
 const STANDARD = STANDARD_PLATFORM_MENU;
-/* The apps we read as a customer sees them come first on the board, then the ones we read through an API. */
-const BOARD = [
-	...STANDARD.filter((model) => CLOUD_PLATFORMS[model].access === "scraped"),
-	...STANDARD.filter((model) => CLOUD_PLATFORMS[model].access !== "scraped"),
-];
-const ENTRY = PLANS.basic;
-const PICKS = ENTRY.platformPicks;
-/* What a visitor finds picked, so the sum below is whole before they touch anything. */
-const START = ["chatgpt", "google-ai-overview", "gemini", "claude"].filter((model) => STANDARD.includes(model));
-const [WHOLE_ANSWER, , TO_DO_LIST, SEATS_AND_API, CANCEL] = INCLUDED;
+/* The ten a brand picks from first, then the ones sold only as premium. */
+const PREMIUM_ONLY = MODELS.filter((model) => !STANDARD.includes(model));
+const PICKS = PLANS.basic.platformPicks;
+const RUNS_PER_DAY = PLANS.basic.standardRunsPerDay;
+const [WHOLE_ANSWER, ASK_AGAIN, TO_DO_LIST, SEATS_AND_API, CANCEL] = INCLUDED;
 const PROMISES = [WHOLE_ANSWER, TO_DO_LIST, SEATS_AND_API, CANCEL];
 
 const label = (model: string) => getModelMeta(model).label;
 const iconId = (model: string) => ICON_OVERRIDES[model] ?? getModelMeta(model).iconId;
 
-/* A key on the board. A checkbox, since that is what picking several of a set is; the label is what a finger lands on. */
 const KEY =
-	"relative flex h-24 cursor-pointer flex-col items-center justify-center gap-2.5 rounded-xl px-2 text-center text-[0.875rem] leading-tight font-medium text-balance transition-colors duration-200 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-rust";
-const KEY_OFF = "bg-white text-ink ring-1 ring-inset ring-zinc-200 hover:ring-zinc-400";
-const KEY_ON = "bg-ink text-paper";
-
-function Keys({ picked, onToggle }: { picked: string[]; onToggle: (model: string) => void }) {
-	return (
-		<ul className="mt-7 grid grid-cols-3 gap-2 sm:grid-cols-5">
-			{BOARD.map((model) => {
-				const on = picked.includes(model);
-				return (
-					<li key={model}>
-						<label className={`${KEY} ${on ? KEY_ON : KEY_OFF}`}>
-							<input type="checkbox" checked={on} onChange={() => onToggle(model)} className="sr-only" />
-							<svg
-								aria-hidden="true"
-								viewBox="0 0 12 12"
-								className={`absolute top-2.5 right-2.5 size-3 ${on ? "" : "invisible"}`}
-							>
-								<path
-									d="M2 6.5l2.5 2.5 5.5-6"
-									fill="none"
-									stroke="currentColor"
-									strokeWidth="1.75"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-								/>
-							</svg>
-							<EngineIcon iconId={iconId(model)} className="size-6 shrink-0" />
-							{label(model)}
-						</label>
-					</li>
-				);
-			})}
-		</ul>
-	);
-}
-
-function Figure({ value, unit, result = false }: { value: ReactNode; unit: string; result?: boolean }) {
-	return (
-		<span className="flex flex-col">
-			<span
-				className={`font-heading text-[clamp(2.75rem,3vw+1.5rem,4.25rem)] leading-none font-bold tracking-[-0.03em] ${result ? "text-rust" : "text-ink"}`}
-			>
-				{value}
-			</span>
-			<span className={`${SMALL} mt-2 text-zinc-600`}>{unit}</span>
-		</span>
-	);
-}
-
-function Sign({ children }: { children: string }) {
-	return <span className="pb-11 font-heading text-[1.75rem] leading-none text-zinc-400">{children}</span>;
-}
+	"flex h-22 flex-col items-center justify-center gap-2 rounded-xl px-2 text-center text-[0.875rem] leading-tight font-medium text-balance";
 
 /*
- * What the money buys, as something to do rather than to read. A visitor picks
- * the apps as they will in the product, and the sum under the board turns the
- * plan's three limits into the one figure they are paying for. The promises
- * that hold on every plan stand beside it as the list they are.
+ * What the money buys, at a glance: every AI app as a key on one board,
+ * and beside it the promises that hold on every plan, each with its tick.
+ * Nothing here is a control. It is a list a buyer can take in without reading.
  */
 export function Includes() {
-	const [picked, setPicked] = useState<string[]>(START);
-	/* A fifth pick takes the place of the first, so no key is ever dead. */
-	const toggle = (model: string) =>
-		setPicked((now) => (now.includes(model) ? now.filter((item) => item !== model) : [...now, model].slice(-PICKS)));
-	const answers = picked.length * ENTRY.maxPrompts * ENTRY.standardRunsPerDay;
-
 	return (
 		<section id="includes" className={`${PANEL_TINT} ${BAND_PAD}`}>
 			<Page>
 				<PanelHead title="What every plan includes" />
 
-				<div className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-14 lg:mt-16 lg:grid-cols-12 lg:gap-8">
-					<div className="min-w-0 lg:col-span-7">
-						<div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-							<h3 className={`${SUBHEAD} text-ink`}>{MODELS.length} AI apps to choose from</h3>
-							<p aria-live="polite" className={`${SMALL} text-zinc-600 tabular-nums`}>
-								{picked.length} of {PICKS} picked
-							</p>
-						</div>
+				<div className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-10 lg:mt-16 lg:grid-cols-12 lg:gap-x-16">
+					<div className="min-w-0 rounded-card bg-white p-6 text-ink ring-1 ring-zinc-200 sm:p-8 lg:col-span-7">
+						<h3 className={SUBHEAD}>{MODELS.length} AI apps to choose from</h3>
 						<p className={`${BODY} mt-2 text-zinc-600`}>
-							Each brand tracks any {PICKS} of the {STANDARD.length} standard apps. Pick yours.
+							Each brand tracks any {PICKS} of the {STANDARD.length} standard apps.
 						</p>
-
-						<fieldset className="min-w-0">
-							<legend className="sr-only">
-								Pick any {PICKS} of the {STANDARD.length} standard AI apps
-							</legend>
-							<Keys picked={picked} onToggle={toggle} />
-						</fieldset>
-
-						<div className="mt-7">
-							<p className={`${SMALL} text-zinc-600`}>{premiumPlanNames()} add these, asked with web search on</p>
-							<ul className="mt-3 flex flex-wrap gap-2">
-								{PREMIUM_MODELS.map((model) => (
-									<li
-										key={model}
-										className="inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-[0.875rem] font-medium whitespace-nowrap text-zinc-700 ring-1 ring-inset ring-zinc-300"
-									>
-										<EngineIcon iconId={iconId(model)} className="size-4 shrink-0" />
-										{premiumModelLabel(model)}
-									</li>
-								))}
-							</ul>
-						</div>
-
-						<div className="mt-10 flex flex-wrap items-center justify-between gap-x-10 gap-y-8 border-t border-zinc-300 pt-8">
+						<ul className="mt-6 grid grid-cols-3 gap-2 sm:grid-cols-5">
+							{STANDARD.map((model) => (
+								<li key={model} className={`${KEY} bg-paper-2`}>
+									<EngineIcon iconId={iconId(model)} className="size-6 shrink-0" />
+									{label(model)}
+								</li>
+							))}
+							{PREMIUM_ONLY.map((model) => (
+								<li key={model} className={`${KEY} ring-1 ring-inset ring-zinc-300`}>
+									<EngineIcon iconId={iconId(model)} className="size-6 shrink-0" />
+									{label(model)}
+								</li>
+							))}
+							<li className={`${SMALL} col-span-3 flex items-center text-zinc-600 sm:col-span-2 sm:px-3`}>
+								The outlined ones are premium apps, on {premiumPlanNames()}.
+							</li>
+						</ul>
+						<div className="mt-8 grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-6 border-t border-zinc-200 pt-8">
 							<p
-								role="img"
-								aria-label={`${picked.length} AI apps, times ${ENTRY.maxPrompts} buyer questions, times ${ENTRY.standardRunsPerDay} times a day, is ${answers.toLocaleString("en-US")} answers a day`}
-								className="flex flex-wrap items-end gap-x-5 gap-y-6"
+								aria-hidden="true"
+								className="font-heading text-[clamp(3rem,3vw+1.5rem,4.25rem)] leading-none font-bold tracking-[-0.03em] text-rust"
 							>
-								<Figure value={picked.length} unit="AI apps" />
-								<Sign>×</Sign>
-								<Figure value={ENTRY.maxPrompts} unit="buyer questions" />
-								<Sign>×</Sign>
-								<Figure value={ENTRY.standardRunsPerDay} unit="times a day" />
-								<Sign>=</Sign>
-								<Figure value={answers.toLocaleString("en-US")} unit="answers a day" result />
+								{RUNS_PER_DAY}×
 							</p>
-							<a
-								href={cloudSignupUrl("marketing-cta")}
-								onClick={() => trackEvent("signup_click", { from: "marketing-includes" })}
-								className={ACTION}
-							>
-								Start tracking
-							</a>
+							<div>
+								<h3 className={SUBHEAD}>{ASK_AGAIN.title}</h3>
+								<p className={`${BODY} mt-2 text-zinc-600`}>{ASK_AGAIN.body}</p>
+							</div>
 						</div>
-						<p className={`${SMALL} mt-5 text-zinc-600`}>
-							The most the {ENTRY.name} plan tracks, at ${CLOUD_ENTRY_PRICE_USD} a month.
-						</p>
 					</div>
 
-					<ul className="min-w-0 lg:col-span-5 lg:pl-8">
+					<ul className="min-w-0 lg:col-span-5 lg:self-center">
 						{PROMISES.map((promise) => (
 							<li
 								key={promise.title}
