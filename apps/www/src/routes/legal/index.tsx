@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
-import { PANEL, PANEL_PAD, Page } from "@/components/citerank/v2/kit";
-import { PageShell } from "@/components/citerank/v2/shell";
+import { BODY, PANEL, Page, SMALL, SUBHEAD } from "@/components/citerank/v2/kit";
+import { PageHead, PageShell } from "@/components/citerank/v2/shell";
 import { formatPostDate } from "@/lib/format";
 import type { LegalPageSummary } from "@/lib/legal";
 import { breadcrumbJsonLd, canonicalUrl, ogMeta } from "@/lib/seo";
@@ -35,34 +35,36 @@ function LegalIndex() {
 
 	return (
 		<PageShell>
-			<section className={`${PANEL} ${PANEL_PAD}`}>
-				<div className="mx-auto max-w-6xl px-4 md:px-6">
-					<h1 className="font-heading text-4xl text-balance text-zinc-950 md:text-5xl">The Fine Print, in Public</h1>
-					<p className="mt-4 max-w-3xl text-lg text-balance text-zinc-600">
-						These policies cover the CiteRank.com tracker, the AI search agency, and our websites. CiteRank.com is a
-						trading name of Danx Digital Limited.
-					</p>
-				</div>
-			</section>
+			<PageHead
+				title="The fine print, in public"
+				lede="These policies cover the CiteRank.com tracker, the AI search agency, and our websites. CiteRank.com is a trading name of Danx Digital Limited."
+			/>
 
-			<section className={`${PANEL} ${PANEL_PAD}`}>
-				<div className="mx-auto max-w-6xl px-4 md:px-6">
-					<dl className="grid gap-5 md:grid-cols-2">
+			{/* The first rule opens the list, so the section brings less padding than usual to keep the usual gap to the first title. */}
+			<section className={`${PANEL} pt-3 pb-9 sm:pt-6 sm:pb-12 lg:pt-10 lg:pb-18`}>
+				<Page>
+					<dl className="border-b border-zinc-200">
 						{pages.map((page) => (
-							<div key={page.slug} className="rounded-md border border-zinc-200 bg-white p-5">
-								<dt>
-									<a href={`/legal/${page.slug}`} className="font-semibold text-zinc-950 hover:text-blue-700">
+							<div
+								key={page.slug}
+								className="group relative grid gap-2 border-t border-zinc-200 py-6 lg:grid-cols-12 lg:gap-8 lg:py-8"
+							>
+								<dt className={`${SUBHEAD} text-ink lg:col-span-5`}>
+									<a
+										href={`/legal/${page.slug}`}
+										className="rounded-sm transition-colors duration-200 after:absolute after:inset-0 group-hover:text-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust"
+									>
 										{page.title}
 									</a>
 								</dt>
-								<dd className="mt-1.5 text-sm leading-relaxed text-zinc-600">{page.description}</dd>
-								<dd className="mt-3 font-mono text-[11px] leading-[1.4] text-zinc-400">
-									Updated {formatPostDate(page.updated)}
+								<dd className={`${BODY} text-zinc-600 lg:col-span-4`}>{page.description}</dd>
+								<dd className={`${SMALL} whitespace-nowrap text-zinc-600 lg:col-span-3 lg:justify-self-end`}>
+									Updated <time dateTime={page.updated}>{formatPostDate(page.updated)}</time>
 								</dd>
 							</div>
 						))}
 					</dl>
-				</div>
+				</Page>
 			</section>
 		</PageShell>
 	);

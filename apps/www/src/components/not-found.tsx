@@ -1,77 +1,52 @@
 import { Link } from "@tanstack/react-router";
 import { CLOUD_ENTRY_PRICE_USD } from "@workspace/config/plans";
-import { ArrowRight, ArrowUpRight, Home } from "lucide-react";
-import { Footer } from "./footer";
-import { Navbar } from "./navbar";
+import { ACTION, ACTION_QUIET, BODY, PanelHead, SUBHEAD } from "./citerank/v2/kit";
+import { PageHead, PageShell, PanelSection } from "./citerank/v2/shell";
 
 const suggestedLinks = [
 	{ label: "Documentation", href: "/docs", description: "Get started and learn the API" },
 	{ label: "Features", href: "/features", description: "What CiteRank.com can do for your brand" },
-	{ label: "Pricing", href: "/pricing", description: `Three tracker plans, from $${CLOUD_ENTRY_PRICE_USD}/mo` },
+	{ label: "Pricing", href: "/pricing", description: `Three tracker plans, from $${CLOUD_ENTRY_PRICE_USD} a month` },
 	{ label: "Agency", href: "/agency", description: "Have us do the work for you" },
 ];
 
+const FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust";
+
 export function NotFound() {
 	return (
-		<div className="min-h-screen">
-			<Navbar />
-			<main>
-				<section className="relative border-b border-zinc-200 bg-white">
-					<div
-						aria-hidden="true"
-						className="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,rgb(0_0_0/0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgb(0_0_0/0.04)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
-					/>
-					<div className="relative mx-auto max-w-6xl px-4 py-20 md:px-6 lg:py-28">
-						<div className="mx-auto max-w-2xl text-center">
-							<h1 className="font-heading text-balance text-5xl leading-[1.05] tracking-tight text-zinc-950 sm:text-6xl lg:text-[4.25rem] lg:leading-[1.0]">
-								This page doesn't exist
-							</h1>
-							<p className="mx-auto mt-6 max-w-[58ch] text-pretty text-base text-zinc-600 md:text-lg">
-								The page you're looking for may have moved, or it may never have existed.
-							</p>
-							<div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-								<Link
-									to="/"
-									className="inline-flex h-8 items-center gap-1.5 rounded-md bg-blue-600 px-3 text-sm font-medium leading-none text-white ring-1 ring-blue-600 hover:bg-blue-700"
-								>
-									<Home className="size-3.5" />
-									Back to home
-								</Link>
-								<Link
-									to="/docs"
-									className="inline-flex h-8 items-center gap-1.5 rounded-md bg-white px-3 text-sm font-medium leading-none text-zinc-900 ring-1 ring-zinc-200 hover:bg-zinc-50 hover:ring-zinc-300"
-								>
-									Read the docs
-									<ArrowRight className="size-3.5" />
-								</Link>
-							</div>
-						</div>
-					</div>
-				</section>
+		<PageShell>
+			<PageHead title="This page doesn’t exist" lede="It may have moved, or it may never have existed.">
+				<div className="flex flex-col gap-3 sm:flex-row">
+					<Link to="/" className={ACTION}>
+						Back to home
+					</Link>
+					<Link to="/docs" className={ACTION_QUIET}>
+						Read the docs
+					</Link>
+				</div>
+			</PageHead>
 
-				<section className="border-b border-zinc-200 bg-zinc-50 py-12 lg:py-16">
-					<div className="mx-auto max-w-6xl px-4 md:px-6">
-						<h2 className="font-heading text-2xl text-zinc-950 md:text-3xl">Popular destinations</h2>
-						<ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-							{suggestedLinks.map((link) => (
-								<li key={link.href}>
-									<a
-										href={link.href}
-										className="group flex h-full flex-col rounded-md border border-zinc-200 bg-white p-4 transition-colors hover:border-zinc-300 hover:bg-zinc-50"
-									>
-										<span className="flex items-center justify-between text-sm font-semibold text-zinc-950">
-											{link.label}
-											<ArrowUpRight className="size-3.5 text-zinc-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-zinc-700" />
-										</span>
-										<span className="mt-1 text-sm text-zinc-600">{link.description}</span>
-									</a>
-								</li>
-							))}
-						</ul>
-					</div>
-				</section>
-			</main>
-			<Footer />
-		</div>
+			<PanelSection>
+				<PanelHead title="Popular pages" />
+				<ul className="mt-10 border-b border-zinc-200 lg:mt-16">
+					{suggestedLinks.map((link) => (
+						<li
+							key={link.href}
+							className="group relative grid gap-2 border-t border-zinc-200 py-6 lg:grid-cols-12 lg:gap-8 lg:py-8"
+						>
+							<h3 className={`${SUBHEAD} text-ink lg:col-span-5`}>
+								<a
+									href={link.href}
+									className={`rounded-sm transition-colors duration-200 after:absolute after:inset-0 group-hover:text-blue-800 ${FOCUS}`}
+								>
+									{link.label}
+								</a>
+							</h3>
+							<p className={`${BODY} max-w-[60ch] text-zinc-600 lg:col-span-7`}>{link.description}</p>
+						</li>
+					))}
+				</ul>
+			</PanelSection>
+		</PageShell>
 	);
 }

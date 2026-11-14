@@ -1,3 +1,4 @@
+import { LINK, SMALL } from "@/components/citerank/v2/kit";
 import { resolveAuthor, type TeamAuthor } from "@/data/authors";
 import { formatPostDate } from "@/lib/format";
 
@@ -15,7 +16,7 @@ function InitialsAvatar({ name }: { name: string }) {
 	return (
 		<span
 			aria-hidden
-			className="flex size-9 shrink-0 items-center justify-center rounded-full bg-zinc-100 font-mono text-xs font-medium text-zinc-600"
+			className="flex size-12 shrink-0 items-center justify-center rounded-full bg-paper-2 text-[0.875rem] font-medium text-zinc-700"
 		>
 			{initials(name)}
 		</span>
@@ -24,7 +25,7 @@ function InitialsAvatar({ name }: { name: string }) {
 
 function TeamAvatar({ author }: { author: TeamAuthor }) {
 	if (author.avatar) {
-		return <img src={author.avatar} alt={author.name} className="size-9 shrink-0 rounded-full object-cover" />;
+		return <img src={author.avatar} alt="" className="size-12 shrink-0 rounded-full object-cover" />;
 	}
 	return <InitialsAvatar name={author.name} />;
 }
@@ -36,9 +37,12 @@ function PostDates({ date, updated }: { date: string; updated?: string }) {
 
 	return (
 		<>
-			Updated <time dateTime={updated}>{formatPostDate(updated)}</time>
-			<span className="text-zinc-300"> · </span>
-			Published <time dateTime={date}>{publishedLabel}</time>
+			<span className="block">
+				Updated <time dateTime={updated}>{formatPostDate(updated)}</time>
+			</span>
+			<span className="block">
+				Published <time dateTime={date}>{publishedLabel}</time>
+			</span>
 		</>
 	);
 }
@@ -53,7 +57,7 @@ export function AuthorByline({ author, date, updated }: { author: string; date: 
 
 	if (resolved.kind === "ai") {
 		return (
-			<div className="not-prose text-sm text-zinc-500">
+			<div className={`${SMALL} text-zinc-600`}>
 				<PostDates date={date} updated={updated} />
 			</div>
 		);
@@ -64,26 +68,24 @@ export function AuthorByline({ author, date, updated }: { author: string; date: 
 	const url = resolved.kind === "team" ? resolved.author.url : undefined;
 
 	return (
-		<div className="not-prose flex items-center gap-3">
-			{resolved.kind === "team" ? <TeamAvatar author={resolved.author} /> : <InitialsAvatar name={name} />}
-			<div className="text-sm leading-tight">
-				<div className="font-medium text-zinc-900">
-					{url ? (
-						<a href={url} target="_blank" rel="nofollow noopener noreferrer" className="hover:underline">
-							{name}
-						</a>
-					) : (
-						name
-					)}
+		<div>
+			<div className="flex items-center gap-3">
+				{resolved.kind === "team" ? <TeamAvatar author={resolved.author} /> : <InitialsAvatar name={name} />}
+				<div className="min-w-0">
+					<div className="text-[1rem] leading-[1.4] font-medium text-ink">
+						{url ? (
+							<a href={url} target="_blank" rel="nofollow noopener noreferrer" className={`${LINK} whitespace-nowrap`}>
+								{name}
+							</a>
+						) : (
+							name
+						)}
+					</div>
+					{role ? <div className={`${SMALL} text-zinc-600`}>{role}</div> : null}
 				</div>
-				<div className="text-zinc-500">
-					{role ? (
-						<>
-							{role} <span className="text-zinc-300">·</span>{" "}
-						</>
-					) : null}
-					<PostDates date={date} updated={updated} />
-				</div>
+			</div>
+			<div className={`${SMALL} mt-4 text-zinc-600`}>
+				<PostDates date={date} updated={updated} />
 			</div>
 		</div>
 	);

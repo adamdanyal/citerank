@@ -6,14 +6,13 @@ interface YouTubeEmbedProps {
 }
 
 // Responsive 16:9 YouTube player, registered as the `YouTube` MDX component in
-// @/components/mdx so posts can embed a video with <YouTube id="..." />. Mirrors
-// the bordered media frame used by the homepage feature graphics (Frame in
-// feature-graphics.tsx). Uses the privacy-enhanced youtube-nocookie host and
-// lazy-loads the iframe so it doesn't block initial render; `not-prose` opts the
-// frame out of the typography plugin's spacing so its own margin applies.
+// @/components/mdx so posts can embed a video with <YouTube id="..." />. Uses
+// the privacy-enhanced youtube-nocookie host and lazy-loads the iframe so it
+// doesn't block initial render; `not-prose` opts the frame out of the
+// typography plugin's spacing on the docs pages so its own margin applies.
 export function YouTubeEmbed({ id, title = "YouTube video player" }: YouTubeEmbedProps) {
 	return (
-		<div className="not-prose relative mb-8 aspect-video w-full overflow-hidden rounded-md border border-zinc-200 bg-zinc-950">
+		<div className="not-prose relative my-8 aspect-video w-full overflow-hidden rounded-card bg-ink ring-1 ring-zinc-200">
 			<iframe
 				className="absolute inset-0 size-full"
 				src={`https://www.youtube-nocookie.com/embed/${id}`}

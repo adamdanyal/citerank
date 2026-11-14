@@ -5,14 +5,14 @@
 import browserCollections from "collections/browser";
 import { RootProvider } from "fumadocs-ui/provider/tanstack";
 import { Suspense } from "react";
-import { Footer } from "@/components/footer";
-import { getMDXComponents } from "@/components/mdx";
-import { Navbar } from "@/components/navbar";
+import { BODY, LINK, Page, SMALL } from "@/components/citerank/v2/kit";
+import { PageShell } from "@/components/citerank/v2/shell";
+import { DOC_BODY, DOC_GRID, DOC_TEXT, DocumentHead, getDocumentComponents } from "@/components/mdx";
 import { formatPostDate } from "@/lib/format";
 import type { LegalPageSummary } from "@/lib/legal";
 import type { LegalLoaderData } from "@/routes/legal/$";
 
-const mdxComponents = getMDXComponents();
+const mdxComponents = getDocumentComponents();
 
 export const clientLoader = browserCollections.legal.createClientLoader({
 	component({ default: MDX }, _props: undefined) {
@@ -20,17 +20,24 @@ export const clientLoader = browserCollections.legal.createClientLoader({
 	},
 });
 
+/* Beside the document on a wide screen, where it stays in reach; under it on a phone. */
 function SiblingPolicies({ pages, currentSlug }: { pages: LegalPageSummary[]; currentSlug: string }) {
 	const others = pages.filter((page) => page.slug !== currentSlug);
 	if (others.length === 0) return null;
 
 	return (
-		<nav aria-label="Other policies" className="not-prose mt-16 border-t border-zinc-200 pt-8">
-			<h2 className="font-mono text-[11px] leading-[1.4] text-zinc-500">Other policies</h2>
-			<ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+		<nav
+			aria-label="Other policies"
+			className="border-t border-zinc-200 pt-8 lg:sticky lg:top-28 lg:col-span-3 lg:col-start-1 lg:row-start-1 lg:self-start lg:border-t-0 lg:pt-0"
+		>
+			<h2 className={`${SMALL} font-sans font-normal tracking-normal text-zinc-600`}>Other policies</h2>
+			<ul className="mt-3 space-y-1">
 				{others.map((page) => (
 					<li key={page.slug}>
-						<a href={`/legal/${page.slug}`} className="text-zinc-700 hover:text-zinc-950 hover:underline">
+						<a
+							href={`/legal/${page.slug}`}
+							className={`${LINK} ${BODY} inline-block py-1 font-medium whitespace-nowrap text-ink`}
+						>
 							{page.title}
 						</a>
 					</li>
@@ -43,25 +50,23 @@ function SiblingPolicies({ pages, currentSlug }: { pages: LegalPageSummary[]; cu
 export function LegalPageLayout({ data }: { data: LegalLoaderData }) {
 	return (
 		<RootProvider theme={{ defaultTheme: "light", forcedTheme: "light" }} search={{ enabled: false }}>
-			<div className="min-h-screen">
-				<Navbar />
-				<main className="mx-auto max-w-3xl px-4 py-12 md:px-6 lg:py-16">
-					<a href="/legal" className="font-mono text-[11px] leading-[1.4] text-zinc-500 hover:text-zinc-950">
-						/ LEGAL
-					</a>
-					<article className="prose prose-zinc mt-6 max-w-none">
-						<h1 className="mb-3 text-balance">{data.title}</h1>
-						<p className="not-prose font-mono text-[11px] leading-[1.4] text-zinc-500">
-							Last updated {formatPostDate(data.updated)}
+			<PageShell>
+				<article>
+					<DocumentHead back={{ href: "/legal", label: "Legal" }} title={data.title}>
+						<p className={`${BODY} mt-6 text-zinc-600`}>
+							Last updated <time dateTime={data.updated}>{formatPostDate(data.updated)}</time>
 						</p>
-						<div className="mt-8">
-							<Suspense>{clientLoader.useContent(data.path)}</Suspense>
-						</div>
-						<SiblingPolicies pages={data.pages} currentSlug={data.slugs.join("/")} />
-					</article>
-				</main>
-				<Footer />
-			</div>
+					</DocumentHead>
+					<section className={DOC_BODY}>
+						<Page className={DOC_GRID}>
+							<div className={`${DOC_TEXT} lg:col-span-9 lg:col-start-4 lg:row-start-1`}>
+								<Suspense>{clientLoader.useContent(data.path)}</Suspense>
+							</div>
+							<SiblingPolicies pages={data.pages} currentSlug={data.slugs.join("/")} />
+						</Page>
+					</section>
+				</article>
+			</PageShell>
 		</RootProvider>
 	);
 }
