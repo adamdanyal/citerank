@@ -421,6 +421,22 @@ export function isLowDR(competitor: Competitor): boolean {
 	return competitor.ahrefsDR < LOW_DR_THRESHOLD;
 }
 
+/** Tools whose screenshot we serve from public/tool-screenshots, because we can't write to the shared storage. */
+const LOCAL_SCREENSHOTS = new Set([
+	"canonry",
+	"frase",
+	"hubspot-aeo-grader",
+	"meikai",
+	"minddex",
+	"se-ranking",
+	"semantica",
+	"siteline",
+	"sitesignal",
+	"tesseract",
+	"vercite",
+]);
+
 export function getScreenshotUrl(slug: string): string {
+	if (LOCAL_SCREENSHOTS.has(slug)) return `/tool-screenshots/${slug}.jpg`;
 	return `https://nynjceth7hnajxhe.public.blob.vercel-storage.com/screenshots/${slug}.jpg`;
 }

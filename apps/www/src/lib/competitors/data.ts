@@ -1937,6 +1937,7 @@ export const competitors: Competitor[] = [
 		ahrefsTraffic: 1,
 		darkScreenshot: true,
 		status: "defunct",
+		noScreenshot: true,
 		fate: {
 			date: "2026-10",
 			summary: "The domain registration expired and the site shows a parking page.",
@@ -2439,6 +2440,7 @@ export const competitors: Competitor[] = [
 		ahrefsDR: 0,
 		ahrefsTraffic: 0,
 		status: "defunct",
+		noScreenshot: true,
 		fate: {
 			date: "2026-10",
 			summary: "The app's deployment no longer exists and the site returns a 404.",
@@ -2522,6 +2524,7 @@ export const competitors: Competitor[] = [
 		ahrefsTraffic: 6,
 		darkScreenshot: true,
 		status: "defunct",
+		noScreenshot: true,
 		fate: {
 			date: "2026-10",
 			summary: "The application is offline and the site returns a 404.",
@@ -6105,6 +6108,7 @@ export const competitors: Competitor[] = [
 		ahrefsDR: 5,
 		darkScreenshot: true,
 		status: "defunct",
+		noScreenshot: true,
 		fate: {
 			date: "2026-05-04",
 			summary: "Acquired by AI Trust Signals, then shut down; the operating company went into liquidation.",
@@ -6904,6 +6908,7 @@ export const competitors: Competitor[] = [
 		category: "tracking",
 		ahrefsDR: 22,
 		status: "active",
+		noScreenshot: true,
 		features: {
 			multiLlmTracking: true,
 			chatgpt: true,
@@ -8031,6 +8036,7 @@ export const competitors: Competitor[] = [
 		category: "tracking",
 		ahrefsDR: 42,
 		status: "acquired",
+		noScreenshot: true,
 		fate: {
 			date: "2026-10-01",
 			summary:
