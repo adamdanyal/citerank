@@ -1,50 +1,43 @@
 import { ArrowRight } from "lucide-react";
 import { type CSSProperties, type ReactNode, useEffect, useRef, useState } from "react";
+import { WRAP } from "./v2/kit";
 
-export const EASE_CLASS = "ease-[cubic-bezier(0.22,1,0.36,1)]";
+export const EASE_CLASS = "ease-out";
 
-const FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600";
+const FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust";
 
-const BUTTON = `inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-lg px-4 button-md transition-[background-color,color,transform] duration-300 ${EASE_CLASS} active:scale-[0.98] ${FOCUS}`;
-export const PRIMARY_BUTTON = `${BUTTON} bg-blue-600 text-white hover:bg-blue-700`;
-const BUTTON_LG = `inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-lg px-6 button-md transition-[background-color,color,transform] duration-300 ${EASE_CLASS} active:scale-[0.98] ${FOCUS}`;
-export const PRIMARY_BUTTON_LG = `${BUTTON_LG} bg-blue-600 text-white hover:bg-blue-700`;
-export const SECONDARY_BUTTON_LG = `${BUTTON_LG} bg-transparent text-ink ring-1 ring-inset ring-zinc-300 hover:ring-zinc-500`;
-export const SECONDARY_BUTTON = `${BUTTON} bg-transparent text-ink ring-1 ring-inset ring-zinc-300 hover:ring-zinc-500`;
-export const SMALL_BUTTON_BASE = `h-8 items-center justify-center gap-1 whitespace-nowrap rounded-md px-3 button-sm transition-[background-color,color,transform] duration-300 ${EASE_CLASS} active:scale-[0.98] ${FOCUS}`;
+/* The older recipe names, kept for the components that still use them, on the kit's sizes and colours. */
+const BUTTON = `inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 text-[0.9375rem] font-medium transition-colors duration-200 active:translate-y-px ${FOCUS}`;
+const BUTTON_LG = `inline-flex h-13 items-center justify-center gap-2 whitespace-nowrap rounded-full px-7 text-[1rem] font-medium transition-colors duration-200 active:translate-y-px ${FOCUS}`;
+const FILLED = "bg-rust text-paper hover:bg-blue-700 active:bg-blue-800";
+const OUTLINED = "bg-transparent text-ink ring-1 ring-inset ring-zinc-400 hover:ring-ink";
+export const PRIMARY_BUTTON = `${BUTTON} ${FILLED}`;
+export const PRIMARY_BUTTON_LG = `${BUTTON_LG} ${FILLED}`;
+export const SECONDARY_BUTTON_LG = `${BUTTON_LG} ${OUTLINED}`;
+export const SECONDARY_BUTTON = `${BUTTON} ${OUTLINED}`;
+export const SMALL_BUTTON_BASE = `h-11 items-center justify-center gap-1 whitespace-nowrap rounded-full px-4 text-[0.9375rem] font-medium transition-colors duration-200 active:translate-y-px ${FOCUS}`;
 export const SMALL_BUTTON = `inline-flex ${SMALL_BUTTON_BASE}`;
-export const TEXT_LINK = `group inline-flex h-10 items-center gap-1 rounded-md px-1 button-md text-zinc-950 transition-colors duration-300 ${EASE_CLASS} hover:text-blue-700 ${FOCUS}`;
-export const QUIET_LINK = `rounded-sm underline decoration-zinc-300 underline-offset-4 transition-colors duration-300 ${EASE_CLASS} hover:text-zinc-950 hover:decoration-zinc-500 ${FOCUS}`;
+export const TEXT_LINK = `group inline-flex h-11 items-center gap-1 rounded-md px-1 text-[1rem] font-medium text-ink transition-colors duration-200 hover:text-blue-700 ${FOCUS}`;
+export const QUIET_LINK = `rounded-sm underline decoration-zinc-400 underline-offset-[5px] transition-colors duration-200 hover:decoration-rust ${FOCUS}`;
 
 export function LinkArrow() {
-	return (
-		<ArrowRight
-			className={`size-4 transition-transform duration-300 ${EASE_CLASS} group-hover:translate-x-0.5`}
-			aria-hidden="true"
-		/>
-	);
+	return <ArrowRight className="size-4" aria-hidden="true" />;
 }
 
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
-	return <div className={`mx-auto max-w-6xl px-4 md:px-6 ${className}`}>{children}</div>;
+	return <div className={`${WRAP} ${className}`}>{children}</div>;
 }
 
-export const CARD = "rounded-2xl bg-paper-2 ring-1 ring-zinc-200";
-export const ICON_BOX = "inline-flex size-10 shrink-0 items-center justify-center rounded-lg bg-rust/10 text-blue-800";
-/** A whole card as one link: its edge darkens on hover, rather than every card lifting the same way. */
-export const LINK_CARD = `group flex h-full w-full flex-col p-5 ${CARD} transition-[box-shadow] duration-200 hover:ring-zinc-400 ${FOCUS}`;
+export const CARD = "rounded-card bg-paper-2";
+export const ICON_BOX = "inline-flex size-10 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-800";
+/** A whole card as one link: its tint deepens on hover, rather than every card lifting the same way. */
+export const LINK_CARD = `group flex h-full w-full flex-col p-6 ${CARD} transition-colors duration-200 hover:bg-paper-3 ${FOCUS}`;
 
-export const WINDOW_FRAME = "rounded-2xl bg-paper p-2 ring-1 ring-zinc-200";
+export const WINDOW_FRAME = "rounded-card bg-paper ring-1 ring-zinc-200";
 
-/** The three dots of a browser window, so a screenshot reads as the app running rather than a picture. */
+/** Kept so older sections still compile: a capture is shown as it is, with no drawn window bar over it. */
 export function WindowBar() {
-	return (
-		<div aria-hidden="true" className="flex h-6 items-center gap-2 px-2">
-			<span className="size-2 rounded-full bg-zinc-200" />
-			<span className="size-2 rounded-full bg-zinc-200" />
-			<span className="size-2 rounded-full bg-zinc-200" />
-		</div>
-	);
+	return null;
 }
 
 type RevealState = "idle" | "hidden" | "shown";
