@@ -1,144 +1,83 @@
 import { getModelMeta } from "@workspace/config/models";
 import { CLOUD_PLATFORMS, PLANS, premiumPlanNames, STANDARD_PLATFORM_MENU } from "@workspace/config/plans";
 import { EngineIcon } from "@/components/home/engines";
-import { isKind, PREVIEW } from "../product/data";
-import { Chip, Mark, ToneWord } from "../product/parts";
 import { INCLUDED } from "./included";
-import {
-	BODY,
-	PANEL,
-	PANEL_PAD,
-	Page,
-	PanelHead,
-	SMALL,
-	SUBHEAD,
-	TILE_INK,
-	TILE_RUST,
-	TILE_SAND,
-	TILE_TINT,
-	TILE_WHITE,
-} from "./kit";
+import { BODY, PANEL_PAD, Page, PanelHead, SMALL, SUBHEAD } from "./kit";
 
 /** Gemini shares Google's mark in the catalog, which would make it indistinguishable from AI Overviews here. */
 const ICON_OVERRIDES: Record<string, string> = { gemini: "gemini" };
 
 const MODELS = Object.keys(CLOUD_PLATFORMS);
 const STANDARD = STANDARD_PLATFORM_MENU;
-/* The ten a brand picks from first, then the ones sold only as premium. */
-const PREMIUM_ONLY = MODELS.filter((model) => !STANDARD.includes(model));
 const PICKS = PLANS.basic.platformPicks;
-const RUNS_PER_DAY = PLANS.basic.standardRunsPerDay;
-const [WHOLE_ANSWER, ASK_AGAIN, TO_DO_LIST, SEATS_AND_API, CANCEL] = INCLUDED;
+/* The ten a brand picks from first, then the premium ones. */
+const BOARD = [...STANDARD, ...MODELS.filter((model) => !STANDARD.includes(model))];
 
 const label = (model: string) => getModelMeta(model).label;
 const iconId = (model: string) => ICON_OVERRIDES[model] ?? getModelMeta(model).iconId;
 
-const KEY =
-	"flex h-22 flex-col items-center justify-center gap-2 rounded-xl px-2 text-center text-[0.875rem] leading-tight font-medium text-balance lg:h-26";
-
-/* The sample answer and the sample fixes the product screens show, so a tile's picture is the product's own. */
-const NAMED = PREVIEW.responses[0]?.brands.slice(0, 3) ?? [];
-const FIXES = PREVIEW.opportunities.items.slice(0, 3);
-
 /*
- * What the money buys, as six tiles: one promise and one thing to look at in
- * each. The apps are a board of keys, how often we ask is a figure, and the
- * two promises about the product show a piece of it.
+ * What the money buys, as a list to tick off: five promises in their own
+ * words, with nothing under them to read, and the AI apps as a wall of marks.
+ * The longer explanation of each promise is on the pricing page.
  */
 export function Includes() {
 	return (
-		<section id="includes" className={`${PANEL} ${PANEL_PAD}`}>
+		<section id="includes" className={`relative bg-white ${PANEL_PAD}`}>
 			<Page>
 				<PanelHead title="What every plan includes" />
 
-				<ul className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-4 lg:mt-16 lg:grid-cols-12 lg:gap-6">
-					<li className={`${TILE_WHITE} lg:col-span-7 lg:row-span-2`}>
-						<h3 className={SUBHEAD}>{MODELS.length} AI apps to choose from</h3>
-						<p className={`${BODY} mt-2 text-zinc-700`}>
+				<div className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-10 lg:mt-16 lg:grid-cols-12 lg:items-center lg:gap-x-16">
+					<ul className="min-w-0 lg:col-span-6">
+						{INCLUDED.map((promise) => (
+							<li
+								key={promise.title}
+								className={`${SUBHEAD} flex items-start gap-4 border-t border-zinc-200 py-5 text-ink first:border-t-0 first:pt-0 last:pb-0`}
+							>
+								<span
+									aria-hidden="true"
+									className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-rust text-paper"
+								>
+									<svg viewBox="0 0 12 12" className="size-3.5">
+										<path
+											d="M2 6.5l2.5 2.5 5.5-6"
+											fill="none"
+											stroke="currentColor"
+											strokeWidth="2"
+											strokeLinecap="round"
+											strokeLinejoin="round"
+										/>
+									</svg>
+								</span>
+								{promise.title}
+							</li>
+						))}
+					</ul>
+
+					<div className="min-w-0 rounded-card bg-white p-6 shadow-lift ring-1 ring-zinc-200 sm:p-8 lg:col-span-6">
+						<h3 className={`${SUBHEAD} text-ink`}>{MODELS.length} AI apps to choose from</h3>
+						<p className={`${BODY} mt-2 text-zinc-600`}>
 							Each brand tracks any {PICKS} of the {STANDARD.length} standard apps.
 						</p>
-						<ul className="mt-8 grid grid-cols-3 gap-2 sm:grid-cols-5">
-							{STANDARD.map((model) => (
-								<li key={model} className={`${KEY} bg-paper-2`}>
-									<EngineIcon iconId={iconId(model)} className="size-6 shrink-0" />
-									{label(model)}
-								</li>
-							))}
-							{PREMIUM_ONLY.map((model) => (
-								<li key={model} className={`${KEY} ring-1 ring-inset ring-zinc-300`}>
-									<EngineIcon iconId={iconId(model)} className="size-6 shrink-0" />
-									{label(model)}
-								</li>
-							))}
-							<li className={`${SMALL} col-span-3 flex items-center text-zinc-600 sm:col-span-2 sm:px-3`}>
-								The outlined ones are premium apps, on {premiumPlanNames()}.
-							</li>
-						</ul>
-					</li>
-
-					<li className={`${TILE_RUST} lg:col-span-5`}>
-						<p
-							aria-hidden="true"
-							className="font-heading text-[clamp(4.5rem,6vw+1.5rem,7.5rem)] leading-[0.85] font-bold tracking-[-0.04em]"
-						>
-							{RUNS_PER_DAY}×
-						</p>
-						<h3 className={`${SUBHEAD} mt-6`}>{ASK_AGAIN.title}</h3>
-						<p className={`${BODY} mt-2`}>{ASK_AGAIN.body}</p>
-					</li>
-
-					<li className={`${TILE_INK} lg:col-span-5`}>
-						<h3 className={SUBHEAD}>{SEATS_AND_API.title}</h3>
-						<p className={`${BODY} mt-2 text-zinc-300`}>{SEATS_AND_API.body}</p>
-					</li>
-
-					<li className={`${TILE_SAND} lg:col-span-4`}>
-						<h3 className={SUBHEAD}>{WHOLE_ANSWER.title}</h3>
-						<p className={`${BODY} mt-2 text-zinc-700`}>{WHOLE_ANSWER.body}</p>
-						<ul
-							data-slot="answer-brands"
-							data-kind="product"
-							data-nosnippet
-							aria-hidden="true"
-							className="mt-6 flex flex-wrap gap-1.5 text-sm"
-						>
-							{NAMED.map((brand) => (
-								<li key={brand.name}>
-									<Chip className="bg-white">
-										<Mark name={brand.name} className="size-4" />
-										{brand.name}
-										<span className="font-mono text-zinc-500">#{brand.rank}</span>
-										{isKind(brand.sentiment) ? <ToneWord kind={brand.sentiment} /> : null}
-									</Chip>
+						<ul className="mt-6 grid grid-cols-3 gap-x-2 gap-y-5 sm:grid-cols-5">
+							{BOARD.map((model) => (
+								<li
+									key={model}
+									className="flex flex-col items-center gap-2 text-center text-[0.875rem] leading-tight font-medium text-ink"
+								>
+									<span className="grid size-12 place-items-center rounded-2xl bg-paper-2">
+										<EngineIcon iconId={iconId(model)} className="size-6" />
+									</span>
+									<span className="text-balance">{label(model)}</span>
+									{STANDARD.includes(model) ? null : (
+										<span className="-mt-1 text-xs font-normal text-zinc-500">Premium</span>
+									)}
 								</li>
 							))}
 						</ul>
-					</li>
-
-					<li className={`${TILE_TINT} lg:col-span-4`}>
-						<h3 className={SUBHEAD}>{TO_DO_LIST.title}</h3>
-						<p className={`${BODY} mt-2 text-zinc-700`}>{TO_DO_LIST.body}</p>
-						<ol
-							data-slot="fix-list"
-							data-kind="product"
-							data-nosnippet
-							aria-hidden="true"
-							className="mt-6 space-y-1.5 text-sm"
-						>
-							{FIXES.map((fix, index) => (
-								<li key={fix.title} className="flex gap-3 rounded-lg bg-white px-3 py-2 ring-1 ring-zinc-200">
-									<span className="font-mono text-zinc-500">{index + 1}</span>
-									<span className="min-w-0 truncate text-ink">{fix.title}</span>
-								</li>
-							))}
-						</ol>
-					</li>
-
-					<li className={`${TILE_SAND} lg:col-span-4`}>
-						<h3 className={SUBHEAD}>{CANCEL.title}</h3>
-						<p className={`${BODY} mt-2 text-zinc-700`}>{CANCEL.body}</p>
-					</li>
-				</ul>
+						<p className={`${SMALL} mt-6 text-zinc-600`}>Premium apps come with {premiumPlanNames()}.</p>
+					</div>
+				</div>
 			</Page>
 		</section>
 	);

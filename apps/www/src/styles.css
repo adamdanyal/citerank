@@ -248,6 +248,9 @@
 
 	--radius-card: 12px;
 	--shadow-card: 0 1px 2px color-mix(in oklab, var(--color-ink) 7%, transparent);
+	--shadow-lift:
+		0 1px 2px color-mix(in oklab, var(--color-ink) 6%, transparent),
+		0 18px 40px -18px color-mix(in oklab, var(--color-ink) 22%, transparent);
 
 	/* The product's own colours, used only inside the product screens, where they mean what they mean in the app: one per brand on a chart, one per brand's mark, and the three tones of an answer. */
 	--color-chart-1: #2f62e8;
