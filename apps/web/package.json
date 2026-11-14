@@ -30,7 +30,7 @@
 		"@modelcontextprotocol/sdk": "catalog:",
 		"@scalar/api-reference-react": "^0.9.88",
 		"@sentry/tanstackstart-react": "^11.11.0",
-		"@tabler/icons-react": "^3.50.0",
+		"@tabler/icons-react": "^3.51.0",
 		"@tailwindcss/typography": "catalog:",
 		"@tailwindcss/vite": "catalog:",
 		"@takumi-rs/core": "catalog:",
@@ -68,9 +68,9 @@
 		"zod": "catalog:"
 	},
 	"devDependencies": {
-		"@storybook/addon-vitest": "^10.6.6",
-		"@storybook/react": "^10.6.6",
-		"@storybook/react-vite": "^10.6.6",
+		"@storybook/addon-vitest": "^10.6.7",
+		"@storybook/react": "^10.6.7",
+		"@storybook/react-vite": "^10.6.7",
 		"@types/archiver": "^8.0.0",
 		"@types/node": "catalog:",
 		"@types/pg": "catalog:",
@@ -83,7 +83,7 @@
 		"nitro": "catalog:",
 		"playwright": "^1.65.0",
 		"png-to-ico": "catalog:",
-		"storybook": "^10.6.6",
+		"storybook": "^10.6.7",
 		"typescript": "catalog:",
 		"vite": "catalog:",
 		"vitest": "catalog:"
