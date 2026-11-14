@@ -38,7 +38,7 @@ Body is 16px and labels 14px. The container is 1440px with 64px gutters (24px un
 ## Page rules
 
 - The owner's rule comes first: a ten-year-old can follow every section. One picture or one list, large type, and nothing to operate before the point is clear.
-- Under the hero a section is white, and what it shows sits on white cards lifted by `--shadow-lift`: a picture, a list of the apps, a plan. One panel on the page is ink, the agency's. No card inside a card.
+- Under the hero a section is white, and what it shows sits on white cards lifted by `--shadow-lift`: a picture, a list of the apps, a plan. Two panels on the page are ink: the agency's, and the call to action that ends it. No card inside a card.
 - Tried and taken out on the owner's word, so not to be tried again without asking: every section on ink, a grid of coloured tiles holding product panels, and flat pale sections of ruled text.
 - A thing you get is marked with the rust tick (`Tick` in the kit). The plan to pick stands under a rust band.
 - Three weights: 400 for body, 500 for labels and controls, 700 for display.
@@ -51,8 +51,8 @@ Body is 16px and labels 14px. The container is 1440px with 64px gutters (24px un
 - A ticked list is the body face at `--text-lead`, not the display face.
 - Under a row of buttons that fills the width, the small line is centred. Beside a column of text it aligns with the buttons.
 - An FAQ answer is three short sentences of 205 to 232 characters, about forty words: the answer first, then two facts behind it. Every answer on a page is the same size (three lines from a tablet up), and they all stand open.
-- A person is credited under their portrait: name, role, then the LinkedIn mark with the follower count.
-- A page closes on a quote from each founder, on two cards of one size. The two quotes are the same length, name the company and state something a reader can check.
+- On the about page a person is credited under their portrait: name, role, then the LinkedIn mark with the follower count. Beside a quote the credit is one row: a round picture, then the name and LinkedIn on a line with the role and company under them.
+- A page closes on a quote from each founder, on two cards of one size, then one ink panel with a head, a line and the two actions. The two quotes are the same length, name the company and state something a reader can check, and are set in the body face at normal weight.
 - Where the AI apps are listed, each logo is drawn in its own colours (`--color-logo-*`). Those colours appear nowhere else.
 - hero: Stage on `/`, Banner on every other page · nav: three-part bar on ink · footer: index columns on ink
 
