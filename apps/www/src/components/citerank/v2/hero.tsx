@@ -87,7 +87,7 @@ export function Hero({
 							sizes="(min-width: 1024px) 1000px, 100vw"
 							width={1000}
 							height={673}
-							alt="The CiteRank.com overview: AI visibility 70%, share of voice 23%, sentiment 88 and position 1.5, above a chart and a table ranking the brand against its competitors in each AI app"
+							alt="The CiteRank.com overview: AI visibility, share of voice, sentiment and position for the tracked brand, above a chart and a table ranking it against its competitors in each AI app"
 							loading="eager"
 							fetchPriority="high"
 							decoding="async"

@@ -10,6 +10,10 @@
 //
 // Each capture is 1500×900 at 2x, so 3000×1800, the size the marketing site's
 // cursor and crop positions are worked out against.
+//
+// The crops are a second set: one part of a page, shown on the marketing site
+// at the size it was captured, so its text stays readable. Name a crop to
+// retake only that one. Their PNGs land in scripts/demo-data/captures.
 import { mkdirSync } from "node:fs";
 import { createRequire } from "node:module";
 import { join } from "node:path";
@@ -22,6 +26,7 @@ const pg = requireFromE2e("pg") as typeof import("pg");
 
 const DASHBOARD_URL = process.env.DASHBOARD_URL ?? "http://localhost:3100";
 const OUT_DIR = join(__dirname, "../../apps/www/public/screenshots");
+const CROP_DIR = join(__dirname, "captures");
 const BRAND_PATH = `/app/org/${DEMO_ORG.slug}/brand/${DEMO_BRAND.slug}`;
 
 interface Shot {
@@ -63,6 +68,23 @@ const SHOTS: Shot[] = [
 		path: (ids) => `/prompts/${ids.get("Help desk software with AI agents that resolve tickets")}?tab=responses`,
 	},
 	{ name: "prompt-settings", path: "/settings/prompts" },
+];
+
+interface Crop {
+	name: string;
+	path: string;
+	/** The dashboard lays out differently at each width, so a crop names the one it was measured at. */
+	viewport: { width: number; height: number };
+	clip: { x: number; y: number; width: number; height: number };
+}
+
+const CROPS: Crop[] = [
+	// 813 high so the competitor table ends on a whole row.
+	{ name: "overview-wide", path: "", viewport: { width: 1280, height: 813 }, clip: { x: 264, y: 80, width: 1000, height: 673 } },
+	{ name: "overview-phone", path: "", viewport: { width: 390, height: 844 }, clip: { x: 0, y: 280, width: 390, height: 348 } },
+	{ name: "step-ask", path: "/responses", viewport: { width: 1040, height: 900 }, clip: { x: 269, y: 433, width: 750, height: 540 } },
+	{ name: "step-see", path: "/share-of-voice", viewport: { width: 1040, height: 900 }, clip: { x: 269, y: 605, width: 750, height: 540 } },
+	{ name: "step-fix", path: "/opportunities", viewport: { width: 1040, height: 900 }, clip: { x: 269, y: 613, width: 750, height: 540 } },
 ];
 
 /** Simple marks for the fictional companies, so their rows don't show a blank globe. */
@@ -179,8 +201,10 @@ async function settle(page: Page): Promise<void> {
 async function main(): Promise<void> {
 	const only = new Set(process.argv.slice(2));
 	const shots = only.size > 0 ? SHOTS.filter((shot) => only.has(shot.name)) : SHOTS;
+	const crops = only.size > 0 ? CROPS.filter((crop) => only.has(crop.name)) : CROPS;
 	const ids = await promptIds();
 	mkdirSync(OUT_DIR, { recursive: true });
+	mkdirSync(CROP_DIR, { recursive: true });
 
 	const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
 	try {
@@ -195,6 +219,13 @@ async function main(): Promise<void> {
 			}
 			await page.screenshot({ path: join(OUT_DIR, `${shot.name}.png`) });
 			console.log(`Captured ${shot.name}`);
+		}
+		for (const crop of crops) {
+			await page.setViewportSize(crop.viewport);
+			await page.goto(`${BRAND_PATH}${crop.path}`);
+			await settle(page);
+			await page.screenshot({ path: join(CROP_DIR, `${crop.name}.png`), clip: crop.clip, fullPage: true });
+			console.log(`Captured ${crop.name}`);
 		}
 	} finally {
 		await browser.close();

@@ -13,7 +13,7 @@ const STEPS = [
 		title: "See where you stand",
 		body: "How often you are named, how often each rival is, how AI describes you, and which pages it trusts.",
 		shot: "step-see",
-		alt: "The share of voice leaderboard in CiteRank.com: the tracked brand first with 23% of mentions, then eight rivals with their mentions and share",
+		alt: "The share of voice leaderboard in CiteRank.com: the tracked brand first, then eight rivals, each with its mentions and its share",
 	},
 	{
 		title: "Know what to fix",
