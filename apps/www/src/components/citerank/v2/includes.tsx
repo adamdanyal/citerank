@@ -2,7 +2,7 @@ import { getModelMeta } from "@workspace/config/models";
 import { CLOUD_PLATFORMS, PLANS, premiumPlanNames, STANDARD_PLATFORM_MENU } from "@workspace/config/plans";
 import { EngineIcon } from "@/components/home/engines";
 import { INCLUDED } from "./included";
-import { BODY, PANEL_PAD, Page, PanelHead, SMALL, SUBHEAD } from "./kit";
+import { BODY, PANEL_PAD, Page, PanelHead, SMALL, SUBHEAD, Tick } from "./kit";
 
 /** Gemini shares Google's mark in the catalog, which would make it indistinguishable from AI Overviews here. */
 const ICON_OVERRIDES: Record<string, string> = { gemini: "gemini" };
@@ -34,21 +34,7 @@ export function Includes() {
 								key={promise.title}
 								className={`${SUBHEAD} flex items-start gap-4 border-t border-zinc-200 py-5 text-ink first:border-t-0 first:pt-0 last:pb-0`}
 							>
-								<span
-									aria-hidden="true"
-									className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-rust text-paper"
-								>
-									<svg aria-hidden="true" viewBox="0 0 12 12" className="size-3.5">
-										<path
-											d="M2 6.5l2.5 2.5 5.5-6"
-											fill="none"
-											stroke="currentColor"
-											strokeWidth="2"
-											strokeLinecap="round"
-											strokeLinejoin="round"
-										/>
-									</svg>
-								</span>
+								<Tick className="mt-0.5 size-7" />
 								{promise.title}
 							</li>
 						))}

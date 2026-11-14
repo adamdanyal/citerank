@@ -61,18 +61,6 @@ export const PILL_ACCENT = `${PILL_BASE} bg-rust text-paper`;
 export const PILL_INK = `${PILL_BASE} bg-ink-well text-paper`;
 export const PILL_QUIET = `${PILL_BASE} bg-paper-2 text-zinc-700`;
 
-/*
- * A tile: one idea and one thing to look at, on a surface of its own. A section
- * is a grid of them, and the colour of the page comes from mixing the surfaces:
- * mostly white and sand, with one in ink or rust where the eye should land.
- */
-const TILE = "relative min-w-0 overflow-hidden rounded-card p-6 sm:p-8 lg:p-10";
-export const TILE_WHITE = `${TILE} bg-white text-ink ring-1 ring-inset ring-zinc-200`;
-export const TILE_SAND = `${TILE} bg-paper-3 text-ink`;
-export const TILE_TINT = `${TILE} bg-blue-100 text-ink`;
-export const TILE_INK = `${TILE} bg-ink text-paper`;
-export const TILE_RUST = `${TILE} bg-rust text-paper`;
-
 /** A tinted well, for content of another kind than the text around it. No outline: the tint is the edge. */
 export const CARD = "rounded-card bg-paper-2 p-6 sm:p-8";
 export const CARD_INK = "rounded-card bg-ink-well p-6 sm:p-8";
@@ -88,6 +76,27 @@ export const ACTION_QUIET_ON_INK = `${BUTTON} ${OUTLINED_ON_INK}`;
 export const ACTION_SM = `${BUTTON_SM} ${FILLED}`;
 export const LINK = `rounded-sm underline decoration-zinc-400 underline-offset-[5px] transition-colors duration-200 hover:decoration-rust ${FOCUS}`;
 export const LINK_ON_INK = `rounded-sm underline decoration-zinc-500 underline-offset-[5px] transition-colors duration-200 hover:decoration-paper ${FOCUS}`;
+
+/** The mark beside a thing you get. It says nothing a reader needs, so it is hidden from one. */
+export function Tick({ className = "size-7" }: { className?: string }) {
+	return (
+		<span
+			aria-hidden="true"
+			className={`grid shrink-0 place-items-center rounded-full bg-rust text-paper ${className}`}
+		>
+			<svg aria-hidden="true" viewBox="0 0 12 12" className="size-1/2">
+				<path
+					d="M2 6.5l2.5 2.5 5.5-6"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth="2"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+				/>
+			</svg>
+		</span>
+	);
+}
 
 /** A section's head block: the head, and at most one line under it. */
 export function PanelHead({
