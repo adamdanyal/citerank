@@ -93,7 +93,7 @@ const PEOPLE = {
 		role: "AISearch Global",
 		photo: "/testimonials/viveka.jpg",
 		quote:
-			"We're an AEO consultancy, so we turned CiteRank.com on ourselves before any client. It's the tool I trust to tell us the truth about our own AI visibility, and it was tracking within the hour.",
+			"We’re an AEO consultancy, so we turned CiteRank.com on ourselves before any client. It’s the tool I trust to tell us the truth about our own AI visibility, and it was tracking within the hour.",
 	},
 	borys: {
 		kind: "person",
@@ -116,7 +116,7 @@ const PEOPLE = {
 		role: "RecordRanks",
 		photo: "/testimonials/deni.jpg",
 		quote:
-			"CiteRank.com has been fantastic to use for tracking AI visibility of my sports management platform RecordRanks. I highly recommend it, I think it's genuinely worth it!",
+			"CiteRank.com has been fantastic to use for tracking AI visibility of my sports management platform RecordRanks. I highly recommend it, I think it’s genuinely worth it!",
 	},
 } satisfies Record<string, Review>;
 

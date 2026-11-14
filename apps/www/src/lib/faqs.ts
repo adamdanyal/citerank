@@ -42,12 +42,12 @@ export const HOME_FAQS: FaqItem[] = [
 	},
 	{
 		question: "How much does CiteRank.com cost compared to Profound?",
-		answer: `CiteRank.com is much cheaper and simpler to buy. Profound's pricing page lists a free trial and an Enterprise plan quoted by sales, while CiteRank.com is self-serve with public prices, starting at $${CLOUD_ENTRY_PRICE_USD}/mo for the Basic plan. On every plan, each prompt is checked 4× a day, where Profound checks daily. Pro ($${PLANS.pro.monthlyPriceUsd}/mo) and Business ($${PLANS.business.monthlyPriceUsd}/mo) add more brands, more prompts, and premium grounded models, and you can book a call about the AI search agency.`,
+		answer: `CiteRank.com is much cheaper and simpler to buy. Profound’s pricing page lists a free trial and an Enterprise plan quoted by sales, while CiteRank.com is self-serve with public prices, starting at $${CLOUD_ENTRY_PRICE_USD}/mo for the Basic plan. On every plan, each prompt is checked 4× a day, where Profound checks daily. Pro ($${PLANS.pro.monthlyPriceUsd}/mo) and Business ($${PLANS.business.monthlyPriceUsd}/mo) add more brands, more prompts, and premium grounded models, and you can book a call about the AI search agency.`,
 		links: [{ text: "book a call", href: "/agency" }],
 	},
 	{
 		question: "Is CiteRank.com free?",
-		answer: `No. CiteRank.com has no free plan or free trial, but there is no per-seat pricing either. You only pay for the plan you choose, from $${CLOUD_ENTRY_PRICE_USD}/mo, with no sales call, and you can cancel any time from your billing settings. If you'd rather not do the work yourself, the AI search agency does it for you every month.`,
+		answer: `No. CiteRank.com has no free plan or free trial, but there is no per-seat pricing either. You only pay for the plan you choose, from $${CLOUD_ENTRY_PRICE_USD}/mo, with no sales call, and you can cancel any time from your billing settings. If you’d rather not do the work yourself, the AI search agency does it for you every month.`,
 	},
 ];
 
