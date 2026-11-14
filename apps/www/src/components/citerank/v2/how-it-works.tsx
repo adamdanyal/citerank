@@ -142,21 +142,28 @@ export function HowItWorks() {
 					{STEPS.map((step, index) => (
 						<li
 							key={step.title}
-							className="flex min-w-0 flex-col rounded-card bg-white p-6 shadow-lift ring-1 ring-zinc-200 sm:p-8"
+							className="flex min-w-0 flex-col rounded-card bg-white p-6 shadow-lift ring-1 ring-zinc-200 sm:p-8 md:max-lg:flex-row md:max-lg:items-center md:max-lg:gap-10"
 						>
-							<div role="img" aria-label={step.shows} data-nosnippet className="flex min-h-60 flex-col justify-center">
+							<div
+								role="img"
+								aria-label={step.shows}
+								data-nosnippet
+								className="flex min-h-60 flex-col justify-center md:max-lg:min-h-48 md:max-lg:w-80 md:max-lg:shrink-0"
+							>
 								{step.picture}
 							</div>
-							<h3 className={`${SUBHEAD} mt-8 flex items-start gap-3 text-ink`}>
-								<span
-									aria-hidden="true"
-									className="grid size-8 shrink-0 place-items-center rounded-full bg-rust font-sans text-[1rem] leading-none font-medium tracking-normal text-paper"
-								>
-									{index + 1}
-								</span>
-								{step.title}
-							</h3>
-							<p className={`${BODY} mt-3 text-zinc-600`}>{step.body}</p>
+							<div className="mt-8 min-w-0 md:max-lg:mt-0">
+								<h3 className={`${SUBHEAD} flex items-start gap-3 text-ink`}>
+									<span
+										aria-hidden="true"
+										className="grid size-8 shrink-0 place-items-center rounded-full bg-rust font-sans text-[1rem] leading-none font-medium tracking-normal text-paper"
+									>
+										{index + 1}
+									</span>
+									{step.title}
+								</h3>
+								<p className={`${BODY} mt-3 text-zinc-600`}>{step.body}</p>
+							</div>
 						</li>
 					))}
 				</ol>
