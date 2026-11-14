@@ -21,7 +21,7 @@ import {
 } from "@/components/citerank/v2/kit";
 import { PLAN_GRID, PlanCard, PlanLine } from "@/components/citerank/v2/pricing";
 import { PageHead, PageShell, PanelSection } from "@/components/citerank/v2/shell";
-import { AGENCY_PLANS, FOUNDING_DISCOUNT, formatUsd, foundingPriceUsd } from "@/lib/agency-plans";
+import { AGENCY_PLANS, AGENCY_WORK, FOUNDING_DISCOUNT, formatUsd, foundingPriceUsd } from "@/lib/agency-plans";
 import { embedInlineBooking } from "@/lib/cal-embed";
 import { AGENCY_FAQS } from "@/lib/faqs";
 import { agencyServiceJsonLd, breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
@@ -70,33 +70,6 @@ const STEPS = [
 	{
 		title: "The cycle repeats",
 		body: "The tracker measures the new answers, and the next month’s work follows from them.",
-	},
-];
-
-const WORK = [
-	{
-		title: "Pages your site is missing",
-		body: "The comparison, alternatives and guide pages buyers ask about, where AI names competitors instead of you.",
-	},
-	{
-		title: "Pages AI stopped citing",
-		body: "We update old pages AI no longer cites, so they answer the questions buyers ask today.",
-	},
-	{
-		title: "Review sites and best-of lists",
-		body: "We pitch you to the review sites and lists AI cites when it leaves you out. They decide whether to add you.",
-	},
-	{
-		title: "Forums and communities",
-		body: "We answer buyers’ questions, openly as your brand, in the forums and communities where they ask.",
-	},
-	{
-		title: "Guest articles",
-		body: "Articles on sites AI already cites, each aimed at a question where a competitor is named instead.",
-	},
-	{
-		title: "Crawler fixes",
-		body: "We fix anything that stops AI crawlers reading your site.",
 	},
 ];
 
@@ -190,11 +163,11 @@ function AgencyPage() {
 					<p className={`${LEAD} text-zinc-600`}>Every month, from the list the tracker ranks.</p>
 				</PanelHead>
 				<div className="mt-10 lg:mt-16">
-					<LiftedRows items={WORK} />
+					<LiftedRows items={AGENCY_WORK} />
 				</div>
 			</PanelSection>
 
-			<PanelSection>
+			<PanelSection id="plans">
 				<PanelHead title="Agency plans">
 					<p className={`${LEAD} text-zinc-600`}>
 						Each plan includes a tracker plan, so your dashboard and the monthly report show the same data.

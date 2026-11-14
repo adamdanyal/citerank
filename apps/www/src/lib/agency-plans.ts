@@ -57,6 +57,40 @@ export const AGENCY_PLANS: AgencyPlan[] = [
 	},
 ];
 
+/* The kinds of work, once: the short name on the home page, the title and the sentence on the agency page. */
+export const AGENCY_WORK = [
+	{
+		name: "New pages",
+		title: "Pages your site is missing",
+		body: "The comparison, alternatives and guide pages buyers ask about, where AI names competitors instead of you.",
+	},
+	{
+		name: "Page updates",
+		title: "Pages AI stopped citing",
+		body: "We update old pages AI no longer cites, so they answer the questions buyers ask today.",
+	},
+	{
+		name: "Review site and list pitches",
+		title: "Review sites and best-of lists",
+		body: "We pitch you to the review sites and lists AI cites when it leaves you out. They decide whether to add you.",
+	},
+	{
+		name: "Forum answers",
+		title: "Forums and communities",
+		body: "We answer buyers’ questions, openly as your brand, in the forums and communities where they ask.",
+	},
+	{
+		name: "Guest articles",
+		title: "Guest articles",
+		body: "Articles on sites AI already cites, each aimed at a question where a competitor is named instead.",
+	},
+	{
+		name: "Crawler fixes",
+		title: "Crawler fixes",
+		body: "We fix anything that stops AI crawlers reading your site.",
+	},
+];
+
 export const FOUNDING_DISCOUNT = 0.25;
 
 export function formatUsd(amount: number): string {
