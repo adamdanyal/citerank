@@ -37,7 +37,7 @@ export function Hero({
 					<p data-speakable className="mt-6 max-w-[46ch] text-lead leading-[1.45] text-balance text-zinc-300">
 						{lede}
 					</p>
-					<div className="mt-8 flex flex-col gap-3 sm:flex-row">
+					<div className="mt-8 flex flex-col gap-3 sm:flex-row sm:max-xl:*:flex-1">
 						<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={ACTION}>
 							Start tracking
 						</a>
@@ -51,7 +51,7 @@ export function Hero({
 							Try the live demo
 						</a>
 					</div>
-					<p className={`${SMALL} mt-4 text-zinc-400`}>
+					<p className={`${SMALL} mt-4 text-center text-zinc-400 xl:text-left`}>
 						<span className="inline-block">Plans from ${CLOUD_ENTRY_PRICE_USD} a month.</span>{" "}
 						<span className="inline-block">No contract, cancel any time.</span>
 					</p>

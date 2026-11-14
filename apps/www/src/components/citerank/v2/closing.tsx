@@ -67,7 +67,7 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 						tracking.
 					</p>
 					<div className="lg:col-span-5 lg:justify-self-end">
-						<div className="flex flex-col gap-3 sm:flex-row">
+						<div className="flex flex-col gap-3 sm:flex-row sm:max-lg:*:flex-1">
 							<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={ACTION}>
 								Start tracking
 							</a>
@@ -81,7 +81,7 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 								Try the live demo
 							</a>
 						</div>
-						<p className={`${SMALL} mt-4 text-zinc-600`}>
+						<p className={`${SMALL} mt-4 text-center text-zinc-600 lg:text-left`}>
 							<span className="inline-block">Set up takes minutes.</span>{" "}
 							<span className="inline-block">Plans from ${CLOUD_ENTRY_PRICE_USD} a month, cancel any time.</span>
 						</p>
