@@ -124,11 +124,11 @@ function PageHead() {
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<html lang="en" className="overflow-x-clip" suppressHydrationWarning>
 			<head>
 				<PageHead />
 			</head>
-			<body className="flex min-h-screen flex-col">
+			<body className="flex min-h-screen flex-col overflow-x-clip">
 				{children}
 				<Scripts />
 			</body>
