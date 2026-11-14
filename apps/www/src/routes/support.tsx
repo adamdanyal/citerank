@@ -6,6 +6,7 @@ import {
 	ACTION,
 	ACTION_QUIET,
 	BODY,
+	CARD_LIFT,
 	LEAD,
 	PANEL,
 	PANEL_PAD_WIDE,
@@ -80,8 +81,8 @@ function StartChatButton() {
 
 function ContactRow({ title, children, action }: { title: string; children: ReactNode; action: ReactNode }) {
 	return (
-		<li className="grid gap-x-8 gap-y-2 border-t border-zinc-200 py-6 lg:grid-cols-12 lg:items-center lg:py-8">
-			<h3 className={`${SUBHEAD} text-ink lg:col-span-4`}>{title}</h3>
+		<li className="grid gap-x-8 gap-y-2 border-t border-zinc-200 py-6 first:border-t-0 lg:grid-cols-12 lg:items-center">
+			<h3 className="font-sans text-lead leading-snug font-medium tracking-normal text-ink lg:col-span-4">{title}</h3>
 			<p className={`${BODY} max-w-[52ch] text-zinc-600 lg:col-span-5`}>{children}</p>
 			<div className="mt-3 lg:col-span-3 lg:mt-0">{action}</div>
 		</li>
@@ -107,11 +108,10 @@ function SupportPage() {
 				lede="For your account, billing, the MCP server or the AI search agency, here is how to reach the team."
 			/>
 
-			{/* The rows bring their own space above the first hairline, so the section adds less than a full gap. */}
 			<section className={`${PANEL} pt-3 pb-9 sm:pt-5 sm:pb-12 lg:pt-10 lg:pb-18`}>
 				<Page>
 					<h2 className="sr-only">How to reach the team</h2>
-					<ul className="border-b border-zinc-200">
+					<ul className={`${CARD_LIFT} px-6 sm:px-8`}>
 						<ContactRow title="Chat with us" action={<StartChatButton />}>
 							The fastest way to reach the team, for anything from sign-in trouble to questions about your data.
 						</ContactRow>
@@ -183,12 +183,12 @@ function SupportPage() {
 					<PanelHead title="Before you write">
 						<p className={`${LEAD} text-zinc-600`}>Most setup and integration questions are answered here.</p>
 					</PanelHead>
-					<ul className="mt-10 grid gap-x-8 md:grid-cols-3 lg:mt-16">
+					<ul className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-5 md:grid-cols-3 lg:mt-16 lg:gap-8">
 						{RESOURCES.map((resource) => (
-							<li key={resource.href} className="border-t border-zinc-200">
+							<li key={resource.href} className="flex">
 								<a
 									href={resource.href}
-									className="group block rounded-sm py-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rust"
+									className={`${CARD_LIFT} group block w-full p-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rust sm:p-8`}
 								>
 									<h3 className={`${SUBHEAD} text-ink transition-colors duration-200 group-hover:text-rust`}>
 										{resource.label}
