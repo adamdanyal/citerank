@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { getModelMeta } from "@workspace/config/models";
 import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS } from "@workspace/config/plans";
 import type { ComponentProps } from "react";
-import { StickyCta } from "@/components/citerank/home/sticky-cta";
 import { Agency } from "@/components/citerank/v2/agency";
 import { Closing } from "@/components/citerank/v2/closing";
 import { Faq } from "@/components/citerank/v2/faq";
@@ -107,7 +106,6 @@ function HomePage() {
 				<Closing />
 			</main>
 			<Footer />
-			<StickyCta />
 		</div>
 	);
 }

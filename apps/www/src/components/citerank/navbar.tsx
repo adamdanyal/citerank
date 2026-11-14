@@ -164,9 +164,9 @@ export function Navbar() {
 	return (
 		<>
 			<header className="sticky top-0 z-40 bg-ink text-paper">
-				<nav aria-label="Main" className={`${WRAP} flex h-18 items-center gap-6`}>
+				<nav aria-label="Main" className={`${WRAP} flex h-18 items-center gap-2 min-[480px]:gap-6`}>
 					<Link to="/" aria-label="CiteRank.com home" className={`flex items-center rounded-md ${FOCUS}`}>
-						<Logo className="text-[1.375rem] text-paper" />
+						<Logo className="text-[clamp(1.0625rem,5.2vw,1.375rem)] text-paper" />
 					</Link>
 					<ul className="hidden items-center lg:flex lg:flex-1 lg:pl-4">
 						{LINKS.map((link) => (
@@ -185,7 +185,7 @@ export function Navbar() {
 						<a
 							href={SIGN_UP_URL}
 							onClick={() => trackEvent("signup_click", { from: "nav" })}
-							className={`${ACTION_SM} max-[479px]:hidden`}
+							className={`${ACTION_SM} max-[479px]:px-3.5 max-[479px]:text-[0.875rem] max-[349px]:hidden`}
 						>
 							Start tracking
 						</a>
