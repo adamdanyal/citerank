@@ -34,7 +34,7 @@ const MONO_BASE = "font-mono text-[0.8125rem] leading-[1.5]";
 export const MONO = `${MONO_BASE} text-zinc-600`;
 export const MONO_ON_INK = `${MONO_BASE} text-zinc-400`;
 
-const FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust";
+export const FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust";
 
 /*
  * A section's surface and its share of the gap to its neighbours. Two sections
