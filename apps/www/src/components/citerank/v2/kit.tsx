@@ -61,6 +61,18 @@ export const PILL_ACCENT = `${PILL_BASE} bg-rust text-paper`;
 export const PILL_INK = `${PILL_BASE} bg-ink-well text-paper`;
 export const PILL_QUIET = `${PILL_BASE} bg-paper-2 text-zinc-700`;
 
+/*
+ * A tile: one idea and one thing to look at, on a surface of its own. A section
+ * is a grid of them, and the colour of the page comes from mixing the surfaces:
+ * mostly white and sand, with one in ink or rust where the eye should land.
+ */
+const TILE = "relative min-w-0 overflow-hidden rounded-card p-6 sm:p-8 lg:p-10";
+export const TILE_WHITE = `${TILE} bg-white text-ink ring-1 ring-inset ring-zinc-200`;
+export const TILE_SAND = `${TILE} bg-paper-3 text-ink`;
+export const TILE_TINT = `${TILE} bg-blue-100 text-ink`;
+export const TILE_INK = `${TILE} bg-ink text-paper`;
+export const TILE_RUST = `${TILE} bg-rust text-paper`;
+
 /** A tinted well, for content of another kind than the text around it. No outline: the tint is the edge. */
 export const CARD = "rounded-card bg-paper-2 p-6 sm:p-8";
 export const CARD_INK = "rounded-card bg-ink-well p-6 sm:p-8";
