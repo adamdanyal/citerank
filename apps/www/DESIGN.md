@@ -20,7 +20,7 @@ The locked system. Every Hallmark run reads this first and pages share it. Chang
 /* on the ink bands */ --color-ink-well: #262420;  --color-ink-rule: #3a3731;
 /* accent */ --color-rust: #b84d25;  /* its text */ --color-paper;  /* focus */ --color-rust;
 --font-display: "Schibsted Grotesk";  --font-body: "Inter";  /* outlier, code and measured figures only */ "JetBrains Mono";
---radius-card: 12px;  /* pill */ 999px;  /* rule */ 1px;  --shadow-card: one 1px shadow, menus only;
+--radius-card: 12px;  /* pill */ 999px;  /* rule */ 1px;  --shadow-card: one 1px shadow, menus only;  --shadow-lift: cards on a white section;
 --text-display: 84px;  --text-display-s: 60px;  --text-section: 52px;  --text-title: 25px;  --text-lead: 21px;  /* at 1440 */
 ```
 
@@ -37,7 +37,10 @@ Body is 16px and labels 14px. The container is 1440px with 64px gutters (24px un
 
 ## Page rules
 
-- Every section runs the full width. A change of paper, tinted or ink, is a band. No rounded page panels and no card inside a card.
+- The owner's rule comes first: a ten-year-old can follow every section. One picture or one list, large type, and nothing to operate before the point is clear.
+- Under the hero a section is white, and what it shows sits on white cards lifted by `--shadow-lift`: a picture, a list of the apps, a plan. One panel on the page is ink, the agency's. No card inside a card.
+- Tried and taken out on the owner's word, so not to be tried again without asking: every section on ink, a grid of coloured tiles holding product panels, and flat pale sections of ruled text.
+- A thing you get is marked with the rust tick (`Tick` in the kit). The plan to pick stands under a rust band.
 - Three weights: 400 for body, 500 for labels and controls, 700 for display.
 - Labels are the body face in sentence case. Mono is for code and measured figures.
 - The sign-up action reads "Start tracking" wherever it appears.
