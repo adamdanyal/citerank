@@ -57,7 +57,7 @@ export function Sparkline({ values, className = "" }: { values: number[]; classN
 		),
 	);
 	return (
-		<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" className={className}>
+		<svg data-kind="chart" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" className={className}>
 			<path d={`${line}V100H0Z`} fill="currentColor" fillOpacity="0.16" />
 			<path
 				d={line}
@@ -113,6 +113,7 @@ export function LineChart({
 					))}
 				</div>
 				<div
+					data-kind="chart"
 					className={`relative rounded-sm has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-4 has-[:focus-visible]:outline-rust ${height}`}
 				>
 					<svg
@@ -250,6 +251,7 @@ export function StackedArea({
 					))}
 				</div>
 				<svg
+					data-kind="chart"
 					role="img"
 					aria-label={label}
 					viewBox="0 0 100 100"
@@ -295,7 +297,7 @@ export function Donut({
 	const shares = parts.map((part) => (part.value / total) * 100);
 	const starts = shares.map((_, place) => shares.slice(0, place).reduce((sum, share) => sum + share, 0));
 	return (
-		<div className="relative size-36 shrink-0">
+		<div data-kind="chart" className="relative size-36 shrink-0">
 			<svg role="img" aria-label={label} viewBox="0 0 42 42" className="size-full -rotate-90">
 				{parts.map((part, place) => (
 					<circle

@@ -1,4 +1,5 @@
 import { type ReactNode, useState } from "react";
+import { EngineIcon } from "@/components/home/engines";
 import { Bar, Donut, LineChart, Sparkline, StackedArea } from "./charts";
 import {
 	type Answer,
@@ -89,9 +90,9 @@ function StatCard({
 		<Press
 			pressed={active}
 			onPress={onPick}
-			className={`flex min-h-28 flex-col overflow-hidden rounded-xl text-left ${
+			className={`flex min-h-26 flex-col overflow-hidden rounded-xl text-left ${
 				metric === "visibility" ? "bg-warn-tint text-warn" : "bg-good-tint text-good"
-			} ${active ? "ring-2 ring-current" : "ring-1 ring-current/25 hover:ring-current/60"}`}
+			} ${active ? "ring-2 ring-ink" : "ring-1 ring-current/25 hover:ring-current/60"}`}
 		>
 			<span className="px-4 pt-3.5 text-sm font-medium">{label}</span>
 			<span className="mt-1 flex items-baseline gap-2 px-4">
@@ -106,7 +107,7 @@ function StatCard({
 					</span>
 				) : null}
 			</span>
-			<Sparkline values={OWN.series[metric]} className="mt-auto h-10 w-full" />
+			<Sparkline values={OWN.series[metric]} className="mt-auto h-9 w-full" />
 		</Press>
 	);
 }
@@ -115,14 +116,15 @@ function StatCard({
 const ENGINE_CELL = [
 	"",
 	"",
-	"hidden @[26rem]:table-cell",
-	"hidden @[26rem]:table-cell",
-	"hidden @[33rem]:table-cell",
-	"hidden @[33rem]:table-cell",
+	"hidden @[29rem]:table-cell",
+	"hidden @[29rem]:table-cell",
+	"hidden @[35rem]:table-cell",
+	"hidden @[35rem]:table-cell",
 ];
 const CELL = "border-t border-zinc-200 py-1";
 
-function EngineTable({ metric, companies }: { metric: Metric; companies: Company[] }) {
+/* `keyed` puts each brand's line colour at the start of its row, so the table is the key to the chart above it. */
+function EngineTable({ metric, companies, keyed = false }: { metric: Metric; companies: Company[]; keyed?: boolean }) {
 	const values = companies.flatMap((company) => ENGINES.map((engine) => byEngine(company, engine.model, metric)));
 	const low = Math.min(...values);
 	const span = Math.max(...values) - low || 1;
@@ -136,16 +138,22 @@ function EngineTable({ metric, companies }: { metric: Metric; companies: Company
 				</caption>
 				<thead>
 					<tr className="text-zinc-500">
-						<th scope="col" className="pb-2 text-left font-normal">
+						<th scope="col" className="pb-2 text-left align-bottom font-normal">
 							Company
 						</th>
-						<th scope="col" className="pb-2 text-right font-normal">
+						<th scope="col" className="pb-2 text-right align-bottom font-normal">
 							All
 						</th>
 						{ENGINES.map((engine, place) => (
-							<th key={engine.model} scope="col" className={`pb-2 pl-1.5 font-normal ${ENGINE_CELL[place] ?? ""}`}>
-								<span className="flex justify-center">
-									<Engine model={engine.model} />
+							<th
+								key={engine.model}
+								scope="col"
+								title={engine.label}
+								className={`pb-2 pl-1.5 align-bottom font-normal ${ENGINE_CELL[place] ?? ""}`}
+							>
+								<span className="flex flex-col items-center gap-1 text-ink">
+									<EngineIcon iconId={engine.iconId} className="size-4" />
+									<span className="text-xs leading-none text-zinc-600">{engine.short}</span>
 								</span>
 							</th>
 						))}
@@ -156,7 +164,14 @@ function EngineTable({ metric, companies }: { metric: Metric; companies: Company
 						<tr key={company.name}>
 							<th scope="row" className={`${CELL} pr-2 text-left ${company.isBrand ? "font-medium" : "font-normal"}`}>
 								<span className="flex items-center gap-2">
-									<span className="w-3 font-normal text-zinc-500">{index + 1}</span>
+									{keyed ? (
+										<span
+											aria-hidden="true"
+											className={`h-0.5 w-3 shrink-0 rounded-full bg-current ${toneOf(company.name)}`}
+										/>
+									) : (
+										<span className="w-3 font-normal text-zinc-500">{index + 1}</span>
+									)}
 									<Mark name={company.name} />
 									<span className="truncate text-ink">{company.name}</span>
 								</span>
@@ -187,40 +202,25 @@ function EngineTable({ metric, companies }: { metric: Metric; companies: Company
 	);
 }
 
-function Landscape({ metric, onMetric }: { metric: Metric; onMetric: (metric: Metric) => void }) {
+function Landscape({ metric }: { metric: Metric }) {
 	const still = useStill();
-	const companies = ranked(metric);
-	const top = companies.slice(0, 5);
+	const top = ranked(metric).slice(0, 5);
 	const name = METRICS.find((item) => item.id === metric)?.tab ?? "";
 	return (
 		<div className={`${BOX} p-4`}>
-			<div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
-				<div>
-					<p className={BOX_TITLE}>Competitive Landscape</p>
-					<p className="mt-0.5 text-sm text-zinc-600">{name}, last 30 days</p>
-				</div>
-				<Segmented
-					label="Measure"
-					options={METRICS.map((item) => ({ id: item.id, label: item.tab }))}
-					value={metric}
-					onChange={onMetric}
-					className="@max-[36rem]:hidden"
+			<p className={BOX_TITLE}>Competitive Landscape</p>
+			<p className="mt-0.5 text-sm text-zinc-600">{name}, last 30 days</p>
+			<div className="mt-4 grid items-center gap-5 @[56rem]:grid-cols-2">
+				<LineChart
+					lines={top.map((company) => lineOf(company, metric))}
+					label={`${name} over the last 30 days for ${BRAND} and four rivals`}
+					dayAt={dayOf(PREVIEW.days)}
+					format={axisLabel(metric)}
+					exact={metric === "position" ? (value) => value.toFixed(1) : undefined}
+					still={still}
+					height="h-[var(--chart-height,9rem)]"
 				/>
-			</div>
-			<div className="mt-4 grid gap-5 @[56rem]:grid-cols-2">
-				<div className="min-w-0">
-					<LineChart
-						lines={top.map((company) => lineOf(company, metric))}
-						label={`${name} over the last 30 days for ${BRAND} and four rivals`}
-						dayAt={dayOf(PREVIEW.days)}
-						format={axisLabel(metric)}
-						exact={metric === "position" ? (value) => value.toFixed(1) : undefined}
-						still={still}
-						height="h-36"
-					/>
-					<Legend names={top.map((company) => company.name)} />
-				</div>
-				<EngineTable metric={metric} companies={top} />
+				<EngineTable metric={metric} companies={top} keyed />
 			</div>
 		</div>
 	);
@@ -241,7 +241,7 @@ export function Overview({ lead = false }: ScreenProps) {
 					/>
 				))}
 			</div>
-			{lead ? null : <Landscape metric={metric} onMetric={setMetric} />}
+			{lead ? null : <Landscape metric={metric} />}
 		</div>
 	);
 }
@@ -444,7 +444,7 @@ export function Sentiment({ lead = false }: ScreenProps) {
 				</ul>
 			</div>
 			{lead ? null : (
-				<div className={`${BOX} hidden p-4 @[54rem]:col-span-2 @[54rem]:block`}>
+				<div className={`${BOX} p-4 @[54rem]:col-span-2`}>
 					<p className={BOX_TITLE}>Sentiment by Model</p>
 					<div className="mt-3">
 						<EngineTable metric="sentiment" companies={ranked("sentiment").slice(0, 6)} />
@@ -811,7 +811,7 @@ export function Opportunities({ lead = false }: ScreenProps) {
 	return (
 		<div className="space-y-3">
 			{lead ? null : (
-				<div className={`${BOX} hidden p-4 @[54rem]:block`}>
+				<div className={`${BOX} p-4`}>
 					<p className={BOX_TITLE}>Summary</p>
 					<ul className="mt-2 space-y-2 text-sm leading-relaxed text-zinc-700">
 						{data.summary.slice(0, 3).map((line) => (

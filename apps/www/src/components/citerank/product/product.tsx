@@ -33,6 +33,9 @@ const SCREENS = {
 
 export type ScreenId = keyof typeof SCREENS;
 
+/* Behind tabs the screens share one frame, so most keep to their first block and the frame holds its height. */
+const WHOLE_IN_TABS: ScreenId[] = ["overview", "responses"];
+
 /*
  * The product, as HTML. Never a picture of it and never a frame around it: the
  * words can be read by a person, a search engine and an AI assistant alike, it
@@ -62,6 +65,7 @@ export function Product({
 }) {
 	const [current, setCurrent] = useState<ScreenId>(screen);
 	const shown = SCREENS[current];
+	const brief = lead || (tabs ? !WHOLE_IN_TABS.includes(current) : false);
 	const View = shown.view;
 	const demoUrl = demoSiteUrl(from, `${DEMO_BRAND_PATH}${shown.path}`);
 
@@ -75,7 +79,7 @@ export function Product({
 		>
 			<Still value={still}>
 				{tabs ? (
-					<nav aria-label="Product screens" className="flex gap-1 overflow-x-auto border-b border-zinc-200 px-2 py-2">
+					<nav aria-label="Product screens" className="flex gap-1 overflow-x-auto border-b border-zinc-200 px-2 py-1.5">
 						{tabs.map((id) => (
 							<Press
 								key={id}
@@ -94,10 +98,10 @@ export function Product({
 					</nav>
 				) : null}
 				<div className={`@container p-3 sm:p-4 ${peek}`}>
-					<View lead={lead} />
+					<View lead={brief} />
 				</div>
 				{peek ? null : (
-					<figcaption className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t border-zinc-200 px-4 py-2.5 text-sm text-zinc-600">
+					<figcaption className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t border-zinc-200 px-4 py-2 text-sm text-zinc-600">
 						<span>Sample data. {PREVIEW.brand} is a made-up brand.</span>
 						{still ? null : (
 							<a

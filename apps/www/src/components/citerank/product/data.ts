@@ -25,9 +25,17 @@ export const METRICS: { id: Metric; label: string; tab: string }[] = [
 const ENGINE_ORDER = ["chatgpt", "gemini", "google-ai-overview", "perplexity", "claude", "bing-ai-mode"];
 const enginePlace = (model: string) => ENGINE_ORDER.indexOf(model) + 1 || ENGINE_ORDER.length + 1;
 
+const ENGINE_SHORT: Record<string, string> = { "google-ai-overview": "AI Overviews", "bing-ai-mode": "Bing" };
+
 export function engineOf(model: string) {
 	const meta = getModelMeta(model);
-	return { model, label: meta.label, iconId: model === "gemini" ? "gemini" : meta.iconId };
+	return {
+		model,
+		label: meta.label,
+		/** The name where there is a column's width for it. */
+		short: ENGINE_SHORT[model] ?? meta.label,
+		iconId: model === "gemini" ? "gemini" : meta.iconId,
+	};
 }
 export const ENGINES = [...preview.models].sort((a, b) => enginePlace(a) - enginePlace(b)).map(engineOf);
 
