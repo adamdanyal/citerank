@@ -261,35 +261,37 @@ export function Visibility({ lead = false }: ScreenProps) {
 					<span>{count(data.citations)} citations</span>
 				</p>
 			</div>
-			{data.prompts.slice(0, lead ? 1 : 2).map((prompt) => {
-				const own = prompt.lines[0]?.series ?? [];
-				return (
-					<div key={prompt.value} className={`${BOX} p-4`}>
-						<div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
-							<p className={BOX_TITLE}>{prompt.value}</p>
-							<span className="rounded-md bg-good px-2 py-1 text-xs leading-none font-medium whitespace-nowrap text-white">
-								{own[own.length - 1]}% Visibility
-							</span>
+			<div className="grid gap-3 @[56rem]:grid-cols-2">
+				{data.prompts.slice(0, lead ? 1 : 2).map((prompt) => {
+					const own = prompt.lines[0]?.series ?? [];
+					return (
+						<div key={prompt.value} className={`${BOX} p-4`}>
+							<div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+								<p className={BOX_TITLE}>{prompt.value}</p>
+								<span className="rounded-md bg-good px-2 py-1 text-xs leading-none font-medium whitespace-nowrap text-white">
+									{own[own.length - 1]}% Visibility
+								</span>
+							</div>
+							<div className="mt-4">
+								<LineChart
+									lines={prompt.lines.map((line) => ({
+										name: line.name,
+										tone: toneOf(line.name),
+										values: line.series,
+										strong: line.name === BRAND,
+									}))}
+									label={`How often each brand is named in answers to “${prompt.value}”, day by day`}
+									dayAt={dayOf(own.length)}
+									format={(value) => `${value}%`}
+									smooth
+									still={still}
+								/>
+								<Legend names={prompt.lines.map((line) => line.name)} />
+							</div>
 						</div>
-						<div className="mt-4">
-							<LineChart
-								lines={prompt.lines.map((line) => ({
-									name: line.name,
-									tone: toneOf(line.name),
-									values: line.series,
-									strong: line.name === BRAND,
-								}))}
-								label={`How often each brand is named in answers to “${prompt.value}”, day by day`}
-								dayAt={dayOf(own.length)}
-								format={(value) => `${value}%`}
-								smooth
-								still={still}
-							/>
-							<Legend names={prompt.lines.map((line) => line.name)} />
-						</div>
-					</div>
-				);
-			})}
+					);
+				})}
+			</div>
 		</div>
 	);
 }
@@ -300,7 +302,7 @@ export function ShareOfVoice({ lead = false }: ScreenProps) {
 	const topShare = board[0]?.share || 1;
 	const top = ranked("share").slice(0, 5);
 	return (
-		<div className="space-y-3">
+		<div className="grid gap-3 @[60rem]:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
 			{lead ? null : (
 				<div className={`${BOX} p-4`}>
 					<p className={BOX_TITLE}>Share of Voice, last 30 days</p>
@@ -311,7 +313,7 @@ export function ShareOfVoice({ lead = false }: ScreenProps) {
 							dayAt={dayOf(PREVIEW.days)}
 							format={axisLabel("share")}
 							still={still}
-							height="h-28"
+							height="h-28 @[60rem]:h-72"
 						/>
 						<Legend names={top.map((company) => company.name)} />
 					</div>
@@ -323,7 +325,7 @@ export function ShareOfVoice({ lead = false }: ScreenProps) {
 					<caption className="sr-only">Every tracked brand by its share of the mentions in AI answers</caption>
 					<thead>
 						<tr className="text-zinc-500">
-							<th scope="col" className="w-7 pb-2 text-left font-normal">
+							<th scope="col" className="w-7 pr-2 pb-2 text-left font-normal">
 								#
 							</th>
 							<th scope="col" className="pb-2 text-left font-normal">
@@ -343,7 +345,7 @@ export function ShareOfVoice({ lead = false }: ScreenProps) {
 					<tbody>
 						{board.map((entry, index) => (
 							<tr key={entry.name}>
-								<td className={`${CELL} text-zinc-500`}>{index + 1}</td>
+								<td className={`${CELL} pr-2 text-zinc-500`}>{index + 1}</td>
 								<th scope="row" className={`${CELL} pr-2 text-left font-normal`}>
 									<span className="flex items-center gap-2">
 										<Mark name={entry.name} className="size-6" />
@@ -631,7 +633,7 @@ export function FanOut({ lead = false }: ScreenProps) {
 				<>
 					<div className="grid grid-cols-2 gap-3 @[34rem]:grid-cols-3">
 						<Stat label="Search Prompt Runs" value={count(data.runs)} className="col-span-2 @[34rem]:col-span-1" />
-						<Stat label="Runs With Known Queries" value={count(data.knownRuns)} />
+						<Stat label="Prompt Runs w/ Known Queries" value={count(data.knownRuns)} />
 						<Stat label="Average Fan-Out" value={String(data.average)} />
 					</div>
 					<div className={`${BOX} p-4`}>
@@ -744,48 +746,51 @@ export function Citations({ lead = false }: ScreenProps) {
 				<Stat label="Unique Domains" value={count(data.uniqueDomains)} />
 				<Stat label="Total Citations" value={count(data.total)} />
 			</div>
-			<div className={`${BOX} p-4`}>
-				<p className={BOX_TITLE}>Citation Categories</p>
-				<div className="mt-4">
-					<StackedArea
-						layers={layers}
-						label="The share of citations going to each kind of source, day by day over the last 30 days"
-						dayAt={dayOf(layers[0]?.values.length ?? 0)}
-					/>
-					<ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-zinc-600">
-						{[...layers].reverse().map((layer) => (
-							<li key={layer.name} className="flex items-center gap-1.5">
-								<Swatch tone={layer.tone} />
-								{CATEGORY_LABEL[layer.name] ?? layer.name}
-							</li>
-						))}
-					</ul>
-				</div>
-			</div>
-			{lead ? null : (
+			<div className="grid gap-3 @[60rem]:grid-cols-2">
 				<div className={`${BOX} p-4`}>
-					<p className={BOX_TITLE}>Top Cited Domains</p>
-					<ol className="mt-3 text-sm">
-						{data.domains.slice(0, 6).map((domain, index) => (
-							<li key={domain.domain} className="flex items-center gap-3 border-t border-zinc-200 py-2">
-								<span className="w-3 text-zinc-500 tabular-nums">{index + 1}</span>
-								<span
-									className={`min-w-0 flex-1 truncate text-ink ${domain.category === "brand" ? "font-medium" : ""}`}
-								>
-									{domain.domain}
-								</span>
-								<span className="hidden w-24 text-zinc-600 @[30rem]:inline">
-									{CATEGORY_LABEL[domain.category] ?? domain.category}
-								</span>
-								<span className="flex w-36 items-center gap-3">
-									<Bar share={domain.count / most} tone={CATEGORY_TONE[domain.category] ?? CATEGORY_TONE.other} />
-									<span className="w-11 text-right font-mono text-zinc-700">{count(domain.count)}</span>
-								</span>
-							</li>
-						))}
-					</ol>
+					<p className={BOX_TITLE}>Citation Categories</p>
+					<div className="mt-4">
+						<StackedArea
+							layers={layers}
+							label="The share of citations going to each kind of source, day by day over the last 30 days"
+							dayAt={dayOf(layers[0]?.values.length ?? 0)}
+							height="h-40 @[60rem]:h-52"
+						/>
+						<ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-zinc-600">
+							{[...layers].reverse().map((layer) => (
+								<li key={layer.name} className="flex items-center gap-1.5">
+									<Swatch tone={layer.tone} />
+									{CATEGORY_LABEL[layer.name] ?? layer.name}
+								</li>
+							))}
+						</ul>
+					</div>
 				</div>
-			)}
+				{lead ? null : (
+					<div className={`${BOX} p-4`}>
+						<p className={BOX_TITLE}>Top Cited Domains</p>
+						<ol className="mt-3 text-sm">
+							{data.domains.slice(0, 6).map((domain, index) => (
+								<li key={domain.domain} className="flex items-center gap-3 border-t border-zinc-200 py-2">
+									<span className="w-3 text-zinc-500 tabular-nums">{index + 1}</span>
+									<span
+										className={`min-w-0 flex-1 truncate text-ink ${domain.category === "brand" ? "font-medium" : ""}`}
+									>
+										{domain.domain}
+									</span>
+									<span className="hidden w-24 text-zinc-600 @[30rem]:inline">
+										{CATEGORY_LABEL[domain.category] ?? domain.category}
+									</span>
+									<span className="flex w-36 items-center gap-3">
+										<Bar share={domain.count / most} tone={CATEGORY_TONE[domain.category] ?? CATEGORY_TONE.other} />
+										<span className="w-11 text-right font-mono text-zinc-700">{count(domain.count)}</span>
+									</span>
+								</li>
+							))}
+						</ol>
+					</div>
+				)}
+			</div>
 		</div>
 	);
 }
@@ -829,7 +834,7 @@ export function Opportunities({ lead = false }: ScreenProps) {
 				value={kind}
 				onChange={setKind}
 			/>
-			<ul className="space-y-3">
+			<ul className="grid gap-3 @[62rem]:grid-cols-3">
 				{data.items
 					.filter((item) => item.category === kind)
 					.map((item) => (

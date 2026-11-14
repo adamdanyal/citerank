@@ -105,7 +105,7 @@ export function LineChart({
 	const marks = [0, 1, 2, 3, 4, 5].map((step) => Math.round((step / 5) * last));
 
 	return (
-		<div className="@container">
+		<div>
 			<div className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-2 gap-y-2 text-xs text-zinc-500 tabular-nums">
 				<div aria-hidden="true" className="-my-1.5 flex flex-col-reverse justify-between text-right leading-3">
 					{scale.ticks.map((tick) => (
@@ -204,7 +204,7 @@ export function LineChart({
 						<span
 							key={index}
 							suppressHydrationWarning
-							className={place % 2 === 1 && place !== marks.length - 1 ? "hidden @[26rem]:inline" : ""}
+							className={place % 2 === 1 && place !== marks.length - 1 ? "hidden @[30rem]:inline" : ""}
 						>
 							{dayAt(index)}
 						</span>
@@ -242,7 +242,7 @@ export function StackedArea({
 	const marks = [0, 1, 2, 3, 4].map((step) => Math.round((step / 4) * last));
 
 	return (
-		<div className="@container">
+		<div>
 			<div className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-2 gap-y-2 text-xs text-zinc-500 tabular-nums">
 				<div aria-hidden="true" className="-my-1.5 flex flex-col-reverse justify-between text-right leading-3">
 					{[0, 25, 50, 75, 100].map((tick) => (
@@ -272,7 +272,7 @@ export function StackedArea({
 				<span />
 				<div aria-hidden="true" className="flex justify-between">
 					{marks.map((index, place) => (
-						<span key={index} suppressHydrationWarning className={place % 2 === 1 ? "hidden @[24rem]:inline" : ""}>
+						<span key={index} suppressHydrationWarning className={place % 2 === 1 ? "hidden @[30rem]:inline" : ""}>
 							{dayAt(index)}
 						</span>
 					))}

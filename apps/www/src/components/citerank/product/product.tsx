@@ -70,6 +70,7 @@ export function Product({
 			data-slot={`product-${screen}`}
 			data-kind="product"
 			data-nosnippet
+			aria-hidden={still || undefined}
 			className={`min-w-0 overflow-hidden rounded-card bg-paper text-left font-sans text-base font-normal text-ink ring-1 ring-zinc-200 ${className}`}
 		>
 			<Still value={still}>

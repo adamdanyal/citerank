@@ -68,7 +68,7 @@ export function Segmented<Id extends string>({
 	);
 }
 
-/* The made-up brands' marks, in leaderboard order. The live demo draws the same ones. */
+/* A mark for each made-up brand, in leaderboard order, so a row is told from the next at a glance. */
 const MARKS: { ground: string; glyph: ReactNode }[] = [
 	{
 		ground: "bg-mark-1",
