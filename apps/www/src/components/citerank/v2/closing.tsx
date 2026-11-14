@@ -6,12 +6,12 @@ import { FOUNDERS } from "@/lib/founders";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../product/data";
 import { LinkedInMark } from "../socials";
-import { ACTION, ACTION_QUIET, BAND_PAD, CARD_LIFT, LEAD, LINK, Page, SMALL, SUBHEAD } from "./kit";
+import { ACTION, ACTION_QUIET_ON_INK, BAND_PAD, CARD_LIFT, DISPLAY_S, LEAD, LINK, Page, SMALL } from "./kit";
 
 /*
  * The page closes on the two founders: what each says, on two cards of one
- * size, with the name under the portrait as on the about page. Then the two
- * things a visitor can do about it.
+ * size, signed with a picture, a name and a role. Then the two things a
+ * visitor can do about it.
  */
 export function Closing({ from = "marketing-closing" }: { from?: ReferralSource } = {}) {
 	const signupUrl = cloudSignupUrl(from);
@@ -29,10 +29,11 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 							>
 								“
 							</span>
-							<blockquote className="mt-4 flex-1 font-heading text-[clamp(1.375rem,1.1vw+1rem,1.875rem)] leading-[1.25] font-bold tracking-[-0.01em] text-pretty text-ink">
+							<blockquote className="mt-4 flex-1 text-[clamp(1.125rem,0.5vw+1rem,1.375rem)] leading-[1.5] text-pretty text-ink">
 								{founder.quote}
 							</blockquote>
-							<figcaption className="mt-8">
+							{/* The picture, then the name and LinkedIn on one line with the role under them. */}
+							<figcaption className="mt-8 flex items-center gap-4">
 								<img
 									src={founder.photo}
 									alt=""
@@ -40,50 +41,58 @@ export function Closing({ from = "marketing-closing" }: { from?: ReferralSource 
 									height={512}
 									loading="lazy"
 									decoding="async"
-									className="size-24 rounded-card object-cover"
+									className="size-14 shrink-0 rounded-full object-cover"
 								/>
-								<span className={`${SUBHEAD} mt-4 block text-ink`}>{founder.name}</span>
-								<span className={`${SMALL} mt-1 block text-zinc-600`}>{founder.role}</span>
-								<a
-									href={founder.href}
-									target="_blank"
-									rel="noopener noreferrer"
-									className={`${LINK} ${SMALL} mt-2 inline-flex items-center gap-2 whitespace-nowrap text-zinc-700`}
-								>
-									<LinkedInMark />
-									{founder.proof}
-									<span className="sr-only"> on LinkedIn</span>
-								</a>
+								<span className="min-w-0">
+									<span className="flex flex-wrap items-center gap-x-3 gap-y-1">
+										<span className="text-[1.0625rem] leading-snug font-medium text-ink">{founder.name}</span>
+										<a
+											href={founder.href}
+											target="_blank"
+											rel="noopener noreferrer"
+											className={`${LINK} ${SMALL} inline-flex items-center gap-1.5 whitespace-nowrap text-zinc-700`}
+										>
+											<LinkedInMark />
+											{founder.proof}
+											<span className="sr-only"> on LinkedIn</span>
+										</a>
+									</span>
+									<span className={`${SMALL} mt-0.5 block text-zinc-600`}>{founder.role}, CiteRank.com</span>
+								</span>
 							</figcaption>
 						</figure>
 					))}
 				</div>
 
-				<div className="mt-12 grid gap-8 border-t border-zinc-200 pt-10 lg:mt-16 lg:grid-cols-12 lg:items-center lg:gap-8">
-					<p className={`${LEAD} max-w-[52ch] text-zinc-700 lg:col-span-7`}>
-						Try the live demo first: no slides, no sales call, every page of the real product. If it is useful, start
-						tracking.
+				{/* The last thing on the page: one head, one line and the two things a visitor can do, on ink like the hero. */}
+				<div className="mt-5 rounded-[1.5rem] bg-ink px-6 py-12 text-center text-paper sm:px-10 sm:py-16 lg:mt-8 lg:py-20">
+					{/* Two lines on any phone: the type gives way before a third. */}
+					<h2
+						className={`${DISPLAY_S} mx-auto max-w-[20ch] text-paper max-sm:text-[length:min(2.25rem,calc((100vw_-_5rem)_/_8.6))]`}
+					>
+						See what AI says about your brand
+					</h2>
+					<p className={`${LEAD} mx-auto mt-5 max-w-[44ch] text-zinc-300`}>
+						Try the live demo first: no slides, no sales call, every page of the real product.
 					</p>
-					<div className="lg:col-span-5 lg:justify-self-end">
-						<div className="flex flex-col gap-3 sm:flex-row sm:max-lg:*:flex-1">
-							<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={ACTION}>
-								Start tracking
-							</a>
-							<a
-								href={demoUrl}
-								target="_blank"
-								rel={externalRel(demoUrl)}
-								onClick={() => trackEvent("demo_open", { from })}
-								className={ACTION_QUIET}
-							>
-								Try the live demo
-							</a>
-						</div>
-						<p className={`${SMALL} mt-4 text-center text-zinc-600 lg:text-left`}>
-							<span className="inline-block">Set up takes minutes.</span>{" "}
-							<span className="inline-block">Plans from ${CLOUD_ENTRY_PRICE_USD} a month, cancel any time.</span>
-						</p>
+					<div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+						<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={ACTION}>
+							Start tracking
+						</a>
+						<a
+							href={demoUrl}
+							target="_blank"
+							rel={externalRel(demoUrl)}
+							onClick={() => trackEvent("demo_open", { from })}
+							className={ACTION_QUIET_ON_INK}
+						>
+							Try the live demo
+						</a>
 					</div>
+					<p className={`${SMALL} mt-4 text-zinc-400`}>
+						<span className="inline-block">Set up takes minutes.</span>{" "}
+						<span className="inline-block">Plans from ${CLOUD_ENTRY_PRICE_USD} a month, cancel any time.</span>
+					</p>
 				</div>
 			</Page>
 		</section>
