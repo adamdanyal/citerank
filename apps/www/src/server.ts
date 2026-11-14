@@ -55,6 +55,64 @@ function compress(request: Request, response: Response): Response {
 	return new Response(body, { status: response.status, statusText: response.statusText, headers });
 }
 
+const ENTRY_SCRIPT = /<script\b(?=[^>]*\btype="module")(?=[^>]*\bsrc="(\/assets\/[^"]+\.js)")[^>]*><\/script>/;
+const MODULE_PRELOAD = /<link rel="modulepreload"/g;
+// Longer than any tag rewritten below, so one split across two chunks is still seen whole.
+const HOLD_BACK = 512;
+
+function deferredEntry(src: string): string {
+	return `<script>(function(){var d=0;function go(){if(d)return;d=1;document.querySelectorAll('link[rel="x-modulepreload"]').forEach(function(l){l.rel="modulepreload"});var s=document.createElement("script");s.type="module";s.src=${JSON.stringify(src)};document.head.appendChild(s)}requestAnimationFrame(function(){setTimeout(go,0)});setTimeout(go,1500)})();</script>`;
+}
+
+/*
+ * A page is complete without its scripts, so they wait for the first paint.
+ * Left alone, the entry module and the thirty chunks it preloads download beside
+ * the stylesheet and the hero image, and on a slow connection they hold both
+ * back. The preloads are parked under another rel and restored by the same
+ * inline script that adds the entry, so nothing is fetched twice or in a chain.
+ * If the build ever stops emitting the tag this looks for, the page is served
+ * as it is.
+ */
+function deferScripts(request: Request, response: Response): Response {
+	if (!response.body || response.status !== 200 || request.method !== "GET") return response;
+	if (!(response.headers.get("Content-Type") ?? "").startsWith("text/html")) return response;
+
+	const decoder = new TextDecoder();
+	const encoder = new TextEncoder();
+	let pending = "";
+	let entryDone = false;
+	const rewrite = (html: string) => {
+		let out = html.replace(MODULE_PRELOAD, '<link rel="x-modulepreload"');
+		if (!entryDone) {
+			out = out.replace(ENTRY_SCRIPT, (_tag, src: string) => {
+				entryDone = true;
+				return deferredEntry(src);
+			});
+		}
+		return out;
+	};
+	const body = response.body.pipeThrough(
+		new TransformStream<Uint8Array, Uint8Array>({
+			transform(chunk, controller) {
+				pending += decoder.decode(chunk, { stream: true });
+				if (pending.length <= HOLD_BACK) return;
+				// Cut only at a tag start, so no tag is ever split between what is sent and what is kept.
+				const cut = pending.lastIndexOf("<", pending.length - HOLD_BACK);
+				if (cut <= 0) return;
+				controller.enqueue(encoder.encode(rewrite(pending.slice(0, cut))));
+				pending = pending.slice(cut);
+			},
+			flush(controller) {
+				pending += decoder.decode();
+				if (pending) controller.enqueue(encoder.encode(rewrite(pending)));
+			},
+		}),
+	);
+	const headers = new Headers(response.headers);
+	headers.delete("Content-Length");
+	return new Response(body, { status: response.status, statusText: response.statusText, headers });
+}
+
 const DISCOVERY_LINKS = [
 	`</.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"`,
 	`</.well-known/ard.json>; rel="ard"`,
@@ -168,6 +226,6 @@ export default createServerEntry({
 		const response = await handler.fetch(req);
 		if (negotiable) response.headers.set("Vary", "Accept");
 		addDiscoveryLinks(response, negotiable ? `${path}.md` : undefined);
-		return compress(request, addSecurityHeaders(response));
+		return compress(request, deferScripts(request, addSecurityHeaders(response)));
 	},
 });
