@@ -245,6 +245,31 @@
 	--radius-card: 12px;
 	--shadow-card: 0 1px 2px color-mix(in oklab, var(--color-ink) 7%, transparent);
 
+	/* The product's own colours, used only inside the product screens, where they mean what they mean in the app: one per brand on a chart, one per brand's mark, and the three tones of an answer. */
+	--color-chart-1: #2f62e8;
+	--color-chart-2: #dea406;
+	--color-chart-3: #f283b3;
+	--color-chart-4: #996a50;
+	--color-chart-5: #74a83d;
+	--color-chart-6: #ae79a0;
+	--color-chart-7: #9f5eee;
+	--color-chart-8: #309d59;
+	--color-chart-9: #958f87;
+	--color-mark-1: #5046e4;
+	--color-mark-2: #101829;
+	--color-mark-3: #1f3b8c;
+	--color-mark-4: #0785c8;
+	--color-mark-5: #17803f;
+	--color-mark-6: #e9590d;
+	--color-mark-7: #d87807;
+	--color-mark-8: #66a20f;
+	--color-mark-9: #06785a;
+	--color-good: #0b7a57;
+	--color-good-tint: #e4f6ec;
+	--color-warn: #a15c07;
+	--color-warn-tint: #fff5d6;
+	--color-bad: #c2410c;
+
 	--color-blue-50: #fbf3ef;
 	--color-blue-100: #f6e2d8;
 	--color-blue-200: #ecc2ae;

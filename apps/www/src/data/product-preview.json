@@ -1,0 +1,888 @@
+{
+	"brand": "Quaildesk",
+	"totals": { "prompts": 20, "runs": 7200 },
+	"models": ["claude", "google-ai-overview", "bing-ai-mode", "gemini", "perplexity", "chatgpt"],
+	"days": 32,
+	"cards": {
+		"visibility": { "value": 0.6167, "change": 0.0417 },
+		"share": { "value": 0.2073, "change": 0.0019 },
+		"sentiment": { "value": 0.9054, "change": 0.0069 },
+		"position": { "value": 1.473, "change": -0.1067 }
+	},
+	"companies": [
+		{
+			"name": "Quaildesk",
+			"domain": "quaildesk.com",
+			"isBrand": true,
+			"totals": { "visibility": 0.6167, "share": 0.2073, "sentiment": 0.9054, "position": 1.473 },
+			"byModel": {
+				"claude": { "visibility": 0.5, "share": 0.2326, "sentiment": 0.95, "position": 1.3 },
+				"google-ai-overview": { "visibility": 0.6, "share": 0.1905, "sentiment": 0.9167, "position": 1.25 },
+				"bing-ai-mode": { "visibility": 0.5, "share": 0.1852, "sentiment": 0.85, "position": 1.2 },
+				"gemini": { "visibility": 0.6, "share": 0.2143, "sentiment": 0.9167, "position": 1.75 },
+				"perplexity": { "visibility": 0.75, "share": 0.2143, "sentiment": 0.9333, "position": 1.7333 },
+				"chatgpt": { "visibility": 0.75, "share": 0.2113, "sentiment": 0.8667, "position": 1.4667 }
+			},
+			"series": {
+				"visibility": [
+					0.57, 0.63, 0.6, 0.58, 0.57, 0.59, 0.52, 0.57, 0.53, 0.55, 0.57, 0.57, 0.59, 0.6, 0.58, 0.57, 0.55, 0.6, 0.64,
+					0.67, 0.7, 0.7, 0.65, 0.69, 0.64, 0.66, 0.66, 0.66, 0.61, 0.7, 0.62, 0.62
+				],
+				"share": [
+					0.21, 0.21, 0.22, 0.2, 0.19, 0.21, 0.19, 0.2, 0.18, 0.2, 0.2, 0.22, 0.2, 0.21, 0.2, 0.19, 0.2, 0.21, 0.22,
+					0.23, 0.24, 0.22, 0.22, 0.24, 0.21, 0.22, 0.22, 0.23, 0.22, 0.24, 0.21, 0.21
+				],
+				"sentiment": [
+					0.9, 0.88, 0.89, 0.85, 0.85, 0.86, 0.88, 0.87, 0.87, 0.9, 0.9, 0.86, 0.9, 0.86, 0.86, 0.9, 0.84, 0.91, 0.86,
+					0.85, 0.87, 0.84, 0.88, 0.89, 0.87, 0.87, 0.85, 0.86, 0.89, 0.85, 0.91, 0.91
+				],
+				"position": [
+					1.58, 1.71, 1.5, 1.69, 1.65, 1.54, 1.71, 1.77, 1.6, 1.66, 1.56, 1.59, 1.67, 1.7, 1.75, 1.7, 1.76, 1.67, 1.53,
+					1.51, 1.43, 1.49, 1.48, 1.45, 1.53, 1.57, 1.58, 1.61, 1.53, 1.5, 1.47, 1.47
+				]
+			}
+		},
+		{
+			"name": "Queueloft",
+			"domain": "queueloft.com",
+			"isBrand": false,
+			"totals": { "visibility": 0.4833, "share": 0.1625, "sentiment": 0.7155, "position": 1.8621 },
+			"byModel": {
+				"claude": { "visibility": 0.4, "share": 0.186, "sentiment": 0.875, "position": 1.75 },
+				"google-ai-overview": { "visibility": 0.6, "share": 0.1905, "sentiment": 0.5833, "position": 1.75 },
+				"bing-ai-mode": { "visibility": 0.45, "share": 0.1667, "sentiment": 0.7222, "position": 1.6667 },
+				"gemini": { "visibility": 0.4, "share": 0.1429, "sentiment": 0.4375, "position": 1.5 },
+				"perplexity": { "visibility": 0.55, "share": 0.1571, "sentiment": 0.9545, "position": 2.1818 },
+				"chatgpt": { "visibility": 0.5, "share": 0.1408, "sentiment": 0.7, "position": 2.2 }
+			},
+			"series": {
+				"visibility": [
+					0.56, 0.57, 0.54, 0.66, 0.65, 0.63, 0.6, 0.68, 0.66, 0.64, 0.69, 0.59, 0.62, 0.59, 0.68, 0.67, 0.59, 0.58,
+					0.58, 0.58, 0.62, 0.64, 0.57, 0.55, 0.57, 0.53, 0.59, 0.55, 0.51, 0.57, 0.48, 0.48
+				],
+				"share": [
+					0.2, 0.19, 0.2, 0.23, 0.21, 0.22, 0.22, 0.24, 0.23, 0.23, 0.24, 0.23, 0.21, 0.21, 0.23, 0.23, 0.21, 0.2, 0.2,
+					0.2, 0.21, 0.2, 0.2, 0.19, 0.19, 0.18, 0.19, 0.19, 0.18, 0.2, 0.16, 0.16
+				],
+				"sentiment": [
+					0.72, 0.75, 0.7, 0.74, 0.71, 0.68, 0.76, 0.71, 0.71, 0.73, 0.73, 0.74, 0.73, 0.73, 0.76, 0.72, 0.74, 0.73,
+					0.75, 0.73, 0.71, 0.72, 0.71, 0.76, 0.74, 0.76, 0.75, 0.72, 0.71, 0.72, 0.72, 0.72
+				],
+				"position": [
+					1.96, 1.79, 1.82, 1.73, 1.6, 1.76, 1.7, 1.52, 1.62, 1.55, 1.64, 1.6, 1.72, 1.62, 1.54, 1.71, 1.63, 1.87, 1.79,
+					1.88, 1.86, 1.86, 1.84, 2.03, 1.81, 1.83, 1.83, 1.74, 1.74, 1.88, 1.86, 1.86
+				]
+			}
+		},
+		{
+			"name": "Brookdesk",
+			"domain": "brookdesk.com",
+			"isBrand": false,
+			"totals": { "visibility": 0.325, "share": 0.1092, "sentiment": 0.8205, "position": 2.4615 },
+			"byModel": {
+				"claude": { "visibility": 0.1, "share": 0.0465, "sentiment": 0.75, "position": 2 },
+				"google-ai-overview": { "visibility": 0.4, "share": 0.127, "sentiment": 0.8125, "position": 1.875 },
+				"bing-ai-mode": { "visibility": 0.2, "share": 0.0741, "sentiment": 0.875, "position": 2.75 },
+				"gemini": { "visibility": 0.45, "share": 0.1607, "sentiment": 0.8889, "position": 2.3333 },
+				"perplexity": { "visibility": 0.45, "share": 0.1286, "sentiment": 0.8333, "position": 2.6667 },
+				"chatgpt": { "visibility": 0.35, "share": 0.0986, "sentiment": 0.7143, "position": 3 }
+			},
+			"series": {
+				"visibility": [
+					0.34, 0.37, 0.27, 0.32, 0.35, 0.33, 0.3, 0.3, 0.35, 0.32, 0.27, 0.33, 0.33, 0.35, 0.29, 0.33, 0.31, 0.36,
+					0.35, 0.34, 0.33, 0.38, 0.42, 0.41, 0.4, 0.37, 0.33, 0.31, 0.37, 0.35, 0.33, 0.33
+				],
+				"share": [
+					0.12, 0.12, 0.1, 0.11, 0.12, 0.11, 0.11, 0.11, 0.12, 0.11, 0.09, 0.13, 0.12, 0.13, 0.1, 0.11, 0.11, 0.13,
+					0.12, 0.12, 0.11, 0.12, 0.14, 0.14, 0.13, 0.12, 0.11, 0.11, 0.13, 0.12, 0.11, 0.11
+				],
+				"sentiment": [
+					0.91, 0.78, 0.77, 0.81, 0.79, 0.88, 0.82, 0.84, 0.78, 0.79, 0.85, 0.81, 0.82, 0.81, 0.81, 0.79, 0.76, 0.83,
+					0.85, 0.82, 0.82, 0.83, 0.85, 0.87, 0.81, 0.84, 0.82, 0.78, 0.84, 0.85, 0.82, 0.82
+				],
+				"position": [
+					2.1, 2.34, 2.28, 2.36, 2.4, 2.34, 2.1, 2.49, 2.46, 2.26, 2.39, 2.27, 2.27, 2.12, 2.4, 2.4, 2.24, 2.16, 2.49,
+					2.32, 2.39, 2.35, 2.33, 2.3, 2.23, 2.22, 2.39, 2.31, 2.07, 2.21, 2.46, 2.46
+				]
+			}
+		},
+		{
+			"name": "Ticketwren",
+			"domain": "ticketwren.com",
+			"isBrand": false,
+			"totals": { "visibility": 0.275, "share": 0.0924, "sentiment": 0.7727, "position": 2.8788 },
+			"byModel": {
+				"claude": { "visibility": 0.2, "share": 0.093, "sentiment": 1, "position": 3 },
+				"google-ai-overview": { "visibility": 0.25, "share": 0.0794, "sentiment": 0.7, "position": 3.2 },
+				"bing-ai-mode": { "visibility": 0.25, "share": 0.0926, "sentiment": 0.6, "position": 2.8 },
+				"gemini": { "visibility": 0.3, "share": 0.1071, "sentiment": 0.75, "position": 2.1667 },
+				"perplexity": { "visibility": 0.3, "share": 0.0857, "sentiment": 0.75, "position": 3.1667 },
+				"chatgpt": { "visibility": 0.35, "share": 0.0986, "sentiment": 0.8571, "position": 3 }
+			},
+			"series": {
+				"visibility": [
+					0.26, 0.32, 0.2, 0.24, 0.25, 0.23, 0.24, 0.22, 0.22, 0.21, 0.21, 0.21, 0.23, 0.23, 0.23, 0.26, 0.21, 0.23,
+					0.28, 0.21, 0.19, 0.2, 0.21, 0.22, 0.28, 0.28, 0.25, 0.25, 0.24, 0.2, 0.28, 0.28
+				],
+				"share": [
+					0.09, 0.11, 0.07, 0.08, 0.08, 0.08, 0.09, 0.08, 0.08, 0.08, 0.07, 0.08, 0.08, 0.08, 0.08, 0.09, 0.08, 0.08,
+					0.1, 0.07, 0.07, 0.07, 0.07, 0.07, 0.09, 0.09, 0.08, 0.09, 0.09, 0.07, 0.09, 0.09
+				],
+				"sentiment": [
+					0.79, 0.82, 0.78, 0.84, 0.81, 0.84, 0.8, 0.87, 0.8, 0.85, 0.83, 0.79, 0.86, 0.83, 0.78, 0.83, 0.78, 0.83,
+					0.78, 0.79, 0.83, 0.87, 0.78, 0.81, 0.82, 0.8, 0.79, 0.76, 0.79, 0.8, 0.77, 0.77
+				],
+				"position": [
+					2.29, 2.47, 2.4, 2.6, 2.9, 2.93, 2.74, 2.77, 2.55, 2.8, 2.7, 2.58, 2.61, 2.69, 2.68, 2.58, 2.67, 2.93, 2.82,
+					2.8, 2.91, 2.73, 2.88, 2.87, 3.03, 2.74, 2.8, 2.69, 2.74, 2.88, 2.88, 2.88
+				]
+			}
+		},
+		{
+			"name": "Northqueue",
+			"domain": "northqueue.com",
+			"isBrand": false,
+			"totals": { "visibility": 0.35, "share": 0.1176, "sentiment": 0.7857, "position": 2.2381 },
+			"byModel": {
+				"claude": { "visibility": 0.35, "share": 0.1628, "sentiment": 0.7857, "position": 1.7143 },
+				"google-ai-overview": { "visibility": 0.3, "share": 0.0952, "sentiment": 0.8333, "position": 2.1667 },
+				"bing-ai-mode": { "visibility": 0.4, "share": 0.1481, "sentiment": 0.8125, "position": 2.5 },
+				"gemini": { "visibility": 0.35, "share": 0.125, "sentiment": 0.7857, "position": 2.1429 },
+				"perplexity": { "visibility": 0.3, "share": 0.0857, "sentiment": 0.75, "position": 2.6667 },
+				"chatgpt": { "visibility": 0.4, "share": 0.1127, "sentiment": 0.75, "position": 2.25 }
+			},
+			"series": {
+				"visibility": [
+					0.28, 0.27, 0.3, 0.23, 0.28, 0.3, 0.31, 0.29, 0.32, 0.34, 0.27, 0.25, 0.33, 0.28, 0.29, 0.3, 0.23, 0.31, 0.25,
+					0.29, 0.23, 0.28, 0.2, 0.2, 0.22, 0.24, 0.28, 0.28, 0.29, 0.28, 0.35, 0.35
+				],
+				"share": [
+					0.1, 0.09, 0.11, 0.08, 0.09, 0.1, 0.12, 0.1, 0.11, 0.12, 0.1, 0.1, 0.11, 0.1, 0.1, 0.1, 0.08, 0.11, 0.09, 0.1,
+					0.08, 0.09, 0.07, 0.07, 0.07, 0.08, 0.09, 0.1, 0.1, 0.1, 0.12, 0.12
+				],
+				"sentiment": [
+					0.76, 0.84, 0.82, 0.81, 0.76, 0.78, 0.77, 0.8, 0.77, 0.77, 0.79, 0.8, 0.8, 0.79, 0.85, 0.82, 0.77, 0.76, 0.78,
+					0.78, 0.76, 0.78, 0.73, 0.8, 0.78, 0.82, 0.87, 0.84, 0.74, 0.81, 0.79, 0.79
+				],
+				"position": [
+					2.35, 2.36, 2.2, 2.22, 2.35, 2.35, 2.17, 2.13, 2.32, 2.43, 2.34, 2.08, 2.28, 2.31, 2.42, 2.46, 2.35, 2.53,
+					2.25, 2.3, 2.5, 2.58, 2.32, 2.48, 2.44, 2.23, 2.31, 2.18, 2.33, 2.35, 2.24, 2.24
+				]
+			}
+		},
+		{
+			"name": "Caseorchard",
+			"domain": "caseorchard.com",
+			"isBrand": false,
+			"totals": { "visibility": 0.3083, "share": 0.1036, "sentiment": 0.7703, "position": 2.2973 },
+			"byModel": {
+				"claude": { "visibility": 0.2, "share": 0.093, "sentiment": 0.875, "position": 2.25 },
+				"google-ai-overview": { "visibility": 0.35, "share": 0.1111, "sentiment": 0.7143, "position": 2.8571 },
+				"bing-ai-mode": { "visibility": 0.35, "share": 0.1296, "sentiment": 0.7143, "position": 1.7143 },
+				"gemini": { "visibility": 0.25, "share": 0.0893, "sentiment": 0.7, "position": 2 },
+				"perplexity": { "visibility": 0.35, "share": 0.1, "sentiment": 0.7143, "position": 2.2857 },
+				"chatgpt": { "visibility": 0.35, "share": 0.0986, "sentiment": 0.9286, "position": 2.5714 }
+			},
+			"series": {
+				"visibility": [
+					0.24, 0.25, 0.26, 0.23, 0.27, 0.23, 0.23, 0.23, 0.23, 0.24, 0.28, 0.24, 0.28, 0.2, 0.25, 0.29, 0.29, 0.27,
+					0.3, 0.28, 0.28, 0.3, 0.35, 0.35, 0.33, 0.37, 0.31, 0.3, 0.29, 0.32, 0.31, 0.31
+				],
+				"share": [
+					0.09, 0.08, 0.1, 0.08, 0.09, 0.08, 0.09, 0.08, 0.08, 0.09, 0.1, 0.09, 0.1, 0.07, 0.08, 0.1, 0.1, 0.09, 0.11,
+					0.1, 0.1, 0.1, 0.12, 0.12, 0.11, 0.12, 0.1, 0.1, 0.1, 0.11, 0.1, 0.1
+				],
+				"sentiment": [
+					0.78, 0.74, 0.79, 0.78, 0.84, 0.81, 0.77, 0.79, 0.79, 0.83, 0.76, 0.78, 0.78, 0.87, 0.79, 0.79, 0.83, 0.82,
+					0.82, 0.76, 0.79, 0.77, 0.82, 0.78, 0.79, 0.78, 0.78, 0.76, 0.83, 0.76, 0.77, 0.77
+				],
+				"position": [
+					2.48, 2.8, 2.67, 2.57, 2.64, 2.63, 2.41, 2.57, 2.88, 2.55, 2.47, 2.53, 2.65, 2.73, 2.78, 2.6, 2.35, 2.52,
+					2.62, 2.76, 2.68, 2.86, 2.38, 2.57, 2.87, 2.6, 2.61, 2.56, 2.57, 2.6, 2.3, 2.3
+				]
+			}
+		},
+		{
+			"name": "Lumenreply",
+			"domain": "lumenreply.com",
+			"isBrand": false,
+			"totals": { "visibility": 0.2583, "share": 0.0868, "sentiment": 0.8387, "position": 2.7097 },
+			"byModel": {
+				"claude": { "visibility": 0.2, "share": 0.093, "sentiment": 0.875, "position": 1.5 },
+				"google-ai-overview": { "visibility": 0.2, "share": 0.0635, "sentiment": 0.875, "position": 2.5 },
+				"bing-ai-mode": { "visibility": 0.25, "share": 0.0926, "sentiment": 0.7, "position": 2.6 },
+				"gemini": { "visibility": 0.15, "share": 0.0536, "sentiment": 0.8333, "position": 2.3333 },
+				"perplexity": { "visibility": 0.35, "share": 0.1, "sentiment": 0.8571, "position": 2.7143 },
+				"chatgpt": { "visibility": 0.4, "share": 0.1127, "sentiment": 0.875, "position": 3.625 }
+			},
+			"series": {
+				"visibility": [
+					0.2, 0.25, 0.25, 0.3, 0.28, 0.28, 0.22, 0.23, 0.24, 0.2, 0.22, 0.17, 0.22, 0.23, 0.25, 0.23, 0.28, 0.25, 0.19,
+					0.23, 0.28, 0.24, 0.23, 0.28, 0.25, 0.22, 0.28, 0.22, 0.18, 0.23, 0.26, 0.26
+				],
+				"share": [
+					0.07, 0.08, 0.09, 0.11, 0.09, 0.1, 0.08, 0.08, 0.08, 0.07, 0.08, 0.07, 0.08, 0.08, 0.09, 0.08, 0.1, 0.09,
+					0.07, 0.08, 0.09, 0.08, 0.08, 0.1, 0.08, 0.07, 0.09, 0.08, 0.07, 0.08, 0.09, 0.09
+				],
+				"sentiment": [
+					0.9, 0.8, 0.77, 0.84, 0.81, 0.9, 0.83, 0.8, 0.84, 0.82, 0.84, 0.84, 0.76, 0.82, 0.79, 0.79, 0.8, 0.81, 0.82,
+					0.85, 0.8, 0.82, 0.83, 0.83, 0.8, 0.78, 0.8, 0.78, 0.74, 0.82, 0.84, 0.84
+				],
+				"position": [
+					2.54, 2.73, 2.48, 2.62, 2.56, 2.66, 2.53, 2.82, 2.61, 2.53, 2.47, 2.61, 2.25, 2.62, 2.48, 2.73, 2.27, 2.37,
+					2.63, 2.49, 2.83, 2.6, 2.89, 2.96, 2.66, 2.75, 2.72, 2.74, 2.86, 2.72, 2.71, 2.71
+				]
+			}
+		},
+		{
+			"name": "Supportpine",
+			"domain": "supportpine.com",
+			"isBrand": false,
+			"totals": { "visibility": 0.1583, "share": 0.0532, "sentiment": 0.8947, "position": 2.8947 },
+			"byModel": {
+				"claude": { "visibility": 0.1, "share": 0.0465, "sentiment": 0.75, "position": 1.5 },
+				"google-ai-overview": { "visibility": 0.25, "share": 0.0794, "sentiment": 0.8, "position": 3.4 },
+				"bing-ai-mode": { "visibility": 0.1, "share": 0.037, "sentiment": 0.75, "position": 1.5 },
+				"gemini": { "visibility": 0.1, "share": 0.0357, "sentiment": 1, "position": 3 },
+				"perplexity": { "visibility": 0.2, "share": 0.0571, "sentiment": 1, "position": 2.75 },
+				"chatgpt": { "visibility": 0.2, "share": 0.0563, "sentiment": 1, "position": 3.75 }
+			},
+			"series": {
+				"visibility": [
+					0.16, 0.23, 0.2, 0.16, 0.19, 0.15, 0.17, 0.17, 0.22, 0.17, 0.22, 0.17, 0.18, 0.19, 0.17, 0.18, 0.2, 0.16,
+					0.16, 0.18, 0.17, 0.21, 0.17, 0.15, 0.19, 0.2, 0.17, 0.17, 0.17, 0.13, 0.16, 0.16
+				],
+				"share": [
+					0.06, 0.08, 0.07, 0.06, 0.06, 0.05, 0.06, 0.06, 0.08, 0.06, 0.08, 0.07, 0.06, 0.07, 0.06, 0.06, 0.07, 0.06,
+					0.06, 0.06, 0.06, 0.07, 0.06, 0.05, 0.06, 0.07, 0.05, 0.06, 0.06, 0.04, 0.05, 0.05
+				],
+				"sentiment": [
+					0.89, 0.78, 0.77, 0.82, 0.83, 0.72, 0.85, 0.85, 0.82, 0.86, 0.85, 0.82, 0.91, 0.83, 0.84, 0.8, 0.86, 0.81,
+					0.88, 0.81, 0.81, 0.8, 0.77, 0.89, 0.79, 0.76, 0.8, 0.8, 0.86, 0.83, 0.89, 0.89
+				],
+				"position": [
+					2.84, 3.05, 2.81, 2.87, 3.16, 3, 2.51, 2.83, 2.77, 2.7, 2.66, 2.68, 3.27, 2.98, 2.95, 2.84, 2.77, 2.97, 2.74,
+					2.7, 2.85, 3.1, 3.14, 2.78, 3.33, 2.82, 2.6, 2.95, 2.95, 2.9, 2.89, 2.89
+				]
+			}
+		},
+		{
+			"name": "Helpmeadow",
+			"domain": "helpmeadow.com",
+			"isBrand": false,
+			"totals": { "visibility": 0.2, "share": 0.0672, "sentiment": 0.7708, "position": 3.125 },
+			"byModel": {
+				"claude": { "visibility": 0.1, "share": 0.0465, "sentiment": 0.5, "position": 3.5 },
+				"google-ai-overview": { "visibility": 0.2, "share": 0.0635, "sentiment": 0.875, "position": 3.5 },
+				"bing-ai-mode": { "visibility": 0.2, "share": 0.0741, "sentiment": 0.875, "position": 3.25 },
+				"gemini": { "visibility": 0.2, "share": 0.0714, "sentiment": 0.75, "position": 3 },
+				"perplexity": { "visibility": 0.25, "share": 0.0714, "sentiment": 0.8, "position": 3 },
+				"chatgpt": { "visibility": 0.25, "share": 0.0704, "sentiment": 0.7, "position": 2.8 }
+			},
+			"series": {
+				"visibility": [
+					0.18, 0.15, 0.11, 0.11, 0.2, 0.14, 0.11, 0.12, 0.12, 0.09, 0.11, 0.07, 0.09, 0.13, 0.2, 0.14, 0.11, 0.12,
+					0.13, 0.13, 0.13, 0.17, 0.09, 0.08, 0.13, 0.13, 0.18, 0.14, 0.15, 0.14, 0.2, 0.2
+				],
+				"share": [
+					0.07, 0.05, 0.04, 0.04, 0.07, 0.05, 0.04, 0.04, 0.04, 0.03, 0.04, 0.03, 0.03, 0.04, 0.07, 0.05, 0.04, 0.04,
+					0.05, 0.05, 0.04, 0.05, 0.03, 0.03, 0.04, 0.04, 0.06, 0.05, 0.05, 0.05, 0.07, 0.07
+				],
+				"sentiment": [
+					0.73, 0.81, 0.88, 0.81, 0.74, 0.82, 0.8, 0.76, 0.84, 0.84, 0.81, 0.79, 0.77, 0.75, 0.74, 0.68, 0.79, 0.78,
+					0.77, 0.78, 0.81, 0.79, 0.77, 0.68, 0.82, 0.73, 0.84, 0.77, 0.8, 0.84, 0.77, 0.77
+				],
+				"position": [
+					3.23, 3.46, 3.12, 2.89, 3.27, 3.42, 3.3, 3.48, 3.46, 3.27, 3.62, 3.41, 3.05, 3.23, 3.19, 3.24, 3.38, 3.38,
+					3.5, 3.47, 3.32, 3.42, 3.41, 3.3, 3.77, 3.67, 3.7, 3.39, 3.11, 3.44, 3.13, 3.13
+				]
+			}
+		}
+	],
+	"leaderboard": [
+		{ "name": "Quaildesk", "mentions": 74, "share": 0.2073, "prompts": 19 },
+		{ "name": "Queueloft", "mentions": 58, "share": 0.1625, "prompts": 18 },
+		{ "name": "Northqueue", "mentions": 42, "share": 0.1176, "prompts": 12 },
+		{ "name": "Brookdesk", "mentions": 39, "share": 0.1092, "prompts": 16 },
+		{ "name": "Caseorchard", "mentions": 37, "share": 0.1036, "prompts": 15 },
+		{ "name": "Ticketwren", "mentions": 33, "share": 0.0924, "prompts": 15 },
+		{ "name": "Lumenreply", "mentions": 31, "share": 0.0868, "prompts": 15 },
+		{ "name": "Helpmeadow", "mentions": 24, "share": 0.0672, "prompts": 12 },
+		{ "name": "Supportpine", "mentions": 19, "share": 0.0532, "prompts": 10 }
+	],
+	"responseCounts": {
+		"positive": 3382,
+		"neutral": 383,
+		"mixed": 529,
+		"negative": 108,
+		"unmentioned": 2798,
+		"all": 7200
+	},
+	"responses": [
+		{
+			"kind": "positive",
+			"prompt": "Best help desk software for B2B SaaS companies",
+			"model": "chatgpt",
+			"version": "gpt-6-luna",
+			"daysAgo": 1,
+			"time": "8:47 AM",
+			"webQueries": [
+				"b2b support ticketing tools comparison 2026",
+				"help desk software b2b saas reviews",
+				"top customer support platforms for saas companies"
+			],
+			"brands": [
+				{ "name": "Quaildesk", "rank": 1, "sentiment": "positive" },
+				{ "name": "Queueloft", "rank": 2, "sentiment": "mixed" },
+				{ "name": "Ticketwren", "rank": 3, "sentiment": "positive" },
+				{ "name": "Brookdesk", "rank": 4, "sentiment": "neutral" },
+				{ "name": "Caseorchard", "rank": 5, "sentiment": "positive" },
+				{ "name": "Lumenreply", "rank": 6, "sentiment": "positive" }
+			],
+			"title": "Best help desk software for B2B SaaS companies in 2026",
+			"intro": [
+				"B2B SaaS support looks different from consumer support: fewer tickets, but more at stake per account, longer threads, and a need to see plan and renewal details next to every conversation."
+			],
+			"picks": [
+				{
+					"rank": 1,
+					"name": "Quaildesk",
+					"line": "Quaildesk combines a shared inbox, ticketing and an AI agent in one workspace, and most teams are answering tickets within a day of signing up."
+				},
+				{
+					"rank": 2,
+					"name": "Queueloft",
+					"line": "Queueloft is powerful but complex; most teams need a dedicated admin or partner to configure it, and costs climb with add-ons."
+				},
+				{
+					"rank": 3,
+					"name": "Ticketwren",
+					"line": "Ticketwren works like a shared inbox, so teams moving from email adapt in a day, and assignments and collision alerts are handled well."
+				}
+			]
+		},
+		{
+			"kind": "neutral",
+			"prompt": "Most affordable help desk software for a team of 10 agents",
+			"model": "claude",
+			"version": "claude-haiku-5-5",
+			"daysAgo": 1,
+			"time": "8:14 AM",
+			"webQueries": ["help desk software total cost comparison", "cheapest help desk software 10 agents"],
+			"brands": [
+				{ "name": "Quaildesk", "rank": 1, "sentiment": "neutral" },
+				{ "name": "Brookdesk", "rank": 2, "sentiment": "mixed" },
+				{ "name": "Queueloft", "rank": 3, "sentiment": "mixed" },
+				{ "name": "Ticketwren", "rank": 4, "sentiment": "positive" },
+				{ "name": "Helpmeadow", "rank": 5, "sentiment": "mixed" }
+			],
+			"title": "",
+			"intro": [
+				"For a 10-agent team, list prices run from roughly $120 to $1,000 a month depending on the plan and add-ons, so the cheapest sticker price is not always the cheapest bill."
+			],
+			"picks": [
+				{
+					"rank": 1,
+					"name": "Quaildesk",
+					"line": "Quaildesk sells three plans, Starter, Growth and Scale, billed per agent per month with a discount for annual billing. It's a good fit for B2B SaaS teams of 5 to 200 agents."
+				},
+				{
+					"rank": 2,
+					"name": "Brookdesk",
+					"line": "Brookdesk is easy to start with, but its automation and reporting feel basic once a team grows past a dozen agents. It's a good fit for small businesses on a tight budget."
+				},
+				{
+					"rank": 3,
+					"name": "Queueloft",
+					"line": "Queueloft's list price looks moderate, but AI resolutions and advanced analytics are billed separately, so totals often surprise smaller teams. It's a good fit for large, multi-brand support organizations."
+				}
+			]
+		},
+		{
+			"kind": "mixed",
+			"prompt": "Most affordable help desk software for a team of 10 agents",
+			"model": "google-ai-overview",
+			"version": "ai-overview",
+			"daysAgo": 1,
+			"time": "8:13 AM",
+			"webQueries": [],
+			"brands": [
+				{ "name": "Brookdesk", "rank": 1, "sentiment": "neutral" },
+				{ "name": "Quaildesk", "rank": 2, "sentiment": "mixed" },
+				{ "name": "Helpmeadow", "rank": 3, "sentiment": "positive" },
+				{ "name": "Queueloft", "rank": 4, "sentiment": "mixed" }
+			],
+			"title": "",
+			"intro": [
+				"For a 10-agent team, list prices run from roughly $120 to $1,000 a month depending on the plan and add-ons, so the cheapest sticker price is not always the cheapest bill."
+			],
+			"picks": [
+				{
+					"rank": 1,
+					"name": "Brookdesk",
+					"line": "Brookdesk offers ticketing, a help center and basic live chat for small businesses."
+				},
+				{
+					"rank": 2,
+					"name": "Quaildesk",
+					"line": "Quaildesk is reasonably priced for small teams, but advanced analytics and sandbox environments are only on the top plan."
+				},
+				{
+					"rank": 3,
+					"name": "Helpmeadow",
+					"line": "Helpmeadow is an open-source help desk you can self-host, which appeals to teams that want full control of their data."
+				}
+			]
+		},
+		{
+			"kind": "negative",
+			"prompt": "Best enterprise customer service platforms",
+			"model": "perplexity",
+			"version": "sonar",
+			"daysAgo": 1,
+			"time": "8:16 AM",
+			"webQueries": [
+				"best enterprise customer service platform 2026",
+				"queueloft vs northqueue enterprise",
+				"customer service software for large teams"
+			],
+			"brands": [
+				{ "name": "Queueloft", "rank": 1, "sentiment": "neutral" },
+				{ "name": "Caseorchard", "rank": 2, "sentiment": "mixed" },
+				{ "name": "Northqueue", "rank": 3, "sentiment": "positive" },
+				{ "name": "Brookdesk", "rank": 4, "sentiment": "positive" },
+				{ "name": "Quaildesk", "rank": 5, "sentiment": "negative" }
+			],
+			"title": "",
+			"intro": [
+				"Enterprise support teams need omnichannel routing, granular permissions, workforce management and audit trails, plus a vendor that can pass a lengthy security review."
+			],
+			"picks": [
+				{
+					"rank": 1,
+					"name": "Queueloft",
+					"line": "Queueloft is a widely used customer service suite covering ticketing, messaging, voice and a help center."
+				},
+				{
+					"rank": 2,
+					"name": "Caseorchard",
+					"line": "Caseorchard's AI is impressive, but per-resolution pricing makes costs hard to predict as volume grows."
+				},
+				{
+					"rank": 5,
+					"name": "Quaildesk",
+					"line": "Quaildesk lacks the workforce management and quality assurance modules that contact centers with hundreds of agents usually need."
+				}
+			]
+		},
+		{
+			"kind": "unmentioned",
+			"prompt": "Best help desk software for B2B SaaS companies",
+			"model": "bing-ai-mode",
+			"version": "bing-ai-mode",
+			"daysAgo": 1,
+			"time": "8:22 AM",
+			"webQueries": [],
+			"brands": [
+				{ "name": "Queueloft", "rank": 1, "sentiment": "positive" },
+				{ "name": "Northqueue", "rank": 2, "sentiment": "neutral" }
+			],
+			"title": "",
+			"intro": [
+				"B2B SaaS support looks different from consumer support: fewer tickets, but more at stake per account, longer threads, and a need to see plan and renewal details next to every conversation."
+			],
+			"picks": [
+				{
+					"rank": 1,
+					"name": "Queueloft",
+					"line": "Queueloft is the long-standing enterprise choice, with deep workflow automation, a large app marketplace and detailed reporting."
+				},
+				{
+					"rank": 2,
+					"name": "Northqueue",
+					"line": "Northqueue is an enterprise service platform covering ticketing, SLAs and asset management."
+				}
+			]
+		}
+	],
+	"opportunities": {
+		"summary": [
+			"Quaildesk trails on HIPAA, multilingual and SLA questions, where Queueloft and Northqueue appear in most answers.",
+			"Live chat and knowledge base answers favor Lumenreply and Supportpine; Quaildesk appears in fewer than half of them.",
+			"Answers lean on review sites, editorial roundups and Reddit threads far more than on quaildesk.com.",
+			"Quaildesk already leads on startup, pricing and AI agent questions, so the work there is keeping comparison pages current.",
+			"The through-line: earn a place in the roundups and threads that already name rivals, and publish clear answers for regulated and global teams."
+		],
+		"evaluatedDaysAgo": 3,
+		"items": [
+			{
+				"category": "creation",
+				"title": "Publish a HIPAA and data residency page that says plainly what Quaildesk covers",
+				"why": "Quaildesk is almost never named in answers to the HIPAA question, while Northqueue is named in nearly all of them. Assistants need a clear, citable statement of what Quaildesk supports before they recommend it to regulated buyers.",
+				"prompts": 2,
+				"yours": 1,
+				"theirs": 2
+			},
+			{
+				"category": "creation",
+				"title": "Create a live chat comparison that puts Quaildesk next to Lumenreply",
+				"why": "Lumenreply is named in most live chat answers, Quaildesk in under half. Comparison pages are what assistants cite most for these questions, and none of the cited ones include Quaildesk yet.",
+				"prompts": 2,
+				"yours": 0,
+				"theirs": 3
+			},
+			{
+				"category": "creation",
+				"title": "Write a multilingual support guide with real routing examples",
+				"why": "Answers about global support teams name Northqueue and Queueloft far more often than Quaildesk. A practical guide gives assistants a reason to cite Quaildesk when buyers ask about languages and routing.",
+				"prompts": 2,
+				"yours": 0,
+				"theirs": 2
+			},
+			{
+				"category": "existing-content",
+				"title": "Refresh the Quaildesk vs Queueloft page with 2026 pricing",
+				"why": "The page is already cited in comparison and migration answers, but assistants still quote last year's prices from it. Current numbers keep it the source they rely on.",
+				"prompts": 3,
+				"yours": 1,
+				"theirs": 1
+			},
+			{
+				"category": "existing-content",
+				"title": "Update the B2B support benchmarks post with this year's AI resolution data",
+				"why": "It is already cited in AI agent answers on every assistant tracked; fresh figures help it hold that spot as newer reports appear.",
+				"prompts": 2,
+				"yours": 1,
+				"theirs": 1
+			},
+			{
+				"category": "outreach",
+				"title": "Get Quaildesk into the editorial help desk roundups",
+				"why": "techradar.com, zdnet.com and pcmag.com are cited across most category answers, and their lists name Queueloft and Brookdesk but not Quaildesk.",
+				"prompts": 2,
+				"yours": 0,
+				"theirs": 2
+			},
+			{
+				"category": "outreach",
+				"title": "Grow Quaildesk's review count in the g2.com help desk category",
+				"why": "Review sites are among the most cited sources for pricing and startup questions. A normal review drive among happy customers raises the odds assistants name Quaildesk from them.",
+				"prompts": 2,
+				"yours": 1,
+				"theirs": 1
+			},
+			{
+				"category": "social",
+				"title": "Answer the recurring 'which help desk' threads on Reddit",
+				"why": "Threads in r/SaaS and r/CustomerSuccess are cited in startup and comparison answers. Helpful replies from the team, disclosed as such, put Quaildesk in the conversations assistants read.",
+				"prompts": 2,
+				"yours": 0,
+				"theirs": 1
+			},
+			{
+				"category": "social",
+				"title": "Post short YouTube walkthroughs of AI ticket triage",
+				"why": "YouTube walkthroughs are cited in automation answers, and none of the cited ones show Quaildesk yet.",
+				"prompts": 1,
+				"yours": 1,
+				"theirs": 1
+			}
+		]
+	},
+	"sentiment": {
+		"breakdown": { "positive": 85, "neutral": 5, "mixed": 5, "negative": 4 },
+		"passages": {
+			"praise": [
+				{
+					"model": "google-ai-overview",
+					"passage": "Quaildesk's pricing is among the easiest to predict: a flat per-agent fee with the AI agent included, rather than add-ons billed by volume.",
+					"prompt": "Help desk pricing comparison for 2026",
+					"sentiment": "positive",
+					"daysAgo": 1
+				},
+				{
+					"model": "perplexity",
+					"passage": "Teams using Quaildesk's AI triage often see first response times fall by a third within a month, because tickets reach the right person immediately.",
+					"prompt": "How to reduce first response time with AI in customer support",
+					"sentiment": "positive",
+					"daysAgo": 1
+				},
+				{
+					"model": "perplexity",
+					"passage": "Quaildesk's bot recognizes the account it is talking to, answers from your documentation, and hands off to that account's support rep when needed.",
+					"prompt": "Best AI chatbot for B2B customer support",
+					"sentiment": "positive",
+					"daysAgo": 9
+				}
+			],
+			"mixed": [
+				{
+					"model": "gemini",
+					"passage": "Quaildesk handles SLAs and escalations well, but very large contact centers may miss workforce management and quality assurance modules.",
+					"prompt": "Best enterprise customer service platforms",
+					"sentiment": "mixed",
+					"daysAgo": 5
+				},
+				{
+					"model": "google-ai-overview",
+					"passage": "Quaildesk's chat widget covers support conversations well, but teams that want proactive sales campaigns may need a dedicated messaging tool.",
+					"prompt": "Best live chat software for SaaS websites",
+					"sentiment": "mixed",
+					"daysAgo": 9
+				},
+				{
+					"model": "perplexity",
+					"passage": "Quaildesk is reasonably priced for small teams, but advanced analytics and sandbox environments are only on the top plan.",
+					"prompt": "Most affordable help desk software for a team of 10 agents",
+					"sentiment": "mixed",
+					"daysAgo": 24
+				}
+			],
+			"criticism": [
+				{
+					"model": "claude",
+					"passage": "Some reviewers say Quaildesk's integration marketplace is still thin, so niche tools may need a webhook workaround.",
+					"prompt": "Quaildesk pricing and plans",
+					"sentiment": "negative",
+					"daysAgo": 9
+				},
+				{
+					"model": "gemini",
+					"passage": "Quaildesk lacks the workforce management and quality assurance modules that contact centers with hundreds of agents usually need.",
+					"prompt": "Ticketing systems with SLA management and escalation rules",
+					"sentiment": "negative",
+					"daysAgo": 4
+				},
+				{
+					"model": "perplexity",
+					"passage": "Some reviewers say Quaildesk's integration marketplace is still thin, so niche tools may need a webhook workaround.",
+					"prompt": "Most affordable help desk software for a team of 10 agents",
+					"sentiment": "negative",
+					"daysAgo": 22
+				}
+			]
+		}
+	},
+	"citations": {
+		"total": 32501,
+		"uniqueDomains": 66,
+		"brandSharePct": 12,
+		"categories": [
+			{ "key": "editorial", "count": 10678 },
+			{ "key": "reviews", "count": 6309 },
+			{ "key": "social", "count": 5889 },
+			{ "key": "competitor", "count": 3347 },
+			{ "key": "brand", "count": 2909 },
+			{ "key": "reference", "count": 1257 },
+			{ "key": "developer", "count": 1102 },
+			{ "key": "pr", "count": 389 },
+			{ "key": "other", "count": 361 },
+			{ "key": "institutional", "count": 260 }
+		],
+		"series": {
+			"editorial": [
+				34, 34, 34, 37, 33, 33, 35, 32, 34, 32, 33, 32, 35, 33, 32, 33, 34, 32, 31, 34, 30, 32, 32, 31, 32, 31, 33, 32,
+				32, 32
+			],
+			"reviews": [
+				20, 19, 21, 18, 19, 19, 20, 21, 19, 20, 20, 20, 19, 20, 22, 20, 19, 19, 19, 20, 19, 18, 19, 20, 20, 20, 19, 17,
+				18, 18
+			],
+			"social": [
+				18, 20, 18, 18, 21, 19, 17, 19, 18, 19, 20, 19, 16, 18, 17, 18, 18, 19, 20, 17, 17, 17, 17, 18, 16, 17, 17, 18,
+				18, 18
+			],
+			"competitor": [
+				11, 11, 10, 10, 9, 11, 10, 11, 10, 10, 10, 10, 11, 11, 10, 10, 10, 10, 12, 9, 10, 10, 11, 10, 10, 10, 10, 10,
+				11, 11
+			],
+			"brand": [6, 6, 6, 6, 7, 6, 8, 6, 8, 9, 7, 9, 8, 9, 9, 8, 10, 11, 9, 10, 13, 11, 11, 11, 11, 11, 11, 12, 12, 12],
+			"reference": [4, 4, 4, 4, 4, 3, 4, 4, 3, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 4, 4, 5, 4, 4, 4, 4, 4, 4, 3, 3],
+			"developer": [4, 3, 4, 4, 4, 5, 3, 4, 4, 3, 3, 3, 4, 3, 4, 3, 2, 3, 3, 3, 4, 4, 3, 3, 3, 3, 3, 4, 3, 3],
+			"pr": [1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+			"other": [1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1],
+			"institutional": [1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+		},
+		"domains": [
+			{ "domain": "reddit.com", "count": 3149, "category": "social" },
+			{ "domain": "quaildesk.com", "count": 2909, "category": "brand" },
+			{ "domain": "g2.com", "count": 1777, "category": "reviews" },
+			{ "domain": "zdnet.com", "count": 1497, "category": "editorial" },
+			{ "domain": "capterra.com", "count": 1287, "category": "reviews" },
+			{ "domain": "techradar.com", "count": 1272, "category": "editorial" },
+			{ "domain": "en.wikipedia.org", "count": 1257, "category": "reference" },
+			{ "domain": "cmswire.com", "count": 1198, "category": "editorial" }
+		]
+	},
+	"fanout": {
+		"runs": 7200,
+		"knownRuns": 4800,
+		"average": 2,
+		"availability": [
+			{ "model": "chatgpt", "status": "supported" },
+			{ "model": "gemini", "status": "never" },
+			{ "model": "perplexity", "status": "never" },
+			{ "model": "google-ai-overview", "status": "never" },
+			{ "model": "bing-ai-mode", "status": "never" },
+			{ "model": "claude", "status": "supported" }
+		],
+		"terms": [
+			{ "term": "help", "count": 3402 },
+			{ "term": "desk", "count": 3136 },
+			{ "term": "support", "count": 2195 },
+			{ "term": "quaildesk", "count": 1863 },
+			{ "term": "2026", "count": 1758 },
+			{ "term": "customer", "count": 1585 },
+			{ "term": "best", "count": 1447 },
+			{ "term": "queueloft", "count": 1430 },
+			{ "term": "ai", "count": 1416 },
+			{ "term": "software", "count": 1345 },
+			{ "term": "agent", "count": 1022 },
+			{ "term": "pricing", "count": 856 },
+			{ "term": "vs", "count": 585 },
+			{ "term": "b2b", "count": 574 },
+			{ "term": "saas", "count": 549 },
+			{ "term": "ticketing", "count": 487 },
+			{ "term": "per", "count": 478 },
+			{ "term": "sla", "count": 474 },
+			{ "term": "service", "count": 452 },
+			{ "term": "review", "count": 449 },
+			{ "term": "tools", "count": 439 },
+			{ "term": "chatbot", "count": 437 },
+			{ "term": "comparison", "count": 432 },
+			{ "term": "cost", "count": 401 },
+			{ "term": "system", "count": 401 },
+			{ "term": "hipaa", "count": 365 },
+			{ "term": "chat", "count": 364 },
+			{ "term": "routing", "count": 359 },
+			{ "term": "small", "count": 347 },
+			{ "term": "enterprise", "count": 346 },
+			{ "term": "inbox", "count": 342 },
+			{ "term": "alternatives", "count": 337 },
+			{ "term": "crm", "count": 325 },
+			{ "term": "sync", "count": 325 },
+			{ "term": "resolution", "count": 319 },
+			{ "term": "teams", "count": 287 },
+			{ "term": "free", "count": 276 },
+			{ "term": "plan", "count": 276 },
+			{ "term": "integration", "count": 271 },
+			{ "term": "reddit", "count": 270 }
+		],
+		"topQueries": [
+			{ "query": "quaildesk vs queueloft", "count": 342, "brandPct": 81 },
+			{ "query": "quaildesk pricing", "count": 279, "brandPct": 100 },
+			{ "query": "help desk multilingual support translation", "count": 168, "brandPct": 32 },
+			{ "query": "best help desk for global support teams", "count": 167, "brandPct": 34 },
+			{ "query": "help desk crm integration two way sync", "count": 165, "brandPct": 71 },
+			{ "query": "help desk sla policies by customer tier", "count": 160, "brandPct": 37 }
+		],
+		"added": [
+			{ "word": "2026", "count": 1513, "sharePct": 16 },
+			{ "word": "help", "count": 1143, "sharePct": 12 },
+			{ "word": "agent", "count": 1022, "sharePct": 11 },
+			{ "word": "desk", "count": 877, "sharePct": 9 },
+			{ "word": "support", "count": 686, "sharePct": 7 }
+		]
+	},
+	"visibility": {
+		"pct": 62,
+		"citations": 33630,
+		"prompts": [
+			{
+				"value": "Most affordable help desk software for a team of 10 agents",
+				"pct": 88,
+				"tags": ["pricing", "startups"],
+				"lines": [
+					{
+						"name": "Quaildesk",
+						"series": [
+							83, 92, 83, 100, 100, 92, 67, 75, 83, 67, 83, 92, 83, 83, 75, 67, 83, 75, 92, 92, 100, 100, 100, 92, 92,
+							100, 100, 92, 100, 100, 100
+						]
+					},
+					{
+						"name": "Brookdesk",
+						"series": [
+							100, 92, 75, 92, 100, 75, 100, 75, 83, 100, 83, 100, 92, 92, 75, 75, 83, 100, 100, 100, 92, 92, 100, 100,
+							92, 100, 92, 100, 100, 92, 100
+						]
+					},
+					{
+						"name": "Ticketwren",
+						"series": [
+							83, 100, 42, 75, 67, 67, 75, 50, 58, 58, 50, 50, 58, 58, 58, 58, 42, 50, 67, 50, 75, 50, 58, 67, 92, 58,
+							58, 75, 67, 58, 83
+						]
+					},
+					{
+						"name": "Helpmeadow",
+						"series": [
+							0, 25, 25, 25, 42, 33, 17, 17, 25, 25, 17, 17, 17, 25, 58, 42, 8, 33, 25, 33, 25, 50, 17, 33, 50, 25, 17,
+							42, 50, 42, 67
+						]
+					}
+				]
+			},
+			{
+				"value": "Best customer support software for startups",
+				"pct": 84,
+				"tags": ["startups"],
+				"lines": [
+					{
+						"name": "Quaildesk",
+						"series": [
+							100, 100, 83, 67, 75, 75, 50, 92, 58, 75, 92, 75, 67, 92, 67, 75, 75, 83, 92, 100, 100, 92, 100, 100, 92,
+							92, 92, 75, 83, 92, 100
+						]
+					},
+					{
+						"name": "Brookdesk",
+						"series": [
+							50, 67, 50, 58, 75, 58, 67, 42, 75, 83, 25, 83, 83, 67, 58, 75, 58, 67, 42, 58, 58, 58, 75, 42, 75, 83,
+							42, 58, 67, 58, 50
+						]
+					},
+					{
+						"name": "Ticketwren",
+						"series": [
+							67, 75, 58, 42, 67, 42, 58, 50, 75, 50, 58, 50, 50, 67, 50, 58, 67, 42, 50, 50, 42, 58, 50, 50, 58, 50,
+							50, 25, 58, 42, 50
+						]
+					},
+					{
+						"name": "Queueloft",
+						"series": [
+							17, 25, 25, 8, 42, 17, 33, 58, 33, 50, 42, 33, 25, 33, 42, 50, 25, 42, 33, 17, 33, 50, 50, 58, 17, 25, 25,
+							25, 0, 25, 17
+						]
+					}
+				]
+			}
+		]
+	},
+	"prompts": [
+		{ "value": "Does Quaildesk work well for startups?", "branded": true, "tags": ["startups"], "pct": 100 },
+		{ "value": "Quaildesk pricing and plans", "branded": true, "tags": ["pricing"], "pct": 100 },
+		{ "value": "Quaildesk vs Queueloft for B2B support teams", "branded": true, "tags": ["comparison"], "pct": 100 },
+		{
+			"value": "Most affordable help desk software for a team of 10 agents",
+			"branded": false,
+			"tags": ["pricing", "startups"],
+			"pct": 88
+		},
+		{ "value": "Best customer support software for startups", "branded": false, "tags": ["startups"], "pct": 84 },
+		{ "value": "Best shared inbox tools for small support teams", "branded": false, "tags": ["startups"], "pct": 83 },
+		{
+			"value": "Help desk pricing comparison for 2026",
+			"branded": false,
+			"tags": ["pricing", "comparison"],
+			"pct": 78
+		},
+		{
+			"value": "Help desk software with AI agents that resolve tickets",
+			"branded": false,
+			"tags": ["automation"],
+			"pct": 76
+		}
+	]
+}
