@@ -3,7 +3,7 @@ import type { ReferralSource } from "@workspace/config/referrals";
 import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
-import { DEMO_BRAND_PATH } from "../home/product-demo";
+import { DEMO_BRAND_PATH } from "../product/data";
 import { ACTION, ACTION_QUIET, BAND_PAD, DISPLAY_S, LEAD, LINK, PANEL_TINT, Page, SMALL } from "./kit";
 
 /*

@@ -6,7 +6,7 @@ import { StickyCta } from "@/components/citerank/home/sticky-cta";
 import { Agency } from "@/components/citerank/v2/agency";
 import { Closing } from "@/components/citerank/v2/closing";
 import { Faq } from "@/components/citerank/v2/faq";
-import { HERO_PRELOADS, Hero } from "@/components/citerank/v2/hero";
+import { Hero } from "@/components/citerank/v2/hero";
 import { HowItWorks } from "@/components/citerank/v2/how-it-works";
 import { Includes } from "@/components/citerank/v2/includes";
 import { Logos } from "@/components/citerank/v2/logos";
@@ -53,7 +53,7 @@ export const Route = createFileRoute("/")({
 				image: "/og-home.png",
 			}),
 		],
-		links: [{ rel: "canonical", href: canonicalUrl("/") }, ...HERO_PRELOADS],
+		links: [{ rel: "canonical", href: canonicalUrl("/") }],
 		// The page entity and the engine list come first: they name what this page
 		// is about and resolve every engine it mentions to a real product, which is
 		// what an answer engine reads before deciding the page answers a question.

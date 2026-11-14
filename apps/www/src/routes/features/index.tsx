@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
-import { DEMO_BRAND_PATH } from "@/components/citerank/home/product-demo";
+import { DEMO_BRAND_PATH } from "@/components/citerank/product/data";
 import { Closing } from "@/components/citerank/v2/closing";
 import { ACTION, ACTION_QUIET, BODY, LINK, PanelHead } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell, PanelSection } from "@/components/citerank/v2/shell";

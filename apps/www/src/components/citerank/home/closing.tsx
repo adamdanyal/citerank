@@ -3,8 +3,8 @@ import { cloudSignupUrl, demoSiteUrl, type ReferralSource } from "@workspace/con
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
+import { DEMO_BRAND_PATH } from "../product/data";
 import { Container, PRIMARY_BUTTON_LG, Reveal, SECONDARY_BUTTON_LG } from "../ui";
-import { DEMO_BRAND_PATH } from "./product-demo";
 
 export function Closing({ from = "marketing-closing" }: { from?: ReferralSource }) {
 	const signupUrl = cloudSignupUrl(from);
