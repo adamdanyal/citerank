@@ -1,4 +1,3 @@
-import { Popover, PopoverContent, PopoverTrigger } from "@workspace/ui/components/popover";
 import { EngineIcon } from "@/components/home/engines";
 import { AI_PROMPT, REVIEW_COLUMNS, type Review } from "../home/reviews";
 import { BODY, LINK, MONO, PANEL, PANEL_PAD, Page, PanelHead, PILL_RUST, SMALL } from "./kit";
@@ -80,30 +79,47 @@ function ReviewCard({ review }: { review: Review }) {
 	);
 }
 
+/*
+ * The whole answer opens in the browser's own popover: no script to load, and
+ * it closes on a click outside or on Escape.
+ */
 function AnswerDetails({ review }: { review: AiReview }) {
+	const id = `answer-${review.iconId}`;
 	return (
-		<Popover>
-			<PopoverTrigger
-				openOnHover
-				delay={150}
+		<>
+			<button
+				type="button"
+				popoverTarget={id}
 				className={`${SMALL} rounded-sm whitespace-nowrap text-zinc-600 underline decoration-zinc-400 decoration-dotted underline-offset-4 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust`}
 			>
 				Asked Oct 31, 2026
-			</PopoverTrigger>
-			<PopoverContent align="start" className="w-[min(26rem,92dvw)] rounded-card border-zinc-200 p-5">
+			</button>
+			<div
+				id={id}
+				popover="auto"
+				className="m-auto max-h-[85dvh] w-[min(30rem,calc(100%-2rem))] overflow-y-auto rounded-card bg-paper p-6 text-ink shadow-card ring-1 ring-zinc-200 backdrop:bg-ink/60"
+			>
 				<p className={`${SMALL} text-zinc-600`}>We asked {review.name}</p>
 				<p className={`${MONO} mt-2 rounded-lg bg-paper-2 p-3 text-zinc-700`}>{AI_PROMPT}</p>
 				<p className={`${SMALL} mt-4 text-zinc-600`}>Its full answer, Oct 31, 2026</p>
-				<div
-					className={`${SMALL} mt-2 max-h-44 space-y-2 overflow-y-auto overscroll-contain rounded-lg bg-paper-2 p-3 text-zinc-700`}
-				>
+				<div className={`${SMALL} mt-2 space-y-2 rounded-lg bg-paper-2 p-3 text-zinc-700`}>
 					{review.response.map((paragraph) => (
 						<p key={paragraph}>{paragraph}</p>
 					))}
 				</div>
 				<p className={`${SMALL} mt-4 text-zinc-600`}>Asked over the {review.name} API with web search. Answers vary.</p>
-			</PopoverContent>
-		</Popover>
+				<p className="mt-5">
+					<button
+						type="button"
+						popoverTarget={id}
+						popoverTargetAction="hide"
+						className={`${LINK} ${SMALL} font-medium text-ink`}
+					>
+						Close
+					</button>
+				</p>
+			</div>
+		</>
 	);
 }
 
