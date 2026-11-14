@@ -62,7 +62,7 @@ function MenuIcon({ open }: { open: boolean }) {
 	);
 }
 
-/* Opens on hover or click, closes on Escape, on a click outside, or when focus leaves it. */
+/* Opens on hover, click or the keyboard; closes on Escape, on a click outside, or when focus or the pointer leaves it. */
 function ResourcesMenu({ pathname }: { pathname: string }) {
 	const [open, setOpen] = useState(false);
 	const root = useRef<HTMLLIElement>(null);
@@ -100,7 +100,8 @@ function ResourcesMenu({ pathname }: { pathname: string }) {
 				aria-expanded={open}
 				aria-controls="resources-menu"
 				aria-current={current}
-				onClick={() => setOpen((value) => !value)}
+				// A mouse has already opened it by hovering, so its click must not close it again. Only the keyboard toggles.
+				onClick={(event) => setOpen(event.detail === 0 ? (value) => !value : true)}
 				className={NAV_ITEM}
 			>
 				Resources
