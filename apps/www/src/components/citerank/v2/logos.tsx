@@ -14,7 +14,8 @@ export function Logos() {
 				</h2>
 				<ul className="grid w-full grid-cols-2 items-center justify-items-center gap-x-10 gap-y-8 sm:grid-cols-3 lg:flex lg:flex-1 lg:justify-between lg:gap-x-8">
 					{CUSTOMERS.map((customer) => (
-						<li key={customer.name} className="flex h-6 items-center">
+						// A wordmark set in type would pull in a bold weight of the body face that nothing else on the page uses.
+						<li key={customer.name} className="flex h-6 items-center font-system">
 							<span role="img" aria-label={customer.name} className={customer.linkClass}>
 								{customer.render()}
 							</span>

@@ -60,8 +60,9 @@ const MODULE_PRELOAD = /<link rel="modulepreload"/g;
 // Longer than any tag rewritten below, so one split across two chunks is still seen whole.
 const HOLD_BACK = 512;
 
+/* Starts the entry module once the browser reports its first contentful paint, or after three seconds in a tab that never paints. */
 function deferredEntry(src: string): string {
-	return `<script>(function(){var d=0;function go(){if(d)return;d=1;document.querySelectorAll('link[rel="x-modulepreload"]').forEach(function(l){l.rel="modulepreload"});var s=document.createElement("script");s.type="module";s.src=${JSON.stringify(src)};document.head.appendChild(s)}requestAnimationFrame(function(){setTimeout(go,0)});setTimeout(go,1500)})();</script>`;
+	return `<script>(function(){var d=0;function go(){if(d)return;d=1;document.querySelectorAll('link[rel="x-modulepreload"]').forEach(function(l){l.rel="modulepreload"});var s=document.createElement("script");s.type="module";s.src=${JSON.stringify(src)};document.head.appendChild(s)}try{new PerformanceObserver(function(l,o){if(l.getEntriesByName("first-contentful-paint").length){o.disconnect();setTimeout(go,0)}}).observe({type:"paint",buffered:true})}catch(e){requestAnimationFrame(function(){setTimeout(go,0)})}setTimeout(go,3000)})();</script>`;
 }
 
 /*
