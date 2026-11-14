@@ -79,7 +79,7 @@ function ReviewCard({ review }: { review: Review }) {
 /* The card always names the month a visitor is reading in, so it only stays true while the answers are asked again each month. */
 function thisMonth() {
 	const now = new Date();
-	return `${now.toLocaleString("en-US", { month: "long", timeZone: "UTC" })} ${now.getUTCFullYear()}`;
+	return `${now.toLocaleString("en-US", { month: "short", timeZone: "UTC" })}, ${now.getUTCFullYear()}`;
 }
 
 /*
@@ -108,7 +108,7 @@ function AnswerDetails({ review }: { review: AiReview }) {
 				<p className={`${SMALL} text-zinc-600`}>We asked {review.name}</p>
 				<p className={`${MONO} mt-2 rounded-lg bg-paper-2 p-3 text-zinc-700`}>{AI_PROMPT}</p>
 				<p suppressHydrationWarning className={`${SMALL} mt-4 text-zinc-600`}>
-					Its full answer, {asked}
+					Its full answer from {asked}
 				</p>
 				<div className={`${SMALL} mt-2 space-y-2 rounded-lg bg-paper-2 p-3 text-zinc-700`}>
 					{review.response.map((paragraph) => (
