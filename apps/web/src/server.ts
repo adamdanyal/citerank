@@ -1,10 +1,8 @@
 import "../instrument.server.mjs";
 import * as Sentry from "@sentry/tanstackstart-react";
 import handler, { createServerEntry } from "@tanstack/react-start/server-entry";
-import { MARKETING_SITE_URL } from "@workspace/config/referrals";
 import { startCredentialRefresh } from "@workspace/lib/secrets";
 import { AD_TAG_CSP } from "@workspace/ui/lib/ad-tags";
-import { frameAncestors } from "./server/frame-ancestors";
 
 // Not awaited: the app has to serve sign-in and settings whether or not the
 // credential store is reachable.
@@ -17,8 +15,6 @@ void startCredentialRefresh();
 // HTTP, so it stays inert on localhost.
 const strictTransportSecurity =
 	process.env.DEPLOYMENT_MODE === "whitelabel" ? "max-age=63072000" : "max-age=63072000; includeSubDomains";
-
-const FRAMED_BY = frameAncestors(process.env.DEPLOYMENT_MODE, MARKETING_SITE_URL);
 
 const SECURITY_HEADERS: Record<string, string> = {
 	"Content-Security-Policy": [
@@ -33,13 +29,12 @@ const SECURITY_HEADERS: Record<string, string> = {
 		`frame-src 'self' https://*.crisp.chat https://challenges.cloudflare.com ${AD_TAG_CSP.frame}`,
 		`connect-src 'self' https://*.posthog.com https://*.sentry.io https://*.clarity.ms https://c.bing.com https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat ${AD_TAG_CSP.connect}`,
 		"object-src 'none'",
-		`frame-ancestors ${FRAMED_BY.length > 0 ? FRAMED_BY.join(" ") : "'none'"}`,
+		"frame-ancestors 'none'",
 		"base-uri 'self'",
 		"form-action 'self'",
 	].join("; "),
 	"Strict-Transport-Security": strictTransportSecurity,
-	// This header cannot name an origin, so where one is allowed it is left off and frame-ancestors decides.
-	...(FRAMED_BY.length === 0 ? { "X-Frame-Options": "DENY" } : {}),
+	"X-Frame-Options": "DENY",
 	"X-Content-Type-Options": "nosniff",
 	"Referrer-Policy": "strict-origin-when-cross-origin",
 	// same-origin-allow-popups (not same-origin) keeps OAuth/SSO popups that rely on
