@@ -50,7 +50,7 @@ Body is 16px and labels 14px. The container is 1440px with 64px gutters (24px un
 - A sentence under a head takes one line where the screen allows, and never more than two. A ticked line takes one line on any phone; where it would not fit, the type gives way first.
 - A ticked list is the body face at `--text-lead`, not the display face.
 - Under a row of buttons that fills the width, the small line is centred. Beside a column of text it aligns with the buttons.
-- An FAQ answer is two short sentences of 140 to 158 characters: the answer first, then the one fact behind it. Every answer on a page is the same size, and they all stand open.
+- An FAQ answer is three short sentences of 205 to 232 characters, about forty words: the answer first, then two facts behind it. Every answer on a page is the same size (three lines from a tablet up), and they all stand open.
 - A person is credited under their portrait: name, role, then the LinkedIn mark with the follower count.
 - hero: Stage on `/`, Banner on every other page · nav: three-part bar on ink · footer: index columns on ink
 
