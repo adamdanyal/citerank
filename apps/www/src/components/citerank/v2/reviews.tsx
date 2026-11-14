@@ -1,6 +1,7 @@
+import { ArrowUpRight } from "lucide-react";
 import { EngineIcon } from "@/components/home/engines";
 import { AI_PROMPT, REVIEW_COLUMNS, type Review } from "../home/reviews";
-import { BODY, LINK, MONO, PANEL, PANEL_PAD, Page, PanelHead, SMALL } from "./kit";
+import { BODY, FOCUS, LINK, MONO, PANEL, PANEL_PAD, Page, PanelHead, SMALL } from "./kit";
 
 const REVIEWS = REVIEW_COLUMNS.flat();
 
@@ -44,6 +45,9 @@ function Avatar({ review }: { review: Review }) {
 }
 
 const TEXT_CONTROL = `${LINK} inline-flex min-h-11 items-center text-[0.9375rem] font-medium whitespace-nowrap text-blue-800`;
+/* The two controls on an AI's card share its last line. Padding gives each a full-size target, and the margin takes it back out of the layout. */
+const LAST_LINE = `${SMALL} -my-3 rounded-sm py-3 whitespace-nowrap transition-colors duration-200 hover:text-ink ${FOCUS}`;
+const ASK = `${LAST_LINE} inline-flex shrink-0 items-center gap-1 self-end font-medium text-blue-800`;
 
 /* An AI's review sits on rust-tinted paper, because it is the product reviewing itself. */
 function ReviewCard({ review }: { review: Review }) {
@@ -56,20 +60,18 @@ function ReviewCard({ review }: { review: Review }) {
 				<div className="min-w-0 flex-1">
 					<p className={`${SMALL} font-medium text-ink`}>{review.name}</p>
 					{review.kind === "ai" ? (
-						<p className={`${SMALL} text-zinc-600`}>Asked Oct 31, 2026</p>
+						<AnswerDetails review={review} />
 					) : review.role ? (
 						<p className={`${SMALL} truncate text-zinc-600`}>{review.role}</p>
 					) : null}
 				</div>
-			</figcaption>
-			{review.kind === "ai" ? (
-				<div className="mt-2 flex flex-wrap gap-x-6">
-					<AnswerDetails review={review} />
-					<a href={review.askUrl} target="_blank" rel="noopener noreferrer" className={TEXT_CONTROL}>
-						Ask it yourself<span className="sr-only"> ({review.name})</span>
+				{review.kind === "ai" ? (
+					<a href={review.askUrl} target="_blank" rel="noopener noreferrer" className={ASK}>
+						Ask it<span className="sr-only"> ({review.name})</span>
+						<ArrowUpRight aria-hidden="true" className="size-4" />
 					</a>
-				</div>
-			) : null}
+				) : null}
+			</figcaption>
 		</figure>
 	);
 }
@@ -82,8 +84,12 @@ function AnswerDetails({ review }: { review: AiReview }) {
 	const id = `answer-${review.iconId}`;
 	return (
 		<>
-			<button type="button" popoverTarget={id} className={TEXT_CONTROL}>
-				See its full answer<span className="sr-only"> ({review.name})</span>
+			<button
+				type="button"
+				popoverTarget={id}
+				className={`${LAST_LINE} text-zinc-600 underline decoration-zinc-500 decoration-dotted underline-offset-4`}
+			>
+				Asked Oct 31, 2026<span className="sr-only">: see the full answer from {review.name}</span>
 			</button>
 			<div
 				id={id}
