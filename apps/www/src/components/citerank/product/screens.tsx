@@ -261,7 +261,7 @@ export function Visibility({ lead = false }: ScreenProps) {
 					<span>{count(data.citations)} citations</span>
 				</p>
 			</div>
-			<div className="grid gap-3 @[56rem]:grid-cols-2">
+			<div className="grid grid-cols-[minmax(0,1fr)] gap-3 @[56rem]:grid-cols-2">
 				{data.prompts.slice(0, lead ? 1 : 2).map((prompt) => {
 					const own = prompt.lines[0]?.series ?? [];
 					return (
@@ -302,7 +302,7 @@ export function ShareOfVoice({ lead = false }: ScreenProps) {
 	const topShare = board[0]?.share || 1;
 	const top = ranked("share").slice(0, 5);
 	return (
-		<div className="grid gap-3 @[60rem]:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+		<div className="grid grid-cols-[minmax(0,1fr)] gap-3 @[60rem]:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
 			{lead ? null : (
 				<div className={`${BOX} p-4`}>
 					<p className={BOX_TITLE}>Share of Voice, last 30 days</p>
@@ -331,10 +331,10 @@ export function ShareOfVoice({ lead = false }: ScreenProps) {
 							<th scope="col" className="pb-2 text-left font-normal">
 								Brand
 							</th>
-							<th scope="col" className="pb-2 pr-4 text-right font-normal">
+							<th scope="col" className="hidden pb-2 pr-4 text-right font-normal @[26rem]:table-cell">
 								Mentions
 							</th>
-							<th scope="col" className="w-[42%] pb-2 text-left font-normal">
+							<th scope="col" className="w-[40%] pb-2 text-left font-normal">
 								Share
 							</th>
 							<th scope="col" className="hidden pb-2 text-right font-normal @[34rem]:table-cell">
@@ -357,7 +357,9 @@ export function ShareOfVoice({ lead = false }: ScreenProps) {
 										) : null}
 									</span>
 								</th>
-								<td className={`${CELL} pr-4 text-right font-mono text-ink`}>{entry.mentions}</td>
+								<td className={`${CELL} hidden pr-4 text-right font-mono text-ink @[26rem]:table-cell`}>
+									{entry.mentions}
+								</td>
 								<td className={CELL}>
 									<span className="flex items-center gap-3">
 										<Bar share={entry.share / topShare} tone={toneOf(entry.name)} />
@@ -394,7 +396,7 @@ export function Sentiment({ lead = false }: ScreenProps) {
 	const data = PREVIEW.sentiment;
 	const score = show("sentiment", PREVIEW.cards.sentiment.value);
 	return (
-		<div className="grid gap-3 @[54rem]:grid-cols-2">
+		<div className="grid grid-cols-[minmax(0,1fr)] gap-3 @[54rem]:grid-cols-2">
 			<div className={`${BOX} p-4`}>
 				<p className={BOX_TITLE}>Sentiment</p>
 				<div className="mt-4 flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -502,8 +504,10 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
 	);
 }
 
-function AnswerCard({ answer }: { answer: Answer }) {
+/* `lead` shows the opening of the answer in place of the searches behind it: the card is there to show an answer kept. */
+function AnswerCard({ answer, lead = false }: { answer: Answer; lead?: boolean }) {
 	const still = useStill();
+	const first = answer.picks[0];
 	const named = answer.brands.some((brand) => brand.name === BRAND);
 	return (
 		<div className={`${BOX} text-sm`}>
@@ -525,7 +529,23 @@ function AnswerCard({ answer }: { answer: Answer }) {
 				</Field>
 			</dl>
 			<dl className="space-y-4 border-t border-zinc-200 p-4">
-				{answer.webQueries.length ? (
+				{lead ? (
+					<Field label="LLM Response">
+						<div className="space-y-2 rounded-lg bg-paper-2 p-3 leading-relaxed text-zinc-700">
+							{answer.title ? <p className="text-base font-medium text-ink">{answer.title}</p> : null}
+							{first ? (
+								<p>
+									<span className="block font-medium text-ink">
+										{first.rank}. {first.name}
+									</span>
+									{first.line}
+								</p>
+							) : (
+								answer.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)
+							)}
+						</div>
+					</Field>
+				) : answer.webQueries.length ? (
 					<Field label="Web Queries">
 						<ul className="flex flex-wrap gap-1.5">
 							{answer.webQueries.map((query) => (
@@ -552,7 +572,7 @@ function AnswerCard({ answer }: { answer: Answer }) {
 					{named ? null : <p className="mt-2 text-zinc-600">{BRAND} is not in this answer.</p>}
 				</Field>
 			</dl>
-			{still ? null : (
+			{still || lead ? null : (
 				<details className="group border-t border-zinc-200">
 					<summary
 						className={`flex h-11 cursor-pointer list-none items-center gap-2 rounded-b-xl px-4 font-medium text-ink [&::-webkit-details-marker]:hidden ${FOCUS}`}
@@ -571,9 +591,9 @@ function AnswerCard({ answer }: { answer: Answer }) {
 						<ol className="space-y-2">
 							{answer.picks.map((pick) => (
 								<li key={pick.name}>
-									<span className="font-medium text-ink">
+									<span className="block font-medium text-ink">
 										{pick.rank}. {pick.name}
-									</span>{" "}
+									</span>
 									{pick.line}
 								</li>
 							))}
@@ -592,7 +612,7 @@ export function Responses({ lead = false }: ScreenProps) {
 		<div className="space-y-3">
 			{lead ? null : <AnswerFilter value={kind} onChange={setKind} />}
 			{shown.map((answer) => (
-				<AnswerCard key={answer.kind} answer={answer} />
+				<AnswerCard key={answer.kind} answer={answer} lead={lead} />
 			))}
 		</div>
 	);
@@ -748,7 +768,7 @@ export function Citations({ lead = false }: ScreenProps) {
 				<Stat label="Unique Domains" value={count(data.uniqueDomains)} />
 				<Stat label="Total Citations" value={count(data.total)} />
 			</div>
-			<div className="grid gap-3 @[60rem]:grid-cols-2">
+			<div className="grid grid-cols-[minmax(0,1fr)] gap-3 @[60rem]:grid-cols-2">
 				<div className={`${BOX} p-4`}>
 					<p className={BOX_TITLE}>Citation Categories</p>
 					<div className="mt-4">
@@ -836,7 +856,7 @@ export function Opportunities({ lead = false }: ScreenProps) {
 				value={kind}
 				onChange={setKind}
 			/>
-			<ul className="grid gap-3 @[62rem]:grid-cols-3">
+			<ul className="grid grid-cols-[minmax(0,1fr)] gap-3 @[62rem]:grid-cols-3">
 				{data.items
 					.filter((item) => item.category === kind)
 					.map((item) => (
