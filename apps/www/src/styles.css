@@ -1,11 +1,12 @@
 /* Hallmark · shape: Stat-Led · genre: modern-minimal · theme: brand · redesign: full
- * paper: #fbfaf9 · accent: #b84d25 · display: Schibsted Grotesk · body: Inter · hero: Stage (/), Banner (every other page) · nav: three-part bar on ink · footer: index columns on ink · signature: the live Overview capture running off the hero's edge
- * axes: light/grotesk-sans/warm · posture: Restrained · contrast: pass · fold: pass · draw: 656e15 · imagery: screenshots 5 (the live demo) · v2.0.0 */
+ * paper: #fbfaf9 · accent: #b84d25 · display: Schibsted Grotesk · body: Inter · hero: Stage (/), Banner (every other page) · nav: three-part bar on ink · footer: index columns on ink · signature: the product itself in the hero, in HTML, its measures, chart and five screens answering a click
+ * axes: light/grotesk-sans/warm · posture: Restrained · contrast: pass · fold: pass · draw: 656e15 · imagery: the product rebuilt in HTML from the demo's sample data, no pictures of it · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H5 E4 S4 R4 V4 · weakest: P, the page argued nothing a rival could not say; led with the price and the 13 engines by name instead of a claim */
-/* Hallmark · waive 44c · Stage, the overview capture bleeds off the outer edge · the capture is shown at its real size so every figure in it stays readable */
+/* Hallmark · waive 84 · the product is rebuilt in HTML though it could be captured · the owner ruled out screenshots and embeds anywhere on the site; the screens are fed by an export of the live demo's own sample data, so they say what it says */
+/* Hallmark · waive 47c · the product screens are HTML, not captures · same instruction; every one is labelled as sample data and links to the same screen in the live demo */
 /* Hallmark · hero-review: fix · 5 findings · 5 resolved */
 /* Hallmark · finish-review: subagent · 7 findings · 6 resolved 1 unresolved · gap: five section heads would pass on a rival's page; they are the owner's wording and his to change */
-/* Hallmark · dismissed 28a · the hero capture is the largest paint and loads eagerly; the images these lines name sit below the fold */
+/* Hallmark · dismissed 28a · the hero holds no image; the images these lines name sit below the fold and load lazily on purpose */
 /* Hallmark · dismissed 46a · "200+ brands" and "2M+ on LinkedIn" are carried over from the old page as found and listed for the owner to verify */
 /* Hallmark · dismissed 59 · ten with the customer logo strip, which is one line under the hero and not a section of content */
 /* Hallmark · dropped "13 answer engines your buyers use", "Try the real product", "Tell me if this sounds familiar." · 69 names them: the engines, the demo and the founder's letter are each told once now, inside the section that needs them */
@@ -344,6 +345,12 @@
 		font-family: var(--font-display);
 		font-synthesis: none;
 		text-wrap: balance;
+	}
+
+	/* The ring any control gets unless it sets its own, so nothing on the site can take focus unseen. */
+	.cr-v2 :focus-visible {
+		outline: 2px solid var(--color-rust);
+		outline-offset: 2px;
 	}
 }
 
