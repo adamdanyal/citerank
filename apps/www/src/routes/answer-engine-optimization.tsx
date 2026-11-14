@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageShell } from "@/components/citerank/v2/shell";
-import { DirectoryHero } from "@/components/directory-shell";
+import { PageHead, PageShell } from "@/components/citerank/v2/shell";
 import { Faq } from "@/components/faq";
 import { CiteRankCta, PillarBody } from "@/components/pillar";
 import { getPillar } from "@/data/pillars";
@@ -41,7 +40,7 @@ function PillarPage() {
 	if (!pillar) return null;
 	return (
 		<PageShell>
-			<DirectoryHero title={pillar.h1} lead={pillar.lead} />
+			<PageHead title={pillar.h1} lede={pillar.lead} />
 			<PillarBody pillar={pillar} />
 			<Faq items={pillar.faqs} />
 			<CiteRankCta />

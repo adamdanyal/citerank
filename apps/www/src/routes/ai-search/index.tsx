@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
-import { Closing } from "@/components/citerank/home/closing";
-import { Container, EASE_CLASS, LINK_CARD, RevealItem } from "@/components/citerank/ui";
-import { PANEL, PANEL_PAD, Page } from "@/components/citerank/v2/kit";
-import { PageShell } from "@/components/citerank/v2/shell";
+import { Closing } from "@/components/citerank/v2/closing";
+import { BODY, PANEL, Page, SMALL, SUBHEAD } from "@/components/citerank/v2/kit";
+import { PageHead, PageShell } from "@/components/citerank/v2/shell";
+import { INDEX_PAD, ROW, ROW_ACTION, ROW_LINK } from "@/components/pillar";
 import { aiSearchEngines } from "@/data/ai-search-engines";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -36,40 +35,31 @@ export const Route = createFileRoute("/ai-search/")({
 function AiSearchIndex() {
 	return (
 		<PageShell>
-			<section className={`${PANEL} ${PANEL_PAD}`}>
-				<Page className="lg: lg:">
-					<div className="max-w-3xl">
-						<p className="caption-3 text-blue-800">AI search guides</p>
-						<h1 className="heading-1 mt-6 text-zinc-950">How to show up in AI search</h1>
-						<p className="body-8 mt-6 max-w-[60ch] text-zinc-600">
-							Each AI engine chooses its sources a little differently. These guides show how the major ones decide what
-							to cite, and the steps to become one of their sources.
-						</p>
-					</div>
-				</Page>
-			</section>
+			<PageHead
+				title="How to show up in AI search"
+				lede="Each AI engine chooses its sources a little differently. These guides show how the major ones decide what to cite, and the steps to become one of their sources."
+			/>
 
-			<section className={`${PANEL} ${PANEL_PAD}`}>
-				<Page className="lg:">
+			<section className={`${PANEL} ${INDEX_PAD}`}>
+				<Page>
 					<h2 className="sr-only">Guides by AI engine</h2>
-					<ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-						{aiSearchEngines.map((engine, index) => (
-							<RevealItem key={engine.slug} delay={(index % 3) * 60} className="flex">
-								<a href={`/ai-search/${engine.slug}`} className={LINK_CARD}>
-									<span className="flex items-baseline justify-between gap-3">
-										<span className="title-2 text-zinc-950">{engine.name}</span>
-										<span className="caption-2 shrink-0 text-zinc-500">{engine.vendor}</span>
-									</span>
-									<span className="body-6 mt-2 flex-1 text-zinc-600">{engine.short}</span>
-									<span className="title-4 mt-5 inline-flex items-center gap-1 text-blue-700">
-										How to appear in {engine.name}
-										<ArrowRight
-											className={`size-4 transition-transform duration-300 ${EASE_CLASS} group-hover:translate-x-0.5`}
-											aria-hidden="true"
-										/>
-									</span>
+					<ul className="border-b border-zinc-200">
+						{aiSearchEngines.map((engine) => (
+							<li key={engine.slug} className={ROW}>
+								<a
+									href={`/ai-search/${engine.slug}`}
+									className={`${ROW_LINK} grid gap-3 py-6 lg:grid-cols-12 lg:gap-8 lg:py-8`}
+								>
+									<div className="lg:col-span-5">
+										<h3 className={`${SUBHEAD} text-ink`}>{engine.name}</h3>
+										<p className={`${SMALL} mt-1 text-zinc-600`}>{engine.vendor}</p>
+									</div>
+									<div className="lg:col-span-7">
+										<p className={`${BODY} max-w-[60ch] text-zinc-600`}>{engine.short}</p>
+										<p className={`${ROW_ACTION} mt-3`}>How to appear in {engine.name}</p>
+									</div>
 								</a>
-							</RevealItem>
+							</li>
 						))}
 					</ul>
 				</Page>

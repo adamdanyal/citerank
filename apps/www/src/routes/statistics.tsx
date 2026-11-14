@@ -1,9 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
-import { ArrowUpRight } from "lucide-react";
-import { PageShell } from "@/components/citerank/v2/shell";
-import { DirectoryHero } from "@/components/directory-shell";
-import { CiteRankCta } from "@/components/pillar";
+import {
+	BODY,
+	HEADING,
+	LEAD,
+	LINK,
+	PANEL,
+	PANEL_PAD,
+	PANEL_PAD_WIDE,
+	Page,
+	PanelHead,
+	SMALL,
+} from "@/components/citerank/v2/kit";
+import { PageHead, PageShell } from "@/components/citerank/v2/shell";
+import { CiteRankCta, ROW, ROW_LINK, ROW_TITLE } from "@/components/pillar";
 import { GROUP_BLURBS, STAT_GROUPS, type Stat, type StatGroup, stats, supportingPosts } from "@/data/statistics";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -69,69 +79,70 @@ export const Route = createFileRoute("/statistics")({
 	component: StatisticsPage,
 });
 
+const FIGURE =
+	"font-heading text-[clamp(1.75rem,1.5vw+1.15rem,2.5rem)] leading-[1.1] font-bold tracking-[-0.02em] text-rust [overflow-wrap:break-word] min-w-0";
+const ROW_GRID = "grid gap-2 py-6 lg:grid-cols-12 lg:gap-8";
+
 function StatisticsPage() {
 	const { resolved, supporting } = Route.useLoaderData();
 	return (
 		<PageShell>
-			<DirectoryHero title="AI search statistics" lead={lead} />
+			<PageHead title="AI search statistics" lede={lead} />
 
-			<section className="bg-white py-16 lg:py-20">
-				<div className="mx-auto max-w-6xl px-4 md:px-6">
-					<div className="max-w-3xl space-y-5">
-						<p className="body-7 text-zinc-700">
-							Most numbers quoted about AI search come without a denominator. These do. Each figure names its source and
-							links to the piece that works through how it was measured and where it disagrees with the next study.
+			{STAT_GROUPS.map((group) => {
+				const inGroup = resolved.filter((stat) => stat.group === group);
+				const extras = supporting.filter((post) => post.group === group);
+				if (inGroup.length === 0 && extras.length === 0) return null;
+				return (
+					<section key={group} className={`${PANEL} ${PANEL_PAD}`}>
+						<Page>
+							<PanelHead title={group}>
+								<p className={`${LEAD} text-zinc-600`}>{GROUP_BLURBS[group]}</p>
+							</PanelHead>
+							<ul className="mt-10 border-b border-zinc-200 lg:mt-16">
+								{inGroup.map((stat) => (
+									<li key={stat.slug} className={`${ROW} ${ROW_GRID}`}>
+										<p className={`${FIGURE} lg:col-span-4`}>{stat.value}</p>
+										<div className="min-w-0 max-w-[64ch] lg:col-span-8">
+											<p className={`${BODY} text-ink`}>{stat.claim}</p>
+											<p className={`${SMALL} mt-2 text-zinc-600`}>
+												Source: {stat.source}.{" "}
+												<a href={stat.url} className={`${LINK} text-zinc-700 hover:text-ink`}>
+													{stat.postTitle}
+												</a>
+											</p>
+										</div>
+									</li>
+								))}
+								{extras.map((post) => (
+									<li key={post.url} className={ROW}>
+										<a href={post.url} className={`${ROW_LINK} ${ROW_GRID}`}>
+											<span className={`${ROW_TITLE} block lg:col-span-4`}>{post.title}</span>
+											<span className={`${BODY} block max-w-[64ch] text-zinc-600 lg:col-span-8`}>
+												{post.description}
+											</span>
+										</a>
+									</li>
+								))}
+							</ul>
+						</Page>
+					</section>
+				);
+			})}
+
+			<section className={`${PANEL} ${PANEL_PAD_WIDE}`}>
+				<Page className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-8">
+					<p className={`${HEADING} text-ink lg:col-span-7`}>
+						Most numbers quoted about AI search come without a denominator. These do.
+					</p>
+					<div className={`${BODY} space-y-4 text-zinc-600 lg:col-span-5`}>
+						<p>
+							Each figure names its source and links to the piece that works through how it was measured and where it
+							disagrees with the next study.
 						</p>
-						<p className="body-7 text-zinc-700">
-							Free to cite, with attribution to the original source rather than to us where the two differ.
-						</p>
+						<p>Free to cite, with attribution to the original source rather than to us where the two differ.</p>
 					</div>
-
-					{STAT_GROUPS.map((group) => {
-						const inGroup = resolved.filter((stat) => stat.group === group);
-						const extras = supporting.filter((post) => post.group === group);
-						if (inGroup.length === 0 && extras.length === 0) return null;
-						return (
-							<div key={group} className="mt-16">
-								<h2 className="heading-4 text-zinc-950">{group}</h2>
-								<p className="body-6 mt-3 max-w-3xl text-zinc-600">{GROUP_BLURBS[group]}</p>
-								<ul className="mt-8 divide-y divide-zinc-200 border-zinc-200 border-t">
-									{inGroup.map((stat) => (
-										<li key={stat.slug} className="py-5">
-											<div className="flex flex-col gap-1.5 sm:flex-row sm:gap-6">
-												<span className="heading-5 shrink-0 text-blue-700 tabular-nums sm:w-44">{stat.value}</span>
-												<div className="max-w-3xl">
-													<p className="body-1 text-zinc-700">{stat.claim}</p>
-													<p className="caption-2 mt-1.5 text-zinc-500">
-														{stat.source}.{" "}
-														<a
-															href={stat.url}
-															className="group inline-flex items-center gap-1 underline underline-offset-2 hover:text-zinc-900"
-														>
-															{stat.postTitle}
-															<ArrowUpRight className="h-3 w-3 transition-transform group-hover:-translate-y-0.5" />
-														</a>
-													</p>
-												</div>
-											</div>
-										</li>
-									))}
-									{extras.map((post) => (
-										<li key={post.url} className="py-5">
-											<a href={post.url} className="group flex flex-col gap-1">
-												<span className="title-3 flex items-start gap-1.5 text-zinc-950">
-													{post.title}
-													<ArrowUpRight className="mt-1 h-3.5 w-3.5 shrink-0 text-zinc-400 transition-transform group-hover:-translate-y-0.5" />
-												</span>
-												<span className="body-6 max-w-3xl text-zinc-600">{post.description}</span>
-											</a>
-										</li>
-									))}
-								</ul>
-							</div>
-						);
-					})}
-				</div>
+				</Page>
 			</section>
 
 			<CiteRankCta />

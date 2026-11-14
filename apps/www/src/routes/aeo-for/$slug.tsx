@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PLANS } from "@workspace/config/plans";
 import { cloudSignupUrl } from "@workspace/config/referrals";
-import { ArrowRight, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { Closing } from "@/components/citerank/v2/closing";
 import { Engines } from "@/components/citerank/v2/engines";
 import { Faq } from "@/components/citerank/v2/faq";
@@ -13,7 +13,6 @@ import {
 	BODY,
 	CARD,
 	LEAD,
-	MONO,
 	PANEL,
 	PANEL_PAD,
 	PANEL_PAD_TIGHT,
@@ -25,6 +24,7 @@ import {
 import { Pricing } from "@/components/citerank/v2/pricing";
 import { PageShell } from "@/components/citerank/v2/shell";
 import { EngineIcon } from "@/components/home/engines";
+import { ITEM_TITLE, LABEL, PromptText, WithPrompts } from "@/components/pillar";
 import { type AeoVertical, aeoHeadline, aeoVerticals, getAeoVertical } from "@/data/aeo-verticals";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, howToJsonLd, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -83,43 +83,6 @@ function capitalize(s: string) {
 	return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-/** Renders each match of `pattern` (its first group) with `render`, keyed by where it sits in the text. */
-function replaceMatches(text: string, pattern: RegExp, render: (match: string, key: number) => React.ReactNode) {
-	const out: React.ReactNode[] = [];
-	let last = 0;
-	for (const m of text.matchAll(pattern)) {
-		out.push(text.slice(last, m.index), render(m[1], m.index));
-		last = m.index + m[0].length;
-	}
-	out.push(text.slice(last));
-	return out;
-}
-
-/** Bracketed slots like [category] stand for the reader's own names, so they get their own colour. */
-function PromptText({ text }: { text: string }) {
-	return replaceMatches(text, /(\[[^\]]+\])/g, (slot, key) => (
-		<span key={key} className="font-medium text-blue-600">
-			{slot}
-		</span>
-	));
-}
-
-/** A prompt quoted inside running copy, set like inline code so it reads as something typed into an engine. */
-function InlinePrompt({ text }: { text: string }) {
-	return (
-		<code className="whitespace-nowrap rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-[0.85em] text-zinc-900 ring-1 ring-zinc-200/80">
-			<PromptText text={text} />
-		</code>
-	);
-}
-
-/** Copy can quote prompts in single quotes; those render as inline prompts. Apostrophes are left alone. */
-function WithPrompts({ text }: { text: string }) {
-	return replaceMatches(text, /(?<=^|\s)'([^']+)'(?=[\s.,;]|$)/g, (prompt, key) => (
-		<InlinePrompt key={key} text={prompt} />
-	));
-}
-
 function Prompts({ vertical }: { vertical: AeoVertical }) {
 	const [lead, ...rest] = vertical.intro;
 	return (
@@ -137,12 +100,12 @@ function Prompts({ vertical }: { vertical: AeoVertical }) {
 				</div>
 				<div className="min-w-0 lg:col-span-6">
 					<div className={CARD}>
-						<p className={MONO}>Prompts {vertical.audience} should track</p>
+						<p className={LABEL}>Prompts {vertical.audience} should track</p>
 						<ul className="mt-4 space-y-2.5">
 							{vertical.examplePrompts.map((p) => (
-								<li key={p} className="flex items-center gap-3 rounded-xl bg-paper px-4 py-3 text-[15px] text-ink">
+								<li key={p} className="flex items-center gap-3 rounded-xl bg-paper px-4 py-3 text-ink">
 									<Search className="size-4 shrink-0 text-zinc-400" aria-hidden="true" />
-									<span className="min-w-0 flex-1 truncate font-mono text-[14px]">
+									<span className="min-w-0 flex-1 font-mono text-[0.875rem] leading-[1.5] [overflow-wrap:anywhere] sm:truncate">
 										<PromptText text={p} />
 									</span>
 								</li>
@@ -183,22 +146,26 @@ function Playbook({ vertical }: { vertical: AeoVertical }) {
 						What gets a brand named in AI answers in your category, and where CiteRank.com shows you the content gaps.
 					</p>
 				</PanelHead>
-				<ol className="mt-12 border-b border-zinc-200">
-					{vertical.plays.map((play, i) => (
-						<li key={play.name} className="grid gap-2 border-t border-zinc-200 py-6 sm:grid-cols-12 sm:gap-8 sm:py-7">
-							<h3 className="flex min-w-0 items-baseline gap-3 font-heading text-[1.375rem] leading-[1.25] font-semibold tracking-[-0.02em] text-ink [overflow-wrap:break-word] sm:col-span-5 sm:text-[1.5rem]">
-								<span className={`${MONO} shrink-0 tabular-nums`}>{String(i + 1).padStart(2, "0")}</span>
+				<ol className="mt-12 border-b border-zinc-200 [counter-reset:play]">
+					{vertical.plays.map((play) => (
+						<li
+							key={play.name}
+							className="grid gap-2 border-t border-zinc-200 py-6 [counter-increment:play] lg:grid-cols-12 lg:gap-8 lg:py-8"
+						>
+							<h3
+								className={`${ITEM_TITLE} flex gap-4 text-ink before:shrink-0 before:text-rust before:tabular-nums before:content-[counter(play)] lg:col-span-5`}
+							>
 								{play.name}
 							</h3>
-							<p className={`${BODY} text-zinc-600 sm:col-span-7`}>{play.text}</p>
+							<p className={`${BODY} max-w-[60ch] text-zinc-600 lg:col-span-7`}>{play.text}</p>
 						</li>
 					))}
 				</ol>
 
-				<div className="mt-10 flex flex-col gap-6 rounded-2xl bg-ink p-7 md:flex-row md:items-center md:justify-between md:p-8">
+				<div className="mt-10 flex flex-col gap-6 rounded-card bg-ink p-6 sm:p-8 md:flex-row md:items-center md:justify-between">
 					<div className="max-w-[60ch]">
 						<h3 className={`${SUBHEAD} text-paper`}>Where CiteRank.com fits</h3>
-						<p className={`${BODY} mt-2 text-zinc-400`}>{vertical.fit}</p>
+						<p className={`${BODY} mt-2 text-zinc-300`}>{vertical.fit}</p>
 					</div>
 					<div className="flex shrink-0 flex-col gap-3 sm:flex-row md:flex-col lg:flex-row">
 						<a href={signupUrl} className={ACTION}>
@@ -218,13 +185,13 @@ function OtherIndustries({ others }: { others: AeoVertical[] }) {
 	return (
 		<section className={`${PANEL} ${PANEL_PAD_TIGHT}`}>
 			<Page>
-				<p className={MONO}>CiteRank.com for other industries</p>
+				<p className={LABEL}>CiteRank.com for other industries</p>
 				<ul className="mt-5 flex flex-wrap gap-2.5">
 					{others.map((o) => (
 						<li key={o.slug}>
 							<a
 								href={`/aeo-for/${o.slug}`}
-								className="inline-flex h-9 items-center rounded-full bg-paper-2 px-4 text-[15px] text-ink ring-1 ring-zinc-200 transition-[box-shadow] duration-200 hover:ring-zinc-400"
+								className="inline-flex h-11 items-center rounded-full bg-paper-2 px-5 text-[0.9375rem] whitespace-nowrap text-ink ring-1 ring-zinc-200 transition-[box-shadow] duration-200 hover:ring-zinc-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust"
 							>
 								{capitalize(o.audience)}
 							</a>

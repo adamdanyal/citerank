@@ -10,7 +10,6 @@ import {
 	ACTION,
 	BODY,
 	LEAD,
-	MONO,
 	PANEL,
 	PANEL_PAD,
 	Page,
@@ -21,6 +20,7 @@ import {
 } from "@/components/citerank/v2/kit";
 import { Pricing } from "@/components/citerank/v2/pricing";
 import { PageShell } from "@/components/citerank/v2/shell";
+import { ITEM_TITLE } from "@/components/pillar";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
 const PATH = "/aeo-for/profound-users";
@@ -35,7 +35,7 @@ const FOUR_TIMES_DAILY_FROM = PLANS.basic;
 const REASONS = [
 	{
 		name: "No bloat",
-		text: "Profound grew into a suite: content generation, shopping tracking, crawler analytics. CiteRank.com's tracker does one job, AI visibility, and every screen is about it.",
+		text: "Profound grew into a suite: content generation, shopping tracking, crawler analytics. CiteRank.com’s tracker does one job, AI visibility, and every screen is about it.",
 	},
 	{
 		name: "Not complicated",
@@ -55,7 +55,7 @@ const REASONS = [
 	},
 	{
 		name: "An agency that does the work",
-		text: "When you want the work done for you, CiteRank.com's AI search agency writes the missing comparison pages, gets you onto the review sites AI cites, and reports the AI answers before and after each month.",
+		text: "When you want the work done for you, CiteRank.com’s AI search agency writes the missing comparison pages, gets you onto the review sites AI cites, and reports the AI answers before and after each month.",
 	},
 ];
 
@@ -108,8 +108,8 @@ const FAQS = [
 			"Yes. Paste your existing prompt list into CiteRank.com, one prompt per line, and it is tracked from then on. Your Profound history stays in Profound, so you may want to run both for a short overlap before cancelling.",
 	},
 	{
-		question: "Is CiteRank.com's data comparable to Profound's?",
-		answer: `Both track how AI engines answer your buyers' prompts. CiteRank.com checks each prompt up to ${FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× a day rather than once, which smooths out the run-to-run variation in AI answers, and keeps every answer in full, so each number traces back to the words an AI wrote.`,
+		question: "Is CiteRank.com’s data comparable to Profound’s?",
+		answer: `Both track how AI engines answer your buyers’ prompts. CiteRank.com checks each prompt up to ${FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× a day rather than once, which smooths out the run-to-run variation in AI answers, and keeps every answer in full, so each number traces back to the words an AI wrote.`,
 	},
 	{
 		question: "Which CiteRank.com plan matches a Profound setup?",
@@ -118,7 +118,7 @@ const FAQS = [
 	{
 		question: "Can CiteRank.com do the work as well as track it?",
 		answer:
-			"Yes. CiteRank.com's AI search agency does the work every month for businesses that want it done. It writes the comparison and alternatives pages your site is missing, updates pages AI has stopped citing, gets you onto the review sites and best-of lists AI cites, and answers buyers' questions in forums. Each month's report lists every piece of work, the question it targets, and the AI answers before and after.",
+			"Yes. CiteRank.com’s AI search agency does the work every month for businesses that want it done. It writes the comparison and alternatives pages your site is missing, updates pages AI has stopped citing, gets you onto the review sites and best-of lists AI cites, and answers buyers’ questions in forums. Each month’s report lists every piece of work, the question it targets, and the AI answers before and after.",
 		links: [{ text: "AI search agency", href: "/agency" }],
 	},
 ];
@@ -161,10 +161,10 @@ function Reasons() {
 						</RuledRow>
 					))}
 				</ul>
-				<div className="mt-10 flex flex-col gap-6 rounded-2xl bg-ink p-7 md:flex-row md:items-center md:justify-between md:p-8">
+				<div className="mt-10 flex flex-col gap-6 rounded-card bg-ink p-6 sm:p-8 md:flex-row md:items-center md:justify-between">
 					<div>
 						<h3 className={`${SUBHEAD} text-paper`}>Try it on your own brand</h3>
-						<p className={`${BODY} mt-2 text-zinc-400`}>
+						<p className={`${BODY} mt-2 text-zinc-300`}>
 							Plans start at ${CLOUD_ENTRY_PRICE_USD}/mo. You can be tracking your Profound prompt set in minutes.
 						</p>
 					</div>
@@ -193,7 +193,7 @@ function Comparison() {
 								<th scope="col" className="py-4 pr-6 font-medium">
 									<span className="sr-only">Feature</span>
 								</th>
-								<th scope="col" className="px-6 py-4 font-heading font-semibold text-ink">
+								<th scope="col" className="px-6 py-4 font-heading font-bold text-ink">
 									CiteRank.com
 								</th>
 								<th scope="col" className="py-4 pl-6 font-medium text-zinc-600">
@@ -247,14 +247,18 @@ function Switching() {
 						{FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× a day across the engines you pick.
 					</p>
 				</PanelHead>
-				<ol className="mt-12 border-b border-zinc-200">
-					{STEPS.map((step, i) => (
-						<li key={step.name} className="grid gap-2 border-t border-zinc-200 py-6 sm:grid-cols-12 sm:gap-8 sm:py-7">
-							<h3 className="flex min-w-0 items-baseline gap-3 font-heading text-[1.375rem] leading-[1.25] font-semibold tracking-[-0.02em] text-ink [overflow-wrap:break-word] sm:col-span-5 sm:text-[1.5rem]">
-								<span className={`${MONO} shrink-0 tabular-nums`}>{String(i + 1).padStart(2, "0")}</span>
+				<ol className="mt-12 border-b border-zinc-200 [counter-reset:step]">
+					{STEPS.map((step) => (
+						<li
+							key={step.name}
+							className="grid gap-2 border-t border-zinc-200 py-6 [counter-increment:step] lg:grid-cols-12 lg:gap-8 lg:py-8"
+						>
+							<h3
+								className={`${ITEM_TITLE} flex gap-4 text-ink before:shrink-0 before:text-rust before:tabular-nums before:content-[counter(step)] lg:col-span-5`}
+							>
 								{step.name}
 							</h3>
-							<p className={`${BODY} text-zinc-600 sm:col-span-7`}>{step.text}</p>
+							<p className={`${BODY} max-w-[60ch] text-zinc-600 lg:col-span-7`}>{step.text}</p>
 						</li>
 					))}
 				</ol>
