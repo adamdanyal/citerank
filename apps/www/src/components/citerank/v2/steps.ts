@@ -10,8 +10,8 @@ const BASIC_ANSWERS_PER_DAY = PLANS.basic.maxPrompts * PLANS.basic.platformPicks
  */
 export const STEP_SCHEMA = [
 	{
-		name: "We ask AI your buyers' questions",
-		text: `CiteRank.com puts your buyers' questions to ${ENGINE_COUNT} AI answer engines four times a day and keeps each answer whole, with the brands it named and the sources it cited. On the entry plan that is up to ${BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day.`,
+		name: "We ask AI your buyers’ questions",
+		text: `CiteRank.com puts your buyers’ questions to ${ENGINE_COUNT} AI answer engines four times a day and keeps each answer whole, with the brands it named and the sources it cited. On the entry plan that is up to ${BASIC_ANSWERS_PER_DAY.toLocaleString("en-US")} answers a day.`,
 	},
 	{
 		name: "See where you stand",
