@@ -17,6 +17,8 @@
 /* Hallmark · reworded "Know where you stand in AI search" to "Ask AI which product to pick. It names two or three brands. There is no page two." · 19 names the opener: any tracker could say the old line */
 /* Hallmark · dismissed F18 · popover-trigger is the component library's own data-slot, a text button and not a picture slot */
 /* Hallmark · dismissed 49 · the review date reads "Asked" and a month; the rest of that label is for screen readers only, and the button does not wrap */
+/* Hallmark · dismissed 77 · the blog, the legal index and the directory indexes are lists of links, a head over one list and the shared closing, and not landing pages */
+/* Hallmark · dismissed F20 · the graveyard shows every tool that has gone, so how many stand on its last row is whatever the data holds */
 /* Hallmark · dismissed 74 · zinc and blue are remapped in @theme to the brand's warm greys and its rust ramp, so no stock value reaches the page */
 @import "tailwindcss";
 @import "tw-animate-css";

@@ -41,6 +41,8 @@ Body is 16px and labels 14px. The container is 1440px with 64px gutters (24px un
 - Under the hero a section is white, and what it shows sits on white cards lifted by `--shadow-lift`: a picture, a list of the apps, a plan. Two panels on the page are ink: the agency's, and the call to action that ends it. No card inside a card.
 - Tried and taken out on the owner's word, so not to be tried again without asking: every section on ink, a grid of coloured tiles holding product panels, and flat pale sections of ruled text.
 - A thing you get is marked with the rust tick (`Tick` in the kit). The plan to pick stands under a rust band.
+- A list sits on one lifted card, its rows parted by hairlines (`LIST_CARD`). Steps in order open on the numbered rust disc, as rows on one card or a card each (`StepRows`, `StepCards`), never a bare numeral. Places to go next are lifted cards that are each one link (`LinkCards`). An index of many short links runs down columns on one card (`INDEX_CARD`).
+- A comparison table stays a flat ruled table on the page: its head pins under the nav and its first column pins on a phone, and a card would clip both.
 - Three weights: 400 for body, 500 for labels and controls, 700 for display.
 - Labels are the body face in sentence case. Mono is for code and measured figures.
 - The sign-up action reads "Start tracking" wherever it appears.
@@ -52,7 +54,7 @@ Body is 16px and labels 14px. The container is 1440px with 64px gutters (24px un
 - Under a row of buttons that fills the width, the small line is centred. Beside a column of text it aligns with the buttons.
 - An FAQ answer is three short sentences of 205 to 232 characters, about forty words: the answer first, then two facts behind it. Every answer on a page is the same size (three lines from a tablet up), and they all stand open.
 - On the about page a person is credited under their portrait: name, role, then the LinkedIn mark with the follower count. Beside a quote the credit is one row: a round picture, then the name and LinkedIn on a line with the role and company under them.
-- A page closes on a quote from each founder, on two cards of one size, then one ink panel with a head, a line and the two actions. The two quotes are the same length, name the company and state something a reader can check, and are set in the body face at normal weight.
+- A page closes on a quote from each founder, on two cards of one size, then one ink panel with a head, a line and the two actions (`Closing`). The two quotes are the same length, name the company and state something a reader can check, and are set in the body face at normal weight. Blog posts and every index end the same way. The about page already tells the founders' story and shows the panel alone; the agency page ends on its booking band; support, the policies and the docs end without one.
 - Where the AI apps are listed, each logo is drawn in its own colours (`--color-logo-*`). Those colours appear nowhere else.
 - hero: Stage on `/`, Banner on every other page · nav: three-part bar on ink · footer: index columns on ink
 
