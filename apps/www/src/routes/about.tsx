@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { getModelMeta } from "@workspace/config/models";
-import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS, PLANS } from "@workspace/config/plans";
+import { CLOUD_PLATFORMS, PLANS } from "@workspace/config/plans";
 import type { ReactNode } from "react";
 import { LinkedInMark, SocialIcons } from "@/components/citerank/socials";
 import { Closing } from "@/components/citerank/v2/closing";
@@ -9,6 +9,7 @@ import {
 	ACTION,
 	ACTION_QUIET,
 	BODY,
+	CARD_LIFT,
 	LEAD,
 	LINK,
 	PANEL,
@@ -66,13 +67,11 @@ const NUMBERS = [
 	{ value: "London", label: "where the company is registered" },
 ];
 
-/* Written in the founders' voice; every claim is also in the key facts or the FAQ below. */
+/* Written in the founders' voice, and short: why, who, and what it does. The detail is in the key facts and the FAQ below. */
 const STORY = [
 	"When a buyer asks ChatGPT, Gemini or Perplexity who to choose, the answer names a few brands and cites a few pages. If you cannot say whether yours is one of them, that is the gap we started CiteRank.com to close.",
-	"We are Adam and Julia Danyal. We have more than 2.3 million LinkedIn followers between us, run Chief AI Leader, an exam-based AI certification for leaders, and write AI For Leaders, a daily newsletter read by more than 50,000 leaders. CiteRank.com is our product. It shows what AI says about your brand, and our agency does the work the tracker ranks, every month.",
-	`The tracker is built on Elmo, the open-source AI visibility tracker, which we host and extend. It asks your buyers’ questions across ${ENGINE_COUNT} AI apps, ${basic.standardRunsPerDay} times a day, and keeps every answer word for word, so any score can be traced to the exact responses behind it. Plans start at $${CLOUD_ENTRY_PRICE_USD} a month, run month to month, and include your whole team, the API and the MCP server.`,
-	"Tracking alone does not change an answer, so we also run the agency. Each month we write the pages your site is missing, update the ones AI stopped citing, pitch you to the review sites and lists it cites, answer buyers in forums, and report the AI answers before and after.",
-	"It is for any company whose buyers ask AI who to choose: B2B software, e-commerce, agencies with several client brands, law and accounting firms, local and hospitality businesses. Sign up, add your website, and the Prompt Wizard suggests your buyers’ questions so tracking starts right away. For the agency, book a call.",
+	"We are Adam and Julia Danyal. We have more than 2.3 million LinkedIn followers between us, run Chief AI Leader, an exam-based AI certification for leaders, and write AI For Leaders, a daily newsletter read by more than 50,000 leaders.",
+	`CiteRank.com asks your buyers’ questions across ${ENGINE_COUNT} AI apps, ${basic.standardRunsPerDay} times a day, and keeps every answer word for word. Tracking alone does not change an answer, so our agency does the work the tracker ranks, every month.`,
 ];
 
 function ExternalLink({ href, children }: { href: string; children: ReactNode }) {
@@ -278,11 +277,11 @@ function AboutPage() {
 					<PanelHead title="Key facts">
 						<p className={`${LEAD} text-zinc-600`}>The company on one page, for people and for AI engines.</p>
 					</PanelHead>
-					<dl className="mt-10 border-b border-zinc-200 lg:mt-16">
+					<dl className={`${CARD_LIFT} mt-10 px-6 sm:px-8 lg:mt-16`}>
 						{keyFacts.map((fact) => (
 							<div
 								key={fact.term}
-								className="grid gap-1 border-t border-zinc-200 py-4 lg:grid-cols-12 lg:gap-8 lg:py-5"
+								className="grid gap-1 border-t border-zinc-200 py-4 first:border-t-0 lg:grid-cols-12 lg:gap-8 lg:py-5"
 							>
 								<dt className={`${BODY} font-medium text-ink lg:col-span-4`}>{fact.term}</dt>
 								<dd className={`${BODY} max-w-[72ch] text-zinc-600 lg:col-span-8`}>{fact.detail}</dd>
@@ -293,7 +292,7 @@ function AboutPage() {
 			</section>
 
 			<Faq items={ABOUT_FAQS} />
-			<Closing from="marketing-about" />
+			<Closing from="marketing-about" quotes={false} />
 		</PageShell>
 	);
 }
