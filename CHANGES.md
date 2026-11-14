@@ -71,8 +71,6 @@ To run it locally, seed `citerank_demo` (steps 1 and 2 above), then in `apps/web
 
 To deploy it, give it its own Railway project and its own Postgres, apart from the main project, so it shares no network, database or variables with the real app. The project holds the web build with the demo env and `demo.citerank.com` as its domain, and a `citerank_demo` database (the seed refuses any other name) with the migrations applied. Give it no real provider keys. The seed's dates are relative to when it runs, so add a daily job in that project that reruns it, or the charts empty out after 30 days. Until it is up, the demo links go nowhere.
 
-On a wide screen the demo links on the marketing site open the demo in a panel on the same page instead of a new tab (`apps/www/src/components/citerank/v2/live-demo.tsx`). That needs the demo to allow the marketing site to frame it: in demo mode only, the app's `frame-ancestors` policy names the marketing site (`VITE_MARKETING_SITE_URL` at build time, with its `www` twin, or both `localhost` and `127.0.0.1` locally) and nothing else; every other mode still refuses all framing (`apps/web/src/server/frame-ancestors.ts`). Deploy the demo from a build that has this before the marketing site, or set `VITE_DEMO_EMBED=off` on the marketing site to keep the links opening a new tab. To try the panel locally, open the marketing site at `http://127.0.0.1:<port>` rather than `localhost`: the demo runs on `127.0.0.1`, and the browser only sends its sign-in cookie inside a frame when both are the same site.
-
 ## Files we have changed
 
 Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app/org/$org/settings/`.
@@ -80,7 +78,6 @@ Paths are from the repo root; `settings/` means `apps/web/src/routes/_authed/app
 | File | Why |
 | --- | --- |
 | `apps/web/vite.config.ts` | Excludes linkedom from the dev pre-bundle; without it a fresh `pnpm dev` crashes. |
-| `apps/web/src/server.ts`, `apps/web/src/server/frame-ancestors.ts` | In demo mode only, lets the marketing site frame the app, so the live demo can open inside its pages (see "Live demo"). Adam approved this on 2026-11-14, restricted to citerank.com and local. |
 | `apps/worker/tsconfig.json` | Type-checks the worker with the bundler module settings the CLI and the shared packages use. Node's CommonJS rules reject the `import.meta.env` read in `referrals.ts`, and the worker emits nothing, so only the check changes. |
 | `packages/config/src/constants.ts` | Product name, icon path, brand colour and font, docs URLs. CiteRank.com's own Crisp ID. New API keys start with `citerank_` (`API_KEY_PREFIX`). |
 | `packages/config/src/referrals.ts` | Links go to citerank.com, app.citerank.com and demo.citerank.com. Demo-booking links go to /agency. Vite builds can point the hosts elsewhere with `VITE_MARKETING_SITE_URL`, `VITE_CLOUD_APP_URL` and `VITE_DEMO_SITE_URL`. |

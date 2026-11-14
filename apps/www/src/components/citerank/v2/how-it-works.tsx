@@ -1,8 +1,8 @@
 import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
+import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../home/product-demo";
 import { BODY, LINK, PANEL, PANEL_PAD_WIDE, Page, PanelHead, SUBHEAD } from "./kit";
-import { LiveDemoLink } from "./live-demo";
 
 /*
  * Each step shows the screen it describes, cut from the live demo at the size
@@ -62,7 +62,6 @@ export function HowItWorks() {
 								<h3 className={`${SUBHEAD} mt-6 text-ink`}>{step.title}</h3>
 								<p className={`${BODY} mt-3 max-w-[44ch] text-zinc-600`}>{step.body}</p>
 								{index === STEPS.length - 1 ? (
-									// A div, not a paragraph: the demo link carries a dialog, which a paragraph cannot contain.
 									<div className={`${BODY} mt-6 flex flex-wrap gap-x-6 gap-y-2`}>
 										<a
 											href={cloudSignupUrl("marketing-cta")}
@@ -71,13 +70,15 @@ export function HowItWorks() {
 										>
 											Start tracking
 										</a>
-										<LiveDemoLink
+										<a
 											href={demoUrl}
-											onOpen={() => trackEvent("demo_open", { from: "demo-section" })}
+											target="_blank"
+											rel={externalRel(demoUrl)}
+											onClick={() => trackEvent("demo_open", { from: "demo-section" })}
 											className={`${LINK} font-medium whitespace-nowrap text-ink`}
 										>
 											Try the live demo
-										</LiveDemoLink>
+										</a>
 									</div>
 								) : null}
 							</div>
