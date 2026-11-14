@@ -44,6 +44,14 @@ Body is 16px and labels 14px. The container is 1440px with 64px gutters (24px un
 - Three weights: 400 for body, 500 for labels and controls, 700 for display.
 - Labels are the body face in sentence case. Mono is for code and measured figures.
 - The sign-up action reads "Start tracking" wherever it appears.
+- The sign-up action is in the header at every width from 350px. Nothing follows the visitor down the page: no bar fixed to the bottom of a phone.
+- A link in text has a dotted underline, and on hover only its colour changes, to rust (`LINK` in the kit; on ink, `LINK_ON_INK`). A row or card that is one link changes its title's colour the same way and takes no underline.
+- A section head of three or four words stays on one line on a phone: `--text-section` gives way to the screen's width under 480px.
+- A sentence under a head takes one line where the screen allows, and never more than two. A ticked line takes one line on any phone; where it would not fit, the type gives way first.
+- A ticked list is the body face at `--text-lead`, not the display face.
+- Under a row of buttons that fills the width, the small line is centred. Beside a column of text it aligns with the buttons.
+- An FAQ answer is two short sentences of 140 to 158 characters: the answer first, then the one fact behind it. Every answer on a page is the same size, and they all stand open.
+- A person is credited under their portrait: name, role, then the LinkedIn mark with the follower count.
 - hero: Stage on `/`, Banner on every other page · nav: three-part bar on ink · footer: index columns on ink
 
 ## The product
