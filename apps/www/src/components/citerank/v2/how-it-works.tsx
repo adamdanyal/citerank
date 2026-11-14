@@ -107,7 +107,7 @@ function Fixes() {
 
 const STEPS: { title: string; body: string; picture: ReactNode; shows: string }[] = [
 	{
-		title: "We ask AI your buyers’ questions",
+		title: "We ask AI like a buyer",
 		body: "We put your buyers’ questions to every engine and keep each answer whole, with the brands it named and the sources it cited.",
 		picture: <Asked />,
 		shows: "A buyer’s question, and an AI answer that names three brands in order",
@@ -142,17 +142,9 @@ export function HowItWorks() {
 					{STEPS.map((step, index) => (
 						<li
 							key={step.title}
-							className="flex min-w-0 flex-col rounded-card bg-white p-6 shadow-lift ring-1 ring-zinc-200 sm:p-8 md:max-lg:flex-row md:max-lg:items-center md:max-lg:gap-10"
+							className="flex min-w-0 flex-col gap-8 rounded-card bg-white p-6 shadow-lift ring-1 ring-zinc-200 sm:p-8 lg:row-span-2 lg:grid lg:grid-rows-subgrid"
 						>
-							<div
-								role="img"
-								aria-label={step.shows}
-								data-nosnippet
-								className="flex min-h-60 flex-col justify-center md:max-lg:min-h-48 md:max-lg:w-80 md:max-lg:shrink-0"
-							>
-								{step.picture}
-							</div>
-							<div className="mt-8 min-w-0 md:max-lg:mt-0">
+							<div className="min-w-0">
 								<h3 className={`${SUBHEAD} flex items-start gap-3 text-ink`}>
 									<span
 										aria-hidden="true"
@@ -163,6 +155,9 @@ export function HowItWorks() {
 									{step.title}
 								</h3>
 								<p className={`${BODY} mt-3 text-zinc-600`}>{step.body}</p>
+							</div>
+							<div role="img" aria-label={step.shows} data-nosnippet className="flex min-h-60 flex-col justify-center">
+								{step.picture}
 							</div>
 						</li>
 					))}
