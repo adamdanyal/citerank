@@ -46,8 +46,8 @@ function Avatar({ review }: { review: Review }) {
 
 const TEXT_CONTROL = `${LINK} inline-flex min-h-11 items-center text-[0.9375rem] font-medium whitespace-nowrap text-blue-800`;
 /* The two controls on an AI's card share its last line. Padding gives each a full-size target, and the margin takes it back out of the layout. */
-const LAST_LINE = `${SMALL} -my-3 rounded-sm py-3 whitespace-nowrap transition-colors duration-200 hover:text-ink ${FOCUS}`;
-const ASK = `${LAST_LINE} inline-flex shrink-0 items-center gap-1 self-end font-medium text-blue-800`;
+const LAST_LINE = `${SMALL} -my-3 rounded-sm py-3 transition-colors duration-200 hover:text-ink ${FOCUS}`;
+const ASK = `${LAST_LINE} inline-flex shrink-0 items-center gap-1 self-end font-medium whitespace-nowrap text-blue-800`;
 
 /* An AI's review sits on rust-tinted paper, because it is the product reviewing itself. */
 function ReviewCard({ review }: { review: Review }) {
@@ -95,7 +95,7 @@ function AnswerDetails({ review }: { review: AiReview }) {
 				type="button"
 				popoverTarget={id}
 				suppressHydrationWarning
-				className={`${LAST_LINE} text-zinc-600 underline decoration-zinc-500 decoration-dotted underline-offset-4`}
+				className={`${LAST_LINE} whitespace-nowrap text-zinc-600 underline decoration-zinc-500 decoration-dotted underline-offset-4`}
 			>
 				Asked {asked}
 				<span className="sr-only">: see the full answer from {review.name}</span>
