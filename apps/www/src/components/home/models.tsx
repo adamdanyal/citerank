@@ -19,7 +19,7 @@ const ENGINES = [
 
 function Tile({ name, iconId }: { name: string; iconId: string }) {
 	return (
-		<li className="flex h-14 items-center gap-3 rounded-xl bg-white px-4 text-[15px] font-medium text-zinc-900 shadow-[0_0_0_1px_rgb(24_24_27/0.08),0_1px_2px_rgb(24_24_27/0.04)]">
+		<li className="flex h-14 items-center gap-3 rounded-xl bg-white px-4 text-[15px] font-medium text-zinc-900 shadow-card">
 			<span className="inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-zinc-50 ring-1 ring-zinc-200/70">
 				<EngineIcon iconId={iconId} className="size-[18px]" />
 			</span>

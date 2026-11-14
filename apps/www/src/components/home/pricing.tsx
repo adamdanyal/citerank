@@ -22,7 +22,7 @@ function TierCard({ planKey, badge }: { planKey: PlanKey; badge?: string }) {
 	return (
 		<a
 			href={cloudAppUrl(`marketing-plan-${planKey}`)}
-			className={`group relative flex flex-col p-6 transition hover:shadow-[0_0_0_1px_rgb(37_99_235/0.45),0_16px_40px_-20px_rgb(37_99_235/0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${CARD} ${badge ? "ring-2 ring-blue-600" : ""}`}
+			className={`group relative flex flex-col p-6 transition hover:shadow-card focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${CARD} ${badge ? "ring-2 ring-blue-600" : ""}`}
 		>
 			{badge ? (
 				<span className="absolute -top-3 left-6 rounded-full bg-blue-600 px-2.5 py-0.5 text-xs font-medium text-white">

@@ -37,7 +37,7 @@ function CloudPlans() {
 								<span className="text-2xl font-semibold tracking-tight text-zinc-950 tabular-nums">
 									${plan.monthlyPriceUsd}
 								</span>
-								<span className="font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-500">/ mo</span>
+								<span className="text-[0.875rem] text-zinc-600">a month</span>
 							</div>
 							<p className="mt-1 text-xs text-zinc-500 tabular-nums">${plan.annualPriceUsd}/yr</p>
 

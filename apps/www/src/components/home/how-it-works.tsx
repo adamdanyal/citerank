@@ -36,7 +36,7 @@ const STEPS: Step[] = [
 function Crop({ src, alt }: { src: string; alt: string }) {
 	return (
 		<div className="relative aspect-[16/10] overflow-hidden rounded-t-2xl border-b border-zinc-200/80 bg-gradient-to-br from-blue-50 to-zinc-50">
-			<div className="absolute bottom-0 left-6 right-0 top-6 overflow-hidden rounded-tl-xl bg-white shadow-[0_0_0_1px_rgb(24_24_27/0.08),0_12px_32px_-12px_rgb(24_24_27/0.18)]">
+			<div className="absolute bottom-0 left-6 right-0 top-6 overflow-hidden rounded-tl-xl bg-white shadow-card">
 				<img
 					src={src}
 					alt={alt}

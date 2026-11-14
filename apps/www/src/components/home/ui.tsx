@@ -27,14 +27,13 @@ export function SectionHeading({
 }
 
 /** The frame every card on the page shares, so surfaces read as one system. */
-export const CARD =
-	"rounded-2xl bg-white shadow-[0_0_0_1px_rgb(24_24_27/0.07),0_1px_2px_rgb(24_24_27/0.04),0_16px_40px_-24px_rgb(24_24_27/0.16)]";
+export const CARD = "rounded-2xl bg-white shadow-card";
 
 /** Marks sample data as sample data, wherever an illustration invents a brand. */
 export function ExampleTag({ children }: { children: React.ReactNode }) {
 	return (
 		<p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] text-zinc-500">
-			<span className="rounded-md bg-amber-50 px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-amber-700 ring-1 ring-amber-200/80">
+			<span className="rounded-md bg-amber-50 px-1.5 py-0.5 text-[0.75rem] font-medium text-amber-700 ring-1 ring-amber-200">
 				Example
 			</span>
 			{children}
@@ -45,9 +44,7 @@ export function ExampleTag({ children }: { children: React.ReactNode }) {
 /** Browser chrome around product screenshots, so they read as the real app rather than a picture. */
 export function BrowserFrame({ children, className = "" }: { children: React.ReactNode; className?: string }) {
 	return (
-		<div
-			className={`overflow-hidden rounded-xl bg-white shadow-[0_0_0_1px_rgb(24_24_27/0.08),0_2px_4px_rgb(24_24_27/0.04),0_24px_48px_-16px_rgb(37_99_235/0.16)] ${className}`}
-		>
+		<div className={`overflow-hidden rounded-xl bg-white shadow-card ${className}`}>
 			<div
 				aria-hidden="true"
 				className="flex h-8 items-center gap-1.5 border-b border-zinc-200/80 bg-zinc-50/80 px-3.5"

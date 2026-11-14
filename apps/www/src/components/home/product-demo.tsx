@@ -96,7 +96,7 @@ function Cursor({ y, clicking }: { y: number; clicking: boolean }) {
 	return (
 		<div
 			aria-hidden="true"
-			className="pointer-events-none absolute z-10 transition-[top] ease-[cubic-bezier(0.45,0,0.2,1)]"
+			className="pointer-events-none absolute z-10 transition-transform ease-[cubic-bezier(0.45,0,0.2,1)]"
 			style={{ left: `${CURSOR_X * 100}%`, top: `${y * 100}%`, transitionDuration: `${MOVE_MS}ms` }}
 		>
 			<span
@@ -106,7 +106,7 @@ function Cursor({ y, clicking }: { y: number; clicking: boolean }) {
 			<svg
 				aria-hidden="true"
 				viewBox="0 0 24 24"
-				className="relative size-5 drop-shadow-[0_2px_3px_rgb(0_0_0/0.25)] transition-transform duration-150 md:size-6"
+				className="relative size-5 drop-shadow-card transition-transform duration-150 md:size-6"
 				style={{ transform: clicking ? "scale(0.88)" : "none" }}
 			>
 				<path
@@ -182,7 +182,7 @@ export function ProductDemo() {
 				target="_blank"
 				rel={externalRel(demoUrl)}
 				aria-label={`View the live demo: ${slide.label}`}
-				className="group relative block overflow-hidden rounded-xl bg-white shadow-[0_0_0_1px_rgb(24_24_27/0.08),0_2px_4px_rgb(24_24_27/0.04),0_32px_64px_-24px_rgb(37_99_235/0.28)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+				className="group relative block overflow-hidden rounded-xl bg-white shadow-card focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
 			>
 				<div className="relative aspect-[5/3] bg-zinc-50">
 					{SLIDES.map((s, i) => (
@@ -200,7 +200,7 @@ export function ProductDemo() {
 					aria-hidden="true"
 					className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center bg-zinc-950/0 transition-colors duration-200 group-hover:bg-zinc-950/10 group-focus-visible:bg-zinc-950/10"
 				>
-					<span className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white opacity-0 shadow-[0_0_0_4px_rgb(37_99_235/0.2),0_0_24px_4px_rgb(59_130_246/0.55),0_0_64px_16px_rgb(96_165_250/0.35)] transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+					<span className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white opacity-0 shadow-card transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
 						View live demo
 						<ArrowUpRight className="size-4" />
 					</span>
@@ -223,7 +223,7 @@ export function ProductDemo() {
 								className="group flex size-6 items-center justify-center"
 							>
 								<span
-									className={`block h-1.5 rounded-full transition-all duration-300 ${
+									className={`block h-1.5 rounded-full transition-colors duration-300 ${
 										i === index ? "w-5 bg-blue-600" : "w-1.5 bg-zinc-300 group-hover:bg-zinc-400"
 									}`}
 								/>

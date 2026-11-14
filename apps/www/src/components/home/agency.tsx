@@ -32,7 +32,7 @@ export function AgencyTeaser() {
 					{WORK.map((item) => (
 						<li
 							key={item}
-							className="flex items-start gap-3 rounded-xl bg-white p-4 text-[15px]/6 text-zinc-700 shadow-[0_0_0_1px_rgb(24_24_27/0.08),0_1px_2px_rgb(24_24_27/0.04)]"
+							className="flex items-start gap-3 rounded-xl bg-white p-4 text-[15px]/6 text-zinc-700 shadow-card"
 						>
 							<Check className="mt-1 size-4 shrink-0 text-blue-600" strokeWidth={2.5} aria-hidden="true" />
 							{item}

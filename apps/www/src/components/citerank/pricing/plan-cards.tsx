@@ -95,9 +95,7 @@ export function PlanCards() {
 						aria-pressed={billing === option.value}
 						onClick={() => setBilling(option.value)}
 						className={`rounded-md px-4 py-2 button-sm transition-colors duration-300 ${EASE_CLASS} ${
-							billing === option.value
-								? "bg-white text-zinc-950 shadow-[0_1px_2px_rgb(26_25_23/0.08)]"
-								: "text-zinc-600 hover:text-zinc-950"
+							billing === option.value ? "bg-white text-zinc-950 shadow-card" : "text-zinc-600 hover:text-zinc-950"
 						}`}
 					>
 						{option.label}

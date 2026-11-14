@@ -32,7 +32,7 @@ export function AgencySection() {
 					</Link>
 				</Reveal>
 				<Reveal delay={100} className="lg:col-span-7">
-					<div className="rounded-2xl bg-white p-2 shadow-[0_1px_2px_rgb(26_25_23/0.05),0_24px_48px_-24px_rgb(26_25_23/0.25)]">
+					<div className="rounded-2xl bg-white p-2 shadow-card">
 						<div className="flex items-baseline justify-between gap-4 px-4 pb-3 pt-3">
 							<p className="title-3 text-zinc-950">What a month includes</p>
 							<p className="caption-2 text-zinc-500">Reported with the AI answers before and after</p>
