@@ -64,7 +64,7 @@ function CalendarStep({ answers, heading }: { answers: Answers; heading: Heading
 	);
 }
 
-function TrackerStep({ heading, onBook }: { heading: HeadingRef; onBook: () => void }) {
+function TrackerStep({ heading }: { heading: HeadingRef }) {
 	return (
 		<>
 			<h3 ref={heading} tabIndex={-1} className={QUESTION}>
@@ -73,13 +73,10 @@ function TrackerStep({ heading, onBook }: { heading: HeadingRef; onBook: () => v
 			<p className="mt-4 max-w-[48ch] text-lead leading-[1.45] text-zinc-600">
 				It shows what AI says about your brand and ranks what to fix, so your team can do the work.
 			</p>
-			<p className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
+			<p className="mt-8">
 				<Link to="/pricing" className={ACTION}>
 					See tracker plans
 				</Link>
-				<button type="button" onClick={onBook} className={`${LINK} font-medium text-ink`}>
-					Book a call anyway
-				</button>
 			</p>
 		</>
 	);
@@ -257,8 +254,8 @@ function Frame({
  * company size and whether the starting price works, then the founders' Cal.com
  * calendar. Cal.com asks the name and email itself; the answers ride with the
  * booking as its notes and metadata. A price that does not work is offered the
- * tracker, with the calendar still a click away. It stays mounted when closed,
- * so reopening it picks up where the visitor left off.
+ * tracker instead, and no call. It stays mounted when closed, so reopening it
+ * picks up where the visitor left off.
  */
 export function BookingDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
 	const dialog = useRef<HTMLDialogElement>(null);
@@ -308,7 +305,7 @@ export function BookingDialog({ open, onClose }: { open: boolean; onClose: () =>
 
 	let step: ReactNode;
 	if (phase === "calendar") step = <CalendarStep answers={answers} heading={heading} />;
-	else if (phase === "tracker") step = <TrackerStep heading={heading} onBook={() => setPhase("calendar")} />;
+	else if (phase === "tracker") step = <TrackerStep heading={heading} />;
 	else if (index === 0)
 		step = (
 			<WebsiteStep
