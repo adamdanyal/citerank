@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { trackAdConversion } from "@workspace/ui/lib/ad-tags";
-import { useEffect, useRef } from "react";
+import { BookingForm } from "@/components/citerank/v2/booking";
 import { FounderQuotes } from "@/components/citerank/v2/closing";
 import { Faq } from "@/components/citerank/v2/faq";
 import {
@@ -11,6 +10,7 @@ import {
 	CARD_LIFT,
 	DISPLAY_S,
 	LEAD,
+	LINK,
 	LiftedRows,
 	PANEL_TINT,
 	Page,
@@ -22,12 +22,9 @@ import {
 } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell, PanelSection } from "@/components/citerank/v2/shell";
 import { AGENCY_DOES, AGENCY_FROM_USD, AGENCY_INCLUDES, AGENCY_WORK, formatUsd } from "@/lib/agency-plans";
-import { embedInlineBooking } from "@/lib/cal-embed";
 import { AGENCY_FAQS } from "@/lib/faqs";
 import { agencyServiceJsonLd, breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
-// Placeholder until Adam supplies the booking calendar (a Cal.com "user/event" link).
-const AGENCY_CAL_LINK = "";
 const CONTACT_EMAIL = "team@citerank.com";
 
 const title = "AI Search Agency · CiteRank.com";
@@ -112,27 +109,6 @@ function AgencyOffer() {
 	);
 }
 
-function Booking() {
-	const booker = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		if (!AGENCY_CAL_LINK || !booker.current) return;
-		embedInlineBooking({
-			element: booker.current,
-			calLink: AGENCY_CAL_LINK,
-			onBooked: (uid) => trackAdConversion("demo_booked", { id: uid }),
-		});
-	}, []);
-
-	if (AGENCY_CAL_LINK) return <div ref={booker} className="min-h-[640px] w-full overflow-auto" />;
-
-	return (
-		<a href={`mailto:${CONTACT_EMAIL}?subject=AI%20search%20agency`} className={`${ACTION} w-full sm:w-auto`}>
-			Email {CONTACT_EMAIL}
-		</a>
-	);
-}
-
 /* The offer, who does the work, how a month runs, what the work is, the price, the objections, then the call. */
 function AgencyPage() {
 	return (
@@ -198,21 +174,22 @@ function AgencyPage() {
 
 			<Faq items={AGENCY_FAQS} />
 
-			<section id="book" className={`${PANEL_TINT} ${BAND_PAD}`}>
+			<section id="book" className={`${PANEL_TINT} ${BAND_PAD} scroll-mt-16`}>
 				<Page>
-					<div className={AGENCY_CAL_LINK ? undefined : "grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-8"}>
-						<div className="lg:col-span-8">
-							<h2 className={`${DISPLAY_S} text-ink`}>Book a call</h2>
-							<p className={`${LEAD} mt-5 max-w-[56ch] text-zinc-700`}>
-								{AGENCY_CAL_LINK
-									? "We look at what AI says about your business today and the work that would change it."
-									: "Send your website and what you want to change, and we reply with times. On the call we look at what AI says about your business today and the work that would change it."}
-							</p>
-						</div>
-						<div className={AGENCY_CAL_LINK ? "mt-12" : "lg:col-span-4 lg:justify-self-end"}>
-							<Booking />
-						</div>
+					<h2 className={`${DISPLAY_S} text-ink`}>Book a call</h2>
+					<p className={`${LEAD} mt-5 max-w-[56ch] text-zinc-700`}>
+						Three questions, then pick a time. On the call we look at what AI says about your business today and the
+						work that would change it.
+					</p>
+					<div className="mt-10 lg:mt-12">
+						<BookingForm />
 					</div>
+					<p className={`${SMALL} mt-6 text-zinc-600`}>
+						Rather write?{" "}
+						<a href={`mailto:${CONTACT_EMAIL}?subject=AI%20search%20agency`} className={`${LINK} text-ink`}>
+							Email {CONTACT_EMAIL}
+						</a>
+					</p>
 				</Page>
 			</section>
 		</PageShell>
