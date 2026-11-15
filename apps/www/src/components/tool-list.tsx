@@ -7,7 +7,7 @@ import {
 	getComparisonSlug,
 	getPopularityGrade,
 } from "@/lib/competitors";
-import { BODY, CARD_LIFT, LINK, PILL_QUIET, SMALL, SUBHEAD } from "./citerank/v2/kit";
+import { BODY, LINK, LIST_CARD, PILL_QUIET, SMALL, SUBHEAD } from "./citerank/v2/kit";
 
 export const CITERANK_FACTS = ["Search agency", "13 AI apps", `From ${ENTRY_PRICE}`];
 
@@ -55,12 +55,27 @@ export function ToolSummary({
 	);
 }
 
-function ToolRow({ competitor, showCategory }: { competitor: Competitor; showCategory: boolean }) {
+function ToolRow({
+	competitor,
+	showCategory,
+	visit,
+	held,
+}: {
+	competitor: Competitor;
+	showCategory: boolean;
+	visit: boolean;
+	held: boolean;
+}) {
 	const grade = getPopularityGrade(competitor);
 	const facts = [...toolFacts(competitor, showCategory), ...(grade === "N/A" ? [] : [`Popularity grade ${grade}`])];
 	return (
-		<li className="grid gap-x-8 gap-y-2 border-t border-zinc-200 py-5 lg:grid-cols-12 lg:items-baseline">
-			<h3 className={`${SUBHEAD} text-ink lg:col-span-3`}>{competitor.name}</h3>
+		<li
+			data-held={held ? "" : undefined}
+			className={`group relative gap-x-8 gap-y-2 border-t border-zinc-200 py-5 lg:grid-cols-12 lg:items-baseline ${held ? "hidden" : "grid"}`}
+		>
+			<h3 className={`${SUBHEAD} text-ink transition-colors duration-200 group-hover:text-rust lg:col-span-3`}>
+				{competitor.name}
+			</h3>
 			<div className="min-w-0 lg:col-span-6">
 				<p className={`${BODY} text-zinc-600`}>{competitor.tagline}</p>
 				{facts.length > 0 && (
@@ -75,30 +90,47 @@ function ToolRow({ competitor, showCategory }: { competitor: Competitor; showCat
 				<Link
 					to="/ai-visibility-tools/$slug"
 					params={{ slug: getComparisonSlug(competitor) }}
-					className={`${LINK} whitespace-nowrap text-ink`}
+					className={`${LINK} whitespace-nowrap text-ink after:absolute after:inset-0`}
 				>
 					Compare with CiteRank.com
 				</Link>
-				<a
-					href={competitor.url}
-					target="_blank"
-					rel="noopener noreferrer nofollow"
-					className={`${LINK} whitespace-nowrap text-zinc-700`}
-					aria-label={`Visit ${competitor.name}`}
-				>
-					Visit
-				</a>
+				{visit ? (
+					<a
+						href={competitor.url}
+						target="_blank"
+						rel="noopener noreferrer nofollow"
+						className={`${LINK} relative z-10 whitespace-nowrap text-zinc-700`}
+						aria-label={`Visit ${competitor.name}`}
+					>
+						Visit
+					</a>
+				) : null}
 			</p>
 		</li>
 	);
 }
 
-/** `showCategory` is off where every tool shares the category the page is about. */
-export function ToolGrid({ competitors, showCategory = true }: { competitors: Competitor[]; showCategory?: boolean }) {
+/**
+ * The whole row opens the tool's comparison page. `showCategory` is off where
+ * every tool shares the category the page is about, and `visit` where the row
+ * should not also lead off the site. Rows past `first` stay in the page but are
+ * held back until the caller raises it.
+ */
+export function ToolGrid({
+	competitors,
+	showCategory = true,
+	visit = true,
+	first = Number.POSITIVE_INFINITY,
+}: {
+	competitors: Competitor[];
+	showCategory?: boolean;
+	visit?: boolean;
+	first?: number;
+}) {
 	return (
-		<ul className={`${CARD_LIFT} px-6 sm:px-8 [&>li:first-child]:border-t-0`}>
-			{competitors.map((c) => (
-				<ToolRow key={c.slug} competitor={c} showCategory={showCategory} />
+		<ul className={LIST_CARD}>
+			{competitors.map((c, index) => (
+				<ToolRow key={c.slug} competitor={c} showCategory={showCategory} visit={visit} held={index >= first} />
 			))}
 		</ul>
 	);
