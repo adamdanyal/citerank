@@ -35,6 +35,7 @@ export type ReferralSource =
 	| "demo-chat"
 	| "demo-header"
 	| "demo-read-only"
+	| "demo-opportunities"
 	| "marketing-plan-basic"
 	| "marketing-plan-pro"
 	| "marketing-plan-business"

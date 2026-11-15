@@ -11,6 +11,7 @@ import { IconClock } from "@tabler/icons-react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Skeleton } from "@workspace/ui/components/skeleton";
 import { Spinner } from "@workspace/ui/components/spinner";
+import { AgencyStrip } from "@/components/agency-strip";
 import { OpportunitiesReport } from "@/components/opportunities-report";
 import { PageHeader } from "@/components/page-header";
 import { useBrandId } from "@/hooks/use-brand-id";
@@ -52,6 +53,7 @@ function OpportunitiesPage() {
 			infoContent={infoContent}
 		>
 			<div className="space-y-6">
+				<AgencyStrip />
 				{data?.report && data.lastEvaluatedAt && <LastEvaluatedAt date={data.lastEvaluatedAt} />}
 				{content}
 			</div>
