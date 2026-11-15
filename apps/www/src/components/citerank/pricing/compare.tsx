@@ -9,7 +9,7 @@ import {
 import { EngineIcon } from "@/components/home/engines";
 import { BODY, CARD_LIFT, HEADING, LEAD, SMALL, SUBHEAD } from "../v2/kit";
 
-const GROUP_NAMES: Record<PlanPlatformGroupId, string> = {
+export const GROUP_NAMES: Record<PlanPlatformGroupId, string> = {
 	scraped: "Checked as a user sees them",
 	api: "Checked through the API",
 	premium: "Premium: web search, with citations",

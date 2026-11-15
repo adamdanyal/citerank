@@ -1,8 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { PLAN_KEYS, PLANS, type PlanDefinition, type PlanKey } from "@workspace/config/plans";
+import { PLAN_KEYS, PLANS, type PlanDefinition, type PlanKey, planPlatformBreakdown } from "@workspace/config/plans";
 import { cloudAppUrl } from "@workspace/config/referrals";
 import { type ReactNode, useState } from "react";
 import { trackEvent } from "@/lib/posthog";
+import { GROUP_NAMES } from "../pricing/compare";
+import { AppLogo, appIconId } from "./app-logo";
 import {
 	ACTION,
 	ACTION_QUIET,
@@ -79,6 +81,7 @@ export function PlanCard({
 	note,
 	band,
 	action,
+	apps,
 	children,
 }: {
 	name: string;
@@ -87,6 +90,8 @@ export function PlanCard({
 	/** Set on the plan to pick: the words on the band over it. */
 	band?: string;
 	action: ReactNode;
+	/** The AI apps the plan covers, under its lines. */
+	apps?: ReactNode;
 	children: ReactNode;
 }) {
 	return (
@@ -109,7 +114,8 @@ export function PlanCard({
 					<span className={`${BODY} text-zinc-600`}>a month</span>
 				</p>
 				<p className={`${SMALL} mt-3 text-zinc-600`}>{note}</p>
-				<ul className="mt-6 flex-1 space-y-4 border-t border-zinc-200 pt-6">{children}</ul>
+				<ul className={`mt-6 space-y-4 border-t border-zinc-200 pt-6 ${apps ? "" : "flex-1"}`}>{children}</ul>
+				{apps ? <div className="mt-6 flex-1 border-t border-zinc-200 pt-6">{apps}</div> : null}
 				<div className="mt-8">{action}</div>
 			</div>
 		</article>
@@ -134,6 +140,33 @@ export function PlanLine({ children, none = false }: { children: ReactNode; none
 }
 
 export const PLAN_GRID = "grid grid-cols-[minmax(0,1fr)] gap-5 md:grid-cols-3 lg:gap-8";
+
+/* The AI apps a plan covers, grouped by how each is read and how often: the picks first, then the premium ones that come on top. */
+function PlanApps({ plan }: { plan: PlanDefinition }) {
+	const breakdown = planPlatformBreakdown(plan);
+	const groups = breakdown.premium ? [...breakdown.pickGroups, breakdown.premium] : breakdown.pickGroups;
+	return (
+		<>
+			<p className="text-[1rem] leading-snug font-medium text-ink">Choose any {plan.platformPicks} AI apps</p>
+			{groups.map((group) => (
+				<div key={group.id} className={group.id === "premium" ? "mt-6 border-t border-zinc-200 pt-6" : "mt-4"}>
+					<p className={`${SMALL} flex items-baseline justify-between gap-4`}>
+						<span className="font-medium text-ink">{GROUP_NAMES[group.id]}</span>
+						<span className="shrink-0 text-zinc-600">{group.runsPerDay}× a day</span>
+					</p>
+					<ul className="mt-2.5 space-y-2">
+						{group.models.map((member) => (
+							<li key={member.model} className={`${SMALL} flex items-center gap-2.5 text-zinc-700`}>
+								<AppLogo id={appIconId(member.model)} className="size-4" />
+								{member.label}
+							</li>
+						))}
+					</ul>
+				</div>
+			))}
+		</>
+	);
+}
 
 export function PlanTable({
 	from = "home",
@@ -164,6 +197,7 @@ export function PlanTable({
 							key={key}
 							name={plan.name}
 							price={usd(perMonth)}
+							apps={<PlanApps plan={plan} />}
 							note={
 								billing === "annual"
 									? `Billed ${usd(plan.annualPriceUsd)} a year. Saves ${usd(plan.monthlyPriceUsd * 12 - plan.annualPriceUsd)}.`
