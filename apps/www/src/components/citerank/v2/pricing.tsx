@@ -1,5 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { PLAN_KEYS, PLANS, type PlanDefinition, type PlanKey, planPlatformBreakdown } from "@workspace/config/plans";
+import {
+	PLAN_KEYS,
+	PLANS,
+	type PlanDefinition,
+	type PlanKey,
+	PREMIUM_ADDON_MONTHLY_USD,
+	planPlatformBreakdown,
+} from "@workspace/config/plans";
 import { cloudAppUrl } from "@workspace/config/referrals";
 import { type ReactNode, useState } from "react";
 import { trackEvent } from "@/lib/posthog";
@@ -162,6 +169,11 @@ function PlanApps({ plan }: { plan: PlanDefinition }) {
 							</li>
 						))}
 					</ul>
+					{group.id === "premium" && plan.premiumAddonAvailable ? (
+						<p className={`${SMALL} mt-3 text-zinc-600`}>
+							${PREMIUM_ADDON_MONTHLY_USD} a month for each extra premium prompt.
+						</p>
+					) : null}
 				</div>
 			))}
 		</>
