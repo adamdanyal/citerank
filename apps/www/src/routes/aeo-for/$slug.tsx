@@ -205,7 +205,7 @@ function VerticalPage() {
 			<HowItWorks />
 			<Engines />
 			<Pricing
-				lede={`We recommend ${plan.name} for ${vertical.audience}: ${plan.maxPrompts} prompts across ${platforms}, checked ${plan.standardRunsPerDay}× daily, for $${plan.monthlyPriceUsd}/mo. Unlimited seats on every plan.`}
+				lede={`We recommend ${plan.name} for ${vertical.audience}: ${plan.maxPrompts} prompts across ${platforms}, checked ${plan.standardRunsPerDay}× daily, for $${plan.monthlyPriceUsd}/mo.`}
 				recommended={{ plan: vertical.plan, label: `Best for ${vertical.audience}` }}
 			/>
 			<Faq items={vertical.faqs} />

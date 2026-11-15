@@ -272,7 +272,7 @@ function ProfoundUsersPage() {
 			<Switching />
 			<Engines />
 			<Pricing
-				lede={`We recommend ${RECOMMENDED.name} for teams coming from Profound: ${RECOMMENDED.maxPrompts} prompts across ${RECOMMENDED.platformPicks} AI platforms, checked ${RECOMMENDED.standardRunsPerDay}× daily, for $${RECOMMENDED.monthlyPriceUsd}/mo. Unlimited seats on every plan.`}
+				lede={`We recommend ${RECOMMENDED.name} for teams coming from Profound: ${RECOMMENDED.maxPrompts} prompts across ${RECOMMENDED.platformPicks} AI platforms, checked ${RECOMMENDED.standardRunsPerDay}× daily, for $${RECOMMENDED.monthlyPriceUsd}/mo.`}
 				recommended={{ plan: RECOMMENDED.key, label: "Best for Profound users" }}
 			/>
 			<Faq items={FAQS} />

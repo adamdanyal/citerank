@@ -36,10 +36,7 @@ export const Route = createFileRoute("/pricing")({
 function PricingPage() {
 	return (
 		<PageShell>
-			<PageHead
-				title="AI visibility tracker pricing"
-				lede="Every plan includes your whole team and API access. Pay monthly or yearly, and cancel any time."
-			/>
+			<PageHead title="AI visibility tracker pricing" lede="Start in minutes. Cancel any time." />
 
 			<PanelSection>
 				<h2 className="sr-only">Plans</h2>
