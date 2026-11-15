@@ -22,6 +22,8 @@ export function initCrisp(): void {
 	window.CRISP_WEBSITE_ID = CRISP_WEBSITE_ID;
 	// So a marketing-site question is distinguishable from one raised in the product.
 	window.$crisp.push(["set", "session:segments", [["marketing"]]]);
+	// Crisp takes a name from its own palette, not a hex. Brown is the one in the brand rust's hue; its oranges are brighter than anything on the site.
+	window.$crisp.push(["config", "color:theme", ["brown"]]);
 
 	void afterPageIdle().then(() => {
 		const script = document.createElement("script");
