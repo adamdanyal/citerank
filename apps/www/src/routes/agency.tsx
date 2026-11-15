@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { trackAdConversion } from "@workspace/ui/lib/ad-tags";
 import { useEffect, useRef } from "react";
+import { FounderQuotes } from "@/components/citerank/v2/closing";
 import { Faq } from "@/components/citerank/v2/faq";
 import {
 	ACTION,
@@ -88,7 +89,7 @@ function AgencyOffer() {
 					<span className={`${BODY} mt-1 block text-zinc-600`}>a month</span>
 				</p>
 				<p className={`${BODY} mt-5 max-w-[38ch] text-zinc-600`}>
-					We agree how much of each on a call, from what the tracker finds for your brand.
+					You don’t buy a set number of pages or links. Each month’s work goes where the tracker shows the biggest gap.
 				</p>
 				<p className="mt-8">
 					<a href="#book" className={`${ACTION} w-full sm:w-auto`}>
@@ -132,7 +133,7 @@ function Booking() {
 	);
 }
 
-/* The offer, how a month runs, what the work is, the plans, the objections, then the call. */
+/* The offer, who does the work, how a month runs, what the work is, the price, the objections, then the call. */
 function AgencyPage() {
 	return (
 		<PageShell>
@@ -153,6 +154,10 @@ function AgencyPage() {
 					<span className="inline-block">Three-month minimum, then month to month.</span>
 				</p>
 			</PageHead>
+
+			<PanelSection>
+				<FounderQuotes title="Who does the work" />
+			</PanelSection>
 
 			<PanelSection>
 				<PanelHead title="How a month runs" />
