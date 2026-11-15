@@ -32,7 +32,7 @@ The home page logo strip ("Used by 200+ brands to optimize their AI visibility")
 
 Each AI review card says "Asked" with the current month and year, worked out when the page is drawn (`thisMonth` in `apps/www/src/components/citerank/v2/reviews.tsx`), on Adam's instruction. That is only true if the four AI apps are asked the question again every month and the quotes replaced with what they say. Set that up before deploying, or pin the date to the month the answers were collected.
 
-The closing of every page quotes both founders (`apps/www/src/lib/founders.ts`). Both quotes were drafted for them on 2026-11-14; Adam and Julia each need to approve their own before deploying.
+The closing of every page quotes both founders (`apps/www/src/lib/founders.ts`). Both quotes are approved by the founders (Julia's confirmed by Adam on 2026-11-15).
 
 Deploy the live demo at `demo.citerank.com` in its own Railway project (see "Live demo"), since the home page links to it.
 
