@@ -129,7 +129,7 @@ function SupportPage() {
 						<ContactRow
 							title="Book a call"
 							action={
-								<Link to="/agency" hash="book" className={`${ACTION_QUIET} ${WAY_IN}`}>
+								<Link to="/agency" className={`${ACTION_QUIET} ${WAY_IN}`}>
 									Book a time
 								</Link>
 							}
