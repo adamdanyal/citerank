@@ -51,6 +51,7 @@ Body is 16px and labels 14px. The container is 1440px with 64px gutters (24px un
 - The sign-up action reads "Start tracking" wherever it appears.
 - The sign-up action is in the header at every width from 350px. Nothing follows the visitor down the page: no bar fixed to the bottom of a phone.
 - A link in text has a dotted underline, and on hover only its colour changes, to rust (`LINK` in the kit; on ink, `LINK_ON_INK`). A row or card that is one link changes its title's colour the same way and takes no underline.
+- An inner page's head sits close to the first section it introduces: 48px on a phone, 64px on a tablet, 88px on a laptop, measured from the last line of the head. Between two sections the gap stays 144px or more.
 - A section head of three or four words stays on one line on a phone: `--text-section` gives way to the screen's width under 480px.
 - A sentence under a head takes one line where the screen allows, and never more than two. A ticked line takes one line on any phone; where it would not fit, the type gives way first.
 - A ticked list is the body face at `--text-lead`, not the display face.

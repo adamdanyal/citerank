@@ -20,6 +20,7 @@
 /* Hallmark · dismissed 49 · the review date reads "Asked" and a month; the rest of that label is for screen readers only, and the button does not wrap */
 /* Hallmark · dismissed 77 · the blog, the legal index and the directory indexes are lists of links, a head over one list and the shared closing, and not landing pages */
 /* Hallmark · dismissed F20 · the graveyard shows every tool that has gone, so how many stand on its last row is whatever the data holds */
+/* Hallmark · waive 59 · the 88px gap is between an inner page's head and the first section it introduces, and every gap between two sections is still 144px or more · the owner found 144px under a subtitle too far from the content it introduces, so the head now reads as that section's opening */
 /* Hallmark · waive 49b · the links that wrap are a docs page's on-this-page links, which are its own headings · cutting a heading or holding it to one line would hide which section the link opens */
 /* Hallmark · waive 39b · the small controls are the docs kit's own anchor, copy and playground buttons, and the two copy buttons take a 44px target · the docs are a reference read at a desk, and resizing the kit's controls would fork it from Elmo's */
 /* Hallmark · waive 72 · the box is a docs code block that scrolls sideways · a line of code that wrapped would no longer read as code */
