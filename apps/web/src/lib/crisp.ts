@@ -92,6 +92,8 @@ export function initCrisp(websiteId: string | undefined, mode: DeploymentMode): 
 	window.CRISP_WEBSITE_ID = websiteId;
 
 	push(["set", "session:segments", [[mode]]]);
+	// Crisp takes a name from its own palette, not a hex. Brown is the nearest to the brand's rust, and styles.css sets the exact rust over it.
+	push(["config", "color:theme", ["brown"]]);
 	setSessionData([["deployment_mode", mode], ...(mode === "demo" ? DEMO_SESSION_DATA : [])]);
 	// The demo is a sales surface, so it keeps Crisp's own launcher, which draws
 	// visitors into a conversation better than a header button does.

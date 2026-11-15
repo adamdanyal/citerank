@@ -288,6 +288,26 @@
 	--sidebar-accent-foreground: #1a1917;
 	--sidebar-border: #e7e3dc;
 	--sidebar-ring: #b84d25;
+	/* The rust ramp as bare "r, g, b", the only form the chat widget's variables take. */
+	--chat-rust: 184, 77, 37;
+	--chat-rust-600: 170, 70, 33;
+	--chat-rust-700: 156, 63, 30;
+	--chat-rust-800: 141, 57, 28;
+	--chat-rust-900: 127, 52, 27;
+}
+
+/*
+ * Crisp's script takes a colour by name from its own palette, and none is the
+ * brand's rust. Its chatbox paints from these variables, which it sets inline,
+ * hence the !important. If Crisp renames them the chatbox falls back to the
+ * palette colour lib/crisp.ts names.
+ */
+.crisp-client {
+	--crisp-color-theme-500: var(--chat-rust) !important;
+	--crisp-color-theme-600: var(--chat-rust-600) !important;
+	--crisp-color-theme-700: var(--chat-rust-700) !important;
+	--crisp-color-theme-800: var(--chat-rust-800) !important;
+	--crisp-color-theme-900: var(--chat-rust-900) !important;
 }
 
 @layer base {
