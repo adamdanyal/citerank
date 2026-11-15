@@ -30,8 +30,8 @@ const BILLING: { value: Billing; label: string }[] = [
 const count = (amount: number) => amount.toLocaleString("en-US");
 const usd = (amount: number) => `$${count(amount)}`;
 
-/* Only what differs between plans, one line each. A plan with none of something says so, and the three lists stay level. */
-const LINES: ((plan: PlanDefinition) => { lead?: string; figure?: string; text: string })[] = [
+/* What differs between plans, one line each, then what every plan shares. A plan with none of something says so, and the three lists stay level. */
+const LINES: ((plan: PlanDefinition) => { lead?: string; figure?: string; text: string; shared?: boolean })[] = [
 	(plan) => ({ figure: String(plan.maxBrands), text: plan.maxBrands === 1 ? "brand" : "brands" }),
 	(plan) => ({ figure: count(plan.maxPrompts), text: "buyer questions tracked" }),
 	(plan) => ({
@@ -43,6 +43,8 @@ const LINES: ((plan: PlanDefinition) => { lead?: string; figure?: string; text: 
 		plan.premiumIncluded > 0
 			? { figure: String(plan.premiumIncluded), text: "premium prompts, asked daily" }
 			: { text: "No premium prompts" },
+	() => ({ figure: "Unlimited", text: "team members" }),
+	() => ({ text: "API and MCP access", shared: true }),
 ];
 
 function BillingSwitch({ billing, onChange }: { billing: Billing; onChange: (billing: Billing) => void }) {
@@ -179,9 +181,9 @@ export function PlanTable({
 							}
 						>
 							{LINES.map((line) => {
-								const { lead, figure, text } = line(plan);
+								const { lead, figure, text, shared } = line(plan);
 								return (
-									<PlanLine key={text} none={!figure}>
+									<PlanLine key={text} none={!figure && !shared}>
 										{lead ? `${lead} ` : null}
 										{figure ? <strong className="font-medium text-ink tabular-nums">{figure}</strong> : null}
 										{figure ? " " : null}
@@ -199,7 +201,7 @@ export function PlanTable({
 }
 
 export function Pricing({
-	lede = "Every plan includes your whole team and API access.",
+	lede = "Start in minutes. Cancel any time.",
 	recommended,
 }: {
 	lede?: ReactNode;
