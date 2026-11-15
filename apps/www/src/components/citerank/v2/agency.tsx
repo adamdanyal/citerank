@@ -25,7 +25,12 @@ export function Agency() {
 							</p>
 						</PanelHead>
 						<p className="mt-8">
-							<Link to="/agency" onClick={() => trackEvent("agency_call_click", { from: "home" })} className={ACTION}>
+							<Link
+								to="/agency"
+								hash="book"
+								onClick={() => trackEvent("agency_call_click", { from: "home" })}
+								className={ACTION}
+							>
 								Book a call
 							</Link>
 						</p>
