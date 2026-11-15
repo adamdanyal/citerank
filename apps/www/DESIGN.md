@@ -59,6 +59,7 @@ Body is 16px and labels 14px. The container is 1440px with 64px gutters (24px un
 - On the about page a person is credited under their portrait: name, role, then the LinkedIn mark with the follower count. Beside a quote the credit is one row: a round picture, then the name and LinkedIn on a line with the role and company under them.
 - A page closes on a quote from each founder, on two cards of one size, then one ink panel with a head, a line and the two actions (`Closing`). The two quotes are the same length, name the company and state something a reader can check, and are set in the body face at normal weight. Blog posts and every index end the same way. The about page already tells the founders' story and shows the panel alone; the agency page ends on its booking band; support, the policies and the docs end without one.
 - Where the AI apps are listed, each logo is drawn in its own colours (`--color-logo-*`). Those colours appear nowhere else.
+- The chat bubble is the brand's rust. Crisp's palette has no such colour, so `styles.css` sets the rust ramp on the variables its chatbox paints from (`--chat-rust*`).
 - hero: Stage on `/`, Banner on every other page · nav: three-part bar on ink · footer: index columns on ink
 
 ## The product
