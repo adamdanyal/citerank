@@ -49,7 +49,14 @@ interface InlineBookingOptions {
 export function embedInlineBooking({ element, calLink, params, onBooked }: InlineBookingOptions): void {
 	cal("init", { origin: CAL_ORIGIN });
 	cal("inline", { elementOrSelector: element, calLink, config: { layout: "month_view", ...params } });
-	cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
+	// The calendar paints its selected day and buttons in the brand's rust, read from the page's own token.
+	const brand = getComputedStyle(document.documentElement).getPropertyValue("--color-rust").trim();
+	cal("ui", {
+		hideEventTypeDetails: false,
+		layout: "month_view",
+		theme: "light",
+		...(brand ? { cssVarsPerTheme: { light: { "cal-brand": brand } } } : {}),
+	});
 	// The V2 event only fires for real bookings; test-mode ones get their own.
 	cal("on", {
 		action: "bookingSuccessfulV2",
