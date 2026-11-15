@@ -25,11 +25,9 @@ export function FeatureMark({ has }: { has: boolean }) {
  * it. Its edge is drawn only where a table is wider than its frame, so a table
  * that fits keeps to horizontal rules.
  */
-export const PINNED = "sticky left-0 z-10 bg-paper";
-export const PINNED_EDGE = "shadow-[inset_-1px_0_0_var(--color-zinc-200)]";
+const PINNED = "sticky left-0 z-10 bg-paper";
 const PINNED_EDGE_PHONE = "max-sm:shadow-[inset_-1px_0_0_var(--color-zinc-200)]";
 const PINNED_EDGE_NARROW = "max-md:shadow-[inset_-1px_0_0_var(--color-zinc-200)]";
-export const RULE = "border-t border-zinc-200";
 
 export interface FeatureColumn {
 	id: string;
