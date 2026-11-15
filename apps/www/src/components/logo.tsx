@@ -4,8 +4,8 @@ import type { ComponentPropsWithoutRef } from "react";
 
 export function Logo({ className, ...props }: ComponentPropsWithoutRef<"span">) {
 	return (
-		<span {...props} className={cn("inline-flex items-center gap-2 font-heading text-xl text-ink", className)}>
-			<img src={DEFAULT_APP_ICON} alt="" aria-hidden width={24} height={24} className="size-[1.1em]" />
+		<span {...props} className={cn("inline-flex items-center gap-[0.4em] font-heading text-xl text-ink", className)}>
+			<img src={DEFAULT_APP_ICON} alt="" aria-hidden width={32} height={32} className="size-[1.5em]" />
 			{DEFAULT_APP_NAME}
 		</span>
 	);
