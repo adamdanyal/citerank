@@ -45,6 +45,7 @@ Body is 16px and labels 14px. The container is 1440px with 64px gutters (24px un
 - A row that leads to one page is one link: the whole row takes the click, and a second link in it sits above (`ToolGrid`).
 - A long list opens on its first twenty rows with one button to show the rest. Every row stays in the page's HTML and shows with scripting off.
 - A field has a visible label above it, an edge at 3:1 and the height of the buttons. The directory's search box narrows the list as a name is typed and clears with one button.
+- Booking a call is three questions, one per screen with big choices, then the Cal.com calendar in the brand's rust. Every "Book a call" link goes straight to it.
 - A comparison table stays a flat ruled table on the page: its head pins under the nav and its first column pins on a phone, and a card would clip both.
 - Three weights: 400 for body, 500 for labels and controls, 700 for display.
 - Labels are the body face in sentence case. Mono is for code and measured figures.
