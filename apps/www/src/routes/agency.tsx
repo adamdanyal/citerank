@@ -1,18 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BookingForm } from "@/components/citerank/v2/booking";
+import { type MouseEvent, useState } from "react";
+import { BookingDialog } from "@/components/citerank/v2/booking";
 import { FounderQuotes } from "@/components/citerank/v2/closing";
 import { Faq } from "@/components/citerank/v2/faq";
 import {
 	ACTION,
 	ACTION_QUIET,
-	BAND_PAD,
 	BODY,
 	CARD_LIFT,
-	DISPLAY_S,
 	LEAD,
-	LINK,
 	LiftedRows,
-	PANEL_TINT,
 	Page,
 	PanelHead,
 	SMALL,
@@ -70,8 +67,12 @@ const STEPS = [
 	},
 ];
 
-/* One offer on one card: where the price starts, everything the work covers, and the call that sets the scope. */
-function AgencyOffer() {
+/*
+ * One offer on one card: where the price starts, everything the work covers,
+ * and the only place on the site that books a call. Without scripting the
+ * button is the email it falls back to.
+ */
+function AgencyOffer({ onBook }: { onBook: (event: MouseEvent) => void }) {
 	return (
 		<div
 			className={`${CARD_LIFT} grid grid-cols-[minmax(0,1fr)] gap-10 p-6 sm:p-8 lg:grid-cols-12 lg:items-center lg:gap-x-16 lg:p-12`}
@@ -89,7 +90,11 @@ function AgencyOffer() {
 					You don’t buy a set number of pages or links. Each month’s work goes where the tracker shows the biggest gap.
 				</p>
 				<p className="mt-8">
-					<a href="#book" className={`${ACTION} w-full sm:w-auto`}>
+					<a
+						href={`mailto:${CONTACT_EMAIL}?subject=AI%20search%20agency`}
+						onClick={onBook}
+						className={`${ACTION} w-full sm:w-auto`}
+					>
 						Book a call
 					</a>
 				</p>
@@ -109,16 +114,17 @@ function AgencyOffer() {
 	);
 }
 
-/* The offer, who does the work, how a month runs, what the work is, the price, the objections, then the call. */
+/* The offer, who does the work, how a month runs, what the work is, the price with the call, then the objections. */
 function AgencyPage() {
+	const [booking, setBooking] = useState(false);
 	return (
 		<PageShell>
 			<PageHead
-				title="We do the work that gets you named"
+				title="We can do the work that gets you named"
 				lede="The tracker shows what AI says about your business and ranks what to change. We make those changes every month and show you the AI answers before and after."
 			>
 				<div className="flex flex-col gap-3 sm:flex-row">
-					<a href="#book" className={ACTION}>
+					<a href="#pricing" className={ACTION}>
 						Book a call
 					</a>
 					<Link to="/pricing" className={ACTION_QUIET}>
@@ -156,7 +162,12 @@ function AgencyPage() {
 					</p>
 				</PanelHead>
 				<div className="mt-10 lg:mt-16">
-					<AgencyOffer />
+					<AgencyOffer
+						onBook={(event) => {
+							event.preventDefault();
+							setBooking(true);
+						}}
+					/>
 				</div>
 				<h3 className={`${SUBHEAD} mt-12 text-ink lg:mt-16`}>Always included</h3>
 				<ul className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -174,24 +185,7 @@ function AgencyPage() {
 
 			<Faq items={AGENCY_FAQS} />
 
-			<section id="book" className={`${PANEL_TINT} ${BAND_PAD} scroll-mt-16`}>
-				<Page>
-					<h2 className={`${DISPLAY_S} text-ink`}>Book a call</h2>
-					<p className={`${LEAD} mt-5 max-w-[56ch] text-zinc-700`}>
-						Three questions, then pick a time. On the call we look at what AI says about your business today and the
-						work that would change it.
-					</p>
-					<div className="mt-10 lg:mt-12">
-						<BookingForm />
-					</div>
-					<p className={`${SMALL} mt-6 text-zinc-600`}>
-						Rather write?{" "}
-						<a href={`mailto:${CONTACT_EMAIL}?subject=AI%20search%20agency`} className={`${LINK} text-ink`}>
-							Email {CONTACT_EMAIL}
-						</a>
-					</p>
-				</Page>
-			</section>
+			<BookingDialog open={booking} onClose={() => setBooking(false)} />
 		</PageShell>
 	);
 }
