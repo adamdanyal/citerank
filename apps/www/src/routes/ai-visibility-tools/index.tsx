@@ -6,7 +6,7 @@ import { PageShell } from "@/components/citerank/v2/shell";
 import { CompetitorDirectory } from "@/components/competitor-directory";
 import { FOCUS } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
-import { competitors, getComparisonSlug, isLowDR, isRetired } from "@/lib/competitors";
+import { getComparisonSlug, isLowDR, isRetired, sortedCompetitors } from "@/lib/competitors";
 import { DIRECTORY_FAQS } from "@/lib/faqs";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -15,14 +15,16 @@ const description =
 	"Compare 100+ AI visibility tools, AEO software and GEO platforms on engine coverage, pricing and features, each head-to-head with CiteRank.com.";
 
 // Indexed comparison pages (mirrors the sitemap filter), surfaced as ItemList
-// structured data so AI engines can extract the full directory of tools.
+// structured data so AI engines can extract the full directory of tools, in the
+// order the page lists them and with the line the page gives each.
 // Built inside the loader so the tool data stays out of the client entry bundle.
 function directoryItems() {
-	return competitors
+	return sortedCompetitors
 		.filter((c) => !isRetired(c) && c.category !== "other" && !isLowDR(c))
 		.map((c) => ({
 			name: c.name,
 			path: `/ai-visibility-tools/${getComparisonSlug(c)}`,
+			description: c.tagline,
 		}));
 }
 
