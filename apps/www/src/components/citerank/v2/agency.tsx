@@ -5,7 +5,7 @@ import { ACTION, LEAD, PANEL_PAD, Page, PanelHead, SMALL, Tick } from "./kit";
 
 /* On a phone the type gives way before the line breaks: each divisor is the longest line's width in em. */
 const HEAD_ONE_LINE = "max-sm:text-[length:calc((100vw_-_5rem)_/_13)] max-sm:whitespace-nowrap";
-const TWO_LINES = "max-sm:text-[length:min(var(--text-lead),calc((100vw_-_5rem)_/_16.5))]";
+const LINES = "max-sm:text-[length:min(var(--text-lead),calc((100vw_-_5rem)_/_18.6))] max-sm:whitespace-nowrap";
 const ONE_LINE = "whitespace-nowrap max-sm:text-[length:min(var(--text-lead),calc((100vw_-_7.75rem)_/_14.4))]";
 
 /*
@@ -19,9 +19,10 @@ export function Agency() {
 				<div className="grid grid-cols-[minmax(0,1fr)] gap-10 rounded-[1.5rem] bg-ink px-6 py-10 text-paper sm:px-10 sm:py-12 lg:grid-cols-12 lg:items-center lg:gap-x-16 lg:p-16">
 					<div className="min-w-0 lg:col-span-6">
 						<PanelHead title={<span className={HEAD_ONE_LINE}>We can do the work for you</span>} onInk>
-							<p className={`${LEAD} ${TWO_LINES} text-zinc-300`}>
+							<p className={`${LEAD} ${LINES} text-zinc-300`}>
 								<span className="block">The tracker ranks what to do next.</span>{" "}
-								<span className="block">Our agency does it every month.</span>
+								<span className="block">You can do the work yourself, or</span>{" "}
+								<span className="block">our AI search agency can do it for you.</span>
 							</p>
 						</PanelHead>
 						<p className="mt-8">
