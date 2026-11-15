@@ -31,7 +31,7 @@ export function AgencyStrip() {
 		<div className="flex flex-col gap-3 rounded-xl border border-border bg-muted/40 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
 			<p className="text-sm">
 				<span className="font-medium">Want us to do this work?</span>{" "}
-				<span className="text-muted-foreground">Our agency does it every month.</span>
+				<span className="text-muted-foreground">Our AI search agency can do it for you.</span>
 			</p>
 			{mode === "demo" ? (
 				<Button render={<a href={bookDemoUrl("demo-opportunities")} />} nativeButton={false} className="shrink-0">
