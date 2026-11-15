@@ -44,8 +44,6 @@ export const ROW = "border-t border-zinc-200";
 export const ROW_LINK = `group rounded-sm ${FOCUS}`;
 export const ROW_TITLE = `${ITEM_TITLE} text-ink transition-colors duration-200 group-hover:text-rust`;
 export const ROW_ACTION = `${BODY} font-medium text-ink underline decoration-dotted decoration-zinc-500 underline-offset-[5px] transition-colors duration-200 group-hover:text-rust group-hover:decoration-rust`;
-/** The list that opens a hub sits a step nearer the page head, because its first row brings its own space. */
-export const INDEX_PAD = "pt-6 pb-9 sm:pt-8 sm:pb-12 lg:pt-12 lg:pb-18";
 
 const RAIL_LINK = `${SMALL} rounded-sm text-zinc-600 transition-colors duration-200 hover:text-ink ${FOCUS}`;
 
@@ -62,7 +60,7 @@ export function GuideHead({
 	children?: ReactNode;
 }) {
 	return (
-		<section className={`${PANEL} pt-8 pb-9 sm:pt-10 sm:pb-12 lg:pt-14 lg:pb-18`}>
+		<section className={`${PANEL} pt-8 pb-3 sm:pt-10 sm:pb-4 lg:pt-14`}>
 			<Page>
 				<nav aria-label="Breadcrumb">
 					<a href={back.href} className={`${LINK} ${SMALL} text-zinc-600 hover:text-ink`}>

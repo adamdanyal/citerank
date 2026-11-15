@@ -54,7 +54,7 @@ const FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visi
  * about 70 characters; a chart or a code sample may run to 45rem and a table
  * to the whole nine columns.
  */
-export const DOC_BODY = `${PANEL} pt-7 pb-12 sm:pt-10 sm:pb-15 lg:pt-15 lg:pb-22`;
+export const DOC_BODY = `${PANEL} pt-9 pb-12 sm:pt-12 sm:pb-15 lg:pt-18 lg:pb-22`;
 export const DOC_GRID = "grid gap-10 lg:grid-cols-12 lg:gap-8";
 
 /* A document has a dozen heads, so they take the item title's size and stay close to their text. */
@@ -94,7 +94,7 @@ export function DocumentHead({
 	children?: ReactNode;
 }) {
 	return (
-		<section className={`${PANEL} pt-10 pb-7 sm:pt-12 sm:pb-10 lg:pt-16 lg:pb-15`}>
+		<section className={`${PANEL} pt-10 pb-3 sm:pt-12 sm:pb-4 lg:pt-16`}>
 			<Page>
 				<nav aria-label="Breadcrumb">
 					<a

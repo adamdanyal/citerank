@@ -19,10 +19,10 @@ export function PageShell({ children }: { children: ReactNode }) {
 	);
 }
 
-/** An inner page's opening: the h1 and one sentence under it. */
+/** An inner page's opening: the h1 and one sentence under it. It brings little space below, so the first section sits close to the head that introduces it. */
 export function PageHead({ title, lede, children }: { title: string; lede?: ReactNode; children?: ReactNode }) {
 	return (
-		<section className={`${PANEL} pt-12 pb-9 sm:pt-16 sm:pb-12 lg:pt-24 lg:pb-18`}>
+		<section className={`${PANEL} pt-12 pb-3 sm:pt-16 sm:pb-4 lg:pt-24`}>
 			<Page>
 				<h1 className={`${DISPLAY} max-w-[18ch] text-ink`}>{title}</h1>
 				{lede ? (

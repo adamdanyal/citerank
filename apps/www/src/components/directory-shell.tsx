@@ -98,8 +98,8 @@ export function DirectoryBackLink({ label = "AI visibility tool directory" }: { 
  * An inner page's opening: the h1 and a lead "answer block" written to be
  * lifted verbatim into an AI answer. `back` puts the way back to the directory
  * in the space above the h1, so the head sits where it does on every other page.
- * `tight` is for a hero whose next section opens on a band or a ruled list,
- * which bring space of their own.
+ * `tight` is for a hero whose next section is an ink band, which needs more
+ * room above its edge than content on paper does.
  */
 export function DirectoryHero({
 	title,
@@ -118,7 +118,7 @@ export function DirectoryHero({
 }) {
 	const long = title.length > 40;
 	const top = back ? "pt-8 sm:pt-10 lg:pt-14" : "pt-12 sm:pt-16 lg:pt-24";
-	const bottom = tight ? "pb-9 sm:pb-10" : "pb-9 sm:pb-12 lg:pb-18";
+	const bottom = tight ? "pb-9 sm:pb-10" : "pb-3 sm:pb-4";
 	return (
 		<section className={`${PANEL} ${top} ${bottom}`}>
 			<Page>
