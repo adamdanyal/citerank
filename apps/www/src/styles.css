@@ -20,6 +20,10 @@
 /* Hallmark · dismissed 49 · the review date reads "Asked" and a month; the rest of that label is for screen readers only, and the button does not wrap */
 /* Hallmark · dismissed 77 · the blog, the legal index and the directory indexes are lists of links, a head over one list and the shared closing, and not landing pages */
 /* Hallmark · dismissed F20 · the graveyard shows every tool that has gone, so how many stand on its last row is whatever the data holds */
+/* Hallmark · waive 49b · the links that wrap are a docs page's on-this-page links, which are its own headings · cutting a heading or holding it to one line would hide which section the link opens */
+/* Hallmark · waive 39b · the small controls are the docs kit's own anchor, copy and playground buttons, and the two copy buttons take a 44px target · the docs are a reference read at a desk, and resizing the kit's controls would fork it from Elmo's */
+/* Hallmark · waive 72 · the box is a docs code block that scrolls sideways · a line of code that wrapped would no longer read as code */
+/* Hallmark · dismissed F19 · the fourth weight, 600, is the docs kit's own, in its sidebar and API reference */
 /* Hallmark · dismissed 74 · zinc and blue are remapped in @theme to the brand's warm greys and its rust ramp, so no stock value reaches the page */
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -238,6 +242,11 @@
 	/* A surface and a hairline for the ink bands: lighter than the ink, never darker than their canvas. */
 	--color-ink-well: #262420;
 	--color-ink-rule: #3a3731;
+	/* Only the docs' API labels use these, at 12px, so they take darker shades to read at 4.5:1 on paper. */
+	--color-green-600: #15803d;
+	--color-orange-600: #c2410c;
+	--color-red-600: #b91c1c;
+	--color-yellow-600: #854d0e;
 
 	--font-display: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
 	--font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -378,6 +387,68 @@
 	--crisp-color-theme-700: var(--chat-rust-700) !important;
 	--crisp-color-theme-800: var(--chat-rust-800) !important;
 	--crisp-color-theme-900: var(--chat-rust-900) !important;
+}
+
+/* The docs' typography plugin brings its own cool greys; these are the site's warm ones. */
+.prose {
+	--tw-prose-body: var(--color-zinc-700);
+	--tw-prose-headings: var(--color-ink);
+	--tw-prose-lead: var(--color-zinc-600);
+	--tw-prose-bold: var(--color-ink);
+	--tw-prose-counters: var(--color-zinc-500);
+	--tw-prose-bullets: var(--color-zinc-300);
+	--tw-prose-hr: var(--color-zinc-200);
+	--tw-prose-quotes: var(--color-ink);
+	--tw-prose-quote-borders: var(--color-zinc-200);
+	--tw-prose-captions: var(--color-zinc-500);
+	--tw-prose-code: var(--color-ink);
+	--tw-prose-th-borders: var(--color-zinc-300);
+	--tw-prose-td-borders: var(--color-zinc-200);
+}
+/* The docs: a link in running text looks as it does on every other page, and an endpoint or a key, which has no spaces, wraps rather than running off a phone. */
+.prose :where(p, li, td, blockquote) a {
+	color: var(--color-ink);
+	text-decoration-line: underline;
+	text-decoration-style: dotted;
+	text-decoration-color: var(--color-zinc-500);
+	text-underline-offset: 5px;
+	transition:
+		color 200ms,
+		text-decoration-color 200ms;
+}
+.prose :where(p, li, td, blockquote) a:hover {
+	color: var(--color-rust);
+	text-decoration-color: var(--color-rust);
+}
+.prose :not(pre) > code {
+	overflow-wrap: anywhere;
+}
+/* The API reference sets its descriptions across the whole column. A "0" is wider than the average letter, so 60ch holds a line to about 75 characters. */
+.prose p {
+	max-width: 60ch;
+}
+/* Code in a table cell would shrink twice, to under 11px. */
+.prose :where(td, th) code {
+	font-size: 0.75rem;
+}
+/* The code theme's greens and greys are drawn for white and miss 4.5:1 on paper. */
+.prose figure.shiki {
+	background-color: var(--card);
+}
+/* The docs' copy buttons keep their small square but take a 44px target. */
+.prose button[aria-label="Copy Anchor Link"],
+.prose figure button[aria-label="Copy Text"] {
+	position: relative;
+}
+.prose button[aria-label="Copy Anchor Link"]::before,
+.prose figure button[aria-label="Copy Text"]::before {
+	content: "";
+	position: absolute;
+	inset: -10px;
+}
+/* A text field in the API reference, such as its property filter: its edge reads at 3:1 against the card. */
+.prose label:has(> input:not([type]), > input[type="text"], > input[type="search"]) {
+	border-color: var(--color-zinc-500);
 }
 
 /* In the base layer so a utility can still set a heading in the body face where it is really a label. */
