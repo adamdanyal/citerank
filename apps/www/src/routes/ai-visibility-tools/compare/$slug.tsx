@@ -55,7 +55,7 @@ function ComparePage() {
 	const [a, b] = tools;
 	return (
 		<PageShell>
-			<DirectoryHero back tight title={names} lead={getCompareVerdict(tools)} />
+			<DirectoryHero back title={names} lead={getCompareVerdict(tools)} />
 			{a && b && tools.length === 2 ? <PairComparison a={a} b={b} /> : <MultiComparison tools={tools} />}
 			<Faq items={getCompareFaqs(tools)} />
 			<CiteRankCta />

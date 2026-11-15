@@ -223,7 +223,7 @@ function AboutPage() {
 			</PageHead>
 
 			{/* The figures close the opening rather than start a section: no padding above them but the opening's own. */}
-			<section className={`${PANEL} pb-7 sm:pb-10 lg:pb-15`}>
+			<section className={`${PANEL} pt-6 pb-7 sm:pt-8 sm:pb-10 lg:pt-14 lg:pb-15`}>
 				<Page>
 					<dl className="grid gap-y-10 border-t border-zinc-200 pt-10 sm:grid-cols-2 lg:grid-cols-4 lg:pt-12">
 						{NUMBERS.map((item) => (

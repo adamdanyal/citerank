@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Closing } from "@/components/citerank/v2/closing";
-import { BODY, LIST_CARD, PANEL, Page, SMALL, SUBHEAD } from "@/components/citerank/v2/kit";
+import { BODY, LIST_CARD, PANEL, PANEL_PAD, Page, SMALL, SUBHEAD } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
-import { INDEX_PAD, ROW, ROW_ACTION, ROW_LINK } from "@/components/pillar";
+import { ROW, ROW_ACTION, ROW_LINK } from "@/components/pillar";
 import { aiSearchEngines } from "@/data/ai-search-engines";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -40,7 +40,7 @@ function AiSearchIndex() {
 				lede="Each AI engine chooses its sources a little differently. These guides show how the major ones decide what to cite, and the steps to become one of their sources."
 			/>
 
-			<section className={`${PANEL} ${INDEX_PAD}`}>
+			<section className={`${PANEL} ${PANEL_PAD}`}>
 				<Page>
 					<h2 className="sr-only">Guides by AI engine</h2>
 					<ul className={LIST_CARD}>

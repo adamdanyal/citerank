@@ -10,6 +10,7 @@ import {
 	LEAD,
 	LinkCards,
 	PANEL,
+	PANEL_PAD,
 	PANEL_PAD_WIDE,
 	Page,
 	PanelHead,
@@ -108,7 +109,7 @@ function SupportPage() {
 				lede="For your account, billing, the MCP server or the AI search agency, here is how to reach the team."
 			/>
 
-			<section className={`${PANEL} pt-3 pb-9 sm:pt-5 sm:pb-12 lg:pt-10 lg:pb-18`}>
+			<section className={`${PANEL} ${PANEL_PAD}`}>
 				<Page>
 					<h2 className="sr-only">How to reach the team</h2>
 					<ul className={`${CARD_LIFT} px-6 sm:px-8`}>

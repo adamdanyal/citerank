@@ -24,7 +24,6 @@ import {
 	LiftedRows,
 	PANEL,
 	PANEL_PAD,
-	PANEL_PAD_TIGHT,
 	PANEL_PAD_WIDE,
 	Page,
 	PanelHead,
@@ -114,7 +113,7 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 				{notice}
 			</DirectoryHero>
 
-			<section className={`${PANEL} ${PANEL_PAD_TIGHT}`}>
+			<section className={`${PANEL} ${PANEL_PAD}`}>
 				<Page className="grid gap-10 lg:grid-cols-12 lg:gap-8">
 					<div className="lg:col-span-5">
 						<h2 className={`${HEADING} text-ink`}>The short version</h2>

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
-import { BODY, CARD_LIFT, PANEL, Page, SMALL, SUBHEAD } from "@/components/citerank/v2/kit";
+import { BODY, CARD_LIFT, PANEL, PANEL_PAD, Page, SMALL, SUBHEAD } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
 import { formatPostDate } from "@/lib/format";
 import type { LegalPageSummary } from "@/lib/legal";
@@ -40,7 +40,7 @@ function LegalIndex() {
 				lede="These policies cover the CiteRank.com tracker, the AI search agency, and our websites. CiteRank.com is a trading name of Danx Digital Limited."
 			/>
 
-			<section className={`${PANEL} pt-3 pb-9 sm:pt-6 sm:pb-12 lg:pt-10 lg:pb-18`}>
+			<section className={`${PANEL} ${PANEL_PAD}`}>
 				<Page>
 					<dl className={`${CARD_LIFT} px-6 sm:px-8`}>
 						{pages.map((page) => (

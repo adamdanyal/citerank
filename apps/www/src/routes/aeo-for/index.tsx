@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Closing } from "@/components/citerank/v2/closing";
 import { LinkCards, PANEL, PANEL_PAD, Page, PanelHead } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
-import { INDEX_PAD, PROSE, WithPrompts } from "@/components/pillar";
+import { PROSE, WithPrompts } from "@/components/pillar";
 import { aeoHeadline, aeoVerticals } from "@/data/aeo-verticals";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -47,7 +47,7 @@ function AeoForIndex() {
 				lede="The fundamentals of AEO are the same everywhere, but the prompts that matter and the stakes are not. Pick your industry."
 			/>
 
-			<section className={`${PANEL} ${INDEX_PAD}`}>
+			<section className={`${PANEL} ${PANEL_PAD}`}>
 				<Page>
 					<h2 className="sr-only">Guides by industry</h2>
 					<LinkCards
