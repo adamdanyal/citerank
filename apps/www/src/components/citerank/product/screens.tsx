@@ -96,7 +96,7 @@ function StatCard({
 		>
 			<span className="px-4 pt-3.5 text-sm font-medium">{label}</span>
 			<span className="mt-1 flex items-baseline gap-2 px-4">
-				<span className="font-mono text-[2rem] leading-none font-medium tracking-[-0.04em]">
+				<span className="font-sans text-[2rem] leading-none font-medium tracking-[-0.02em] tabular-nums">
 					{show(metric, card.value)}
 				</span>
 				{change ? (
@@ -404,7 +404,9 @@ export function Sentiment({ lead = false }: ScreenProps) {
 						parts={TONES.map((tone) => ({ name: tone, tone: DONUT_TONE[tone], value: data.breakdown[tone] }))}
 						label={`Sentiment score ${score} out of 100: ${TONES.map((tone) => `${data.breakdown[tone]}% ${tone}`).join(", ")}`}
 					>
-						<span className="font-mono text-[2rem] leading-none font-medium tracking-[-0.04em] text-ink">{score}</span>
+						<span className="font-sans text-[2rem] leading-none font-medium tracking-[-0.02em] tabular-nums text-ink">
+							{score}
+						</span>
 					</Donut>
 					<dl className="min-w-44 flex-1 text-sm">
 						{TONES.map((tone) => (

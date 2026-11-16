@@ -27,7 +27,7 @@ export function Includes() {
 								key={promise.title}
 								className="flex items-start gap-4 border-t border-zinc-200 py-5 text-lead leading-snug font-medium text-ink first:border-t-0 first:pt-0 last:pb-0"
 							>
-								<Tick className="size-7" />
+								<Tick tone="quiet" className="size-7" />
 								{promise.title}
 							</li>
 						))}
@@ -36,7 +36,7 @@ export function Includes() {
 					<div className="min-w-0 rounded-card bg-white p-6 shadow-lift ring-1 ring-zinc-200 sm:p-8 lg:col-span-6">
 						<h3 className={`${SUBHEAD} text-ink`}>{MODELS.length} AI tools to choose from</h3>
 						<p className={`${BODY} mt-2 text-zinc-600`}>
-							Each brand tracks any {PICKS} of the {STANDARD.length} standard tools.
+							Each brand tracks any {PICKS} of the {STANDARD.length} standard tools
 						</p>
 						<ul className="mt-6 grid grid-cols-3 gap-x-2 gap-y-5 sm:grid-cols-5">
 							{BOARD.map((model) => (
@@ -54,7 +54,7 @@ export function Includes() {
 								</li>
 							))}
 						</ul>
-						<p className={`${SMALL} mt-6 text-zinc-600`}>Premium tools come with {premiumPlanNames()}.</p>
+						<p className={`${SMALL} mt-6 text-zinc-600`}>Premium tools come with {premiumPlanNames()}</p>
 					</div>
 				</div>
 			</Page>

@@ -140,7 +140,7 @@ export function PlanLine({ children, none = false }: { children: ReactNode; none
 					className="mt-px grid size-6 shrink-0 place-items-center rounded-full bg-paper-2 before:h-0.5 before:w-2.5 before:rounded-full before:bg-zinc-400"
 				/>
 			) : (
-				<Tick className="mt-px size-6" />
+				<Tick tone="quiet" className="mt-px size-6" />
 			)}
 			<span>{children}</span>
 		</li>
@@ -180,7 +180,7 @@ function PlanApps({
 			</ul>
 			{group.id === "premium" && plan.premiumAddonAvailable ? (
 				<p className={`${SMALL} mt-3 text-zinc-600`}>
-					${PREMIUM_ADDON_MONTHLY_USD} a month for each extra premium prompt.
+					${PREMIUM_ADDON_MONTHLY_USD} a month for each extra premium prompt
 				</p>
 			) : null}
 		</div>
@@ -258,8 +258,8 @@ export function PlanTable({
 							}
 							note={
 								billing === "annual"
-									? `Billed ${usd(plan.annualPriceUsd)} a year. Saves ${usd(plan.monthlyPriceUsd * 12 - plan.annualPriceUsd)}.`
-									: `Or ${usd(yearlyPerMonth)} a month, billed yearly.`
+									? `Billed ${usd(plan.annualPriceUsd)} a year, saves ${usd(plan.monthlyPriceUsd * 12 - plan.annualPriceUsd)}`
+									: `Or ${usd(yearlyPerMonth)} a month, billed yearly`
 							}
 							band={isRecommended ? recommendedLabel : undefined}
 							action={

@@ -82,12 +82,19 @@ export const ACTION_SM = `${BUTTON_SM} ${FILLED}`;
 export const LINK = `rounded-sm underline decoration-dotted decoration-zinc-500 underline-offset-[5px] transition-colors duration-200 hover:text-rust hover:decoration-rust ${FOCUS}`;
 export const LINK_ON_INK = `rounded-sm underline decoration-dotted decoration-zinc-400 underline-offset-[5px] transition-colors duration-200 hover:text-blue-300 hover:decoration-blue-300 ${FOCUS}`;
 
+/* Rust marks something done; a list of what you get takes the quiet ring, so rust stays rare. */
+const TICK_TONES = {
+	rust: "bg-rust text-paper",
+	quiet: "text-ink ring-1 ring-zinc-300 ring-inset",
+	quietOnInk: "text-paper ring-1 ring-zinc-500 ring-inset",
+};
+
 /** The mark beside a thing you get. It says nothing a reader needs, so it is hidden from one. */
-export function Tick({ className = "size-7" }: { className?: string }) {
+export function Tick({ className = "size-7", tone = "rust" }: { className?: string; tone?: keyof typeof TICK_TONES }) {
 	return (
 		<span
 			aria-hidden="true"
-			className={`grid shrink-0 place-items-center rounded-full bg-rust text-paper ${className}`}
+			className={`grid shrink-0 place-items-center rounded-full ${TICK_TONES[tone]} ${className}`}
 		>
 			<svg aria-hidden="true" viewBox="0 0 12 12" className="size-1/2">
 				<path

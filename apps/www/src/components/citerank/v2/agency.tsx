@@ -13,7 +13,7 @@ const LINE = `flex items-center gap-4 border-t border-ink-rule py-4 text-lead le
 function Line({ children, className = "" }: { children: string; className?: string }) {
 	return (
 		<li className={`${LINE} ${className}`}>
-			<Tick className="size-7" />
+			<Tick tone="quietOnInk" className="size-7" />
 			{children}
 		</li>
 	);

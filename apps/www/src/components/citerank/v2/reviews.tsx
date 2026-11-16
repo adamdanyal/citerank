@@ -79,7 +79,7 @@ function ReviewCard({ review }: { review: Review }) {
 /* The card always names the month a visitor is reading in, so it only stays true while the answers are asked again each month. */
 function thisMonth() {
 	const now = new Date();
-	return `${now.toLocaleString("en-US", { month: "short", timeZone: "UTC" })}, ${now.getUTCFullYear()}`;
+	return `${now.toLocaleString("en-US", { month: "short", timeZone: "UTC" })} ${now.getUTCFullYear()}`;
 }
 
 /*
@@ -135,7 +135,13 @@ export function Reviews() {
 	return (
 		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page>
-				<PanelHead title="Loved by marketers. Recommended by AI." />
+				<PanelHead
+					title={
+						<>
+							<span className="block">Loved by marketers</span> <span className="block">Recommended by AI</span>
+						</>
+					}
+				/>
 			</Page>
 			<ul
 				aria-label="Reviews"

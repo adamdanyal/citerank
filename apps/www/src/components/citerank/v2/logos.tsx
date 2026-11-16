@@ -8,7 +8,7 @@ export function Logos() {
 			<Page className="flex flex-col items-center gap-8 py-10 lg:gap-10 lg:py-14">
 				<h2
 					id="customers"
-					className="text-center font-heading text-[1.1875rem] leading-[1.25] font-bold tracking-[-0.01em] text-balance text-ink"
+					className="text-center font-heading text-[1.1875rem] leading-[1.25] font-bold tracking-normal text-balance text-ink"
 				>
 					Built on an open-source platform trusted by 200+ brands
 				</h2>
