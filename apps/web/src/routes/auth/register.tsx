@@ -63,6 +63,11 @@ function RegisterPage() {
 	);
 }
 
+/** better-auth requires a name, and the form doesn't ask for one. */
+function nameFromEmail(email: string): string {
+	return email.split("@")[0] || email;
+}
+
 export function RegisterForm({
 	returnTo,
 	initialEmail,
@@ -79,7 +84,6 @@ export function RegisterForm({
 	hasUsers?: boolean;
 }) {
 	const navigate = useNavigate();
-	const [name, setName] = useState("");
 	const [email, setEmail] = useState(initialEmail ?? "");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState<string | null>(null);
@@ -97,7 +101,7 @@ export function RegisterForm({
 			const result = await authClient.signUp.email({
 				email,
 				password,
-				name,
+				name: nameFromEmail(email),
 				...(isCloud && { callbackURL: safeReturnTo(returnTo) }),
 				fetchOptions: { headers: await turnstile.getCaptchaHeaders() },
 			});
@@ -149,7 +153,6 @@ export function RegisterForm({
 						<IconBrandGoogle className="size-4" />
 						Continue with Google
 					</Button>
-					<LegalConsentNotice action="continuing with Google" />
 					<div className="flex items-center gap-3">
 						<Separator className="flex-1" />
 						<span className="text-xs text-muted-foreground">or</span>
@@ -164,19 +167,6 @@ export function RegisterForm({
 					</Alert>
 				)}
 				<div className="space-y-2">
-					<Label htmlFor="name">Name</Label>
-					<Input
-						id="name"
-						type="text"
-						placeholder="Your name"
-						value={name}
-						onChange={(e) => setName(e.target.value)}
-						required
-						autoComplete="name"
-						autoFocus
-					/>
-				</div>
-				<div className="space-y-2">
 					<Label htmlFor="email">Email</Label>
 					<Input
 						id="email"
@@ -186,6 +176,7 @@ export function RegisterForm({
 						onChange={(e) => setEmail(e.target.value)}
 						required
 						autoComplete="email"
+						autoFocus
 					/>
 				</div>
 				<div className="space-y-2">
@@ -205,7 +196,7 @@ export function RegisterForm({
 				<Button type="submit" className="w-full" disabled={loading}>
 					{loading ? "Creating account..." : "Create account"}
 				</Button>
-				<LegalConsentNotice action="creating an account" />
+				<LegalConsentNotice action="signing up" />
 			</form>
 			{hasUsers && (
 				<p className="text-sm text-muted-foreground pt-4">
