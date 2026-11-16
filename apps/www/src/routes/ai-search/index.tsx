@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Closing } from "@/components/citerank/v2/closing";
-import { BODY, LIST_CARD, PANEL, PANEL_PAD, Page, SMALL, SUBHEAD } from "@/components/citerank/v2/kit";
+import { BODY, LIST_CARD, PANEL, PANEL_PAD, Page } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
-import { ROW, ROW_ACTION, ROW_LINK } from "@/components/pillar";
+import { ROW, ROW_LINK, ROW_TITLE } from "@/components/pillar";
 import { aiSearchEngines } from "@/data/ai-search-engines";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -48,16 +48,10 @@ function AiSearchIndex() {
 							<li key={engine.slug} className={ROW}>
 								<a
 									href={`/ai-search/${engine.slug}`}
-									className={`${ROW_LINK} grid gap-3 py-6 lg:grid-cols-12 lg:gap-8 lg:py-8`}
+									className={`${ROW_LINK} grid gap-2 py-6 lg:grid-cols-12 lg:items-baseline lg:gap-8`}
 								>
-									<div className="lg:col-span-5">
-										<h3 className={`${SUBHEAD} text-ink`}>{engine.name}</h3>
-										<p className={`${SMALL} mt-1 text-zinc-600`}>{engine.vendor}</p>
-									</div>
-									<div className="lg:col-span-7">
-										<p className={`${BODY} max-w-[60ch] text-zinc-600`}>{engine.short}</p>
-										<p className={`${ROW_ACTION} mt-3`}>How to appear in {engine.name}</p>
-									</div>
+									<h3 className={`${ROW_TITLE} lg:col-span-5`}>{engine.name}</h3>
+									<p className={`${BODY} text-zinc-600 lg:col-span-7`}>{engine.line}</p>
 								</a>
 							</li>
 						))}

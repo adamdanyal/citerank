@@ -35,7 +35,7 @@ const AEO: Pillar = {
 		"What answer engine optimization is, how AEO differs from SEO, how AI answer engines decide what to cite, what to measure and how to run it.",
 	lead: "SEO got you ranked. AEO gets you quoted. Here is what answer engine optimization is, how it works, and how to run it without guessing.",
 	definition:
-		"Answer engine optimization (AEO) is the practice of measuring and improving how often AI answer engines (ChatGPT, Google AI Overviews, Perplexity, Gemini, Copilot) mention and cite your brand. Where SEO competes for a position in a list of links, AEO competes to be the source a model quotes inside a written answer.",
+		"Answer engine optimization (AEO) is the practice of measuring and improving how often AI answer engines mention and cite your brand. Where SEO wins a link in a list, AEO wins a quote in the answer.",
 	sections: [
 		{
 			id: "what-it-is",
@@ -43,7 +43,6 @@ const AEO: Pillar = {
 			body: [
 				"An answer engine does not hand you ten links and let you choose. It reads the web, decides what is true, writes a paragraph, and names a handful of sources. Your brand is either in that paragraph or it is not, and there is no second page to be on.",
 				"Answer engine optimization is the work of getting into that paragraph. It borrows from SEO (clear writing, crawlable pages, credible sources), but the unit of success changes. You are no longer optimizing for a rank. You are optimizing for a mention, a citation, and the sentence the model writes about you.",
-				"The discipline is young enough that it goes by four names. AEO, GEO (generative engine optimization), LLMO (large language model optimization), and generative SEO all describe the same work. Choose one and move on; the practitioners arguing about the acronym are not the ones getting cited.",
 			],
 		},
 		{
@@ -257,7 +256,7 @@ const GEO: Pillar = {
 		"What generative engine optimization means, how GEO differs from SEO and AEO, what the research says works and how to measure it.",
 	lead: "Generative engines write the answer instead of listing the links. GEO is the work of being in that answer, and of knowing, with numbers, whether you are.",
 	definition:
-		"Generative engine optimization (GEO) is the practice of getting your brand mentioned and cited inside AI-generated answers (ChatGPT, Google AI Overviews and AI Mode, Perplexity, Gemini, Copilot). It is the same discipline as answer engine optimization (AEO); the two terms emerged in parallel and are used interchangeably.",
+		"Generative engine optimization (GEO) is the practice of getting your brand mentioned and cited inside AI-generated answers. It is another name for AEO.",
 	sections: [
 		{
 			id: "what-it-is",
@@ -265,16 +264,13 @@ const GEO: Pillar = {
 			body: [
 				"A generative engine answers a question by writing prose. It reads sources, synthesizes them, and names a few. There is no list to climb and no position ten to settle for. You are quoted or you are absent.",
 				"GEO is the practice of being quoted. In day-to-day work that means three things: knowing which questions your buyers ask these engines, measuring how often you appear in the answers, and changing what the engines can find so the number moves.",
-				"The name is contested and the distinction is not worth your time. GEO, AEO, LLMO, and generative SEO all label the same work. GEO is the term that came out of the academic literature; AEO is the term that came out of the SEO industry. They describe identical practice.",
 			],
 		},
 		{
 			id: "geo-meaning-marketing",
 			heading: "What GEO means in marketing (and the older meaning)",
 			body: [
-				"In marketing, GEO now has two unrelated meanings, and searches for the term return both.",
-				"The older meaning is geographic: geo-targeting, geo-fencing, geo-modified keywords, and anything else scoped to a physical location. If you arrived here looking for local search, that is a different discipline entirely.",
-				"The newer meaning, and the subject of this guide, is generative engine optimization. It has nothing to do with location. The collision is unfortunate and shows no sign of resolving, which is part of why many practitioners prefer AEO.",
+				"In older marketing GEO meant geographic, as in geo-targeting, but here it means generative engine optimization, which has nothing to do with location.",
 			],
 		},
 		{

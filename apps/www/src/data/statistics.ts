@@ -39,25 +39,25 @@ export const stats: Stat[] = [
 		group: "Where AI cites from",
 	},
 	{
-		value: "#2",
+		value: "2nd",
 		claim:
-			"LinkedIn ranks second only to Reddit or YouTube among cited domains, and most citations point at individual profiles, not company pages.",
+			"place for LinkedIn among cited domains, behind only Reddit or YouTube. Most citations point at individual profiles, not company pages.",
 		source: "Two 2026 studies",
 		slug: "linkedin-ai-citations",
 		group: "Where AI cites from",
 	},
 	{
-		value: "0.99–23.3%",
+		value: "6",
 		claim:
-			"YouTube's share of AI citations, across six published figures that are each defensible. The spread is engines and denominators.",
+			"published figures put YouTube's share of AI citations anywhere from 0.99% to 23.3%, and each is defensible. The spread is engines and denominators.",
 		source: "Six published datasets",
 		slug: "youtube-ai-citations",
 		group: "Where AI cites from",
 	},
 	{
-		value: "0.3% vs 9–20%",
+		value: "0.3%",
 		claim:
-			"Paid and advertorial content earns 0.3% of AI citations in one dataset; a wire-distributed story reaches 9–20% of related answers in another.",
+			"of AI citations go to paid and advertorial content in one dataset, while a wire-distributed story reaches 9–20% of related answers in another.",
 		source: "Two datasets",
 		slug: "press-releases-ai-visibility",
 		group: "Where AI cites from",
@@ -94,16 +94,17 @@ export const stats: Stat[] = [
 		group: "How engines behave",
 	},
 	{
-		value: "40–50%",
+		value: "10",
 		claim:
-			"of exposed runs saw ten search agents endorse fabricated brands. They verified suspicious evidence in about 2% of cases.",
+			"search agents endorsed fabricated brands in 40–50% of exposed runs, and verified suspicious evidence in about 2% of cases.",
 		source: "72,000-page benchmark",
 		slug: "ai-search-fact-checking",
 		group: "How engines behave",
 	},
 	{
-		value: "weeks",
-		claim: "Presence builds over weeks rather than days, and the content AI cites is typically months old.",
+		value: "8 months",
+		claim:
+			"is the median age of the pages ChatGPT cites, and presence in AI answers builds over weeks rather than days.",
 		source: "Three 2026 datasets",
 		slug: "how-long-to-get-cited-by-ai",
 		group: "How engines behave",
@@ -123,32 +124,33 @@ export const stats: Stat[] = [
 		group: "Whether tactics work",
 	},
 	{
-		value: "quality falls",
+		value: "5",
 		claim:
-			"Simulations of a market where everyone optimizes for citation: fixed tactics lose their edge as adoption rises, and rankings drift away from quality.",
+			"rounds of simulated competition, with everyone optimizing for citation, left page quality and answer quality below where they started.",
 		source: "CMU and others",
 		slug: "citation-wars",
 		group: "Whether tactics work",
 	},
 	{
-		value: "edge decays",
-		claim: "Two simulations of GEO under competition find fixed tactics stop paying as adoption rises.",
+		value: "80%",
+		claim:
+			"adoption by competitors leaves fixed GEO tactics scoring worse than no optimization at all, in one of two simulations.",
 		source: "Two simulations",
 		slug: "do-geo-tactics-stop-working",
 		group: "Whether tactics work",
 	},
 	{
-		value: "54% / 0.2%",
+		value: "54%",
 		claim:
-			"AI-referred retail visitors convert 54% better than everyone else, yet AI accounts for only 0.2% of all sessions.",
+			"better conversion from AI-referred retail visitors than from everyone else, yet AI accounts for only 0.2% of all sessions.",
 		source: "Adobe and Contentsquare",
 		slug: "ai-referral-traffic-conversion",
 		group: "Whether tactics work",
 	},
 	{
-		value: "12–93%",
+		value: "37.9%",
 		claim:
-			"Published estimates of the overlap between top-10 rankings and AI citations. The spread shows that rank is neither necessary nor sufficient.",
+			"of pages cited in AI Overviews ranked in Google's top 10 in one March 2026 study. Published estimates run from 12% to 93%, which shows that rank is neither necessary nor sufficient.",
 		source: "Published estimates",
 		slug: "rankings-and-ai-citations",
 		group: "What the numbers mean",
@@ -162,32 +164,32 @@ export const stats: Stat[] = [
 		group: "What the numbers mean",
 	},
 	{
-		value: "9–54%",
+		value: "13.3%",
 		claim:
-			"Published rates for how many sites block AI crawlers. The spread is which slice of the web was sampled and whether the bot does search or training.",
+			"of top sites with a robots.txt block at least one AI search crawler. Published rates run from 9% to 54%, depending on which slice of the web was sampled and whether the bot does search or training.",
 		source: "Published blocking rates",
 		slug: "how-many-websites-block-ai-crawlers",
 		group: "What the numbers mean",
 	},
 	{
-		value: "~1/3",
+		value: "1/3",
 		claim: "The last prompt in an AI conversation carries about a third of everything the user said.",
 		source: "Multi-turn research",
 		slug: "multi-turn-ai-search",
 		group: "What the numbers mean",
 	},
 	{
-		value: "same brand, two scores",
+		value: "30.9 points",
 		claim:
-			"Two tools can report very different AI visibility for the same brand in the same week without either being broken. The prompt set and its weights define what the score measures.",
+			"swing in an AI visibility score from prompt weighting alone, in one worked example. Two tools can report very different scores for the same brand in the same week without either being broken.",
 		source: "Preprint",
 		slug: "why-ai-visibility-scores-differ",
 		group: "What the numbers mean",
 	},
 	{
-		value: "churn",
+		value: "50%+",
 		claim:
-			"The domains AI cites change more between runs than most measurement assumes, and how much depends on what you ask.",
+			"of the domains AI cites change from one day to the next on most prompts, over 42 days of daily tracking. How much depends on what you ask.",
 		source: "AI answer tracking data",
 		slug: "citation-volatility",
 		group: "What the numbers mean",

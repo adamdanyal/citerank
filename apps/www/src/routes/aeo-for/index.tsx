@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Closing } from "@/components/citerank/v2/closing";
 import { LinkCards, PANEL, PANEL_PAD, Page, PanelHead } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
-import { PROSE, WithPrompts } from "@/components/pillar";
+import { PROSE, TrackingActions } from "@/components/pillar";
 import { aeoHeadline, aeoVerticals } from "@/data/aeo-verticals";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -32,12 +32,8 @@ export const Route = createFileRoute("/aeo-for/")({
 	component: AeoForIndex,
 });
 
-const WHY = [
-	"Answer engine optimization is the practice of getting a brand named, cited, and described accurately when someone asks an AI engine a question. The mechanics are consistent across industries: engines retrieve a handful of sources, weigh them for authority and specificity, and synthesise an answer that names a few options. What changes from one industry to the next is which sources carry weight and which questions decide the outcome.",
-	"In regulated categories like healthcare, financial services, and insurance, engines lean hard on credentials, accreditation, and verifiable third-party sources, because the cost of a wrong answer is high. In software and developer tools, documentation quality dominates. A tool whose docs are thorough and crawlable gets recommended over an equally capable one whose docs are thin or client-rendered. In local and travel categories, independent guides and review platforms outweigh anything a brand publishes about itself.",
-	"The shape of the deciding question changes too. SaaS buyers ask for comparisons and alternatives. Industrial buyers ask by specification. Donors ask about efficiency, patients ask about symptoms, and travellers ask for itineraries rather than for hotels. Tracking the prompts that precede a decision in your category, rather than a generic set of brand queries, is what makes AI visibility measurable instead of anecdotal.",
-	"Each guide above covers the prompts worth tracking in that industry, what to publish so engines have something specific to cite, and where the category's answers are currently sourced from.",
-];
+const WHY =
+	"AI engines work the same way in every industry, but what they trust differs: credentials in healthcare, finance and insurance, documentation in software, and independent guides and reviews in local and travel. The questions that decide a purchase differ too, so track the ones buyers in your industry actually ask.";
 
 function AeoForIndex() {
 	return (
@@ -45,7 +41,9 @@ function AeoForIndex() {
 			<PageHead
 				title="Answer engine optimization, by industry"
 				lede="The fundamentals of AEO are the same everywhere, but the prompts that matter and the stakes are not. Pick your industry."
-			/>
+			>
+				<TrackingActions from="marketing-aeo-for-hero" />
+			</PageHead>
 
 			<section className={`${PANEL} ${PANEL_PAD}`}>
 				<Page>
@@ -54,8 +52,8 @@ function AeoForIndex() {
 						className="lg:grid-cols-2"
 						items={aeoVerticals.map((vertical) => ({
 							href: `/aeo-for/${vertical.slug}`,
-							title: aeoHeadline(vertical),
-							body: <WithPrompts text={vertical.short} />,
+							title: vertical.industry,
+							body: vertical.short,
 						}))}
 					/>
 				</Page>
@@ -66,13 +64,7 @@ function AeoForIndex() {
 					<div className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
 						<PanelHead title="Why AEO differs by industry" />
 					</div>
-					<div className="max-w-[60ch] space-y-4 lg:col-span-8">
-						{WHY.map((paragraph) => (
-							<p key={paragraph.slice(0, 32)} className={PROSE}>
-								{paragraph}
-							</p>
-						))}
-					</div>
+					<p className={`${PROSE} max-w-[60ch] lg:col-span-8`}>{WHY}</p>
 				</Page>
 			</section>
 

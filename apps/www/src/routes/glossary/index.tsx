@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Closing } from "@/components/citerank/v2/closing";
 import { BODY, LEAD, LIST_CARD, PANEL, PANEL_PAD, Page, PanelHead, SMALL } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
-import { ROW, ROW_LINK, ROW_TITLE } from "@/components/pillar";
+import { ROW, ROW_LINK, ROW_TITLE, TrackingActions } from "@/components/pillar";
 import { GLOSSARY_GROUPS, glossaryTerms } from "@/data/glossary";
 import { breadcrumbJsonLd, canonicalUrl, definedTermSetJsonLd, ogMeta } from "@/lib/seo";
 
@@ -43,7 +43,9 @@ function GlossaryIndex() {
 			<PageHead
 				title="The AI search glossary"
 				lede="The vocabulary of AI search and answer engine optimization, defined in plain English and cross-linked. Start anywhere."
-			/>
+			>
+				<TrackingActions from="marketing-page-cta" />
+			</PageHead>
 
 			{GLOSSARY_GROUPS.map((group) => {
 				const terms = glossaryTerms.filter((t) => t.group === group);

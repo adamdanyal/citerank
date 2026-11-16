@@ -4,6 +4,8 @@ export interface AeoVertical {
 	slug: string;
 	/** Display noun used after "AEO for", e.g. "agencies". */
 	audience: string;
+	/** The industry's name alone, as the hub's cards show it. */
+	industry: string;
 	/** The cloud tier the pricing table points this audience at. */
 	plan: PlanKey;
 	/** Audiences likely to run Docker themselves get self-hosting pitched alongside the cloud. */
@@ -25,6 +27,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "agencies",
 		audience: "agencies",
+		industry: "Agencies",
 		plan: "business",
 		technical: true,
 		headline: "AI visibility software for agencies",
@@ -37,7 +40,11 @@ export const aeoVerticals: AeoVertical[] = [
 			"Agencies tend to feel the shift to AI search first, because clients start asking why a competitor shows up in ChatGPT and they do not. AEO turns into a service line: measure each client's presence across the answer engines, find the content gaps, and show the work.",
 			"The hard part is doing that across many clients without paying per seat for each one. Every CiteRank.com plan includes unlimited seats, so bringing in more account managers, writers, and analysts never changes the bill.",
 		],
-		examplePrompts: ["best [client category] companies", "[client] vs [competitor]", "is [client] worth it"],
+		examplePrompts: [
+			"What are the best accounting firms for startups?",
+			"Which meal kit delivery is the best value?",
+			"Is a standing desk worth it?",
+		],
 		plays: [
 			{
 				name: "Run a prompt set per client",
@@ -73,22 +80,23 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "saas",
 		audience: "SaaS companies",
+		industry: "B2B SaaS",
 		plan: "pro",
 		technical: true,
 		headline: "AEO for B2B SaaS",
 		metaTitle: "AEO for B2B SaaS: Tools and Tactics for Software Buyers · CiteRank.com",
 		metaDescription:
 			"How B2B SaaS teams win the 'best [category] software' and 'X vs Y' answers where buyers now build their shortlists, and which AEO tools fit a software company.",
-		short: "Win the 'best [category] software' and 'X vs Y' answers where buyers now build their shortlists.",
+		short: "Get named when buyers ask AI for the best software or to compare tools.",
 		intro: [
 			"SaaS buyers increasingly ask an AI engine to shortlist tools before they ever reach a vendor site. Best project management software, Notion vs Asana, alternatives to a given tool. If the model does not name you, you are out of the consideration set before the demo.",
 			"These comparison and alternatives prompts are high intent and winnable. The same content that ranks a comparison page can earn the citation in an AI answer, as long as it is clear, current, and backed by sources the model trusts.",
 		],
 		examplePrompts: [
-			"best [category] software",
-			"[your tool] vs [competitor]",
-			"alternatives to [competitor]",
-			"is [your tool] good for [use case]",
+			"What is the best project management software?",
+			"Notion or Asana: which is better for a small team?",
+			"What are the best alternatives to Asana?",
+			"Is Notion good for a team wiki?",
 		],
 		plays: [
 			{
@@ -129,6 +137,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "ecommerce",
 		audience: "e-commerce brands",
+		industry: "E-commerce",
 		plan: "basic",
 		headline: "AEO for e-commerce",
 		short: "Make sure AI shopping answers and buying-guide queries name your products as well as your competitors'.",
@@ -136,7 +145,11 @@ export const aeoVerticals: AeoVertical[] = [
 			"Shoppers ask AI engines to compare products and recommend the best option, and some engines now have dedicated shopping features. Best running shoes for flat feet, cheapest option under a hundred dollars. The answer usually names a few brands and skips the rest.",
 			"Product and category content, clean structured data, and reviews on trusted sources are what get your catalog into those answers. The work overlaps with SEO, but the target is the recommendation rather than the ranking.",
 		],
-		examplePrompts: ["best [product] for [need]", "[product] under [price]", "[your brand] vs [competitor] [product]"],
+		examplePrompts: [
+			"What are the best running shoes for flat feet?",
+			"What are good running shoes under $100?",
+			"Which running shoe brand lasts the longest?",
+		],
 		plays: [
 			{
 				name: "Track buying-guide prompts",
@@ -172,6 +185,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "b2b",
 		audience: "B2B companies",
+		industry: "B2B",
 		plan: "pro",
 		short: "Show up when buyers research categories, vendors, and you, across long and considered purchases.",
 		intro: [
@@ -179,9 +193,9 @@ export const aeoVerticals: AeoVertical[] = [
 			"Because the cycle is long and the deals are large, a single AI answer that omits or misframes you carries outsized cost. The fix is durable authority: clear content, trusted mentions, and accurate descriptions across the engines your buyers use.",
 		],
 		examplePrompts: [
-			"what is [category] software",
-			"top [category] vendors for enterprise",
-			"is [your brand] enterprise-ready",
+			"What is expense management software?",
+			"Who are the top expense tools for large companies?",
+			"Which expense tools can handle a large company?",
 		],
 		plays: [
 			{
@@ -218,6 +232,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "startups",
 		audience: "startups",
+		industry: "Startups",
 		plan: "basic",
 		technical: true,
 		headline: "Startup SEO and AI search visibility",
@@ -229,7 +244,11 @@ export const aeoVerticals: AeoVertical[] = [
 			"A new brand starts out invisible to AI engines, because there is little for the models to have learned. The job is to build a credible footprint quickly: clear content, early reviews, and mentions on sources the models trust.",
 			`Budgets are tight, and most tools in this space are priced for larger companies. CiteRank.com's ${PLANS.basic.name} plan tracks ${PLANS.basic.maxPrompts} prompts on ${PLANS.basic.platformPicks} AI apps for $${PLANS.basic.monthlyPriceUsd}/mo, so you can start measuring on day one and only pay more when you track more.`,
 		],
-		examplePrompts: ["best [new category] tools", "alternatives to [incumbent]", "what is [your brand]"],
+		examplePrompts: [
+			"What are the best AI meeting note tools?",
+			"What are cheaper alternatives to the big CRMs?",
+			"Which new startups make AI meeting notes?",
+		],
 		plays: [
 			{
 				name: "Define a tight prompt set",
@@ -264,6 +283,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "enterprise",
 		audience: "enterprises",
+		industry: "Enterprise",
 		plan: "business",
 		technical: true,
 		headline: "Enterprise AI visibility platforms",
@@ -275,7 +295,11 @@ export const aeoVerticals: AeoVertical[] = [
 			"Large brands have the most to lose when an AI engine describes them wrongly, and the most scrutiny over the numbers that reach leadership. A visibility score has to hold up when someone asks which answers it came from and how it was counted.",
 			"CiteRank.com is built for that scrutiny. It keeps every AI answer in full, so each number traces back to the words an AI wrote, and documents how each metric is computed, which matters when the number ends up in a board report.",
 		],
-		examplePrompts: ["is [brand] trustworthy", "[brand] vs [competitor]", "best [category] for enterprise"],
+		examplePrompts: [
+			"Which HR platform do large companies trust most?",
+			"How do the top enterprise HR platforms compare?",
+			"What is the best HR software for a global company?",
+		],
 		plays: [
 			{
 				name: "Track each brand separately",
@@ -311,13 +335,18 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "healthcare",
 		audience: "healthcare brands",
+		industry: "Healthcare",
 		plan: "basic",
 		short: "Monitor and correct how AI engines describe your healthcare brand, where accuracy is not optional.",
 		intro: [
 			"Health topics are exactly where AI engines are most cautious, and where errors do the most damage. An inaccurate description of a provider, product, or service carries real risk.",
 			"Accuracy and monitoring both matter here. Authoritative, well-sourced content shapes what the models say, and tracking the same prompts every day lets you see when an answer about your services goes wrong.",
 		],
-		examplePrompts: ["is [treatment] safe", "best [specialty] near me", "what does [brand] treat"],
+		examplePrompts: [
+			"Is laser eye surgery safe?",
+			"Who is the best dermatologist near me?",
+			"What does a physiotherapy clinic treat?",
+		],
 		plays: [
 			{
 				name: "Publish authoritative content",
@@ -353,6 +382,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "financial-services",
 		audience: "financial services",
+		industry: "Financial services",
 		plan: "pro",
 		short:
 			"Track how AI engines describe your financial brand, with the accuracy and record-keeping the sector demands.",
@@ -360,7 +390,11 @@ export const aeoVerticals: AeoVertical[] = [
 			"Finance is another area where engines tread carefully, and where a wrong answer about rates, products, or eligibility carries compliance weight. Buyers ask AI engines for recommendations and comparisons all the same.",
 			"Authoritative content earns the citation, and a full, dated record of what each engine said about your products and terms gives your compliance team something concrete to review when a claim is questioned.",
 		],
-		examplePrompts: ["best [product] for [need]", "is [brand] legit", "[brand] vs [competitor] fees"],
+		examplePrompts: [
+			"What is the best savings account for a first home?",
+			"Are online-only banks safe?",
+			"Which online bank has the lowest fees?",
+		],
 		plays: [
 			{
 				name: "Publish clear, accurate product content",
@@ -396,18 +430,19 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "law-firms",
 		audience: "law firms",
+		industry: "Law firms",
 		plan: "basic",
 		short:
-			"Win the 'best [practice area] lawyer near me' answers, where the AI response now stands between a potential client and a consultation.",
+			"Get named when someone asks AI for the best lawyer near them, since that answer now stands between a potential client and a consultation.",
 		intro: [
 			"Legal intent has always been urgent and local. Someone injured last week does not browse ten firm websites; they ask one question and act on the answer. That question now goes to ChatGPT or an AI Overview as often as to a search box, and the response names two or three firms.",
 			"Legal queries also sit squarely in what Google calls Your Money or Your Life territory, which means engines weight credentials, jurisdiction, and verifiable authorship harder here than almost anywhere else. That cuts both ways: the bar is higher, but a firm that publishes attributed, jurisdiction-specific answers is far more citable than a competitor running generic practice-area boilerplate.",
 		],
 		examplePrompts: [
-			"best [practice area] lawyer in [city]",
-			"do I have a case for [situation]",
-			"how much does a [practice area] attorney cost",
-			"[firm name] reviews",
+			"Who is the best personal injury lawyer in Chicago?",
+			"Do I have a case if I slipped in a shop?",
+			"How much does a divorce lawyer cost?",
+			"Which law firms near me have the best reviews?",
 		],
 		plays: [
 			{
@@ -449,6 +484,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "local-business",
 		audience: "local businesses",
+		industry: "Local businesses",
 		plan: "basic",
 		short:
 			"Show up when someone asks an AI assistant for the best option near them, across every location you operate.",
@@ -457,10 +493,10 @@ export const aeoVerticals: AeoVertical[] = [
 			"For multi-location operators the problem compounds: visibility is one number per city, and the answer in Austin can look nothing like the answer in Denver. A single national ranking hides exactly the variance you need to act on.",
 		],
 		examplePrompts: [
-			"best [service] near me",
-			"who should I call for [problem] in [city]",
-			"is [business name] any good",
-			"[service] open now in [neighborhood]",
+			"Who is the best plumber near me?",
+			"Who should I call for a burst pipe in Denver?",
+			"Is the plumber on Main Street any good?",
+			"Which plumbers are open now near downtown?",
 		],
 		plays: [
 			{
@@ -497,6 +533,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "real-estate",
 		audience: "real estate companies",
+		industry: "Real estate",
 		plan: "basic",
 		short:
 			"Be the brokerage an AI assistant names when someone asks how to buy, sell, or find an agent in your market.",
@@ -505,10 +542,10 @@ export const aeoVerticals: AeoVertical[] = [
 			"Real estate is unusual in that the big portals dominate transactional search but have little to say about local specifics. That is where a brokerage with genuine market knowledge can get cited: neighbourhood-level analysis, real timelines, and honest fee explanations are exactly what a general-purpose portal page cannot provide.",
 		],
 		examplePrompts: [
-			"best real estate agent in [city]",
-			"is now a good time to buy in [neighborhood]",
-			"how much do realtors charge in [state]",
-			"what are homes selling for in [area]",
+			"Who is the best real estate agent in Austin?",
+			"Is now a good time to buy in East Austin?",
+			"How much do realtors charge in Texas?",
+			"What are homes selling for in Austin?",
 		],
 		plays: [
 			{
@@ -545,6 +582,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "education",
 		audience: "education institutions",
+		industry: "Education",
 		plan: "pro",
 		short:
 			"Reach prospective students at the point where they now start: asking an AI assistant which programme is worth it.",
@@ -553,10 +591,10 @@ export const aeoVerticals: AeoVertical[] = [
 			"Education also carries an unusual trust burden. Engines are cautious about outcome claims, so they favour sources that publish verifiable specifics (accreditation, real completion figures, actual cost of attendance) over marketing language. Institutions that publish that data plainly are far more citable than those that do not.",
 		],
 		examplePrompts: [
-			"best [subject] programs",
-			"is a [credential] worth it",
-			"[institution] vs [institution]",
-			"what can you do with a degree in [subject]",
+			"What are the best data science programs?",
+			"Is an MBA worth it?",
+			"State school or private college for nursing?",
+			"What can you do with a degree in psychology?",
 		],
 		plays: [
 			{
@@ -593,6 +631,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "travel-hospitality",
 		audience: "travel and hospitality brands",
+		industry: "Travel and hospitality",
 		plan: "basic",
 		short:
 			"Get named in the itineraries and recommendations AI assistants now build for travellers before they ever reach a booking site.",
@@ -601,10 +640,10 @@ export const aeoVerticals: AeoVertical[] = [
 			"The competitive picture is unusual too: the sources engines cite for travel skew heavily toward independent guides, editorial reviews, and forums rather than brand sites. Hotel and destination brands that only publish their own marketing are largely absent from the material engines draw on.",
 		],
 		examplePrompts: [
-			"best hotels in [city] for [traveller type]",
-			"[destination] itinerary for [duration]",
-			"where to stay in [city]",
-			"is [property] worth the price",
+			"What are the best hotels in Lisbon for families?",
+			"Can you plan a five-day trip to Japan?",
+			"Where should I stay in Rome?",
+			"Is a boutique hotel worth the price?",
 		],
 		plays: [
 			{
@@ -641,6 +680,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "manufacturing",
 		audience: "manufacturers",
+		industry: "Manufacturing",
 		plan: "basic",
 		short: "Be the supplier an AI assistant names when an engineer or buyer asks who makes the part they need.",
 		intro: [
@@ -648,10 +688,10 @@ export const aeoVerticals: AeoVertical[] = [
 			"This favours manufacturers who publish real technical detail. Distributors and marketplaces dominate the transactional queries, but they cannot answer a specification question the way a manufacturer's own documentation can. Published, crawlable specs are the asset here, and most manufacturers keep theirs behind a gated PDF.",
 		],
 		examplePrompts: [
-			"who manufactures [component] with [specification]",
-			"[material] supplier for [application]",
-			"alternatives to [competitor part number]",
-			"what certification is needed for [application]",
+			"Who makes stainless steel valves for high pressure?",
+			"Who supplies aluminum sheet for aircraft parts?",
+			"What can replace a discontinued bearing?",
+			"What certification do medical device parts need?",
 		],
 		plays: [
 			{
@@ -688,6 +728,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "insurance",
 		audience: "insurance companies",
+		industry: "Insurance",
 		plan: "pro",
 		short: "Be named accurately when someone asks an AI assistant which policy to buy and what it covers.",
 		intro: [
@@ -695,10 +736,10 @@ export const aeoVerticals: AeoVertical[] = [
 			"The stakes on accuracy are unusually high. An engine that misstates your coverage terms creates a mismatch between what a customer expects and what the policy says, and that shows up later as a complaint or a lapsed policy. Monitoring how engines describe your products matters at least as much as whether they mention them.",
 		],
 		examplePrompts: [
-			"best [type] insurance for [situation]",
-			"does [insurance type] cover [scenario]",
-			"[carrier] vs [carrier]",
-			"how much is [type] insurance per month",
+			"What is the best car insurance for new drivers?",
+			"Does home insurance cover flood damage?",
+			"Which car insurer handles claims best?",
+			"How much is renters insurance per month?",
 		],
 		plays: [
 			{
@@ -735,6 +776,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "automotive",
 		audience: "automotive brands",
+		industry: "Automotive",
 		plan: "pro",
 		short:
 			"Get named in the comparisons AI assistants build when someone is deciding which vehicle or service to choose.",
@@ -743,10 +785,10 @@ export const aeoVerticals: AeoVertical[] = [
 			"Automotive content is also unusually well covered by independent reviewers, which means engines have plenty of non-brand sources to draw on. A manufacturer or dealer group that only publishes spec pages is competing against a deep body of editorial review content and generally losing.",
 		],
 		examplePrompts: [
-			"best [vehicle type] for [use case]",
-			"[model] vs [model]",
-			"is [model] reliable",
-			"how much does it cost to own a [model]",
+			"What is the best SUV for a family of five?",
+			"Which hybrid SUV is better for long drives?",
+			"Are electric cars reliable?",
+			"How much does it cost to own an electric car?",
 		],
 		plays: [
 			{
@@ -783,6 +825,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "nonprofits",
 		audience: "nonprofits",
+		industry: "Nonprofits",
 		plan: "basic",
 		short:
 			"Be the organisation an AI assistant names when someone asks where to donate or who is doing the work in your cause area.",
@@ -791,10 +834,10 @@ export const aeoVerticals: AeoVertical[] = [
 			"Nonprofits have a structural advantage here that many do not use: engines weight transparency and third-party verification heavily, and nonprofits already produce audited financials, impact reports, and charity-evaluator ratings. Published as crawlable content rather than PDF downloads, that material is exactly what an engine wants to cite.",
 		],
 		examplePrompts: [
-			"best charities for [cause]",
-			"is [organization] legitimate",
-			"where should I donate for [issue]",
-			"how much of my donation goes to [cause]",
+			"What are the best charities for clean water?",
+			"How can I tell if a charity is legitimate?",
+			"Where should I donate to help homeless people?",
+			"How much of my donation goes to the cause?",
 		],
 		plays: [
 			{
@@ -831,6 +874,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "cybersecurity",
 		audience: "cybersecurity companies",
+		industry: "Cybersecurity",
 		plan: "pro",
 		technical: true,
 		short:
@@ -840,10 +884,10 @@ export const aeoVerticals: AeoVertical[] = [
 			"Security is also a category where engines lean hard on technical credibility. Vendor marketing about being AI-powered and next-generation is functionally interchangeable and gets skipped; published research, detection methodology, and honest architecture documentation are what get quoted. Firms with a real research output have an advantage they usually under-exploit.",
 		],
 		examplePrompts: [
-			"best [security category] tools",
-			"[vendor] vs [vendor]",
-			"how to meet [framework] compliance",
-			"what is the difference between [technology] and [technology]",
+			"What are the best endpoint security tools?",
+			"Which email security tool is best for 500 staff?",
+			"How do I meet SOC 2 compliance?",
+			"What is the difference between EDR and XDR?",
 		],
 		plays: [
 			{
@@ -880,6 +924,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "recruiting",
 		audience: "recruiting and HR companies",
+		industry: "Recruiting and HR",
 		plan: "basic",
 		short: "Be named when employers ask an AI assistant which staffing partner or HR platform to use.",
 		intro: [
@@ -887,10 +932,10 @@ export const aeoVerticals: AeoVertical[] = [
 			"The category is crowded and largely undifferentiated in how it describes itself, which is an opportunity. Specificity about roles, industries, and geographies is what makes an agency citable, and most publish the same claims about talent and culture as everyone else.",
 		],
 		examplePrompts: [
-			"best recruiting agency for [role or industry]",
-			"[ATS] vs [ATS]",
-			"how much do recruiters charge",
-			"best applicant tracking system for [company size]",
+			"What is the best recruiting agency for engineers?",
+			"Which applicant tracking system is easiest to use?",
+			"How much do recruiters charge?",
+			"What is the best hiring software for a small company?",
 		],
 		plays: [
 			{
@@ -927,6 +972,7 @@ export const aeoVerticals: AeoVertical[] = [
 	{
 		slug: "dev-tools",
 		audience: "developer tools companies",
+		industry: "Developer tools",
 		plan: "pro",
 		technical: true,
 		short:
@@ -936,10 +982,10 @@ export const aeoVerticals: AeoVertical[] = [
 			"This is the one category where documentation quality is the whole game. Assistants are trained and grounded on public docs, examples, and the discussions around them. A tool with clear, complete, crawlable documentation gets recommended; one whose docs are behind a login, rendered client-side, or thin on runnable examples effectively does not exist to the model.",
 		],
 		examplePrompts: [
-			"best library for [task] in [language]",
-			"how do I [task] with [framework]",
-			"[tool] vs [tool]",
-			"alternatives to [tool]",
+			"What is the best Python library for making PDFs?",
+			"How do I add login to a Next.js app?",
+			"Should I use Postgres or SQLite for a small app?",
+			"What are good alternatives to Postgres for analytics?",
 		],
 		plays: [
 			{
@@ -983,7 +1029,7 @@ export const aeoVerticals: AeoVertical[] = [
 const MINOR_WORDS = new Set(["a", "an", "and", "for", "in", "of", "on", "or", "the", "to", "vs"]);
 
 /** Capitalises each word and each hyphenated part, leaving minor words and existing capitals (SaaS, HR) alone. */
-/** The page's title, as its <h1> and wherever the page is listed. */
+/** The page's title, as its <h1> and in structured data. */
 export function aeoHeadline(v: AeoVertical): string {
 	return v.headline ?? `AEO for ${v.audience}`;
 }

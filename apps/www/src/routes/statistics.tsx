@@ -14,7 +14,7 @@ import {
 	SMALL,
 } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
-import { CiteRankCta, ROW, ROW_LINK, ROW_TITLE } from "@/components/pillar";
+import { CiteRankCta, ROW, TrackingActions } from "@/components/pillar";
 import { GROUP_BLURBS, STAT_GROUPS, type Stat, type StatGroup, stats, supportingPosts } from "@/data/statistics";
 import { breadcrumbJsonLd, canonicalUrl, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -33,7 +33,6 @@ interface StatWithPost extends Stat {
 interface SupportingPost {
 	url: string;
 	title: string;
-	description: string;
 	group: StatGroup;
 }
 
@@ -49,7 +48,7 @@ const loadStats = createServerFn({ method: "GET" }).handler(
 		const supporting = supportingPosts.flatMap(({ slug, group }) => {
 			const page = pages.get(slug);
 			if (!page) return [];
-			return [{ url: page.url, title: page.data.title, description: page.data.description ?? "", group }];
+			return [{ url: page.url, title: page.data.title, group }];
 		});
 		return { resolved, supporting };
 	},
@@ -88,7 +87,9 @@ function StatisticsPage() {
 	const { resolved, supporting } = Route.useLoaderData();
 	return (
 		<PageShell>
-			<PageHead title="AI search statistics" lede={lead} />
+			<PageHead title="AI search statistics" lede={lead}>
+				<TrackingActions from="marketing-page-cta" />
+			</PageHead>
 
 			{STAT_GROUPS.map((group) => {
 				const inGroup = resolved.filter((stat) => stat.group === group);
@@ -115,17 +116,19 @@ function StatisticsPage() {
 										</div>
 									</li>
 								))}
-								{extras.map((post) => (
-									<li key={post.url} className={ROW}>
-										<a href={post.url} className={`${ROW_LINK} ${ROW_GRID}`}>
-											<span className={`${ROW_TITLE} block lg:col-span-4`}>{post.title}</span>
-											<span className={`${BODY} block max-w-[64ch] text-zinc-600 lg:col-span-8`}>
-												{post.description}
-											</span>
-										</a>
-									</li>
-								))}
 							</ul>
+							{extras.length > 0 ? (
+								<ul className={`${SMALL} mt-6 space-y-1.5 text-zinc-600`}>
+									{extras.map((post) => (
+										<li key={post.url}>
+											Read more:{" "}
+											<a href={post.url} className={`${LINK} text-zinc-700 hover:text-ink`}>
+												{post.title}
+											</a>
+										</li>
+									))}
+								</ul>
+							) : null}
 						</Page>
 					</section>
 				);

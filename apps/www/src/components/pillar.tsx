@@ -1,7 +1,14 @@
+import type { ReferralSource } from "@workspace/config/referrals";
+import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import type { ReactNode } from "react";
 import type { Pillar } from "@/data/pillars";
+import { externalRel } from "@/lib/external-link";
+import { trackEvent } from "@/lib/posthog";
+import { DEMO_BRAND_PATH } from "./citerank/product/data";
 import { Closing } from "./citerank/v2/closing";
 import {
+	ACTION,
+	ACTION_QUIET,
 	BODY,
 	CARD,
 	CARD_LIFT,
@@ -117,46 +124,40 @@ export function CiteRankCta() {
 	return <Closing from="marketing-page-cta" />;
 }
 
-/** Renders each match of `pattern` (its first group) with `render`, keyed by where it sits in the text. */
-function replaceMatches(text: string, pattern: RegExp, render: (match: string, key: number) => ReactNode) {
-	const out: ReactNode[] = [];
-	let last = 0;
-	for (const m of text.matchAll(pattern)) {
-		out.push(text.slice(last, m.index), render(m[1], m.index));
-		last = m.index + m[0].length;
-	}
-	out.push(text.slice(last));
-	return out;
-}
-
-/** Bracketed slots like [category] stand for the reader's own names, so they get their own colour. */
-export function PromptText({ text }: { text: string }) {
-	return replaceMatches(text, /(\[[^\]]+\])/g, (slot, key) => (
-		<span key={key} className="font-medium text-blue-600">
-			{slot}
-		</span>
-	));
-}
-
-/** A prompt quoted inside running copy, set like inline code so it reads as something typed into an engine. */
-function InlinePrompt({ text }: { text: string }) {
+/** "Start tracking", and with `demo` the live demo beside it, for under a page head's lede. */
+export function TrackingActions({ from, demo = false }: { from: ReferralSource; demo?: boolean }) {
+	const signupUrl = cloudSignupUrl(from);
+	const demoUrl = demoSiteUrl(from, DEMO_BRAND_PATH);
 	return (
-		<code className="rounded-md bg-zinc-100 box-decoration-clone px-1.5 py-0.5 font-mono text-[0.85em] text-zinc-900 ring-1 ring-zinc-200/80 sm:whitespace-nowrap">
-			<PromptText text={text} />
-		</code>
+		<div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+			<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={ACTION}>
+				Start tracking
+			</a>
+			{demo ? (
+				<a
+					href={demoUrl}
+					target="_blank"
+					rel={externalRel(demoUrl)}
+					onClick={() => trackEvent("demo_open", { from })}
+					className={ACTION_QUIET}
+				>
+					Try the live demo
+				</a>
+			) : null}
+		</div>
 	);
-}
-
-/** Copy can quote prompts in single quotes; those render as inline prompts. Apostrophes are left alone. */
-export function WithPrompts({ text }: { text: string }) {
-	return replaceMatches(text, /(?<=^|\s)'([^']+)'(?=[\s.,;]|$)/g, (prompt, key) => (
-		<InlinePrompt key={key} text={prompt} />
-	));
 }
 
 export function PillarBody({ pillar }: { pillar: Pillar }) {
 	return (
 		<>
+			{/* The route's PageHead ends just above; this padding matches the gap it leaves before its own children. */}
+			<div className={`${PANEL} pt-6 pb-3 sm:pt-5 sm:pb-4`}>
+				<Page>
+					<TrackingActions from="marketing-page-cta" demo />
+				</Page>
+			</div>
+
 			<section className={`${PANEL} ${PANEL_PAD}`}>
 				<Page className={DOC}>
 					<div className={`${DOC_TEXT} lg:row-start-1`}>

@@ -1,9 +1,10 @@
 export interface AiSearchEngine {
 	slug: string;
 	name: string;
-	vendor: string;
-	/** One-sentence summary, used on the index, in meta, and in JSON-LD. */
+	/** One-sentence summary: the page's lede, its meta description and its JSON-LD. */
 	short: string;
+	/** One short line for the index. */
+	line: string;
 	/** What it is and how it chooses sources, one entry per paragraph. */
 	intro: string[];
 	/** Steps to improve your odds of appearing. Emitted as HowTo JSON-LD. */
@@ -17,12 +18,11 @@ export const aiSearchEngines: AiSearchEngine[] = [
 	{
 		slug: "chatgpt",
 		name: "ChatGPT",
-		vendor: "OpenAI",
 		short:
 			"Get your brand mentioned and cited in OpenAI's ChatGPT, across both its base model and its live web search.",
+		line: "Get named and cited in ChatGPT.",
 		intro: [
-			"ChatGPT answers from two places: what it learned during training, and what it fetches from the web when it browses. The base model reflects how your brand was described across the internet up to its training cutoff. ChatGPT Search, the browsing path, pulls in current pages and cites them.",
-			"Each path needs a different fix. A brand can be missing from the base model yet show up once ChatGPT searches. Earning durable mentions on trusted sources shapes the trained view, while clear, current, well-structured pages help you get retrieved and cited live.",
+			"ChatGPT answers from what it learned in training and from pages it finds on the web, so you need both: mentions on sites it trusts, and clear, current pages of your own.",
 		],
 		steps: [
 			{
@@ -34,7 +34,7 @@ export const aiSearchEngines: AiSearchEngine[] = [
 				text: "Coverage, reviews, and references on reputable third-party sites shape how the trained model describes your brand. Independent corroboration matters more than your own claims.",
 			},
 			{
-				name: "Structure pages for extraction",
+				name: "Put short answers near the top",
 				text: "Use descriptive headings, short direct answers near the top, and schema markup so the key facts are easy to parse and quote.",
 			},
 			{
@@ -53,11 +53,10 @@ export const aiSearchEngines: AiSearchEngine[] = [
 	{
 		slug: "perplexity",
 		name: "Perplexity",
-		vendor: "Perplexity AI",
 		short: "Become a cited source in Perplexity, the AI search engine that shows its citations on every answer.",
+		line: "Get cited by the engine that shows its sources.",
 		intro: [
-			"Perplexity is a retrieval-augmented engine: it searches the web for each query, then writes an answer grounded in what it found and links the sources. Because it shows its citations openly, it is the clearest testbed for measuring whether your AEO work is paying off.",
-			"It selects sources on a few factors: relevance to the exact question, how easy the answer is to extract from your page, how trustworthy the domain looks, and how current the content is. Do well on those and you get cited.",
+			"Perplexity searches the web for every question and links the pages it used, which makes it the easiest place to see whether you are getting cited.",
 		],
 		steps: [
 			{
@@ -65,7 +64,7 @@ export const aiSearchEngines: AiSearchEngine[] = [
 				text: "Perplexity rewards pages that address a precise query head-on. Match the questions your buyers ask and answer them in the first paragraph.",
 			},
 			{
-				name: "Make the answer easy to extract",
+				name: "Lead with the answer",
 				text: "Lead with the direct answer, then expand. Clear headings, short paragraphs, and lists give the engine a clean span to quote.",
 			},
 			{
@@ -88,11 +87,10 @@ export const aiSearchEngines: AiSearchEngine[] = [
 	{
 		slug: "google-ai-overviews",
 		name: "Google AI Overviews",
-		vendor: "Google",
 		short: "Appear in the AI-generated summaries Google shows above its search results for many queries.",
+		line: "Appear in the AI summary above Google's results.",
 		intro: [
-			"AI Overviews are Google's AI summaries, built on its Gemini models, shown at the top of the results page for a growing share of queries. They answer directly and link to a few sources. Because they sit where most people search first, their reach is enormous.",
-			"They affect traffic in two directions: they lift zero-click answers, but a citation in an Overview can still send qualified visitors. Getting into one takes the same fundamentals as the rest of AI search, applied to a page Google already crawls.",
+			"AI Overviews are the AI summaries Google shows above many of its results, and each one links to a few of the pages it used.",
 		],
 		steps: [
 			{
@@ -123,11 +121,10 @@ export const aiSearchEngines: AiSearchEngine[] = [
 	{
 		slug: "gemini",
 		name: "Google Gemini",
-		vendor: "Google",
 		short: "Show up in Google's Gemini app and AI Mode, the conversational products powered by its Gemini models.",
+		line: "Show up in the Gemini app and Google's AI Mode.",
 		intro: [
-			"Gemini is both a model family and a set of products. The Gemini app and Google's AI Mode are conversational search products that handle follow-up questions and longer reasoning, while AI Overviews are the summaries on the results page. All three run on Gemini, and they behave a little differently.",
-			"Because these are Google products, your existing search footprint carries weight. Strong fundamentals, clear answers, and topical authority all transfer. Google's AI features also change often, so treat the specifics as current and evolving.",
+			"Gemini powers the Gemini app, Google's AI Mode and AI Overviews, and each one can answer the same question differently.",
 		],
 		steps: [
 			{
@@ -158,11 +155,10 @@ export const aiSearchEngines: AiSearchEngine[] = [
 	{
 		slug: "claude",
 		name: "Claude",
-		vendor: "Anthropic",
 		short: "Track how Claude describes and cites your brand, including when it searches the web for an answer.",
+		line: "See how Claude describes and cites you.",
 		intro: [
-			"Claude, from Anthropic, answers from training and can also search the web and cite sources when a question calls for current information. It is widely used directly and inside other products, which makes how it describes your brand worth watching.",
-			"Claude tends to favor careful, well-sourced content and is cautious about unsupported claims. Clear, accurate, well-structured pages give it something solid to ground an answer in, both when it relies on training and when it browses.",
+			"Claude answers from what it learned in training and can also search the web, and it favors careful, well-sourced pages.",
 		],
 		steps: [
 			{
@@ -170,7 +166,7 @@ export const aiSearchEngines: AiSearchEngine[] = [
 				text: "Claude leans toward well-supported statements. Precise, correct pages about your brand and category give it a reliable basis to quote.",
 			},
 			{
-				name: "Structure for clean extraction",
+				name: "Make your facts easy to quote",
 				text: "Descriptive headings, direct answers, and schema make the important facts easy to lift without ambiguity.",
 			},
 			{
@@ -193,11 +189,10 @@ export const aiSearchEngines: AiSearchEngine[] = [
 	{
 		slug: "bing-ai-mode",
 		name: "Bing AI Mode",
-		vendor: "Microsoft",
 		short: "Get cited in the AI answer Bing writes above its results, the Microsoft surface anyone can see signed out.",
+		line: "Get cited in the AI answer at the top of Bing.",
 		intro: [
-			"Bing AI Mode is the AI answer Microsoft shows inside Bing itself. It answers the question in a few lines, links the pages it used, and appears without a sign-in, which also makes it the Microsoft surface you can measure. The Copilot app now asks visitors to sign in, so it is no longer readable.",
-			"Every source comes from Bing's index, so this is the one engine where ordinary search hygiene is the direct lever. A page Bing cannot crawl, has not indexed, or does not trust cannot be cited here, whatever it does in Google.",
+			"Bing AI Mode is the AI answer at the top of Bing, built only from pages in Bing's own index, so a page Bing has not indexed cannot be cited.",
 		],
 		steps: [
 			{
@@ -228,11 +223,10 @@ export const aiSearchEngines: AiSearchEngine[] = [
 	{
 		slug: "copilot",
 		name: "Microsoft Copilot",
-		vendor: "Microsoft",
 		short: "Appear in Microsoft Copilot, which pairs OpenAI models with Bing's web index to answer and cite.",
+		line: "Appear in Copilot, which answers from Bing.",
 		intro: [
-			"Copilot is Microsoft's assistant, built on OpenAI models and grounded in Bing's search index. When it answers a question that needs live information, it retrieves from Bing and cites sources, so your presence in Bing's index feeds directly into Copilot.",
-			"Microsoft shows the same kind of answer inside Bing itself, as Bing AI Mode, drawn from the same index. That makes Bing fundamentals unusually relevant here. The general AEO advice applies, but making sure Bing can crawl, index, and trust your pages is the specific lever that pays off across both.",
+			"Copilot is Microsoft's assistant, and it answers from Bing's search results, so being well indexed in Bing is what counts.",
 		],
 		steps: [
 			{
@@ -263,11 +257,10 @@ export const aiSearchEngines: AiSearchEngine[] = [
 	{
 		slug: "grok",
 		name: "Grok",
-		vendor: "xAI",
 		short: "Track your brand in Grok, xAI's assistant integrated with X and tuned for real-time information.",
+		line: "Track your brand in the assistant built into X.",
 		intro: [
-			"Grok is xAI's assistant, built into X and oriented toward real-time answers. It draws on the open web and leans heavily on activity from X itself, which gives social presence more weight here than on most other engines.",
-			"The core AEO fundamentals still apply: clear, trustworthy, well-structured content that engines can retrieve and cite. The wrinkle with Grok is that what people say about you on X can meaningfully shape its answers.",
+			"Grok is the assistant built into X, so what people say about you on X shapes its answers more than on other engines.",
 		],
 		steps: [
 			{
@@ -283,7 +276,7 @@ export const aiSearchEngines: AiSearchEngine[] = [
 				text: "References on reputable sources and credible discussion shape how Grok characterizes your brand.",
 			},
 			{
-				name: "Structure for extraction",
+				name: "Make your facts easy to quote",
 				text: "Headings, concise answers, and schema make your facts easy to quote correctly.",
 			},
 			{

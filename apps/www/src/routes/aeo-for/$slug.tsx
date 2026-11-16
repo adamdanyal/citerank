@@ -3,7 +3,6 @@ import { PLANS } from "@workspace/config/plans";
 import { cloudSignupUrl } from "@workspace/config/referrals";
 import { Search } from "lucide-react";
 import { Closing } from "@/components/citerank/v2/closing";
-import { Engines } from "@/components/citerank/v2/engines";
 import { Faq } from "@/components/citerank/v2/faq";
 import { Hero } from "@/components/citerank/v2/hero";
 import { HowItWorks } from "@/components/citerank/v2/how-it-works";
@@ -25,7 +24,7 @@ import {
 import { Pricing } from "@/components/citerank/v2/pricing";
 import { PageShell } from "@/components/citerank/v2/shell";
 import { EngineIcon } from "@/components/home/engines";
-import { LABEL, PromptText, WithPrompts } from "@/components/pillar";
+import { LABEL } from "@/components/pillar";
 import { type AeoVertical, aeoHeadline, aeoVerticals, getAeoVertical } from "@/data/aeo-verticals";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, howToJsonLd, itemListJsonLd, ogMeta } from "@/lib/seo";
 
@@ -106,9 +105,7 @@ function Prompts({ vertical }: { vertical: AeoVertical }) {
 							{vertical.examplePrompts.map((p) => (
 								<li key={p} className="flex items-center gap-3 rounded-xl bg-paper px-4 py-3 text-ink">
 									<Search className="size-4 shrink-0 text-zinc-400" aria-hidden="true" />
-									<span className="min-w-0 flex-1 font-mono text-[0.875rem] leading-[1.5] [overflow-wrap:anywhere] sm:truncate">
-										<PromptText text={p} />
-									</span>
+									<span className={`${BODY} min-w-0 flex-1 [overflow-wrap:anywhere] sm:truncate`}>{p}</span>
 								</li>
 							))}
 						</ul>
@@ -199,11 +196,10 @@ function VerticalPage() {
 	const platforms = plan.platformMenu.length === 1 ? "ChatGPT" : `${plan.platformPicks} AI tools`;
 	return (
 		<PageShell>
-			<Hero title={aeoHeadline(vertical)} lede={<WithPrompts text={vertical.short} />} from={FROM} />
+			<Hero title={aeoHeadline(vertical)} lede={vertical.short} from={FROM} />
 			<Prompts vertical={vertical} />
 			<Playbook vertical={vertical} />
 			<HowItWorks />
-			<Engines />
 			<Pricing
 				lede={`We recommend ${plan.name} for ${vertical.audience}: ${plan.maxPrompts} prompts across ${platforms}, checked ${plan.standardRunsPerDay}× daily, for $${plan.monthlyPriceUsd}/mo.`}
 				recommended={{ plan: vertical.plan, label: `Best for ${vertical.audience}` }}
