@@ -1,6 +1,6 @@
 /**
  * Renders the AI-generated Opportunities dashboard from getOpportunitiesFn.
- * Opportunities are grouped into Creation / Existing content / Outreach / Social;
+ * Opportunities are grouped into New Pages / Page Updates / Get Listed / Community Posts;
  * each card leads with a plain-language "why", then three drill-downs — Prompts /
  * Your citations / Competitor citations — to explore the underlying data.
  */
@@ -11,22 +11,22 @@ import type { CitedPage, OpportunitiesReport as OpportunitiesReportData, ReportP
 const CATEGORY_META = [
 	{
 		key: "creation",
-		label: "Creation",
+		label: "New Pages",
 		desc: "Net-new content to publish or earn — comparisons, guides, and 'best of' angles for topics you're absent on.",
 	},
 	{
 		key: "existing-content",
-		label: "Existing Content",
+		label: "Page Updates",
 		desc: "Pages already getting cited that are slipping, or could win the mention with a refresh.",
 	},
 	{
 		key: "outreach",
-		label: "Outreach",
+		label: "Get Listed",
 		desc: "Earn placements on the third-party review sites and editorial roundups assistants cite.",
 	},
 	{
 		key: "social",
-		label: "Social",
+		label: "Community Posts",
 		desc: "Show up in the community conversations — Reddit, YouTube, forums — assistants pull from.",
 	},
 ] as const;
