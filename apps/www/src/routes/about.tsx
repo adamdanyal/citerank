@@ -209,7 +209,7 @@ function AboutPage() {
 				}
 			>
 				<div className="flex flex-col gap-3 sm:flex-row">
-					<Link to="/agency" className={ACTION}>
+					<Link to="/agency" search={{ book: true }} className={ACTION}>
 						Book an agency call
 					</Link>
 					<Link to="/pricing" className={ACTION_QUIET}>

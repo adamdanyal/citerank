@@ -103,7 +103,7 @@ export const PRICING_FAQS: FaqItem[] = [
 		question: "Is the AI search agency included in a plan?",
 		answer:
 			"No. The AI search agency is a separate service that does the work for you every month. It writes the pages your site is missing and reports the AI answers before and after. Book a call to talk it through with us.",
-		links: [{ text: "Book a call", href: "/agency" }],
+		links: [{ text: "Book a call", href: "/agency?book=1" }],
 	},
 ];
 

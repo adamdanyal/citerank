@@ -29,6 +29,9 @@ const description =
 	"The CiteRank.com agency does the work that gets you named in AI answers: new pages, updates, review sites and forums, with a before-and-after report.";
 
 export const Route = createFileRoute("/agency")({
+	/* `?book=1` from any "Book a call" link opens the booking questions as the page loads. */
+	validateSearch: (search: Record<string, unknown>): { book?: true } =>
+		search.book === true || search.book === 1 || search.book === "1" ? { book: true } : {},
 	head: () => ({
 		meta: [
 			{ title },
@@ -116,7 +119,7 @@ function AgencyOffer({ onBook }: { onBook: (event: MouseEvent) => void }) {
 
 /* The offer, who does the work, how a month runs, what the work is, the price with the call, then the objections. */
 function AgencyPage() {
-	const [booking, setBooking] = useState(false);
+	const [booking, setBooking] = useState(Route.useSearch().book === true);
 	const openBooking = (event: MouseEvent) => {
 		event.preventDefault();
 		setBooking(true);

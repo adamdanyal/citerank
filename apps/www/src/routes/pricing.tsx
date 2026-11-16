@@ -50,7 +50,7 @@ function PricingPage() {
 								body: (
 									<>
 										We do the work the tracker ranks: new pages, page updates, review sites and forums.{" "}
-										<Link to="/agency" className={`${LINK} whitespace-nowrap text-ink`}>
+										<Link to="/agency" search={{ book: true }} className={`${LINK} whitespace-nowrap text-ink`}>
 											Book an agency call
 										</Link>
 									</>
