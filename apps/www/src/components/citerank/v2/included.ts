@@ -22,7 +22,7 @@ export const INCLUDED = [
 		body: `Your customers' questions go to ${ENGINE_COUNT} AI apps, ${RUNS_PER_DAY} times a day, so you can tell whether you are being named more often or less.`,
 	},
 	{
-		title: "You get a to-do list, most important first",
+		title: "Get a to-do list, most important first",
 		body: "Not a dashboard to interpret. A list: write this page, update that one, get listed on this review site.",
 	},
 	{
