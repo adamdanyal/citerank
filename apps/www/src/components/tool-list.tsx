@@ -9,7 +9,7 @@ import {
 } from "@/lib/competitors";
 import { BODY, LINK, LIST_CARD, PILL_QUIET, SMALL, SUBHEAD } from "./citerank/v2/kit";
 
-export const CITERANK_FACTS = ["Search agency", "13 AI apps", `From ${ENTRY_PRICE}`];
+export const CITERANK_FACTS = ["Search agency", "13 AI tools", `From ${ENTRY_PRICE}`];
 
 export function toolFacts(competitor: Competitor, withCategory = true): string[] {
 	return [

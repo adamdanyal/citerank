@@ -73,7 +73,7 @@ export const FEATURE_GROUPS: { heading: string; lede: string; slugs: string[] }[
 	},
 	{
 		heading: "Take the data anywhere",
-		lede: "Reports, an API and an MCP server, fed by the real AI apps.",
+		lede: "Reports, an API and an MCP server, fed by the real AI tools.",
 		slugs: ["ai-visibility-reporting", "api-and-mcp", "multi-engine-tracking"],
 	},
 ];

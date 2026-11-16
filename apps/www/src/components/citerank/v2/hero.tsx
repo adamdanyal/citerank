@@ -15,7 +15,7 @@ const HERO_TABS: ScreenId[] = ["overview", "share-of-voice", "sentiment", "respo
 
 const NEXT_STEPS = [
 	"Add your company website",
-	`We ask ${ENGINE_COUNT} AI assistants`,
+	`We ask ${ENGINE_COUNT} AI tools daily`,
 	"See which brands they pick",
 	"Get a list of what to fix",
 ];
@@ -60,7 +60,7 @@ function NextSteps() {
 	);
 }
 
-const DEFAULT_LEDE = `See who ChatGPT, Gemini and ${ENGINE_COUNT - 2} other AI assistants recommend to your buyers, and what to fix.`;
+const DEFAULT_LEDE = `See who ChatGPT, Gemini and ${ENGINE_COUNT - 2} other AI tools recommend to your buyers, and what to fix.`;
 
 /* Title, lede and source are overridden when a visitor arrives from an AI assistant, or on a tested variant. */
 export function Hero({

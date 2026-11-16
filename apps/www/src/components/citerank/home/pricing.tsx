@@ -8,7 +8,7 @@ import { CARD, Container, LinkArrow, PRIMARY_BUTTON, Reveal, RevealItem, SECONDA
 const RECOMMENDED: PlanKey = "pro";
 
 function planLines(plan: PlanDefinition): { text: string; included: boolean }[] {
-	const platforms = plan.platformMenu.length === 1 ? "ChatGPT only" : `Any ${plan.platformPicks} AI platforms`;
+	const platforms = plan.platformMenu.length === 1 ? "ChatGPT only" : `Any ${plan.platformPicks} AI tools`;
 	return [
 		{ text: `${plan.maxBrands} brand${plan.maxBrands === 1 ? "" : "s"}, ${plan.maxPrompts} prompts`, included: true },
 		{ text: platforms, included: true },

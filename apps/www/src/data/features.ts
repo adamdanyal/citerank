@@ -61,8 +61,8 @@ export const productFeatures: ProductFeature[] = [
 		title: "AI visibility tracking",
 		metaTitle: "AI Visibility Tracking: Monitor Your Brand in ChatGPT & AI Search · CiteRank.com",
 		metaDescription:
-			"Track how often ChatGPT, Google AI Overviews, Perplexity, Gemini, and other AI engines mention your brand, per prompt and per model, and how that changes over time.",
-		lede: "CiteRank.com runs the questions your buyers ask through every AI engine you track, on a schedule, and measures how often the answers mention your brand. See your visibility per prompt and per model, and watch how it moves over weeks and months against your competitors.",
+			"Track how often ChatGPT, Google AI Overviews, Perplexity, Gemini, and other AI tools mention your brand, per prompt and per model, and how that changes over time.",
+		lede: "CiteRank.com runs the questions your buyers ask through every AI tool you track, on a schedule, and measures how often the answers mention your brand. See your visibility per prompt and per model, and watch how it moves over weeks and months against your competitors.",
 		summary:
 			"How often AI answers mention your brand, per prompt and per model, with trends over time against every competitor.",
 		graphic: "visibility",
@@ -105,7 +105,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				term: "Visibility by model",
-				definition: "You and every tracked competitor, side by side for each AI engine.",
+				definition: "You and every tracked competitor, side by side for each AI tool.",
 			},
 		],
 		useCases: [
@@ -144,7 +144,7 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "How does CiteRank.com measure AI visibility?",
 				answer:
-					"CiteRank.com measures AI visibility as the share of AI answers that mention your brand. It runs each of your prompts on the AI engines you track and records every answer. The score counts each prompt's latest answers.",
+					"CiteRank.com measures AI visibility as the share of AI answers that mention your brand. It runs each of your prompts on the AI tools you track and records every answer. The score counts each prompt's latest answers.",
 			},
 			{
 				question: "How does CiteRank.com decide whether an answer mentions my brand?",
@@ -168,8 +168,8 @@ export const productFeatures: ProductFeature[] = [
 		title: "AI share of voice and competitor tracking",
 		metaTitle: "AI Share of Voice & Competitor Analysis for AI Search · CiteRank.com",
 		metaDescription:
-			"See how often AI engines mention you versus your competitors. CiteRank.com ranks every tracked company by share of voice, per model and over time.",
-		lede: "Share of voice is your brand's share of every mention of you and your tracked competitors in AI answers. CiteRank.com ranks every company on a live leaderboard, charts your top competitors over time, and compares you with each of them on every AI engine you track.",
+			"See how often AI tools mention you versus your competitors. CiteRank.com ranks every tracked company by share of voice, per model and over time.",
+		lede: "Share of voice is your brand's share of every mention of you and your tracked competitors in AI answers. CiteRank.com ranks every company on a live leaderboard, charts your top competitors over time, and compares you with each of them on every AI tool you track.",
 		summary: "Your share of AI mentions against every tracked competitor, on a leaderboard, per model, and over time.",
 		graphic: "share-of-voice",
 		steps: [
@@ -205,7 +205,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				term: "Competitors by model",
-				definition: "Visibility, share of voice, sentiment, and position for every tracked company on each AI engine.",
+				definition: "Visibility, share of voice, sentiment, and position for every tracked company on each AI tool.",
 			},
 		],
 		useCases: [
@@ -268,7 +268,7 @@ export const productFeatures: ProductFeature[] = [
 		title: "AI sentiment analysis and brand mention tracking",
 		metaTitle: "AI Sentiment Analysis & Brand Mention Tracking · CiteRank.com",
 		metaDescription:
-			"See how ChatGPT and other AI engines describe your brand. CiteRank.com scores the sentiment of every answer that mentions you, beside each competitor, with the passages behind the score.",
+			"See how ChatGPT and other AI tools describe your brand. CiteRank.com scores the sentiment of every answer that mentions you, beside each competitor, with the passages behind the score.",
 		lede: "Being mentioned is half the story; how AI describes you is the other half. CiteRank.com reads every answer that names your brand for praise or criticism, scores it from 0 to 100 beside each competitor and per model, and shows you the exact passages behind the score.",
 		summary:
 			"Every answer that names you, read for praise or criticism and scored 0 to 100, with the passages behind it.",
@@ -281,7 +281,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				name: "See how AI describes you",
-				text: "Each answer that names you is classed as positive, neutral, mixed, or negative, and scored beside your competitors and per AI engine.",
+				text: "Each answer that names you is classed as positive, neutral, mixed, or negative, and scored beside your competitors and per AI tool.",
 			},
 			{
 				name: "Read the passages",
@@ -304,7 +304,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				term: "Sentiment by model",
-				definition: "The score for you and each tracked competitor, per AI engine.",
+				definition: "The score for you and each tracked competitor, per AI tool.",
 			},
 			{
 				term: "What AI says about you",
@@ -361,7 +361,7 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "Does CiteRank.com track sentiment for competitors too?",
 				answer:
-					"Yes. CiteRank.com gives every tracked competitor the same sentiment reading as your brand. You can compare scores side by side, overall and per AI engine. Sentiment trends show your score over time beside your top competitors.",
+					"Yes. CiteRank.com gives every tracked competitor the same sentiment reading as your brand. You can compare scores side by side, overall and per AI tool. Sentiment trends show your score over time beside your top competitors.",
 			},
 			{
 				question: "What counts as a brand mention?",
@@ -384,7 +384,7 @@ export const productFeatures: ProductFeature[] = [
 		steps: [
 			{
 				name: "See what AI trusts",
-				text: "Rank the domains and URLs AI engines cite most for your prompts, filtered by model, tags, and time range.",
+				text: "Rank the domains and URLs AI tools cite most for your prompts, filtered by model, tags, and time range.",
 			},
 			{
 				name: "Find your own pages",
@@ -402,7 +402,7 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				term: "Top domains and URLs",
-				definition: "The sources AI engines cite most for your prompts, with each page's title and type.",
+				definition: "The sources AI tools cite most for your prompts, with each page's title and type.",
 			},
 			{
 				term: "Source categories",
@@ -467,12 +467,12 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "What is AI citation tracking?",
 				answer:
-					"AI citation tracking records the sources AI engines link to when they answer a question. It shows which websites shape the answers in your category. It also shows whether your own pages are among the sources they cite.",
+					"AI citation tracking records the sources AI tools link to when they answer a question. It shows which websites shape the answers in your category. It also shows whether your own pages are among the sources they cite.",
 			},
 			{
-				question: "Can I see which of my own pages AI engines cite?",
+				question: "Can I see which of my own pages AI tools cite?",
 				answer:
-					"Yes. CiteRank.com tracks which of your own pages AI engines cite. The top URLs list shows each of your cited pages and the prompts that cited them. You can add extra domains, like a blog subdomain, in your brand settings.",
+					"Yes. CiteRank.com tracks which of your own pages AI tools cite. The top URLs list shows each of your cited pages and the prompts that cited them. You can add extra domains, like a blog subdomain, in your brand settings.",
 			},
 			{
 				question: "Which engines return citations?",
@@ -487,9 +487,10 @@ export const productFeatures: ProductFeature[] = [
 		title: "Query fan-out tracking",
 		metaTitle: "Query Fan-Out Tracking: See the Searches Behind AI Answers · CiteRank.com",
 		metaDescription:
-			"AI engines turn one prompt into several web searches. CiteRank.com tracks the exact fan-out queries ChatGPT and other engines run for your prompts, and how they rewrite your wording.",
-		lede: "When an AI engine with web search answers a prompt, it often runs several web searches first. CiteRank.com records those fan-out queries for every prompt, so you can see what the engines search for, which searches recur across your category, and how they rewrite your wording.",
-		summary: "The web searches AI engines run behind each answer, and the words they add to or drop from your prompts.",
+			"Many AI tools turn one prompt into several web searches. CiteRank.com tracks the exact fan-out queries ChatGPT and other engines run for your prompts, and how they rewrite your wording.",
+		lede: "When an AI tool with web search answers a prompt, it often runs several web searches first. CiteRank.com records those fan-out queries for every prompt, so you can see what the engines search for, which searches recur across your category, and how they rewrite your wording.",
+		summary:
+			"The web searches many AI tools run behind each answer, and the words they add to or drop from your prompts.",
 		graphic: "query-fan-out",
 		steps: [
 			{
@@ -564,12 +565,12 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "What is query fan-out?",
 				answer:
-					"Query fan-out is an AI engine breaking one question into several web searches. It gets results for each search and writes a single answer from what it found. The searches it runs decide which pages it can cite.",
+					"Query fan-out is an AI tool breaking one question into several web searches. It gets results for each search and writes a single answer from what it found. The searches it runs decide which pages it can cite.",
 			},
 			{
-				question: "Which AI engines show their fan-out queries?",
+				question: "Which AI tools show their fan-out queries?",
 				answer:
-					"Whether an AI engine shows its fan-out queries depends on the engine and the provider used to reach it. CiteRank.com shows them wherever they're exposed. Runs where an engine didn't reveal its searches are counted separately.",
+					"Whether an AI tool shows its fan-out queries depends on the engine and the provider used to reach it. CiteRank.com shows them wherever they're exposed. Runs where an engine didn't reveal its searches are counted separately.",
 			},
 			{
 				question: "How do I use fan-out queries?",
@@ -584,8 +585,8 @@ export const productFeatures: ProductFeature[] = [
 		title: "AI prompt tracking",
 		metaTitle: "AI Prompt Tracking: Monitor the Questions Buyers Ask AI · CiteRank.com",
 		metaDescription:
-			"Track the prompts your buyers ask ChatGPT and other AI engines. CiteRank.com suggests prompts from your website, tags them, and keeps every answer for you to search and inspect.",
-		lede: "Prompts are the questions CiteRank.com asks AI engines on your behalf. CiteRank.com suggests them from your website, tags each one as branded or unbranded, lets you organize them with your own tags, and keeps every answer so you can search it, filter it, and see exactly what each engine said.",
+			"Track the prompts your buyers ask ChatGPT and other AI tools. CiteRank.com suggests prompts from your website, tags them, and keeps every answer for you to search and inspect.",
+		lede: "Prompts are the questions CiteRank.com asks AI tools on your behalf. CiteRank.com suggests them from your website, tags each one as branded or unbranded, lets you organize them with your own tags, and keeps every answer so you can search it, filter it, and see exactly what each engine said.",
 		summary:
 			"Suggested from your website, tagged and organized, with every AI answer kept for you to search and inspect.",
 		graphic: "prompts",
@@ -659,7 +660,7 @@ export const productFeatures: ProductFeature[] = [
 			{
 				question: "What is AI prompt tracking?",
 				answer:
-					"AI prompt tracking means asking AI engines the same set of questions on a schedule and recording how they answer. You see whether they mention your brand and how they describe it. You also see which sources they cite.",
+					"AI prompt tracking means asking AI tools the same set of questions on a schedule and recording how they answer. You see whether they mention your brand and how they describe it. You also see which sources they cite.",
 			},
 			{
 				question: "Where do the prompts come from?",
@@ -714,11 +715,11 @@ export const productFeatures: ProductFeature[] = [
 			},
 			{
 				term: "Outreach",
-				definition: "Placements on the third-party review sites and editorial roundups AI engines cite.",
+				definition: "Placements on the third-party review sites and editorial roundups AI tools cite.",
 			},
 			{
 				term: "Social",
-				definition: "The Reddit, YouTube, and forum conversations AI engines pull from.",
+				definition: "The Reddit, YouTube, and forum conversations AI tools pull from.",
 			},
 			{
 				term: "Reality check",
@@ -799,7 +800,7 @@ export const productFeatures: ProductFeature[] = [
 		steps: [
 			{
 				name: "Start from the overview",
-				text: "Four headline cards, how they changed, and a comparison of you and your competitors on every AI engine.",
+				text: "Four headline cards, how they changed, and a comparison of you and your competitors on every AI tool.",
 			},
 			{
 				name: "Export for your deck",
@@ -814,7 +815,7 @@ export const productFeatures: ProductFeature[] = [
 			{ term: "Headline cards", definition: "Visibility, share of voice, sentiment, and position, with their change." },
 			{
 				term: "Competitors by model",
-				definition: "Every tracked company on every AI engine, sortable by any model or by the overall figure.",
+				definition: "Every tracked company on every AI tool, sortable by any model or by the overall figure.",
 			},
 			{ term: "Prompts tracked and evaluations", definition: "How much tracking is behind the numbers." },
 			{
@@ -961,8 +962,8 @@ export const productFeatures: ProductFeature[] = [
 	},
 	{
 		slug: "multi-engine-tracking",
-		name: "AI engines",
-		title: "Track your brand across 13 AI engines",
+		name: "AI tools",
+		title: "Track your brand across 13 AI tools",
 		metaTitle: "Multi-Engine AI Visibility Tracking: ChatGPT, AI Overviews, Gemini & More · CiteRank.com",
 		metaDescription:
 			"Track your brand in ChatGPT, Google AI Overviews, AI Mode, Bing AI Mode, and Gemini from the real apps, plus Claude, Grok, Perplexity, Meta, DeepSeek, Mistral, Qwen, and Kimi.",
@@ -1006,12 +1007,12 @@ export const productFeatures: ProductFeature[] = [
 				text: "A model's API isn't the consumer product. Scraping the real ChatGPT and Google apps is closer to the answers your buyers get.",
 			},
 			{
-				name: "13 AI apps in one place",
-				text: "Five AI apps scraped from their real interfaces and eight more by API, from one account and one set of prompts.",
+				name: "13 AI tools in one place",
+				text: "Five AI tools scraped from their real interfaces and eight more by API, from one account and one set of prompts.",
 			},
 			{
 				name: "Every answer kept",
-				text: "Each answer is stored in full, so a number for any AI app traces back to the words it wrote.",
+				text: "Each answer is stored in full, so a number for any AI tool traces back to the words it wrote.",
 			},
 		],
 		docs: { title: "Provider docs", href: "/docs/user-guide/providers" },
@@ -1028,9 +1029,9 @@ export const productFeatures: ProductFeature[] = [
 		related: ["ai-visibility-tracking", "query-fan-out", "citation-tracking"],
 		faqs: [
 			{
-				question: "Which AI engines does CiteRank.com track?",
+				question: "Which AI tools does CiteRank.com track?",
 				answer:
-					"CiteRank.com tracks five AI engines from the real apps and eight by API. The five are ChatGPT, Google AI Overviews, AI Mode, Bing AI Mode and Gemini. The eight are Claude, Grok, Perplexity, Meta, DeepSeek, Mistral, Qwen and Kimi.",
+					"CiteRank.com tracks five AI tools from the real apps and eight by API. The five are ChatGPT, Google AI Overviews, AI Mode, Bing AI Mode and Gemini. The eight are Claude, Grok, Perplexity, Meta, DeepSeek, Mistral, Qwen and Kimi.",
 			},
 			{
 				question: "Why scrape instead of using the API?",

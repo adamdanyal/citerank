@@ -163,7 +163,7 @@ function PlanApps({
 }) {
 	const breakdown = planPlatformBreakdown(plan);
 	const groups = breakdown.premium ? [...breakdown.pickGroups, breakdown.premium] : breakdown.pickGroups;
-	const title = `Choose any ${plan.platformPicks} AI apps`;
+	const title = `Choose any ${plan.platformPicks} AI tools`;
 	const list = groups.map((group) => (
 		<div key={group.id} className={group.id === "premium" ? "mt-6 border-t border-zinc-200 pt-6" : "mt-4"}>
 			<p className={`${SMALL} flex items-baseline justify-between gap-4`}>

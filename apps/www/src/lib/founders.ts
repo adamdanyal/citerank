@@ -14,7 +14,7 @@ export const FOUNDERS = [
 		proof: "2M+ followers",
 		href: "https://www.linkedin.com/in/adamdanyal/",
 		photo: "/founder-adam.jpg",
-		quote: `Ask AI which product to pick. It names two or three brands. There is no page two. CiteRank.com asks ${ENGINE_COUNT} AI apps your buyers’ questions four times a day, and shows you whether you were one of them.`,
+		quote: `Ask AI which product to pick. It names two or three brands. There is no page two. CiteRank.com asks ${ENGINE_COUNT} AI tools your buyers’ questions four times a day, and shows you whether you were one of them.`,
 	},
 	{
 		name: "Julia Danyal",

@@ -34,9 +34,9 @@ export function Includes() {
 					</ul>
 
 					<div className="min-w-0 rounded-card bg-white p-6 shadow-lift ring-1 ring-zinc-200 sm:p-8 lg:col-span-6">
-						<h3 className={`${SUBHEAD} text-ink`}>{MODELS.length} AI apps to choose from</h3>
+						<h3 className={`${SUBHEAD} text-ink`}>{MODELS.length} AI tools to choose from</h3>
 						<p className={`${BODY} mt-2 text-zinc-600`}>
-							Each brand tracks any {PICKS} of the {STANDARD.length} standard apps.
+							Each brand tracks any {PICKS} of the {STANDARD.length} standard tools.
 						</p>
 						<ul className="mt-6 grid grid-cols-3 gap-x-2 gap-y-5 sm:grid-cols-5">
 							{BOARD.map((model) => (
@@ -54,7 +54,7 @@ export function Includes() {
 								</li>
 							))}
 						</ul>
-						<p className={`${SMALL} mt-6 text-zinc-600`}>Premium apps come with {premiumPlanNames()}.</p>
+						<p className={`${SMALL} mt-6 text-zinc-600`}>Premium tools come with {premiumPlanNames()}.</p>
 					</div>
 				</div>
 			</Page>

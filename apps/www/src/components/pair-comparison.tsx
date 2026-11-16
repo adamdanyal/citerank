@@ -22,7 +22,7 @@ export function PairComparison({ a, b }: { a: Competitor; b: Competitor }) {
 							</ToolSummary>
 						))}
 						<ToolSummary name="CiteRank.com" facts={CITERANK_FACTS} className={CARD}>
-							AI visibility tracker and AI search agency for AEO, covering 13 AI apps with every answer kept in full.
+							AI visibility tracker and AI search agency for AEO, covering 13 AI tools with every answer kept in full.
 							Plans run from {PLAN_RANGE}.
 						</ToolSummary>
 					</ul>

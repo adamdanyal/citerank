@@ -424,7 +424,7 @@ const GEO: Pillar = {
 		{
 			label: "What CiteRank.com tracks",
 			href: "/features",
-			description: "Visibility, share of voice, sentiment, and citations, for each AI app.",
+			description: "Visibility, share of voice, sentiment, and citations, for each AI tool.",
 		},
 		{
 			label: "AEO glossary",

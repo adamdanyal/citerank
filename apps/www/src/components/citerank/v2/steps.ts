@@ -15,7 +15,7 @@ export const STEP_SCHEMA = [
 	},
 	{
 		name: "See where you stand",
-		text: "See how often each AI engine names you, how often it names each rival, how it describes you, and which pages it trusts enough to cite.",
+		text: "See how often each AI tool names you, how often it names each rival, how it describes you, and which pages it trusts enough to cite.",
 	},
 	{
 		name: "Know what to fix",

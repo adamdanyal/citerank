@@ -8,7 +8,7 @@ const BASIC_ANSWERS_PER_DAY = PLANS.basic.maxPrompts * PLANS.basic.platformPicks
 
 /* Every figure here is read off the plan catalogue, so the page cannot drift from what we sell. */
 const FIGURES = [
-	{ value: String(ENGINE_COUNT), label: "AI apps your buyers ask" },
+	{ value: String(ENGINE_COUNT), label: "AI tools your buyers ask" },
 	{ value: String(SCRAPED_COUNT), label: "of them read in the app, not through an API" },
 	{ value: `${RUNS_PER_DAY}×`, label: "a day, so you see the trend and not a snapshot" },
 	{

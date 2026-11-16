@@ -10,7 +10,7 @@ type Billing = "monthly" | "annual";
 const RECOMMENDED: PlanKey = "pro";
 
 const FOR: Record<PlanKey, string> = {
-	basic: "One brand on four AI apps.",
+	basic: "One brand on four AI tools.",
 	pro: "Two brands, with premium models.",
 	business: "Five brands, the full set.",
 };
@@ -20,7 +20,7 @@ function includes(plan: PlanDefinition): string[] {
 	const apps =
 		plan.platformPicks === 1 && plan.platformMenu.length === 1
 			? "ChatGPT only"
-			: `Any ${plan.platformPicks} of ${plan.platformMenu.length} AI apps`;
+			: `Any ${plan.platformPicks} of ${plan.platformMenu.length} AI tools`;
 	return [
 		`${plan.maxBrands} brand${plan.maxBrands === 1 ? "" : "s"}`,
 		`${plan.maxPrompts} tracked prompts`,

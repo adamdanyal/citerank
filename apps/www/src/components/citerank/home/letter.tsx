@@ -17,11 +17,11 @@ const PARAGRAPHS = [
 	},
 	{
 		id: "by-hand",
-		text: "So you check by hand: one prompt, one app, one day. It says nothing about the trend or what to change. The big tools are sold with sales calls and yearly contracts.",
+		text: "So you check by hand: one prompt, one AI tool, one day. It says nothing about the trend or what to change. The big tools are sold with sales calls and yearly contracts.",
 	},
 	{
 		id: "tracker",
-		text: "CiteRank.com is the tracker we wanted instead. It asks 13 AI apps your buyers' questions up to four times a day, keeps every answer and ranks what to fix. If nobody has time for the fixes, our agency does them.",
+		text: "CiteRank.com is the tracker we wanted instead. It asks 13 AI tools your buyers' questions up to four times a day, keeps every answer and ranks what to fix. If nobody has time for the fixes, our agency does them.",
 	},
 	{
 		id: "invite",

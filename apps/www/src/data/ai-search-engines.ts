@@ -222,7 +222,7 @@ export const aiSearchEngines: AiSearchEngine[] = [
 			},
 		],
 		tracking:
-			"CiteRank.com asks your prompts in Bing's own interface and keeps each answer in full, with every source it cited. You see how often Bing AI Mode names your brand, which competitors it names instead, and which pages it draws on. It is one of the AI apps you can pick on every plan.",
+			"CiteRank.com asks your prompts in Bing's own interface and keeps each answer in full, with every source it cited. You see how often Bing AI Mode names your brand, which competitors it names instead, and which pages it draws on. It is one of the AI tools you can pick on every plan.",
 		related: ["copilot", "google-ai-overviews", "chatgpt"],
 	},
 	{

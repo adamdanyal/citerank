@@ -39,7 +39,7 @@ export function ModelCoverage() {
 					/>
 				</div>
 				<div className="lg:col-span-7">
-					<ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-3" aria-label="AI engines CiteRank.com tracks">
+					<ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-3" aria-label="AI tools CiteRank.com tracks">
 						{ENGINES.map((m) => (
 							<Tile key={m.name} {...m} />
 						))}

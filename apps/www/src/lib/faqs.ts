@@ -24,7 +24,7 @@ const FREE = `No. CiteRank.com has no free plan or free trial, and no per-seat p
 export const HOME_FAQS: FaqItem[] = [
 	{
 		question: "What is CiteRank.com?",
-		answer: `CiteRank.com is an AI visibility tracker and AI search agency. It shows how ChatGPT, Gemini and ${ENGINE_COUNT - 2} other AI apps mention your brand, which competitors they name and which sources they cite. Plans start at $${CLOUD_ENTRY_PRICE_USD}/mo.`,
+		answer: `CiteRank.com is an AI visibility tracker and AI search agency. It shows how ChatGPT, Gemini and ${ENGINE_COUNT - 2} other AI tools mention your brand, which competitors they name and which sources they cite. Plans start at $${CLOUD_ENTRY_PRICE_USD}/mo.`,
 	},
 	{
 		question: "What is answer engine optimization (AEO)?",
@@ -34,11 +34,11 @@ export const HOME_FAQS: FaqItem[] = [
 	{
 		question: "What is the difference between AEO, GEO, and SEO?",
 		answer:
-			"SEO ranks your pages in search results. AEO and GEO are two names for one newer job: getting your brand named and cited inside AI answers like ChatGPT’s. They overlap, because AI engines search the web and cite the pages they find.",
+			"SEO ranks your pages in search results. AEO and GEO are two names for one newer job: getting your brand named and cited inside AI answers like ChatGPT’s. They overlap, because many AI tools search the web and cite the pages they find.",
 	},
 	{
-		question: "Which AI models does CiteRank.com track?",
-		answer: `CiteRank.com tracks ${ENGINE_COUNT} AI apps. They are ChatGPT, Google AI Mode, AI Overviews, Bing AI Mode, Gemini, Claude, Perplexity, Grok, Meta, Mistral, DeepSeek, Qwen and Kimi. ChatGPT is read from the real app, as your customers see it.`,
+		question: "Which AI tools does CiteRank.com track?",
+		answer: `CiteRank.com tracks ${ENGINE_COUNT} AI tools. They are ChatGPT, Google AI Mode, AI Overviews, Bing AI Mode, Gemini, Claude, Perplexity, Grok, Meta, Mistral, DeepSeek, Qwen and Kimi. ChatGPT is read from the real app, as your customers see it.`,
 	},
 	{
 		question: "How is AI visibility measured?",
@@ -83,7 +83,7 @@ export const PRICING_FAQS: FaqItem[] = [
 	{
 		question: "Do I need a credit card to get started?",
 		answer:
-			"Yes. Every CiteRank.com plan is paid, so you pay by card when you sign up. Then you add your website, choose your AI apps and start tracking. There is no free plan or free trial, and you can cancel any time.",
+			"Yes. Every CiteRank.com plan is paid, so you pay by card when you sign up. Then you add your website, choose your AI tools and start tracking. There is no free plan or free trial, and you can cancel any time.",
 	},
 	{
 		question: "Do I need to talk to sales to sign up for the tracker?",
@@ -92,7 +92,7 @@ export const PRICING_FAQS: FaqItem[] = [
 	},
 	{
 		question: "How often does CiteRank.com run my prompts?",
-		answer: `Every plan asks each prompt up to ${PLANS.basic.standardRunsPerDay} times a day on every AI app you choose. Premium models such as GPT Search, and Claude and Grok on the web, answer with web search on and are asked once a day. A custom plan can ask more often.`,
+		answer: `Every plan asks each prompt up to ${PLANS.basic.standardRunsPerDay} times a day on every AI tool you choose. Premium models such as GPT Search, and Claude and Grok on the web, answer with web search on and are asked once a day. A custom plan can ask more often.`,
 	},
 	{
 		question: "Does CiteRank.com have an API or MCP server?",
@@ -196,16 +196,16 @@ export const DIRECTORY_FAQS: FaqItem[] = [
 	},
 	{
 		question: "How do I choose the best AI visibility tool?",
-		answer: `The right tool depends on which AI engines you need to track, your budget, and whether you want an agency or a white-label option. This directory compares 100+ tools feature by feature. CiteRank.com starts at $${CLOUD_ENTRY_PRICE_USD}/mo.`,
+		answer: `The right tool depends on which AI tools you need to track, your budget, and whether you want an agency or a white-label option. This directory compares 100+ tools feature by feature. CiteRank.com starts at $${CLOUD_ENTRY_PRICE_USD}/mo.`,
 	},
 	{
 		question: "Is there an AI visibility tool with an agency?",
-		answer: `Yes. CiteRank.com is an AI visibility tracker with an AI search agency. You can track ${ENGINE_COUNT} AI apps yourself and read every answer in full. The agency can do the work every month, from new pages to review-site listings.`,
+		answer: `Yes. CiteRank.com is an AI visibility tracker with an AI search agency. You can track ${ENGINE_COUNT} AI tools yourself and read every answer in full. The agency can do the work every month, from new pages to review-site listings.`,
 	},
 	{
 		question: "How does AI visibility tracking work?",
 		answer:
-			"AI visibility tracking runs a fixed set of prompts across AI engines on a schedule. It records whether each answer mentions your brand, cites your site and how it describes you. Sampling over time shows trends one check would miss.",
+			"AI visibility tracking runs a fixed set of prompts across AI tools on a schedule. It records whether each answer mentions your brand, cites your site and how it describes you. Sampling over time shows trends one check would miss.",
 	},
 	{
 		question: "Can you track brand mentions in ChatGPT?",

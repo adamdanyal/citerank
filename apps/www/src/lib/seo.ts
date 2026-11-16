@@ -138,7 +138,7 @@ export function softwareApplicationJsonLd() {
 			"Tracks brand mentions in ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews, AI Mode, Bing AI Mode, Grok, Meta, DeepSeek, Mistral, Qwen and Kimi",
 			"Checks every prompt up to 4 times a day and keeps every answer in full",
 			"Share of voice, sentiment and position against competitors",
-			"Citation analysis: which domains and pages each AI engine cites",
+			"Citation analysis: which domains and pages each AI tool cites",
 			"Ranked opportunities: which pages to write, update or get listed on",
 			"Unlimited seats, REST API and MCP server on every plan",
 		],
@@ -449,7 +449,7 @@ export function homePageJsonLd(engines: { model: string; label: string }[]) {
 			name: "Answer engine optimization",
 			alternateName: ["AEO", "Generative engine optimization", "GEO", "AI visibility"],
 			description:
-				"Answer engine optimization is the practice of getting a brand mentioned and cited in the answers AI assistants give, rather than ranked in a list of blue links.",
+				"Answer engine optimization is the practice of getting a brand mentioned and cited in the answers AI tools give, rather than ranked in a list of blue links.",
 		},
 		mentions: engines.map((engine) => ({
 			"@type": "SoftwareApplication",

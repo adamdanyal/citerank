@@ -61,7 +61,7 @@ const ENGINE_NAMES = Object.keys(CLOUD_PLATFORMS).map((model) => getModelMeta(mo
 const ENGINE_COUNT = ENGINE_NAMES.length;
 
 const NUMBERS = [
-	{ value: String(ENGINE_COUNT), label: "AI apps tracked" },
+	{ value: String(ENGINE_COUNT), label: "AI tools tracked" },
 	{ value: `${basic.standardRunsPerDay}×`, label: "checks a day, on every plan" },
 	{ value: "2.3M+", label: "LinkedIn followers between the founders" },
 	{ value: "London", label: "where the company is registered" },
@@ -71,7 +71,7 @@ const NUMBERS = [
 const STORY = [
 	"When a buyer asks ChatGPT, Gemini or Perplexity who to choose, the answer names a few brands and cites a few pages. If you cannot say whether yours is one of them, that is the gap we started CiteRank.com to close.",
 	"We are Adam and Julia Danyal. We have more than 2.3 million LinkedIn followers between us, run Chief AI Leader, an exam-based AI certification for leaders, and write AI For Leaders, a daily newsletter read by more than 50,000 leaders.",
-	`CiteRank.com asks your buyers’ questions across ${ENGINE_COUNT} AI apps, ${basic.standardRunsPerDay} times a day, and keeps every answer word for word. Tracking alone does not change an answer, so our agency does the work the tracker ranks, every month.`,
+	`CiteRank.com asks your buyers’ questions across ${ENGINE_COUNT} AI tools, ${basic.standardRunsPerDay} times a day, and keeps every answer word for word. Tracking alone does not change an answer, so our agency does the work the tracker ranks, every month.`,
 ];
 
 function ExternalLink({ href, children }: { href: string; children: ReactNode }) {
@@ -203,7 +203,7 @@ function AboutPage() {
 						<Link to="/generative-engine-optimization" className={`${LINK} text-ink`}>
 							GEO
 						</Link>
-						. We track how ChatGPT, Gemini, Perplexity and ten other AI apps describe brands, and our agency does the
+						. We track how ChatGPT, Gemini, Perplexity and ten other AI tools describe brands, and our agency does the
 						work that changes those answers.
 					</>
 				}
@@ -275,7 +275,7 @@ function AboutPage() {
 			<section className={`${PANEL} ${PANEL_PAD}`}>
 				<Page>
 					<PanelHead title="Key facts">
-						<p className={`${LEAD} text-zinc-600`}>The company on one page, for people and for AI engines.</p>
+						<p className={`${LEAD} text-zinc-600`}>The company on one page, for people and for AI tools.</p>
 					</PanelHead>
 					<dl className={`${CARD_LIFT} mt-10 px-6 sm:px-8 lg:mt-16`}>
 						{keyFacts.map((fact) => (

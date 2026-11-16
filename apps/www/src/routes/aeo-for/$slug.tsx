@@ -196,7 +196,7 @@ function VerticalPage() {
 		others: AeoVertical[];
 	};
 	const plan = PLANS[vertical.plan];
-	const platforms = plan.platformMenu.length === 1 ? "ChatGPT" : `${plan.platformPicks} AI platforms`;
+	const platforms = plan.platformMenu.length === 1 ? "ChatGPT" : `${plan.platformPicks} AI tools`;
 	return (
 		<PageShell>
 			<Hero title={aeoHeadline(vertical)} lede={<WithPrompts text={vertical.short} />} from={FROM} />

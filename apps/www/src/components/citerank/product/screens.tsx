@@ -134,7 +134,7 @@ function EngineTable({ metric, companies, keyed = false }: { metric: Metric; com
 		<div className="@container min-w-0">
 			<table className="w-full border-separate border-spacing-0 text-sm tabular-nums">
 				<caption className="sr-only">
-					{name} for {BRAND} and its rivals, overall and in each AI app
+					{name} for {BRAND} and its rivals, overall and in each AI tool
 				</caption>
 				<thead>
 					<tr className="text-zinc-500">

@@ -110,11 +110,11 @@ const FAQS = [
 	},
 	{
 		question: "Is CiteRank.com’s data comparable to Profound’s?",
-		answer: `CiteRank.com and Profound both track how AI engines answer your buyers’ prompts. CiteRank.com checks each prompt up to ${FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× a day, which smooths out run-to-run variation. It keeps every answer in full, so you can check each number.`,
+		answer: `CiteRank.com and Profound both track how AI tools answer your buyers’ prompts. CiteRank.com checks each prompt up to ${FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× a day, which smooths out run-to-run variation. It keeps every answer in full, so you can check each number.`,
 	},
 	{
 		question: "Which CiteRank.com plan matches a Profound setup?",
-		answer: `We recommend ${RECOMMENDED.name} for teams coming from Profound, at $${RECOMMENDED.monthlyPriceUsd}/mo. It covers ${RECOMMENDED.maxPrompts} prompts across ${RECOMMENDED.platformPicks} AI platforms, checked ${RECOMMENDED.standardRunsPerDay}× daily, with premium models included. Larger programs can step up to ${PLANS.business.name}, which adds more prompts and brands.`,
+		answer: `We recommend ${RECOMMENDED.name} for teams coming from Profound, at $${RECOMMENDED.monthlyPriceUsd}/mo. It covers ${RECOMMENDED.maxPrompts} prompts across ${RECOMMENDED.platformPicks} AI tools, checked ${RECOMMENDED.standardRunsPerDay}× daily, with premium models included. Larger programs can step up to ${PLANS.business.name}, which adds more prompts and brands.`,
 	},
 	{
 		question: "Can CiteRank.com do the work as well as track it?",
@@ -272,7 +272,7 @@ function ProfoundUsersPage() {
 			<Switching />
 			<Engines />
 			<Pricing
-				lede={`We recommend ${RECOMMENDED.name} for teams coming from Profound: ${RECOMMENDED.maxPrompts} prompts across ${RECOMMENDED.platformPicks} AI platforms, checked ${RECOMMENDED.standardRunsPerDay}× daily, for $${RECOMMENDED.monthlyPriceUsd}/mo.`}
+				lede={`We recommend ${RECOMMENDED.name} for teams coming from Profound: ${RECOMMENDED.maxPrompts} prompts across ${RECOMMENDED.platformPicks} AI tools, checked ${RECOMMENDED.standardRunsPerDay}× daily, for $${RECOMMENDED.monthlyPriceUsd}/mo.`}
 				recommended={{ plan: RECOMMENDED.key, label: "Best for Profound users" }}
 			/>
 			<Faq items={FAQS} />

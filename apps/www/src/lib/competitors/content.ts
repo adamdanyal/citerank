@@ -161,7 +161,7 @@ export function getComparisonVerdict(competitor: Competitor): string {
 	}
 
 	const noun = CATEGORY_NOUN[competitor.category];
-	return `CiteRank.com, an AI visibility tracker and AI search agency, is an alternative to ${name}, ${indefiniteArticle(noun)} ${noun} tool. Both measure how AI answer engines describe your brand, but CiteRank.com keeps every answer in full, covers 13 AI apps, and checks each prompt up to four times a day, so each metric traces back to the words an AI wrote.`;
+	return `CiteRank.com, an AI visibility tracker and AI search agency, is an alternative to ${name}, ${indefiniteArticle(noun)} ${noun} tool. Both measure how AI answer engines describe your brand, but CiteRank.com keeps every answer in full, covers 13 AI tools, and checks each prompt up to four times a day, so each metric traces back to the words an AI wrote.`;
 }
 
 /**
@@ -180,7 +180,7 @@ export function getComparisonFaqs(competitor: Competitor): FaqItem[] {
 	faqs.push({
 		question: `What is the difference between CiteRank.com and ${name}?`,
 		answer: openSource
-			? `${name} is open source, so you can self-host it and inspect the code, while CiteRank.com is hosted. CiteRank.com tracks 13 AI apps and keeps every answer in full. It also has an AI search agency that does the work for you.`
+			? `${name} is open source, so you can self-host it and inspect the code, while CiteRank.com is hosted. CiteRank.com tracks 13 AI tools and keeps every answer in full. It also has an AI search agency that does the work for you.`
 			: `CiteRank.com is an AI visibility tracker and AI search agency, while ${name} is ${indefiniteArticle(noun)} ${noun} tool. Both track how AI answer engines describe your brand. CiteRank.com keeps the full answer behind every number.`,
 	});
 

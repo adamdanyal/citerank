@@ -19,7 +19,7 @@ export const heroVariants: Record<string, HeroVariant> = {
 	},
 	chatgpt: {
 		title: "Is ChatGPT mentioning you?",
-		lede: "CiteRank.com asks ChatGPT and 11 other AI apps the questions your buyers ask, then shows whether you're in the answer, who's there instead, and what to fix.",
+		lede: "CiteRank.com asks ChatGPT and 11 other AI tools the questions your buyers ask, then shows whether you're in the answer, who's there instead, and what to fix.",
 	},
 	"see-what-ai-says": {
 		title: "See what AI says about your brand",
@@ -27,7 +27,7 @@ export const heroVariants: Record<string, HeroVariant> = {
 	},
 	"stop-checking": {
 		title: "Stop checking ChatGPT by hand",
-		lede: "CiteRank.com runs your buyers' prompts across AI models on a schedule and tracks every answer, so you see trends instead of one-off screenshots.",
+		lede: "CiteRank.com runs your buyers' prompts across AI tools on a schedule and tracks every answer, so you see trends instead of one-off screenshots.",
 	},
 	"aeo-tool": {
 		title: "The AEO tool that tells you what to fix",
@@ -39,7 +39,7 @@ export const heroVariants: Record<string, HeroVariant> = {
 	},
 	"share-of-voice": {
 		title: "Own your AI share of voice",
-		lede: "See how often AI models recommend you versus your competitors, prompt by prompt and model by model, and track it as it changes.",
+		lede: "See how often AI tools recommend you versus your competitors, prompt by prompt and tool by tool, and track it as it changes.",
 	},
 	citations: {
 		title: "Know which sources AI cites",
@@ -51,7 +51,7 @@ export const heroVariants: Record<string, HeroVariant> = {
 	},
 	price: {
 		title: `AI visibility tracking from $${CLOUD_ENTRY_PRICE_USD}/mo`,
-		lede: "Track how AI models talk about your brand without an enterprise contract. Unlimited seats on every plan, no sales call, and you can start in minutes.",
+		lede: "Track how AI tools talk about your brand without an enterprise contract. Unlimited seats on every plan, no sales call, and you can start in minutes.",
 	},
 	"win-ai-search": {
 		title: "Win AI search",

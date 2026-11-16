@@ -15,11 +15,11 @@ const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
 export const INCLUDED = [
 	{
 		title: "See the entire answer, not just a score",
-		body: `When an AI app answers a question your customers ask, we keep the full reply: which brands it recommended, and which websites it got that from.`,
+		body: `When an AI tool answers a question your customers ask, we keep the full reply: which brands it recommended, and which websites it got that from.`,
 	},
 	{
 		title: "We ask again four times a day",
-		body: `Your customers' questions go to ${ENGINE_COUNT} AI apps, ${RUNS_PER_DAY} times a day, so you can tell whether you are being named more often or less.`,
+		body: `Your customers' questions go to ${ENGINE_COUNT} AI tools, ${RUNS_PER_DAY} times a day, so you can tell whether you are being named more often or less.`,
 	},
 	{
 		title: "Get a to-do list, most important first",

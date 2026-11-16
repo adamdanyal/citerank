@@ -37,7 +37,7 @@ export function EngineCoverage() {
 						included on {premiumPlanNames()}.
 					</p>
 				</Reveal>
-				<ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:col-span-7" aria-label="AI engines CiteRank.com tracks">
+				<ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:col-span-7" aria-label="AI tools CiteRank.com tracks">
 					{ENGINES.map((engine, index) => (
 						<RevealItem
 							key={engine.name}
