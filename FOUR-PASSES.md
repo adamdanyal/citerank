@@ -75,9 +75,9 @@ Order: simple · no-think · concise · sticky.
 
 Conversion: from Start tracking to the first screen with the brand's data is 12 steps, about 12 clicks, 11 typed fields and two waits. Cutting the name field, the organization picker, the brand name field, the AI tools step and the Analyze click would make it 9.
 
-Proposed, waiting for the owner:
-- Fix the plan table on Choose plan: its grid has four plan columns for three plans, so labels sit in the wrong cells (`apps/web/src/components/plan-comparison.tsx`).
-- Name the AI tool columns on Overview and Sentiment, which show icons only.
-- On Opportunities, put the report first and the booking strip after it, with plain section names.
-- Skip the organizations and brands picker for people with one organization.
-- On sign-up, drop the name field and one of the two legal lines, and replace "4× Profound's daily runs" in the side panel.
+Done on 16 November, on the owner's yes:
+- The plan table on Choose plan lines up with three plans.
+- The AI tool columns on Overview and Sentiment are named.
+- Opportunities shows the report first and the booking strip after it, with plain section names.
+- People with one organization skip the organizations and brands picker.
+- Sign-up asks for email and password only, with one legal line. The side panel stays as it is.
