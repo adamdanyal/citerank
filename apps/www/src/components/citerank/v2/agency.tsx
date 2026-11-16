@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
+import { Plus } from "lucide-react";
 import { AGENCY_DOES, AGENCY_DOES_FIRST, AGENCY_FROM_USD, formatUsd } from "@/lib/agency-plans";
 import { trackEvent } from "@/lib/posthog";
-import { ACTION, LEAD, LINK_ON_INK, PANEL_PAD, Page, PanelHead, SMALL, Tick } from "./kit";
+import { ACTION, FOCUS, LEAD, PANEL_PAD, Page, PanelHead, SMALL, Tick } from "./kit";
 
 /* On a phone the type gives way before the line breaks: each divisor is the longest line's width in em. */
 const HEAD_ONE_LINE = "max-sm:text-[length:calc((100vw_-_5rem)_/_13)] max-sm:whitespace-nowrap";
@@ -59,8 +60,14 @@ export function Agency({ folded = false }: { folded?: boolean } = {}) {
 						{more.length ? (
 							<details className="group">
 								<summary
-									className={`ml-11 w-fit cursor-pointer list-none text-[1rem] font-medium text-paper group-open:hidden [&::-webkit-details-marker]:hidden ${LINK_ON_INK}`}
+									className={`flex cursor-pointer list-none items-center gap-4 border-t border-ink-rule pt-4 text-lead leading-snug text-zinc-300 transition-colors duration-200 hover:text-paper group-open:hidden [&::-webkit-details-marker]:hidden ${FOCUS}`}
 								>
+									<span
+										aria-hidden="true"
+										className="grid size-7 shrink-0 place-items-center rounded-full ring-1 ring-current ring-inset"
+									>
+										<Plus className="size-4" />
+									</span>
 									Show {more.length} more
 								</summary>
 								<ul aria-label="More of what the agency does">
