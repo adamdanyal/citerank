@@ -753,21 +753,6 @@ html {
 	transform-origin: top;
 	animation: cr-step-on 400ms cubic-bezier(0.65, 0, 0.35, 1) calc(950ms + var(--step) * 650ms) both;
 }
-/* In a row only while the hero text runs full width; beside the product the column is too narrow for four labels on one line. */
-@media (min-width: 40rem) and (max-width: 79.999rem) {
-	.cr-step-line {
-		left: 2.25rem;
-		right: -0.5rem;
-		top: calc(0.875rem - 0.5px);
-		bottom: auto;
-		width: auto;
-		height: 1px;
-	}
-	.cr-step-fill {
-		transform: scaleX(0);
-		transform-origin: left;
-	}
-}
 @keyframes cr-step-on {
 	to {
 		opacity: 1;
