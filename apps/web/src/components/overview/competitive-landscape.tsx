@@ -184,14 +184,13 @@ export function ModelGrid({ landscape, metric }: { landscape: Landscape; metric:
 								<Tooltip>
 									<TooltipTrigger
 										onClick={() => onSort(model)}
-										className="flex w-full cursor-pointer flex-col items-center gap-1 hover:text-foreground"
+										className="flex w-full cursor-pointer justify-center hover:text-foreground"
 										aria-label={`Sort by ${label}`}
 									>
 										<span className="relative">
 											<SortArrow active={column === model} descending={descending} />
 											<ModelIcon iconId={iconId} className="size-4" />
 										</span>
-										<span className="w-12 text-[10px] leading-tight font-normal text-balance">{label}</span>
 									</TooltipTrigger>
 									<TooltipContent>{label}</TooltipContent>
 								</Tooltip>
