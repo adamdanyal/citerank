@@ -63,11 +63,6 @@ function RegisterPage() {
 	);
 }
 
-/** better-auth requires a name, and the form doesn't ask for one. */
-function nameFromEmail(email: string): string {
-	return email.split("@")[0] || email;
-}
-
 export function RegisterForm({
 	returnTo,
 	initialEmail,
@@ -84,6 +79,7 @@ export function RegisterForm({
 	hasUsers?: boolean;
 }) {
 	const navigate = useNavigate();
+	const [name, setName] = useState("");
 	const [email, setEmail] = useState(initialEmail ?? "");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState<string | null>(null);
@@ -101,7 +97,7 @@ export function RegisterForm({
 			const result = await authClient.signUp.email({
 				email,
 				password,
-				name: nameFromEmail(email),
+				name,
 				...(isCloud && { callbackURL: safeReturnTo(returnTo) }),
 				fetchOptions: { headers: await turnstile.getCaptchaHeaders() },
 			});
@@ -167,6 +163,19 @@ export function RegisterForm({
 					</Alert>
 				)}
 				<div className="space-y-2">
+					<Label htmlFor="name">Name</Label>
+					<Input
+						id="name"
+						type="text"
+						placeholder="Your name"
+						value={name}
+						onChange={(e) => setName(e.target.value)}
+						required
+						autoComplete="name"
+						autoFocus
+					/>
+				</div>
+				<div className="space-y-2">
 					<Label htmlFor="email">Email</Label>
 					<Input
 						id="email"
@@ -176,7 +185,6 @@ export function RegisterForm({
 						onChange={(e) => setEmail(e.target.value)}
 						required
 						autoComplete="email"
-						autoFocus
 					/>
 				</div>
 				<div className="space-y-2">

@@ -53,9 +53,9 @@ function OpportunitiesPage() {
 			infoContent={infoContent}
 		>
 			<div className="space-y-6">
+				<AgencyStrip />
 				{data?.report && data.lastEvaluatedAt && <LastEvaluatedAt date={data.lastEvaluatedAt} />}
 				{content}
-				<AgencyStrip />
 			</div>
 		</PageHeader>
 	);

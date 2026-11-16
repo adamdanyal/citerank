@@ -52,6 +52,7 @@ test.describe("Cloud self-serve signup", () => {
     await page.goto("/auth/register");
     await expect(page.getByRole("button", { name: /continue with google/i })).toBeVisible({ timeout: 30_000 });
 
+    await page.getByLabel("Name").fill(NEW_USER.name);
     await page.getByLabel("Email").fill(NEW_USER.email);
     await page.getByLabel("Password").fill(NEW_USER.password);
     await page.getByRole("button", { name: "Create account" }).click();
