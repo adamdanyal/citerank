@@ -117,6 +117,10 @@ function AgencyOffer({ onBook }: { onBook: (event: MouseEvent) => void }) {
 /* The offer, who does the work, how a month runs, what the work is, the price with the call, then the objections. */
 function AgencyPage() {
 	const [booking, setBooking] = useState(false);
+	const openBooking = (event: MouseEvent) => {
+		event.preventDefault();
+		setBooking(true);
+	};
 	return (
 		<PageShell>
 			<PageHead
@@ -124,7 +128,7 @@ function AgencyPage() {
 				lede="The tracker shows what AI says about your business and ranks what to change. We make those changes every month and show you the AI answers before and after."
 			>
 				<div className="flex flex-col gap-3 sm:flex-row">
-					<a href="#pricing" className={ACTION}>
+					<a href="#pricing" onClick={openBooking} className={ACTION}>
 						Book a call
 					</a>
 					<Link to="/pricing" className={ACTION_QUIET}>
@@ -162,12 +166,7 @@ function AgencyPage() {
 					</p>
 				</PanelHead>
 				<div className="mt-10 lg:mt-16">
-					<AgencyOffer
-						onBook={(event) => {
-							event.preventDefault();
-							setBooking(true);
-						}}
-					/>
+					<AgencyOffer onBook={openBooking} />
 				</div>
 				<h3 className={`${SUBHEAD} mt-12 text-ink lg:mt-16`}>Always included</h3>
 				<ul className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
