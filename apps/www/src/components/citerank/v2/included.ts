@@ -26,8 +26,12 @@ export const INCLUDED = [
 		body: "Not a dashboard to interpret. A list: write this page, update that one, get listed on this review site.",
 	},
 	{
-		title: "Unlimited seats, a REST API and an MCP server",
-		body: "No per-person charge, and the data reaches your own tools and AI assistants rather than staying locked in a dashboard.",
+		title: "Unlimited seats for all your team",
+		body: "No per-person charge.",
+	},
+	{
+		title: "REST API and an MCP server",
+		body: "The data reaches your own tools and AI assistants rather than staying locked in a dashboard.",
 	},
 	{
 		title: "Cancel whenever you like",
