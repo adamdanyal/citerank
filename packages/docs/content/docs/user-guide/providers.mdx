@@ -1,5 +1,5 @@
 ---
-title: AI Apps
+title: AI apps
 description: Which AI apps CiteRank.com tracks, and how to choose them for each brand.
 ---
 
@@ -11,7 +11,7 @@ Each check sends one of your prompts to one AI app and keeps the answer in full,
 
 The **LLMs** settings page ([details](/docs/user-guide/settings#llm-settings)) groups the AI apps by how CiteRank.com reaches them, since each group tells you something different about your brand.
 
-## How CiteRank.com Reaches Each AI App
+## How CiteRank.com reaches each AI app
 
 | Group | How CiteRank.com Asks | What It Tells You | How You Choose |
 |-------|-----------------------|-------------------|----------------|
@@ -91,13 +91,13 @@ GPT Search is OpenAI's model called through its API with web search on. The Chat
 
 Premium tracking comes with the [Pro and Business plans](/pricing), and you turn it on prompt by prompt. Each prompt you track on a premium model uses one premium pairing from your organization's allowance, and each pairing is checked once a day. Pro includes 20 pairings and Business includes 30. Extra pairings cost $5/mo each ($50 a year on annual billing), from [Settings → Billing](/docs/user-guide/settings#organization-settings).
 
-### How Pairings Add Up
+### How pairings add up
 
 A pairing is one prompt on one premium model, so 20 pairings could track 20 prompts on GPT Search, or 10 prompts on both GPT Search and Claude (web). Pairings are shared across every brand in your organization, and a disabled prompt uses none.
 
 Premium tracking adds to the AI apps your brand already tracks, which keep running on every prompt. To choose premium models for a prompt, open **Settings → Prompts** and use the **Premium** column ([details](/docs/user-guide/settings#prompt-settings)). When you add a premium model to a prompt, CiteRank.com checks it right away instead of waiting for the next daily check. Once every pairing is in use, untick one on another prompt or buy more. The [REST API](/docs/api) can set the same choice through a prompt's `premiumModels` field.
 
-## Choosing AI Apps for a Brand
+## Choosing AI apps for a brand
 
 You first choose AI apps when you [create a brand](/docs/user-guide/brand-setup). On Basic, Pro and Business, CiteRank.com preselects ChatGPT, Google AI Mode, Google AI Overviews and Bing AI Mode, and you can change them before you click **Create Brand**. The first check runs on the apps selected then, as soon as you start tracking.
 
@@ -113,7 +113,7 @@ CiteRank.com checks a newly added AI app right away instead of waiting for each 
 
 The **Premium LLM APIs** card on the same page shows how many of your organization's premium pairings are in use. Its buttons take you to [Settings → Prompts](/docs/user-guide/settings#prompt-settings) to choose which prompts use them, and to [Settings → Billing](/docs/user-guide/settings#organization-settings) to change how many you have.
 
-## What Each Plan Includes
+## What each plan includes
 
 | Plan | Price | AI Apps per Brand | Checks per Day | Premium Pairings |
 |------|-------|-------------------|----------------|------------------|
@@ -127,13 +127,13 @@ Plans also differ in brands and prompts: 1 brand and 50 prompts on Basic, 2 bran
 
 The [LLMs page](/docs/user-guide/settings#llm-settings) lists the AI apps your plan can track. Click **Compare Plans** there, or see [Pricing](/pricing) for the full comparison.
 
-## How Answers Vary Between Runs
+## How answers vary between runs
 
 An AI app can answer the same prompt differently each time it's asked. One run names your brand, the next leaves it out, and a third names a competitor first. A single answer is a sample, so CiteRank.com asks each prompt on each AI app every day, [up to four times a day](#what-each-plan-includes), and reports the share of answers that mention you.
 
 Scraped engines also change on their own schedule: an app can switch models or change how it searches, and CiteRank.com records whatever it serves that day. The [Responses](/docs/user-guide/sentiment#filtering-responses-by-sentiment) page keeps every answer in full, so you can read the exact runs behind a change in your numbers.
 
-## Why Track Several AI Apps
+## Why track several AI apps
 
 Each AI app draws on different sources, so your brand can come up often in one and rarely in another. Bing AI Mode leans on Bing's index, Google AI Mode and AI Overviews on Google's, and the LLM APIs answer from training alone. Tracking several shows where you're strong and where you're missing:
 
@@ -141,7 +141,7 @@ Each AI app draws on different sources, so your brand can come up often in one a
 - The [filters above the overview](/docs/user-guide/dashboard) narrow every figure to a single AI app.
 - **Sentiment by Model** on the [Sentiment](/docs/user-guide/sentiment) page scores you and each competitor per AI app.
 
-## AI App IDs
+## AI app IDs
 
 The [REST API](/docs/api) and the [MCP server](/docs/api/mcp) name each AI app by an ID rather than by its display name: `chatgpt`, `google-ai-mode`, `google-ai-overview`, `bing-ai-mode`, `gemini`, `qwen`, `deepseek`, `mistral`, `claude`, `kimi`, `grok`, `meta`, and `perplexity`. `GET /models` lists them all:
 
@@ -172,26 +172,26 @@ curl -X PATCH https://app.citerank.com/api/v1/prompts/PROMPT_ID \
 
 ## FAQ
 
-### Do I Need an Account With Each AI App?
+### Do I need an account with each AI app?
 
 No. CiteRank.com runs every check itself, so you don't need an account, subscription, or API key for any of the 13 AI apps.
 
-### Can I Track More Than Four AI Apps on a Brand?
+### Can I track more than four AI apps on a brand?
 
 Not on the listed plans, which allow four picks per brand, plus [premium pairings](#premium-llm-apis) on Pro and Business. For more, email [team@citerank.com](mailto:team@citerank.com).
 
-### Does Picking Claude Use a Premium Pairing?
+### Does picking Claude use a premium pairing?
 
 No. Claude under [LLM APIs](#direct-model-apis) is a pick: it runs without web search on every prompt, at your plan's rate. **Claude (web)** is a premium model you choose prompt by prompt, and each prompt on it uses one pairing. You can track either, both, or neither.
 
-### Is GPT Search the Same as ChatGPT?
+### Is GPT Search the same as ChatGPT?
 
 No. ChatGPT is read from the [ChatGPT app](#chatgpt), as a visitor sees it. [GPT Search](#premium-llm-apis) is OpenAI's GPT-6 Luna model called through its API with web search on. The two can answer the same prompt differently, so the dashboard's filters list them separately.
 
-### Why Do Some AI Apps Show No Citations?
+### Why do some AI apps show no citations?
 
 [LLM APIs](#direct-model-apis) answer without web search, so they have no sources to cite. [Scraped engines](#scraped-engines) cite sources when the app shows them with its answer.
 
-### What Happens to My Data When I Change Plans?
+### What happens to my data when I change plans?
 
 Nothing is deleted. If you move to a [plan](/pricing) with lower limits, anything beyond them stops running, and the answers already collected stay in your dashboard.

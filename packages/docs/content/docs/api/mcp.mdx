@@ -14,7 +14,7 @@ There are two ways to connect. Signing in from the client is the quickest, and t
 acts as you, in the workspaces you belong to. An API key is for a client that can't open a browser,
 such as a container or a scheduled job, and is also how you grant a client *less* than your own access.
 
-## Quick Setup
+## Quick setup
 
 [`add-mcp`](https://github.com/neon-solutions/add-mcp) finds the AI clients installed on your machine and
 adds CiteRank.com to each of them:
@@ -27,7 +27,7 @@ Add `-g` to install it for every project rather than just the current one, and `
 prompt. Each client then asks you to sign in the first time it uses CiteRank.com. To set up a single client
 by hand, or one `add-mcp` doesn't cover, follow its section below.
 
-## Sign In From the Client
+## Sign in from the client
 
 Give the client the URL and it opens a browser for you to sign in. There is no application to
 register first.
@@ -171,7 +171,7 @@ Then `opencode mcp auth citerank`.
 Or run `goose configure`, choose **Add Extension → Remote Extension (Streamable HTTP)**, and enter the
 URL.
 
-### Other Clients
+### Other clients
 
 Any client that supports remote MCP servers over Streamable HTTP with OAuth can connect: give it
 `https://app.citerank.com/api/mcp` and sign in when it asks. A client that only runs local servers can
@@ -188,7 +188,7 @@ reach CiteRank.com through [`mcp-remote`](https://www.npmjs.com/package/mcp-remo
 }
 ```
 
-## Or Use an API Key
+## Or use an API key
 
 Issue one from **Settings → API Keys** in the organization's settings sidebar. Keys belong to the
 organization, so they are not found under a brand. Issue it read-only and optionally narrow it to
@@ -298,7 +298,7 @@ immediately.
 
 > Give me an example run for my `<description>` prompt.
 
-## What the Tools Return
+## What the tools return
 
 Most tools take a brand ID, so an assistant starts with `list_brands`. `get_analytics` returns a
 brand's visibility, share of voice, per-model breakdown, and citation totals for a time window.

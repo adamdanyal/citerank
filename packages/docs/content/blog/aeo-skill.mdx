@@ -1,5 +1,5 @@
 ---
-title: "The Top 12 AEO Skills, Audited: Almost None Measure Anything"
+title: "The top 12 AEO skills, audited: almost none measure anything"
 description: "An audit of every file in the 12 most-installed AEO and GEO skills on skills.sh, checked against the research, shows what they get wrong and how they score in a 32-question benchmark."
 date: "2026-10-09"
 author: julia
@@ -61,7 +61,7 @@ A [skill](https://agentskills.io/specification) is a folder with a `SKILL.md` fi
 
 AEO is a natural fit. The work combines technical checks an agent can run (robots.txt, rendering, indexing), research it can do (what's being cited, by whom), and writing it can draft. That is why the leading AEO skill has around 135,000 installs. Whatever these skills say becomes what thousands of agents tell their users about AI search, which makes their claims worth checking.
 
-## How the Audit Worked
+## How the audit worked
 
 On 3 October 2026, install counts came from the skills.sh search API for the queries "aeo", "geo", "ai seo", "ai visibility", and "answer engine optimization". The audit took the 12 most-installed skills that are about AI search visibility, cloned each repository, and read every `SKILL.md` and reference file. Each factual claim was checked against its primary source: the paper, the platform documentation, or the original study. Where a skill cited a statistic with no source, the audit looked for one.
 
@@ -116,7 +116,7 @@ This is the biggest omission. AI answers change on almost every run: SparkToro f
 
 The best of the incumbents say so, then leave it to the human ("run each query 3–5 times per platform") or point to a third-party tool. The rest skip measurement entirely, or "monitor" their own audit score. Without measurement, an agent can't tell whether its last recommendation worked, so it can't learn which of its advice to drop.
 
-## What a Better AEO Skill Would Do
+## What a better AEO skill would do
 
 The incumbents already get some things right: Google's guidance up front and the purpose-by-purpose crawler split in coreyhaines31's skill, AgriciDaniel's rule of deferring to primary sources, the Measured-versus-Estimated labels from aaron-he-zhu, Sanity's short-router structure, and cognitic-labs' treatment of fetched pages as untrusted input. A better skill would keep those and add the following.
 
@@ -129,7 +129,7 @@ The incumbents already get some things right: Google's guidance up front and the
 7. **The rules that carry legal or policy risk.** The FTC's rule on consumer reviews, disclosure for employees and paid placements, Google's link spam and scaled-content policies, the extra bar for health and finance pages, and the ban on networks of sites posing as independent sources in [Anthropic's Usage Policy](https://www.anthropic.com/legal/aup). When asked for any of it, the skill would decline and offer the earned version. It would also cover the newer ground the others skip: product feeds and AI shopping results, pages AI agents have to use, and domain moves.
 8. **A short main file.** References would load only when the agent reaches the step that needs them.
 
-## How the Skills Compare in Practice
+## How the skills compare in practice
 
 Reading the skills tells you what they claim. A benchmark tested what they do to an agent's answers. It used 32 evals designed to be neutral. No question mentions a tracking product or needs one, and they cover the work the skills are built for, including rewriting a page, fixing JSON-LD, local and ecommerce listings, hreflang, YouTube, rebrands, and review policy. Each comes with fixture files where it needs them (HTML, robots.txt, a CSV of tracked answers) and a rubric of 4–8 checks. Each check is either a fact with a primary source or a judgement call with a stated reason, and a separate review pass loosened any check that favored one school of thought.
 
@@ -150,11 +150,11 @@ Four of the five skills scored at or below no skill. For Sanity's and bencium's,
 
 Keep in mind that Claude graded Claude.
 
-## Where CiteRank.com Fits
+## Where CiteRank.com fits
 
 Measurement is the step a skill can't do alone, because it needs the same prompts run many times across engines. [CiteRank.com](/) does that part. Its tracker asks the AI apps a business chooses (ChatGPT, Claude, Gemini, Perplexity, Bing AI Mode, Grok, Meta, DeepSeek, Mistral, Qwen, Kimi, Google AI Overviews and Google AI Mode) the questions its buyers ask, up to four times a day, keeps every answer in full, and records mentions, citations, and the web searches each AI ran before answering. About once a week it ranks what to do next, and its [AI search agency](/agency) does that work every month for businesses that want it done, with a report of the AI answers before and after.
 
-## Measuring the Results With an AI Assistant
+## Measuring the results with an AI assistant
 
 An agent can read those measurements itself. CiteRank.com serves an [MCP server](/docs/api/mcp) at `https://app.citerank.com/api/mcp`, so Claude Code, Cursor, Codex, or another MCP client can query a brand's tracked answers alongside whichever skill it uses, or none. In Claude Code:
 

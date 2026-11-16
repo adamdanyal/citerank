@@ -1,5 +1,5 @@
 ---
-title: "How Often Should You Run AEO Prompt Tracking?"
+title: "How often should you run AEO prompt tracking?"
 description: "AI answers change run to run, so cadence decides whether your numbers mean anything. A concrete default for how often to run AEO prompt tracking, and when to deviate."
 date: "2026-05-19"
 updated: "2026-08-18"
@@ -89,7 +89,7 @@ Detecting change is harder than estimating a level. Telling a 30% window from a 
 
 The escape hatch is aggregation. Individual prompts are noisy, but a portfolio is not: 25 prompts sampled daily produce 175 runs a week, enough to make an overall [share of voice](/blog/ai-share-of-voice) trend readable at the week level even while every individual prompt stays murky. This is the real trade between cadence and prompt count. For a fixed budget, more prompts at daily frequency buys a better portfolio read; fewer prompts at higher frequency buys per-prompt answers on the questions you are contesting. Decide which of those you need before you buy either.
 
-## Four Cadence Decisions
+## Four cadence decisions
 
 "How often should I track?" bundles four decisions with different answers, different costs, and different failure modes. Conflating them is how teams end up paying for four-times-daily runs nobody reads.
 
@@ -150,7 +150,7 @@ Grounding deserves its own line item. A grounded call (the model running its own
 
 Two consequences. First, when budget forces a cut, cut scope before soundness: dropping prompts you never act on keeps the remaining numbers readable, while dropping frequency below daily quietly breaks per-prompt readability across the board. Second, the cheapest upgrade is usually a longer unbroken stretch of the same cadence: window length buys statistical weight, and time is the one free input.
 
-## Signs You Are Sampling Too Infrequently or Too Often
+## Signs you are sampling too infrequently or too often
 
 Cadence errors show up in recognizable ways.
 

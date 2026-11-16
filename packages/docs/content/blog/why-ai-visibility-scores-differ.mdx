@@ -1,5 +1,5 @@
 ---
-title: "Why Do Two AI Visibility Tools Give Your Brand Different Scores?"
+title: "Why do two AI visibility tools give your brand different scores?"
 description: "Same brand, same week, two tools, two very different AI visibility scores, and often neither is broken. A new preprint shows the prompt set and its weights define what the score measures, with a worked example swinging 31 points on weighting alone."
 date: "2026-09-11"
 updated: "2026-09-11"
@@ -73,7 +73,7 @@ faq:
 
 **On this page:** [What goes into a score](#what-goes-into-an-ai-visibility-score) · [The 31-point swing](#how-much-can-weighting-alone-move-a-visibility-score) · [Why scores get noisy](#why-do-some-prompts-produce-noisier-scores-than-others) · [The scoring rule](#can-the-scoring-rule-move-your-score-on-its-own) · [What the corpus should represent](#what-should-an-ai-visibility-prompt-corpus-represent) · [Comparing two tools](#how-do-you-compare-two-ai-visibility-tools-fairly) · [What to do](#how-do-you-make-your-number-mean-something)
 
-## What Goes Into an AI Visibility Score?
+## What goes into an AI visibility score?
 
 The preprint is a single-author methodological survey by Olivier Martinez (arXiv:2609.06811, 6 September 2026), with 44 references and 9 tables, not peer-reviewed and reporting no new experiments. It takes apart what a GEO visibility score is made of. Every such score, whether it is called share of voice, citation share, or a visibility index, is built from three decisions: a **prompt corpus** (which questions get asked, and how they are phrased), **weights** (how much each question counts toward the aggregate), and a **scoring rule** (how a raw answer becomes "mentioned," "cited," or "recommended").
 
@@ -117,7 +117,7 @@ Grounding behaves the same way. ChatGPT ran a web search on only 6 of 42 days fo
 
 And the corpus can be mismatched to reality in a deeper way: real buying sessions are conversations, and [the final prompt carries roughly a third of what the user said](/blog/multi-turn-ai-search). Every mainstream tool replays single-turn prompts. That is a defensible instrument choice (a trend needs a fixed instrument), but it is one more sense in which the tracked market is a constructed one.
 
-## Can the Scoring Rule Move Your Score on Its Own?
+## Can the scoring rule move your score on its own?
 
 The third component, the scoring rule, gets less attention than the prompts and deserves more. Most tools use an LLM to decide whether an answer mentioned your brand, cited your domain, or recommended you. The preprint's point is that this judge is itself a prompted model, so its instruction is another source of variation: change the judge's wording and the score of an *unchanged* answer can change.
 
