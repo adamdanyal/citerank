@@ -23,7 +23,7 @@ import { cn } from "@workspace/ui/lib/utils";
 import type { ReactNode } from "react";
 
 /** Label column plus one column per plan, shared by the cards and every row. */
-const GRID = "grid min-w-[52rem] grid-cols-[minmax(11rem,1.1fr)_repeat(4,minmax(0,1fr))]";
+const GRID_COLUMNS = { gridTemplateColumns: `minmax(11rem,1.1fr) repeat(${PLAN_KEYS.length},minmax(0,1fr))` };
 
 interface PlanComparisonProps {
 	/** Prices follow the interval the caller is showing. */
@@ -73,7 +73,7 @@ export function PlanComparison({
 export function PlanFeatureTable() {
 	return (
 		<div className="overflow-x-auto pb-2">
-			<div className={GRID}>
+			<div className="grid min-w-[52rem]" style={GRID_COLUMNS}>
 				<SectionHeading>Limits</SectionHeading>
 				<Row label="Brands" cell={(plan) => plan.maxBrands} />
 				<Row label="Tracked prompts" cell={(plan) => plan.maxPrompts} />
