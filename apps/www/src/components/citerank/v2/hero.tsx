@@ -60,7 +60,7 @@ function NextSteps() {
 	);
 }
 
-const DEFAULT_LEDE = `See who ChatGPT, Gemini and ${ENGINE_COUNT - 2} other AI apps recommend to your buyers, and what to fix.`;
+const DEFAULT_LEDE = `See who ChatGPT, Gemini and ${ENGINE_COUNT - 2} other AI assistants recommend to your buyers, and what to fix.`;
 
 /* Title, lede and source are overridden when a visitor arrives from an AI assistant, or on a tested variant. */
 export function Hero({
