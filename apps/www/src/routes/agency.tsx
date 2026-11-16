@@ -128,7 +128,7 @@ function AgencyPage() {
 				lede="The tracker shows what AI says about your business and ranks what to change. We make those changes every month and show you the AI answers before and after."
 			>
 				<div className="flex flex-col gap-3 sm:flex-row">
-					<a href="#pricing" onClick={openBooking} className={ACTION}>
+					<a href={`mailto:${CONTACT_EMAIL}?subject=AI%20search%20agency`} onClick={openBooking} className={ACTION}>
 						Book a call
 					</a>
 					<Link to="/pricing" className={ACTION_QUIET}>
