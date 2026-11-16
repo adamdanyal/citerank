@@ -201,7 +201,7 @@ function PlanApps({
 				{title}
 				<Plus
 					aria-hidden="true"
-					className="size-5 shrink-0 text-zinc-500 transition-transform duration-200 ease-out group-open:rotate-45"
+					className="size-5 shrink-0 text-zinc-500 transition-transform duration-200 ease-out group-open:rotate-45 motion-reduce:transition-none"
 				/>
 			</summary>
 			{list}
