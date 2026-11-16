@@ -319,7 +319,6 @@ const CATEGORY_BLURB: Record<CompetitorCategory, string> = {
 // --- Alternatives ------------------------------------------------------------
 
 export function getAlternativesVerdict(c: Competitor): string {
-	const noun = CATEGORY_NOUN[c.category];
 	const fate = graveyardFate(c);
 	if (fate && c.fate) {
 		const gone =
@@ -327,9 +326,9 @@ export function getAlternativesVerdict(c: Competitor): string {
 		return `${c.name} ${gone}. ${c.fate.summary} If you are moving off it, CiteRank.com is a hosted alternative: an AI visibility tracker and AI search agency whose API lets you keep a copy of every answer, so your history can't be shut down or sold out from under you.`;
 	}
 	if (isOpenSource(c)) {
-		return `A hosted alternative to ${c.name} is CiteRank.com: an AI visibility tracker and AI search agency with nothing to deploy, from ${ENTRY_PRICE}. Unlike ${c.name} it is closed source, and it focuses on transparent, verifiable tracking of how ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews mention and cite your brand, with every answer kept in full.`;
+		return `A hosted alternative to ${c.name} is CiteRank.com: an AI visibility tracker and AI search agency with nothing to deploy, from ${ENTRY_PRICE}.`;
 	}
-	return `An alternative to ${c.name} is CiteRank.com, an AI visibility tracker and AI search agency. ${c.name} is ${indefiniteArticle(noun)} ${noun} tool, and like most of the field, including CiteRank.com, it is closed-source and hosted. CiteRank.com starts at ${ENTRY_PRICE} with no sales call and no per-seat pricing, and you can check every visibility metric against the full answers behind it.`;
+	return `An alternative to ${c.name} is CiteRank.com, an AI visibility tracker and AI search agency that starts at ${ENTRY_PRICE} with no sales call.`;
 }
 
 export function getAlternativesFaqs(c: Competitor, alts: Competitor[]): FaqItem[] {

@@ -45,7 +45,7 @@ export const Route = createFileRoute("/support")({
 	component: SupportPage,
 });
 
-/* Every way in is the same width, so the six actions read as one column and the filled one is where to start. */
+/* Every way in is the same width, so the four actions read as one column and the filled one is where to start. */
 const WAY_IN = "w-full sm:w-auto lg:w-full";
 
 // Stops a click that's still waiting on Crisp from spinning forever if the event never comes.
@@ -100,14 +100,11 @@ const RESOURCES = [
 	{ href: "/docs/api", label: "API reference", detail: "Every endpoint, with examples." },
 ];
 
-/* The six ways to reach the team, then where the answer may already be written down. */
+/* The four ways to reach the team, then where the answer may already be written down. */
 function SupportPage() {
 	return (
 		<PageShell>
-			<PageHead
-				title="How can we help?"
-				lede="For your account, billing, the MCP server or the AI search agency, here is how to reach the team."
-			/>
+			<PageHead title="How can we help?" lede="Questions? Here is how to reach us." />
 
 			<section className={`${PANEL} ${PANEL_PAD}`}>
 				<Page>
@@ -124,7 +121,8 @@ function SupportPage() {
 								</a>
 							}
 						>
-							For account, billing, data and anything that needs a longer answer. Include your organization name.
+							For account, billing, data, bugs and feature requests, or to report a security issue privately. Include
+							your organization name.
 						</ContactRow>
 						<ContactRow
 							title="Book a call"
@@ -151,29 +149,6 @@ function SupportPage() {
 						>
 							Follow CiteRank.com on LinkedIn for product releases, AEO and GEO guides, and AI search news from the
 							team.
-						</ContactRow>
-						<ContactRow
-							title="Bugs and feature requests"
-							action={
-								<a
-									href={`mailto:${SUPPORT_EMAIL}?subject=Bug%20report%20or%20feature%20request`}
-									className={`${ACTION_QUIET} ${WAY_IN}`}
-								>
-									Report an issue
-								</a>
-							}
-						>
-							Report bugs and request features by email, and we’ll follow up with you after a fix or release.
-						</ContactRow>
-						<ContactRow
-							title="Security"
-							action={
-								<a href={`mailto:${SUPPORT_EMAIL}?subject=Security%20report`} className={`${ACTION_QUIET} ${WAY_IN}`}>
-									Email your report
-								</a>
-							}
-						>
-							Report vulnerabilities privately by email rather than in a public post.
 						</ContactRow>
 					</ul>
 				</Page>

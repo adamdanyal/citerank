@@ -1,7 +1,8 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
-import { BODY, LIST_CARD, SUBHEAD } from "@/components/citerank/v2/kit";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { cloudSignupUrl } from "@workspace/config/referrals";
+import { ACTION, ACTION_QUIET, BODY, LIST_CARD, SUBHEAD } from "@/components/citerank/v2/kit";
 import { PageShell } from "@/components/citerank/v2/shell";
-import { CiteRankCta, DirectoryCiteRankBanner, DirectoryHero, DirectorySection } from "@/components/directory-shell";
+import { CiteRankCta, DirectoryHero, DirectorySection } from "@/components/directory-shell";
 import { Faq } from "@/components/faq";
 import { ToolGrid } from "@/components/tool-list";
 import {
@@ -13,7 +14,10 @@ import {
 	getCompetitorBySlug,
 	hasOwnPages,
 } from "@/lib/competitors";
+import { trackEvent } from "@/lib/posthog";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
+
+const FROM = "marketing-page-cta";
 
 export const Route = createFileRoute("/ai-visibility-tools/alternatives/$slug")({
 	loader: ({ params }) => {
@@ -51,24 +55,27 @@ function AlternativesPage() {
 	};
 	return (
 		<PageShell>
-			<DirectoryHero back tight title={`${competitor.name} alternatives`} lead={getAlternativesVerdict(competitor)} />
-
-			<DirectoryCiteRankBanner
-				pitch="CiteRank.com tracks how ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews mention and cite your brand. It keeps every answer in full, so you can verify exactly how each metric is calculated, and its AI search agency can do the work. Every plan has unlimited seats, and you can cancel any time."
-				comparison={{
-					slug: getComparisonSlug(competitor),
-					name: competitor.name,
-				}}
-			/>
+			<DirectoryHero back title={`${competitor.name} alternatives`} lead={getAlternativesVerdict(competitor)}>
+				<div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+					<a href={cloudSignupUrl(FROM)} onClick={() => trackEvent("signup_click", { from: FROM })} className={ACTION}>
+						Start tracking
+					</a>
+					<Link
+						to="/ai-visibility-tools/$slug"
+						params={{ slug: getComparisonSlug(competitor) }}
+						className={`${ACTION_QUIET} min-w-0`}
+					>
+						<span className="truncate">CiteRank.com vs {competitor.name}</span>
+					</Link>
+				</div>
+			</DirectoryHero>
 
 			{competitor.switching ? (
 				<DirectorySection
 					title={`Why teams leave ${competitor.name}`}
 					lede={
 						<p className={`${BODY} text-zinc-600`}>
-							What people say when they leave {competitor.name}, and what CiteRank.com does differently.{" "}
-							{competitor.name} is a capable product with real customers, so take this as the case for a different set
-							of tradeoffs rather than a verdict on the tool.
+							What people say when they leave {competitor.name}, and what CiteRank.com does differently.
 						</p>
 					}
 				>
@@ -78,9 +85,8 @@ function AlternativesPage() {
 								key={reason.headline}
 								className="grid gap-x-8 gap-y-3 border-t border-zinc-200 py-6 lg:grid-cols-12 lg:py-8"
 							>
-								<h3 className={`${SUBHEAD} text-ink lg:col-span-4`}>{reason.headline}</h3>
-								<p className={`${BODY} text-zinc-600 lg:col-span-4`}>{reason.detail}</p>
-								<p className={`${BODY} text-ink lg:col-span-4`}>{reason.citeRank}</p>
+								<h3 className={`${SUBHEAD} text-ink lg:col-span-5`}>{reason.headline}</h3>
+								<p className={`${BODY} text-zinc-600 lg:col-span-7`}>{reason.citeRank}</p>
 							</li>
 						))}
 					</ul>

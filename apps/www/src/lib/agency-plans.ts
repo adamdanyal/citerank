@@ -35,19 +35,9 @@ export const AGENCY_WORK = [
 		body: "Articles on sites AI already cites, each aimed at a question where a competitor is named instead.",
 	},
 	{
-		name: "Crawler fixes",
-		title: "Crawler fixes",
-		body: "We fix anything that stops AI crawlers reading your site.",
-	},
-	{
-		name: "Schema and entity work",
-		title: "Schema and entities",
-		body: "We add the structured data that tells AI what your company, products and people are.",
-	},
-	{
-		name: "Technical SEO fixes",
-		title: "Technical SEO",
-		body: "We fix what makes your pages slow or hard for search engines and AI to read.",
+		name: "Site fixes so AI can read you",
+		title: "A site AI can read",
+		body: "We fix what makes your pages slow or hard for AI to read, and add the structured data that tells it what your company, products and people are.",
 	},
 	{
 		name: "Digital PR and brand mentions",
@@ -63,9 +53,9 @@ export const AGENCY_DOES = [...AGENCY_WORK.map((work) => work.name), "Before-and
 export const AGENCY_DOES_FIRST = [
 	"Before-and-after report",
 	"Digital PR and brand mentions",
-	"Technical SEO fixes",
+	"Site fixes so AI can read you",
 	"Review site and list pitches",
-	"Schema and entity work",
+	"Guest articles",
 ];
 
 /* What comes with it, whatever the scope. */

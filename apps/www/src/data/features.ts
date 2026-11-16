@@ -32,7 +32,7 @@ export interface ProductFeature {
 	title: string;
 	metaTitle: string;
 	metaDescription: string;
-	/** Hero paragraph: a self-contained answer to "what does this do". */
+	/** Hero sentence: a self-contained answer to "what does this do". */
 	lede: string;
 	/** One or two sentences for the index card. */
 	summary: string;
@@ -62,11 +62,10 @@ export const productFeatures: ProductFeature[] = [
 		metaTitle: "AI Visibility Tracking: Monitor Your Brand in ChatGPT & AI Search · CiteRank.com",
 		metaDescription:
 			"Track how often ChatGPT, Google AI Overviews, Perplexity, Gemini, and other AI tools mention your brand, per prompt and per model, and how that changes over time.",
-		lede: "CiteRank.com runs the questions your buyers ask through every AI tool you track, on a schedule, and measures how often the answers mention your brand. See your visibility per prompt and per model, and watch how it moves over weeks and months against your competitors.",
+		lede: "CiteRank.com runs the questions your buyers ask through every AI tool you track, on a schedule, and measures how often the answers mention your brand.",
 		summary:
 			"How often AI answers mention your brand, per prompt and per model, with trends over time against every competitor.",
 		graphic: "visibility",
-		secondaryGraphic: "trend",
 		steps: [
 			{
 				name: "Track the prompts that matter",
@@ -169,7 +168,7 @@ export const productFeatures: ProductFeature[] = [
 		metaTitle: "AI Share of Voice & Competitor Analysis for AI Search · CiteRank.com",
 		metaDescription:
 			"See how often AI tools mention you versus your competitors. CiteRank.com ranks every tracked company by share of voice, per model and over time.",
-		lede: "Share of voice is your brand's share of every mention of you and your tracked competitors in AI answers. CiteRank.com ranks every company on a live leaderboard, charts your top competitors over time, and compares you with each of them on every AI tool you track.",
+		lede: "Share of voice is your brand's share of every mention of you and your tracked competitors in AI answers.",
 		summary: "Your share of AI mentions against every tracked competitor, on a leaderboard, per model, and over time.",
 		graphic: "share-of-voice",
 		steps: [
@@ -269,7 +268,7 @@ export const productFeatures: ProductFeature[] = [
 		metaTitle: "AI Sentiment Analysis & Brand Mention Tracking · CiteRank.com",
 		metaDescription:
 			"See how ChatGPT and other AI tools describe your brand. CiteRank.com scores the sentiment of every answer that mentions you, beside each competitor, with the passages behind the score.",
-		lede: "Being mentioned is half the story; how AI describes you is the other half. CiteRank.com reads every answer that names your brand for praise or criticism, scores it from 0 to 100 beside each competitor and per model, and shows you the exact passages behind the score.",
+		lede: "Being mentioned is half the story, so CiteRank.com also scores how AI describes you, from 0 to 100, in every answer that names your brand.",
 		summary:
 			"Every answer that names you, read for praise or criticism and scored 0 to 100, with the passages behind it.",
 		graphic: "sentiment",
@@ -377,7 +376,7 @@ export const productFeatures: ProductFeature[] = [
 		metaTitle: "AI Citation Tracking: See Which Sources AI Engines Cite · CiteRank.com",
 		metaDescription:
 			"See which domains and URLs ChatGPT, Perplexity, and Google AI cite for your prompts, which of your own pages get cited, and how sources shift over time.",
-		lede: "AI answers are built from sources. CiteRank.com records every URL the engines cite for your prompts, so you can see which domains and pages they trust in your category, which of your own pages get cited, where competitors are cited and you aren't, and how the sources shift over time.",
+		lede: "AI answers are built from sources, and CiteRank.com records every URL the engines cite for your prompts.",
 		summary:
 			"Which domains and pages AI cites for your prompts, including your own, broken down by category and tracked over time.",
 		graphic: "citations",
@@ -488,9 +487,8 @@ export const productFeatures: ProductFeature[] = [
 		metaTitle: "Query Fan-Out Tracking: See the Searches Behind AI Answers · CiteRank.com",
 		metaDescription:
 			"Many AI tools turn one prompt into several web searches. CiteRank.com tracks the exact fan-out queries ChatGPT and other engines run for your prompts, and how they rewrite your wording.",
-		lede: "When an AI tool with web search answers a prompt, it often runs several web searches first. CiteRank.com records those fan-out queries for every prompt, so you can see what the engines search for, which searches recur across your category, and how they rewrite your wording.",
-		summary:
-			"The web searches many AI tools run behind each answer, and the words they add to or drop from your prompts.",
+		lede: "When an AI tool with web search answers a prompt, it often runs several web searches first, and CiteRank.com records them for every prompt.",
+		summary: "The web searches behind AI answers, and the words they add to or drop from your prompts.",
 		graphic: "query-fan-out",
 		steps: [
 			{
@@ -586,7 +584,7 @@ export const productFeatures: ProductFeature[] = [
 		metaTitle: "AI Prompt Tracking: Monitor the Questions Buyers Ask AI · CiteRank.com",
 		metaDescription:
 			"Track the prompts your buyers ask ChatGPT and other AI tools. CiteRank.com suggests prompts from your website, tags them, and keeps every answer for you to search and inspect.",
-		lede: "Prompts are the questions CiteRank.com asks AI tools on your behalf. CiteRank.com suggests them from your website, tags each one as branded or unbranded, lets you organize them with your own tags, and keeps every answer so you can search it, filter it, and see exactly what each engine said.",
+		lede: "Prompts are the questions CiteRank.com asks AI tools on your behalf.",
 		summary:
 			"Suggested from your website, tagged and organized, with every AI answer kept for you to search and inspect.",
 		graphic: "prompts",
@@ -685,7 +683,7 @@ export const productFeatures: ProductFeature[] = [
 		metaTitle: "AEO Recommendations: What to Do Next to Get Cited by AI · CiteRank.com",
 		metaDescription:
 			"CiteRank.com turns your tracked AI visibility and citation data into concrete opportunities: content to create, pages to refresh, sites to pitch, and communities to join.",
-		lede: "CiteRank.com's Opportunities page turns your tracked answers and citations into a short list of things to do: content to create, existing pages to refresh, third-party sites to pitch, and community conversations to join. Each one explains why, and links to the prompts and cited pages behind it.",
+		lede: "CiteRank.com's Opportunities page turns your tracked answers and citations into a short list of things to do: content to create, existing pages to refresh, third-party sites to pitch, and community conversations to join.",
 		summary:
 			"Content to create, pages to refresh, and sources to pitch, generated from your own visibility and citation data.",
 		graphic: "opportunities",
@@ -793,7 +791,7 @@ export const productFeatures: ProductFeature[] = [
 		metaTitle: "AI Visibility Reporting & Dashboards for AI Search · CiteRank.com",
 		metaDescription:
 			"Report AI search performance with CiteRank.com's overview dashboard, PNG chart exports, an MCP server for AI assistants, and an API for your own BI tools.",
-		lede: "CiteRank.com's overview puts visibility, share of voice, sentiment, and position on one screen, with every competitor ranked beside you. Export any prompt chart as a PNG for a deck, pull the numbers into your own dashboards through the API, or ask an AI assistant for them over MCP.",
+		lede: "CiteRank.com's overview puts visibility, share of voice, sentiment, and position on one screen, with every competitor ranked beside you.",
 		summary:
 			"An overview dashboard, PNG chart exports, an API for your own BI tools, and an MCP server for AI assistants.",
 		graphic: "overview",
@@ -888,7 +886,7 @@ export const productFeatures: ProductFeature[] = [
 		metaTitle: "AI Visibility REST API & MCP Server · CiteRank.com",
 		metaDescription:
 			"CiteRank.com's REST API and MCP server give your code and AI assistants the same AI visibility data as the dashboard, on every plan, with read-only or read-write keys.",
-		lede: "Everything in CiteRank.com is available outside the dashboard. A REST API covers brands, prompts, competitors, analytics, citations, query fan-out, runs, and opportunities. An OpenAPI spec describes it, and an MCP server lets Claude Code, Codex, Cursor, VS Code, or OpenCode read your data and manage prompts directly.",
+		lede: "Everything in CiteRank.com is available outside the dashboard, through a REST API and an MCP server.",
 		summary:
 			"A REST API and an MCP server, so your scripts, BI tools, and AI assistants get the same data as the dashboard.",
 		graphic: "api",
@@ -967,7 +965,7 @@ export const productFeatures: ProductFeature[] = [
 		metaTitle: "Multi-Engine AI Visibility Tracking: ChatGPT, AI Overviews, Gemini & More · CiteRank.com",
 		metaDescription:
 			"Track your brand in ChatGPT, Google AI Overviews, AI Mode, Bing AI Mode, and Gemini from the real apps, plus Claude, Grok, Perplexity, Meta, DeepSeek, Mistral, Qwen, and Kimi.",
-		lede: "Most AI search happens in ChatGPT and Google, and neither offers a public API for its consumer answers. CiteRank.com scrapes ChatGPT, Google AI Overviews, AI Mode, Bing AI Mode, and Gemini from the interfaces your customers use, and calls Claude, Grok, Perplexity, Meta, DeepSeek, Mistral, Qwen, and Kimi directly.",
+		lede: "Most AI search happens in ChatGPT and Google, and neither offers a public API for its consumer answers, so CiteRank.com reads them from the interfaces your customers use.",
 		summary:
 			"ChatGPT, Google AI Overviews, AI Mode, Bing AI Mode, and Gemini from the real apps, plus eight more by API.",
 		graphic: "engines",

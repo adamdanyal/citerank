@@ -35,12 +35,8 @@ const FOUR_TIMES_DAILY_FROM = PLANS.basic;
 
 const REASONS = [
 	{
-		name: "No bloat",
-		text: "Profound grew into a suite: content generation, shopping tracking, crawler analytics. CiteRank.com’s tracker does one job, AI visibility, and every screen is about it.",
-	},
-	{
-		name: "Not complicated",
-		text: "Are we showing up, who is beating us, what changed, and what to fix. Every view answers one of those in seconds, so checking in daily is not a chore.",
+		name: "No bloat, nothing complicated",
+		text: "Profound grew into a suite: content generation, shopping tracking, crawler analytics. CiteRank.com’s tracker does one job, AI visibility, and every view answers one question in seconds: are we showing up, who is beating us, what changed, or what to fix.",
 	},
 	{
 		name: "More data for the price",
@@ -264,7 +260,7 @@ function ProfoundUsersPage() {
 		<PageShell>
 			<Hero
 				title={TITLE}
-				lede={`Everything you check in Profound, sampled up to ${FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× as often, at a price you can see and pay by card today. No sales call, no credit packs, and nothing held back for Enterprise.`}
+				lede={`Everything you check in Profound, sampled up to ${FOUR_TIMES_DAILY_FROM.standardRunsPerDay}× as often, at a price you can see and pay by card today.`}
 				from={FROM}
 			/>
 			<Reasons />

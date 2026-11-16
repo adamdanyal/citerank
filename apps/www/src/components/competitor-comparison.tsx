@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import { AlertTriangle } from "lucide-react";
 import {
 	type Competitor,
@@ -15,7 +16,12 @@ import {
 	isLowDR,
 	PLAN_RANGE,
 } from "@/lib/competitors";
+import { externalRel } from "@/lib/external-link";
+import { trackEvent } from "@/lib/posthog";
+import { DEMO_BRAND_PATH } from "./citerank/product/data";
 import {
+	ACTION,
+	ACTION_QUIET,
 	BODY,
 	CARD_LIFT,
 	HEADING,
@@ -34,6 +40,8 @@ import { CiteRankCta, DirectoryHero, SPLIT, SPLIT_BODY, SPLIT_HEAD } from "./dir
 import { Faq } from "./faq";
 import { FeatureTable } from "./feature-mark";
 import { CITERANK_FACTS, ToolSummary, toolFacts } from "./tool-list";
+
+const FROM = "marketing-page-cta";
 
 function FateNotice({ competitor }: { competitor: Competitor }) {
 	const fate = graveyardFate(competitor);
@@ -107,10 +115,27 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 			</p>
 		) : null;
 
+	const signupUrl = cloudSignupUrl(FROM);
+	const demoUrl = demoSiteUrl(FROM, DEMO_BRAND_PATH);
+
 	return (
 		<>
 			<DirectoryHero back title={`CiteRank.com vs ${competitor.name}`} lead={getComparisonVerdict(competitor)}>
-				{notice}
+				{notice ? <div className="mb-8">{notice}</div> : null}
+				<div className="flex flex-col gap-3 sm:flex-row">
+					<a href={signupUrl} onClick={() => trackEvent("signup_click", { from: FROM })} className={ACTION}>
+						Start tracking
+					</a>
+					<a
+						href={demoUrl}
+						target="_blank"
+						rel={externalRel(demoUrl)}
+						onClick={() => trackEvent("demo_open", { from: FROM })}
+						className={ACTION_QUIET}
+					>
+						Try the live demo
+					</a>
+				</div>
 			</DirectoryHero>
 
 			<section className={`${PANEL} ${PANEL_PAD}`}>
@@ -128,6 +153,52 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 							{competitor.tagline}
 						</ToolSummary>
 					</ul>
+				</Page>
+			</section>
+
+			<section className={`${PANEL} ${PANEL_PAD_WIDE}`}>
+				<Page className={SPLIT}>
+					<div className={SPLIT_HEAD}>
+						<PanelHead title="Feature comparison" />
+					</div>
+					<div className={SPLIT_BODY}>
+						<FeatureTable
+							columns={[
+								{
+									id: "citerank",
+									name: "CiteRank.com",
+									has: citeRankHas,
+									marked: (key) => citeRankHas(key) && !competitorHas(key),
+								},
+								{
+									id: competitor.slug,
+									name: competitor.name,
+									has: competitorHas,
+									marked: (key) => competitorHas(key) && !citeRankHas(key),
+								},
+							]}
+						/>
+					</div>
+				</Page>
+			</section>
+
+			<section className={`${PANEL} ${PANEL_PAD}`}>
+				<Page>
+					<PanelHead title="Key differences" />
+					<div
+						className={`mt-10 grid gap-5 lg:mt-16 lg:gap-8 ${differences.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}
+					>
+						{differences.map((list) => (
+							<div key={list.title} className={`${CARD_LIFT} p-6 sm:p-8`}>
+								<h3 className={`${SUBHEAD} text-ink`}>{list.title}</h3>
+								<ul className={`${BODY} mt-4 space-y-2 text-zinc-600`}>
+									{list.features.map((feature) => (
+										<li key={feature}>{feature}</li>
+									))}
+								</ul>
+							</div>
+						))}
+					</div>
 				</Page>
 			</section>
 
@@ -182,52 +253,6 @@ export function CompetitorComparison({ competitor }: { competitor: Competitor })
 								))}
 							</ul>
 						)}
-					</div>
-				</Page>
-			</section>
-
-			<section className={`${PANEL} ${PANEL_PAD_WIDE}`}>
-				<Page className={SPLIT}>
-					<div className={SPLIT_HEAD}>
-						<PanelHead title="Feature comparison" />
-					</div>
-					<div className={SPLIT_BODY}>
-						<FeatureTable
-							columns={[
-								{
-									id: "citerank",
-									name: "CiteRank.com",
-									has: citeRankHas,
-									marked: (key) => citeRankHas(key) && !competitorHas(key),
-								},
-								{
-									id: competitor.slug,
-									name: competitor.name,
-									has: competitorHas,
-									marked: (key) => competitorHas(key) && !citeRankHas(key),
-								},
-							]}
-						/>
-					</div>
-				</Page>
-			</section>
-
-			<section className={`${PANEL} ${PANEL_PAD}`}>
-				<Page>
-					<PanelHead title="Key differences" />
-					<div
-						className={`mt-10 grid gap-5 lg:mt-16 lg:gap-8 ${differences.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}
-					>
-						{differences.map((list) => (
-							<div key={list.title} className={`${CARD_LIFT} p-6 sm:p-8`}>
-								<h3 className={`${SUBHEAD} text-ink`}>{list.title}</h3>
-								<ul className={`${BODY} mt-4 space-y-2 text-zinc-600`}>
-									{list.features.map((feature) => (
-										<li key={feature}>{feature}</li>
-									))}
-								</ul>
-							</div>
-						))}
 					</div>
 				</Page>
 			</section>

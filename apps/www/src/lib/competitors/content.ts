@@ -149,7 +149,7 @@ export function getSoundbite(competitor: Competitor): string {
 }
 
 /**
- * A 40–60 word lead "answer block" for a comparison page, written to be lifted
+ * A one-sentence lead "answer block" for a comparison page, written to be lifted
  * verbatim into an AI answer for "Elmo vs {competitor}" style queries. Branches
  * on whether the competitor is itself open source so the claim stays accurate.
  */
@@ -157,11 +157,11 @@ export function getComparisonVerdict(competitor: Competitor): string {
 	const name = competitor.name;
 
 	if (isOpenSource(competitor)) {
-		return `${name} is an open-source AI visibility tool you can self-host and audit, and CiteRank.com is a hosted AI visibility tracker. CiteRank.com's focus is transparent, verifiable tracking across ChatGPT, Claude, Perplexity, and Google AI Overviews, with a documented methodology behind every number and an AI search agency that does the work.`;
+		return `${name} is an open-source AI visibility tool you can self-host and audit, and CiteRank.com is a hosted AI visibility tracker and AI search agency.`;
 	}
 
 	const noun = CATEGORY_NOUN[competitor.category];
-	return `CiteRank.com, an AI visibility tracker and AI search agency, is an alternative to ${name}, ${indefiniteArticle(noun)} ${noun} tool. Both measure how AI answer engines describe your brand, but CiteRank.com keeps every answer in full, covers 13 AI tools, and checks each prompt up to four times a day, so each metric traces back to the words an AI wrote.`;
+	return `CiteRank.com, an AI visibility tracker and AI search agency, is an alternative to ${name}, ${indefiniteArticle(noun)} ${noun} tool.`;
 }
 
 /**

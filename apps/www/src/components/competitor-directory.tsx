@@ -3,25 +3,13 @@ import { cloudSignupUrl } from "@workspace/config/referrals";
 import { Search, X } from "lucide-react";
 import { useId, useRef, useState } from "react";
 import { CATEGORY_LABELS, type CompetitorCategory, ENTRY_PRICE, isRetired, sortedCompetitors } from "@/lib/competitors";
-import {
-	ACTION,
-	ACTION_QUIET,
-	BAND_PAD,
-	BODY,
-	CARD,
-	HEADING,
-	LEAD,
-	LINK,
-	PANEL,
-	PANEL_PAD,
-	PANEL_TINT,
-	Page,
-	SMALL,
-} from "./citerank/v2/kit";
+import { trackEvent } from "@/lib/posthog";
+import { ACTION, ACTION_QUIET, BODY, CARD, CARD_LIFT, LINK, PANEL, Page, SMALL } from "./citerank/v2/kit";
 import { DirectoryHero, FOCUS } from "./directory-shell";
 import { ToolGrid } from "./tool-list";
 
-const SIGN_UP_URL = cloudSignupUrl("marketing-page-cta");
+const FROM = "marketing-page-cta";
+const SIGN_UP_URL = cloudSignupUrl(FROM);
 
 const visibleCompetitors = sortedCompetitors.filter((c) => !isRetired(c) && c.category !== "other");
 const categories = [...new Set(visibleCompetitors.map((c) => c.category))];
@@ -60,50 +48,69 @@ export function CompetitorDirectory() {
 		<>
 			<DirectoryHero
 				title="AI visibility tools"
-				lead="Every AI visibility tool, AEO platform, LLM visibility tracker and GEO tool in one place. Compare engine coverage, features and pricing, and find the right platform for your team."
+				lead="Every tool that tracks your brand in AI answers, in one list."
+				aside={
+					<div className={`${CARD_LIFT} p-6`}>
+						<h2 className="text-[1rem] leading-[1.4] font-medium text-ink">Why consider CiteRank.com</h2>
+						<p className={`${SMALL} mt-2 text-zinc-700`}>
+							Hosted, self-serve, and transparent. Track AI visibility without a sales call or inflated pricing, from{" "}
+							{ENTRY_PRICE}.
+						</p>
+						<div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+							<a href={SIGN_UP_URL} onClick={() => trackEvent("signup_click", { from: FROM })} className={ACTION}>
+								Start tracking
+							</a>
+							<Link to="/agency" className={ACTION_QUIET}>
+								Let us do the work
+							</Link>
+						</div>
+					</div>
+				}
 			/>
 
-			<section className={`${PANEL} ${PANEL_PAD}`}>
+			<section className={`${PANEL} pt-6 pb-9 sm:pt-8 sm:pb-12 lg:pb-18`}>
 				<Page>
-					<h2 className={`${HEADING} text-ink tabular-nums`}>
-						{tools.length} {tools.length === 1 ? "tool" : "tools"}
-					</h2>
-					<div className="mt-6 max-w-sm">
-						<label htmlFor={searchId} className={`${SMALL} font-medium text-ink`}>
-							Find a tool
-						</label>
-						<div className="relative mt-2">
-							<Search
-								aria-hidden="true"
-								className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-zinc-500"
-							/>
-							<input
-								ref={searchBox}
-								id={searchId}
-								type="search"
-								value={query}
-								onChange={(event) => {
-									setQuery(event.target.value);
-									setCategory("all");
-								}}
-								autoComplete="off"
-								spellCheck={false}
-								className={`h-13 w-full rounded-full bg-white pr-13 pl-12 text-[1rem] text-ink ring-1 ring-zinc-500 transition-colors duration-200 ring-inset hover:bg-paper-2 [&::-webkit-search-cancel-button]:appearance-none ${FOCUS}`}
-							/>
-							{query ? (
-								<button
-									type="button"
-									aria-label="Clear the search"
-									onClick={() => {
-										pick("all");
-										searchBox.current?.focus();
+					<div className="flex flex-wrap items-end gap-x-6 gap-y-3">
+						<div className="w-full max-w-sm">
+							<label htmlFor={searchId} className={`${SMALL} font-medium text-ink`}>
+								Find a tool
+							</label>
+							<div className="relative mt-2">
+								<Search
+									aria-hidden="true"
+									className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-zinc-500"
+								/>
+								<input
+									ref={searchBox}
+									id={searchId}
+									type="search"
+									value={query}
+									onChange={(event) => {
+										setQuery(event.target.value);
+										setCategory("all");
 									}}
-									className={`absolute top-1/2 right-1 grid size-11 -translate-y-1/2 place-items-center rounded-full text-zinc-600 transition-colors duration-200 hover:text-ink ${FOCUS}`}
-								>
-									<X aria-hidden="true" className="size-4" />
-								</button>
-							) : null}
+									autoComplete="off"
+									spellCheck={false}
+									className={`h-13 w-full rounded-full bg-white pr-13 pl-12 text-[1rem] text-ink ring-1 ring-zinc-500 transition-colors duration-200 ring-inset hover:bg-paper-2 [&::-webkit-search-cancel-button]:appearance-none ${FOCUS}`}
+								/>
+								{query ? (
+									<button
+										type="button"
+										aria-label="Clear the search"
+										onClick={() => {
+											pick("all");
+											searchBox.current?.focus();
+										}}
+										className={`absolute top-1/2 right-1 grid size-11 -translate-y-1/2 place-items-center rounded-full text-zinc-600 transition-colors duration-200 hover:text-ink ${FOCUS}`}
+									>
+										<X aria-hidden="true" className="size-4" />
+									</button>
+								) : null}
+							</div>
 						</div>
+						<h2 className={`${SMALL} pb-3.5 text-zinc-600 tabular-nums`}>
+							{tools.length} {tools.length === 1 ? "tool" : "tools"}
+						</h2>
 					</div>
 					<fieldset className="mt-5 flex flex-wrap gap-2">
 						<legend className="sr-only">Category</legend>
@@ -156,26 +163,6 @@ export function CompetitorDirectory() {
 					<noscript>
 						<style>{"[data-held]{display:grid!important}[data-show-all]{display:none}"}</style>
 					</noscript>
-				</Page>
-			</section>
-
-			<section className={`${PANEL_TINT} ${BAND_PAD}`}>
-				<Page className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-8">
-					<div className="lg:col-span-7">
-						<h2 className={`${HEADING} text-ink`}>Why consider CiteRank.com</h2>
-						<p className={`${LEAD} mt-5 max-w-[52ch] text-zinc-700`}>
-							Hosted, self-serve, and transparent. Track AI visibility without a sales call or inflated pricing, from{" "}
-							{ENTRY_PRICE}.
-						</p>
-					</div>
-					<div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:col-span-5 lg:justify-end">
-						<a href={SIGN_UP_URL} className={ACTION}>
-							Start tracking
-						</a>
-						<Link to="/agency" className={ACTION_QUIET}>
-							Let us do the work
-						</Link>
-					</div>
 				</Page>
 			</section>
 		</>

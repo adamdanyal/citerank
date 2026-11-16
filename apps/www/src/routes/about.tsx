@@ -67,7 +67,7 @@ const NUMBERS = [
 	{ value: "London", label: "where the company is registered" },
 ];
 
-/* Written in the founders' voice, and short: why, who, and what it does. The detail is in the key facts and the FAQ below. */
+/* Written in the founders' voice, and short: why, who, and what it does. The detail is in the FAQ and the key facts below. */
 const STORY = [
 	"When a buyer asks ChatGPT, Gemini or Perplexity who to choose, the answer names a few brands and cites a few pages. If you cannot say whether yours is one of them, that is the gap we started CiteRank.com to close.",
 	"We are Adam and Julia Danyal. We have more than 2.3 million LinkedIn followers between us, run Chief AI Leader, an exam-based AI certification for leaders, and write AI For Leaders, a daily newsletter read by more than 50,000 leaders.",
@@ -116,7 +116,7 @@ function Founder({ founder }: { founder: (typeof FOUNDERS)[number] }) {
 	);
 }
 
-/* The statement, the company in four figures, the founders and their reasons, the facts on record, the objections. */
+/* The statement, the company in four figures, the founders and their reasons, the objections, the facts on record. */
 function AboutPage() {
 	const keyFacts: { term: string; detail: ReactNode }[] = [
 		{ term: "Company name", detail: "CiteRank.com, a trading name of Danx Digital Limited" },
@@ -193,20 +193,7 @@ function AboutPage() {
 		<PageShell>
 			<PageHead
 				title="We track what AI says about your brand, then do the work to change it"
-				lede={
-					<>
-						CiteRank.com is the AI visibility tracker and AI search agency for{" "}
-						<Link to="/answer-engine-optimization" className={`${LINK} text-ink`}>
-							AEO
-						</Link>{" "}
-						and{" "}
-						<Link to="/generative-engine-optimization" className={`${LINK} text-ink`}>
-							GEO
-						</Link>
-						. We track how ChatGPT, Gemini, Perplexity and ten other AI tools describe brands, and our agency does the
-						work that changes those answers.
-					</>
-				}
+				lede="CiteRank.com is an AI visibility tracker and AI search agency. We track how ChatGPT, Gemini, Perplexity and ten other AI tools describe brands, and our agency does the work that changes those answers."
 			>
 				<div className="flex flex-col gap-3 sm:flex-row">
 					<Link to="/agency" search={{ book: true }} className={ACTION}>
@@ -272,6 +259,8 @@ function AboutPage() {
 				</Page>
 			</section>
 
+			<Faq items={ABOUT_FAQS} />
+
 			<section className={`${PANEL} ${PANEL_PAD}`}>
 				<Page>
 					<PanelHead title="Key facts">
@@ -291,7 +280,6 @@ function AboutPage() {
 				</Page>
 			</section>
 
-			<Faq items={ABOUT_FAQS} />
 			<Closing from="marketing-about" quotes={false} />
 		</PageShell>
 	);

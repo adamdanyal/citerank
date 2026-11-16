@@ -64,10 +64,6 @@ const STEPS = [
 		title: "You see before and after",
 		body: "A monthly report lists every piece of work, the question it targets, and the AI answers before and after.",
 	},
-	{
-		title: "The cycle repeats",
-		body: "The tracker measures the new answers, and the next month’s work follows from them.",
-	},
 ];
 
 /*
@@ -150,7 +146,7 @@ function AgencyPage() {
 
 			<PanelSection>
 				<PanelHead title="How a month runs" />
-				<StepCards steps={STEPS} className="mt-10 sm:grid-cols-2 lg:mt-16" />
+				<StepCards steps={STEPS} className="mt-10 lg:mt-16 lg:grid-cols-3" />
 			</PanelSection>
 
 			<PanelSection>

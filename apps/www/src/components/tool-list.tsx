@@ -1,12 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import {
-	CATEGORY_LABELS,
-	type Competitor,
-	ENTRY_PRICE,
-	getComparisonSlug,
-	getPopularityGrade,
-} from "@/lib/competitors";
+import { CATEGORY_LABELS, type Competitor, ENTRY_PRICE, getComparisonSlug } from "@/lib/competitors";
 import { BODY, LINK, LIST_CARD, PILL_QUIET, SMALL, SUBHEAD } from "./citerank/v2/kit";
 
 export const CITERANK_FACTS = ["Search agency", "13 AI tools", `From ${ENTRY_PRICE}`];
@@ -66,8 +60,7 @@ function ToolRow({
 	visit: boolean;
 	held: boolean;
 }) {
-	const grade = getPopularityGrade(competitor);
-	const facts = [...toolFacts(competitor, showCategory), ...(grade === "N/A" ? [] : [`Popularity grade ${grade}`])];
+	const facts = toolFacts(competitor, showCategory);
 	return (
 		<li
 			data-held={held ? "" : undefined}

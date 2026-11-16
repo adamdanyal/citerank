@@ -1,8 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
 import { DEMO_BRAND_PATH } from "@/components/citerank/product/data";
 import { Closing } from "@/components/citerank/v2/closing";
-import { ACTION, ACTION_QUIET, BODY, LINK, PanelHead } from "@/components/citerank/v2/kit";
+import { ACTION, ACTION_QUIET, BODY, PanelHead } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell, PanelSection } from "@/components/citerank/v2/shell";
 import { FEATURE_GROUPS, FEATURE_TILE, FeatureCard, featurePath } from "@/components/features";
 import { productFeatures } from "@/data/features";
@@ -43,20 +43,7 @@ function FeaturesPage() {
 	const demoUrl = demoSiteUrl(FROM, DEMO_BRAND_PATH);
 	return (
 		<PageShell>
-			<PageHead
-				title="All you need to grow AI visibility"
-				lede={
-					<>
-						CiteRank.com tracks whether ChatGPT, Google AI Overviews, Perplexity, Gemini and nine other AI tools mention
-						you, how they describe you, who they name instead and which sources they cite. Then it tells you what to
-						fix, and our{" "}
-						<Link to="/agency" className={`${LINK} text-ink`}>
-							AI search agency
-						</Link>{" "}
-						can do it.
-					</>
-				}
-			>
+			<PageHead title="All you need to grow AI visibility" lede="See how AI tools mention you, and what to fix.">
 				<div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
 					<a href={signupUrl} onClick={() => trackEvent("signup_click", { from: FROM })} className={ACTION}>
 						Start tracking
