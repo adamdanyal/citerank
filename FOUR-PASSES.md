@@ -77,7 +77,7 @@ Conversion: from Start tracking to the first screen with the brand's data is 12 
 
 Done on 16 November, on the owner's yes:
 - The plan table on Choose plan lines up with three plans.
-- The AI tool columns on Overview and Sentiment are named.
+- The AI tool columns on Overview and Sentiment keep logos with the name on hover; the owner found names under the logos too crowded.
 - Opportunities has plain section names. The booking strip stays above the report, by the owner's choice.
 - People with one organization skip the organizations and brands picker.
 - Sign-up has one legal line. It still asks for a name, which the owner needs, and the side panel stays as it is.
