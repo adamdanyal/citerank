@@ -1,11 +1,19 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { cloudSignupUrl } from "@workspace/config/referrals";
 import { Closing } from "@/components/citerank/v2/closing";
-import { ACTION, CARD, PANEL, PANEL_PAD, Page, SMALL } from "@/components/citerank/v2/kit";
+import { CARD, PANEL, PANEL_PAD, Page, SMALL } from "@/components/citerank/v2/kit";
 import { PageShell } from "@/components/citerank/v2/shell";
-import { DOC, DOC_TEXT, GuideHead, LABEL, PROSE, RailNav, ROW_ACTION, ROW_LINK } from "@/components/pillar";
+import {
+	DOC,
+	DOC_TEXT,
+	GuideHead,
+	LABEL,
+	PROSE,
+	RailNav,
+	ROW_ACTION,
+	ROW_LINK,
+	TrackingActions,
+} from "@/components/pillar";
 import { type GlossaryTerm, getGlossaryTerm, glossaryTerms } from "@/data/glossary";
-import { trackEvent } from "@/lib/posthog";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
 const FROM = "marketing-page-cta";
@@ -51,7 +59,6 @@ function GlossaryTermPage() {
 		term: GlossaryTerm;
 		related: GlossaryTerm[];
 	};
-	const signupUrl = cloudSignupUrl(FROM);
 	return (
 		<PageShell>
 			<article>
@@ -82,9 +89,7 @@ function GlossaryTermPage() {
 								</ul>
 								<div className="mt-5 flex flex-col gap-4 border-t border-zinc-200 pt-5 sm:flex-row sm:items-center sm:justify-between">
 									<p className={PROSE}>See how often AI names your brand.</p>
-									<a href={signupUrl} onClick={() => trackEvent("signup_click", { from: FROM })} className={ACTION}>
-										Start tracking
-									</a>
+									<TrackingActions from={FROM} />
 								</div>
 							</div>
 						</div>

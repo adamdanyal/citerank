@@ -390,6 +390,11 @@
 	--crisp-color-theme-900: var(--chat-rust-900) !important;
 }
 
+/* The phone menu ends with Start tracking, where the chat bubble would sit on top of it. */
+html:has(#site-menu[data-menu="open"]) .crisp-client {
+	display: none !important;
+}
+
 /* The docs' typography plugin brings its own cool greys; these are the site's warm ones. */
 .prose {
 	--tw-prose-body: var(--color-zinc-700);

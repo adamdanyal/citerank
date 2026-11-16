@@ -125,25 +125,23 @@ export function CiteRankCta() {
 }
 
 /** "Start tracking", and with `demo` the live demo beside it, for under a page head's lede. */
-export function TrackingActions({ from, demo = false }: { from: ReferralSource; demo?: boolean }) {
+export function TrackingActions({ from, event = from }: { from: ReferralSource; event?: string }) {
 	const signupUrl = cloudSignupUrl(from);
 	const demoUrl = demoSiteUrl(from, DEMO_BRAND_PATH);
 	return (
 		<div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-			<a href={signupUrl} onClick={() => trackEvent("signup_click", { from })} className={ACTION}>
+			<a href={signupUrl} onClick={() => trackEvent("signup_click", { from: event })} className={ACTION}>
 				Start tracking
 			</a>
-			{demo ? (
-				<a
-					href={demoUrl}
-					target="_blank"
-					rel={externalRel(demoUrl)}
-					onClick={() => trackEvent("demo_open", { from })}
-					className={ACTION_QUIET}
-				>
-					Try the live demo
-				</a>
-			) : null}
+			<a
+				href={demoUrl}
+				target="_blank"
+				rel={externalRel(demoUrl)}
+				onClick={() => trackEvent("demo_open", { from: event })}
+				className={ACTION_QUIET}
+			>
+				Try the live demo
+			</a>
 		</div>
 	);
 }
@@ -154,7 +152,7 @@ export function PillarBody({ pillar }: { pillar: Pillar }) {
 			{/* The route's PageHead ends just above; this padding matches the gap it leaves before its own children. */}
 			<div className={`${PANEL} pt-6 pb-3 sm:pt-5 sm:pb-4`}>
 				<Page>
-					<TrackingActions from="marketing-page-cta" demo />
+					<TrackingActions from="marketing-page-cta" />
 				</Page>
 			</div>
 

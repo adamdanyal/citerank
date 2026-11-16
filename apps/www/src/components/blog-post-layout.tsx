@@ -4,17 +4,16 @@
 // @tanstack/router-plugin auto-splits into its own chunk, keeping these deps
 // out of the bundle that loads on other marketing pages.
 
-import { cloudSignupUrl } from "@workspace/config/referrals";
 import browserCollections from "collections/browser";
 import { RootProvider } from "fumadocs-ui/provider/tanstack";
 import type { ComponentPropsWithoutRef } from "react";
 import { Suspense } from "react";
 import { AuthorByline } from "@/components/author-byline";
 import { Closing } from "@/components/citerank/v2/closing";
-import { ACTION, LEAD, Page } from "@/components/citerank/v2/kit";
+import { LEAD, Page } from "@/components/citerank/v2/kit";
 import { PageShell } from "@/components/citerank/v2/shell";
 import { DOC_BODY, DOC_GRID, DOC_H2, DOC_H3, DOC_TEXT, DocumentHead, getDocumentComponents } from "@/components/mdx";
-import { trackEvent } from "@/lib/posthog";
+import { TrackingActions } from "@/components/pillar";
 import type { BlogPostFaqItem, BlogPostLoaderData } from "@/routes/blog/$";
 
 function isElmoHref(href: string): boolean {
@@ -92,13 +91,9 @@ export function BlogPostLayout({ data }: { data: BlogPostLoaderData }) {
 				<article>
 					<DocumentHead back={{ href: "/blog", label: "Blog" }} title={data.title}>
 						{data.description && <p className={`${LEAD} mt-6 max-w-[60ch] text-zinc-600`}>{data.description}</p>}
-						<a
-							href={cloudSignupUrl("marketing-cta")}
-							onClick={() => trackEvent("signup_click", { from: "blog-post" })}
-							className={`${ACTION} mt-8`}
-						>
-							Start tracking
-						</a>
+						<div className="mt-8">
+							<TrackingActions from="marketing-cta" event="blog-post" />
+						</div>
 					</DocumentHead>
 					<section className={DOC_BODY}>
 						<Page className={DOC_GRID}>

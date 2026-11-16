@@ -1,9 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
-import { cloudSignupUrl } from "@workspace/config/referrals";
 import { Closing } from "@/components/citerank/v2/closing";
 import {
-	ACTION,
 	BODY,
 	CARD,
 	HEADING,
@@ -16,10 +14,9 @@ import {
 	SUBHEAD,
 } from "@/components/citerank/v2/kit";
 import { PageHead, PageShell } from "@/components/citerank/v2/shell";
-import { ITEM_TITLE } from "@/components/pillar";
+import { ITEM_TITLE, TrackingActions } from "@/components/pillar";
 import { authorDisplayName, isAiAuthor } from "@/data/authors";
 import { formatPostDate } from "@/lib/format";
-import { trackEvent } from "@/lib/posthog";
 import { breadcrumbJsonLd, canonicalUrl, ogMeta, SITE_NAME } from "@/lib/seo";
 
 const title = "Blog · CiteRank.com";
@@ -127,13 +124,7 @@ function StartTracking() {
 			className={`${CARD} my-8 flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between lg:my-10`}
 		>
 			<p className={`${SUBHEAD} text-ink`}>See how often AI names your brand</p>
-			<a
-				href={cloudSignupUrl("marketing-cta")}
-				onClick={() => trackEvent("signup_click", { from: "blog-index" })}
-				className={ACTION}
-			>
-				Start tracking
-			</a>
+			<TrackingActions from="marketing-cta" event="blog-index" />
 		</div>
 	);
 }
