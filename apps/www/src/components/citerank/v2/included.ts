@@ -14,7 +14,7 @@ const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
  */
 export const INCLUDED = [
 	{
-		title: "You see the whole answer, not a score",
+		title: "See the entire answer, not just a score",
 		body: `When an AI app answers a question your customers ask, we keep the full reply: which brands it recommended, and which websites it got that from.`,
 	},
 	{
