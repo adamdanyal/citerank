@@ -105,7 +105,7 @@ function AgencyOffer({ onBook }: { onBook: (event: MouseEvent) => void }) {
 						key={line}
 						className="flex items-center gap-4 border-t border-zinc-200 py-3.5 text-lead leading-snug text-ink first:border-t-0 first:pt-0 last:pb-0"
 					>
-						<Tick className="size-7" />
+						<Tick tone="quiet" className="size-7" />
 						{line}
 					</li>
 				))}
@@ -173,7 +173,7 @@ function AgencyPage() {
 				<ul className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
 					{AGENCY_INCLUDES.map((line) => (
 						<li key={line} className="flex items-start gap-3 text-[1.0625rem] leading-snug text-zinc-700">
-							<Tick className="mt-px size-6" />
+							<Tick tone="quiet" className="mt-px size-6" />
 							{line}
 						</li>
 					))}

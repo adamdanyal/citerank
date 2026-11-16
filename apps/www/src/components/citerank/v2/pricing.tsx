@@ -287,7 +287,7 @@ export function PlanTable({
 					);
 				})}
 			</div>
-			<p className={`${SMALL} mt-8 text-zinc-600`}>Prices in US dollars.{children ? <> {children}</> : null}</p>
+			<p className={`${SMALL} mt-8 text-zinc-600`}>Prices in US dollars{children ? <>. {children}</> : null}</p>
 		</div>
 	);
 }

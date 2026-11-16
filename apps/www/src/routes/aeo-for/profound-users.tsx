@@ -194,7 +194,7 @@ function Comparison() {
 								<th scope="col" className="py-4 pr-6 font-medium">
 									<span className="sr-only">Feature</span>
 								</th>
-								<th scope="col" className="px-6 py-4 font-heading font-bold text-ink">
+								<th scope="col" className="px-6 py-4 font-heading font-bold tracking-normal text-ink">
 									CiteRank.com
 								</th>
 								<th scope="col" className="py-4 pl-6 font-medium text-zinc-600">
@@ -230,7 +230,7 @@ function Comparison() {
 					</table>
 				</div>
 				<p className={`${SMALL} mt-5 text-zinc-500`}>
-					Profound details are from its public pricing page as of October 2026 and may have changed since.
+					Profound details are from its public pricing page as of October 2026 and may have changed since
 				</p>
 			</Page>
 		</section>

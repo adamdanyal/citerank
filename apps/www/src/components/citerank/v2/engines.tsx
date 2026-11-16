@@ -57,12 +57,12 @@ export function Engines() {
 					<Group
 						title="Read in the app"
 						models={SCRAPED}
-						note="Scraped from the real interface your customers see, not approximated through an API."
+						note="Scraped from the real interface your customers see, not approximated through an API"
 					/>
 					<Group
 						title="Read through the API"
 						models={BY_API}
-						note={`${list.format(GROUNDED_ONLY.map(label))} answer with their own web search on, included on ${premiumPlanNames()}.`}
+						note={`${list.format(GROUNDED_ONLY.map(label))} answer with their own web search on, included on ${premiumPlanNames()}`}
 					/>
 				</div>
 			</Page>

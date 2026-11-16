@@ -32,7 +32,7 @@ export const DOC = "grid grid-cols-1 gap-y-12 lg:grid-cols-12 lg:gap-x-8";
 export const DOC_RAIL = "min-w-0 lg:sticky lg:top-28 lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:self-start";
 export const DOC_TEXT = "min-w-0 max-w-[60ch] lg:col-span-8 lg:col-start-5";
 export const DOC_HEAD = `${SUBHEAD} text-ink`;
-export const DOC_SUBHEAD = "font-heading text-[1.125rem] leading-[1.35] font-bold text-ink";
+export const DOC_SUBHEAD = "font-heading text-[1.125rem] leading-[1.35] font-bold tracking-normal text-ink";
 export const PROSE = `${BODY} text-zinc-700`;
 
 /** An item's title where it can run to three lines: the title size, leaded a step looser than a one-line title. */

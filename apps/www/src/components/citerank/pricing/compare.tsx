@@ -85,7 +85,7 @@ export function Compare() {
 									))}
 								</dl>
 								<p className={`${SMALL} mt-4 text-zinc-600`}>
-									${PREMIUM_ADDON_MONTHLY_USD} a month for each extra premium prompt.
+									${PREMIUM_ADDON_MONTHLY_USD} a month for each extra premium prompt
 								</p>
 							</div>
 						</div>

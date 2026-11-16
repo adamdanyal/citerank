@@ -138,7 +138,7 @@ export function LiftedRows({
 					className="grid gap-x-8 gap-y-2 border-t border-zinc-200 py-6 first:border-t-0 lg:grid-cols-12 lg:items-center"
 				>
 					<h3 className="flex items-start gap-4 font-sans text-lead leading-snug font-medium tracking-normal text-ink lg:col-span-5">
-						{ticked ? <Tick className="size-7" /> : null}
+						{ticked ? <Tick tone="quiet" className="size-7" /> : null}
 						{item.title}
 					</h3>
 					<p className={`${BODY} text-zinc-600 lg:col-span-7 ${ticked ? "max-lg:pl-11" : ""}`}>{item.body}</p>
