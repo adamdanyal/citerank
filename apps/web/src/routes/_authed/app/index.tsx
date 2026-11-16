@@ -1,8 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { Skeleton } from "@workspace/ui/components/skeleton";
 import FullPageCard from "@/components/full-page-card";
 import { OrganizationDirectory } from "@/components/organization-directory";
 import { invalidateOrganizations, organizationsQuery } from "@/lib/organizations/queries";
+import { soleOrganizationLanding } from "@/lib/organizations/tree";
 import type { OrganizationSummary } from "@/lib/organizations/types";
 import { pageHead } from "@/lib/route-head";
 import { syncOrganizationMembershipsFn } from "@/server/organizations";
@@ -27,7 +28,10 @@ export const Route = createFileRoute("/_authed/app/")({
 		if (context.clientConfig?.mode === "whitelabel" && (await syncOrganizationMembershipsFn())) {
 			await invalidateOrganizations(context.queryClient);
 		}
-		return (await context.queryClient.ensureQueryData(organizationsQuery)).organizations;
+		const { organizations } = await context.queryClient.ensureQueryData(organizationsQuery);
+		const landing = soleOrganizationLanding(organizations);
+		if (landing) throw redirect(landing);
+		return organizations;
 	},
 	head: pageHead({ title: "Organizations and Brands", description: "Modify organizations or navigate to brands." }),
 	component: OrganizationPickerPage,

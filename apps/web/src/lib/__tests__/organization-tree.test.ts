@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { needsSetup, organizationTree } from "@/lib/organizations/tree";
+import { needsSetup, organizationTree, soleOrganizationLanding } from "@/lib/organizations/tree";
 import type { BrandCreation, OrganizationSummary } from "@/lib/organizations/types";
 
 function organization(brandCreation: BrandCreation, brandNames: string[] = []): OrganizationSummary {
@@ -77,5 +77,32 @@ describe("needsSetup", () => {
 		expect(needsSetup(organization({ kind: "not-offered" }, ["nike"]))).toBe(false);
 		expect(needsSetup(organization({ kind: "allowed" }))).toBe(false);
 		expect(needsSetup(organization({ kind: "denied", code: "brand-limit", message: "No" }))).toBe(false);
+	});
+});
+
+describe("soleOrganizationLanding", () => {
+	it("opens the only brand of the only organization", () => {
+		expect(soleOrganizationLanding([organization({ kind: "allowed" }, ["nike"])])).toEqual({
+			to: "/app/org/$org/brand/$brand",
+			params: { org: "acme", brand: "nike" },
+		});
+	});
+
+	it("opens the first-brand form when the only organization has no brand", () => {
+		expect(soleOrganizationLanding([organization({ kind: "allowed" })])).toEqual({
+			to: "/app/org/$org/new",
+			params: { org: "acme" },
+		});
+	});
+
+	it("leaves the choice to the picker when there is one", () => {
+		expect(soleOrganizationLanding([organization({ kind: "allowed" }, ["nike", "adidas"])])).toBeNull();
+		expect(
+			soleOrganizationLanding([
+				organization({ kind: "allowed" }, ["nike"]),
+				{ ...organization({ kind: "allowed" }, ["puma"]), id: "org-2", slug: "puma" },
+			]),
+		).toBeNull();
+		expect(soleOrganizationLanding([])).toBeNull();
 	});
 });

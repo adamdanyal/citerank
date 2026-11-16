@@ -24,6 +24,7 @@ import { z } from "zod";
 import { LegalConsentNotice } from "@/components/legal-consent-notice";
 import { PlanComparison } from "@/components/plan-comparison";
 import { forgetPaywall } from "@/lib/billing/queries";
+import { invalidateOrganizations } from "@/lib/organizations/queries";
 import { pageHead } from "@/lib/route-head";
 import { getBillingStateFn, getPaywallStateFn, type PaywallRequired, type PaywallState } from "@/server/billing";
 
@@ -95,6 +96,8 @@ function ActivatingOrganization({ organizationId }: { organizationId?: string })
 				if (!state.needsPlan) {
 					if (organizationId) void reportPurchase(organizationId, email);
 					forgetPaywall(queryClient);
+					// /app routes on whether the organization may create a brand, which the plan just changed.
+					await invalidateOrganizations(queryClient);
 					navigate({ to: "/app" });
 					return;
 				}

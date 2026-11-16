@@ -60,3 +60,19 @@ export function organizationTree(organization: OrganizationSummary): Organizatio
 export function needsSetup(organization: OrganizationSummary): boolean {
 	return organization.brands.length === 0 && organization.brandCreation.kind === "not-offered";
 }
+
+/** /app skips the picker only when it would offer a single obvious next step. */
+export function soleOrganizationLanding(organizations: OrganizationSummary[]) {
+	if (organizations.length !== 1) return null;
+	const [organization] = organizations;
+	if (organization.brands.length === 1) {
+		return {
+			to: "/app/org/$org/brand/$brand",
+			params: brandLinkParams(organization, organization.brands[0]),
+		} as const;
+	}
+	if (organization.brands.length === 0) {
+		return { to: "/app/org/$org/new", params: orgLinkParams(organization) } as const;
+	}
+	return null;
+}
