@@ -150,7 +150,17 @@ export function PlanLine({ children, none = false }: { children: ReactNode; none
 export const PLAN_GRID = "grid grid-cols-[minmax(0,1fr)] gap-5 md:grid-cols-3 lg:gap-8";
 
 /* The AI apps a plan covers, grouped by how each is read and how often: the picks first, then the premium ones that come on top. */
-function PlanApps({ plan, folded }: { plan: PlanDefinition; folded: boolean }) {
+function PlanApps({
+	plan,
+	folded,
+	open = false,
+	onOpenChange,
+}: {
+	plan: PlanDefinition;
+	folded: boolean;
+	open?: boolean;
+	onOpenChange?: (open: boolean) => void;
+}) {
 	const breakdown = planPlatformBreakdown(plan);
 	const groups = breakdown.premium ? [...breakdown.pickGroups, breakdown.premium] : breakdown.pickGroups;
 	const title = `Choose any ${plan.platformPicks} AI apps`;
@@ -184,7 +194,7 @@ function PlanApps({ plan, folded }: { plan: PlanDefinition; folded: boolean }) {
 		);
 	}
 	return (
-		<details className="group">
+		<details className="group" open={open} onToggle={(event) => onOpenChange?.(event.currentTarget.open)}>
 			<summary
 				className={`flex cursor-pointer list-none items-center justify-between gap-4 rounded-sm text-[1rem] leading-snug font-medium text-ink [&::-webkit-details-marker]:hidden ${FOCUS}`}
 			>
@@ -213,6 +223,13 @@ export function PlanTable({
 	children?: ReactNode;
 }) {
 	const [billing, setBilling] = useState<Billing>("monthly");
+	const [appsOpen, setAppsOpen] = useState<PlanKey[]>([]);
+	/* Side by side, the cards open together, so no card stands tall beside two empty ones. Stacked, each opens alone. */
+	const toggleApps = (key: PlanKey, open: boolean) => {
+		if (open === appsOpen.includes(key)) return;
+		if (window.matchMedia("(min-width: 48rem)").matches) setAppsOpen(open ? [...PLAN_KEYS] : []);
+		else setAppsOpen(open ? [...appsOpen, key] : appsOpen.filter((other) => other !== key));
+	};
 	const recommendedKey = recommended?.plan ?? DEFAULT_RECOMMENDED;
 	const recommendedLabel = recommended?.label ?? "Most chosen";
 
@@ -231,7 +248,14 @@ export function PlanTable({
 							key={key}
 							name={plan.name}
 							price={usd(perMonth)}
-							apps={<PlanApps plan={plan} folded={foldApps} />}
+							apps={
+								<PlanApps
+									plan={plan}
+									folded={foldApps}
+									open={appsOpen.includes(key)}
+									onOpenChange={(open) => toggleApps(key, open)}
+								/>
+							}
 							note={
 								billing === "annual"
 									? `Billed ${usd(plan.annualPriceUsd)} a year. Saves ${usd(plan.monthlyPriceUsd * 12 - plan.annualPriceUsd)}.`
