@@ -14,14 +14,11 @@ const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
 const HERO_TABS: ScreenId[] = ["overview", "share-of-voice", "sentiment", "responses", "opportunities"];
 
 const NEXT_STEPS = [
-	"Add your website",
-	`We ask ${ENGINE_COUNT} AI assistants what buyers ask`,
-	"See which brands they recommend",
+	"Add your company website",
+	`We ask ${ENGINE_COUNT} AI assistants`,
+	"See which brands they pick",
 	"Get a list of what to fix",
 ];
-
-/* On a phone the type gives way before a step breaks: the divisor is the longest step's width in em. */
-const STEP_ONE_LINE = "whitespace-nowrap max-sm:text-[length:min(0.875rem,calc((100vw_-_4.5rem)_/_19.2))]";
 
 /* What happens after Start tracking. Each number turns into a tick in turn, once, so the list ends looking done. */
 function NextSteps() {
@@ -51,7 +48,7 @@ function NextSteps() {
 							</svg>
 						</span>
 					</span>
-					<span className={`${SMALL} ${STEP_ONE_LINE} text-zinc-300`}>{step}</span>
+					<span className={`${SMALL} whitespace-nowrap text-zinc-300`}>{step}</span>
 					{index < NEXT_STEPS.length - 1 && (
 						<span aria-hidden="true" className="cr-step-line">
 							<span className="cr-step-fill" />
