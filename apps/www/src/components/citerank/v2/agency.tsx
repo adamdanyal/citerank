@@ -1,18 +1,30 @@
 import { Link } from "@tanstack/react-router";
-import { AGENCY_DOES, AGENCY_FROM_USD, formatUsd } from "@/lib/agency-plans";
+import { AGENCY_DOES, AGENCY_DOES_FIRST, AGENCY_FROM_USD, formatUsd } from "@/lib/agency-plans";
 import { trackEvent } from "@/lib/posthog";
-import { ACTION, LEAD, PANEL_PAD, Page, PanelHead, SMALL, Tick } from "./kit";
+import { ACTION, LEAD, LINK_ON_INK, PANEL_PAD, Page, PanelHead, SMALL, Tick } from "./kit";
 
 /* On a phone the type gives way before the line breaks: each divisor is the longest line's width in em. */
 const HEAD_ONE_LINE = "max-sm:text-[length:calc((100vw_-_5rem)_/_13)] max-sm:whitespace-nowrap";
 const LINES = "max-sm:text-[length:min(var(--text-lead),calc((100vw_-_5rem)_/_18.6))] max-sm:whitespace-nowrap";
 const ONE_LINE = "whitespace-nowrap max-sm:text-[length:min(var(--text-lead),calc((100vw_-_7.75rem)_/_14.4))]";
+const LINE = `flex items-center gap-4 border-t border-ink-rule py-4 text-lead leading-snug text-paper ${ONE_LINE}`;
+
+function Line({ children, className = "" }: { children: string; className?: string }) {
+	return (
+		<li className={`${LINE} ${className}`}>
+			<Tick className="size-7" />
+			{children}
+		</li>
+	);
+}
 
 /*
  * The agency in one look: everything it does, every line ticked, because we
  * do it. How much of each is agreed on a call, so the panel gives no amounts.
  */
-export function Agency() {
+export function Agency({ folded = false }: { folded?: boolean } = {}) {
+	const first = folded ? AGENCY_DOES_FIRST : AGENCY_DOES;
+	const more = AGENCY_DOES.filter((line) => !first.includes(line));
 	return (
 		<section id="agency" className={`relative bg-white ${PANEL_PAD}`}>
 			<Page>
@@ -36,17 +48,31 @@ export function Agency() {
 						</p>
 					</div>
 
-					<ul aria-label="What the agency does" className="min-w-0 lg:col-span-6">
-						{AGENCY_DOES.map((line) => (
-							<li
-								key={line}
-								className={`flex items-center gap-4 border-t border-ink-rule py-4 text-lead leading-snug text-paper first:border-t-0 first:pt-0 last:pb-0 ${ONE_LINE}`}
-							>
-								<Tick className="size-7" />
-								{line}
-							</li>
-						))}
-					</ul>
+					<div className="min-w-0 lg:col-span-6">
+						<ul aria-label="What the agency does">
+							{first.map((line) => (
+								<Line key={line} className={`first:border-t-0 first:pt-0 ${more.length ? "" : "last:pb-0"}`}>
+									{line}
+								</Line>
+							))}
+						</ul>
+						{more.length ? (
+							<details className="group">
+								<summary
+									className={`ml-11 w-fit cursor-pointer list-none text-[1rem] font-medium text-paper group-open:hidden [&::-webkit-details-marker]:hidden ${LINK_ON_INK}`}
+								>
+									Show {more.length} more
+								</summary>
+								<ul aria-label="More of what the agency does">
+									{more.map((line) => (
+										<Line key={line} className="last:pb-0">
+											{line}
+										</Line>
+									))}
+								</ul>
+							</details>
+						) : null}
+					</div>
 				</div>
 			</Page>
 		</section>

@@ -100,8 +100,8 @@ function HomePage() {
 				<HowItWorks />
 				<Includes />
 				<Reviews />
-				<Pricing />
-				<Agency />
+				<Pricing foldApps />
+				<Agency folded />
 				<Faq items={HOME_FAQS} />
 				<Closing />
 			</main>

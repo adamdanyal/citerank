@@ -8,6 +8,7 @@ import {
 	planPlatformBreakdown,
 } from "@workspace/config/plans";
 import { cloudAppUrl } from "@workspace/config/referrals";
+import { Plus } from "lucide-react";
 import { type ReactNode, useState } from "react";
 import { trackEvent } from "@/lib/posthog";
 import { GROUP_NAMES } from "../pricing/compare";
@@ -149,43 +150,64 @@ export function PlanLine({ children, none = false }: { children: ReactNode; none
 export const PLAN_GRID = "grid grid-cols-[minmax(0,1fr)] gap-5 md:grid-cols-3 lg:gap-8";
 
 /* The AI apps a plan covers, grouped by how each is read and how often: the picks first, then the premium ones that come on top. */
-function PlanApps({ plan }: { plan: PlanDefinition }) {
+function PlanApps({ plan, folded }: { plan: PlanDefinition; folded: boolean }) {
 	const breakdown = planPlatformBreakdown(plan);
 	const groups = breakdown.premium ? [...breakdown.pickGroups, breakdown.premium] : breakdown.pickGroups;
+	const title = `Choose any ${plan.platformPicks} AI apps`;
+	const list = groups.map((group) => (
+		<div key={group.id} className={group.id === "premium" ? "mt-6 border-t border-zinc-200 pt-6" : "mt-4"}>
+			<p className={`${SMALL} flex items-baseline justify-between gap-4`}>
+				<span className="font-medium text-ink">{GROUP_NAMES[group.id]}</span>
+				<span className="shrink-0 text-zinc-600">{group.runsPerDay}× a day</span>
+			</p>
+			<ul className="mt-2.5 space-y-2">
+				{group.models.map((member) => (
+					<li key={member.model} className={`${SMALL} flex items-center gap-2.5 text-zinc-700`}>
+						<AppLogo id={appIconId(member.model)} className="size-4" />
+						{member.label}
+					</li>
+				))}
+			</ul>
+			{group.id === "premium" && plan.premiumAddonAvailable ? (
+				<p className={`${SMALL} mt-3 text-zinc-600`}>
+					${PREMIUM_ADDON_MONTHLY_USD} a month for each extra premium prompt.
+				</p>
+			) : null}
+		</div>
+	));
+	if (!folded) {
+		return (
+			<>
+				<p className="text-[1rem] leading-snug font-medium text-ink">{title}</p>
+				{list}
+			</>
+		);
+	}
 	return (
-		<>
-			<p className="text-[1rem] leading-snug font-medium text-ink">Choose any {plan.platformPicks} AI apps</p>
-			{groups.map((group) => (
-				<div key={group.id} className={group.id === "premium" ? "mt-6 border-t border-zinc-200 pt-6" : "mt-4"}>
-					<p className={`${SMALL} flex items-baseline justify-between gap-4`}>
-						<span className="font-medium text-ink">{GROUP_NAMES[group.id]}</span>
-						<span className="shrink-0 text-zinc-600">{group.runsPerDay}× a day</span>
-					</p>
-					<ul className="mt-2.5 space-y-2">
-						{group.models.map((member) => (
-							<li key={member.model} className={`${SMALL} flex items-center gap-2.5 text-zinc-700`}>
-								<AppLogo id={appIconId(member.model)} className="size-4" />
-								{member.label}
-							</li>
-						))}
-					</ul>
-					{group.id === "premium" && plan.premiumAddonAvailable ? (
-						<p className={`${SMALL} mt-3 text-zinc-600`}>
-							${PREMIUM_ADDON_MONTHLY_USD} a month for each extra premium prompt.
-						</p>
-					) : null}
-				</div>
-			))}
-		</>
+		<details className="group">
+			<summary
+				className={`flex cursor-pointer list-none items-center justify-between gap-4 rounded-sm text-[1rem] leading-snug font-medium text-ink [&::-webkit-details-marker]:hidden ${FOCUS}`}
+			>
+				{title}
+				<Plus
+					aria-hidden="true"
+					className="size-5 shrink-0 text-zinc-500 transition-transform duration-200 ease-out group-open:rotate-45"
+				/>
+			</summary>
+			{list}
+		</details>
 	);
 }
 
 export function PlanTable({
 	from = "home",
 	recommended,
+	foldApps = false,
 	children,
 }: {
 	from?: string;
+	/** Each card's AI apps start closed under their one line. */
+	foldApps?: boolean;
 	recommended?: { plan: PlanKey; label: string };
 	/** More to say in the note under the cards, after the currency. */
 	children?: ReactNode;
@@ -209,7 +231,7 @@ export function PlanTable({
 							key={key}
 							name={plan.name}
 							price={usd(perMonth)}
-							apps={<PlanApps plan={plan} />}
+							apps={<PlanApps plan={plan} folded={foldApps} />}
 							note={
 								billing === "annual"
 									? `Billed ${usd(plan.annualPriceUsd)} a year. Saves ${usd(plan.monthlyPriceUsd * 12 - plan.annualPriceUsd)}.`
@@ -249,9 +271,11 @@ export function PlanTable({
 export function Pricing({
 	lede = "Start in minutes. Cancel any time.",
 	recommended,
+	foldApps = false,
 }: {
 	lede?: ReactNode;
 	recommended?: { plan: PlanKey; label: string };
+	foldApps?: boolean;
 } = {}) {
 	return (
 		<section id="pricing" className={`relative bg-white ${PANEL_PAD_WIDE}`}>
@@ -261,7 +285,7 @@ export function Pricing({
 				</PanelHead>
 
 				<div className="mt-8 lg:mt-10">
-					<PlanTable recommended={recommended}>
+					<PlanTable recommended={recommended} foldApps={foldApps}>
 						Need more?{" "}
 						<a href="mailto:team@citerank.com?subject=Custom%20plan" className={`${LINK} text-ink`}>
 							Email us

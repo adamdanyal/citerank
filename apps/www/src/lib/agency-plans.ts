@@ -59,6 +59,15 @@ export const AGENCY_WORK = [
 /* Everything the agency does, as the list beside its price: the work, then the report that shows it worked. */
 export const AGENCY_DOES = [...AGENCY_WORK.map((work) => work.name), "Before-and-after report"];
 
+/* The lines that most make a buyer want to book a call, in that order. Where the list is folded, these show first. */
+export const AGENCY_DOES_FIRST = [
+	"Before-and-after report",
+	"Digital PR and brand mentions",
+	"Technical SEO fixes",
+	"Review site and list pitches",
+	"Schema and entity work",
+];
+
 /* What comes with it, whatever the scope. */
 export const AGENCY_INCLUDES = [
 	`$${TRACKER.monthlyPriceUsd} tracker plan included`,
