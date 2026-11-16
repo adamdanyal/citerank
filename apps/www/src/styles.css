@@ -732,9 +732,56 @@ html {
 	transform: none;
 }
 
+.cr-step-tick {
+	opacity: 0;
+	transform: scale(0.6);
+	animation: cr-step-on 360ms cubic-bezier(0.22, 1, 0.36, 1) calc(700ms + var(--step) * 650ms) both;
+}
+.cr-step-line {
+	position: absolute;
+	left: calc(0.875rem - 0.5px);
+	top: calc(1.75rem + 3px);
+	bottom: calc(-1rem + 3px);
+	width: 1px;
+	background: var(--color-zinc-700);
+}
+.cr-step-fill {
+	position: absolute;
+	inset: 0;
+	background: var(--color-rust);
+	transform: scaleY(0);
+	transform-origin: top;
+	animation: cr-step-on 400ms cubic-bezier(0.65, 0, 0.35, 1) calc(950ms + var(--step) * 650ms) both;
+}
+/* In a row only while the hero text runs full width; beside the product the column is too narrow for four labels on one line. */
+@media (min-width: 40rem) and (max-width: 79.999rem) {
+	.cr-step-line {
+		left: 2.25rem;
+		right: -0.5rem;
+		top: calc(0.875rem - 0.5px);
+		bottom: auto;
+		width: auto;
+		height: 1px;
+	}
+	.cr-step-fill {
+		transform: scaleX(0);
+		transform-origin: left;
+	}
+}
+@keyframes cr-step-on {
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;
+	}
+	.cr-step-tick,
+	.cr-step-fill {
+		animation: none;
 	}
 	.js .cr-reveal[data-state="hidden"],
 	.cr-reveal[data-state="shown"],

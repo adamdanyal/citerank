@@ -136,7 +136,7 @@ export function HowItWorks() {
 	return (
 		<section id="how-it-works" className={`relative bg-white ${PANEL_PAD_WIDE}`}>
 			<Page>
-				<PanelHead title="How CiteRank.com works" />
+				<PanelHead title="From your website to your fix list" />
 
 				<ol className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-5 lg:mt-16 lg:grid-cols-3 lg:gap-8">
 					{STEPS.map((step, index) => (

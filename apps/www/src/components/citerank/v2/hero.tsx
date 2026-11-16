@@ -1,7 +1,7 @@
 import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS } from "@workspace/config/plans";
 import type { ReferralSource } from "@workspace/config/referrals";
 import { cloudSignupUrl, demoSiteUrl } from "@workspace/config/referrals";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../product/data";
@@ -12,6 +12,48 @@ const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
 
 /* The screens a visitor can move between without leaving the page. */
 const HERO_TABS: ScreenId[] = ["overview", "share-of-voice", "sentiment", "responses", "opportunities"];
+
+const NEXT_STEPS = ["Add your website", `We ask ${ENGINE_COUNT} AI apps`, "See who they name", "Get your fix list"];
+
+/* What happens after Start tracking. Each number turns into a tick in turn, once, so the list ends looking done. */
+function NextSteps() {
+	return (
+		<ol aria-label="What happens after you start tracking" className="mt-8 grid gap-4 sm:max-xl:grid-cols-4">
+			{NEXT_STEPS.map((step, index) => (
+				<li
+					key={step}
+					style={{ "--step": index } as CSSProperties}
+					className="relative flex items-center gap-3 sm:max-xl:flex-col sm:max-xl:items-start"
+				>
+					<span
+						aria-hidden="true"
+						className="relative grid size-7 shrink-0 place-items-center rounded-full font-sans text-[0.8125rem] leading-none font-medium text-zinc-300 ring-1 ring-zinc-600 ring-inset"
+					>
+						{index + 1}
+						<span className="cr-step-tick absolute inset-0 grid place-items-center rounded-full bg-rust text-paper">
+							<svg aria-hidden="true" viewBox="0 0 12 12" className="size-1/2">
+								<path
+									d="M2 6.5l2.5 2.5 5.5-6"
+									fill="none"
+									stroke="currentColor"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+						</span>
+					</span>
+					<span className={`${SMALL} text-zinc-300`}>{step}</span>
+					{index < NEXT_STEPS.length - 1 && (
+						<span aria-hidden="true" className="cr-step-line">
+							<span className="cr-step-fill" />
+						</span>
+					)}
+				</li>
+			))}
+		</ol>
+	);
+}
 
 const DEFAULT_LEDE = `See who ChatGPT, Gemini and ${ENGINE_COUNT - 2} other AI apps recommend to your buyers, and what to fix.`;
 
@@ -55,6 +97,7 @@ export function Hero({
 						<span className="inline-block">Plans from ${CLOUD_ENTRY_PRICE_USD} a month.</span>{" "}
 						<span className="inline-block">No contract, cancel any time.</span>
 					</p>
+					<NextSteps />
 				</div>
 
 				{/* The product itself, in HTML: the overview first, and four more screens a tab away. Beside the text its chart gives up height on a short screen, so the whole of it stays inside the first one. */}
