@@ -23,6 +23,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StatisticsRouteImport } from './routes/statistics'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as V2RouteImport } from './routes/v2'
+import { Route as V3RouteImport } from './routes/v3'
 import { Route as DotwellKnownAiCatalogDotjsonRouteImport } from './routes/[.]well-known/ai-catalog[.]json'
 import { Route as DotwellKnownApiCatalogRouteImport } from './routes/[.]well-known/api-catalog'
 import { Route as DotwellKnownArdDotjsonRouteImport } from './routes/[.]well-known/ard[.]json'
@@ -131,6 +132,11 @@ const SupportRoute = SupportRouteImport.update({
 const V2Route = V2RouteImport.update({
   id: '/v2',
   path: '/v2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3Route = V3RouteImport.update({
+  id: '/v3',
+  path: '/v3',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DotwellKnownAiCatalogDotjsonRoute =
@@ -345,6 +351,7 @@ export interface FileRoutesByFullPath {
   '/statistics': typeof StatisticsRoute
   '/support': typeof SupportRoute
   '/v2': typeof V2Route
+  '/v3': typeof V3Route
   '/.well-known/ai-catalog.json': typeof DotwellKnownAiCatalogDotjsonRoute
   '/.well-known/api-catalog': typeof DotwellKnownApiCatalogRoute
   '/.well-known/ard.json': typeof DotwellKnownArdDotjsonRoute
@@ -398,6 +405,7 @@ export interface FileRoutesByTo {
   '/statistics': typeof StatisticsRoute
   '/support': typeof SupportRoute
   '/v2': typeof V2Route
+  '/v3': typeof V3Route
   '/.well-known/ai-catalog.json': typeof DotwellKnownAiCatalogDotjsonRoute
   '/.well-known/api-catalog': typeof DotwellKnownApiCatalogRoute
   '/.well-known/ard.json': typeof DotwellKnownArdDotjsonRoute
@@ -452,6 +460,7 @@ export interface FileRoutesById {
   '/statistics': typeof StatisticsRoute
   '/support': typeof SupportRoute
   '/v2': typeof V2Route
+  '/v3': typeof V3Route
   '/.well-known/ai-catalog.json': typeof DotwellKnownAiCatalogDotjsonRoute
   '/.well-known/api-catalog': typeof DotwellKnownApiCatalogRoute
   '/.well-known/ard.json': typeof DotwellKnownArdDotjsonRoute
@@ -507,6 +516,7 @@ export interface FileRouteTypes {
     | '/statistics'
     | '/support'
     | '/v2'
+    | '/v3'
     | '/.well-known/ai-catalog.json'
     | '/.well-known/api-catalog'
     | '/.well-known/ard.json'
@@ -560,6 +570,7 @@ export interface FileRouteTypes {
     | '/statistics'
     | '/support'
     | '/v2'
+    | '/v3'
     | '/.well-known/ai-catalog.json'
     | '/.well-known/api-catalog'
     | '/.well-known/ard.json'
@@ -613,6 +624,7 @@ export interface FileRouteTypes {
     | '/statistics'
     | '/support'
     | '/v2'
+    | '/v3'
     | '/.well-known/ai-catalog.json'
     | '/.well-known/api-catalog'
     | '/.well-known/ard.json'
@@ -667,6 +679,7 @@ export interface RootRouteChildren {
   StatisticsRoute: typeof StatisticsRoute
   SupportRoute: typeof SupportRoute
   V2Route: typeof V2Route
+  V3Route: typeof V3Route
   DotwellKnownAiCatalogDotjsonRoute: typeof DotwellKnownAiCatalogDotjsonRoute
   DotwellKnownApiCatalogRoute: typeof DotwellKnownApiCatalogRoute
   DotwellKnownArdDotjsonRoute: typeof DotwellKnownArdDotjsonRoute
@@ -804,6 +817,13 @@ declare module '@tanstack/react-router' {
       path: '/v2'
       fullPath: '/v2'
       preLoaderRoute: typeof V2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3': {
+      id: '/v3'
+      path: '/v3'
+      fullPath: '/v3'
+      preLoaderRoute: typeof V3RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.well-known/ai-catalog.json': {
@@ -1083,6 +1103,7 @@ const rootRouteChildren: RootRouteChildren = {
   StatisticsRoute: StatisticsRoute,
   SupportRoute: SupportRoute,
   V2Route: V2Route,
+  V3Route: V3Route,
   DotwellKnownAiCatalogDotjsonRoute: DotwellKnownAiCatalogDotjsonRoute,
   DotwellKnownApiCatalogRoute: DotwellKnownApiCatalogRoute,
   DotwellKnownArdDotjsonRoute: DotwellKnownArdDotjsonRoute,
