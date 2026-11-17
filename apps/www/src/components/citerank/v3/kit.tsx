@@ -18,7 +18,7 @@ export const EASE = "ease-(--v3-ease)";
 
 const SAFE_HEAD = "min-w-0 [overflow-wrap:break-word] text-balance";
 const FACE = "font-(family-name:--v3-display) font-medium";
-export const HERO_TITLE = `${FACE} text-[clamp(2.5rem,3.6vw+1.25rem,4.5rem)] leading-[1.04] tracking-[-0.03em] ${SAFE_HEAD}`;
+export const HERO_TITLE = `${FACE} text-[clamp(2.5rem,3.6vw+1.25rem,4.5rem)] leading-[1.16] tracking-[-0.03em] ${SAFE_HEAD}`;
 export const CLOSING_TITLE = `${FACE} text-[clamp(2.25rem,2vw+1.5rem,3.5rem)] leading-[1.06] tracking-[-0.025em] ${SAFE_HEAD}`;
 export const HEADING = `${FACE} text-[clamp(1.875rem,1.4vw+1.25rem,2.75rem)] leading-[1.1] tracking-[-0.02em] ${SAFE_HEAD}`;
 export const TITLE = `${FACE} text-[1.25rem] leading-[1.3] ${SAFE_HEAD}`;
@@ -91,23 +91,32 @@ export function SectionHead({
 
 /**
  * The signature: a rust pen circle drawn round your brand's name, as an editor
- * marks the one word that matters. Used on the name alone, and nowhere else.
+ * marks the one word that matters. Used on the name, and on "your brand" in the
+ * hero's headline, where it sits tighter so it clears the line below.
  */
-export function Pen({ children, className = "" }: { children: ReactNode; className?: string }) {
+export function Pen({
+	children,
+	className = "",
+	display = false,
+}: {
+	children: ReactNode;
+	className?: string;
+	display?: boolean;
+}) {
 	return (
-		<span className={`relative inline-block ${className}`}>
+		<span className={`relative inline-block ${display ? "mx-[0.14em]" : ""} ${className}`}>
 			{children}
 			<svg
 				aria-hidden="true"
 				viewBox="0 0 120 44"
 				preserveAspectRatio="none"
 				fill="none"
-				className="pointer-events-none absolute -top-[0.35em] -left-[0.45em] h-[calc(100%+0.7em)] w-[calc(100%+0.9em)] overflow-visible"
+				className={`pointer-events-none absolute overflow-visible ${display ? "-top-[0.12em] -left-[0.34em] h-[calc(100%+0.4em)] w-[calc(100%+0.78em)]" : "-top-[0.35em] -left-[0.45em] h-[calc(100%+0.7em)] w-[calc(100%+0.9em)]"}`}
 			>
 				<path
 					d="M30 5.5C58 1 100 2 113 11C124 19 112 35 88 40C62 45 22 44 9 34C-2 26 4 12 20 7.5C34 3.5 50 1.5 68 3"
 					stroke="currentColor"
-					strokeWidth="1.75"
+					strokeWidth={display ? 2.5 : 1.75}
 					strokeLinecap="round"
 					strokeLinejoin="round"
 					vectorEffect="non-scaling-stroke"

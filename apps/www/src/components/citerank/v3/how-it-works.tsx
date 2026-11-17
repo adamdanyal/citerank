@@ -146,7 +146,7 @@ function StepText({ index, title, body }: { index: number; title: string; body: 
 
 function Picture({ step }: { step: (typeof STEPS)[number] }) {
 	return (
-		<div role="img" aria-label={step.shows} data-nosnippet className="flex min-h-64 flex-col justify-center p-4">
+		<div role="img" aria-label={step.shows} data-nosnippet className="flex flex-col p-4">
 			{step.picture}
 		</div>
 	);

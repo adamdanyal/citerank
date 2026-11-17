@@ -7,7 +7,7 @@ import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../product/data";
 import { Product, type ScreenId } from "../product/product";
-import { ACTION, ACTION_QUIET_ON_INK, HERO_TITLE, LEAD, SMALL, WRAP } from "./kit";
+import { ACTION, ACTION_QUIET_ON_INK, HERO_TITLE, LEAD, Pen, SMALL, WRAP } from "./kit";
 
 const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
 
@@ -48,6 +48,19 @@ function NextSteps() {
 	);
 }
 
+/* The headline circles "your brand" in rust, the page's signature, wherever a variant says it; a possessive is left plain. */
+function Title({ text }: { text: string }) {
+	const match = /your brand(?![’'])/.exec(text);
+	if (!match) return text;
+	return (
+		<>
+			{text.slice(0, match.index)}
+			<Pen display>{match[0]}</Pen>
+			{text.slice(match.index + match[0].length)}
+		</>
+	);
+}
+
 const DEFAULT_LEDE = `See who ChatGPT, Gemini and ${ENGINE_COUNT - 2} other AI tools recommend to your buyers, and what to fix.`;
 
 /* Title, lede and source are overridden when a visitor arrives from an AI assistant, or on a tested variant. */
@@ -67,10 +80,12 @@ export function Hero({
 		<section className="relative overflow-x-clip bg-(--v3-ink) text-(--v3-on-ink)">
 			{/* From 1100 wide, every tablet held sideways and up, the text and the product sit side by side, centred in the first screen; the product's chart gives up height on a short screen so all of it stays in view. Narrower, everything stacks in reading order. */}
 			<div
-				className={`${WRAP} grid grid-cols-[minmax(0,1fr)] gap-y-12 py-12 sm:max-[1099px]:py-16 min-[1100px]:min-h-[min(calc(100svh-4.5rem),52rem)] min-[1100px]:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] min-[1100px]:items-center min-[1100px]:gap-x-10 min-[1100px]:py-8 xl:grid-cols-[minmax(0,31rem)_minmax(0,1fr)] xl:gap-x-16`}
+				className={`${WRAP} grid grid-cols-[minmax(0,1fr)] gap-y-12 py-12 sm:max-[1099px]:py-16 min-[1100px]:min-h-[min(calc(100svh-4.5rem),52rem)] min-[1100px]:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] min-[1100px]:items-center min-[1100px]:gap-x-10 min-[1100px]:py-8 xl:grid-cols-[minmax(0,32rem)_minmax(0,1fr)] xl:gap-x-16`}
 			>
 				<div className="min-w-0">
-					<h1 className={`${HERO_TITLE} text-(--v3-on-ink) min-[1100px]:text-[2.75rem] xl:text-[4rem]`}>{title}</h1>
+					<h1 className={`${HERO_TITLE} text-(--v3-on-ink) min-[1100px]:text-[2.75rem] xl:text-[4rem]`}>
+						<Title text={title} />
+					</h1>
 					<p data-speakable className={`${LEAD} mt-6 max-w-[34rem] text-(--v3-on-ink-2)`}>
 						{lede}
 					</p>
