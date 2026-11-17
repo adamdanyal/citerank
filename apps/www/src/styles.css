@@ -254,17 +254,16 @@
 	--font-system: ui-sans-serif, system-ui, sans-serif;
 
 	/* The type roles, on a 1.25 ratio from a 16px body. At 1440 wide: 84, 60, 52, 25 and 21px. */
-	--text-display: clamp(2.75rem, 5vw + 1rem, 5.25rem);
-	--text-display-s: clamp(2.25rem, 4vw + 0.5rem, 3.75rem);
-	--text-section: min(clamp(2rem, 2.5vw + 1rem, 3.25rem), calc((100vw - 2rem) / 13.2));
-	--text-title: clamp(1.25rem, 0.75vw + 0.875rem, 1.5625rem);
+	--text-display: clamp(2.75rem, 5vw + 1rem, 4.125rem);
+	--text-display-s: clamp(2.25rem, 2vw + 1.5rem, 3.5rem);
+	--text-section: min(clamp(1.875rem, 1.4vw + 1.25rem, 2.75rem), calc((100vw - 2rem) / 13.2));
+	--text-title: 1.25rem;
 	--text-lead: clamp(1.125rem, 0.35vw + 1rem, 1.3125rem);
 
-	--radius-card: 12px;
-	--shadow-card: 0 1px 2px color-mix(in oklab, var(--color-ink) 7%, transparent);
-	--shadow-lift:
-		0 1px 2px color-mix(in oklab, var(--color-ink) 6%, transparent),
-		0 18px 40px -18px color-mix(in oklab, var(--color-ink) 22%, transparent);
+	/* The dashboard's card: 14px corners and its small shadow. */
+	--radius-card: 14px;
+	--shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+	--shadow-lift: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 
 	/* The product's own colours, used only inside the product screens, where they mean what they mean in the app: one per brand on a chart, one per brand's mark, and the three tones of an answer. */
 	--color-chart-1: #2f62e8;

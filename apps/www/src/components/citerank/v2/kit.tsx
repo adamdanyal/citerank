@@ -22,10 +22,10 @@ export function Page({ children, className = "" }: { children: ReactNode; classN
 /** Display heads must be able to break, or a long word pushes its grid track wide. */
 const SAFE_HEAD = "[overflow-wrap:break-word] min-w-0 text-balance";
 
-export const DISPLAY = `font-heading font-bold text-display leading-[1] tracking-[-0.02em] ${SAFE_HEAD}`;
-export const DISPLAY_S = `font-heading font-bold text-display-s leading-[1.02] tracking-[-0.02em] ${SAFE_HEAD}`;
-export const HEADING = `font-heading font-bold text-section leading-[1.04] tracking-[-0.02em] ${SAFE_HEAD}`;
-export const SUBHEAD = `font-heading font-bold text-title leading-[1.2] tracking-[-0.01em] ${SAFE_HEAD}`;
+export const DISPLAY = `font-heading font-bold text-display leading-[1.1] tracking-[-0.02em] ${SAFE_HEAD}`;
+export const DISPLAY_S = `font-heading font-bold text-display-s leading-[1.06] tracking-[-0.02em] ${SAFE_HEAD}`;
+export const HEADING = `font-heading font-bold text-section leading-[1.1] tracking-[-0.02em] ${SAFE_HEAD}`;
+export const SUBHEAD = `font-heading font-semibold text-title leading-[1.3] ${SAFE_HEAD}`;
 export const LEAD = "text-lead leading-[1.45] text-pretty";
 export const BODY = "text-[1rem] leading-[1.6] text-pretty";
 export const SMALL = "text-[0.875rem] leading-[1.5]";
@@ -70,11 +70,15 @@ export const LIST_CARD = `${CARD_LIFT} px-6 sm:px-8 [&>li:first-child]:border-t-
 /** A link index on one lifted card, its rows running down columns. No selector finds the row that opens each column, so a strip of the card's white covers their hairlines. */
 export const INDEX_CARD = `${CARD_LIFT} relative px-6 before:pointer-events-none before:absolute before:inset-x-6 before:top-0 before:h-px before:bg-white sm:px-8 sm:before:inset-x-8`;
 
-const BUTTON = `inline-flex h-13 items-center justify-center gap-2 whitespace-nowrap rounded-full px-7 text-[1rem] font-medium transition-colors duration-200 active:translate-y-px ${FOCUS}`;
-const BUTTON_SM = `inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 text-[0.9375rem] font-medium transition-colors duration-200 active:translate-y-px ${FOCUS}`;
+/* The home page's controls: 10px corners, a tiny press, and a quiet button on a muted surface rather than an outline. */
+const PRESS =
+	"transition-[background-color,color,box-shadow,transform] duration-150 ease-out active:scale-[0.98] motion-reduce:active:scale-100";
+const BUTTON = `inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-[10px] px-5 text-[1rem] font-medium ${PRESS} ${FOCUS}`;
+const BUTTON_SM = `inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-[10px] px-4 text-[0.9375rem] font-medium ${PRESS} ${FOCUS}`;
 const FILLED = "bg-rust text-paper hover:bg-blue-700 active:bg-blue-800";
-const OUTLINED = "bg-transparent text-ink ring-1 ring-inset ring-zinc-400 hover:ring-ink";
-const OUTLINED_ON_INK = "bg-transparent text-paper ring-1 ring-inset ring-zinc-500 hover:ring-paper";
+const OUTLINED = "bg-zinc-100 text-ink ring-1 ring-inset ring-input hover:bg-white";
+const OUTLINED_ON_INK =
+	"bg-ink-well text-paper shadow-[inset_0_1px_0_rgb(255_255_255/0.08)] ring-1 ring-inset ring-zinc-500 hover:ring-zinc-400";
 export const ACTION = `${BUTTON} ${FILLED}`;
 export const ACTION_QUIET = `${BUTTON} ${OUTLINED}`;
 export const ACTION_QUIET_ON_INK = `${BUTTON} ${OUTLINED_ON_INK}`;
@@ -82,26 +86,23 @@ export const ACTION_SM = `${BUTTON_SM} ${FILLED}`;
 export const LINK = `rounded-sm underline decoration-dotted decoration-zinc-500 underline-offset-[5px] transition-colors duration-200 hover:text-rust hover:decoration-rust ${FOCUS}`;
 export const LINK_ON_INK = `rounded-sm underline decoration-dotted decoration-zinc-400 underline-offset-[5px] transition-colors duration-200 hover:text-blue-300 hover:decoration-blue-300 ${FOCUS}`;
 
-/* Rust marks something done; a list of what you get takes the quiet ring, so rust stays rare. */
+/* Rust marks something done; a list of what you get takes a small muted check with no disc, as on the home page, so rust stays rare. */
 const TICK_TONES = {
-	rust: "bg-rust text-paper",
-	quiet: "text-ink ring-1 ring-zinc-300 ring-inset",
-	quietOnInk: "text-paper ring-1 ring-zinc-500 ring-inset",
+	rust: "rounded-full bg-rust text-paper",
+	quiet: "text-zinc-500",
+	quietOnInk: "text-zinc-400",
 };
 
 /** The mark beside a thing you get. It says nothing a reader needs, so it is hidden from one. */
 export function Tick({ className = "size-7", tone = "rust" }: { className?: string; tone?: keyof typeof TICK_TONES }) {
 	return (
-		<span
-			aria-hidden="true"
-			className={`grid shrink-0 place-items-center rounded-full ${TICK_TONES[tone]} ${className}`}
-		>
-			<svg aria-hidden="true" viewBox="0 0 12 12" className="size-1/2">
+		<span aria-hidden="true" className={`grid shrink-0 place-items-center ${TICK_TONES[tone]} ${className}`}>
+			<svg aria-hidden="true" viewBox="0 0 12 12" className={tone === "rust" ? "size-1/2" : "size-[64%]"}>
 				<path
 					d="M2 6.5l2.5 2.5 5.5-6"
 					fill="none"
 					stroke="currentColor"
-					strokeWidth="2"
+					strokeWidth={tone === "rust" ? 2 : 1.25}
 					strokeLinecap="round"
 					strokeLinejoin="round"
 				/>
@@ -110,12 +111,12 @@ export function Tick({ className = "size-7", tone = "rust" }: { className?: stri
 	);
 }
 
-/** The number of a step, on the disc that opens its head. The list already counts for a reader, so it is hidden from one. */
+/** The number of a step, quiet in a ring as on the home page. The list already counts for a reader, so it is hidden from one. */
 export function StepDisc({ step }: { step: number }) {
 	return (
 		<span
 			aria-hidden="true"
-			className="grid size-8 shrink-0 place-items-center rounded-full bg-rust font-sans text-[1rem] leading-none font-medium tracking-normal text-paper"
+			className="grid size-7 shrink-0 place-items-center rounded-full font-mono text-[0.8125rem] leading-none tracking-normal text-zinc-600 ring-1 ring-inset ring-input"
 		>
 			{step}
 		</span>

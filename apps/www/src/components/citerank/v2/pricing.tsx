@@ -59,7 +59,7 @@ const LINES: ((plan: PlanDefinition) => { lead?: string; figure?: string; text: 
 
 function BillingSwitch({ billing, onChange }: { billing: Billing; onChange: (billing: Billing) => void }) {
 	return (
-		<fieldset className="inline-flex w-fit max-w-full rounded-full bg-paper-2 p-1">
+		<fieldset className="inline-flex w-fit max-w-full gap-1 rounded-[10px] bg-zinc-100 p-1">
 			<legend className="sr-only">Billing period</legend>
 			{BILLING.map((option) => (
 				<button
@@ -67,8 +67,10 @@ function BillingSwitch({ billing, onChange }: { billing: Billing; onChange: (bil
 					type="button"
 					aria-pressed={billing === option.value}
 					onClick={() => onChange(option.value)}
-					className={`h-11 rounded-full px-4 text-[0.9375rem] font-medium whitespace-nowrap transition-colors duration-200 sm:px-5 ${FOCUS} ${
-						billing === option.value ? "bg-ink text-paper" : "text-zinc-700 hover:text-ink"
+					className={`h-11 rounded-[6px] px-4 text-[0.9375rem] font-medium whitespace-nowrap transition-[background-color,color,box-shadow] duration-150 sm:px-5 ${FOCUS} ${
+						billing === option.value
+							? "bg-white text-ink shadow-card ring-1 ring-zinc-200"
+							: "text-zinc-600 hover:text-ink"
 					}`}
 				>
 					{option.label}
@@ -116,7 +118,7 @@ export function PlanCard({
 			<div className="flex flex-1 flex-col p-6 lg:p-8">
 				<h3 className={`${SUBHEAD} text-ink`}>{name}</h3>
 				<p className="mt-5 flex flex-wrap items-baseline gap-x-2">
-					<span className="font-heading text-[clamp(2.75rem,2vw+2rem,3.75rem)] leading-none font-bold tracking-[-0.03em] text-ink">
+					<span className="font-mono text-[clamp(2.25rem,1.2vw+1.625rem,2.75rem)] leading-none font-bold tracking-[-0.025em] text-ink tabular-nums">
 						{price}
 					</span>
 					<span className={`${BODY} text-zinc-600`}>a month</span>

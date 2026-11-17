@@ -62,11 +62,6 @@
 	transform: scale(0.98);
 }
 
-/* The shared nav keeps its markup; on this page its one button takes the control radius like every other. */
-.cr-v3 a.bg-rust.rounded-full {
-	border-radius: 10px;
-}
-
 .cr-v3 .cr-step-line {
 	background: var(--v3-ink-line-strong);
 }

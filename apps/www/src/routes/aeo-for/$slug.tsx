@@ -4,8 +4,6 @@ import { cloudSignupUrl } from "@workspace/config/referrals";
 import { Search } from "lucide-react";
 import { Closing } from "@/components/citerank/v2/closing";
 import { Faq } from "@/components/citerank/v2/faq";
-import { Hero } from "@/components/citerank/v2/hero";
-import { HowItWorks } from "@/components/citerank/v2/how-it-works";
 import {
 	ACTION,
 	ACTION_QUIET_ON_INK,
@@ -23,6 +21,8 @@ import {
 } from "@/components/citerank/v2/kit";
 import { Pricing } from "@/components/citerank/v2/pricing";
 import { PageShell } from "@/components/citerank/v2/shell";
+import { Hero } from "@/components/citerank/v3/hero";
+import { HowItWorks } from "@/components/citerank/v3/how-it-works";
 import { EngineIcon } from "@/components/home/engines";
 import { LABEL } from "@/components/pillar";
 import { type AeoVertical, aeoHeadline, aeoVerticals, getAeoVertical } from "@/data/aeo-verticals";
@@ -175,7 +175,7 @@ function OtherIndustries({ others }: { others: AeoVertical[] }) {
 						<li key={o.slug}>
 							<a
 								href={`/aeo-for/${o.slug}`}
-								className="inline-flex h-11 items-center rounded-full bg-paper-2 px-5 text-[0.9375rem] whitespace-nowrap text-ink ring-1 ring-zinc-200 transition-[box-shadow] duration-200 hover:ring-zinc-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust"
+								className="inline-flex h-11 items-center rounded-[10px] bg-paper-2 px-5 text-[0.9375rem] whitespace-nowrap text-ink ring-1 ring-zinc-200 transition-[box-shadow] duration-200 hover:ring-zinc-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust"
 							>
 								{capitalize(o.audience)}
 							</a>

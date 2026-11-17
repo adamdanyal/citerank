@@ -10,6 +10,7 @@ import { initAdTags, trackAdPageView } from "@workspace/ui/lib/ad-tags";
 import { isConsentRequired } from "@workspace/ui/lib/cookie-consent";
 import { type ReactNode, useEffect } from "react";
 import { AiReferralBanner } from "@/components/ai-referral-banner";
+import v3Css from "@/components/citerank/v3/v3.css?url";
 import { NotFound } from "@/components/not-found";
 import { getConsentRegion } from "@/lib/consent-region";
 import { initCrisp } from "@/lib/crisp";
@@ -71,6 +72,7 @@ export const Route = createRootRoute({
 			{ rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
 			{ rel: "manifest", href: "/site.webmanifest" },
 			{ rel: "stylesheet", href: appCss },
+			{ rel: "stylesheet", href: v3Css },
 		],
 		scripts: [websiteJsonLd(), organizationJsonLd()],
 	}),

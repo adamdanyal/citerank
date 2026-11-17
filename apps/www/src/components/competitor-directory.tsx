@@ -17,7 +17,7 @@ const categories = [...new Set(visibleCompetitors.map((c) => c.category))];
 /* The list opens on the most popular tools. Every other row is in the page too, held back until asked for, so a phone is not handed two hundred rows to scroll. */
 const FIRST = 20;
 
-const CHIP = `h-11 rounded-full px-4 text-[0.9375rem] font-medium whitespace-nowrap transition-colors duration-200 ${FOCUS}`;
+const CHIP = `h-11 rounded-[10px] px-4 text-[0.9375rem] font-medium whitespace-nowrap transition-colors duration-200 ${FOCUS}`;
 const CHIP_ON = "bg-ink text-paper";
 const CHIP_OFF = "bg-paper-2 text-zinc-700 hover:text-ink";
 
@@ -91,7 +91,7 @@ export function CompetitorDirectory() {
 									}}
 									autoComplete="off"
 									spellCheck={false}
-									className={`h-13 w-full rounded-full bg-white pr-13 pl-12 text-[1rem] text-ink ring-1 ring-zinc-500 transition-colors duration-200 ring-inset hover:bg-paper-2 [&::-webkit-search-cancel-button]:appearance-none ${FOCUS}`}
+									className={`h-12 w-full rounded-[10px] bg-white pr-13 pl-12 text-[1rem] text-ink ring-1 ring-zinc-500 transition-colors duration-200 ring-inset hover:bg-paper-2 [&::-webkit-search-cancel-button]:appearance-none ${FOCUS}`}
 								/>
 								{query ? (
 									<button

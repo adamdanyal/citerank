@@ -13,7 +13,6 @@ import { Includes } from "@/components/citerank/v3/includes";
 import { Logos } from "@/components/citerank/v3/logos";
 import { Pricing } from "@/components/citerank/v3/pricing";
 import { Reviews } from "@/components/citerank/v3/reviews";
-import v3Css from "@/components/citerank/v3/v3.css?url";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { getHeroVariant } from "@/data/hero-variants";
@@ -53,10 +52,7 @@ export const Route = createFileRoute("/")({
 				image: "/og-home.png",
 			}),
 		],
-		links: [
-			{ rel: "canonical", href: canonicalUrl("/") },
-			{ rel: "stylesheet", href: v3Css },
-		],
+		links: [{ rel: "canonical", href: canonicalUrl("/") }],
 		// The page entity and the engine list come first: they name what this page
 		// is about and resolve every engine it mentions to a real product, which is
 		// what an answer engine reads before deciding the page answers a question.

@@ -5,7 +5,6 @@ import { Check, Minus } from "lucide-react";
 import { Closing } from "@/components/citerank/v2/closing";
 import { Engines } from "@/components/citerank/v2/engines";
 import { Faq } from "@/components/citerank/v2/faq";
-import { Hero } from "@/components/citerank/v2/hero";
 import {
 	ACTION,
 	BODY,
@@ -22,6 +21,7 @@ import {
 } from "@/components/citerank/v2/kit";
 import { Pricing } from "@/components/citerank/v2/pricing";
 import { PageShell } from "@/components/citerank/v2/shell";
+import { Hero } from "@/components/citerank/v3/hero";
 import { breadcrumbJsonLd, canonicalUrl, faqJsonLd, ogMeta } from "@/lib/seo";
 
 const PATH = "/aeo-for/profound-users";
