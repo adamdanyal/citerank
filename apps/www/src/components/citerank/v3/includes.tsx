@@ -16,7 +16,7 @@ export function Includes() {
 			<Page>
 				<SectionHead title="What every plan includes" />
 
-				<div className={`${HEAD_GAP} grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-12 lg:items-start lg:gap-x-16`}>
+				<div className={`${HEAD_GAP} grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-12 lg:items-center lg:gap-x-16`}>
 					<ul className="min-w-0 lg:col-span-6">
 						{INCLUDED.map((promise) => (
 							<li
