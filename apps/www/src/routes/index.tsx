@@ -2,17 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { getModelMeta } from "@workspace/config/models";
 import { CLOUD_ENTRY_PRICE_USD, CLOUD_PLATFORMS } from "@workspace/config/plans";
 import type { ComponentProps } from "react";
-import { Agency } from "@/components/citerank/v2/agency";
-import { Closing } from "@/components/citerank/v2/closing";
-import { Faq } from "@/components/citerank/v2/faq";
-import { Hero } from "@/components/citerank/v2/hero";
-import { HowItWorks } from "@/components/citerank/v2/how-it-works";
-import { Includes } from "@/components/citerank/v2/includes";
-import { Logos } from "@/components/citerank/v2/logos";
-import { Pricing } from "@/components/citerank/v2/pricing";
-import { Reviews } from "@/components/citerank/v2/reviews";
 import { SKIP_LINK } from "@/components/citerank/v2/shell";
 import { STEP_SCHEMA } from "@/components/citerank/v2/steps";
+import { Agency } from "@/components/citerank/v3/agency";
+import { Closing } from "@/components/citerank/v3/closing";
+import { Faq } from "@/components/citerank/v3/faq";
+import { Hero } from "@/components/citerank/v3/hero";
+import { HowItWorks } from "@/components/citerank/v3/how-it-works";
+import { Includes } from "@/components/citerank/v3/includes";
+import { Logos } from "@/components/citerank/v3/logos";
+import { Pricing } from "@/components/citerank/v3/pricing";
+import { Reviews } from "@/components/citerank/v3/reviews";
+import v3Css from "@/components/citerank/v3/v3.css?url";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { getHeroVariant } from "@/data/hero-variants";
@@ -52,7 +53,10 @@ export const Route = createFileRoute("/")({
 				image: "/og-home.png",
 			}),
 		],
-		links: [{ rel: "canonical", href: canonicalUrl("/") }],
+		links: [
+			{ rel: "canonical", href: canonicalUrl("/") },
+			{ rel: "stylesheet", href: v3Css },
+		],
 		// The page entity and the engine list come first: they name what this page
 		// is about and resolve every engine it mentions to a real product, which is
 		// what an answer engine reads before deciding the page answers a question.
@@ -89,7 +93,7 @@ function HomePage() {
 	const [referral] = useAiReferral();
 	const variant = explicit ?? (referral ? aiReferralHero(referral.assistant) : undefined);
 	return (
-		<div className="cr-v2 min-h-screen bg-paper antialiased">
+		<div className="cr-v3 min-h-screen antialiased">
 			<a href="#content" className={SKIP_LINK}>
 				Skip to content
 			</a>
@@ -100,8 +104,8 @@ function HomePage() {
 				<HowItWorks />
 				<Includes />
 				<Reviews />
-				<Pricing foldApps />
-				<Agency folded />
+				<Pricing />
+				<Agency />
 				<Faq items={HOME_FAQS} />
 				<Closing />
 			</main>
