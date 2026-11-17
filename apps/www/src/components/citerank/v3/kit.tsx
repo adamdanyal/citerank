@@ -19,7 +19,8 @@ export const EASE = "ease-(--v3-ease)";
 const SAFE_HEAD = "min-w-0 [overflow-wrap:break-word] text-balance";
 /* The dashboard's type: Schibsted Grotesk 700 for titles, 600 for smaller ones, JetBrains Mono 700 for big figures, Inter for the rest. */
 const FACE = "font-(family-name:--v3-display) font-bold";
-export const HERO_TITLE = `${FACE} text-[clamp(2.5rem,3.6vw+1.25rem,4.5rem)] leading-[1.16] tracking-[-0.02em] ${SAFE_HEAD}`;
+/* Stacked, the headline takes the home page's size: 44px on a phone, growing with the window. */
+export const HERO_TITLE = `${FACE} text-[clamp(2.75rem,5vw+1rem,5.25rem)] leading-[1.2] tracking-[-0.02em] ${SAFE_HEAD}`;
 export const CLOSING_TITLE = `${FACE} text-[clamp(2.25rem,2vw+1.5rem,3.5rem)] leading-[1.06] tracking-[-0.02em] ${SAFE_HEAD}`;
 export const HEADING = `${FACE} text-[clamp(1.875rem,1.4vw+1.25rem,2.75rem)] leading-[1.1] tracking-[-0.02em] ${SAFE_HEAD}`;
 export const TITLE = `font-(family-name:--v3-display) font-semibold text-[1.25rem] leading-[1.3] ${SAFE_HEAD}`;
