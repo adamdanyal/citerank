@@ -126,11 +126,11 @@ export function Pen({
 					aria-hidden="true"
 					viewBox="0 0 200 24"
 					preserveAspectRatio="none"
-					className={`pointer-events-none absolute overflow-visible text-(--v3-rust) ${display ? "-bottom-[0.14em] -left-[0.04em] h-[0.36em] w-[calc(100%+0.1em)]" : "-bottom-[0.3em] -left-[0.06em] h-[0.42em] w-[calc(100%+0.14em)]"}`}
+					className={`pointer-events-none absolute overflow-visible text-(--v3-rust) ${display ? "-bottom-[0.18em] -left-[0.04em] h-[0.42em] w-[calc(100%+0.1em)]" : "-bottom-[0.3em] -left-[0.06em] h-[0.42em] w-[calc(100%+0.14em)]"}`}
 				>
 					<BrushGrain id={grain} />
 					<path
-						d="M2 17.5C50 13.5 130 8 198 4.5C200 4.4 200.5 7 198.5 7.6C140 12.5 70 18.5 8 22.5C3 22.8 0 19 2 17.5Z"
+						d="M2 14.5C50 10.5 130 5 198 1.5C200.8 1.4 201.2 8 198.6 9C140 14.5 70 20.5 8 23.6C2.4 23.9 0 16.5 2 14.5Z"
 						fill="currentColor"
 						filter={`url(#${grain})`}
 					/>
