@@ -24,7 +24,7 @@ const NEXT_STEPS = [
 /* What happens after Start tracking. Each number turns into a tick in turn, once, so the list ends looking done. */
 function NextSteps() {
 	return (
-		<ol aria-label="What happens after you start tracking" className="mt-10 grid gap-4">
+		<ol aria-label="What happens after you start tracking" className="mt-8 grid gap-4">
 			{NEXT_STEPS.map((step, index) => (
 				<li key={step} style={{ "--step": index } as CSSProperties} className="relative flex items-center gap-3">
 					<span
@@ -48,16 +48,6 @@ function NextSteps() {
 	);
 }
 
-/*
- * The scene behind the hero. Its picture is /v3/hero-scene.webp (2880 × 1620):
- * once that file exists it goes in here as an <img> with object-cover, eager,
- * and an alt that says what it shows. Until then the slot is a plain surface
- * one step lighter than the ink, so nothing unfinished can ship.
- */
-function HeroScene() {
-	return <div aria-hidden="true" data-slot="hero-scene" className="absolute inset-0 -z-10 bg-(--v3-ink-step)" />;
-}
-
 const DEFAULT_LEDE = `See who ChatGPT, Gemini and ${ENGINE_COUNT - 2} other AI tools recommend to your buyers, and what to fix.`;
 
 /* Title, lede and source are overridden when a visitor arrives from an AI assistant, or on a tested variant. */
@@ -74,13 +64,12 @@ export function Hero({
 	const demoUrl = demoSiteUrl(from, DEMO_BRAND_PATH);
 
 	return (
-		<section className="relative isolate overflow-x-clip bg-(--v3-ink) text-(--v3-on-ink)">
-			<HeroScene />
-			{/* From 1280 wide the text holds the calm upper left and the product rises from the hero's lower edge, running 10rem past it into the next section; its offset follows the window's height so the hero ends at the first screen's edge. Narrower, everything stacks in reading order. */}
+		<section className="relative overflow-x-clip bg-(--v3-ink) text-(--v3-on-ink)">
+			{/* From 1280 wide the text and the product sit side by side, centred in the first screen; the product's chart gives up height on a short screen so all of it stays in view. Narrower, everything stacks in reading order. */}
 			<div
-				className={`${WRAP} grid grid-cols-[minmax(0,1fr)] gap-y-12 py-12 sm:py-16 xl:grid-cols-[minmax(0,31rem)_minmax(0,1fr)] xl:items-start xl:gap-x-16 xl:py-0`}
+				className={`${WRAP} grid grid-cols-[minmax(0,1fr)] gap-y-12 py-12 sm:py-16 xl:min-h-[min(calc(100svh-4.5rem),52rem)] xl:grid-cols-[minmax(0,31rem)_minmax(0,1fr)] xl:items-center xl:gap-x-16 xl:py-8`}
 			>
-				<div className="min-w-0 xl:pt-24 xl:pb-24">
+				<div className="min-w-0">
 					<h1 className={`${HERO_TITLE} text-(--v3-on-ink) xl:text-[4rem]`}>{title}</h1>
 					<p data-speakable className={`${LEAD} mt-6 max-w-[34rem] text-(--v3-on-ink-2)`}>
 						{lede}
@@ -106,9 +95,12 @@ export function Hero({
 					<NextSteps />
 				</div>
 
-				<div className="relative z-10 min-w-0 xl:mt-[clamp(14rem,calc(100svh-42rem),26rem)] xl:-mb-40">
-					<Product screen="overview" tabs={HERO_TABS} from={from} />
-				</div>
+				<Product
+					screen="overview"
+					tabs={HERO_TABS}
+					from={from}
+					className="min-w-0 xl:[--chart-height:clamp(6rem,calc(100svh-43.5rem),9rem)]"
+				/>
 			</div>
 		</section>
 	);

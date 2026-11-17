@@ -1,6 +1,4 @@
-/* Hallmark · genre: modern-minimal · theme: brand · redesign: full · copy: verbatim · posture: Restrained · hero: Scene, text in the calm upper left and the product rising from its lower edge · nav: three-part bar on ink · footer: index columns on ink · paper: #f7f4ee · accent: #b84d25 · display: Schibsted Grotesk 500 · body: Inter · signature: a rust pen circle round your brand's name · the /v3 preview of the home page */
-/* Hallmark · waive 44c · the product window sits right of the text and lower · the text keeps the calm upper left of the scene and the product rises from the hero's lower edge into the next section, so its centre falls below the headline's */
-/* Hallmark · waive 81 · div[data-slot=hero-scene] is a plain surface · no image tool was connected; the owner generates the scene as /v3/hero-scene.webp, and until then the slot shows one step lighter than the ink with no text in it */
+/* Hallmark · genre: modern-minimal · theme: brand · redesign: full · copy: verbatim · posture: Restrained · hero: Split, the text and the product side by side, centred in the first screen · nav: three-part bar on ink · footer: index columns on ink · paper: #f7f4ee · accent: #b84d25 · display: Schibsted Grotesk 500 · body: Inter · signature: a rust pen circle round your brand's name · the /v3 preview of the home page */
 /* Hallmark · dismissed 28a · the hero holds no image; the founders' and reviewers' photos sit far below the fold and load lazily */
 /* Hallmark · dismissed 49 · the review date reads "Asked" and a month; the rest of that label is for screen readers only, and the button does not wrap */
 /* Hallmark · dismissed 46a · "200+ brands" is the home page's own line, carried over word for word for the owner to keep or change */
@@ -27,7 +25,6 @@
 	--v3-line-strong: rgb(31 27 22 / 0.16);
 
 	--v3-ink: #1a1917;
-	--v3-ink-step: #262420;
 	--v3-ink-raised: #2f2c27;
 	--v3-on-ink: #efe9de;
 	--v3-on-ink-2: #aaa398;
