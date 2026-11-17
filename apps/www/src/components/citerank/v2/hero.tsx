@@ -17,7 +17,7 @@ const NEXT_STEPS = [
 	"Add your company website",
 	`We ask ${ENGINE_COUNT} AI assistants daily`,
 	"See which brands they pick",
-	"Get a list of what to fix",
+	"Get ongoing list of what to fix",
 ];
 
 /* What happens after Start tracking. Each number turns into a tick in turn, once, so the list ends looking done. */
