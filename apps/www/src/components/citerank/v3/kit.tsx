@@ -1,6 +1,6 @@
 /*
- * The /v3 preview's class recipes. Colours come from the tokens in v3.css:
- * a warm paper ramp, the brand ink, and rust only for the primary action, a
+ * The /v3 preview's class recipes. Colours come from the tokens in v3.css, the
+ * dashboard's own: its paper ramp, the brand ink, and rust only for the primary action, a
  * selection, your brand's series, the hero's steps, the founders' quote marks
  * and the pen circle.
  */
@@ -35,7 +35,7 @@ export const TEXT_3 = "text-(--v3-text-3)";
 export const SECTION = "relative py-8 sm:py-12 lg:py-14";
 export const HEAD_GAP = "mt-8 lg:mt-12";
 
-export const CARD_SURFACE = "rounded-2xl bg-(--v3-card) shadow-(--v3-shadow-sm) ring-1";
+export const CARD_SURFACE = "rounded-[14px] bg-(--v3-card) shadow-(--v3-shadow-sm) ring-1";
 export const CARD = `${CARD_SURFACE} ring-(--v3-line)`;
 export const PANEL_INK = "rounded-[20px] bg-(--v3-ink) text-(--v3-on-ink)";
 

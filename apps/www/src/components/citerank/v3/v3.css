@@ -1,4 +1,4 @@
-/* Hallmark · genre: modern-minimal · theme: brand · redesign: full · copy: verbatim · posture: Restrained · hero: Split, the text and the product side by side, centred in the first screen · nav: three-part bar on ink · footer: index columns on ink · paper: #f7f4ee · accent: #b84d25 · display: Schibsted Grotesk 500 · body: Inter · signature: a rust pen circle round your brand's name · the /v3 preview of the home page */
+/* Hallmark · genre: modern-minimal · theme: brand · redesign: full · copy: verbatim · posture: Restrained · hero: Split, the text and the product side by side, centred in the first screen · nav: three-part bar on ink · footer: index columns on ink · paper: #fbfaf9 · accent: #b84d25 · display: Schibsted Grotesk 500 · body: Inter · signature: a rust pen circle round your brand's name · the /v3 preview of the home page */
 /* Hallmark · dismissed 28a · the hero holds no image; the founders' and reviewers' photos sit far below the fold and load lazily */
 /* Hallmark · dismissed 49 · the review date reads "Asked" and a month; the rest of that label is for screen readers only, and the button does not wrap */
 /* Hallmark · dismissed 46a · "200+ brands" is the home page's own line, carried over word for word for the owner to keep or change */
@@ -14,38 +14,33 @@
 }
 
 :root {
-	--v3-page: #f7f4ee;
-	--v3-card: #fdfbf7;
-	--v3-raised: #efe9df;
-	--v3-text: #1f1b16;
-	--v3-text-2: #5e554a;
-	/* The ramp's muted step, a shade darker so small captions reach 4.5:1 on the page. */
-	--v3-text-3: #736a5f;
-	--v3-line: rgb(31 27 22 / 0.08);
-	--v3-line-strong: rgb(31 27 22 / 0.16);
+	/* Every colour is the product's own: the dashboard's and the live demo's theme (apps/web), or the site's ramp it shares. */
+	--v3-page: var(--color-zinc-50, #fbfaf9);
+	--v3-card: #ffffff;
+	--v3-raised: var(--color-zinc-100, #f4f3f0);
+	--v3-text: var(--color-ink, #1a1917);
+	--v3-text-2: #6b6459;
+	--v3-text-3: var(--color-zinc-500, #726b60);
+	--v3-line: var(--color-zinc-200, #e7e3dc);
+	--v3-line-strong: #dcd6cc;
 
-	--v3-ink: #1a1917;
-	--v3-ink-raised: #2f2c27;
-	--v3-on-ink: #efe9de;
-	--v3-on-ink-2: #aaa398;
-	--v3-on-ink-3: #9a9388;
-	--v3-ink-line: rgb(239 233 222 / 0.08);
-	--v3-ink-line-strong: rgb(239 233 222 / 0.16);
+	--v3-ink: var(--color-ink, #1a1917);
+	--v3-ink-raised: var(--color-ink-well, #262420);
+	--v3-on-ink: var(--color-paper, #fbfaf9);
+	--v3-on-ink-2: var(--color-zinc-300, #d6d0c6);
+	--v3-on-ink-3: var(--color-zinc-400, #a39c90);
+	--v3-ink-line: var(--color-ink-rule, #3a3731);
+	--v3-ink-line-strong: var(--color-zinc-500, #726b60);
 
-	--v3-rust: #b84d25;
-	--v3-rust-deep: #9c3f1e;
+	--v3-rust: var(--color-rust, #b84d25);
+	--v3-rust-deep: var(--color-blue-700, #9c3f1e);
 
-	/* Competitors on a chart: neutral steps, darkest for the nearest rival. */
-	--v3-series-1: #5e554a;
-	--v3-series-2: #8a8174;
-	--v3-series-3: #aaa196;
-	--v3-series-4: #c6beb2;
+	/* A rival's bar, as on the home page. */
+	--v3-series-3: var(--color-zinc-400, #a39c90);
 
-	--v3-good: #0b7a57;
-	--v3-bad: #b42318;
-
-	--v3-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-	--v3-shadow-float: 0 8px 24px rgba(0, 0, 0, 0.06);
+	/* The dashboard card's shadow. */
+	--v3-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+	--v3-shadow-float: var(--shadow-lift, 0 18px 40px -18px rgb(26 25 23 / 0.22));
 	--v3-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 
 	--v3-ease: cubic-bezier(0.22, 1, 0.36, 1);

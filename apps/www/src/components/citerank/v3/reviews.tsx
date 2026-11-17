@@ -95,7 +95,7 @@ function AnswerDetails({ review }: { review: AiReview }) {
 			<div
 				id={id}
 				popover="auto"
-				className={`m-auto max-h-[85dvh] w-[min(30rem,calc(100%-2rem))] overflow-y-auto rounded-2xl bg-(--v3-card) p-6 shadow-(--v3-shadow-float) ring-1 ring-(--v3-line) backdrop:bg-(--v3-ink)/60 ${TEXT}`}
+				className={`m-auto max-h-[85dvh] w-[min(30rem,calc(100%-2rem))] overflow-y-auto rounded-[14px] bg-(--v3-card) p-6 shadow-(--v3-shadow-float) ring-1 ring-(--v3-line) backdrop:bg-(--v3-ink)/60 ${TEXT}`}
 			>
 				<p className={`${SMALL} ${TEXT_2}`}>We asked {review.name}</p>
 				<p className={`${MONO} mt-2 rounded-[8px] bg-(--v3-raised) p-3 ${TEXT_2}`}>{AI_PROMPT}</p>
