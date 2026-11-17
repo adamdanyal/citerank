@@ -116,7 +116,7 @@ function PlanApps({
 	return (
 		<details className="group" open={open} onToggle={(event) => onOpenChange(event.currentTarget.open)}>
 			<summary
-				className={`flex cursor-pointer list-none items-center justify-between gap-4 rounded-[4px] text-[1rem] leading-snug font-medium [&::-webkit-details-marker]:hidden ${TEXT} ${FOCUS}`}
+				className={`flex cursor-pointer list-none select-none items-center justify-between gap-4 rounded-[4px] text-[1rem] leading-snug font-medium [&::-webkit-details-marker]:hidden ${TEXT} ${FOCUS}`}
 			>
 				Choose any {plan.platformPicks} AI tools
 				<Plus

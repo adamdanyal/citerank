@@ -59,7 +59,7 @@ export function Agency() {
 						{more.length ? (
 							<details className="group">
 								<summary
-									className={`flex cursor-pointer list-none items-center gap-3 border-t border-(--v3-ink-line) pt-4 text-[1.125rem] leading-snug text-(--v3-on-ink-2) transition-colors duration-150 group-open:hidden hover:text-(--v3-on-ink) [&::-webkit-details-marker]:hidden ${EASE} ${FOCUS}`}
+									className={`flex cursor-pointer list-none select-none items-center gap-3 border-t border-(--v3-ink-line) pt-4 text-[1.125rem] leading-snug text-(--v3-on-ink-2) transition-colors duration-150 group-open:hidden hover:text-(--v3-on-ink) [&::-webkit-details-marker]:hidden ${EASE} ${FOCUS}`}
 								>
 									<Plus aria-hidden="true" strokeWidth={1.5} className="size-[18px] shrink-0" />
 									Show {more.length} more

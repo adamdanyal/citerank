@@ -1,11 +1,11 @@
 import { CUSTOMERS } from "@/components/home/logos";
 import { Page, TEXT } from "./kit";
 
-/* Who already relies on it, straight under the hero. From 1280 wide the product window overhangs the top of this strip by 10rem, so the strip starts below it. */
+/* Who already relies on it, straight under the hero. */
 export function Logos() {
 	return (
 		<aside aria-labelledby="customers" className="border-b border-(--v3-line)">
-			<Page className="flex flex-col items-center gap-8 py-12 lg:gap-10 lg:py-16 xl:pt-[calc(10rem+4rem)]">
+			<Page className="flex flex-col items-center gap-8 py-12 lg:gap-10 lg:py-16">
 				<h2
 					id="customers"
 					className={`text-center font-(family-name:--v3-display) text-[1.1875rem] leading-[1.3] font-medium text-balance ${TEXT}`}

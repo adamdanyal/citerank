@@ -65,7 +65,7 @@ export function Agency({ folded = false }: { folded?: boolean } = {}) {
 						{more.length ? (
 							<details className="group">
 								<summary
-									className={`flex cursor-pointer list-none items-center gap-4 border-t border-ink-rule pt-4 text-lead leading-snug text-zinc-300 transition-colors duration-200 hover:text-paper group-open:hidden [&::-webkit-details-marker]:hidden ${FOCUS}`}
+									className={`flex cursor-pointer list-none select-none items-center gap-4 border-t border-ink-rule pt-4 text-lead leading-snug text-zinc-300 transition-colors duration-200 hover:text-paper group-open:hidden [&::-webkit-details-marker]:hidden ${FOCUS}`}
 								>
 									<span
 										aria-hidden="true"

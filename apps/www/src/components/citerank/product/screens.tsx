@@ -577,7 +577,7 @@ function AnswerCard({ answer, lead = false }: { answer: Answer; lead?: boolean }
 			{still || lead ? null : (
 				<details className="group border-t border-zinc-200">
 					<summary
-						className={`flex h-11 cursor-pointer list-none items-center gap-2 rounded-b-xl px-4 font-medium text-ink [&::-webkit-details-marker]:hidden ${FOCUS}`}
+						className={`flex h-11 cursor-pointer list-none select-none items-center gap-2 rounded-b-xl px-4 font-medium text-ink [&::-webkit-details-marker]:hidden ${FOCUS}`}
 					>
 						<svg aria-hidden="true" viewBox="0 0 12 12" className="size-3 group-open:rotate-90">
 							<path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />

@@ -28,7 +28,7 @@ export function Faq({ items, title = "Frequently asked questions" }: { items: Fa
 				<div className="border-b border-zinc-200 lg:col-span-8">
 					{items.map((item) => (
 						<details key={item.question} open className="group border-t border-zinc-200">
-							<summary className="flex cursor-pointer list-none items-start justify-between gap-6 rounded-sm py-6 text-[1.125rem] leading-[1.4] font-medium text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust [&::-webkit-details-marker]:hidden">
+							<summary className="flex cursor-pointer list-none select-none items-start justify-between gap-6 rounded-sm py-6 text-[1.125rem] leading-[1.4] font-medium text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rust [&::-webkit-details-marker]:hidden">
 								{item.question}
 								<Plus
 									aria-hidden="true"

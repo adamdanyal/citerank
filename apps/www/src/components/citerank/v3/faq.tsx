@@ -29,7 +29,7 @@ export function Faq({ items, title = "Frequently asked questions" }: { items: Fa
 					{items.map((item) => (
 						<details key={item.question} open className="group border-t border-(--v3-line)">
 							<summary
-								className={`flex cursor-pointer list-none items-start justify-between gap-6 rounded-[4px] py-6 text-[1.125rem] leading-[1.4] font-medium [&::-webkit-details-marker]:hidden ${TEXT} ${FOCUS}`}
+								className={`flex cursor-pointer list-none select-none items-start justify-between gap-6 rounded-[4px] py-6 text-[1.125rem] leading-[1.4] font-medium [&::-webkit-details-marker]:hidden ${TEXT} ${FOCUS}`}
 							>
 								{item.question}
 								<Plus
