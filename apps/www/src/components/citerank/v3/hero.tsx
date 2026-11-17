@@ -65,12 +65,12 @@ export function Hero({
 
 	return (
 		<section className="relative overflow-x-clip bg-(--v3-ink) text-(--v3-on-ink)">
-			{/* From 1280 wide the text and the product sit side by side, centred in the first screen; the product's chart gives up height on a short screen so all of it stays in view. Narrower, everything stacks in reading order. */}
+			{/* From 1100 wide, every tablet held sideways and up, the text and the product sit side by side, centred in the first screen; the product's chart gives up height on a short screen so all of it stays in view. Narrower, everything stacks in reading order. */}
 			<div
-				className={`${WRAP} grid grid-cols-[minmax(0,1fr)] gap-y-12 py-12 sm:py-16 xl:min-h-[min(calc(100svh-4.5rem),52rem)] xl:grid-cols-[minmax(0,31rem)_minmax(0,1fr)] xl:items-center xl:gap-x-16 xl:py-8`}
+				className={`${WRAP} grid grid-cols-[minmax(0,1fr)] gap-y-12 py-12 sm:max-[1099px]:py-16 min-[1100px]:min-h-[min(calc(100svh-4.5rem),52rem)] min-[1100px]:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] min-[1100px]:items-center min-[1100px]:gap-x-10 min-[1100px]:py-8 xl:grid-cols-[minmax(0,31rem)_minmax(0,1fr)] xl:gap-x-16`}
 			>
 				<div className="min-w-0">
-					<h1 className={`${HERO_TITLE} text-(--v3-on-ink) xl:text-[4rem]`}>{title}</h1>
+					<h1 className={`${HERO_TITLE} text-(--v3-on-ink) min-[1100px]:text-[2.75rem] xl:text-[4rem]`}>{title}</h1>
 					<p data-speakable className={`${LEAD} mt-6 max-w-[34rem] text-(--v3-on-ink-2)`}>
 						{lede}
 					</p>
@@ -99,7 +99,7 @@ export function Hero({
 					screen="overview"
 					tabs={HERO_TABS}
 					from={from}
-					className="min-w-0 xl:[--chart-height:clamp(6rem,calc(100svh-43.5rem),9rem)]"
+					className="min-w-0 min-[1100px]:[--chart-height:clamp(6rem,calc(100svh-43.5rem),9rem)]"
 				/>
 			</div>
 		</section>
