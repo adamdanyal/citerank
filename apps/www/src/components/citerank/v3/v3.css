@@ -53,7 +53,8 @@
 
 	--v3-ease: cubic-bezier(0.22, 1, 0.36, 1);
 	--v3-display: "Schibsted Grotesk V3", "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
-	--v3-selection: rgb(184 77 37 / 0.18);
+	/* The site's own highlight: solid and light, so selected text stays dark and readable on paper and on ink alike. */
+	--v3-selection: var(--color-blue-100, #f6e2d8);
 }
 
 .cr-v3 {

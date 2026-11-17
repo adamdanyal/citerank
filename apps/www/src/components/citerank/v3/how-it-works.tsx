@@ -158,30 +158,22 @@ function Picture({ step, className = "" }: { step: (typeof STEPS)[number]; class
 	);
 }
 
-/*
- * Three steps a child could follow, each one picture and one line. The first,
- * where the AI names the brands, gets the width; the two that follow from it
- * share the row under it.
- */
+/* Three steps a child could follow, side by side, each one line over one picture; the pictures share a row so they line up. */
 export function HowItWorks() {
 	const demoUrl = demoSiteUrl("marketing-page-cta", DEMO_BRAND_PATH);
-	const [first, ...rest] = STEPS;
 	return (
 		<section id="how-it-works" className={SECTION}>
 			<Page>
 				<SectionHead title="From your website to your fix list" />
 
-				<ol className={`${HEAD_GAP} grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-12 lg:gap-6`}>
-					<li className={`${CARD} grid min-w-0 gap-2 p-2 lg:col-span-12 lg:grid-cols-12 lg:items-stretch`}>
-						<div className="flex flex-col justify-center lg:col-span-5 lg:pr-6">
-							<StepText index={0} title={first.title} body={first.body} />
-						</div>
-						<Picture step={first} className="lg:col-span-7 lg:min-h-80" />
-					</li>
-					{rest.map((step, index) => (
-						<li key={step.title} className={`${CARD} flex min-w-0 flex-col gap-2 p-2 lg:col-span-6`}>
-							<StepText index={index + 1} title={step.title} body={step.body} />
-							<Picture step={step} className="flex-1" />
+				<ol className={`${HEAD_GAP} grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-3 lg:gap-6`}>
+					{STEPS.map((step, index) => (
+						<li
+							key={step.title}
+							className={`${CARD} flex min-w-0 flex-col gap-2 p-2 lg:row-span-2 lg:grid lg:grid-rows-subgrid`}
+						>
+							<StepText index={index} title={step.title} body={step.body} />
+							<Picture step={step} />
 						</li>
 					))}
 				</ol>

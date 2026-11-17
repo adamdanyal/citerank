@@ -6,8 +6,8 @@ import type { CSSProperties, ReactNode } from "react";
 import { externalRel } from "@/lib/external-link";
 import { trackEvent } from "@/lib/posthog";
 import { DEMO_BRAND_PATH } from "../product/data";
+import { Product, type ScreenId } from "../product/product";
 import { ACTION, ACTION_QUIET_ON_INK, HERO_TITLE, LEAD, SMALL, WRAP } from "./kit";
-import { Product, type ScreenId } from "./product/product";
 
 const ENGINE_COUNT = Object.keys(CLOUD_PLATFORMS).length;
 
@@ -81,7 +81,7 @@ export function Hero({
 				className={`${WRAP} grid grid-cols-[minmax(0,1fr)] gap-y-12 py-12 sm:py-16 xl:grid-cols-[minmax(0,31rem)_minmax(0,1fr)] xl:items-start xl:gap-x-16 xl:py-0`}
 			>
 				<div className="min-w-0 xl:pt-24 xl:pb-24">
-					<h1 className={`${HERO_TITLE} text-(--v3-on-ink) xl:w-[42rem]`}>{title}</h1>
+					<h1 className={`${HERO_TITLE} text-(--v3-on-ink) xl:text-[4rem]`}>{title}</h1>
 					<p data-speakable className={`${LEAD} mt-6 max-w-[34rem] text-(--v3-on-ink-2)`}>
 						{lede}
 					</p>

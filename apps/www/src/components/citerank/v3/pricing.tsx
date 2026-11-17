@@ -151,9 +151,9 @@ function PlanApps({
 }
 
 /*
- * A plan on a card: a name, a price, its lines and a button. The three cards
- * are one size; the one to pick says so in quiet text, takes an ink edge, and
- * carries the page's primary button.
+ * A plan on a card: a name, a price, its lines and a button. The one to pick
+ * stands a head taller under a rust band that says so, and carries the page's
+ * primary button.
  */
 function PlanTable() {
 	const [billing, setBilling] = useState<Billing>("monthly");
@@ -178,49 +178,53 @@ function PlanTable() {
 					return (
 						<article
 							key={key}
-							className={`${CARD_SURFACE} flex min-w-0 flex-col p-6 ${recommended ? "ring-(--v3-text)" : "ring-(--v3-line)"}`}
+							className={`${CARD_SURFACE} flex min-w-0 flex-col ${recommended ? "overflow-hidden ring-2 ring-(--v3-rust)" : "ring-(--v3-line) md:mt-10"}`}
 						>
-							<div className="flex items-baseline justify-between gap-4">
+							{recommended ? (
+								<p className="flex h-10 items-center justify-center bg-(--v3-rust) px-4 text-center text-[0.9375rem] leading-tight font-medium text-(--v3-card)">
+									{RECOMMENDED_LABEL}
+								</p>
+							) : null}
+							<div className="flex flex-1 flex-col p-6">
 								<h3 className={`${TITLE} ${TEXT}`}>{plan.name}</h3>
-								{recommended ? <p className={`${SMALL} ${TEXT_2}`}>{RECOMMENDED_LABEL}</p> : null}
-							</div>
-							<p className="mt-5 flex flex-wrap items-baseline gap-x-2">
-								<span
-									className={`font-(family-name:--v3-display) text-[clamp(2.5rem,1.4vw+1.75rem,3rem)] leading-none font-medium tracking-[-0.03em] tabular-nums ${TEXT}`}
-								>
-									{usd(perMonth)}
-								</span>
-								<span className={`${BODY} ${TEXT_2}`}>a month</span>
-							</p>
-							<p className={`${SMALL} mt-3 ${TEXT_2}`}>
-								{billing === "annual"
-									? `Billed ${usd(plan.annualPriceUsd)} a year, saves ${usd(plan.monthlyPriceUsd * 12 - plan.annualPriceUsd)}`
-									: `Or ${usd(yearlyPerMonth)} a month, billed yearly`}
-							</p>
-							<ul className="mt-6 space-y-3 border-t border-(--v3-line) pt-6">
-								{LINES.map((line) => {
-									const { lead, figure, text, shared } = line(plan);
-									return (
-										<PlanLine key={text} none={!figure && !shared}>
-											{lead ? `${lead} ` : null}
-											{figure ? <strong className={`font-medium tabular-nums ${TEXT}`}>{figure}</strong> : null}
-											{figure ? " " : null}
-											{text}
-										</PlanLine>
-									);
-								})}
-							</ul>
-							<div className="mt-6 flex-1 border-t border-(--v3-line) pt-6">
-								<PlanApps plan={plan} open={appsOpen.includes(key)} onOpenChange={(open) => toggleApps(key, open)} />
-							</div>
-							<div className="mt-8">
-								<a
-									href={cloudAppUrl(`marketing-plan-${key}`)}
-									onClick={() => trackEvent("plan_click", { plan: key, from: "home" })}
-									className={`w-full ${recommended ? ACTION : ACTION_QUIET}`}
-								>
-									Get {plan.name}
-								</a>
+								<p className="mt-5 flex flex-wrap items-baseline gap-x-2">
+									<span
+										className={`font-(family-name:--v3-display) text-[clamp(2.5rem,1.4vw+1.75rem,3rem)] leading-none font-medium tracking-[-0.03em] tabular-nums ${TEXT}`}
+									>
+										{usd(perMonth)}
+									</span>
+									<span className={`${BODY} ${TEXT_2}`}>a month</span>
+								</p>
+								<p className={`${SMALL} mt-3 ${TEXT_2}`}>
+									{billing === "annual"
+										? `Billed ${usd(plan.annualPriceUsd)} a year, saves ${usd(plan.monthlyPriceUsd * 12 - plan.annualPriceUsd)}`
+										: `Or ${usd(yearlyPerMonth)} a month, billed yearly`}
+								</p>
+								<ul className="mt-6 space-y-3 border-t border-(--v3-line) pt-6">
+									{LINES.map((line) => {
+										const { lead, figure, text, shared } = line(plan);
+										return (
+											<PlanLine key={text} none={!figure && !shared}>
+												{lead ? `${lead} ` : null}
+												{figure ? <strong className={`font-medium tabular-nums ${TEXT}`}>{figure}</strong> : null}
+												{figure ? " " : null}
+												{text}
+											</PlanLine>
+										);
+									})}
+								</ul>
+								<div className="mt-6 flex-1 border-t border-(--v3-line) pt-6">
+									<PlanApps plan={plan} open={appsOpen.includes(key)} onOpenChange={(open) => toggleApps(key, open)} />
+								</div>
+								<div className="mt-8">
+									<a
+										href={cloudAppUrl(`marketing-plan-${key}`)}
+										onClick={() => trackEvent("plan_click", { plan: key, from: "home" })}
+										className={`w-full ${recommended ? ACTION : ACTION_QUIET}`}
+									>
+										Get {plan.name}
+									</a>
+								</div>
 							</div>
 						</article>
 					);
