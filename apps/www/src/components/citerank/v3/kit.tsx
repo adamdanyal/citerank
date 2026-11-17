@@ -5,7 +5,7 @@
  * and the pen circle.
  */
 import { Check } from "lucide-react";
-import type { ReactNode } from "react";
+import { type ReactNode, useId } from "react";
 
 export const WRAP = "mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-16";
 
@@ -17,11 +17,13 @@ export const FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 foc
 export const EASE = "ease-(--v3-ease)";
 
 const SAFE_HEAD = "min-w-0 [overflow-wrap:break-word] text-balance";
-const FACE = "font-(family-name:--v3-display) font-medium";
-export const HERO_TITLE = `${FACE} text-[clamp(2.5rem,3.6vw+1.25rem,4.5rem)] leading-[1.16] tracking-[-0.03em] ${SAFE_HEAD}`;
-export const CLOSING_TITLE = `${FACE} text-[clamp(2.25rem,2vw+1.5rem,3.5rem)] leading-[1.06] tracking-[-0.025em] ${SAFE_HEAD}`;
+/* The dashboard's type: Schibsted Grotesk 700 for titles, 600 for smaller ones, JetBrains Mono 700 for big figures, Inter for the rest. */
+const FACE = "font-(family-name:--v3-display) font-bold";
+export const HERO_TITLE = `${FACE} text-[clamp(2.5rem,3.6vw+1.25rem,4.5rem)] leading-[1.16] tracking-[-0.02em] ${SAFE_HEAD}`;
+export const CLOSING_TITLE = `${FACE} text-[clamp(2.25rem,2vw+1.5rem,3.5rem)] leading-[1.06] tracking-[-0.02em] ${SAFE_HEAD}`;
 export const HEADING = `${FACE} text-[clamp(1.875rem,1.4vw+1.25rem,2.75rem)] leading-[1.1] tracking-[-0.02em] ${SAFE_HEAD}`;
-export const TITLE = `${FACE} text-[1.25rem] leading-[1.3] ${SAFE_HEAD}`;
+export const TITLE = `font-(family-name:--v3-display) font-semibold text-[1.25rem] leading-[1.3] ${SAFE_HEAD}`;
+export const FIGURE = "font-mono font-bold tracking-[-0.025em] tabular-nums";
 export const LEAD = "text-[1.125rem] leading-[1.6] text-pretty lg:text-[1.25rem] lg:leading-[1.5]";
 export const BODY = "text-[1rem] leading-[1.6] text-pretty";
 export const SMALL = "text-[0.875rem] leading-[1.45]";
@@ -89,20 +91,53 @@ export function SectionHead({
 	);
 }
 
+/* Roughens a stroke's edges a little, as a dry brush leaves them. */
+function BrushGrain({ id }: { id: string }) {
+	return (
+		<filter id={id} x="-10%" y="-60%" width="120%" height="220%">
+			<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" result="grain" />
+			<feDisplacementMap in="SourceGraphic" in2="grain" scale="1.4" xChannelSelector="R" yChannelSelector="G" />
+		</filter>
+	);
+}
+
 /**
- * The signature: a rust pen circle drawn round your brand's name, as an editor
- * marks the one word that matters. Used on the name, and on "your brand" in the
- * hero's headline, where it sits tighter so it clears the line below.
+ * The signature: a rust brush mark on your brand's name, as an editor marks the
+ * one word that matters. A brush underline under "your brand" in the hero's
+ * headline, a brush circle round the name in How it works.
  */
 export function Pen({
 	children,
 	className = "",
 	display = false,
+	underline = false,
 }: {
 	children: ReactNode;
 	className?: string;
 	display?: boolean;
+	underline?: boolean;
 }) {
+	const grain = `brush${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
+	if (underline) {
+		return (
+			<span className={`relative inline-block ${className}`}>
+				{children}
+				<svg
+					aria-hidden="true"
+					viewBox="0 0 200 24"
+					preserveAspectRatio="none"
+					className={`pointer-events-none absolute overflow-visible text-(--v3-rust) ${display ? "-bottom-[0.14em] -left-[0.04em] h-[0.36em] w-[calc(100%+0.1em)]" : "-bottom-[0.3em] -left-[0.06em] h-[0.42em] w-[calc(100%+0.14em)]"}`}
+				>
+					<BrushGrain id={grain} />
+					<path
+						d="M2 17.5C50 13.5 130 8 198 4.5C200 4.4 200.5 7 198.5 7.6C140 12.5 70 18.5 8 22.5C3 22.8 0 19 2 17.5Z"
+						fill="currentColor"
+						filter={`url(#${grain})`}
+					/>
+				</svg>
+			</span>
+		);
+	}
 	return (
 		<span className={`relative inline-block ${display ? "mx-[0.14em]" : ""} ${className}`}>
 			{children}
@@ -111,16 +146,17 @@ export function Pen({
 				viewBox="0 0 120 44"
 				preserveAspectRatio="none"
 				fill="none"
-				className={`pointer-events-none absolute overflow-visible ${display ? "-top-[0.12em] -left-[0.34em] h-[calc(100%+0.4em)] w-[calc(100%+0.78em)]" : "-top-[0.35em] -left-[0.45em] h-[calc(100%+0.7em)] w-[calc(100%+0.9em)]"}`}
+				className={`pointer-events-none absolute overflow-visible text-(--v3-rust) ${display ? "-top-[0.12em] -left-[0.34em] h-[calc(100%+0.4em)] w-[calc(100%+0.78em)]" : "-top-[0.35em] -left-[0.45em] h-[calc(100%+0.7em)] w-[calc(100%+0.9em)]"}`}
 			>
+				<BrushGrain id={grain} />
 				<path
 					d="M30 5.5C58 1 100 2 113 11C124 19 112 35 88 40C62 45 22 44 9 34C-2 26 4 12 20 7.5C34 3.5 50 1.5 68 3"
 					stroke="currentColor"
-					strokeWidth={display ? 2.5 : 1.75}
+					strokeWidth={display ? 4.5 : 3}
 					strokeLinecap="round"
 					strokeLinejoin="round"
 					vectorEffect="non-scaling-stroke"
-					className="text-(--v3-rust)"
+					filter={`url(#${grain})`}
 				/>
 			</svg>
 		</span>

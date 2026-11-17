@@ -84,7 +84,7 @@ function Standing() {
 								/>
 							</span>
 						</span>
-						<span className={`${LINE} font-mono font-normal ${TEXT}`}>{percent(entry.share)}</span>
+						<span className={`${LINE} font-mono font-semibold tabular-nums ${TEXT}`}>{percent(entry.share)}</span>
 					</li>
 				);
 			})}

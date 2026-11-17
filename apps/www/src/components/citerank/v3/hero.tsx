@@ -48,14 +48,16 @@ function NextSteps() {
 	);
 }
 
-/* The headline circles "your brand" in rust, the page's signature, wherever a variant says it; a possessive is left plain. */
+/* The headline underlines "your brand" with the page's rust brush mark wherever a variant says it; a possessive is left plain. */
 function Title({ text }: { text: string }) {
 	const match = /your brand(?![’'])/.exec(text);
 	if (!match) return text;
 	return (
 		<>
 			{text.slice(0, match.index)}
-			<Pen display>{match[0]}</Pen>
+			<Pen display underline>
+				{match[0]}
+			</Pen>
 			{text.slice(match.index + match[0].length)}
 		</>
 	);
@@ -83,7 +85,7 @@ export function Hero({
 				className={`${WRAP} grid grid-cols-[minmax(0,1fr)] gap-y-12 py-12 sm:max-[1099px]:py-16 min-[1100px]:min-h-[min(calc(100svh-4.5rem),52rem)] min-[1100px]:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] min-[1100px]:items-center min-[1100px]:gap-x-10 min-[1100px]:py-8 xl:grid-cols-[minmax(0,32rem)_minmax(0,1fr)] xl:gap-x-16`}
 			>
 				<div className="min-w-0">
-					<h1 className={`${HERO_TITLE} text-(--v3-on-ink) min-[1100px]:text-[2.75rem] xl:text-[4rem]`}>
+					<h1 className={`${HERO_TITLE} text-(--v3-on-ink) min-[1100px]:text-[2.625rem] xl:text-[3.75rem]`}>
 						<Title text={title} />
 					</h1>
 					<p data-speakable className={`${LEAD} mt-6 max-w-[34rem] text-(--v3-on-ink-2)`}>

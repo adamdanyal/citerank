@@ -20,6 +20,7 @@ import {
 	CARD_SURFACE,
 	CheckMark,
 	EASE,
+	FIGURE,
 	FOCUS,
 	HEAD_GAP,
 	LEAD,
@@ -188,9 +189,7 @@ function PlanTable() {
 							<div className="flex flex-1 flex-col p-6">
 								<h3 className={`${TITLE} ${TEXT}`}>{plan.name}</h3>
 								<p className="mt-5 flex flex-wrap items-baseline gap-x-2">
-									<span
-										className={`font-(family-name:--v3-display) text-[clamp(2.5rem,1.4vw+1.75rem,3rem)] leading-none font-medium tracking-[-0.03em] tabular-nums ${TEXT}`}
-									>
+									<span className={`${FIGURE} text-[clamp(2.25rem,1.2vw+1.625rem,2.75rem)] leading-none ${TEXT}`}>
 										{usd(perMonth)}
 									</span>
 									<span className={`${BODY} ${TEXT_2}`}>a month</span>
