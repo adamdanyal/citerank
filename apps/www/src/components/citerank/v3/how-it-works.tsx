@@ -21,7 +21,6 @@ import {
 	TEXT_2,
 	TEXT_3,
 	TITLE,
-	TRAY,
 } from "./kit";
 
 /* The pictures use the demo's own sample: the question it asked, the brands the answer named, and how they rank. */
@@ -78,7 +77,7 @@ function Standing() {
 								{you ? <Pen>{entry.name}</Pen> : entry.name}
 								{you ? <span className={`text-sm font-normal ${TEXT_2}`}>You</span> : null}
 							</span>
-							<span className="mt-3 block h-1.5 rounded-full bg-(--v3-card)">
+							<span className="mt-3 block h-1.5 rounded-full bg-(--v3-raised)">
 								<span
 									className={`block h-full rounded-full ${you ? "bg-(--v3-rust)" : "bg-(--v3-series-3)"}`}
 									style={{ width: `${Math.round((entry.share / LEADER) * 100)}%` }}
@@ -145,14 +144,9 @@ function StepText({ index, title, body }: { index: number; title: string; body: 
 	);
 }
 
-function Picture({ step, className = "" }: { step: (typeof STEPS)[number]; className?: string }) {
+function Picture({ step }: { step: (typeof STEPS)[number] }) {
 	return (
-		<div
-			role="img"
-			aria-label={step.shows}
-			data-nosnippet
-			className={`${TRAY} flex min-h-64 flex-col justify-center p-6 sm:p-8 ${className}`}
-		>
+		<div role="img" aria-label={step.shows} data-nosnippet className="flex min-h-64 flex-col justify-center p-4">
 			{step.picture}
 		</div>
 	);

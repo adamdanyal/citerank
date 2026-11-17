@@ -1,7 +1,7 @@
 /*
  * The /v3 preview's class recipes. Colours come from the tokens in v3.css:
  * a warm paper ramp, the brand ink, and rust only for the primary action, a
- * selection, your brand's series and the pen circle.
+ * selection, your brand's series, the hero's steps and the pen circle.
  */
 import { Check } from "lucide-react";
 import type { ReactNode } from "react";
@@ -36,8 +36,6 @@ export const HEAD_GAP = "mt-8 lg:mt-12";
 
 export const CARD_SURFACE = "rounded-2xl bg-(--v3-card) shadow-(--v3-shadow-sm) ring-1";
 export const CARD = `${CARD_SURFACE} ring-(--v3-line)`;
-/* Inside a card with 8px padding: 16 − 8. */
-export const TRAY = "rounded-[8px] bg-(--v3-raised)";
 export const PANEL_INK = "rounded-[20px] bg-(--v3-ink) text-(--v3-on-ink)";
 
 const BUTTON = `inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-[10px] px-5 text-[1rem] font-medium transition-[background-color,color,box-shadow,transform] duration-150 active:scale-[0.98] motion-reduce:active:scale-100 ${EASE} ${FOCUS}`;

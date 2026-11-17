@@ -84,13 +84,11 @@
 	border-radius: 10px;
 }
 
-/* The hero's steps keep their tick, on the page's one curve, in ink tones rather than the accent. */
 .cr-v3 .cr-step-line {
 	background: var(--v3-ink-line-strong);
 }
 .cr-v3 .cr-step-fill {
-	background: var(--v3-on-ink-2);
-	animation-timing-function: var(--v3-ease);
+	background: var(--v3-rust);
 }
 
 @media (prefers-reduced-motion: reduce) {

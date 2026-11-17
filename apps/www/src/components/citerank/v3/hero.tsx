@@ -32,8 +32,8 @@ function NextSteps() {
 						className="relative grid size-7 shrink-0 select-none place-items-center rounded-full font-mono text-[0.8125rem] leading-none text-(--v3-on-ink-3) ring-1 ring-(--v3-ink-line-strong) ring-inset"
 					>
 						{index + 1}
-						<span className="cr-step-tick absolute inset-0 grid place-items-center rounded-full bg-(--v3-ink-raised) text-(--v3-on-ink) ring-1 ring-(--v3-ink-line-strong) ring-inset">
-							<Check aria-hidden="true" strokeWidth={1.5} className="size-4" />
+						<span className="cr-step-tick absolute inset-0 grid place-items-center rounded-full bg-(--v3-rust) text-(--v3-card)">
+							<Check aria-hidden="true" strokeWidth={2.5} className="size-3.5" />
 						</span>
 					</span>
 					<span className={`${SMALL} whitespace-nowrap text-(--v3-on-ink-2)`}>{step}</span>
