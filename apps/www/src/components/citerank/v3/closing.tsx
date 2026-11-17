@@ -19,7 +19,6 @@ import {
 	SMALL,
 	TEXT,
 	TEXT_2,
-	TEXT_3,
 } from "./kit";
 
 function FounderQuotes() {
@@ -31,7 +30,7 @@ function FounderQuotes() {
 					<figure key={founder.name} className={`${CARD} flex min-w-0 flex-col p-6 lg:p-8`}>
 						<span
 							aria-hidden="true"
-							className={`block h-8 font-(family-name:--v3-display) text-[4rem] leading-none font-medium ${TEXT_3}`}
+							className="block h-8 font-(family-name:--v3-display) text-[4rem] leading-none font-medium text-(--v3-rust)"
 						>
 							“
 						</span>

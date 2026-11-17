@@ -16,7 +16,7 @@ const HERO_TABS: ScreenId[] = ["overview", "share-of-voice", "sentiment", "respo
 
 const NEXT_STEPS = [
 	"Add your company website",
-	`We ask ${ENGINE_COUNT} AI tools daily`,
+	`We ask ${ENGINE_COUNT} AI assistants daily`,
 	"See which brands they pick",
 	"Get a list of what to fix",
 ];

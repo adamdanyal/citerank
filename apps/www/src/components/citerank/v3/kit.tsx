@@ -1,7 +1,8 @@
 /*
  * The /v3 preview's class recipes. Colours come from the tokens in v3.css:
  * a warm paper ramp, the brand ink, and rust only for the primary action, a
- * selection, your brand's series, the hero's steps and the pen circle.
+ * selection, your brand's series, the hero's steps, the founders' quote marks
+ * and the pen circle.
  */
 import { Check } from "lucide-react";
 import type { ReactNode } from "react";
