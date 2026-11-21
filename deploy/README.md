@@ -24,8 +24,8 @@ In the Google Cloud console, pick the project and open Cloud Shell (the terminal
 
 ```
 PROJECT=your-project-id
-REGION=europe-west2
-ZONE=europe-west2-a
+REGION=us-east4
+ZONE=us-east4-a
 gcloud config set project $PROJECT
 gcloud services enable compute.googleapis.com storage.googleapis.com
 gcloud compute addresses create citerank-ip --region=$REGION
