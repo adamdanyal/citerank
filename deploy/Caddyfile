@@ -1,0 +1,15 @@
+# Caddy gets and renews the certificates itself, once each name's DNS record points at this server.
+
+{$APP_HOST} {
+	encode zstd gzip
+	reverse_proxy web:3000
+}
+
+{$SITE_HOSTS} {
+	# After launch the test address and www send visitors to the live one.
+	@moved host {$REDIRECT_HOSTS}
+	redir @moved https://citerank.com{uri} permanent
+
+	encode zstd gzip
+	reverse_proxy www:3001
+}

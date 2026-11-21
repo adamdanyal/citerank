@@ -199,10 +199,20 @@ const PERMANENT_REDIRECTS: Record<string, string> = {
 	"/subprocessors": "/legal/subprocessors",
 	"/acceptable-use": "/legal/acceptable-use",
 };
+
+// A test address serves the same pages as the live site, so it asks crawlers to stay away.
+const NO_INDEX = process.env.SITE_NOINDEX === "1";
+
 export default createServerEntry({
 	async fetch(request) {
 		const url = new URL(request.url);
 		const path = url.pathname;
+
+		if (NO_INDEX && path === "/robots.txt") {
+			return addSecurityHeaders(
+				new Response("User-agent: *\nDisallow: /\n", { headers: { "Content-Type": "text/plain" } }),
+			);
+		}
 
 		const movedTo = PERMANENT_REDIRECTS[path.replace(/\/+$/, "") || "/"];
 		if (movedTo) {
@@ -225,6 +235,7 @@ export default createServerEntry({
 		}
 
 		const response = await handler.fetch(req);
+		if (NO_INDEX) response.headers.set("X-Robots-Tag", "noindex, nofollow");
 		if (negotiable) response.headers.set("Vary", "Accept");
 		addDiscoveryLinks(response, negotiable ? `${path}.md` : undefined);
 		return compress(request, deferScripts(request, addSecurityHeaders(response)));

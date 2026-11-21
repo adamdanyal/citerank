@@ -1,0 +1,118 @@
+# CiteRank.com on one server: the database, the app, the worker, the marketing
+# site, and the proxy that answers on ports 80 and 443 and holds the certificates.
+# Start it with ./deploy.sh, which passes .env and the stage file.
+
+name: citerank
+
+x-app-env: &app-env
+  DEPLOYMENT_MODE: cloud
+  DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}@postgres:5432/citerank
+  APP_URL: https://${APP_HOST:?set APP_HOST in .env}
+  VITE_APP_URL: https://${APP_HOST}
+  VITE_APP_NAME: CiteRank.com
+  DISABLE_TELEMETRY: "1"
+
+x-app-build: &app-build
+  context: ..
+  dockerfile: docker/Dockerfile
+
+services:
+  postgres:
+    image: postgres:18-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: citerank
+    volumes:
+      # PostgreSQL 18 declares its volume at this parent, not at the data folder inside it.
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  db-migrate:
+    build:
+      <<: *app-build
+      target: migrate
+    environment:
+      DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@postgres:5432/citerank
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  web:
+    build:
+      <<: *app-build
+      target: web
+      args:
+        VITE_MARKETING_SITE_URL: ${SITE_URL:?run this through ./deploy.sh}
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: true
+    environment: *app-env
+    depends_on:
+      db-migrate:
+        condition: service_completed_successfully
+
+  worker:
+    build:
+      <<: *app-build
+      target: worker
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: true
+    environment: *app-env
+    depends_on:
+      db-migrate:
+        condition: service_completed_successfully
+
+  www:
+    build:
+      context: ..
+      dockerfile: deploy/www.Dockerfile
+      args:
+        VITE_MARKETING_SITE_URL: ${SITE_URL}
+    restart: unless-stopped
+    environment:
+      SITE_NOINDEX: ${SITE_NOINDEX:-1}
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      APP_HOST: ${APP_HOST}
+      SITE_HOSTS: ${SITE_HOSTS:?run this through ./deploy.sh}
+      REDIRECT_HOSTS: ${REDIRECT_HOSTS:-none.invalid}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - web
+      - www
+
+  # One-off: creates the plans and prices in the Stripe account named by STRIPE_SECRET_KEY.
+  #   ./deploy.sh --profile tools run --rm stripe-bootstrap
+  stripe-bootstrap:
+    profiles: ["tools"]
+    build:
+      <<: *app-build
+      target: builder
+    env_file:
+      - path: .env
+        required: true
+    command: ["pnpm", "-C", "packages/deployment", "exec", "tsx", "scripts/bootstrap-stripe.ts"]
+
+volumes:
+  postgres_data:
+  caddy_data:
+  caddy_config:

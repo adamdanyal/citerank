@@ -49,6 +49,15 @@ COPY . .
 # Web application bundle
 FROM builder AS web-build
 
+# Vite fixes these site addresses into the bundle. Left empty, the build keeps
+# the live ones; a test deployment passes its own.
+ARG VITE_MARKETING_SITE_URL
+ARG VITE_CLOUD_APP_URL
+ARG VITE_DEMO_SITE_URL
+ENV VITE_MARKETING_SITE_URL=$VITE_MARKETING_SITE_URL \
+    VITE_CLOUD_APP_URL=$VITE_CLOUD_APP_URL \
+    VITE_DEMO_SITE_URL=$VITE_DEMO_SITE_URL
+
 RUN pnpm --filter @workspace/web build
 
 # Pruned standalone deployments (only each package's own deps)
