@@ -26,14 +26,20 @@
 /* Hallmark · waive 72 · the box is a docs code block that scrolls sideways · a line of code that wrapped would no longer read as code */
 /* Hallmark · dismissed F19 · the fourth weight, 600, is the docs kit's own, in its sidebar and API reference */
 /* Hallmark · dismissed 74 · zinc and blue are remapped in @theme to the brand's warm greys and its rust ramp, so no stock value reaches the page */
-@import "tailwindcss";
+@import "tailwindcss" source(none);
 @import "tw-animate-css";
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
 @import "fumadocs-openapi/css/preset.css";
 
+/* Explicit @source scanning only, as in apps/web. Tailwind's own detection
+   follows the module graph, which differs between the client and server builds:
+   inside Docker the page then links a stylesheet name the client build never
+   wrote, and renders unstyled until the scripts load. */
 @source "../src";
 @source "../../../packages/ui/src";
+@source "../../../packages/docs/src";
+@source "../../../packages/docs/content";
 
 @plugin "@tailwindcss/typography";
 
