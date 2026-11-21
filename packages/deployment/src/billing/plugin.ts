@@ -49,7 +49,15 @@ export function createStripeBillingPlugin() {
 		stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET ?? "",
 		// Billing is per org, so the customer is created at the org's first checkout.
 		createCustomerOnSignUp: false,
-		organization: { enabled: true },
+		organization: {
+			enabled: true,
+			// An org has no address of its own: without the buyer's, Checkout asks them
+			// to type one and Stripe sends receipts wherever that typing lands.
+			getCustomerCreateParams: async (_organization, ctx) => {
+				const email = ctx.context.session?.user.email;
+				return email ? { email } : {};
+			},
+		},
 		subscription: {
 			enabled: true,
 			plans: buildStripePlans,
