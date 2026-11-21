@@ -46,7 +46,8 @@ services:
     network_mode: "service:postgres"
     environment:
       DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@127.0.0.1:5432/citerank_demo
-    command: ["pnpm", "exec", "tsx", "scripts/demo-data/seed.ts"]
+    # Called directly: through pnpm, every run would first reinstall the packages the image leaves out.
+    command: ["./node_modules/.bin/tsx", "scripts/demo-data/seed.ts"]
     depends_on:
       db-migrate:
         condition: service_completed_successfully

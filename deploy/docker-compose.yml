@@ -110,7 +110,9 @@ services:
     env_file:
       - path: .env
         required: true
-    command: ["pnpm", "-C", "packages/deployment", "exec", "tsx", "scripts/bootstrap-stripe.ts"]
+    working_dir: /app/packages/deployment
+    # Called directly: through pnpm, every run would first reinstall the packages the image leaves out.
+    command: ["/app/node_modules/.bin/tsx", "scripts/bootstrap-stripe.ts"]
 
 volumes:
   postgres_data:
