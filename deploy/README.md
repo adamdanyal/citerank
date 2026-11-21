@@ -27,15 +27,19 @@ PROJECT=your-project-id
 REGION=us-east4
 ZONE=us-east4-a
 gcloud config set project $PROJECT
-gcloud services enable compute.googleapis.com storage.googleapis.com
+gcloud services enable compute.googleapis.com storage.googleapis.com iap.googleapis.com
 gcloud compute addresses create citerank-ip --region=$REGION
 gcloud compute firewall-rules create citerank-web --allow=tcp:80,tcp:443 --target-tags=citerank-web
+gcloud compute firewall-rules create allow-ssh-google-tunnel --allow=tcp:22 --source-ranges=35.235.240.0/20
+gcloud compute firewall-rules delete default-allow-ssh default-allow-rdp --quiet
 gcloud compute instances create citerank --zone=$ZONE --machine-type=e2-standard-2 \
   --image-family=debian-12 --image-project=debian-cloud \
   --boot-disk-size=50GB --boot-disk-type=pd-balanced \
   --address=citerank-ip --tags=citerank-web \
   --scopes=storage-rw,logging-write,monitoring-write
 ```
+
+The last two firewall lines close the login port to the internet. Logins go through Google's tunnel instead, which checks your Google account first.
 
 Backups: a bucket for the nightly database dump, and a daily snapshot of the disk kept for a week.
 
@@ -64,7 +68,7 @@ At the DNS provider for `citerank.com`, add two A records with that address: `be
 Connect from Cloud Shell. Press Enter if it asks for a passphrase.
 
 ```
-gcloud compute ssh citerank --zone=$ZONE
+gcloud compute ssh citerank --zone=$ZONE --tunnel-through-iap
 ```
 
 On the server:
@@ -81,7 +85,7 @@ exit
 Connect again, then create the settings file:
 
 ```
-gcloud compute ssh citerank --zone=$ZONE
+gcloud compute ssh citerank --zone=$ZONE --tunnel-through-iap
 cd citerank/deploy
 cp env.example .env
 openssl rand -hex 24
@@ -136,6 +140,7 @@ From then on `www.citerank.com` and `beta.citerank.com` redirect to `citerank.co
 
 - Update to the latest code: `cd citerank/deploy && ./deploy.sh`.
 - Run a backup by hand: `./backup.sh`. The nightly one logs to `/var/log/citerank-backup.log`.
+- The server installs security updates by itself. When one needs a restart, it restarts at 04:00 UTC and everything starts again by itself.
 - Restore a dump: `./deploy.sh exec -T postgres pg_restore -U postgres -d citerank --clean --if-exists < file.dump`.
 
 ## The demo

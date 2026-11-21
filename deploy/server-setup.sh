@@ -1,6 +1,7 @@
 #!/bin/sh
-# One-time setup of a fresh Debian server: Docker, automatic security updates,
-# swap for the builds, a cap on log size, and the nightly job.
+# One-time setup of a fresh Debian server: Docker, automatic security updates
+# with a restart when one needs it, swap for the builds, a cap on log size, and
+# the nightly job.
 #   sudo ./deploy/server-setup.sh          the main server (nightly database backup)
 #   sudo ./deploy/server-setup.sh demo     the demo server (nightly refill of the sample data)
 set -eu
@@ -37,6 +38,8 @@ if [ ! -f /etc/docker/daemon.json ]; then
 fi
 
 printf 'APT::Periodic::Update-Package-Lists "1";\nAPT::Periodic::Unattended-Upgrade "1";\n' >/etc/apt/apt.conf.d/20auto-upgrades
+# A new kernel only takes hold after a restart. 04:00 UTC comes after the nightly job.
+printf 'Unattended-Upgrade::Automatic-Reboot "true";\nUnattended-Upgrade::Automatic-Reboot-Time "04:00";\n' >/etc/apt/apt.conf.d/52citerank-reboot
 
 if [ ! -f /swapfile ]; then
 	fallocate -l 4G /swapfile
