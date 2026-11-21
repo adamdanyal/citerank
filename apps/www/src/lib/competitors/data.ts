@@ -7101,6 +7101,40 @@ export const competitors: Competitor[] = [
 		notes: "Acquisition by HubSpot announced as an agreement, banner live on the homepage Aug 2026",
 	},
 	{
+		slug: "palmata",
+		name: "Palmata",
+		domain: "palmata.ai",
+		url: "https://palmata.ai/",
+		tagline: "AI reputation reports from Salesforce, with recommended content actions and simulated impact",
+		description:
+			"Palmata studies how answer engines describe a company and turns that research into prioritized content actions. Contentful launched it in June 2026, and it became a Salesforce product when Salesforce bought Contentful that September. It runs reports on demand rather than tracking daily: each report generates buyer prompts, measures mentions, citations and perception, and can test a proposed content change against AI answers before the team makes it. Reports and simulations are paid for with credits.",
+		category: "tracking",
+		ahrefsDR: 25,
+		status: "active",
+		soundbite: `Palmata reports on ChatGPT and Gemini when you run a report, and its paid plan is priced by quote. CiteRank.com tracks 13 AI tools 4 times a day and publishes its prices, from ${ENTRY_PRICE}.`,
+		features: {
+			multiLlmTracking: true,
+			chatgpt: true,
+			gemini: true,
+			citationAnalytics: true,
+			competitorBenchmarking: true,
+			brandMentionTracking: true,
+			sentimentAnalysis: true,
+			actionRecommendations: true,
+			contentGapAnalysis: true,
+			keywordResearch: true,
+			mcpServer: true,
+		},
+		pricing: { hasFree: true, hasEnterprise: true },
+		highlights: [
+			"A Salesforce product, built by Contentful and launched in June 2026",
+			"One free sample report on ChatGPT; the paid plan adds Gemini and is priced by quote, with credits at $10 each",
+			"Simulated Impact tests a proposed content change against AI answers before it is made",
+		],
+		notes:
+			"ahrefsDR is a placeholder at the listing threshold, set without an Ahrefs key on 2026-11-21. Replace it with the real rating.",
+	},
+	{
 		slug: "waikay",
 		name: "Waikay",
 		domain: "waikay.io",
@@ -8684,6 +8718,7 @@ const aeoPopularityRanking: string[] = [
 	"searchable", // Acquired Meridian (Sep 2026); broad suite incl. API, MCP, crawler analytics, white-label
 	"goodie", // Funded; Amazon Rufus tracking + AEO thought leadership
 	"xfunnel", // Acquired by HubSpot (Oct 2025); monday.com/LastPass/Getty roster
+	"palmata", // Salesforce product via the Contentful purchase (Sep 2026); The Atlantic/DocuSign/Box named; two engines, reports not daily tracking
 	"llmrefs", // Citation specialist; lists eBay/HubSpot/NVIDIA users
 	"limy", // $10M seed (Jan 2026, Flybridge + a16z speedrun), MCP + crawler analytics
 	"frase", // Agentic SEO/GEO platform, 80+ AI tools

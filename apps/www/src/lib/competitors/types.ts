@@ -428,6 +428,7 @@ const LOCAL_SCREENSHOTS = new Set([
 	"hubspot-aeo-grader",
 	"meikai",
 	"minddex",
+	"palmata",
 	"se-ranking",
 	"semantica",
 	"siteline",
