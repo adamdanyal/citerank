@@ -41,9 +41,11 @@ import {
 	type Theme,
 } from "./content";
 
-// The e2e package already depends on these; the repo root does not.
-const requireFromE2e = createRequire(join(__dirname, "../../e2e/package.json"));
-const { hashPassword } = requireFromE2e("@better-auth/utils/password") as {
+// Reached through better-auth, which the app itself hashes with: the repo root does not
+// depend on it, and the e2e package that does is left out of the server's Docker build.
+const requireFromLib = createRequire(join(__dirname, "../../packages/lib/package.json"));
+const requireFromBetterAuth = createRequire(requireFromLib.resolve("better-auth"));
+const { hashPassword } = requireFromBetterAuth("@better-auth/utils/password") as {
 	hashPassword: (password: string) => Promise<string>;
 };
 

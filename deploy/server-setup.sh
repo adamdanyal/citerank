@@ -1,8 +1,18 @@
 #!/bin/sh
 # One-time setup of a fresh Debian server: Docker, automatic security updates,
-# swap for the builds, a cap on log size, and the nightly database backup.
-#   sudo ./deploy/server-setup.sh
+# swap for the builds, a cap on log size, and the nightly job.
+#   sudo ./deploy/server-setup.sh          the main server (nightly database backup)
+#   sudo ./deploy/server-setup.sh demo     the demo server (nightly refill of the sample data)
 set -eu
+
+ROLE=${1:-main}
+case "$ROLE" in
+main | demo) ;;
+*)
+	echo "Usage: sudo $0 [main|demo]" >&2
+	exit 1
+	;;
+esac
 
 [ "$(id -u)" -eq 0 ] || {
 	echo "Run this with sudo." >&2
@@ -36,10 +46,16 @@ if [ ! -f /swapfile ]; then
 	echo "/swapfile none swap sw 0 0" >>/etc/fstab
 fi
 
-LOG=/var/log/citerank-backup.log
+if [ "$ROLE" = demo ]; then
+	LOG=/var/log/citerank-demo-seed.log
+	JOB="$REPO/deploy/demo/deploy.sh --profile seed run --rm -T seed"
+else
+	LOG=/var/log/citerank-backup.log
+	JOB="$REPO/deploy/backup.sh"
+fi
 touch "$LOG"
 chown "$OWNER" "$LOG"
-printf 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n15 3 * * * %s %s/deploy/backup.sh >>%s 2>&1\n' "$OWNER" "$REPO" "$LOG" >/etc/cron.d/citerank
+printf 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n15 3 * * * %s %s >>%s 2>&1\n' "$OWNER" "$JOB" "$LOG" >/etc/cron.d/citerank
 chmod 644 /etc/cron.d/citerank
 
 echo

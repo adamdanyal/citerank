@@ -1,0 +1,6 @@
+# Caddy gets and renews the certificate itself, once the name's DNS record points at this server.
+
+{$DEMO_HOST} {
+	encode zstd gzip
+	reverse_proxy web:3000
+}

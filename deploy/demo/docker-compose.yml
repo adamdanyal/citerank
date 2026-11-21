@@ -1,0 +1,102 @@
+# The public demo on its own server: the app in read-only demo mode on a sample
+# database, with no real keys. Start it with ./deploy.sh in this folder.
+
+name: citerank-demo
+
+x-app-build: &app-build
+  context: ../..
+  dockerfile: docker/Dockerfile
+
+services:
+  postgres:
+    image: postgres:18-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      # The seed refuses any database whose name does not end in _demo.
+      POSTGRES_DB: citerank_demo
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  db-migrate:
+    build:
+      <<: *app-build
+      target: migrate
+    environment:
+      DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@postgres:5432/citerank_demo
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # Empties the sample database and fills it again, with dates counted back from today.
+  #   ./deploy.sh --profile seed run --rm seed
+  seed:
+    profiles: ["seed"]
+    build:
+      <<: *app-build
+      target: builder
+    # The seed only accepts a database on localhost, so it shares the database's network.
+    network_mode: "service:postgres"
+    environment:
+      DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@127.0.0.1:5432/citerank_demo
+    command: ["pnpm", "exec", "tsx", "scripts/demo-data/seed.ts"]
+    depends_on:
+      db-migrate:
+        condition: service_completed_successfully
+
+  web:
+    build:
+      <<: *app-build
+      target: web
+      args:
+        VITE_MARKETING_SITE_URL: ${SITE_URL:?run this through ./deploy.sh}
+    restart: unless-stopped
+    environment:
+      DEPLOYMENT_MODE: demo
+      DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@postgres:5432/citerank_demo
+      APP_URL: https://${DEMO_HOST:?set DEMO_HOST in .env}
+      VITE_APP_URL: https://${DEMO_HOST}
+      VITE_APP_NAME: CiteRank.com
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?set BETTER_AUTH_SECRET in .env}
+      ELMO_ENCRYPTION_KEY: ${ELMO_ENCRYPTION_KEY:?set ELMO_ENCRYPTION_KEY in .env}
+      DISABLE_TELEMETRY: "1"
+      # The six AI tools the sample data covers. Nothing is fetched in demo mode,
+      # so every provider key is a placeholder.
+      SCRAPE_TARGETS: chatgpt:olostep:online,gemini:olostep:online,perplexity:dataforseo:online,google-ai-overview:olostep:online,bing-ai-mode:cloro:online,claude:anthropic-api:claude-haiku-5-5:online
+      ONBOARDING_LLM_TARGET: stub:stub
+      TYPESAFE_API_KEY: stub
+      OLOSTEP_API_KEY: demo
+      DATAFORSEO_LOGIN: demo
+      DATAFORSEO_PASSWORD: demo
+      CLORO_API_KEY: demo
+      ANTHROPIC_API_KEY: demo
+    depends_on:
+      db-migrate:
+        condition: service_completed_successfully
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DEMO_HOST: ${DEMO_HOST}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  caddy_data:
+  caddy_config:

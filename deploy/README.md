@@ -8,7 +8,7 @@ One Debian server runs everything with Docker Compose: the database, the app, th
 | `beta.citerank.com` | the marketing site, hidden from search engines | while testing |
 | `citerank.com` | the marketing site | from launch day |
 
-The demo (`demo.citerank.com`) gets its own server in its own project and is not covered here yet.
+The demo (`demo.citerank.com`) gets its own small server in its own project, so nothing of the real app shares a machine with it. Its steps are at the end.
 
 ## Have these ready
 
@@ -137,3 +137,27 @@ From then on `www.citerank.com` and `beta.citerank.com` redirect to `citerank.co
 - Update to the latest code: `cd citerank/deploy && ./deploy.sh`.
 - Run a backup by hand: `./backup.sh`. The nightly one logs to `/var/log/citerank-backup.log`.
 - Restore a dump: `./deploy.sh exec -T postgres pg_restore -U postgres -d citerank --clean --if-exists < file.dump`.
+
+## The demo
+
+The demo is the app in read-only demo mode on a sample database, on a smaller server in a second project. It holds no real keys. Create that project and server the same way as in step 1, with these differences: the names `citerank-demo` and `citerank-demo-ip`, the machine type `e2-medium`, a 30GB disk, and no backup bucket or snapshot schedule, since the sample data is rebuilt every night.
+
+Point an A record for `demo` at its address, then on that server:
+
+```
+sudo apt-get update && sudo apt-get install -y git
+git clone https://github.com/adamdanyal/citerank.git
+sudo ./citerank/deploy/server-setup.sh demo
+exit
+```
+
+Connect again, then:
+
+```
+cd citerank/deploy/demo
+cp env.example .env
+nano .env
+./deploy.sh
+```
+
+`./deploy.sh` builds the app, starts it and fills the sample database. `server-setup.sh demo` schedules the refill every night, because the sample data's dates are counted back from the day it is filled. On launch day, set `STAGE=live` in this `.env` too and run `./deploy.sh`, so the demo's links go to `citerank.com`.
