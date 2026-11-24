@@ -1,5 +1,7 @@
 import { SidebarInset, SidebarProvider } from "@workspace/ui/components/sidebar";
 import type { ReactNode } from "react";
+import { DemoBar } from "@/components/demo-bar";
+import { useDeploymentFeatures } from "@/hooks/use-deployment-features";
 
 export function AppShell({
 	sidebar,
@@ -10,8 +12,9 @@ export function AppShell({
 	header: ReactNode;
 	children: ReactNode;
 }) {
-	return (
-		<SidebarProvider>
+	const readOnly = useDeploymentFeatures()?.readOnly ?? false;
+	const shell = (
+		<SidebarProvider className="min-h-[calc(100svh-var(--demo-bar-height,0px))]">
 			{sidebar}
 			{/* `overflow-clip`, not `overflow-hidden`: both clip to the rounded corners,
 			    but `hidden` makes this a scroll container, which stops descendants from
@@ -21,6 +24,16 @@ export function AppShell({
 				{children}
 			</SidebarInset>
 		</SidebarProvider>
+	);
+	if (!readOnly) return shell;
+
+	// The bar sits above the whole app, so the sidebar and the site header, which
+	// pin themselves to the top of the screen, read its height and start below it.
+	return (
+		<div className="[--demo-bar-height:2.5rem]">
+			<DemoBar />
+			{shell}
+		</div>
 	);
 }
 

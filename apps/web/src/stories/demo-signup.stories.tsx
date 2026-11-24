@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { DEFAULT_CHART_COLORS } from "@workspace/config/constants";
 import { expect, within } from "storybook/test";
-import { DemoSignupCta } from "@/components/demo-signup-cta";
+import { DemoBar } from "@/components/demo-bar";
 import { UnsavedChangesBar } from "@/components/unsaved-changes-bar";
 import { READ_ONLY_REFUSED } from "@/lib/read-only-errors";
 import { type ClientConfig, setMockClientConfig } from "./_mocks/config-client";
@@ -36,25 +36,27 @@ export default {
 	parameters: { layout: "fullscreen" },
 } satisfies Meta;
 
-export const HeaderCta: StoryObj = {
+export const Bar: StoryObj = {
 	render: () => {
 		applyConfig(demoConfig);
-		return <DemoSignupCta />;
+		return <DemoBar />;
 	},
 	play: async ({ canvasElement }) => {
-		const link = await within(canvasElement).findByRole("link", { name: "Track Your Brand" });
+		const canvas = within(canvasElement);
+		await expect(await canvas.findByText("This is a demo.")).toBeVisible();
+		const link = canvas.getByRole("link", { name: "Start Tracking" });
 		await expect(link).toHaveAttribute("href", "https://app.citerank.com/auth/register?ref=demo-header");
 		await expect(link).toHaveAttribute("target", "_blank");
 	},
 };
 
-export const NoCtaOutsideDemo: StoryObj = {
+export const NoBarOutsideDemo: StoryObj = {
 	render: () => {
 		applyConfig(cloudConfig);
-		return <DemoSignupCta />;
+		return <DemoBar />;
 	},
 	play: async ({ canvasElement }) => {
-		await expect(within(canvasElement).queryByRole("link")).toBeNull();
+		await expect(canvasElement).toBeEmptyDOMElement();
 	},
 };
 
@@ -98,7 +100,7 @@ export const ReadOnlySelfHost: StoryObj = {
 		applyConfig(readOnlySelfHostConfig);
 		return (
 			<>
-				<DemoSignupCta />
+				<DemoBar />
 				<UnsavedChangesBar isDirty isSaving={false} error={READ_ONLY_REFUSED} onSave={() => {}} onDiscard={() => {}} />
 			</>
 		);

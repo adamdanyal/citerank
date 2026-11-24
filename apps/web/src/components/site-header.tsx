@@ -11,7 +11,6 @@ import { Separator } from "@workspace/ui/components/separator";
 import { SidebarTrigger } from "@workspace/ui/components/sidebar";
 import { cn } from "@workspace/ui/lib/utils";
 import { Fragment } from "react";
-import { DemoSignupCta } from "@/components/demo-signup-cta";
 import { SupportChatButton } from "@/components/support-chat-button";
 import { type Crumb, useBreadcrumbs } from "@/lib/breadcrumbs";
 
@@ -36,7 +35,7 @@ export function SiteHeader() {
 	const crumbs = useBreadcrumbs();
 
 	return (
-		<header className="bg-background sticky top-0 z-10 flex h-16 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+		<header className="bg-background sticky top-[var(--demo-bar-height,0px)] z-10 flex h-16 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
 			<div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
 				<SidebarTrigger className="-ml-1 cursor-pointer" />
 				<Separator orientation="vertical" className="mx-2 data-[orientation=vertical]:h-4" />
@@ -67,7 +66,6 @@ export function SiteHeader() {
 					</BreadcrumbList>
 				</Breadcrumb>
 				<div className="ml-auto flex items-center gap-2">
-					<DemoSignupCta />
 					<SupportChatButton />
 				</div>
 			</div>

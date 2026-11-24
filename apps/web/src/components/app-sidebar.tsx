@@ -34,7 +34,6 @@ import {
 	SidebarMenuItem,
 	useSidebar,
 } from "@workspace/ui/components/sidebar";
-import { DemoModePill } from "@/components/demo-mode-pill";
 import { Logo } from "@/components/logo";
 import { NavAppInfo } from "@/components/nav-app-info";
 import { type NavGroup, type NavItem, NavMain } from "@/components/nav-main";
@@ -148,17 +147,10 @@ export function AppSidebar({ section, organization, brand }: AppSidebarProps) {
 		...(section === "organization" && organization ? organizationGroups(organization, features, mode) : []),
 		...(section === "admin" && adminItems.length > 0 ? [{ label: "Admin", items: adminItems }] : []),
 	];
-	const brandmark = (
-		<>
-			<Logo iconClassName="!size-5" />
-			<div className="ml-auto group-data-[collapsible=icon]:hidden">
-				<DemoModePill />
-			</div>
-		</>
-	);
+	const brandmark = <Logo iconClassName="!size-5" />;
 
 	return (
-		<Sidebar variant="inset">
+		<Sidebar variant="inset" className="top-[var(--demo-bar-height,0px)] h-[calc(100svh-var(--demo-bar-height,0px))]">
 			<SidebarHeader>
 				<SidebarMenu>
 					<SidebarMenuItem>

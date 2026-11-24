@@ -339,10 +339,10 @@ function DashboardPage() {
 
 	return (
 		<div className="flex flex-1 flex-col">
-			{/* Wide screens fit the page to the viewport below the 4rem site header, the inset's margins and
-			    borders, and the page content's padding, so a long list of competitors scrolls inside the
-			    landscape instead of the page. */}
-			<div className="flex w-full max-w-[1600px] flex-col gap-4 xl:h-[max(40rem,calc(100svh-8rem-2px))]">
+			{/* Wide screens fit the page to the viewport below the demo bar when there is one, the 4rem site
+			    header, the inset's margins and borders, and the page content's padding, so a long list of
+			    competitors scrolls inside the landscape instead of the page. */}
+			<div className="flex w-full max-w-[1600px] flex-col gap-4 xl:h-[max(40rem,calc(100svh-8rem-2px-var(--demo-bar-height,0px)))]">
 				<PageHeader
 					title="Overview"
 					subtitle="How AI answers talk about your brand and your competitors."
