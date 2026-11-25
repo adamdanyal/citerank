@@ -81,6 +81,9 @@ services:
     restart: unless-stopped
     environment:
       SITE_NOINDEX: ${SITE_NOINDEX:-1}
+    volumes:
+      # status-check.sh writes the provider test results here; the site's /status page reads them.
+      - ./status-data:/data:ro
 
   caddy:
     image: caddy:2-alpine

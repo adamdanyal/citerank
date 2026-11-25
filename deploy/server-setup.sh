@@ -1,7 +1,7 @@
 #!/bin/sh
 # One-time setup of a fresh Debian server: Docker, automatic security updates
 # with a restart when one needs it, swap for the builds, a cap on log size, and
-# the nightly job.
+# the scheduled jobs.
 #   sudo ./deploy/server-setup.sh          the main server (nightly database backup)
 #   sudo ./deploy/server-setup.sh demo     the demo server (nightly refill of the sample data)
 set -eu
@@ -59,6 +59,12 @@ fi
 touch "$LOG"
 chown "$OWNER" "$LOG"
 printf 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n15 3 * * * %s %s >>%s 2>&1\n' "$OWNER" "$JOB" "$LOG" >/etc/cron.d/citerank
+if [ "$ROLE" = main ]; then
+	STATUS_LOG=/var/log/citerank-status.log
+	touch "$STATUS_LOG"
+	chown "$OWNER" "$STATUS_LOG"
+	printf '5 */6 * * * %s %s >>%s 2>&1\n' "$OWNER" "$REPO/deploy/status-check.sh" "$STATUS_LOG" >>/etc/cron.d/citerank
+fi
 chmod 644 /etc/cron.d/citerank
 
 echo

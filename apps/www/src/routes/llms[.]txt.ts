@@ -26,6 +26,7 @@ ${featureLinks}
 - [AI Search Agency](${SITE_URL}/agency): The team that does the work the tracker ranks, with a monthly before-and-after report.
 - [About](${SITE_URL}/about): Company facts, founders, pricing, contract terms, and how the team works.
 - [Support](${SITE_URL}/support): How to reach the team by email or a booked call, plus the LinkedIn community.
+- [Provider status](${SITE_URL}/status): Whether each AI provider CiteRank.com tracks through is working, tested four times a day.
 
 ## Documentation
 

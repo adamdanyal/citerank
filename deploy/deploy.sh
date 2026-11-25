@@ -23,6 +23,9 @@ compose() {
 	docker compose --env-file .env --env-file "stage-$STAGE.env" "$@"
 }
 
+# Made here, by the login that runs the provider test: left to Docker, the folder would belong to root.
+mkdir -p status-data
+
 if [ "$#" -gt 0 ]; then
 	compose "$@"
 	exit

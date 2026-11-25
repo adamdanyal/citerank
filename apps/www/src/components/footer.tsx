@@ -38,6 +38,7 @@ const cols: { heading: string; links: FooterLink[] }[] = [
 			{ label: "API reference", href: "/docs/api" },
 			{ label: "Support", href: "/support" },
 			{ label: "Status", href: "https://status.citerank.com/", external: true },
+			{ label: "Provider status", href: "/status" },
 		],
 	},
 	{

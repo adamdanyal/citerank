@@ -21,6 +21,7 @@ import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StatisticsRouteImport } from './routes/statistics'
+import { Route as StatusRouteImport } from './routes/status'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as V2RouteImport } from './routes/v2'
 import { Route as V3RouteImport } from './routes/v3'
@@ -122,6 +123,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const StatisticsRoute = StatisticsRouteImport.update({
   id: '/statistics',
   path: '/statistics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatusRoute = StatusRouteImport.update({
+  id: '/status',
+  path: '/status',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SupportRoute = SupportRouteImport.update({
@@ -349,6 +355,7 @@ export interface FileRoutesByFullPath {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/statistics': typeof StatisticsRoute
+  '/status': typeof StatusRoute
   '/support': typeof SupportRoute
   '/v2': typeof V2Route
   '/v3': typeof V3Route
@@ -403,6 +410,7 @@ export interface FileRoutesByTo {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/statistics': typeof StatisticsRoute
+  '/status': typeof StatusRoute
   '/support': typeof SupportRoute
   '/v2': typeof V2Route
   '/v3': typeof V3Route
@@ -458,6 +466,7 @@ export interface FileRoutesById {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/statistics': typeof StatisticsRoute
+  '/status': typeof StatusRoute
   '/support': typeof SupportRoute
   '/v2': typeof V2Route
   '/v3': typeof V3Route
@@ -514,6 +523,7 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/statistics'
+    | '/status'
     | '/support'
     | '/v2'
     | '/v3'
@@ -568,6 +578,7 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/statistics'
+    | '/status'
     | '/support'
     | '/v2'
     | '/v3'
@@ -622,6 +633,7 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/statistics'
+    | '/status'
     | '/support'
     | '/v2'
     | '/v3'
@@ -677,6 +689,7 @@ export interface RootRouteChildren {
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StatisticsRoute: typeof StatisticsRoute
+  StatusRoute: typeof StatusRoute
   SupportRoute: typeof SupportRoute
   V2Route: typeof V2Route
   V3Route: typeof V3Route
@@ -803,6 +816,13 @@ declare module '@tanstack/react-router' {
       path: '/statistics'
       fullPath: '/statistics'
       preLoaderRoute: typeof StatisticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/status': {
+      id: '/status'
+      path: '/status'
+      fullPath: '/status'
+      preLoaderRoute: typeof StatusRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/support': {
@@ -1101,6 +1121,7 @@ const rootRouteChildren: RootRouteChildren = {
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StatisticsRoute: StatisticsRoute,
+  StatusRoute: StatusRoute,
   SupportRoute: SupportRoute,
   V2Route: V2Route,
   V3Route: V3Route,
