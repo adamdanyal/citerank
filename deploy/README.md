@@ -141,7 +141,7 @@ From then on `www.citerank.com` and `beta.citerank.com` redirect to `citerank.co
 - Update to the latest code: `cd citerank/deploy && ./deploy.sh`.
 - Run a backup by hand: `./backup.sh`. The nightly one logs to `/var/log/citerank-backup.log`.
 - The server installs security updates by itself. When one needs a restart, it restarts at 04:00 UTC and everything starts again by itself.
-- The site's `/status` page shows the results of `./status-check.sh`, which sends one request to every tracked platform every six hours and logs to `/var/log/citerank-status.log`. Run it by hand to refresh the page.
+- The site's `/status` page shows the results of `./status-check.sh`, which sends one request to every tracked platform once a day and logs to `/var/log/citerank-status.log`. Run it by hand to refresh the page.
 - Restore a dump: `./deploy.sh exec -T postgres pg_restore -U postgres -d citerank --clean --if-exists < file.dump`.
 
 ## The demo

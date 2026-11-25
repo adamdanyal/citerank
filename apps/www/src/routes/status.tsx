@@ -1095,7 +1095,7 @@ function StatusPage() {
 					<h1 className="font-heading text-3xl text-zinc-950 md:text-4xl">Provider status</h1>
 					<p className="mt-2 text-zinc-600">
 						Status of the third-party AI providers and scraping services CiteRank.com uses to track your brand's
-						visibility and citations. Tests run automatically 4 times per day. Latencies shown are for individual prompt
+						visibility and citations. Tests run automatically once a day. Latencies shown are for individual prompt
 						evaluations; batches can vary significantly.
 					</p>
 				</div>
@@ -1175,7 +1175,7 @@ function StatusPage() {
 				</Card>
 
 				<p className="mt-8 text-center text-xs text-zinc-500">
-					Provider tests run every 6 hours. Each test sends a real query and validates the response.
+					Provider tests run once a day. Each test sends a real query and validates the response.
 				</p>
 			</main>
 			<Footer />

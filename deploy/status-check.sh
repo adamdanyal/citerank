@@ -1,6 +1,6 @@
 #!/bin/sh
 # Sends one test request to every tracked platform and adds the results to the
-# file the marketing site's /status page reads. Cron runs it every six hours.
+# file the marketing site's /status page reads. Cron runs it once a day.
 set -eu
 cd "$(dirname "$0")"
 

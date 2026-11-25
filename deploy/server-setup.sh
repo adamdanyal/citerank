@@ -63,7 +63,7 @@ if [ "$ROLE" = main ]; then
 	STATUS_LOG=/var/log/citerank-status.log
 	touch "$STATUS_LOG"
 	chown "$OWNER" "$STATUS_LOG"
-	printf '5 */6 * * * %s %s >>%s 2>&1\n' "$OWNER" "$REPO/deploy/status-check.sh" "$STATUS_LOG" >>/etc/cron.d/citerank
+	printf '5 6 * * * %s %s >>%s 2>&1\n' "$OWNER" "$REPO/deploy/status-check.sh" "$STATUS_LOG" >>/etc/cron.d/citerank
 fi
 chmod 644 /etc/cron.d/citerank
 
