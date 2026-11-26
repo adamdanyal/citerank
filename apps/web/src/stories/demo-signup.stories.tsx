@@ -43,8 +43,8 @@ export const Bar: StoryObj = {
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
-		await expect(await canvas.findByText("This is a demo.")).toBeVisible();
-		const link = canvas.getByRole("link", { name: "Start Tracking" });
+		const link = await canvas.findByRole("link", { name: "Track Your Brand" });
+		await expect(canvasElement).toHaveTextContent("This is a demo with sample data.");
 		await expect(link).toHaveAttribute("href", "https://app.citerank.com/auth/register?ref=demo-header");
 		await expect(link).toHaveAttribute("target", "_blank");
 	},
