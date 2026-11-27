@@ -198,6 +198,16 @@ const PERMANENT_REDIRECTS: Record<string, string> = {
 	"/cookies": "/legal/cookies",
 	"/subprocessors": "/legal/subprocessors",
 	"/acceptable-use": "/legal/acceptable-use",
+	// Addresses of the site this one replaced on citerank.com, each sent to the closest page here.
+	"/contact": "/support",
+	"/how-scoring-works": "/docs/user-guide/visibility",
+	"/blog/what-is-aeo": "/answer-engine-optimization",
+	"/blog/answer-engine-optimization-cost": "/answer-engine-optimization",
+	"/blog/get-cited-by-chatgpt": "/ai-search/chatgpt",
+	"/blog/get-cited-by-perplexity": "/ai-search/perplexity",
+	"/blog/show-up-in-google-ai-overviews": "/ai-search/google-ai-overviews",
+	"/blog/why-chatgpt-recommends-your-competitors": "/blog/ai-competitor-analysis",
+	"/blog/check-what-chatgpt-says-about-your-company": "/blog/ai-brand-sentiment",
 };
 
 // A test address serves the same pages as the live site, so it asks crawlers to stay away.
