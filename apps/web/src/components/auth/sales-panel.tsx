@@ -13,8 +13,6 @@
 import { IconCalendar, IconCheck, IconCloud } from "@tabler/icons-react";
 import { PLANS, platformTierMembers } from "@workspace/config/plans";
 import { cloudPricingUrl, cloudSignupUrl, marketingUrl, type ReferralSource } from "@workspace/config/referrals";
-import { CUSTOMER_QUOTES } from "@workspace/ui/brand/customers";
-import { G2Stars } from "@workspace/ui/brand/g2-rating";
 import { ModelIcon } from "@workspace/ui/brand/model-icon";
 import { buttonVariants } from "@workspace/ui/components/button";
 import { cn } from "@workspace/ui/lib/utils";
@@ -85,10 +83,6 @@ export function SalesPanel({ variant, source }: { variant: SalesPanelVariant; so
 					</li>
 				))}
 			</ul>
-
-			{/* After our own claims, not before: a customer backing them up reads as
-			    corroboration, where opening with it reads as decoration. */}
-			<Quote />
 
 			<EngineStrip />
 
@@ -170,46 +164,17 @@ function OfferCard({ question, offer, className = "" }: { question: string; offe
 	);
 }
 
-function Quote() {
-	const quote = CUSTOMER_QUOTES.speakeasy;
-	return (
-		<figure className="rounded-lg border bg-card p-5">
-			<blockquote className="text-pretty text-sm font-medium leading-relaxed">“{quote.quote}”</blockquote>
-			<figcaption className="mt-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-				<span className="font-semibold text-foreground">{quote.author}</span>
-				<span>at</span>
-				<a
-					href={quote.companyUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					aria-label={quote.company}
-					className="inline-flex items-center text-foreground transition-opacity hover:opacity-80"
-				>
-					{quote.mark}
-				</a>
-			</figcaption>
-		</figure>
-	);
-}
-
-/**
- * The bottom of the form column: where to read more on the left, and the G2
- * rating in the corner. The rating doesn't link out — this is the one page
- * where sending someone away costs a signup.
- */
+/** The bottom of the form column: where to read more. */
 export function SalesFooterLinks({ source }: { source: ReferralSource }): ReactNode {
 	const linkClass = "hover:text-foreground";
 	return (
-		<div className="flex w-full flex-wrap items-center justify-between gap-x-4 gap-y-2">
-			<p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
-				<a href={marketingUrl("/docs", source)} className={linkClass}>
-					Docs
-				</a>
-				<a href={cloudPricingUrl(source)} className={linkClass}>
-					Pricing
-				</a>
-			</p>
-			<G2Stars />
-		</div>
+		<p className="flex w-full flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
+			<a href={marketingUrl("/docs", source)} className={linkClass}>
+				Docs
+			</a>
+			<a href={cloudPricingUrl(source)} className={linkClass}>
+				Pricing
+			</a>
+		</p>
 	);
 }
