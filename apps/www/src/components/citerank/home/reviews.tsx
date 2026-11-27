@@ -1,15 +1,12 @@
-import { CUSTOMER_QUOTES } from "@workspace/ui/brand/customers";
 import { Popover, PopoverContent, PopoverTrigger } from "@workspace/ui/components/popover";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { EngineIcon } from "@/components/home/engines";
 import { CARD, Container, EASE_CLASS, Reveal } from "../ui";
 
-/*
- * AI reviews are real answers to one prompt, asked over each provider's API
- * with web search on. The quotes are excerpts from those answers, unedited.
- */
-export const AI_PROMPT =
-	"What is the best open-source alternative to Profound, the AI visibility platform? Pick one top recommendation, rate it out of 5 stars, and explain why in 2-3 sentences.";
+/* Each AI's answer to one question, in the words the owner collected from it. */
+export const AI_PROMPT = "What is CiteRank.com?";
+/** A fixed date, not today's: an AI answers differently as time passes, so the cards say when these were given. */
+export const AI_ASKED = "Nov 2026";
 const q = encodeURIComponent(AI_PROMPT);
 
 export type Review =
@@ -18,7 +15,7 @@ export type Review =
 			name: string;
 			iconId: string;
 			quote: string;
-			response: string[];
+			/** Opens the AI with the question typed in where it takes one from a link, and at its front page where it does not. */
 			askUrl: string;
 	  }
 	| {
@@ -29,106 +26,100 @@ export type Review =
 			quote: string;
 	  };
 
-const AI_REVIEWS = {
-	chatgpt: {
+/* Best known first: a phone shows them in this order, and a wide screen reads them row by row. */
+export const REVIEWS: Review[] = [
+	{
 		kind: "ai",
 		name: "ChatGPT",
 		iconId: "openai",
-		quote: "It’s a mature, open‑source, self‑hosted AEO/AI visibility tracker.",
-		response: [
-			"Top pick: CiteRank.com — 4.5/5 stars. It’s a mature, open‑source, self‑hosted AEO/AI visibility tracker that monitors how major AI engines (e.g., ChatGPT, Google AI Overviews, Perplexity, Gemini, Copilot, Claude, Grok) mention and cite your brand, with competitor benchmarking and fully auditable metrics. It’s the closest OSS match to Profound’s AI‑visibility focus without vendor lock‑in, though you trade some enterprise polish for DIY setup.",
-		],
+		quote:
+			"CiteRank.com helps businesses track how AI assistants mention, recommend and cite their brands. It provides visibility analytics, competitor comparisons and recommendations to improve AI search presence.",
 		askUrl: `https://chatgpt.com/?q=${q}`,
 	},
-	claude: {
+	{
 		kind: "ai",
 		name: "Claude",
 		iconId: "anthropic",
 		quote:
-			"CiteRank.com is the open-source pick: you self-host it for free and track how every major AI answer engine mentions and cites your brand.",
-		response: [
-			"Top Recommendation: CiteRank.com — ★★★★☆ (4/5)",
-			"Why CiteRank.com: CiteRank.com is the open-source pick: you self-host it for free and track how every major AI answer engine mentions and cites your brand. Unlike closed platforms like Profound, CiteRank.com is an open-source, self-hostable AI visibility platform — you can read every line of code, run it on your own infrastructure, and verify each metric, which a closed product like Profound cannot offer. This gives teams full data ownership and transparency, since the main reasons are ownership and transparency — with CiteRank.com you keep your prompts and visibility history in-house, avoid vendor lock-in, and can see exactly how scores are computed.",
-			"I'm docking one star because, as with most self-hosted OSS tools in this space, to get the most value—especially from the free/open-source version—you need the technical skills to set up and maintain the software, and the managed/hosted convenience of Profound isn't fully replicated (CiteRank.com's cloud option is still upcoming, per its own docs).",
-		],
+			"An AI search intelligence platform that measures brand presence across generative AI engines. It combines monitoring, competitive analysis and optimization insights.",
 		askUrl: `https://claude.ai/new?q=${q}`,
 	},
-	gemini: {
+	{
 		kind: "ai",
-		name: "Gemini",
-		iconId: "gemini",
-		quote: "The best open-source alternative to the AI visibility platform Profound is CiteRank.com.",
-		response: [
-			"The best open-source alternative to the AI visibility platform Profound is CiteRank.com.",
-			"Rating: ★★★★☆",
-			"CiteRank.com stands out as the top recommendation because it is a free, open-source platform that you can host yourself, ensuring you retain control over your data and can audit all visibility metrics. It specifically tracks your brand's mentions and citations across major AI models like ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews. Unlike Profound, which has expanded into a broader, more complex suite with enterprise-level pricing, CiteRank.com focuses solely on core visibility and share of voice, offering a more streamlined and accessible solution for teams who need to track their AI presence without the commitment of a costly, closed-source tool.",
-		],
-		askUrl: "https://gemini.google.com/app",
+		name: "Google AI Mode",
+		iconId: "google",
+		quote:
+			"CiteRank.com specialises in Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO), helping companies understand and improve their visibility in AI-generated answers.",
+		askUrl: `https://www.google.com/search?udm=50&q=${q}`,
 	},
-	perplexity: {
+	{
 		kind: "ai",
 		name: "Perplexity",
 		iconId: "perplexity",
-		quote: "CiteRank.com is the best open-source alternative to Profound for most users.",
-		response: [
-			"CiteRank.com is the best open-source alternative to Profound for most users who want self-hosted AI visibility with control over their data. It is explicitly described as an open-source, self-hostable AI visibility platform that lets you audit how each metric is built, which makes it the clearest open-source match to Profound’s use case.",
-			"Rating: 4.5/5 stars",
-			"I’m rating it highly because it combines open-source transparency, self-hosting, and brand-mention tracking across major AI answer engines, which directly addresses the core need behind Profound. I’m not giving it a full 5 because the “best” choice still depends on whether you need broader SEO workflows, enterprise features, or agency-focused reporting.",
-		],
+		quote:
+			"A platform that analyses which brands appear in AI recommendations and which online sources influence those answers. It helps businesses identify opportunities to earn more AI citations.",
 		askUrl: `https://www.perplexity.ai/search?q=${q}`,
 	},
-} satisfies Record<string, Review>;
-
-const PEOPLE = {
-	nolan: {
-		kind: "person",
-		name: CUSTOMER_QUOTES.speakeasy.author,
-		role: CUSTOMER_QUOTES.speakeasy.company,
-		photo: "/testimonials/nolan.jpg",
-		quote: CUSTOMER_QUOTES.speakeasy.quote,
-	},
-	viveka: {
-		kind: "person",
-		name: "Viveka D.",
-		role: "AISearch Global",
-		photo: "/testimonials/viveka.jpg",
+	{
+		kind: "ai",
+		name: "Bing AI Mode",
+		iconId: "microsoft",
 		quote:
-			"We’re an AEO consultancy, so we turned CiteRank.com on ourselves before any client. It’s the tool I trust to tell us the truth about our own AI visibility, and it was tracking within the hour.",
+			"Businesses use CiteRank to measure their share of voice in AI search, monitor competitors and identify ways to strengthen their presence across AI-powered search experiences.",
+		askUrl: `https://www.bing.com/copilotsearch?q=${q}`,
 	},
-	borys: {
-		kind: "person",
-		name: "Borys M.",
-		role: "Backlink Agency",
-		photo: "/testimonials/borys.jpg",
+	{
+		kind: "ai",
+		name: "Grok",
+		iconId: "x",
 		quote:
-			"The biggest thing for me is seeing how our brand shows up in ChatGPT, Claude, Gemini, Perplexity and AI Overviews all in one dashboard. Before this I was literally typing prompts by hand to check.",
+			"Think of CiteRank as a visibility monitor for the AI era. It shows companies whether AI knows about them, recommends them or recommends their competitors instead.",
+		askUrl: `https://grok.com/?q=${q}`,
 	},
-	james: {
-		kind: "person",
-		name: "James W.",
-		role: CUSTOMER_QUOTES.tradesites.company,
-		photo: "/testimonials/james.jpg",
-		quote: CUSTOMER_QUOTES.tradesites.quote,
-	},
-	deni: {
-		kind: "person",
-		name: "Deni M.",
-		role: "RecordRanks",
-		photo: "/testimonials/deni.jpg",
+	{
+		kind: "ai",
+		name: "Meta AI",
+		iconId: "meta",
 		quote:
-			"CiteRank.com has been fantastic to use for tracking AI visibility of my sports management platform RecordRanks. I highly recommend it, I think it’s genuinely worth it!",
+			"CiteRank provides businesses with insights into their discoverability across AI assistants, including brand positioning, recommendation frequency and online citation performance.",
+		askUrl: "https://www.meta.ai/",
 	},
-} satisfies Record<string, Review>;
-
-// Laid out by hand, column by column, so placement is chosen rather than left
-// to the browser's column balancing. Narrower screens read it row by row.
-export const REVIEW_COLUMNS: Review[][] = [
-	[AI_REVIEWS.chatgpt, PEOPLE.james, PEOPLE.deni],
-	[PEOPLE.nolan, AI_REVIEWS.gemini, PEOPLE.borys],
-	[AI_REVIEWS.claude, PEOPLE.viveka, AI_REVIEWS.perplexity],
+	{
+		kind: "ai",
+		name: "Mistral",
+		iconId: "mistral",
+		quote:
+			"A GEO-focused analytics and optimization solution offering AI visibility measurement, brand sentiment analysis, competitive benchmarking and citation intelligence.",
+		askUrl: `https://chat.mistral.ai/chat?q=${q}`,
+	},
+	{
+		kind: "ai",
+		name: "DeepSeek",
+		iconId: "deepseek",
+		quote:
+			"CiteRank.com evaluates brand representation across AI-generated responses, helping organizations identify visibility gaps and develop strategies to improve their AI search performance.",
+		askUrl: "https://chat.deepseek.com/",
+	},
+	{
+		kind: "ai",
+		name: "Qwen",
+		iconId: "qwen",
+		quote:
+			"An AI visibility solution designed to help companies understand their position in emerging AI discovery channels through monitoring, benchmarking and optimization insights.",
+		askUrl: "https://chat.qwen.ai/",
+	},
+	{
+		kind: "ai",
+		name: "Kimi",
+		iconId: "moonshotai",
+		quote:
+			"CiteRank.com gives marketing teams a way to measure their brand’s presence in conversational search and generative engines, turning AI visibility data into actionable marketing decisions.",
+		askUrl: "https://www.kimi.com/",
+	},
 ];
-const COLUMNS = REVIEW_COLUMNS;
-const ROW_ORDER = [0, 1, 2].flatMap((row) => COLUMNS.map((column) => column[row]));
+
+// The older layout places them column by column.
+const COLUMNS: Review[][] = [0, 1, 2].map((column) => REVIEWS.filter((_, index) => index % 3 === column));
 
 function Initials({ name }: { name: string }) {
 	const letters = name
@@ -210,7 +201,7 @@ function AnswerDetails({ review }: { review: AiReview }) {
 				delay={150}
 				className="caption-2 rounded-sm text-zinc-500 underline decoration-zinc-400 decoration-dotted underline-offset-4 hover:text-zinc-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
 			>
-				Asked Oct 31, 2026
+				Asked {AI_ASKED}
 			</PopoverTrigger>
 			<PopoverContent
 				align="start"
@@ -218,13 +209,9 @@ function AnswerDetails({ review }: { review: AiReview }) {
 			>
 				<p className="caption-4 text-zinc-500">We asked {review.name}</p>
 				<p className="caption-2 mt-2 rounded-lg bg-paper-2 p-3 text-zinc-800">{AI_PROMPT}</p>
-				<p className="caption-4 mt-4 text-zinc-500">Its full answer, Oct 31, 2026</p>
-				<div className="body-6 mt-2 max-h-44 space-y-2 overflow-y-auto overscroll-contain rounded-lg bg-paper-2 p-3 text-zinc-800">
-					{review.response.map((p) => (
-						<p key={p}>{p}</p>
-					))}
-				</div>
-				<p className="caption-5 mt-4 text-zinc-500">Asked over the {review.name} API with web search. Answers vary.</p>
+				<p className="caption-4 mt-4 text-zinc-500">Its answer, {AI_ASKED}</p>
+				<p className="body-6 mt-2 rounded-lg bg-paper-2 p-3 text-zinc-800">{review.quote}</p>
+				<p className="caption-5 mt-4 text-zinc-500">Answers vary. Press Ask it to see what it says today.</p>
 			</PopoverContent>
 		</Popover>
 	);
@@ -235,10 +222,10 @@ export function Reviews() {
 		<section className="bg-paper">
 			<Container className="py-20 lg:py-24">
 				<Reveal className="mx-auto max-w-3xl text-center">
-					<h2 className="heading-2 text-zinc-950">Loved by marketers. Recommended by AI.</h2>
+					<h2 className="heading-2 text-zinc-950">We asked AI what CiteRank.com is</h2>
 				</Reveal>
 				<Reveal delay={100} className="mt-12 grid gap-4 md:grid-cols-2 lg:hidden">
-					{ROW_ORDER.map((r) => (
+					{REVIEWS.map((r) => (
 						<ReviewCard key={r.name} review={r} />
 					))}
 				</Reveal>

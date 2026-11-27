@@ -1,9 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { EngineIcon } from "@/components/home/engines";
-import { AI_PROMPT, REVIEW_COLUMNS, type Review } from "../home/reviews";
+import { AI_ASKED, AI_PROMPT, REVIEWS, type Review } from "../home/reviews";
 import { BODY, FOCUS, LINK, MONO, PANEL, PANEL_PAD, Page, PanelHead, SMALL } from "./kit";
-
-const REVIEWS = REVIEW_COLUMNS.flat();
 
 type AiReview = Extract<Review, { kind: "ai" }>;
 
@@ -76,29 +74,21 @@ function ReviewCard({ review }: { review: Review }) {
 	);
 }
 
-/* The card always names the month a visitor is reading in, so it only stays true while the answers are asked again each month. */
-function thisMonth() {
-	const now = new Date();
-	return `${now.toLocaleString("en-US", { month: "short", timeZone: "UTC" })} ${now.getUTCFullYear()}`;
-}
-
 /*
  * The whole answer opens in the browser's own popover: no script to load, and
  * it closes on a click outside or on Escape.
  */
 function AnswerDetails({ review }: { review: AiReview }) {
 	const id = `answer-${review.iconId}`;
-	const asked = thisMonth();
 	return (
 		<>
 			<button
 				type="button"
 				popoverTarget={id}
-				suppressHydrationWarning
 				className={`${LAST_LINE} whitespace-nowrap text-zinc-600 underline decoration-zinc-500 decoration-dotted underline-offset-4`}
 			>
-				Asked {asked}
-				<span className="sr-only">: see the full answer from {review.name}</span>
+				Asked {AI_ASKED}
+				<span className="sr-only">: see the question we asked {review.name}</span>
 			</button>
 			<div
 				id={id}
@@ -107,15 +97,9 @@ function AnswerDetails({ review }: { review: AiReview }) {
 			>
 				<p className={`${SMALL} text-zinc-600`}>We asked {review.name}</p>
 				<p className={`${MONO} mt-2 rounded-lg bg-paper-2 p-3 text-zinc-700`}>{AI_PROMPT}</p>
-				<p suppressHydrationWarning className={`${SMALL} mt-4 text-zinc-600`}>
-					Its full answer from {asked}
-				</p>
-				<div className={`${SMALL} mt-2 space-y-2 rounded-lg bg-paper-2 p-3 text-zinc-700`}>
-					{review.response.map((paragraph) => (
-						<p key={paragraph}>{paragraph}</p>
-					))}
-				</div>
-				<p className={`${SMALL} mt-4 text-zinc-600`}>Asked over the {review.name} API with web search. Answers vary.</p>
+				<p className={`${SMALL} mt-4 text-zinc-600`}>Its answer from {AI_ASKED}</p>
+				<p className={`${SMALL} mt-2 rounded-lg bg-paper-2 p-3 text-zinc-700`}>{review.quote}</p>
+				<p className={`${SMALL} mt-4 text-zinc-600`}>Answers vary. Press Ask it to see what it says today.</p>
 				<p className="mt-5">
 					<button type="button" popoverTarget={id} popoverTargetAction="hide" className={TEXT_CONTROL}>
 						Close
@@ -127,7 +111,7 @@ function AnswerDetails({ review }: { review: AiReview }) {
 }
 
 /*
- * One list, laid out twice. On a wide screen all nine are in view in three
+ * One list, laid out twice. On a wide screen all of them are in view in three
  * columns, each card as tall as its own quote. On a narrow one they are a rail
  * that runs past the edge, so the cut-off card is the cue that there are more.
  */
@@ -135,16 +119,10 @@ export function Reviews() {
 	return (
 		<section className={`${PANEL} ${PANEL_PAD}`}>
 			<Page>
-				<PanelHead
-					title={
-						<>
-							<span className="block">Loved by marketers</span> <span className="block">Recommended by AI</span>
-						</>
-					}
-				/>
+				<PanelHead title="We asked AI what CiteRank.com is" />
 			</Page>
 			<ul
-				aria-label="Reviews"
+				aria-label="AI answers"
 				className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-px-4 px-4 pb-6 [scrollbar-width:thin] sm:scroll-px-6 sm:px-6 lg:mx-auto lg:mt-16 lg:block lg:max-w-[1440px] lg:columns-3 lg:gap-8 lg:overflow-visible lg:px-16 lg:pb-0"
 			>
 				{REVIEWS.map((review) => (
