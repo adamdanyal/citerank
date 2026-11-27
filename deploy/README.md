@@ -136,6 +136,16 @@ If something is wrong, these show what each part is doing:
 
 From then on `www.citerank.com` and `beta.citerank.com` redirect to `citerank.com`, and search engines are allowed in.
 
+## Cloudflare in front
+
+The DNS records can be switched to proxied (the orange cloud) once Caddy has its certificates. Three things keep that working:
+
+- In Cloudflare, SSL/TLS mode is **Full (strict)**. On Flexible the site redirects in a loop.
+- Both Caddyfiles trust Cloudflare's address ranges and pass the app each visitor's own address. If Cloudflare publishes new ranges at cloudflare.com/ips, update both files and restart Caddy.
+- Leave Bot Fight Mode off unless Stripe's webhook, the API and the uptime checks have been tested with it on: on the free plan it cannot be told to let them through.
+
+The sign-up bot check is separate. Create a Turnstile widget for `app.citerank.com` in Cloudflare, put its two keys in `.env` (`VITE_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`) and run `./deploy.sh up -d`.
+
 ## Afterwards
 
 - Update to the latest code: `cd citerank/deploy && ./deploy.sh`.
