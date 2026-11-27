@@ -6,14 +6,16 @@
 import interFont from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
 import schibstedFont from "@fontsource/schibsted-grotesk/files/schibsted-grotesk-latin-700-normal.woff2?url";
 import { Asset, createRootRoute, Outlet, Scripts, useLocation, useTags } from "@tanstack/react-router";
+import { CookieConsentBanner } from "@workspace/ui/consent/cookie-consent-banner";
 import { initAdTags, trackAdPageView } from "@workspace/ui/lib/ad-tags";
 import { isConsentRequired } from "@workspace/ui/lib/cookie-consent";
-import { type ReactNode, useEffect } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import { AiReferralBanner } from "@/components/ai-referral-banner";
 import v3Css from "@/components/citerank/v3/v3.css?url";
 import { NotFound } from "@/components/not-found";
 import { getConsentRegion } from "@/lib/consent-region";
 import { initCrisp } from "@/lib/crisp";
+import { initGoogleAnalytics } from "@/lib/google-analytics";
 import { initAnalytics } from "@/lib/posthog";
 import { organizationJsonLd, SITE_DESCRIPTION, SITE_NAME, SITE_URL, websiteJsonLd } from "@/lib/seo";
 import appCss from "../styles.css?url";
@@ -85,13 +87,14 @@ export const Route = createRootRoute({
 
 function RootComponent() {
 	const { consentRegion } = Route.useLoaderData();
+	// Unknown until the browser has answered: the fallback reads the visitor's time zone.
+	const [consentRequired, setConsentRequired] = useState<boolean | null>(null);
 
-	// No consent banner while CiteRank.com sets no analytics or ad cookies, so
-	// where consent is required these stay off.
 	useEffect(() => {
 		const required = isConsentRequired(consentRegion);
+		setConsentRequired(required);
 		initCrisp();
-		const stops = [initAnalytics(required), initAdTags(required)];
+		const stops = [initAnalytics(required), initAdTags(required), initGoogleAnalytics(required)];
 		return () => {
 			for (const stop of stops) stop();
 		};
@@ -106,6 +109,9 @@ function RootComponent() {
 		<RootDocument>
 			<AiReferralBanner />
 			<Outlet />
+			{consentRequired !== null && (
+				<CookieConsentBanner consentRequired={consentRequired} policyHref="/legal/cookies" />
+			)}
 		</RootDocument>
 	);
 }

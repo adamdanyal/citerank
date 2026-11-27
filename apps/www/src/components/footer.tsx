@@ -1,3 +1,4 @@
+import { openCookiePreferences } from "@workspace/ui/lib/cookie-consent";
 import { ArrowUpRight } from "lucide-react";
 import { SocialIcons } from "@/components/citerank/socials";
 import { WRAP } from "@/components/citerank/v2/kit";
@@ -125,6 +126,13 @@ export function Footer() {
 									{link.label}
 								</a>
 							))}
+							<button
+								type="button"
+								onClick={openCookiePreferences}
+								className={`py-1 whitespace-nowrap transition-colors duration-200 hover:text-paper ${FOCUS}`}
+							>
+								Cookie preferences
+							</button>
 						</nav>
 					</div>
 					<SocialIcons className="shrink-0" linkClassName="text-zinc-400 hover:text-paper" iconClassName="size-5" />

@@ -28,7 +28,7 @@ export function showsLegalLinks(mode: DeploymentMode | undefined): boolean {
 
 /**
  * Self-hosted deployments are governed by whoever runs them, so only ours ask for cookie consent.
- * CiteRank.com sets no analytics or advertising cookies yet, so it asks nothing until it does.
+ * The app sets no analytics or advertising cookies, so it asks nothing; the marketing site asks for its own.
  */
 export function isElmoHosted(_mode: DeploymentMode | undefined): boolean {
 	return false;

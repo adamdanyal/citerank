@@ -14,12 +14,7 @@ const CATEGORIES: { key: keyof CookieConsent; label: string; description: string
 	{
 		key: "analytics",
 		label: "Analytics",
-		description: "How people find and use the product. Our main web analytics is cookieless either way.",
-	},
-	{
-		key: "marketing",
-		label: "Advertising",
-		description: "Whether an ad we paid for actually led somewhere.",
+		description: "Counts visits and the pages people read, with Google Analytics.",
 	},
 ];
 
@@ -66,14 +61,14 @@ export function CookieConsentBanner({ consentRequired, policyHref }: { consentRe
 	}
 
 	return (
+		// On a phone it sits above the support chat's bubble, which shares that edge.
 		<section
 			aria-label="Cookie consent"
-			className="fixed inset-x-3 bottom-3 z-50 animate-in fade-in slide-in-from-bottom-2 duration-200 sm:inset-x-auto sm:bottom-4 sm:left-4 sm:max-w-sm"
+			className="fixed inset-x-3 bottom-20 z-50 animate-in fade-in slide-in-from-bottom-2 duration-200 sm:inset-x-auto sm:bottom-4 sm:left-4 sm:max-w-sm"
 		>
 			<div className="rounded-lg border bg-popover p-4 text-popover-foreground shadow-lg">
 				<p className="text-[13px] leading-relaxed">
-					We'd like to set analytics and advertising cookies to see how people find CiteRank.com. Essential cookies are
-					always on.{" "}
+					We'd like to set analytics cookies to see how people find CiteRank.com. Essential cookies are always on.{" "}
 					<a href={policyHref} className="underline underline-offset-2 hover:text-primary">
 						Cookie Policy
 					</a>
