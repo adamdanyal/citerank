@@ -1,5 +1,4 @@
 import { onAnalyticsConsent } from "@workspace/ui/lib/cookie-consent";
-import { afterPageIdle } from "@workspace/ui/lib/idle";
 
 const GA_MEASUREMENT_ID = "G-GFRRHXD97S";
 
@@ -7,6 +6,8 @@ const GA_MEASUREMENT_ID = "G-GFRRHXD97S";
 const PRODUCTION_HOSTS = new Set(["citerank.com", "www.citerank.com"]);
 
 const GA_COOKIE = /^_ga($|_)/;
+
+const FIRST_MOVES = ["pointerdown", "keydown", "scroll", "touchstart", "mousemove"] as const;
 
 type GtagWindow = Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void };
 
@@ -26,10 +27,31 @@ function stub(): void {
 	};
 }
 
+/**
+ * Runs once, on the visitor's first move or as they leave. Fetched on a timer
+ * instead, the script's weight and main-thread work would land inside the
+ * page's measured load.
+ */
+function onFirstMove(run: () => void): void {
+	const options: AddEventListenerOptions = { once: true, passive: true };
+	let ran = false;
+	const fire = () => {
+		if (ran) return;
+		ran = true;
+		for (const name of FIRST_MOVES) window.removeEventListener(name, fire, options);
+		document.removeEventListener("visibilitychange", onHidden);
+		run();
+	};
+	const onHidden = () => {
+		if (document.visibilityState === "hidden") fire();
+	};
+	for (const name of FIRST_MOVES) window.addEventListener(name, fire, options);
+	document.addEventListener("visibilitychange", onHidden);
+}
+
 // The script is fetched only once analytics is allowed, so a visitor who
-// declines never downloads it. It queues every command until it arrives, so it
-// can wait for the page to settle. Page views after the first come from GA4's
-// own tracking of history changes.
+// declines never downloads it. It queues every command until it arrives. Page
+// views after the first come from GA4's own tracking of history changes.
 function start(): void {
 	if (loaded) {
 		gtag("consent", "update", { analytics_storage: "granted" });
@@ -47,7 +69,7 @@ function start(): void {
 	gtag("js", new Date());
 	gtag("config", GA_MEASUREMENT_ID);
 
-	void afterPageIdle().then(() => {
+	onFirstMove(() => {
 		const script = document.createElement("script");
 		script.async = true;
 		script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
