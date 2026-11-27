@@ -35,4 +35,6 @@ git -C .. pull --ff-only
 compose build
 compose up -d --remove-orphans
 docker image prune -f >/dev/null
+# Each build leaves gigabytes of layers behind; the last two days' are enough to keep the next one quick.
+docker builder prune -f --filter until=48h >/dev/null
 compose ps
