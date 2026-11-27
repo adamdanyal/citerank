@@ -33,7 +33,7 @@ export const REVIEWS: Review[] = [
 		name: "ChatGPT",
 		iconId: "openai",
 		quote:
-			"CiteRank.com helps businesses track how AI assistants mention, recommend and cite their brands. It provides visibility analytics, competitor comparisons and recommendations to improve AI search presence.",
+			"The platform shows whether ChatGPT and other AI assistants mention your business, recommend competitors or cite your website.",
 		askUrl: `https://chatgpt.com/?q=${q}`,
 	},
 	{
@@ -41,7 +41,7 @@ export const REVIEWS: Review[] = [
 		name: "Claude",
 		iconId: "anthropic",
 		quote:
-			"An AI search intelligence platform that measures brand presence across generative AI engines. It combines monitoring, competitive analysis and optimization insights.",
+			"For businesses moving beyond traditional SEO, the combination of AI visibility data and practical optimization recommendations is particularly useful.",
 		askUrl: `https://claude.ai/new?q=${q}`,
 	},
 	{
@@ -49,7 +49,7 @@ export const REVIEWS: Review[] = [
 		name: "Google AI Mode",
 		iconId: "google",
 		quote:
-			"CiteRank.com specialises in Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO), helping companies understand and improve their visibility in AI-generated answers.",
+			"Focuses on getting businesses recognised and included in AI-generated answers, rather than competing solely for traditional search rankings.",
 		askUrl: `https://www.google.com/search?udm=50&q=${q}`,
 	},
 	{
@@ -57,7 +57,7 @@ export const REVIEWS: Review[] = [
 		name: "Perplexity",
 		iconId: "perplexity",
 		quote:
-			"A platform that analyses which brands appear in AI recommendations and which online sources influence those answers. It helps businesses identify opportunities to earn more AI citations.",
+			"One of its most interesting features is showing which websites AI cites when answering questions from potential customers.",
 		askUrl: `https://www.perplexity.ai/search?q=${q}`,
 	},
 	{
@@ -65,7 +65,7 @@ export const REVIEWS: Review[] = [
 		name: "Bing AI Mode",
 		iconId: "microsoft",
 		quote:
-			"Businesses use CiteRank to measure their share of voice in AI search, monitor competitors and identify ways to strengthen their presence across AI-powered search experiences.",
+			"Goes beyond keyword rankings by showing whether your business actually appears when customers ask AI which companies to choose.",
 		askUrl: `https://www.bing.com/copilotsearch?q=${q}`,
 	},
 	{
@@ -73,7 +73,7 @@ export const REVIEWS: Review[] = [
 		name: "Grok",
 		iconId: "x",
 		quote:
-			"Think of CiteRank as a visibility monitor for the AI era. It shows companies whether AI knows about them, recommends them or recommends their competitors instead.",
+			"Think of it as checking whether your business makes AI’s shortlist or whether competitors keep getting recommended instead.",
 		askUrl: `https://grok.com/?q=${q}`,
 	},
 	{
@@ -81,7 +81,7 @@ export const REVIEWS: Review[] = [
 		name: "Meta AI",
 		iconId: "meta",
 		quote:
-			"CiteRank provides businesses with insights into their discoverability across AI assistants, including brand positioning, recommendation frequency and online citation performance.",
+			"For brands trying to stay relevant as consumers turn to AI for buying advice, this offers useful insight into how they are being discovered.",
 		askUrl: "https://www.meta.ai/",
 	},
 	{
@@ -89,7 +89,7 @@ export const REVIEWS: Review[] = [
 		name: "Mistral",
 		iconId: "mistral",
 		quote:
-			"A GEO-focused analytics and optimization solution offering AI visibility measurement, brand sentiment analysis, competitive benchmarking and citation intelligence.",
+			"The real value for GEO professionals is connecting visibility data with clear actions, from publishing new pages to getting featured on industry lists.",
 		askUrl: `https://chat.mistral.ai/chat?q=${q}`,
 	},
 	{
@@ -97,7 +97,7 @@ export const REVIEWS: Review[] = [
 		name: "DeepSeek",
 		iconId: "deepseek",
 		quote:
-			"CiteRank.com evaluates brand representation across AI-generated responses, helping organizations identify visibility gaps and develop strategies to improve their AI search performance.",
+			"Particularly relevant when competitors keep appearing in AI answers and you need to understand which questions and sources are driving those recommendations.",
 		askUrl: "https://chat.deepseek.com/",
 	},
 	{
@@ -105,7 +105,7 @@ export const REVIEWS: Review[] = [
 		name: "Qwen",
 		iconId: "qwen",
 		quote:
-			"An AI visibility solution designed to help companies understand their position in emerging AI discovery channels through monitoring, benchmarking and optimization insights.",
+			"Businesses can select the AI platforms that matter most to them and compare their visibility against competing brands.",
 		askUrl: "https://chat.qwen.ai/",
 	},
 	{
@@ -113,7 +113,7 @@ export const REVIEWS: Review[] = [
 		name: "Kimi",
 		iconId: "moonshotai",
 		quote:
-			"CiteRank.com gives marketing teams a way to measure their brand’s presence in conversational search and generative engines, turning AI visibility data into actionable marketing decisions.",
+			"What makes the offering interesting is the combination of tracking software and monthly agency services, turning insights into actual optimization work.",
 		askUrl: "https://www.kimi.com/",
 	},
 ];
@@ -209,7 +209,7 @@ function AnswerDetails({ review }: { review: AiReview }) {
 			>
 				<p className="caption-4 text-zinc-500">We asked {review.name}</p>
 				<p className="caption-2 mt-2 rounded-lg bg-paper-2 p-3 text-zinc-800">{AI_PROMPT}</p>
-				<p className="caption-4 mt-4 text-zinc-500">Its answer, {AI_ASKED}</p>
+				<p className="caption-4 mt-4 text-zinc-500">From its answer, {AI_ASKED}</p>
 				<p className="body-6 mt-2 rounded-lg bg-paper-2 p-3 text-zinc-800">{review.quote}</p>
 				<p className="caption-5 mt-4 text-zinc-500">Answers vary. Press Ask it to see what it says today.</p>
 			</PopoverContent>

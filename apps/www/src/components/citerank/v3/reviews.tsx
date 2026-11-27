@@ -89,7 +89,7 @@ function AnswerDetails({ review }: { review: AiReview }) {
 			>
 				<p className={`${SMALL} ${TEXT_2}`}>We asked {review.name}</p>
 				<p className={`${MONO} mt-2 rounded-[8px] bg-(--v3-raised) p-3 ${TEXT_2}`}>{AI_PROMPT}</p>
-				<p className={`${SMALL} mt-4 ${TEXT_2}`}>Its answer from {AI_ASKED}</p>
+				<p className={`${SMALL} mt-4 ${TEXT_2}`}>From its answer, {AI_ASKED}</p>
 				<p className={`${SMALL} mt-2 rounded-[8px] bg-(--v3-raised) p-3 ${TEXT_2}`}>{review.quote}</p>
 				<p className={`${SMALL} mt-4 ${TEXT_2}`}>Answers vary. Press Ask it to see what it says today.</p>
 				<p className="mt-5">
