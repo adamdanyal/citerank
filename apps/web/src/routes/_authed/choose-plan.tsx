@@ -153,7 +153,9 @@ function PlanPicker({ paywall }: { paywall: PaywallRequired }) {
 	};
 
 	return (
-		<div className="mx-auto max-w-6xl space-y-8 p-8">
+		// `w-full`: centred with auto margins this box sizes to its content, and the
+		// comparison table's minimum width would then stretch the whole page past a phone's screen.
+		<div className="mx-auto w-full max-w-6xl space-y-8 p-8">
 			<div className="space-y-2 text-center">
 				<h1 className="text-3xl font-bold">Choose your plan</h1>
 				<p className="text-muted-foreground">Start tracking how AI answer engines talk about your brand.</p>
